@@ -8,7 +8,7 @@
 import Foundation
 @testable import luzie_locke_ios
 
-class AuthManagerMock: AuthManager {
+class AuthServiceMock: AuthService {
     
     override func isLoggedIn() -> Bool {
         return false

@@ -19,9 +19,9 @@ class MainViewControllerTests: XCTestCase {
     }
 
     func testShouldNavigateToLoginScreenWhenNotLoggedIn() throws {
-        let authManagerMock = AuthManagerMock()
+        let authServiceMock = AuthServiceMock()
         
-        let sut = MainViewController(authManager: authManagerMock)
+        let sut = MainViewController(authService: authServiceMock)
         
         let navigationController = UINavigationController(rootViewController: sut)
 //        navigationController.pushViewController(sut, animated: false)

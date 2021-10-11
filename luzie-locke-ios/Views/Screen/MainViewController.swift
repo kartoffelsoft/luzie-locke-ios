@@ -9,10 +9,10 @@ import UIKit
 
 class MainViewController: UITabBarController {
 
-    var authManager: AuthManager?
+    var authService: AuthService?
     
-    init(authManager: AuthManager?) {
-        self.authManager = authManager
+    init(authService: AuthService?) {
+        self.authService = authService
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -31,8 +31,8 @@ class MainViewController: UITabBarController {
         super.viewDidAppear(animated)
         navigationController?.isNavigationBarHidden = true
         
-        if authManager?.isLoggedIn() == false {
-            let vc = LoginViewController()
+        if authService?.isLoggedIn() == false {
+            let vc = LoginViewController(authService: authService)
 //            vc.delegate = self
             
             let nc = UINavigationController(rootViewController: vc)
@@ -82,4 +82,3 @@ class MainViewController: UITabBarController {
         fatalError("init(coder:) has not been implemented")
     }
 }
-

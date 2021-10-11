@@ -10,16 +10,16 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window:      UIWindow?
-    var authManager: AuthManager?
+    var authService: AuthService?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         
-        authManager = AuthManager()
+        authService = AuthService(backend: BackendAuthService(), google: GoogleSignInService())
         
         window = UIWindow(windowScene: scene)
         window?.makeKeyAndVisible()
-        window?.rootViewController = UINavigationController(rootViewController: MainViewController(authManager: authManager))
+        window?.rootViewController = UINavigationController(rootViewController: MainViewController(authService: authService))
 //        window?.rootViewController = MainViewController(authManager: authManager)
     }
 
