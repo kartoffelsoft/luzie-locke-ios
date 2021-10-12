@@ -8,10 +8,12 @@
 import UIKit
 @testable import luzie_locke_ios
 
-class AuthServiceMock: Authable {
+class AuthableMock: Authable {
+    
+    public var authenticated = false
     
     func isAuthencated() -> Bool {
-        return false
+        return authenticated
     }
     
     func authenticate(_ caller: UIViewController, with provider: SignInProvider, completion: @escaping (Result<Void, LLError>?) -> Void) {

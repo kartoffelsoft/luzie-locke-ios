@@ -19,7 +19,7 @@
 		4A3B52A62712539300EF4F93 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52A52712539300EF4F93 /* AuthService.swift */; };
 		4A3B52A9271256CD00EF4F93 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52A8271256CD00EF4F93 /* LoginViewController.swift */; };
 		4A3B52AB27125C0A00EF4F93 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52AA27125C0A00EF4F93 /* MainViewControllerTests.swift */; };
-		4A3B52B027125C6700EF4F93 /* AuthServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52AF27125C6700EF4F93 /* AuthServiceMock.swift */; };
+		4A3B52B027125C6700EF4F93 /* AuthableMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52AF27125C6700EF4F93 /* AuthableMock.swift */; };
 		4A3B52B527126DB000EF4F93 /* ScreenTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52B427126DB000EF4F93 /* ScreenTitleLabel.swift */; };
 		4A3B52B92712DC9100EF4F93 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4A3B52B82712DC9100EF4F93 /* FirebaseAuth */; };
 		4A3B52BB2712DC9100EF4F93 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 4A3B52BA2712DC9100EF4F93 /* FirebaseStorage */; };
@@ -32,12 +32,13 @@
 		4A3B52CD2714419B00EF4F93 /* LLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52CC2714419B00EF4F93 /* LLError.swift */; };
 		4A3B52CF27144CC200EF4F93 /* BackendAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52CE27144CC200EF4F93 /* BackendAuthService.swift */; };
 		4A3B52D227144FF200EF4F93 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52D127144FF200EF4F93 /* User.swift */; };
-		4A3B52D527159CA300EF4F93 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52D427159CA300EF4F93 /* Coordinate.swift */; };
+		4A3B52D527159CA300EF4F93 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52D427159CA300EF4F93 /* Coordinator.swift */; };
 		4A3B52DB2715ADEF00EF4F93 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52DA2715ADEF00EF4F93 /* LoginCoordinator.swift */; };
 		4A3B52DD2715BA3700EF4F93 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52DC2715BA3700EF4F93 /* HomeCoordinator.swift */; };
 		4A3B52DF2715C0F200EF4F93 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52DE2715C0F200EF4F93 /* SearchCoordinator.swift */; };
 		4A3B52E12715C10500EF4F93 /* ChatsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52E02715C10500EF4F93 /* ChatsCoordinator.swift */; };
 		4A3B52E32715C11900EF4F93 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52E22715C11900EF4F93 /* SettingsCoordinator.swift */; };
+		4A3B52E52716083A00EF4F93 /* CoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52E42716083A00EF4F93 /* CoordinatorMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,7 +68,7 @@
 		4A3B52A52712539300EF4F93 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		4A3B52A8271256CD00EF4F93 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4A3B52AA27125C0A00EF4F93 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
-		4A3B52AF27125C6700EF4F93 /* AuthServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceMock.swift; sourceTree = "<group>"; };
+		4A3B52AF27125C6700EF4F93 /* AuthableMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthableMock.swift; sourceTree = "<group>"; };
 		4A3B52B427126DB000EF4F93 /* ScreenTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTitleLabel.swift; sourceTree = "<group>"; };
 		4A3B52C12712DF2100EF4F93 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4A3B52C327131FE800EF4F93 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -76,12 +77,13 @@
 		4A3B52CC2714419B00EF4F93 /* LLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLError.swift; sourceTree = "<group>"; };
 		4A3B52CE27144CC200EF4F93 /* BackendAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendAuthService.swift; sourceTree = "<group>"; };
 		4A3B52D127144FF200EF4F93 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		4A3B52D427159CA300EF4F93 /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		4A3B52D427159CA300EF4F93 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		4A3B52DA2715ADEF00EF4F93 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		4A3B52DC2715BA3700EF4F93 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		4A3B52DE2715C0F200EF4F93 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		4A3B52E02715C10500EF4F93 /* ChatsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsCoordinator.swift; sourceTree = "<group>"; };
 		4A3B52E22715C11900EF4F93 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		4A3B52E42716083A00EF4F93 /* CoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,7 +229,8 @@
 		4A3B52AE27125C4A00EF4F93 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				4A3B52AF27125C6700EF4F93 /* AuthServiceMock.swift */,
+				4A3B52AF27125C6700EF4F93 /* AuthableMock.swift */,
+				4A3B52E42716083A00EF4F93 /* CoordinatorMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -277,7 +280,7 @@
 		4A3B52D327159C8E00EF4F93 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				4A3B52D427159CA300EF4F93 /* Coordinate.swift */,
+				4A3B52D427159CA300EF4F93 /* Coordinator.swift */,
 				4A3B52DA2715ADEF00EF4F93 /* LoginCoordinator.swift */,
 				4A3B52DC2715BA3700EF4F93 /* HomeCoordinator.swift */,
 				4A3B52DE2715C0F200EF4F93 /* SearchCoordinator.swift */,
@@ -409,7 +412,7 @@
 				4A3B52A62712539300EF4F93 /* AuthService.swift in Sources */,
 				4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */,
 				4A3B5266271239CE00EF4F93 /* AppDelegate.swift in Sources */,
-				4A3B52D527159CA300EF4F93 /* Coordinate.swift in Sources */,
+				4A3B52D527159CA300EF4F93 /* Coordinator.swift in Sources */,
 				4A3B52A22712461500EF4F93 /* ChatsViewController.swift in Sources */,
 				4A3B52CF27144CC200EF4F93 /* BackendAuthService.swift in Sources */,
 				4A3B5268271239CE00EF4F93 /* SceneDelegate.swift in Sources */,
@@ -426,8 +429,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A3B52B027125C6700EF4F93 /* AuthServiceMock.swift in Sources */,
+				4A3B52B027125C6700EF4F93 /* AuthableMock.swift in Sources */,
 				4A3B52AB27125C0A00EF4F93 /* MainViewControllerTests.swift in Sources */,
+				4A3B52E52716083A00EF4F93 /* CoordinatorMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

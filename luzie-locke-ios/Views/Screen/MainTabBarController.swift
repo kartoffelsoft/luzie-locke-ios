@@ -24,11 +24,11 @@ class MainTabBarController: UITabBarController {
         self.searchCoordinator      = SearchCoordinator(navigationController: UINavigationController(), auth: auth)
         self.chatsCoordinator       = ChatsCoordinator(navigationController: UINavigationController(), auth: auth)
         self.settingsCoordinator    = SettingsCoordinator(navigationController: UINavigationController(), auth: auth)
-        
         super.init(nibName: nil, bundle: nil)
     }
     
     override func viewDidLoad() {
+        print("ViewDidLoad")
         super.viewDidLoad()
         
         view.backgroundColor    = .white
@@ -46,13 +46,14 @@ class MainTabBarController: UITabBarController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        print("viewDidAppear")
         super.viewDidAppear(animated)
+        
         navigationController?.isNavigationBarHidden = true
         
         if auth.isAuthencated() == false {
             self.loginCoordinator.start()
-            
-            present(self.loginCoordinator.navigationController, animated: true)
+            self.present(self.loginCoordinator.navigationController, animated: true)
         }
     }
     
