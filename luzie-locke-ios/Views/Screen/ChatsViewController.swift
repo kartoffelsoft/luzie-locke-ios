@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  ChatViewController.swift
 //  luzie-locke-ios
 //
 //  Created by Harry on 09.10.21.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class ChatsViewController: UIViewController {
+
+    var auth: Authable?
     
-    var auth: Authable
-    
-    init(auth: Authable) {
+    init(auth: Authable?) {
         self.auth = auth
         super.init(nibName: nil, bundle: nil)
     }
@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: ScreenTitleLabel("Home"))
+        navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: ScreenTitleLabel("Chat"))
     }
     
     required init?(coder: NSCoder) {

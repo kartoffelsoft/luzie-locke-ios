@@ -13,7 +13,12 @@ enum SignInProvider {
     case google
 }
 
-class AuthService {
+protocol Authable {
+    func isAuthencated() -> Bool
+    func authenticate(_ caller: UIViewController, with provider: SignInProvider, completion: @escaping (Result<Void, LLError>?) -> Void)
+}
+
+class AuthService: Authable {
     
     var user: User?
     
@@ -25,7 +30,7 @@ class AuthService {
         self.backend = backend
     }
     
-    func isLoggedIn() -> Bool {
+    func isAuthencated() -> Bool {
 //        return Auth.auth().currentUser != nil
         return false
     }

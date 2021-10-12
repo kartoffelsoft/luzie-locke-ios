@@ -10,14 +10,14 @@ import Firebase
 import GoogleSignIn
 
 class LoginViewModel {
-    let authService: AuthService?
+    let auth: Authable
     
-    init(authService: AuthService?) {
-        self.authService = authService
+    init(auth: Authable) {
+        self.auth = auth
     }
     
     func performGoogleLogin(_ calller: UIViewController) {
-        authService?.authenticate(calller, with: .google, completion: { result in
+        auth.authenticate(calller, with: .google, completion: { result in
             print("performGoogleLogin")
         })
     }

@@ -12,8 +12,8 @@ class LoginViewController: UIViewController {
     let viewModel: LoginViewModel
     let googleButton: UIButton
     
-    init(authService: AuthService?) {
-        viewModel = LoginViewModel(authService: authService)
+    init(auth: Authable) {
+        viewModel = LoginViewModel(auth: auth)
         googleButton = UIButton(type: .system)
         super.init(nibName: nil, bundle: nil)
     }
