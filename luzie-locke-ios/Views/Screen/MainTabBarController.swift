@@ -9,7 +9,7 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
-    let auth:                   Authable
+    let userStorage:            UserStorage
     let loginCoordinator:       Coordinator
     
     let homeCoordinator:        HomeCoordinator
@@ -17,28 +17,26 @@ class MainTabBarController: UITabBarController {
     let chatsCoordinator:       ChatsCoordinator
     let settingsCoordinator:    SettingsCoordinator
     
-    init(auth: Authable, loginCoordinator: Coordinator) {
-        self.auth                   = auth
+    init(userStorage: UserStorage, loginCoordinator: Coordinator) {
+        self.userStorage            = userStorage
         self.loginCoordinator       = loginCoordinator
-        self.homeCoordinator        = HomeCoordinator(navigationController: UINavigationController(), auth: auth)
-        self.searchCoordinator      = SearchCoordinator(navigationController: UINavigationController(), auth: auth)
-        self.chatsCoordinator       = ChatsCoordinator(navigationController: UINavigationController(), auth: auth)
-        self.settingsCoordinator    = SettingsCoordinator(navigationController: UINavigationController(), auth: auth)
+        self.homeCoordinator        = HomeCoordinator(navigationController: UINavigationController(), userStorage: userStorage)
+        self.searchCoordinator      = SearchCoordinator(navigationController: UINavigationController(), userStorage: userStorage)
+        self.chatsCoordinator       = ChatsCoordinator(navigationController: UINavigationController(), userStorage: userStorage)
+        self.settingsCoordinator    = SettingsCoordinator(navigationController: UINavigationController(), userStorage: userStorage)
         super.init(nibName: nil, bundle: nil)
     }
     
     override func viewDidLoad() {
-        print("ViewDidLoad")
         super.viewDidLoad()
-        
-        view.backgroundColor    = .white
-        tabBar.tintColor        = UIColor.label
 
         homeCoordinator.start()
         searchCoordinator.start()
         chatsCoordinator.start()
         settingsCoordinator.start()
         
+        view.backgroundColor    = .white
+        tabBar.tintColor        = UIColor.label
         viewControllers         = [ homeCoordinator.navigationController,
                                     searchCoordinator.navigationController,
                                     chatsCoordinator.navigationController,
@@ -46,12 +44,11 @@ class MainTabBarController: UITabBarController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("viewDidAppear")
         super.viewDidAppear(animated)
         
         navigationController?.isNavigationBarHidden = true
         
-        if auth.isAuthencated() == false {
+        if userStorage.available() == false {
             self.loginCoordinator.start()
             self.present(self.loginCoordinator.navigationController, animated: true)
         }

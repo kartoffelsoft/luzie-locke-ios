@@ -21,7 +21,7 @@ class MainViewControllerTests: XCTestCase {
     let unauthenticated = false
     
     override func setUpWithError() throws {
-        authableMock = AuthableMock()
+        authableMock         = AuthableMock()
         loginCoordinatorMock = CoordinatorMock()
         
         if let authableMock = authableMock, let loginCoordinatorMock = loginCoordinatorMock {

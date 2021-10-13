@@ -14,7 +14,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
         
-        let auth = AuthService(backend: BackendAuthService(), google: GoogleSignInService())
+        let userStorage = UserStorage(key: "User")
+        let auth = AuthService(userStorage: userStorage, backend: BackendAuthService(), google: GoogleSignInService())
         
         window = UIWindow(windowScene: scene)
         window?.makeKeyAndVisible()
@@ -22,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = UINavigationController(
             rootViewController:
                 MainTabBarController(
-                    auth: auth,
+                    userStorage: userStorage,
                     loginCoordinator: LoginCoordinator(navigationController: UINavigationController(), auth: auth)
                 )
         )

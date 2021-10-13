@@ -9,10 +9,10 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    var auth: Authable
+    var userStorage: UserStorage
     
-    init(auth: Authable) {
-        self.auth = auth
+    init(userStorage: UserStorage) {
+        self.userStorage = userStorage
         super.init(nibName: nil, bundle: nil)
     }
     

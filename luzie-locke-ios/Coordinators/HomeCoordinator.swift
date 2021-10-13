@@ -11,15 +11,15 @@ class HomeCoordinator: Coordinator {
     var children = [Coordinator]()
     var navigationController: UINavigationController
     
-    var auth: Authable
+    var userStorage: UserStorage
     
-    init(navigationController: UINavigationController, auth: Authable) {
+    init(navigationController: UINavigationController, userStorage: UserStorage) {
         self.navigationController = navigationController
-        self.auth = auth
+        self.userStorage = userStorage
     }
     
     func start() {
-        let vc = HomeViewController(auth: auth)
+        let vc = HomeViewController(userStorage: userStorage)
         vc.tabBarItem   = UITabBarItem(title: "Home",
                                        image: UIImage(systemName: "house.circle"),
                                        selectedImage: UIImage(systemName: "house.circle.fill"))

@@ -20,12 +20,12 @@ protocol Authable {
 
 class AuthService: Authable {
     
-    var user: User?
-    
+    let userStorage: UserStorage
     let google: GoogleSignInService
     let backend: BackendAuthService
     
-    init(backend: BackendAuthService, google: GoogleSignInService) {
+    init(userStorage: UserStorage, backend: BackendAuthService, google: GoogleSignInService) {
+        self.userStorage = userStorage
         self.google = google
         self.backend = backend
     }
@@ -39,22 +39,16 @@ class AuthService: Authable {
         switch provider {
         case .google:
             google.signIn(caller) { [weak self] result in
-                guard let self = self else {
-                    completion(.failure(.unableToComplete))
-                    return
-                }
+                guard let self = self else { return }
                 
                 switch result {
                 case .success(let data):
                     self.backend.authenticate(uid: data.uid, token: data.token) { [weak self] result in
-                        guard let self = self else {
-                            completion(.failure(.unableToComplete))
-                            return
-                        }
+                        guard let self = self else { return }
                         
                         switch result {
                         case .success(let user):
-                            self.user = user
+                            self.userStorage.set(user)
                             completion(.success(()))
                             
                         case .failure(let error):

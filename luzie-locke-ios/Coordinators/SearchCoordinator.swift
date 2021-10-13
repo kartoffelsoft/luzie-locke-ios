@@ -11,15 +11,15 @@ class SearchCoordinator: Coordinator {
     var children = [Coordinator]()
     var navigationController: UINavigationController
     
-    var auth: Authable
+    var userStorage: UserStorage
     
-    init(navigationController: UINavigationController, auth: Authable) {
+    init(navigationController: UINavigationController, userStorage: UserStorage) {
         self.navigationController = navigationController
-        self.auth = auth
+        self.userStorage = userStorage
     }
     
     func start() {
-        let vc = SearchViewController(auth: auth)
+        let vc = SearchViewController(userStorage: userStorage)
         vc.tabBarItem   = UITabBarItem(title: "Search",
                                        image: UIImage(systemName: "magnifyingglass.circle"),
                                        selectedImage: UIImage(systemName: "magnifyingglass.circle.fill"))

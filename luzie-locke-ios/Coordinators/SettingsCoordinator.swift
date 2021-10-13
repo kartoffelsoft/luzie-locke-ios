@@ -10,18 +10,19 @@ import Foundation
 import UIKit
 
 class SettingsCoordinator: Coordinator {
+    
     var children = [Coordinator]()
     var navigationController: UINavigationController
     
-    var auth: Authable
+    var userStorage: UserStorage
     
-    init(navigationController: UINavigationController, auth: Authable) {
+    init(navigationController: UINavigationController, userStorage: UserStorage) {
         self.navigationController = navigationController
-        self.auth = auth
+        self.userStorage = userStorage
     }
     
     func start() {
-        let vc = SettingsViewController(auth: auth)
+        let vc = SettingsViewController(userStorage: userStorage)
         vc.tabBarItem   = UITabBarItem(title: "Settings",
                                        image: UIImage(systemName: "person.crop.circle"),
                                        selectedImage: UIImage(systemName: "person.crop.circle.fill"))
