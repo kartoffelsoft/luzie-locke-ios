@@ -11,7 +11,7 @@ import XCTest
 class MainViewControllerTests: XCTestCase {
     
     var sut:                    MainTabBarController?
-    var authableMock:           AuthableMock?
+    var userStorageMock:        UserStorageMock?
     var loginCoordinatorMock:   CoordinatorMock?
     
     let shown  = 1
@@ -21,11 +21,11 @@ class MainViewControllerTests: XCTestCase {
     let unauthenticated = false
     
     override func setUpWithError() throws {
-        authableMock         = AuthableMock()
+        userStorageMock     = UserStorageMock()
         loginCoordinatorMock = CoordinatorMock()
         
-        if let authableMock = authableMock, let loginCoordinatorMock = loginCoordinatorMock {
-            sut = MainTabBarController(auth: authableMock, loginCoordinator: loginCoordinatorMock)
+        if let userStorageMock = userStorageMock, let loginCoordinatorMock = loginCoordinatorMock {
+            sut = MainTabBarController(userStorage: userStorageMock, loginCoordinator: loginCoordinatorMock)
             
             let window = UIWindow(frame: UIScreen.main.bounds)
             window.rootViewController = sut
@@ -34,7 +34,7 @@ class MainViewControllerTests: XCTestCase {
     }
 
     func givenUserIs(_ status: Bool) {
-        authableMock?.authenticated = status
+        userStorageMock?.setIsEmpty(empty: status)
     }
     
     func whenViewIsLoaded() {

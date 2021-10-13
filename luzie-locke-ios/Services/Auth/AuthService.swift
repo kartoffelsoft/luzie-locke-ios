@@ -14,7 +14,6 @@ enum SignInProvider {
 }
 
 protocol Authable {
-    func isAuthencated() -> Bool
     func authenticate(_ caller: UIViewController, with provider: SignInProvider, completion: @escaping (Result<Void, LLError>?) -> Void)
 }
 
@@ -28,11 +27,6 @@ class AuthService: Authable {
         self.userStorage = userStorage
         self.google = google
         self.backend = backend
-    }
-    
-    func isAuthencated() -> Bool {
-//        return Auth.auth().currentUser != nil
-        return false
     }
     
     func authenticate(_ caller: UIViewController, with provider: SignInProvider, completion: @escaping (Result<Void, LLError>?) -> Void) {

@@ -9,9 +9,9 @@ import UIKit
 
 class ChatsViewController: UIViewController {
 
-    var userStorage: UserStorage
+    var userStorage: UserStorable
     
-    init(userStorage: UserStorage) {
+    init(userStorage: UserStorable) {
         self.userStorage = userStorage
         super.init(nibName: nil, bundle: nil)
     }

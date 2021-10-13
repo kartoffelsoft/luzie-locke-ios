@@ -40,6 +40,7 @@
 		4A3B52E32715C11900EF4F93 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52E22715C11900EF4F93 /* SettingsCoordinator.swift */; };
 		4A3B52E52716083A00EF4F93 /* CoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52E42716083A00EF4F93 /* CoordinatorMock.swift */; };
 		4A3B52E72716D87A00EF4F93 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52E62716D87A00EF4F93 /* UserStorage.swift */; };
+		4AED5DD427174BDC00B7AC00 /* UserStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5DD327174BDC00B7AC00 /* UserStorageMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		4A3B52E22715C11900EF4F93 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		4A3B52E42716083A00EF4F93 /* CoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorMock.swift; sourceTree = "<group>"; };
 		4A3B52E62716D87A00EF4F93 /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
+		4AED5DD327174BDC00B7AC00 /* UserStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorageMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,7 @@
 			children = (
 				4A3B52AF27125C6700EF4F93 /* AuthableMock.swift */,
 				4A3B52E42716083A00EF4F93 /* CoordinatorMock.swift */,
+				4AED5DD327174BDC00B7AC00 /* UserStorageMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 			files = (
 				4A3B52B027125C6700EF4F93 /* AuthableMock.swift in Sources */,
 				4A3B52AB27125C0A00EF4F93 /* MainViewControllerTests.swift in Sources */,
+				4AED5DD427174BDC00B7AC00 /* UserStorageMock.swift in Sources */,
 				4A3B52E52716083A00EF4F93 /* CoordinatorMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

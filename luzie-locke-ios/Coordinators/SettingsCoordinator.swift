@@ -14,9 +14,9 @@ class SettingsCoordinator: Coordinator {
     var children = [Coordinator]()
     var navigationController: UINavigationController
     
-    var userStorage: UserStorage
+    var userStorage: UserStorable
     
-    init(navigationController: UINavigationController, userStorage: UserStorage) {
+    init(navigationController: UINavigationController, userStorage: UserStorable) {
         self.navigationController = navigationController
         self.userStorage = userStorage
     }

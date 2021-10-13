@@ -9,7 +9,7 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
-    let userStorage:            UserStorage
+    let userStorage:            UserStorable
     let loginCoordinator:       Coordinator
     
     let homeCoordinator:        HomeCoordinator
@@ -17,7 +17,7 @@ class MainTabBarController: UITabBarController {
     let chatsCoordinator:       ChatsCoordinator
     let settingsCoordinator:    SettingsCoordinator
     
-    init(userStorage: UserStorage, loginCoordinator: Coordinator) {
+    init(userStorage: UserStorable, loginCoordinator: Coordinator) {
         self.userStorage            = userStorage
         self.loginCoordinator       = loginCoordinator
         self.homeCoordinator        = HomeCoordinator(navigationController: UINavigationController(), userStorage: userStorage)
@@ -48,7 +48,7 @@ class MainTabBarController: UITabBarController {
         
         navigationController?.isNavigationBarHidden = true
         
-        if userStorage.available() == false {
+        if userStorage.isEmpty() == false {
             self.loginCoordinator.start()
             self.present(self.loginCoordinator.navigationController, animated: true)
         }

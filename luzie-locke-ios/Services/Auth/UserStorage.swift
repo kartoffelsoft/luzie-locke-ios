@@ -7,13 +7,14 @@
 
 import Firebase
 
-protocol Storable {
-    associatedtype T
-    func get() -> T?
-    func set(_ data: T)
+protocol UserStorable {
+    func get() -> User?
+    func set(_ data: User)
+    func clear()
+    func isEmpty() -> Bool
 }
 
-class UserStorage: Storable {
+class UserStorage: UserStorable {
     private var data: User?
     private let key: String
 
@@ -40,7 +41,10 @@ class UserStorage: Storable {
         }
     }
     
-    func available() -> Bool {
+    func clear() {
+    }
+    
+    func isEmpty() -> Bool {
         return Auth.auth().currentUser != nil && data != nil
     }
 }
