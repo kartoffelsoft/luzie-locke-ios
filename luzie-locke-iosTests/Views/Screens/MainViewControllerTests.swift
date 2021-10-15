@@ -10,40 +10,47 @@ import XCTest
 
 class MainViewControllerTests: XCTestCase {
     
-    var sut:                    MainTabBarController?
-    var userStorageMock:        UserStorageMock?
-    var loginCoordinatorMock:   CoordinatorMock?
+    var sut:                    MainTabBarController!
+    var mockUserStorage:        UserStorageMock!
+    var mockLoginCoordinator:   CoordinatorMock!
     
     let shown  = 1
     let hidden = 0
     
-    let authenticated   = true
-    let unauthenticated = false
+    let authenticated   = false
+    let unauthenticated = true
     
     override func setUpWithError() throws {
-        userStorageMock     = UserStorageMock()
-        loginCoordinatorMock = CoordinatorMock()
+        try super.setUpWithError()
         
-        if let userStorageMock = userStorageMock, let loginCoordinatorMock = loginCoordinatorMock {
-            sut = MainTabBarController(userStorage: userStorageMock, loginCoordinator: loginCoordinatorMock)
+        mockUserStorage     = UserStorageMock()
+        mockLoginCoordinator = CoordinatorMock()
+        
+        sut = MainTabBarController(userStorage: mockUserStorage, loginCoordinator: mockLoginCoordinator)
             
-            let window = UIWindow(frame: UIScreen.main.bounds)
-            window.rootViewController = sut
-            window.makeKeyAndVisible()
-        }
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = sut
+        window.makeKeyAndVisible()
     }
-
+    
+    override func tearDownWithError() throws {
+        sut = nil
+        mockUserStorage = nil
+        mockLoginCoordinator = nil
+        try super.tearDownWithError()
+    }
+    
     func givenUserIs(_ status: Bool) {
-        userStorageMock?.setIsEmpty(empty: status)
+        mockUserStorage?.setIsEmpty(empty: status)
     }
     
     func whenViewIsLoaded() {
-        sut?.loadViewIfNeeded()
-        sut?.viewDidAppear(true)
+        sut?.beginAppearanceTransition(true, animated: true)
+        sut?.endAppearanceTransition()
     }
     
     func loginViewControllerShouldBe(_ status: Int) {
-        XCTAssertEqual(loginCoordinatorMock?.navigationController.viewControllers.count, status)
+        XCTAssertEqual(mockLoginCoordinator?.navigationController.viewControllers.count, status)
     }
     
     func testShouldNavigateToLoginScreenWhenUnauthenticated() throws {

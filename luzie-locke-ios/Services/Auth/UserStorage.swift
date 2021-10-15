@@ -45,6 +45,7 @@ class UserStorage: UserStorable {
     }
     
     func isEmpty() -> Bool {
-        return Auth.auth().currentUser != nil && data != nil
+//        return Auth.auth().currentUser != nil && data != nil
+        return true
     }
 }

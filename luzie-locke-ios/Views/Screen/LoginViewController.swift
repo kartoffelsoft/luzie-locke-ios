@@ -9,8 +9,9 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    let viewModel: LoginViewModel
-    let googleButton: UIButton
+    var coordinator     : LoginCoordinator?
+    let viewModel       : LoginViewModel
+    let googleButton    : UIButton
     
     init(auth: Authable) {
         viewModel           = LoginViewModel(auth: auth)
@@ -26,6 +27,12 @@ class LoginViewController: UIViewController {
         view.backgroundColor                            = .systemBackground
 
         configureButtons()
+        
+        
+        //temp
+        self.coordinator?.navigateToMap(selectAction: { [weak self] name in
+            print(name ?? "Not selected")
+        })
     }
     
     private func configureButtons() {
@@ -58,7 +65,11 @@ class LoginViewController: UIViewController {
 extension LoginViewController: LoginViewModelDelegate {
     func didLogin() {
         DispatchQueue.main.async {
-            self.dismiss(animated: true)
+            self.coordinator?.navigateToMap(selectAction: { [weak self] name in
+                print(name ?? "Not selected")
+            })
+
+//            self.dismiss(animated: true)
         }
     }
     

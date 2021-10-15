@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 class LoginCoordinator: Coordinator {
     var children = [Coordinator]()
@@ -22,6 +23,13 @@ class LoginCoordinator: Coordinator {
     
     func start() {
         let vc = LoginViewController(auth: auth)
+        vc.coordinator = self
         navigationController.pushViewController(vc, animated: false)
+    }
+    
+    func navigateToMap(selectAction: @escaping ((String?) -> Void)) {
+        let vc = MapViewController(mapView: MKMapView(), locationManager: CLLocationManager())
+        vc.selectAction = selectAction
+        navigationController.pushViewController(vc, animated: true)
     }
 }

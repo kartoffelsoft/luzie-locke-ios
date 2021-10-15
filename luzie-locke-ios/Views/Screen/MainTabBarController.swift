@@ -48,7 +48,7 @@ class MainTabBarController: UITabBarController {
         
         navigationController?.isNavigationBarHidden = true
         
-        if userStorage.isEmpty() == false {
+        if userStorage.isEmpty() {
             self.loginCoordinator.start()
             self.present(self.loginCoordinator.navigationController, animated: true)
         }

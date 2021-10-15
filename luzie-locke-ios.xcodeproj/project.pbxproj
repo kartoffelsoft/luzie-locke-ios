@@ -41,6 +41,11 @@
 		4A3B52E52716083A00EF4F93 /* CoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52E42716083A00EF4F93 /* CoordinatorMock.swift */; };
 		4A3B52E72716D87A00EF4F93 /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52E62716D87A00EF4F93 /* UserStorage.swift */; };
 		4AED5DD427174BDC00B7AC00 /* UserStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5DD327174BDC00B7AC00 /* UserStorageMock.swift */; };
+		4AED5E1A27197BA400B7AC00 /* Frankfurt.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4AED5E1927197BA400B7AC00 /* Frankfurt.gpx */; };
+		4AED5E1D27197E1F00B7AC00 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */; };
+		4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */; };
+		4AED5E25271A0CFD00B7AC00 /* MKViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E24271A0CFD00B7AC00 /* MKViewMock.swift */; };
+		4AED5E27271A0D1300B7AC00 /* CLLocationManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E26271A0D1300B7AC00 /* CLLocationManagerMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +93,11 @@
 		4A3B52E42716083A00EF4F93 /* CoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorMock.swift; sourceTree = "<group>"; };
 		4A3B52E62716D87A00EF4F93 /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
 		4AED5DD327174BDC00B7AC00 /* UserStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorageMock.swift; sourceTree = "<group>"; };
+		4AED5E1927197BA400B7AC00 /* Frankfurt.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Frankfurt.gpx; sourceTree = "<group>"; };
+		4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerTests.swift; sourceTree = "<group>"; };
+		4AED5E24271A0CFD00B7AC00 /* MKViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKViewMock.swift; sourceTree = "<group>"; };
+		4AED5E26271A0D1300B7AC00 /* CLLocationManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManagerMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +150,7 @@
 				4A3B529727123DAD00EF4F93 /* ViewModels */,
 				4A3B529627123DA800EF4F93 /* Models */,
 				4A3B529527123DA300EF4F93 /* Views */,
+				4AED5E1B27197BD700B7AC00 /* Supports */,
 				4A3B5265271239CE00EF4F93 /* AppDelegate.swift */,
 				4A3B5267271239CE00EF4F93 /* SceneDelegate.swift */,
 				4A3B526E271239CF00EF4F93 /* Assets.xcassets */,
@@ -195,6 +206,7 @@
 		4A3B529927123DCF00EF4F93 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				4AED5E182719669600B7AC00 /* Map */,
 				4A3B5269271239CE00EF4F93 /* MainTabBarController.swift */,
 				4A3B52A8271256CD00EF4F93 /* LoginViewController.swift */,
 				4A3B529A2712401D00EF4F93 /* HomeViewController.swift */,
@@ -225,6 +237,7 @@
 		4A3B52AD27125C3600EF4F93 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				4AED5E1E2719D5BF00B7AC00 /* Map */,
 				4A3B52AA27125C0A00EF4F93 /* MainViewControllerTests.swift */,
 			);
 			path = Screens;
@@ -233,6 +246,7 @@
 		4A3B52AE27125C4A00EF4F93 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				4AED5E23271A0CCD00B7AC00 /* Map */,
 				4A3B52AF27125C6700EF4F93 /* AuthableMock.swift */,
 				4A3B52E42716083A00EF4F93 /* CoordinatorMock.swift */,
 				4AED5DD327174BDC00B7AC00 /* UserStorageMock.swift */,
@@ -294,6 +308,39 @@
 				4A3B52E22715C11900EF4F93 /* SettingsCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		4AED5E182719669600B7AC00 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		4AED5E1B27197BD700B7AC00 /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				4AED5E1927197BA400B7AC00 /* Frankfurt.gpx */,
+			);
+			path = Supports;
+			sourceTree = "<group>";
+		};
+		4AED5E1E2719D5BF00B7AC00 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		4AED5E23271A0CCD00B7AC00 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				4AED5E24271A0CFD00B7AC00 /* MKViewMock.swift */,
+				4AED5E26271A0D1300B7AC00 /* CLLocationManagerMock.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,6 +434,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A3B5272271239CF00EF4F93 /* LaunchScreen.storyboard in Resources */,
+				4AED5E1A27197BA400B7AC00 /* Frankfurt.gpx in Resources */,
 				4A3B526F271239CF00EF4F93 /* Assets.xcassets in Resources */,
 				4A3B52C22712DF2100EF4F93 /* GoogleService-Info.plist in Resources */,
 			);
@@ -413,6 +461,7 @@
 				4A3B52CD2714419B00EF4F93 /* LLError.swift in Sources */,
 				4A3B52B527126DB000EF4F93 /* ScreenTitleLabel.swift in Sources */,
 				4A3B52D227144FF200EF4F93 /* User.swift in Sources */,
+				4AED5E1D27197E1F00B7AC00 /* MapViewController.swift in Sources */,
 				4A3B52C72713996000EF4F93 /* GoogleSignInService.swift in Sources */,
 				4A3B52C427131FE800EF4F93 /* LoginViewModel.swift in Sources */,
 				4A3B529D2712421300EF4F93 /* SearchViewController.swift in Sources */,
@@ -436,9 +485,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AED5E25271A0CFD00B7AC00 /* MKViewMock.swift in Sources */,
 				4A3B52B027125C6700EF4F93 /* AuthableMock.swift in Sources */,
+				4AED5E27271A0D1300B7AC00 /* CLLocationManagerMock.swift in Sources */,
 				4A3B52AB27125C0A00EF4F93 /* MainViewControllerTests.swift in Sources */,
 				4AED5DD427174BDC00B7AC00 /* UserStorageMock.swift in Sources */,
+				4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */,
 				4A3B52E52716083A00EF4F93 /* CoordinatorMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
