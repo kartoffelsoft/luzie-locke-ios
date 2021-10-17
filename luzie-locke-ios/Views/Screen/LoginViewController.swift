@@ -30,9 +30,10 @@ class LoginViewController: UIViewController {
         
         
         //temp
-        self.coordinator?.navigateToMap(selectAction: { [weak self] name in
-            print(name ?? "Not selected")
-        })
+//        self.coordinator?.navigateToMap(selectAction: { [weak self] name in
+//            print(name ?? "Not selected")
+//            self?.navigationController?.popViewController(animated: true)
+//        })
     }
     
     private func configureButtons() {
@@ -63,17 +64,21 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginViewModelDelegate {
+    
     func didLogin() {
         DispatchQueue.main.async {
             self.coordinator?.navigateToMap(selectAction: { [weak self] name in
                 print(name ?? "Not selected")
+                self?.navigationController?.popViewController(animated: true)
+                self?.dismiss(animated: true)
             })
-
-//            self.dismiss(animated: true)
         }
     }
     
     func didReceiveError(_ error: LLError) {
-        
+        presentAlertOnMainThread(
+            title: "Unable to complete",
+            message: error.rawValue,
+            buttonTitle: "OK")
     }
 }

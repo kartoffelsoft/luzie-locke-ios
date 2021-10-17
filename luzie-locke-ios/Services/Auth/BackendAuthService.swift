@@ -25,14 +25,13 @@ class BackendAuthService {
             
             URLSession.shared.dataTask(with: urlRequest) { [weak self] (data, response, error) in
                 guard let self = self else { return }
-                guard let data = data else { return }
                 
                 if let _ = error {
                     completion(.failure(.unableToComplete))
                     return
                 }
                 
-                if let user = self.parseJSON(authData: data) {
+                if let data = data, let user = self.parseJSON(authData: data) {
                     completion(.success(user))
                 } else {
                     completion(.failure(.unableToComplete))

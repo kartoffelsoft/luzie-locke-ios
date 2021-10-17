@@ -8,20 +8,23 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController {
+typealias MapViewCallback = ((String?) -> Void)
 
-    var selectAction:       ((String?) -> Void)?
+class MapViewController: UIViewController {
     
+    var selectAction:       MapViewCallback?
     var currentLocation:    String? {
         didSet {
             locationLabel.text = currentLocation
         }
     }
+            
+    let mapView:            MKMapView
+    let locationManager:    CLLocationManager
     
-    let locationLabel = UILabel()
-        
-    let mapView: MKMapView
-    let locationManager: CLLocationManager
+    let locationLabel       = UILabel()
+    let setButton           = KRoundButton(radius: 40)
+    let backButton          = KRoundButton(radius: 20)
     
     init(mapView: MKMapView, locationManager: CLLocationManager) {
         self.mapView           = mapView
@@ -35,11 +38,17 @@ class MapViewController: UIViewController {
         requestUserLocation()
         configureMapView()
         configureLocationNameView()
+        configureButtons()
     }
-    
+
     private func requestUserLocation() {
-        locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
+        
+        if(locationManager.authorizationStatus == .authorizedWhenInUse) {
+            locationManager.startUpdatingLocation()
+        } else {
+            locationManager.requestWhenInUseAuthorization()
+        }
     }
     
     private func configureMapView() {
@@ -76,12 +85,35 @@ class MapViewController: UIViewController {
             container.topAnchor.constraint(equalTo: view.topAnchor),
             container.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             container.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            container.heightAnchor.constraint(equalToConstant: 150),
+            container.heightAnchor.constraint(equalToConstant: 100),
 
             locationLabel.leadingAnchor.constraint(equalTo: container.leadingAnchor),
             locationLabel.trailingAnchor.constraint(equalTo: container.trailingAnchor),
             locationLabel.centerXAnchor.constraint(equalTo: container.centerXAnchor),
-            locationLabel.centerYAnchor.constraint(equalTo: container.centerYAnchor, constant: 20),
+            locationLabel.centerYAnchor.constraint(equalTo: container.centerYAnchor, constant: 15)
+        ])
+    }
+    
+    private func configureButtons() {
+        setButton.animatePulse()
+        setButton.backgroundColor = UIColor(named: "PrimaryColor")
+        setButton.setTitle("SET", for: .normal)
+        
+        backButton.backgroundColor = .white
+        backButton.setImage(UIImage(systemName: "arrowshape.turn.up.backward.fill"), for: .normal)
+        backButton.imageView?.tintColor = UIColor(named: "PrimaryColor")
+
+        setButton.addTarget(self, action: #selector(handleSet), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
+        
+        view.addSubview(setButton)
+        view.addSubview(backButton)
+        
+        NSLayoutConstraint.activate([
+            setButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
+            setButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            backButton.bottomAnchor.constraint(equalTo: setButton.topAnchor, constant: -17),
+            backButton.centerXAnchor.constraint(equalTo: setButton.centerXAnchor)
         ])
     }
     
@@ -93,6 +125,21 @@ class MapViewController: UIViewController {
             
             self?.currentLocation = firstPlacemark.locality
         }
+    }
+
+    @objc private func handleSet() {
+        if let currentLocation = currentLocation {
+            selectAction?(currentLocation)
+        } else {
+            presentAlertOnMainThread(
+                title: "Missing Location",
+                message: "You location is unknown. Move the mark to your location or tap Back button to set later.",
+                buttonTitle: "OK")
+        }
+    }
+    
+    @objc private func handleBack() {
+        selectAction?(nil)
     }
     
     required init?(coder: NSCoder) {
@@ -113,7 +160,7 @@ extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let firstLocation = locations.first else { return }
-        mapView.setRegion(.init(center: firstLocation.coordinate, span: .init(latitudeDelta: 0.1, longitudeDelta: 0.1)), animated: false)
+        mapView.setRegion(.init(center: firstLocation.coordinate, span: .init(latitudeDelta: 0.3, longitudeDelta: 0.3)), animated: false)
         updateLocationName(location: firstLocation)
         locationManager.stopUpdatingLocation()
     }
