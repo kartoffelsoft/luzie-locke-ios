@@ -7,7 +7,11 @@
 
 import Foundation
 
-class BackendAuthService {
+protocol BackendAuthable {
+    func authenticate(uid: String, token: String, completion: @escaping (Result<User, LLError>?) -> Void) 
+}
+
+class BackendAuthService: BackendAuthable {
     
     let authAPI = "http://localhost:5000/api/users/login/google/"
     
@@ -16,8 +20,8 @@ class BackendAuthService {
         
         var urlRequest        = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
-        
-        let params = ["token": token]
+
+        let params = [ "uid": uid, "token": token]
         do {
             let data = try  JSONSerialization.data(withJSONObject: params, options: .init())
             urlRequest.httpBody = data
@@ -53,6 +57,4 @@ class BackendAuthService {
             return nil
         }
     }
-
-    
 }

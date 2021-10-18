@@ -16,7 +16,7 @@
 		4A3B529D2712421300EF4F93 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B529C2712421300EF4F93 /* SearchViewController.swift */; };
 		4A3B529F271242ED00EF4F93 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B529E271242ED00EF4F93 /* SettingsViewController.swift */; };
 		4A3B52A22712461500EF4F93 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52A12712461500EF4F93 /* ChatsViewController.swift */; };
-		4A3B52A62712539300EF4F93 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52A52712539300EF4F93 /* AuthService.swift */; };
+		4A3B52A62712539300EF4F93 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52A52712539300EF4F93 /* FirebaseAuthService.swift */; };
 		4A3B52A9271256CD00EF4F93 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52A8271256CD00EF4F93 /* LoginViewController.swift */; };
 		4A3B52AB27125C0A00EF4F93 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52AA27125C0A00EF4F93 /* MainViewControllerTests.swift */; };
 		4A3B52B027125C6700EF4F93 /* AuthableMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52AF27125C6700EF4F93 /* AuthableMock.swift */; };
@@ -46,6 +46,11 @@
 		4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */; };
 		4AED5E25271A0CFD00B7AC00 /* MKViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E24271A0CFD00B7AC00 /* MKViewMock.swift */; };
 		4AED5E27271A0D1300B7AC00 /* CLLocationManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E26271A0D1300B7AC00 /* CLLocationManagerMock.swift */; };
+		4AED5E2A271ADC8500B7AC00 /* KRoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E29271ADC8500B7AC00 /* KRoundButton.swift */; };
+		4AED5E2D271B87ED00B7AC00 /* KAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E2C271B87ED00B7AC00 /* KAlertViewController.swift */; };
+		4AED5E30271C179F00B7AC00 /* KTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E2F271C179F00B7AC00 /* KTitleLabel.swift */; };
+		4AED5E32271C189E00B7AC00 /* KBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E31271C189E00B7AC00 /* KBodyLabel.swift */; };
+		4AED5E34271C199600B7AC00 /* KBasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E33271C199600B7AC00 /* KBasicButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +77,7 @@
 		4A3B529C2712421300EF4F93 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4A3B529E271242ED00EF4F93 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4A3B52A12712461500EF4F93 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
-		4A3B52A52712539300EF4F93 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		4A3B52A52712539300EF4F93 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		4A3B52A8271256CD00EF4F93 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4A3B52AA27125C0A00EF4F93 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
 		4A3B52AF27125C6700EF4F93 /* AuthableMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthableMock.swift; sourceTree = "<group>"; };
@@ -98,6 +103,11 @@
 		4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerTests.swift; sourceTree = "<group>"; };
 		4AED5E24271A0CFD00B7AC00 /* MKViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKViewMock.swift; sourceTree = "<group>"; };
 		4AED5E26271A0D1300B7AC00 /* CLLocationManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManagerMock.swift; sourceTree = "<group>"; };
+		4AED5E29271ADC8500B7AC00 /* KRoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KRoundButton.swift; sourceTree = "<group>"; };
+		4AED5E2C271B87ED00B7AC00 /* KAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAlertViewController.swift; sourceTree = "<group>"; };
+		4AED5E2F271C179F00B7AC00 /* KTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KTitleLabel.swift; sourceTree = "<group>"; };
+		4AED5E31271C189E00B7AC00 /* KBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBodyLabel.swift; sourceTree = "<group>"; };
+		4AED5E33271C199600B7AC00 /* KBasicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBasicButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,7 +275,7 @@
 		4A3B52C5271398B500EF4F93 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				4A3B52A52712539300EF4F93 /* AuthService.swift */,
+				4A3B52A52712539300EF4F93 /* FirebaseAuthService.swift */,
 				4A3B52CE27144CC200EF4F93 /* BackendAuthService.swift */,
 				4A3B52C62713996000EF4F93 /* GoogleSignInService.swift */,
 				4A3B52E62716D87A00EF4F93 /* UserStorage.swift */,
@@ -276,6 +286,9 @@
 		4A3B52CA2714415400EF4F93 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4AED5E2E271C167B00B7AC00 /* Labels */,
+				4AED5E2B271B87C600B7AC00 /* Popups */,
+				4AED5E28271ADC2D00B7AC00 /* Buttons */,
 				4A3B529827123DC100EF4F93 /* Extensions */,
 			);
 			path = Common;
@@ -341,6 +354,32 @@
 				4AED5E26271A0D1300B7AC00 /* CLLocationManagerMock.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		4AED5E28271ADC2D00B7AC00 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				4AED5E29271ADC8500B7AC00 /* KRoundButton.swift */,
+				4AED5E33271C199600B7AC00 /* KBasicButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		4AED5E2B271B87C600B7AC00 /* Popups */ = {
+			isa = PBXGroup;
+			children = (
+				4AED5E2C271B87ED00B7AC00 /* KAlertViewController.swift */,
+			);
+			path = Popups;
+			sourceTree = "<group>";
+		};
+		4AED5E2E271C167B00B7AC00 /* Labels */ = {
+			isa = PBXGroup;
+			children = (
+				4AED5E2F271C179F00B7AC00 /* KTitleLabel.swift */,
+				4AED5E31271C189E00B7AC00 /* KBodyLabel.swift */,
+			);
+			path = Labels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -464,11 +503,13 @@
 				4AED5E1D27197E1F00B7AC00 /* MapViewController.swift in Sources */,
 				4A3B52C72713996000EF4F93 /* GoogleSignInService.swift in Sources */,
 				4A3B52C427131FE800EF4F93 /* LoginViewModel.swift in Sources */,
+				4AED5E2A271ADC8500B7AC00 /* KRoundButton.swift in Sources */,
 				4A3B529D2712421300EF4F93 /* SearchViewController.swift in Sources */,
-				4A3B52A62712539300EF4F93 /* AuthService.swift in Sources */,
+				4A3B52A62712539300EF4F93 /* FirebaseAuthService.swift in Sources */,
 				4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */,
 				4A3B5266271239CE00EF4F93 /* AppDelegate.swift in Sources */,
 				4A3B52D527159CA300EF4F93 /* Coordinator.swift in Sources */,
+				4AED5E30271C179F00B7AC00 /* KTitleLabel.swift in Sources */,
 				4A3B52A22712461500EF4F93 /* ChatsViewController.swift in Sources */,
 				4A3B52CF27144CC200EF4F93 /* BackendAuthService.swift in Sources */,
 				4A3B5268271239CE00EF4F93 /* SceneDelegate.swift in Sources */,
@@ -476,8 +517,11 @@
 				4A3B52DF2715C0F200EF4F93 /* SearchCoordinator.swift in Sources */,
 				4A3B52DD2715BA3700EF4F93 /* HomeCoordinator.swift in Sources */,
 				4A3B52E32715C11900EF4F93 /* SettingsCoordinator.swift in Sources */,
+				4AED5E32271C189E00B7AC00 /* KBodyLabel.swift in Sources */,
 				4A3B529F271242ED00EF4F93 /* SettingsViewController.swift in Sources */,
+				4AED5E34271C199600B7AC00 /* KBasicButton.swift in Sources */,
 				4A3B52DB2715ADEF00EF4F93 /* LoginCoordinator.swift in Sources */,
+				4AED5E2D271B87ED00B7AC00 /* KAlertViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

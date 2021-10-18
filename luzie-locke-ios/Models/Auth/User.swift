@@ -14,8 +14,20 @@ struct User: Codable {
 }
 
 struct Profile: Codable {
-    let googleId: String
+    let uid: String
     let name: String
     let email: String
+    let reputation: Int
     let pictureURI: String
+    let location: Location
+}
+
+struct Location: Codable {
+    let name: String
+    let geoJSON: GeoJSON
+}
+
+struct GeoJSON: Codable {
+    let type: String
+    let coordinates: [Double]
 }

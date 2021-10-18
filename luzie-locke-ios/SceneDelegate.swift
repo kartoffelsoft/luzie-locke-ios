@@ -15,7 +15,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         
         let userStorage = UserStorage(key: "User")
-        let auth = AuthService(userStorage: userStorage, backend: BackendAuthService(), google: GoogleSignInService())
+        let firebaseAuth = FirebaseAuthService(google: GoogleSignInService())
+        let backendAuth = BackendAuthService()
         
         window = UIWindow(windowScene: scene)
         window?.makeKeyAndVisible()
@@ -24,7 +25,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             rootViewController:
                 MainTabBarController(
                     userStorage: userStorage,
-                    loginCoordinator: LoginCoordinator(navigationController: UINavigationController(), auth: auth)
+                    loginCoordinator: LoginCoordinator(
+                        navigationController: UINavigationController(),
+                        userStorage: userStorage,
+                        firebaseAuth: firebaseAuth,
+                        backendAuth: backendAuth)
                 )
         )
     }

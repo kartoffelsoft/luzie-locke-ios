@@ -12,24 +12,33 @@ class LoginCoordinator: Coordinator {
     var children = [Coordinator]()
     var navigationController: UINavigationController
     
-    var auth: Authable
+    let userStorage: UserStorage
+    let firebaseAuth: FirebaseAuthable
+    let backendAuth: BackendAuthable
     
-    init(navigationController: UINavigationController, auth: Authable) {
+    init(navigationController: UINavigationController, userStorage: UserStorage, firebaseAuth: FirebaseAuthable, backendAuth: BackendAuthable) {
         self.navigationController = navigationController
-        self.auth = auth
+        self.userStorage = userStorage
+        self.firebaseAuth = firebaseAuth
+        self.backendAuth = backendAuth
         
         self.navigationController.modalPresentationStyle = .fullScreen
     }
     
     func start() {
-        let vc = LoginViewController(auth: auth)
-        vc.coordinator = self
+        let vm = LoginViewModel(coordinator: self, userStorage: userStorage, firebaseAuth: firebaseAuth, backendAuth: backendAuth)
+        let vc = LoginViewController(viewModel: vm)
+//        vc.coordinator = self
         navigationController.pushViewController(vc, animated: false)
     }
     
-    func navigateToMap(selectAction: @escaping ((String?) -> Void)) {
+    func navigateToMap(selectAction: @escaping MapViewCallback) {
         let vc = MapViewController(mapView: MKMapView(), locationManager: CLLocationManager())
         vc.selectAction = selectAction
         navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func popViewController() {
+        navigationController.popViewController(animated: true)
     }
 }

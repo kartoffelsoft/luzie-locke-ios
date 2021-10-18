@@ -8,11 +8,13 @@
 import UIKit
 import MapKit
 
-typealias MapViewCallback = ((String?) -> Void)
+typealias MapViewCallback = ((String?, CLLocationDegrees?, CLLocationDegrees?) -> Void)
 
 class MapViewController: UIViewController {
     
     var selectAction:       MapViewCallback?
+    var currentLatitude:    CLLocationDegrees?
+    var currentLongitude:   CLLocationDegrees?
     var currentLocation:    String? {
         didSet {
             locationLabel.text = currentLocation
@@ -117,19 +119,23 @@ class MapViewController: UIViewController {
         ])
     }
     
-    private func updateLocationName(location: CLLocation) {
+    private func updateLocation(location: CLLocation) {
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in
             guard let placemarks = placemarks,
                   let firstPlacemark = placemarks.first else { return }
             
             self?.currentLocation = firstPlacemark.locality
+            self?.currentLatitude = location.coordinate.latitude
+            self?.currentLongitude = location.coordinate.longitude
         }
     }
 
     @objc private func handleSet() {
-        if let currentLocation = currentLocation {
-            selectAction?(currentLocation)
+        if let currentLocation = currentLocation,
+           let currentLatitude = currentLatitude,
+           let currentLongitude = currentLongitude {
+            selectAction?(currentLocation, currentLatitude, currentLongitude)
         } else {
             presentAlertOnMainThread(
                 title: "Missing Location",
@@ -139,7 +145,7 @@ class MapViewController: UIViewController {
     }
     
     @objc private func handleBack() {
-        selectAction?(nil)
+        selectAction?(nil, nil, nil)
     }
     
     required init?(coder: NSCoder) {
@@ -161,7 +167,7 @@ extension MapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let firstLocation = locations.first else { return }
         mapView.setRegion(.init(center: firstLocation.coordinate, span: .init(latitudeDelta: 0.3, longitudeDelta: 0.3)), animated: false)
-        updateLocationName(location: firstLocation)
+        updateLocation(location: firstLocation)
         locationManager.stopUpdatingLocation()
     }
 }
@@ -182,7 +188,7 @@ extension MapViewController: MKMapViewDelegate {
         
         if(oldState == .dragging && newState == .ending) {
             if let coordinate = view.annotation?.coordinate {
-                updateLocationName(location: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude))
+                updateLocation(location: CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude))
             }
         }
     }

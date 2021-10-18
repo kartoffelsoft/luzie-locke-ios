@@ -14,7 +14,6 @@ class ScreenTitleLabel: UILabel {
         
         self.text = text
         textColor = UIColor.label
-        
     }
     
     required init?(coder: NSCoder) {
