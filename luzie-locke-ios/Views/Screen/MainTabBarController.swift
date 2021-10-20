@@ -8,53 +8,53 @@
 import UIKit
 
 class MainTabBarController: UITabBarController {
+  
+  let storage:                StorageService
+  let loginCoordinator:       Coordinator
+  
+  let homeCoordinator:        HomeCoordinator
+  let searchCoordinator:      SearchCoordinator
+  let chatsCoordinator:       ChatsCoordinator
+  let settingsCoordinator:    SettingsCoordinator
+  
+  init(storage: StorageService, loginCoordinator: Coordinator) {
+    self.storage                = storage
+    self.loginCoordinator       = loginCoordinator
+    self.homeCoordinator        = HomeCoordinator(navigationController: UINavigationController(), profileStorage: storage.profile)
+    self.searchCoordinator      = SearchCoordinator(navigationController: UINavigationController(), profileStorage: storage.profile)
+    self.chatsCoordinator       = ChatsCoordinator(navigationController: UINavigationController(), profileStorage: storage.profile)
+    self.settingsCoordinator    = SettingsCoordinator(navigationController: UINavigationController(), profileStorage: storage.profile)
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    let userStorage:            UserStorable
-    let loginCoordinator:       Coordinator
+    homeCoordinator.start()
+    searchCoordinator.start()
+    chatsCoordinator.start()
+    settingsCoordinator.start()
     
-    let homeCoordinator:        HomeCoordinator
-    let searchCoordinator:      SearchCoordinator
-    let chatsCoordinator:       ChatsCoordinator
-    let settingsCoordinator:    SettingsCoordinator
+    view.backgroundColor    = .white
+    tabBar.tintColor        = UIColor.label
+    viewControllers         = [ homeCoordinator.navigationController,
+                                searchCoordinator.navigationController,
+                                chatsCoordinator.navigationController,
+                                settingsCoordinator.navigationController ]
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
     
-    init(userStorage: UserStorable, loginCoordinator: Coordinator) {
-        self.userStorage            = userStorage
-        self.loginCoordinator       = loginCoordinator
-        self.homeCoordinator        = HomeCoordinator(navigationController: UINavigationController(), userStorage: userStorage)
-        self.searchCoordinator      = SearchCoordinator(navigationController: UINavigationController(), userStorage: userStorage)
-        self.chatsCoordinator       = ChatsCoordinator(navigationController: UINavigationController(), userStorage: userStorage)
-        self.settingsCoordinator    = SettingsCoordinator(navigationController: UINavigationController(), userStorage: userStorage)
-        super.init(nibName: nil, bundle: nil)
+    navigationController?.isNavigationBarHidden = true
+    
+    if storage.profile.isEmpty() {
+      self.loginCoordinator.start()
+      self.present(self.loginCoordinator.navigationController, animated: true)
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        homeCoordinator.start()
-        searchCoordinator.start()
-        chatsCoordinator.start()
-        settingsCoordinator.start()
-        
-        view.backgroundColor    = .white
-        tabBar.tintColor        = UIColor.label
-        viewControllers         = [ homeCoordinator.navigationController,
-                                    searchCoordinator.navigationController,
-                                    chatsCoordinator.navigationController,
-                                    settingsCoordinator.navigationController ]
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        navigationController?.isNavigationBarHidden = true
-        
-        if userStorage.isEmpty() {
-            self.loginCoordinator.start()
-            self.present(self.loginCoordinator.navigationController, animated: true)
-        }
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 }

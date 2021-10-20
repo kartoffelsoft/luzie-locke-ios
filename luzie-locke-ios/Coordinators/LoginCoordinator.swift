@@ -9,36 +9,41 @@ import UIKit
 import MapKit
 
 class LoginCoordinator: Coordinator {
-    var children = [Coordinator]()
-    var navigationController: UINavigationController
+  
+  var children = [Coordinator]()
+  var navigationController: UINavigationController
+  
+  let storage:        StorageService
+  let firebaseAuth:   FirebaseAuthable
+  let backendClient:  BackendAPIClient
+  
+  init(navigationController:  UINavigationController,
+       storage:               StorageService,
+       firebaseAuth:          FirebaseAuthable,
+       backendClient:         BackendAPIClient) {
     
-    let userStorage: UserStorage
-    let firebaseAuth: FirebaseAuthable
-    let backendAuth: BackendAuthable
+    self.navigationController   = navigationController
+    self.storage                = storage
+    self.firebaseAuth           = firebaseAuth
+    self.backendClient          = backendClient
     
-    init(navigationController: UINavigationController, userStorage: UserStorage, firebaseAuth: FirebaseAuthable, backendAuth: BackendAuthable) {
-        self.navigationController = navigationController
-        self.userStorage = userStorage
-        self.firebaseAuth = firebaseAuth
-        self.backendAuth = backendAuth
-        
-        self.navigationController.modalPresentationStyle = .fullScreen
-    }
+    self.navigationController.modalPresentationStyle = .fullScreen
     
-    func start() {
-        let vm = LoginViewModel(coordinator: self, userStorage: userStorage, firebaseAuth: firebaseAuth, backendAuth: backendAuth)
-        let vc = LoginViewController(viewModel: vm)
-//        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: false)
-    }
+    let vm = LoginViewModel(coordinator: self, storage: storage, firebaseAuth: firebaseAuth, backendClient: backendClient)
+    let vc = LoginViewController(viewModel: vm)
     
-    func navigateToMap(selectAction: @escaping MapViewCallback) {
-        let vc = MapViewController(mapView: MKMapView(), locationManager: CLLocationManager())
-        vc.selectAction = selectAction
-        navigationController.pushViewController(vc, animated: true)
-    }
-    
-    func popViewController() {
-        navigationController.popViewController(animated: true)
-    }
+    navigationController.pushViewController(vc, animated: false)
+  }
+  
+  func start() {}
+  
+  func navigateToMap(selectAction: @escaping MapViewCallback) {
+    let vc = MapViewController(mapView: MKMapView(), locationManager: CLLocationManager())
+    vc.selectAction = selectAction
+    navigationController.pushViewController(vc, animated: true)
+  }
+  
+  func popViewController() {
+    navigationController.popViewController(animated: true)
+  }
 }

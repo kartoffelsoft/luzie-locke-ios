@@ -8,22 +8,22 @@
 import UIKit
 
 class HomeCoordinator: Coordinator {
-    var children = [Coordinator]()
-    var navigationController: UINavigationController
+  var children = [Coordinator]()
+  var navigationController: UINavigationController
+  
+  var profileStorage: AnyStorage<Profile>
+  
+  init(navigationController: UINavigationController, profileStorage: AnyStorage<Profile>) {
+    self.navigationController = navigationController
+    self.profileStorage = profileStorage
+  }
+  
+  func start() {
+    let vc = HomeViewController(profileStorage: profileStorage)
+    vc.tabBarItem   = UITabBarItem(title: "Home",
+                                   image: UIImage(systemName: "house.circle"),
+                                   selectedImage: UIImage(systemName: "house.circle.fill"))
     
-    var userStorage: UserStorable
-    
-    init(navigationController: UINavigationController, userStorage: UserStorable) {
-        self.navigationController = navigationController
-        self.userStorage = userStorage
-    }
-    
-    func start() {
-        let vc = HomeViewController(userStorage: userStorage)
-        vc.tabBarItem   = UITabBarItem(title: "Home",
-                                       image: UIImage(systemName: "house.circle"),
-                                       selectedImage: UIImage(systemName: "house.circle.fill"))
-        
-        navigationController.pushViewController(vc, animated: false)
-    }
+    navigationController.pushViewController(vc, animated: false)
+  }
 }

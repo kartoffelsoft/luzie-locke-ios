@@ -12,15 +12,15 @@ class ChatsCoordinator: Coordinator {
     var children = [Coordinator]()
     var navigationController: UINavigationController
     
-    var userStorage: UserStorable
+    var profileStorage: AnyStorage<Profile>
     
-    init(navigationController: UINavigationController, userStorage: UserStorable) {
+    init(navigationController: UINavigationController, profileStorage: AnyStorage<Profile>) {
         self.navigationController = navigationController
-        self.userStorage = userStorage
+        self.profileStorage = profileStorage
     }
     
     func start() {
-        let vc = ChatsViewController(userStorage: userStorage)
+        let vc = ChatsViewController(profileStorage: profileStorage)
         vc.tabBarItem = UITabBarItem(title: "Chat",
                                      image: UIImage(systemName: "message.circle"),
                                      selectedImage: UIImage(systemName: "message.circle.fill"))

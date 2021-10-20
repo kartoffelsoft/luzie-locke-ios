@@ -9,10 +9,10 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
-    var userStorage: UserStorable
+    var profileStorage: AnyStorage<Profile>
     
-    init(userStorage: UserStorable) {
-        self.userStorage = userStorage
+    init(profileStorage: AnyStorage<Profile>) {
+        self.profileStorage = profileStorage
         super.init(nibName: nil, bundle: nil)
     }
     
