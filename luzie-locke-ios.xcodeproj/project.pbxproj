@@ -53,7 +53,6 @@
 		4AED5E39271D92EA00B7AC00 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E38271D92EA00B7AC00 /* APIRequest.swift */; };
 		4AED5E3D271D95FC00B7AC00 /* AuthenticationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E3C271D95FC00B7AC00 /* AuthenticationRequest.swift */; };
 		4AED5E3F271D9E8200B7AC00 /* BackendAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E3E271D9E8200B7AC00 /* BackendAPIClient.swift */; };
-		4AED5E43271E188500B7AC00 /* PostRequestEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E42271E188500B7AC00 /* PostRequestEncoder.swift */; };
 		4AED5E46271E2A3200B7AC00 /* BackendConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E45271E2A3200B7AC00 /* BackendConfig.swift */; };
 		4AED5E57271EBDF700B7AC00 /* KHTTPRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E56271EBDF700B7AC00 /* KHTTPRequestInterceptor.swift */; };
 		4AED5E5A271EBEE700B7AC00 /* KHTTPAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E59271EBEE700B7AC00 /* KHTTPAPIClient.swift */; };
@@ -130,7 +129,6 @@
 		4AED5E38271D92EA00B7AC00 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		4AED5E3C271D95FC00B7AC00 /* AuthenticationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRequest.swift; sourceTree = "<group>"; };
 		4AED5E3E271D9E8200B7AC00 /* BackendAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendAPIClient.swift; sourceTree = "<group>"; };
-		4AED5E42271E188500B7AC00 /* PostRequestEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRequestEncoder.swift; sourceTree = "<group>"; };
 		4AED5E45271E2A3200B7AC00 /* BackendConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendConfig.swift; sourceTree = "<group>"; };
 		4AED5E56271EBDF700B7AC00 /* KHTTPRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KHTTPRequestInterceptor.swift; sourceTree = "<group>"; };
 		4AED5E59271EBEE700B7AC00 /* KHTTPAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KHTTPAPIClient.swift; sourceTree = "<group>"; };
@@ -432,7 +430,6 @@
 			children = (
 				4AED5E5E271ED0B200B7AC00 /* Interceptors */,
 				4AED5E5B271ECE7F00B7AC00 /* Clients */,
-				4AED5E42271E188500B7AC00 /* PostRequestEncoder.swift */,
 				4AED5E3E271D9E8200B7AC00 /* BackendAPIClient.swift */,
 			);
 			path = BackendAPIClient;
@@ -620,7 +617,6 @@
 				4AED5E5D271ECE9D00B7AC00 /* UserAPIClient.swift in Sources */,
 				4AED5E712720176900B7AC00 /* Storage.swift in Sources */,
 				4AED5E61271EE71600B7AC00 /* UpdateLocationRequest.swift in Sources */,
-				4AED5E43271E188500B7AC00 /* PostRequestEncoder.swift in Sources */,
 				4A3B52A9271256CD00EF4F93 /* LoginViewController.swift in Sources */,
 				4AED5E6A271FF2B200B7AC00 /* BackendResponse.swift in Sources */,
 				4A3B52C92713A02D00EF4F93 /* UIViewController+Ext.swift in Sources */,

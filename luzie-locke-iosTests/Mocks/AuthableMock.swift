@@ -9,8 +9,8 @@ import UIKit
 @testable import luzie_locke_ios
 
 class AuthableMock: Authable {
-
-    func authenticate(_ caller: UIViewController, with provider: SignInProvider, completion: @escaping (Result<Void, LLError>?) -> Void) {
-        
-    }
+  
+  func authenticate(_ caller: UIViewController, with provider: SignInProvider, completion: @escaping (Result<Void, LLError>?) -> Void) {
+    
+  }
 }

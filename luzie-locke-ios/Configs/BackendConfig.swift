@@ -8,7 +8,7 @@
 import Foundation
 
 struct BackendConfig {
-
-    static let host = "http://localhost:5000"
-    static let defaultHeaders = ["Accept": "application/json", "Content-Type": "application/json"]
+  
+  static let host = "http://localhost:5000"
+  static let defaultHeaders = ["Accept": "application/json", "Content-Type": "application/json"]
 }

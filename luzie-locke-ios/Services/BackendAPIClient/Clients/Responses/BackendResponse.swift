@@ -8,7 +8,7 @@
 import Foundation
 
 struct BackendResponse<Response: Decodable>: Decodable {
-    let status: String?
-    let message: String?
-    let data: Response?
+  let status: String?
+  let message: String?
+  let data: Response?
 }
