@@ -68,6 +68,9 @@
 		4AED5E7327201AD200B7AC00 /* ProfileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7227201AD200B7AC00 /* ProfileStorage.swift */; };
 		4AED5E7527201BCF00B7AC00 /* SimpleStringStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7427201BCF00B7AC00 /* SimpleStringStorage.swift */; };
 		4AED5E7A27201E5000B7AC00 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7927201E5000B7AC00 /* StorageService.swift */; };
+		4AED5E7C27209C8D00B7AC00 /* BackendAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7B27209C8D00B7AC00 /* BackendAuthService.swift */; };
+		4AED5E7E2720A50400B7AC00 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7D2720A50400B7AC00 /* AuthService.swift */; };
+		4AED5E802720C2D200B7AC00 /* JWTDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7F2720C2D200B7AC00 /* JWTDecode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,6 +145,9 @@
 		4AED5E7227201AD200B7AC00 /* ProfileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorage.swift; sourceTree = "<group>"; };
 		4AED5E7427201BCF00B7AC00 /* SimpleStringStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleStringStorage.swift; sourceTree = "<group>"; };
 		4AED5E7927201E5000B7AC00 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		4AED5E7B27209C8D00B7AC00 /* BackendAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendAuthService.swift; sourceTree = "<group>"; };
+		4AED5E7D2720A50400B7AC00 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		4AED5E7F2720C2D200B7AC00 /* JWTDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTDecode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,7 +193,6 @@
 		4A3B5264271239CE00EF4F93 /* luzie-locke-ios */ = {
 			isa = PBXGroup;
 			children = (
-				4AED5E6F2720172600B7AC00 /* Storages */,
 				4AED5E44271E2A1A00B7AC00 /* Configs */,
 				4A3B52D327159C8E00EF4F93 /* Coordinators */,
 				4A3B52CB2714415900EF4F93 /* Utilities */,
@@ -315,6 +320,8 @@
 			children = (
 				4A3B52A52712539300EF4F93 /* FirebaseAuthService.swift */,
 				4A3B52C62713996000EF4F93 /* GoogleSignInService.swift */,
+				4AED5E7B27209C8D00B7AC00 /* BackendAuthService.swift */,
+				4AED5E7D2720A50400B7AC00 /* AuthService.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -335,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				4A3B52CC2714419B00EF4F93 /* LLError.swift */,
+				4AED5E7F2720C2D200B7AC00 /* JWTDecode.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -487,19 +495,12 @@
 			path = Responses;
 			sourceTree = "<group>";
 		};
-		4AED5E6F2720172600B7AC00 /* Storages */ = {
+		4AED5E7827201E2D00B7AC00 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
 				4AED5E702720176900B7AC00 /* Storage.swift */,
 				4AED5E7227201AD200B7AC00 /* ProfileStorage.swift */,
 				4AED5E7427201BCF00B7AC00 /* SimpleStringStorage.swift */,
-			);
-			path = Storages;
-			sourceTree = "<group>";
-		};
-		4AED5E7827201E2D00B7AC00 /* Storage */ = {
-			isa = PBXGroup;
-			children = (
 				4AED5E7927201E5000B7AC00 /* StorageService.swift */,
 			);
 			path = Storage;
@@ -626,11 +627,13 @@
 				4A3B52E12715C10500EF4F93 /* ChatsCoordinator.swift in Sources */,
 				4A3B52CD2714419B00EF4F93 /* LLError.swift in Sources */,
 				4A3B52B527126DB000EF4F93 /* ScreenTitleLabel.swift in Sources */,
+				4AED5E802720C2D200B7AC00 /* JWTDecode.swift in Sources */,
 				4AED5E7527201BCF00B7AC00 /* SimpleStringStorage.swift in Sources */,
 				4A3B52D227144FF200EF4F93 /* User.swift in Sources */,
 				4AED5E1D27197E1F00B7AC00 /* MapViewController.swift in Sources */,
 				4A3B52C72713996000EF4F93 /* GoogleSignInService.swift in Sources */,
 				4A3B52C427131FE800EF4F93 /* LoginViewModel.swift in Sources */,
+				4AED5E7E2720A50400B7AC00 /* AuthService.swift in Sources */,
 				4AED5E2A271ADC8500B7AC00 /* KRoundButton.swift in Sources */,
 				4A3B529D2712421300EF4F93 /* SearchViewController.swift in Sources */,
 				4A3B52A62712539300EF4F93 /* FirebaseAuthService.swift in Sources */,
@@ -655,6 +658,7 @@
 				4AED5E7327201AD200B7AC00 /* ProfileStorage.swift in Sources */,
 				4AED5E63271EE9B000B7AC00 /* DefaultHeadersRequestInterceptor.swift in Sources */,
 				4AED5E39271D92EA00B7AC00 /* APIRequest.swift in Sources */,
+				4AED5E7C27209C8D00B7AC00 /* BackendAuthService.swift in Sources */,
 				4A3B529F271242ED00EF4F93 /* SettingsViewController.swift in Sources */,
 				4AED5E7A27201E5000B7AC00 /* StorageService.swift in Sources */,
 				4AED5E34271C199600B7AC00 /* KBasicButton.swift in Sources */,

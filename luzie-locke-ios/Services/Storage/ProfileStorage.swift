@@ -37,9 +37,4 @@ class ProfileStorage: Storage {
   
   func clear() {
   }
-  
-  func isEmpty() -> Bool {
-    //        return Auth.auth().currentUser != nil && data != nil
-    return true
-  }
 }

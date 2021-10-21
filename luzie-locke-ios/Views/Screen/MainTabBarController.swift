@@ -9,6 +9,7 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
   
+  let auth:                   AuthService
   let storage:                StorageService
   let loginCoordinator:       Coordinator
   
@@ -17,7 +18,8 @@ class MainTabBarController: UITabBarController {
   let chatsCoordinator:       ChatsCoordinator
   let settingsCoordinator:    SettingsCoordinator
   
-  init(storage: StorageService, loginCoordinator: Coordinator) {
+  init(auth: AuthService, storage: StorageService, loginCoordinator: Coordinator) {
+    self.auth                   = auth
     self.storage                = storage
     self.loginCoordinator       = loginCoordinator
     self.homeCoordinator        = HomeCoordinator(navigationController: UINavigationController(), profileStorage: storage.profile)
@@ -48,7 +50,7 @@ class MainTabBarController: UITabBarController {
     
     navigationController?.isNavigationBarHidden = true
     
-    if storage.profile.isEmpty() {
+    if !auth.isAuthenticated() {
       self.loginCoordinator.start()
       self.present(self.loginCoordinator.navigationController, animated: true)
     }

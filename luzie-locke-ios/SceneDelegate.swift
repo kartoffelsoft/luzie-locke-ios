@@ -14,14 +14,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let scene = (scene as? UIWindowScene) else { return }
     
-    let storageService = StorageService(
-      profile: AnyStorage(wrap: ProfileStorage(key: "Profile")),
-      accessToken: AnyStorage(wrap: SimpleStringStorage(key: "AccessToken")),
-      refreshToken: AnyStorage(wrap: SimpleStringStorage(key: "RefreshToken")))
-    
-    let firebaseAuth  = FirebaseAuthService(google: GoogleSignInService())
     let httpClient    = KHTTPAPIClient(baseEndpoint: BackendConfig.host)
     let backendClient = BackendAPIClient(client: httpClient)
+    
+    let profileStorage      = AnyStorage(wrap: ProfileStorage(key: "Profile"))
+    let accessTokenStorage  = AnyStorage(wrap: SimpleStringStorage(key: "AccessToken"))
+    let refreshTokenStorage = AnyStorage(wrap: SimpleStringStorage(key: "RefreshToken"))
+    
+    let storageService = StorageService(
+                          profile: profileStorage,
+                          accessToken: accessTokenStorage,
+                          refreshToken: refreshTokenStorage)
+    
+    let firebaseAuth  = FirebaseAuthService(google: GoogleSignInService())
+    let backendAuth   = BackendAuthService(
+                          backendClient: backendClient,
+                          profileStorage: profileStorage,
+                          accessTokenStorage: accessTokenStorage,
+                          refreshTokenStorage: refreshTokenStorage)
+    
+    let auth = AuthService(firebaseAuth: firebaseAuth, backendAuth: backendAuth)
     
     window = UIWindow(windowScene: scene)
     window?.makeKeyAndVisible()
@@ -29,11 +41,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window?.rootViewController = UINavigationController(
       rootViewController:
         MainTabBarController(
+          auth: auth,
           storage: storageService,
           loginCoordinator: LoginCoordinator(
             navigationController: UINavigationController(),
+            auth: auth,
             storage: storageService,
-            firebaseAuth: firebaseAuth,
             backendClient: backendClient)
         )
     )

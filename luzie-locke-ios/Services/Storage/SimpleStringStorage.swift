@@ -32,8 +32,4 @@ class SimpleStringStorage: Storage {
   func clear() {
     data = ""
   }
-  
-  func isEmpty() -> Bool {
-    return data.isEmpty
-  }
 }

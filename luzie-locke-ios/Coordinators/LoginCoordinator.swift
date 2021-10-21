@@ -13,23 +13,23 @@ class LoginCoordinator: Coordinator {
   var children = [Coordinator]()
   var navigationController: UINavigationController
   
+  let auth:           Authable
   let storage:        StorageService
-  let firebaseAuth:   FirebaseAuthable
   let backendClient:  BackendAPIClient
   
   init(navigationController:  UINavigationController,
+       auth:                  Authable,
        storage:               StorageService,
-       firebaseAuth:          FirebaseAuthable,
        backendClient:         BackendAPIClient) {
     
     self.navigationController   = navigationController
+    self.auth                   = auth
     self.storage                = storage
-    self.firebaseAuth           = firebaseAuth
     self.backendClient          = backendClient
     
     self.navigationController.modalPresentationStyle = .fullScreen
     
-    let vm = LoginViewModel(coordinator: self, storage: storage, firebaseAuth: firebaseAuth, backendClient: backendClient)
+    let vm = LoginViewModel(coordinator: self, auth: auth, storage: storage, backendClient: backendClient)
     let vc = LoginViewController(viewModel: vm)
     
     navigationController.pushViewController(vc, animated: false)

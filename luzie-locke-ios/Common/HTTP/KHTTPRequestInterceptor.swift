@@ -8,6 +8,6 @@
 import Foundation
 
 public protocol KHTTPRequestInterceptor {
-
-    func intercept(_ request: URLRequest) -> URLRequest
+  
+  func intercept(_ request: URLRequest) -> URLRequest
 }
