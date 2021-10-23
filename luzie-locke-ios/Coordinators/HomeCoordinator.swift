@@ -21,8 +21,8 @@ class HomeCoordinator: Coordinator {
   func start() {
     let vc = HomeViewController(profileStorage: profileStorage)
     vc.tabBarItem   = UITabBarItem(title: "Home",
-                                   image: UIImage(systemName: "house.circle"),
-                                   selectedImage: UIImage(systemName: "house.circle.fill"))
+                                   image: Images.home,
+                                   selectedImage: Images.home)
     
     navigationController.pushViewController(vc, animated: false)
   }

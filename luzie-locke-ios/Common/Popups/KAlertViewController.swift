@@ -10,7 +10,7 @@ import UIKit
 class KAlertViewController: UIViewController {
   
   let containerView   = UIView()
-  let titleLabel      = KTitleLabel(textAlignment: .center, fontSize: 20)
+  let titleLabel      = KHeaderLabel(textAlignment: .center, fontSize: 20)
   let messageLabel    = KBodyLabel(textAlignment: .center)
   let actionButton    = KBasicButton(backgroundColor: UIColor(named: "PrimaryColor"), title: "OK")
   

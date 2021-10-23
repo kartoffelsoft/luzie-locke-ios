@@ -1,5 +1,5 @@
 //
-//  KTitleLabel.swift
+//  KHeaderLabel.swift
 //  luzie-locke-ios
 //
 //  Created by Harry on 17.10.21.
@@ -7,17 +7,17 @@
 
 import UIKit
 
-class KTitleLabel: UILabel {
+class KHeaderLabel: UILabel {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     configure()
   }
   
-  convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat) {
+  convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat, weight: UIFont.Weight = .bold) {
     self.init(frame: .zero)
     self.textAlignment  = textAlignment
-    self.font           = UIFont.systemFont(ofSize: fontSize, weight: .bold)
+    self.font           = UIFont.systemFont(ofSize: fontSize, weight: weight)
   }
   
   private func configure() {

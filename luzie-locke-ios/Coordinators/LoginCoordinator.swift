@@ -13,23 +13,23 @@ class LoginCoordinator: Coordinator {
   var children = [Coordinator]()
   var navigationController: UINavigationController
   
-  let auth:           Authable
-  let storage:        StorageService
-  let backendClient:  BackendAPIClient
+  let auth:             Authable
+  let storage:          StorageService
+  let backendApiClient: BackendAPIClient
   
   init(navigationController:  UINavigationController,
        auth:                  Authable,
        storage:               StorageService,
-       backendClient:         BackendAPIClient) {
+       backendApiClient:      BackendAPIClient) {
     
     self.navigationController   = navigationController
     self.auth                   = auth
     self.storage                = storage
-    self.backendClient          = backendClient
+    self.backendApiClient       = backendApiClient
     
     self.navigationController.modalPresentationStyle = .fullScreen
     
-    let vm = LoginViewModel(coordinator: self, auth: auth, storage: storage, backendClient: backendClient)
+    let vm = LoginViewModel(coordinator: self, auth: auth, storage: storage, backendApiClient: backendApiClient)
     let vc = LoginViewController(viewModel: vm)
     
     navigationController.pushViewController(vc, animated: false)

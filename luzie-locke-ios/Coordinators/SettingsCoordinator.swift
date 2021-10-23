@@ -14,19 +14,20 @@ class SettingsCoordinator: Coordinator {
   var children = [Coordinator]()
   var navigationController: UINavigationController
   
-  var profileStorage: AnyStorage<Profile>
+  let openHttpClient: OpenHTTPClient
+  let profileStorage: AnyStorage<Profile>
   
-  init(navigationController: UINavigationController, profileStorage: AnyStorage<Profile>) {
+  init(navigationController: UINavigationController, openHttpClient: OpenHTTPClient, profileStorage: AnyStorage<Profile>) {
     self.navigationController = navigationController
-    self.profileStorage = profileStorage
+    self.openHttpClient       = openHttpClient
+    self.profileStorage       = profileStorage
   }
   
   func start() {
-    let vc = SettingsViewController(profileStorage: profileStorage)
-    vc.tabBarItem   = UITabBarItem(title: "Settings",
-                                   image: UIImage(systemName: "person.crop.circle"),
-                                   selectedImage: UIImage(systemName: "person.crop.circle.fill"))
-    
+    let vc = SettingsViewController(openHttpClient: openHttpClient, profileStorage: profileStorage)
+    vc.tabBarItem = UITabBarItem(title: "Settings",
+                                 image: Images.settings,
+                                 selectedImage: Images.settings)
     navigationController.pushViewController(vc, animated: false)
   }
 }

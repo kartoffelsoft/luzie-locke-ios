@@ -14,24 +14,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let scene = (scene as? UIWindowScene) else { return }
     
-    let httpClient    = KHTTPAPIClient(baseEndpoint: BackendConfig.host)
-    let backendClient = BackendAPIClient(client: httpClient)
+    let httpClient            = KHTTPClient()
+    let openHttpClient        = OpenHTTPClient(client: httpClient)
     
-    let profileStorage      = AnyStorage(wrap: ProfileStorage(key: "Profile"))
-    let accessTokenStorage  = AnyStorage(wrap: SimpleStringStorage(key: "AccessToken"))
-    let refreshTokenStorage = AnyStorage(wrap: SimpleStringStorage(key: "RefreshToken"))
+    let httpApiClient         = KHTTPAPIClient(baseEndpoint: BackendConfig.host)
+    let backendApiClient      = BackendAPIClient(client: httpApiClient)
     
-    let storageService = StorageService(
-                          profile: profileStorage,
-                          accessToken: accessTokenStorage,
-                          refreshToken: refreshTokenStorage)
+    let profileStorage        = AnyStorage(wrap: ProfileStorage(key: "Profile"))
+    let accessTokenStorage    = AnyStorage(wrap: SimpleStringStorage(key: "AccessToken"))
+    let refreshTokenStorage   = AnyStorage(wrap: SimpleStringStorage(key: "RefreshToken"))
     
-    let firebaseAuth  = FirebaseAuthService(google: GoogleSignInService())
-    let backendAuth   = BackendAuthService(
-                          backendClient: backendClient,
-                          profileStorage: profileStorage,
-                          accessTokenStorage: accessTokenStorage,
-                          refreshTokenStorage: refreshTokenStorage)
+    let storageService        = StorageService(
+                                  profile: profileStorage,
+                                  accessToken: accessTokenStorage,
+                                  refreshToken: refreshTokenStorage)
+    
+    let firebaseAuth          = FirebaseAuthService(google: GoogleSignInService())
+    let backendAuth           = BackendAuthService(
+                                  backendApiClient: backendApiClient,
+                                  profileStorage: profileStorage,
+                                  accessTokenStorage: accessTokenStorage,
+                                  refreshTokenStorage: refreshTokenStorage)
     
     let auth = AuthService(firebaseAuth: firebaseAuth, backendAuth: backendAuth)
     
@@ -42,12 +45,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       rootViewController:
         MainTabBarController(
           auth: auth,
+          openHttpClient: openHttpClient,
           storage: storageService,
           loginCoordinator: LoginCoordinator(
             navigationController: UINavigationController(),
             auth: auth,
             storage: storageService,
-            backendClient: backendClient)
+            backendApiClient: backendApiClient)
         )
     )
   }

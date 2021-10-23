@@ -16,30 +16,30 @@ protocol BackendAuthable {
 
 class BackendAuthService: BackendAuthable {
   
-  let backendClient:        BackendAPIClient
+  let backendApiClient:     BackendAPIClient
   let profileStorage:       AnyStorage<Profile>
   let accessTokenStorage:   AnyStorage<String>
   let refreshTokenStorage:  AnyStorage<String>
 
-  init(backendClient:         BackendAPIClient,
+  init(backendApiClient:      BackendAPIClient,
        profileStorage:        AnyStorage<Profile>,
        accessTokenStorage:    AnyStorage<String>,
        refreshTokenStorage:   AnyStorage<String>) {
-    self.backendClient        = backendClient
+    self.backendApiClient     = backendApiClient
     self.profileStorage       = profileStorage
     self.accessTokenStorage   = accessTokenStorage
     self.refreshTokenStorage  = refreshTokenStorage
   }
   
   func authenticate(uid: String, token: String, completion: @escaping (Result<Profile, LLError>?) -> Void) {
-    backendClient.user.authenticate(uid: uid, token: token) { [weak self] result in
+    backendApiClient.user.authenticate(uid: uid, token: token) { [weak self] result in
       guard let self = self else { return }
       switch result {
       case .success(let data):
         self.profileStorage.set(data.profile)
         self.accessTokenStorage.set(data.accessToken)
         self.refreshTokenStorage.set(data.refreshToken)
-        self.backendClient.configureTokenHeader(token: data.accessToken)
+        self.backendApiClient.configureTokenHeader(token: data.accessToken)
         completion(.success(data.profile))
         
       case .failure(let error):

@@ -16,21 +16,21 @@ protocol LoginViewModelDelegate: AnyObject {
 
 class LoginViewModel {
   
-  weak var delegate:  LoginViewModelDelegate?
+  weak var delegate:    LoginViewModelDelegate?
   
-  let coordinator:    LoginCoordinator
-  let auth:           Authable
-  let storage:        StorageService
-  let backendClient:  BackendAPIClient
+  let coordinator:      LoginCoordinator
+  let auth:             Authable
+  let storage:          StorageService
+  let backendApiClient: BackendAPIClient
   
-  init(coordinator:   LoginCoordinator,
-       auth:          Authable,
-       storage:       StorageService,
-       backendClient: BackendAPIClient) {
-    self.coordinator    = coordinator
-    self.auth           = auth
-    self.storage        = storage
-    self.backendClient  = backendClient
+  init(coordinator:       LoginCoordinator,
+       auth:              Authable,
+       storage:           StorageService,
+       backendApiClient:  BackendAPIClient) {
+    self.coordinator      = coordinator
+    self.auth             = auth
+    self.storage          = storage
+    self.backendApiClient = backendApiClient
   }
   
   func performGoogleLogin(_ calller: UIViewController) {
@@ -46,9 +46,9 @@ class LoginViewModel {
               self.coordinator.popViewController()
               
               if let name = name, let lat = lat, let lng = lng {
-                self.backendClient.user.updateLocation(name: name,
-                                                       lat: lat,
-                                                       lng: lng) { result in
+                self.backendApiClient.user.updateLocation(name: name,
+                                                          lat: lat,
+                                                          lng: lng) { result in
                   self.delegate?.didLogin()
                 }
               } else {

@@ -10,6 +10,7 @@ import UIKit
 class MainTabBarController: UITabBarController {
   
   let auth:                   AuthService
+  let openHttpClient:         OpenHTTPClient
   let storage:                StorageService
   let loginCoordinator:       Coordinator
   
@@ -18,14 +19,19 @@ class MainTabBarController: UITabBarController {
   let chatsCoordinator:       ChatsCoordinator
   let settingsCoordinator:    SettingsCoordinator
   
-  init(auth: AuthService, storage: StorageService, loginCoordinator: Coordinator) {
+  init(auth: AuthService, openHttpClient: OpenHTTPClient, storage: StorageService, loginCoordinator: Coordinator) {
     self.auth                   = auth
     self.storage                = storage
+    self.openHttpClient         = openHttpClient
     self.loginCoordinator       = loginCoordinator
     self.homeCoordinator        = HomeCoordinator(navigationController: UINavigationController(), profileStorage: storage.profile)
     self.searchCoordinator      = SearchCoordinator(navigationController: UINavigationController(), profileStorage: storage.profile)
     self.chatsCoordinator       = ChatsCoordinator(navigationController: UINavigationController(), profileStorage: storage.profile)
-    self.settingsCoordinator    = SettingsCoordinator(navigationController: UINavigationController(), profileStorage: storage.profile)
+    self.settingsCoordinator    = SettingsCoordinator(
+                                    navigationController: UINavigationController(),
+                                    openHttpClient: openHttpClient,
+                                    profileStorage: storage.profile)
+    
     super.init(nibName: nil, bundle: nil)
   }
   
