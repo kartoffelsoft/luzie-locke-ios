@@ -36,6 +36,7 @@ class MapViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    navigationController?.isNavigationBarHidden = true;
     
     requestUserLocation()
     configureMapView()

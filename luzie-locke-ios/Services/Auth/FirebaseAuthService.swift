@@ -16,8 +16,8 @@ enum SignInProvider {
 protocol FirebaseAuthable {
   
   func authenticate(_ caller: UIViewController, with provider: SignInProvider, completion: @escaping (Result<(uid: String, token: String), LLError>?) -> Void)
-  
   func isAuthenticated() -> Bool
+  func logout()
 }
 
 class FirebaseAuthService: FirebaseAuthable {
@@ -46,5 +46,9 @@ class FirebaseAuthService: FirebaseAuthable {
   
   func isAuthenticated() -> Bool {
     return Auth.auth().currentUser != nil
+  }
+  
+  func logout() {
+    try? Auth.auth().signOut()
   }
 }

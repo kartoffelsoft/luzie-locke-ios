@@ -9,7 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
   
-  var profileStorage: AnyStorage<Profile>
+  let profileStorage:   AnyStorage<Profile>
   
   init(profileStorage: AnyStorage<Profile>) {
     self.profileStorage = profileStorage

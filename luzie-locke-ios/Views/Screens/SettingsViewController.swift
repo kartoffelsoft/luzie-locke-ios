@@ -11,8 +11,7 @@ class SettingsViewController: UICollectionViewController {
 
   static let profileViewId = "ProfileViewId"
   
-  private let profileStorage: AnyStorage<Profile>
-  private let openHttpClient: OpenHTTPClient
+  private let viewModel:      SettingsViewModel
   
   private let userMenuItems = [
     UserMenuItem(image: Images.listings, text: "Listings"),
@@ -25,28 +24,38 @@ class SettingsViewController: UICollectionViewController {
     SettingsMenuItem(image: Images.logout, text: "Logout")
   ]
   
-  init(openHttpClient: OpenHTTPClient, profileStorage: AnyStorage<Profile>) {
-    self.openHttpClient = openHttpClient
-    self.profileStorage = profileStorage
+  enum Section: Int {
+    case profile = 0, userMenu, settingsMenu
+    static var numberOfSections: Int { return 3 }
+  }
+  
+  enum SettingsMenuRow: Int {
+    case neibourhood = 0, logout
+    static var numberOfSections: Int { return 2 }
+  }
+  
+  init(viewModel: SettingsViewModel) {
+    self.viewModel      = viewModel
     
-    let layout = UICollectionViewCompositionalLayout { sectionNumber, env in
-      if sectionNumber == 0 {
+    let layout = UICollectionViewCompositionalLayout { section, env in
+      switch(Section(rawValue: section)) {
+      case .profile:
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
         item.contentInsets = .init(top: 0, leading: 0, bottom: 8, trailing: 0)
         
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(100)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(105)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
       
         return section
-      } else if sectionNumber == 1 {
+      case .userMenu:
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(0.33), heightDimension: .fractionalHeight(1)))
         item.contentInsets = .init(top: 0, leading: 0, bottom: 8, trailing: 0)
         
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(120)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(110)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
       
         return section
-      } else {
+      case .settingsMenu:
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)))
         item.contentInsets = .init(top: 0, leading: 0, bottom: 8, trailing: 0)
         
@@ -54,6 +63,8 @@ class SettingsViewController: UICollectionViewController {
         let section = NSCollectionLayoutSection(group: group)
         
         return section
+      default:
+        return nil
       }
     }
     
@@ -69,57 +80,86 @@ class SettingsViewController: UICollectionViewController {
     collectionView.register(UserMenuCell.self, forCellWithReuseIdentifier: UserMenuCell.reuseIdentifier)
     collectionView.register(SettingsMenuCell.self, forCellWithReuseIdentifier: SettingsMenuCell.reuseIdentifier)
     collectionView.backgroundColor = .systemBackground
+    
+    configureBindables()
+    viewModel.load()
+  }
+  
+  private func configureBindables() {
+    viewModel.bindableProfileImage.bind { [weak self] (_) in
+      self?.collectionView.reloadData()
+    }
+    
+    viewModel.bindableUserName.bind { [weak self] (_) in
+      self?.collectionView.reloadData()
+    }
+    
+    viewModel.bindableUserLocation.bind { [weak self] (_) in
+      self?.collectionView.reloadData()
+    }
   }
   
   override func numberOfSections(in collectionView: UICollectionView) -> Int {
-    return 3
+    return Section.numberOfSections
   }
   
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    if section == 0 {
+    switch(Section(rawValue: section)) {
+    case .profile:
       return 1
-    } else if section == 1 {
+    case .userMenu:
       return userMenuItems.count
-    } else if section == 2 {
+    case .settingsMenu:
       return settingsMenuItems.count
+    default:
+      return 0
     }
-    
-    return 0
   }
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    switch(indexPath.section) {
-    case 0:
+    switch(Section(rawValue: indexPath.section)) {
+    case .profile:
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCell.reuseIdentifier, for: indexPath) as! ProfileCell
-      cell.profile        = profileStorage.get()
-      cell.openHttpClient = openHttpClient
-      cell.load()
+      cell.userImageView.image    = viewModel.bindableProfileImage.value
+      cell.userNameLabel.text     = viewModel.bindableUserName.value
+      cell.userLocationLabel.text = viewModel.bindableUserLocation.value
       return cell
-    case 1:
+    case .userMenu:
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserMenuCell.reuseIdentifier, for: indexPath) as! UserMenuCell
       cell.item = userMenuItems[indexPath.row]
       return cell
-    case 2:
+    case .settingsMenu:
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingsMenuCell.reuseIdentifier, for: indexPath) as! SettingsMenuCell
       cell.item = settingsMenuItems[indexPath.row]
       return cell
     default:
-      ()
+      return  UICollectionViewCell()
     }
-    
-    return UICollectionViewCell()
   }
   
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    print(indexPath.section, " ", indexPath.row)
-//    switch indexPath.section {
-//    case 0:
-//
-//    case 1:
-//
-//    default:
-//      ()
-//    }
+    switch Section(rawValue: indexPath.section) {
+    case .profile:
+      ()
+    case .userMenu:
+      ()
+    case .settingsMenu:
+      switch SettingsMenuRow(rawValue: indexPath.row) {
+      case .neibourhood:
+        viewModel.navigateToMap()
+      case .logout:
+        viewModel.logout()
+        DispatchQueue.main.async {
+          self.tabBarController?.selectedIndex = 0
+          self.tabBarController?.viewDidAppear(false)
+        }
+      default:
+        ()
+      }
+      
+    default:
+      ()
+    }
   }
   
   required init?(coder: NSCoder) {

@@ -32,30 +32,32 @@ class UserMenuCell: UICollectionViewCell {
   }
   
   private func configure() {
-    translatesAutoresizingMaskIntoConstraints         = false
     symbol.translatesAutoresizingMaskIntoConstraints  = false
     title.translatesAutoresizingMaskIntoConstraints   = false
     
     symbol.tintColor = .darkGray
     
-    let container = UIStackView(arrangedSubviews: [symbol, title])
-    container.axis      = .vertical
-    container.alignment = .center
-    container.spacing   = 5
+//    let container = UIStackView(arrangedSubviews: [symbol, title])
+//    container.axis      = .vertical
+//    container.alignment = .center
+//    container.spacing   = 5
     
-    addSubview(container)
-    container.pinToEdges(of: self)
+//    addSubview(container)
+//    container.pinToEdges(of: self)
+//
+//    container.translatesAutoresizingMaskIntoConstraints = false
     
-    container.translatesAutoresizingMaskIntoConstraints = false
+    addSubview(symbol)
+    addSubview(title)
     
     NSLayoutConstraint.activate([
+      symbol.topAnchor.constraint(equalTo: topAnchor),
+      symbol.centerXAnchor.constraint(equalTo: centerXAnchor),
       symbol.widthAnchor.constraint(equalToConstant: 60),
       symbol.heightAnchor.constraint(equalToConstant: 60),
       
-      container.topAnchor.constraint(equalTo: topAnchor),
-      container.leadingAnchor.constraint(equalTo: leadingAnchor),
-      container.trailingAnchor.constraint(equalTo: trailingAnchor),
-      container.bottomAnchor.constraint(equalTo: bottomAnchor)
+      title.topAnchor.constraint(equalTo: symbol.bottomAnchor, constant: 5),
+      title.centerXAnchor.constraint(equalTo: symbol.centerXAnchor),
     ])
   }
   

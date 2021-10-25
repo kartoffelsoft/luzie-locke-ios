@@ -10,27 +10,10 @@ import UIKit
 class ProfileCell: UICollectionViewCell {
   
   static let reuseIdentifier = "ProfileCell"
-  
-  var profile:        Profile?
-  var openHttpClient: OpenHTTPClient?
 
-  private let profileBriefView = ProfileBriefView(frame: .zero)
-  
-  func load() {
-    guard let profile = profile else { return }
-    profileBriefView.userNameLabel.text  = profile.name
-    profileBriefView.locationLabel.text  = profile.location.name
-          
-    guard let openHttpClient = openHttpClient else { return }
-    openHttpClient.downloadImage(from: profile.pictureURI) { [weak self] result in
-      switch result {
-      case .success(let image):
-        DispatchQueue.main.async { self?.profileBriefView.avatarImageView.image = image }
-      case .failure:
-        ()
-      }
-    }
-  }
+  let userImageView     = AvatarImageView(radius: 30)
+  let userNameLabel     = KHeaderLabel(textAlignment: .left, fontSize: 18)
+  let userLocationLabel = KBodyLabel(textAlignment: .left)
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -38,14 +21,27 @@ class ProfileCell: UICollectionViewCell {
   }
   
   private func configure() {
-    addSubview(profileBriefView)
+    userImageView.layer.borderWidth = 3
+    userImageView.layer.borderColor = UIColor(named: "PrimaryColorLight2")?.cgColor
+
+    addSubview(userImageView)
+    addSubview(userNameLabel)
+    addSubview(userLocationLabel)
     
     let padding: CGFloat = 10
     NSLayoutConstraint.activate([
-      profileBriefView.topAnchor.constraint(equalTo: topAnchor, constant: padding),
-      profileBriefView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
-      profileBriefView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
-      profileBriefView.heightAnchor.constraint(equalToConstant: 60),
+      userImageView.topAnchor.constraint(equalTo: topAnchor, constant: padding),
+      userImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
+      userImageView.widthAnchor.constraint(equalToConstant: 60),
+      userImageView.heightAnchor.constraint(equalToConstant: 60),
+      
+      userNameLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 15),
+      userNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
+      userNameLabel.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor, constant: -12),
+      
+      userLocationLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 15),
+      userLocationLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
+      userLocationLabel.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor, constant: 12),
     ])
   }
 

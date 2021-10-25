@@ -50,4 +50,9 @@ class AuthService: Authable {
   func isAuthenticated() -> Bool {
     return firebaseAuth.isAuthenticated() && backendAuth.isAuthenticated()
   }
+  
+  func logout() {
+    firebaseAuth.logout()
+    backendAuth.logout()
+  }
 }

@@ -8,26 +8,47 @@
 import Foundation
 
 import UIKit
+import MapKit
 
 class SettingsCoordinator: Coordinator {
   
   var children = [Coordinator]()
   var navigationController: UINavigationController
   
-  let openHttpClient: OpenHTTPClient
-  let profileStorage: AnyStorage<Profile>
+  let auth:             AuthService
+  let profileStorage:   AnyStorage<Profile>
+  let openHttpClient:   OpenHTTPClient
+  let backendApiClient: BackendAPIClient
   
-  init(navigationController: UINavigationController, openHttpClient: OpenHTTPClient, profileStorage: AnyStorage<Profile>) {
+  init(navigationController: UINavigationController,
+       auth: AuthService,
+       profileStorage: AnyStorage<Profile>,
+       openHttpClient: OpenHTTPClient,
+       backendApiClient: BackendAPIClient) {
     self.navigationController = navigationController
-    self.openHttpClient       = openHttpClient
+    self.auth                 = auth
     self.profileStorage       = profileStorage
-  }
-  
-  func start() {
-    let vc = SettingsViewController(openHttpClient: openHttpClient, profileStorage: profileStorage)
+    self.openHttpClient       = openHttpClient
+    self.backendApiClient     = backendApiClient
+    
+    let vm = SettingsViewModel(coordinator: self, auth: auth, profileStorage: profileStorage, openHttpClient: openHttpClient, backendApiClient: backendApiClient)
+    let vc = SettingsViewController(viewModel: vm)
     vc.tabBarItem = UITabBarItem(title: "Settings",
                                  image: Images.settings,
                                  selectedImage: Images.settings)
     navigationController.pushViewController(vc, animated: false)
+  }
+
+  func start() {
+  }
+  
+  func navigateToMap(selectAction: @escaping MapViewCallback) {
+    let vc = MapViewController(mapView: MKMapView(), locationManager: CLLocationManager())
+    vc.selectAction = selectAction
+    navigationController.pushViewController(vc, animated: true)
+  }
+  
+  func popViewController() {
+    navigationController.popViewController(animated: true)
   }
 }

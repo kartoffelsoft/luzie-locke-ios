@@ -45,8 +45,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       rootViewController:
         MainTabBarController(
           auth: auth,
-          openHttpClient: openHttpClient,
           storage: storageService,
+          openHttpClient: openHttpClient,
+          backendApiClient: backendApiClient,
           loginCoordinator: LoginCoordinator(
             navigationController: UINavigationController(),
             auth: auth,

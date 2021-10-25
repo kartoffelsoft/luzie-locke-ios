@@ -10,8 +10,8 @@ import Foundation
 protocol BackendAuthable {
   
   func authenticate(uid: String, token: String, completion: @escaping (Result<Profile, LLError>?) -> Void)
-  
   func isAuthenticated() -> Bool
+  func logout()
 }
 
 class BackendAuthService: BackendAuthable {
@@ -60,5 +60,12 @@ class BackendAuthService: BackendAuthable {
     }
 
     return false
+  }
+  
+  func logout() {
+    self.profileStorage.clear()
+    self.accessTokenStorage.clear()
+    self.refreshTokenStorage.clear()
+    self.backendApiClient.configureTokenHeader(token: "")
   }
 }

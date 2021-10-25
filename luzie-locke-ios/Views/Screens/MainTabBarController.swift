@@ -10,8 +10,9 @@ import UIKit
 class MainTabBarController: UITabBarController {
   
   let auth:                   AuthService
-  let openHttpClient:         OpenHTTPClient
   let storage:                StorageService
+  let openHttpClient:         OpenHTTPClient
+  let backendApiClient:       BackendAPIClient
   let loginCoordinator:       Coordinator
   
   let homeCoordinator:        HomeCoordinator
@@ -19,18 +20,29 @@ class MainTabBarController: UITabBarController {
   let chatsCoordinator:       ChatsCoordinator
   let settingsCoordinator:    SettingsCoordinator
   
-  init(auth: AuthService, openHttpClient: OpenHTTPClient, storage: StorageService, loginCoordinator: Coordinator) {
+  init(auth: AuthService,
+       storage: StorageService,
+       openHttpClient: OpenHTTPClient,
+       backendApiClient: BackendAPIClient,
+       loginCoordinator: Coordinator) {
     self.auth                   = auth
     self.storage                = storage
     self.openHttpClient         = openHttpClient
+    self.backendApiClient       = backendApiClient
     self.loginCoordinator       = loginCoordinator
-    self.homeCoordinator        = HomeCoordinator(navigationController: UINavigationController(), profileStorage: storage.profile)
+    self.homeCoordinator        = HomeCoordinator(
+                                    navigationController: UINavigationController(),
+                                    profileStorage: storage.profile,
+                                    openHttpClient: openHttpClient,
+                                    backendApiClient: backendApiClient)
     self.searchCoordinator      = SearchCoordinator(navigationController: UINavigationController(), profileStorage: storage.profile)
     self.chatsCoordinator       = ChatsCoordinator(navigationController: UINavigationController(), profileStorage: storage.profile)
     self.settingsCoordinator    = SettingsCoordinator(
                                     navigationController: UINavigationController(),
+                                    auth: auth,
+                                    profileStorage: storage.profile,
                                     openHttpClient: openHttpClient,
-                                    profileStorage: storage.profile)
+                                    backendApiClient: backendApiClient)
     
     super.init(nibName: nil, bundle: nil)
   }
@@ -43,17 +55,17 @@ class MainTabBarController: UITabBarController {
     chatsCoordinator.start()
     settingsCoordinator.start()
     
-    view.backgroundColor    = .white
-    tabBar.tintColor        = UIColor.label
-    viewControllers         = [ homeCoordinator.navigationController,
-                                searchCoordinator.navigationController,
-                                chatsCoordinator.navigationController,
-                                settingsCoordinator.navigationController ]
+    view.backgroundColor            = .white
+    tabBar.tintColor                = UIColor(named: "PrimaryColor")
+    tabBar.unselectedItemTintColor  = .systemGray
+    viewControllers                 = [ homeCoordinator.navigationController,
+                                        searchCoordinator.navigationController,
+                                        chatsCoordinator.navigationController,
+                                        settingsCoordinator.navigationController ]
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    
     navigationController?.isNavigationBarHidden = true
     
     if !auth.isAuthenticated() {

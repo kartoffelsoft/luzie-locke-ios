@@ -8,14 +8,22 @@
 import UIKit
 
 class HomeCoordinator: Coordinator {
+  
   var children = [Coordinator]()
   var navigationController: UINavigationController
   
-  var profileStorage: AnyStorage<Profile>
+  let profileStorage:   AnyStorage<Profile>
+  let openHttpClient:   OpenHTTPClient
+  let backendApiClient: BackendAPIClient
   
-  init(navigationController: UINavigationController, profileStorage: AnyStorage<Profile>) {
+  init(navigationController:  UINavigationController,
+       profileStorage:        AnyStorage<Profile>,
+       openHttpClient:        OpenHTTPClient,
+       backendApiClient:      BackendAPIClient) {
     self.navigationController = navigationController
     self.profileStorage = profileStorage
+    self.openHttpClient = openHttpClient
+    self.backendApiClient = backendApiClient
   }
   
   func start() {
