@@ -24,14 +24,25 @@ class HomeCoordinator: Coordinator {
     self.profileStorage = profileStorage
     self.openHttpClient = openHttpClient
     self.backendApiClient = backendApiClient
-  }
-  
-  func start() {
-    let vc = HomeViewController(profileStorage: profileStorage)
+    
+    let vm = HomeViewModel(coordinator: self, profileStorage: profileStorage, openHttpClient: openHttpClient, backendApiClient: backendApiClient)
+    let vc = HomeViewController(viewModel: vm)
     vc.tabBarItem   = UITabBarItem(title: "Home",
                                    image: Images.home,
                                    selectedImage: Images.home)
     
     navigationController.pushViewController(vc, animated: false)
+  }
+  
+  func start() {
+  }
+  
+  func navigateToItemCreate() {
+    let vc = ItemCreateViewController()
+    navigationController.pushViewController(vc, animated: true)
+  }
+  
+  func popViewController() {
+    navigationController.popViewController(animated: true)
   }
 }

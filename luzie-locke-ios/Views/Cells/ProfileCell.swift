@@ -12,8 +12,8 @@ class ProfileCell: UICollectionViewCell {
   static let reuseIdentifier = "ProfileCell"
 
   let userImageView     = AvatarImageView(radius: 30)
-  let userNameLabel     = KHeaderLabel(textAlignment: .left, fontSize: 18)
-  let userLocationLabel = KBodyLabel(textAlignment: .left)
+  let userNameLabel     = KHeaderLabel(textAlignment: .left)
+  let userLocationLabel = KBodyLabel(textAlignment: .left, textStyle: .subheadline)
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -28,19 +28,18 @@ class ProfileCell: UICollectionViewCell {
     addSubview(userNameLabel)
     addSubview(userLocationLabel)
     
-    let padding: CGFloat = 10
     NSLayoutConstraint.activate([
-      userImageView.topAnchor.constraint(equalTo: topAnchor, constant: padding),
-      userImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
+      userImageView.topAnchor.constraint(equalTo: topAnchor),
+      userImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
       userImageView.widthAnchor.constraint(equalToConstant: 60),
       userImageView.heightAnchor.constraint(equalToConstant: 60),
       
       userNameLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 15),
-      userNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
+      userNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
       userNameLabel.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor, constant: -12),
       
       userLocationLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 15),
-      userLocationLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
+      userLocationLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
       userLocationLabel.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor, constant: 12),
     ])
   }

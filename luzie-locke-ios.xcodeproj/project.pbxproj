@@ -80,6 +80,10 @@
 		4AED5E802720C2D200B7AC00 /* JWTDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7F2720C2D200B7AC00 /* JWTDecode.swift */; };
 		4AED5E8627219E7300B7AC00 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E8527219E7300B7AC00 /* ProfileCell.swift */; };
 		4AEE8F6B2725D9B2004CB686 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F6A2725D9B2004CB686 /* Bindable.swift */; };
+		4AEE8F6D2726CC73004CB686 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F6C2726CC73004CB686 /* HomeViewModel.swift */; };
+		4AEE8F6F2726DF93004CB686 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F6E2726DF93004CB686 /* ItemCell.swift */; };
+		4AEE8F712726E082004CB686 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F702726E082004CB686 /* Item.swift */; };
+		4AEE8F742727BC93004CB686 /* ItemCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F732727BC93004CB686 /* ItemCreateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +170,10 @@
 		4AED5E7F2720C2D200B7AC00 /* JWTDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTDecode.swift; sourceTree = "<group>"; };
 		4AED5E8527219E7300B7AC00 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		4AEE8F6A2725D9B2004CB686 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
+		4AEE8F6C2726CC73004CB686 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		4AEE8F6E2726DF93004CB686 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		4AEE8F702726E082004CB686 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		4AEE8F732727BC93004CB686 /* ItemCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCreateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,15 +252,15 @@
 		4A3B5264271239CE00EF4F93 /* luzie-locke-ios */ = {
 			isa = PBXGroup;
 			children = (
-				4AED5E44271E2A1A00B7AC00 /* Configs */,
-				4A3B52D327159C8E00EF4F93 /* Coordinators */,
-				4A3B52CB2714415900EF4F93 /* Utilities */,
-				4A3B52CA2714415400EF4F93 /* Common */,
-				4A3B52A32712536F00EF4F93 /* Services */,
 				4A3B529627123DA800EF4F93 /* Models */,
 				4A3B529527123DA300EF4F93 /* Views */,
 				4A3B529727123DAD00EF4F93 /* ViewModels */,
+				4A3B52CA2714415400EF4F93 /* Common */,
+				4A3B52D327159C8E00EF4F93 /* Coordinators */,
+				4A3B52A32712536F00EF4F93 /* Services */,
+				4AED5E44271E2A1A00B7AC00 /* Configs */,
 				4AED5E1B27197BD700B7AC00 /* Supports */,
+				4A3B52CB2714415900EF4F93 /* Utilities */,
 				4A3B5265271239CE00EF4F93 /* AppDelegate.swift */,
 				4A3B5267271239CE00EF4F93 /* SceneDelegate.swift */,
 				4A3B526E271239CF00EF4F93 /* Assets.xcassets */,
@@ -286,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				4A3B52D027144F0B00EF4F93 /* Auth */,
+				4AEE8F702726E082004CB686 /* Item.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -295,6 +304,7 @@
 			children = (
 				4A3B52C327131FE800EF4F93 /* LoginViewModel.swift */,
 				4A155E612725C1FD00C8B867 /* SettingsViewModel.swift */,
+				4AEE8F6C2726CC73004CB686 /* HomeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -311,6 +321,7 @@
 		4A3B529927123DCF00EF4F93 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				4AEE8F722727BC6D004CB686 /* Item */,
 				4AED5E182719669600B7AC00 /* Map */,
 				4A3B5269271239CE00EF4F93 /* MainTabBarController.swift */,
 				4A3B52A8271256CD00EF4F93 /* LoginViewController.swift */,
@@ -569,8 +580,17 @@
 				4AED5E8527219E7300B7AC00 /* ProfileCell.swift */,
 				4A155E5F2724D16600C8B867 /* UserMenuCell.swift */,
 				4A155E5B2724438B00C8B867 /* SettingsMenuCell.swift */,
+				4AEE8F6E2726DF93004CB686 /* ItemCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		4AEE8F722727BC6D004CB686 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				4AEE8F732727BC93004CB686 /* ItemCreateViewController.swift */,
+			);
+			path = Item;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -706,6 +726,7 @@
 				4AED5E2A271ADC8500B7AC00 /* KRoundButton.swift in Sources */,
 				4A3B529D2712421300EF4F93 /* SearchViewController.swift in Sources */,
 				4A3B52A62712539300EF4F93 /* FirebaseAuthService.swift in Sources */,
+				4AEE8F712726E082004CB686 /* Item.swift in Sources */,
 				4AED5E8627219E7300B7AC00 /* ProfileCell.swift in Sources */,
 				4A155E482722F31C00C8B867 /* KHTTPClient.swift in Sources */,
 				4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */,
@@ -718,6 +739,7 @@
 				4A3B52A22712461500EF4F93 /* ChatsViewController.swift in Sources */,
 				4A3B5268271239CE00EF4F93 /* SceneDelegate.swift in Sources */,
 				4A3B529B2712401D00EF4F93 /* HomeViewController.swift in Sources */,
+				4AEE8F742727BC93004CB686 /* ItemCreateViewController.swift in Sources */,
 				4AED5E65271F729F00B7AC00 /* TokenHeaderRequestInterceptor.swift in Sources */,
 				4AED5E5A271EBEE700B7AC00 /* KHTTPAPIClient.swift in Sources */,
 				4A3B52DF2715C0F200EF4F93 /* SearchCoordinator.swift in Sources */,
@@ -727,6 +749,8 @@
 				4AEE8F6B2725D9B2004CB686 /* Bindable.swift in Sources */,
 				4A155E432722A46300C8B867 /* Constants.swift in Sources */,
 				4A3B52E32715C11900EF4F93 /* SettingsCoordinator.swift in Sources */,
+				4AEE8F6D2726CC73004CB686 /* HomeViewModel.swift in Sources */,
+				4AEE8F6F2726DF93004CB686 /* ItemCell.swift in Sources */,
 				4AED5E6C271FF32E00B7AC00 /* UpdateLocationResponse.swift in Sources */,
 				4AED5E3D271D95FC00B7AC00 /* AuthenticationRequest.swift in Sources */,
 				4AED5E32271C189E00B7AC00 /* KBodyLabel.swift in Sources */,

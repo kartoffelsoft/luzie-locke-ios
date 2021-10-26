@@ -37,27 +37,29 @@ class SettingsViewController: UICollectionViewController {
   init(viewModel: SettingsViewModel) {
     self.viewModel      = viewModel
     
+    
     let layout = UICollectionViewCompositionalLayout { section, env in
+      let padding: CGFloat = 15
       switch(Section(rawValue: section)) {
       case .profile:
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-        item.contentInsets = .init(top: 0, leading: 0, bottom: 8, trailing: 0)
+        item.contentInsets = .init(top: padding, leading: padding, bottom: padding, trailing: padding)
         
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(105)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(100)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
       
         return section
       case .userMenu:
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(0.33), heightDimension: .fractionalHeight(1)))
-        item.contentInsets = .init(top: 0, leading: 0, bottom: 8, trailing: 0)
+        item.contentInsets = .init(top: padding, leading: padding, bottom: padding, trailing: padding)
         
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(110)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(130)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
       
         return section
       case .settingsMenu:
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)))
-        item.contentInsets = .init(top: 0, leading: 0, bottom: 8, trailing: 0)
+        item.contentInsets = .init(top: padding, leading: padding, bottom: padding, trailing: padding)
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(500)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)

@@ -13,7 +13,7 @@ struct User: Codable {
   let refreshToken: String
 }
 
-struct Profile: Codable {
+struct Profile: Codable, Hashable {
   let uid: String
   let name: String
   let email: String
@@ -22,12 +22,12 @@ struct Profile: Codable {
   let location: Location
 }
 
-struct Location: Codable {
+struct Location: Codable, Hashable {
   let name: String
   let geoJSON: GeoJSON
 }
 
-struct GeoJSON: Codable {
+struct GeoJSON: Codable, Hashable {
   let type: String
   let coordinates: [Double]
 }

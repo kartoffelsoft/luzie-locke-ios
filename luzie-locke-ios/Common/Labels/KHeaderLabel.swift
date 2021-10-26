@@ -14,14 +14,15 @@ class KHeaderLabel: UILabel {
     configure()
   }
   
-  convenience init(textAlignment: NSTextAlignment, fontSize: CGFloat, weight: UIFont.Weight = .bold) {
+  convenience init(textAlignment: NSTextAlignment, textStyle: UIFont.TextStyle = .headline) {
     self.init(frame: .zero)
     self.textAlignment  = textAlignment
-    self.font           = UIFont.systemFont(ofSize: fontSize, weight: weight)
+    self.font           = UIFont.preferredFont(forTextStyle: textStyle)
   }
   
   private func configure() {
     textColor                                   = .label
+    font                                        = UIFont.preferredFont(forTextStyle: .headline)
     adjustsFontSizeToFitWidth                   = true
     minimumScaleFactor                          = 0.9
     lineBreakMode                               = .byTruncatingTail

@@ -45,4 +45,8 @@ enum Images {
   static let settings             = UIImage(
                                       systemName: "person",
                                       withConfiguration: UIImage.SymbolConfiguration(weight: .regular))
+  
+  static let floatingAdd          = UIImage(
+                                      systemName: "plus",
+                                      withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .bold))
 }
