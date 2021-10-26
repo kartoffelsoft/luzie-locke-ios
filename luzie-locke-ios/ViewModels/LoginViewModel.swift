@@ -19,12 +19,12 @@ class LoginViewModel {
   weak var delegate:    LoginViewModelDelegate?
   
   let coordinator:      LoginCoordinator
-  let auth:             Authable
+  let auth:             Auth
   let storage:          StorageService
   let backendApiClient: BackendAPIClient
   
   init(coordinator:       LoginCoordinator,
-       auth:              Authable,
+       auth:              Auth,
        storage:           StorageService,
        backendApiClient:  BackendAPIClient) {
     self.coordinator      = coordinator
@@ -46,7 +46,7 @@ class LoginViewModel {
               self.coordinator.popViewController()
               
               if let name = name, let lat = lat, let lng = lng {
-                self.backendApiClient.user.updateLocation(name: name,
+                self.backendApiClient.userApi.updateLocation(name: name,
                                                           lat: lat,
                                                           lng: lng) { result in
                   self.delegate?.didLogin()

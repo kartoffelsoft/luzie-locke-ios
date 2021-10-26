@@ -27,7 +27,7 @@
 		4A3B52A62712539300EF4F93 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52A52712539300EF4F93 /* FirebaseAuthService.swift */; };
 		4A3B52A9271256CD00EF4F93 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52A8271256CD00EF4F93 /* LoginViewController.swift */; };
 		4A3B52AB27125C0A00EF4F93 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52AA27125C0A00EF4F93 /* MainViewControllerTests.swift */; };
-		4A3B52B027125C6700EF4F93 /* AuthableMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52AF27125C6700EF4F93 /* AuthableMock.swift */; };
+		4A3B52B027125C6700EF4F93 /* AuthServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52AF27125C6700EF4F93 /* AuthServiceMock.swift */; };
 		4A3B52B527126DB000EF4F93 /* ScreenTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52B427126DB000EF4F93 /* ScreenTitleLabel.swift */; };
 		4A3B52B92712DC9100EF4F93 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4A3B52B82712DC9100EF4F93 /* FirebaseAuth */; };
 		4A3B52BB2712DC9100EF4F93 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 4A3B52BA2712DC9100EF4F93 /* FirebaseStorage */; };
@@ -46,7 +46,6 @@
 		4A3B52E12715C10500EF4F93 /* ChatsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52E02715C10500EF4F93 /* ChatsCoordinator.swift */; };
 		4A3B52E32715C11900EF4F93 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52E22715C11900EF4F93 /* SettingsCoordinator.swift */; };
 		4A3B52E52716083A00EF4F93 /* CoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52E42716083A00EF4F93 /* CoordinatorMock.swift */; };
-		4AED5DD427174BDC00B7AC00 /* UserStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5DD327174BDC00B7AC00 /* UserStorageMock.swift */; };
 		4AED5E1A27197BA400B7AC00 /* Frankfurt.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4AED5E1927197BA400B7AC00 /* Frankfurt.gpx */; };
 		4AED5E1D27197E1F00B7AC00 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */; };
 		4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */; };
@@ -84,6 +83,12 @@
 		4AEE8F6F2726DF93004CB686 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F6E2726DF93004CB686 /* ItemCell.swift */; };
 		4AEE8F712726E082004CB686 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F702726E082004CB686 /* Item.swift */; };
 		4AEE8F742727BC93004CB686 /* ItemCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F732727BC93004CB686 /* ItemCreateViewController.swift */; };
+		4AEE8F772727E84F004CB686 /* ItemCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F762727E84F004CB686 /* ItemCellViewModel.swift */; };
+		4AEE8F7A272803FB004CB686 /* ProfileStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F79272803FB004CB686 /* ProfileStorageMock.swift */; };
+		4AEE8F7C27280504004CB686 /* SimpleStringStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F7B27280504004CB686 /* SimpleStringStorageMock.swift */; };
+		4AEE8F7F2728144A004CB686 /* OpenHTTPClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F7E2728144A004CB686 /* OpenHTTPClientMock.swift */; };
+		4AEE8F82272818D3004CB686 /* BackendAPIClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F81272818D3004CB686 /* BackendAPIClientMock.swift */; };
+		4AEE8F8527281978004CB686 /* UserAPIClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F8427281978004CB686 /* UserAPIClientMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,7 +126,7 @@
 		4A3B52A52712539300EF4F93 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		4A3B52A8271256CD00EF4F93 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4A3B52AA27125C0A00EF4F93 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
-		4A3B52AF27125C6700EF4F93 /* AuthableMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthableMock.swift; sourceTree = "<group>"; };
+		4A3B52AF27125C6700EF4F93 /* AuthServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceMock.swift; sourceTree = "<group>"; };
 		4A3B52B427126DB000EF4F93 /* ScreenTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTitleLabel.swift; sourceTree = "<group>"; };
 		4A3B52C12712DF2100EF4F93 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4A3B52C327131FE800EF4F93 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -136,7 +141,6 @@
 		4A3B52E02715C10500EF4F93 /* ChatsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsCoordinator.swift; sourceTree = "<group>"; };
 		4A3B52E22715C11900EF4F93 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		4A3B52E42716083A00EF4F93 /* CoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorMock.swift; sourceTree = "<group>"; };
-		4AED5DD327174BDC00B7AC00 /* UserStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorageMock.swift; sourceTree = "<group>"; };
 		4AED5E1927197BA400B7AC00 /* Frankfurt.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Frankfurt.gpx; sourceTree = "<group>"; };
 		4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerTests.swift; sourceTree = "<group>"; };
@@ -174,6 +178,12 @@
 		4AEE8F6E2726DF93004CB686 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		4AEE8F702726E082004CB686 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		4AEE8F732727BC93004CB686 /* ItemCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCreateViewController.swift; sourceTree = "<group>"; };
+		4AEE8F762727E84F004CB686 /* ItemCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellViewModel.swift; sourceTree = "<group>"; };
+		4AEE8F79272803FB004CB686 /* ProfileStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorageMock.swift; sourceTree = "<group>"; };
+		4AEE8F7B27280504004CB686 /* SimpleStringStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleStringStorageMock.swift; sourceTree = "<group>"; };
+		4AEE8F7E2728144A004CB686 /* OpenHTTPClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHTTPClientMock.swift; sourceTree = "<group>"; };
+		4AEE8F81272818D3004CB686 /* BackendAPIClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendAPIClientMock.swift; sourceTree = "<group>"; };
+		4AEE8F8427281978004CB686 /* UserAPIClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIClientMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -302,6 +312,7 @@
 		4A3B529727123DAD00EF4F93 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				4AEE8F752727E830004CB686 /* Cells */,
 				4A3B52C327131FE800EF4F93 /* LoginViewModel.swift */,
 				4A155E612725C1FD00C8B867 /* SettingsViewModel.swift */,
 				4AEE8F6C2726CC73004CB686 /* HomeViewModel.swift */,
@@ -365,10 +376,13 @@
 		4A3B52AE27125C4A00EF4F93 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				4AEE8F8327281968004CB686 /* Clients */,
+				4AEE8F80272818B5004CB686 /* BackendAPIClient */,
+				4AEE8F7D27281438004CB686 /* OpenHTTPClient */,
+				4AEE8F78272803E9004CB686 /* Storage */,
 				4AED5E23271A0CCD00B7AC00 /* Map */,
-				4A3B52AF27125C6700EF4F93 /* AuthableMock.swift */,
+				4A3B52AF27125C6700EF4F93 /* AuthServiceMock.swift */,
 				4A3B52E42716083A00EF4F93 /* CoordinatorMock.swift */,
-				4AED5DD327174BDC00B7AC00 /* UserStorageMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -593,6 +607,47 @@
 			path = Item;
 			sourceTree = "<group>";
 		};
+		4AEE8F752727E830004CB686 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4AEE8F762727E84F004CB686 /* ItemCellViewModel.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		4AEE8F78272803E9004CB686 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				4AEE8F79272803FB004CB686 /* ProfileStorageMock.swift */,
+				4AEE8F7B27280504004CB686 /* SimpleStringStorageMock.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		4AEE8F7D27281438004CB686 /* OpenHTTPClient */ = {
+			isa = PBXGroup;
+			children = (
+				4AEE8F7E2728144A004CB686 /* OpenHTTPClientMock.swift */,
+			);
+			path = OpenHTTPClient;
+			sourceTree = "<group>";
+		};
+		4AEE8F80272818B5004CB686 /* BackendAPIClient */ = {
+			isa = PBXGroup;
+			children = (
+				4AEE8F81272818D3004CB686 /* BackendAPIClientMock.swift */,
+			);
+			path = BackendAPIClient;
+			sourceTree = "<group>";
+		};
+		4AEE8F8327281968004CB686 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				4AEE8F8427281978004CB686 /* UserAPIClientMock.swift */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -709,6 +764,7 @@
 				4A155E462722E03600C8B867 /* OpenHTTPClient.swift in Sources */,
 				4AED5E61271EE71600B7AC00 /* UpdateLocationRequest.swift in Sources */,
 				4A3B52A9271256CD00EF4F93 /* LoginViewController.swift in Sources */,
+				4AEE8F772727E84F004CB686 /* ItemCellViewModel.swift in Sources */,
 				4A155E622725C1FD00C8B867 /* SettingsViewModel.swift in Sources */,
 				4AED5E6A271FF2B200B7AC00 /* BackendResponse.swift in Sources */,
 				4A3B52C92713A02D00EF4F93 /* UIViewController+Ext.swift in Sources */,
@@ -774,12 +830,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AED5E25271A0CFD00B7AC00 /* MKViewMock.swift in Sources */,
-				4A3B52B027125C6700EF4F93 /* AuthableMock.swift in Sources */,
+				4AEE8F7C27280504004CB686 /* SimpleStringStorageMock.swift in Sources */,
+				4A3B52B027125C6700EF4F93 /* AuthServiceMock.swift in Sources */,
 				4AED5E27271A0D1300B7AC00 /* CLLocationManagerMock.swift in Sources */,
+				4AEE8F7F2728144A004CB686 /* OpenHTTPClientMock.swift in Sources */,
+				4AEE8F7A272803FB004CB686 /* ProfileStorageMock.swift in Sources */,
 				4A3B52AB27125C0A00EF4F93 /* MainViewControllerTests.swift in Sources */,
-				4AED5DD427174BDC00B7AC00 /* UserStorageMock.swift in Sources */,
 				4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */,
+				4AEE8F82272818D3004CB686 /* BackendAPIClientMock.swift in Sources */,
 				4A3B52E52716083A00EF4F93 /* CoordinatorMock.swift in Sources */,
+				4AEE8F8527281978004CB686 /* UserAPIClientMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

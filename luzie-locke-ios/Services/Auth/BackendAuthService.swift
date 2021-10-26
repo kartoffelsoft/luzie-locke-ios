@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol BackendAuthable {
+protocol BackendAuth {
   
   func authenticate(uid: String, token: String, completion: @escaping (Result<Profile, LLError>?) -> Void)
   func isAuthenticated() -> Bool
   func logout()
 }
 
-class BackendAuthService: BackendAuthable {
+class BackendAuthService: BackendAuth {
   
   let backendApiClient:     BackendAPIClient
   let profileStorage:       AnyStorage<Profile>
@@ -29,10 +29,14 @@ class BackendAuthService: BackendAuthable {
     self.profileStorage       = profileStorage
     self.accessTokenStorage   = accessTokenStorage
     self.refreshTokenStorage  = refreshTokenStorage
+    
+    if let token = accessTokenStorage.get() {
+      self.backendApiClient.configureTokenHeader(token: token)
+    }
   }
   
   func authenticate(uid: String, token: String, completion: @escaping (Result<Profile, LLError>?) -> Void) {
-    backendApiClient.user.authenticate(uid: uid, token: token) { [weak self] result in
+    backendApiClient.userApi.authenticate(uid: uid, token: token) { [weak self] result in
       guard let self = self else { return }
       switch result {
       case .success(let data):

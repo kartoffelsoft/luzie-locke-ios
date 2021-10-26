@@ -11,7 +11,7 @@ class HomeViewModel {
   
   let coordinator:      HomeCoordinator
   let profileStorage:   AnyStorage<Profile>
-  let openHttpClient:   OpenHTTPClient
+  let openHttpClient:   OpenHTTP
   let backendApiClient: BackendAPIClient
 
 //  var bindableProfileImage  = Bindable<UIImage>()
@@ -20,7 +20,7 @@ class HomeViewModel {
 
   init(coordinator:       HomeCoordinator,
        profileStorage:    AnyStorage<Profile>,
-       openHttpClient:    OpenHTTPClient,
+       openHttpClient:    OpenHTTP,
        backendApiClient:  BackendAPIClient) {
     self.coordinator      = coordinator
     self.profileStorage   = profileStorage

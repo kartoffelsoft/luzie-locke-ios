@@ -9,9 +9,9 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
   
-  let auth:                   AuthService
+  let auth:                   Auth
   let storage:                StorageService
-  let openHttpClient:         OpenHTTPClient
+  let openHttpClient:         OpenHTTP
   let backendApiClient:       BackendAPIClient
   let loginCoordinator:       Coordinator
   
@@ -20,9 +20,9 @@ class MainTabBarController: UITabBarController {
   let chatsCoordinator:       ChatsCoordinator
   let settingsCoordinator:    SettingsCoordinator
   
-  init(auth: AuthService,
+  init(auth: Auth,
        storage: StorageService,
-       openHttpClient: OpenHTTPClient,
+       openHttpClient: OpenHTTP,
        backendApiClient: BackendAPIClient,
        loginCoordinator: Coordinator) {
     self.auth                   = auth

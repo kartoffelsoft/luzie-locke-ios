@@ -33,7 +33,7 @@ class GoogleSignInService {
       let credential = GoogleAuthProvider.credential(withIDToken: idToken,
                                                      accessToken: authentication.accessToken)
       
-      Auth.auth().signIn(with: credential) { authResult, error in
+      Firebase.Auth.auth().signIn(with: credential) { authResult, error in
         if let _ = error {
           completion(.failure(.unableToComplete))
           return

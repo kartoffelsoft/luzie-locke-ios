@@ -7,19 +7,21 @@
 
 import UIKit
 
-protocol Authable {
+protocol Auth {
   
   func authenticate(_ caller: UIViewController, with provider: SignInProvider, completion: @escaping (Result<Profile, LLError>?) -> Void)
   
   func isAuthenticated() -> Bool
+  
+  func logout()
 }
 
-class AuthService: Authable {
+class AuthService: Auth {
   
-  let firebaseAuth: FirebaseAuthable
-  let backendAuth:  BackendAuthable
+  let firebaseAuth: FirebaseAuth
+  let backendAuth:  BackendAuth
   
-  init(firebaseAuth: FirebaseAuthable, backendAuth: BackendAuthable) {
+  init(firebaseAuth: FirebaseAuth, backendAuth: BackendAuth) {
     self.firebaseAuth = firebaseAuth
     self.backendAuth  = backendAuth
   }

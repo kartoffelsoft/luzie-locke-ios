@@ -18,7 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let openHttpClient        = OpenHTTPClient(client: httpClient)
     
     let httpApiClient         = KHTTPAPIClient(baseEndpoint: BackendConfig.host)
-    let backendApiClient      = BackendAPIClient(client: httpApiClient)
+    let backendApiClient      = BackendAPIClient(
+                                  client: httpApiClient,
+                                  userApi: UserAPIClient(client: httpApiClient))
     
     let profileStorage        = AnyStorage(wrap: ProfileStorage(key: "Profile"))
     let accessTokenStorage    = AnyStorage(wrap: SimpleStringStorage(key: "AccessToken"))

@@ -7,11 +7,18 @@
 
 import Foundation
 
+//protocol KHTTPAPI {
+//  associatedtype DataType
+//  func POST<DataType>(_ request: DataType, completion: @escaping APIResultCallback<DataType.Response?>) where DataType: APIRequest
+//  func PATCH<DataType>(_ request: DataType, completion: @escaping APIResultCallback<DataType.Response?>) where DataType: APIRequest
+//}
+
 public class KHTTPAPIClient {
   
   public var globalRequestInterceptors = [KHTTPRequestInterceptor]()
   
   let baseEndpoint: String
+  let httpClient = KHTTPClient()
   
   public init(baseEndpoint: String) {
     self.baseEndpoint = baseEndpoint
@@ -28,30 +35,30 @@ public class KHTTPAPIClient {
       urlRequest.httpMethod   = "POST"
       let interceptedRequest  = applyRequestInterceptors(urlRequest)
       
-      URLSession.shared.dataTask(with: interceptedRequest) { data, response, error in
-        if let _ = error {
-          completion(.failure(.unableToComplete))
-          return
-        }
-        
-        if let data = data {
-          do {
-            let response = try JSONDecoder().decode(BackendResponse<T.Response>.self, from: data)
-            
-            if response.status == "OK" {
-              completion(.success(response.data as T.Response?))
-            } else {
-              print("[Error:\(#file):\(#line)] \(response.message ?? "")")
-              completion(.failure(.serverErrorResponse))
+      httpClient.send(with: interceptedRequest) { result in
+        switch result {
+        case .success((_, let data)):
+          if let data = data {
+            do {
+              let response = try JSONDecoder().decode(BackendResponse<T.Response>.self, from: data)
+              
+              if response.status == "OK" {
+                completion(.success(response.data as T.Response?))
+              } else {
+                print("[Error:\(#file):\(#line)] \(response.message ?? "")")
+                completion(.failure(.serverErrorResponse))
+              }
+            } catch {
+              print("[Error:\(#file):\(#line)] \(error)")
+              completion(.failure(.unableToComplete))
             }
-          } catch {
-            print("[Error:\(#file):\(#line)] \(error)")
+          } else {
             completion(.failure(.unableToComplete))
           }
-        } else {
+        case .failure:
           completion(.failure(.unableToComplete))
         }
-      }.resume()
+      }
     } catch {
       print("[Error:\(#file):\(#line)] \(error)")
       completion(.failure(.unableToComplete))
@@ -69,30 +76,29 @@ public class KHTTPAPIClient {
       urlRequest.httpMethod   = "PATCH"
       let interceptedRequest  = applyRequestInterceptors(urlRequest)
       
-      URLSession.shared.dataTask(with: interceptedRequest) { data, response, error in
-        if let error = error {
-          print("[Error:\(#file):\(#line)] \(error)")
-          completion(.failure(.unableToComplete))
-          return
-        }
-        
-        if let data = data {
-          do {
-            let response = try JSONDecoder().decode(BackendResponse<T.Response>.self, from: data)
-            if response.status == "OK" {
-              completion(.success(response.data as T.Response?))
-            } else {
-              print("[Error:\(#file):\(#line)] \(response.message ?? "")")
-              completion(.failure(.serverErrorResponse))
+      httpClient.send(with: interceptedRequest) { result in
+        switch result {
+        case .success((_, let data)):
+          if let data = data {
+            do {
+              let response = try JSONDecoder().decode(BackendResponse<T.Response>.self, from: data)
+              if response.status == "OK" {
+                completion(.success(response.data as T.Response?))
+              } else {
+                print("[Error:\(#file):\(#line)] \(response.message ?? "")")
+                completion(.failure(.serverErrorResponse))
+              }
+            } catch {
+              print("[Error:\(#file):\(#line)] \(error)")
+              completion(.failure(.unableToComplete))
             }
-          } catch {
-            print("[Error:\(#file):\(#line)] \(error)")
+          } else {
             completion(.failure(.unableToComplete))
           }
-        } else {
+        case .failure:
           completion(.failure(.unableToComplete))
         }
-      }.resume()
+      }
     } catch {
       print("[Error:\(#file):\(#line)] \(error)")
       completion(.failure(.unableToComplete))

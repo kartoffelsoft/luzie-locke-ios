@@ -10,9 +10,9 @@ import UIKit
 class SettingsViewModel {
   
   let coordinator:      SettingsCoordinator
-  let auth:             AuthService
+  let auth:             Auth
   let profileStorage:   AnyStorage<Profile>
-  let openHttpClient:   OpenHTTPClient
+  let openHttpClient:   OpenHTTP
   let backendApiClient: BackendAPIClient
   
   var bindableProfileImage  = Bindable<UIImage>()
@@ -20,9 +20,9 @@ class SettingsViewModel {
   var bindableUserLocation  = Bindable<String>()
 
   init(coordinator:       SettingsCoordinator,
-       auth:              AuthService,
+       auth:              Auth,
        profileStorage:    AnyStorage<Profile>,
-       openHttpClient:    OpenHTTPClient,
+       openHttpClient:    OpenHTTP,
        backendApiClient:  BackendAPIClient) {
     self.coordinator      = coordinator
     self.auth             = auth
@@ -53,7 +53,7 @@ class SettingsViewModel {
       self.coordinator.popViewController()
       
       if let name = name, let lat = lat, let lng = lng {
-        self.backendApiClient.user.updateLocation(name: name,
+        self.backendApiClient.userApi.updateLocation(name: name,
                                                   lat: lat,
                                                   lng: lng) { result in
         }

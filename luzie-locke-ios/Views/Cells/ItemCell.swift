@@ -8,11 +8,36 @@
 import UIKit
 
 class ItemCell: UICollectionViewCell {
-//  tmp
+
   let placeholderImage = Images.avatarPlaceholder
   
   static let reuseIdentifier = "ItemCell"
 
+  var viewModel: ItemCellViewModel? {
+    didSet {
+      imageView.image     = viewModel?.bindableItemImage.value
+      titleLabel.text     = viewModel?.bindableTitleText.value
+      locationLabel.text  = viewModel?.bindableLocationText.value
+      priceLabel.text     = viewModel?.bindablePriceText.value
+      
+      viewModel?.bindableItemImage.bind { [weak self] image in
+        self?.imageView.image = image
+      }
+      
+      viewModel?.bindableTitleText.bind { [weak self] text in
+        self?.titleLabel.text = text
+      }
+      
+      viewModel?.bindableLocationText.bind { [weak self] text in
+        self?.locationLabel.text = text
+      }
+      
+      viewModel?.bindablePriceText.bind { [weak self] text in
+        self?.priceLabel.text = text
+      }
+    }
+  }
+  
   let imageView     = UIImageView()
   let titleLabel    = KHeaderLabel(textAlignment: .left, textStyle: .subheadline)
   let locationLabel = KBodyLabel(textAlignment: .left, textStyle: .subheadline)

@@ -13,12 +13,12 @@ class LoginCoordinator: Coordinator {
   var children = [Coordinator]()
   var navigationController: UINavigationController
   
-  let auth:             Authable
+  let auth:             Auth
   let storage:          StorageService
   let backendApiClient: BackendAPIClient
   
   init(navigationController:  UINavigationController,
-       auth:                  Authable,
+       auth:                  Auth,
        storage:               StorageService,
        backendApiClient:      BackendAPIClient) {
     

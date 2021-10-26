@@ -7,9 +7,15 @@
 
 import Foundation
 
-class UserAPIClient {
+protocol UserAPI {
+  func authenticate(uid: String, token: String, completion: @escaping (Result<(profile: Profile, accessToken: String, refreshToken: String), LLError>?) -> Void)
   
-  let client: KHTTPAPIClient
+  func updateLocation(name: String, lat: Double, lng: Double, completion: @escaping (Result<Profile, LLError>?) -> Void)
+}
+
+class UserAPIClient: UserAPI {
+  
+  private let client: KHTTPAPIClient
   
   init(client: KHTTPAPIClient) {
     self.client = client
@@ -36,12 +42,14 @@ class UserAPIClient {
       switch result {
       case .success(let response):
         if let profile = response?.profile {
+          print("Success:", profile)
           completion(.success(profile))
         } else {
           completion(.failure(.unexpectedServerResponse))
         }
         
       case .failure(let error):
+        print("error:", error)
         completion(.failure(.unableToComplete))
       }
     }

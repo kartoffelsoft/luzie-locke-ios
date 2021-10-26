@@ -7,7 +7,11 @@
 
 import UIKit
 
-class OpenHTTPClient {
+protocol OpenHTTP {
+  func downloadImage(from urlString: String, completion: @escaping (Result<UIImage?, LLError>) -> Void)
+}
+
+class OpenHTTPClient: OpenHTTP {
   
   let client:     KHTTPClient
   let cache:      NSCache<NSString, UIImage>

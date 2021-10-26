@@ -11,7 +11,9 @@ import XCTest
 class MainViewControllerTests: XCTestCase {
   
   var sut:                    MainTabBarController!
-  var mockUserStorage:        UserStorageMock!
+  var mockAuthService:        AuthServiceMock!
+  var mockStorageService:     StorageService!
+  var mockOpenHttpClient:     OpenHTTPClientMock!
   var mockLoginCoordinator:   CoordinatorMock!
   
   let shown  = 1
@@ -23,10 +25,21 @@ class MainViewControllerTests: XCTestCase {
   override func setUpWithError() throws {
     try super.setUpWithError()
     
-    mockUserStorage     = UserStorageMock()
+    mockAuthService      = AuthServiceMock()
+    mockStorageService   = StorageService(
+                             profile: AnyStorage(wrap: ProfileStorageMock(key: "Profile")),
+                             accessToken: AnyStorage(wrap: SimpleStringStorageMock(key: "AccessToken")),
+                             refreshToken: AnyStorage(wrap: SimpleStringStorageMock(key: "RefreshToken")))
+    mockOpenHttpClient   = OpenHTTPClientMock()
+    
     mockLoginCoordinator = CoordinatorMock()
     
-    sut = MainTabBarController(userStorage: mockUserStorage, loginCoordinator: mockLoginCoordinator)
+    sut = MainTabBarController(
+            auth: mockAuthService,
+            storage: mockStorageService,
+            openHttpClient: mockOpenHttpClient,
+            backendApiClient: _,
+            loginCoordinator: mockLoginCoordinator)
     
     let window = UIWindow(frame: UIScreen.main.bounds)
     window.rootViewController = sut
@@ -35,13 +48,13 @@ class MainViewControllerTests: XCTestCase {
   
   override func tearDownWithError() throws {
     sut = nil
-    mockUserStorage = nil
+    mockStorageService = nil
     mockLoginCoordinator = nil
     try super.tearDownWithError()
   }
   
-  func givenUserIs(_ status: Bool) {
-    mockUserStorage?.setIsEmpty(empty: status)
+  func givenUserIs(_ state: Bool) {
+    mockAuthService?.setAuthStateTo(state)
   }
   
   func whenViewIsLoaded() {

@@ -9,12 +9,12 @@ import Foundation
 
 class BackendAPIClient {
   
-  let client: KHTTPAPIClient
-  let user:   UserAPIClient
+  let client:   KHTTPAPIClient
+  let userApi:  UserAPI
   
-  init(client: KHTTPAPIClient) {
-    self.client = client
-    self.user   = UserAPIClient(client: client)
+  init(client: KHTTPAPIClient, userApi: UserAPI) {
+    self.client   = client
+    self.userApi  = userApi
     
     configureDefaultHeaders()
   }

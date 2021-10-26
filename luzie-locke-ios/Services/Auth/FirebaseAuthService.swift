@@ -13,14 +13,14 @@ enum SignInProvider {
   case google
 }
 
-protocol FirebaseAuthable {
+protocol FirebaseAuth {
   
   func authenticate(_ caller: UIViewController, with provider: SignInProvider, completion: @escaping (Result<(uid: String, token: String), LLError>?) -> Void)
   func isAuthenticated() -> Bool
   func logout()
 }
 
-class FirebaseAuthService: FirebaseAuthable {
+class FirebaseAuthService: FirebaseAuth {
   
   let google: GoogleSignInService
   
@@ -45,10 +45,10 @@ class FirebaseAuthService: FirebaseAuthable {
   }
   
   func isAuthenticated() -> Bool {
-    return Auth.auth().currentUser != nil
+    return Firebase.Auth.auth().currentUser != nil
   }
   
   func logout() {
-    try? Auth.auth().signOut()
+    try? Firebase.Auth.auth().signOut()
   }
 }
