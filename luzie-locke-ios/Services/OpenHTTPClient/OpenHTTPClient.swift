@@ -35,19 +35,19 @@ class OpenHTTPClient: OpenHTTP {
     }
     
     client.send(with: url) { [weak self] result in
-      guard let self = self else { return }
-      
-      switch(result) {
-      case .success((let response, let data)):
-        if let response = response as? HTTPURLResponse, response.statusCode == 200,
-           let data = data, let image = UIImage(data: data) {
-          self.cache.setObject(image, forKey: cacheKey)
-          completion(.success(image))
-        } else {
+      DispatchQueue.main.async {
+        switch(result) {
+        case .success((let response, let data)):
+          if let response = response as? HTTPURLResponse, response.statusCode == 200,
+             let data = data, let image = UIImage(data: data) {
+            self?.cache.setObject(image, forKey: cacheKey)
+            completion(.success(image))
+          } else {
+            completion(.failure(.unableToComplete))
+          }
+        case .failure:
           completion(.failure(.unableToComplete))
         }
-      case .failure(let error):
-        completion(.failure(.unableToComplete))
       }
     }
   }

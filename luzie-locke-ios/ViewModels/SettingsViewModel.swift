@@ -15,9 +15,7 @@ class SettingsViewModel {
   let openHttpClient:   OpenHTTP
   let backendApiClient: BackendAPIClient
   
-  var bindableProfileImage  = Bindable<UIImage>()
-  var bindableUserName      = Bindable<String>()
-  var bindableUserLocation  = Bindable<String>()
+  let profileCellViewModel: ProfileCellViewModel
 
   init(coordinator:       SettingsCoordinator,
        auth:              Auth,
@@ -29,21 +27,13 @@ class SettingsViewModel {
     self.profileStorage   = profileStorage
     self.openHttpClient   = openHttpClient
     self.backendApiClient = backendApiClient
+    
+    profileCellViewModel =  ProfileCellViewModel(openHttpClient: openHttpClient)
   }
   
   func load() {
     if let profile = profileStorage.get() {
-      bindableUserName.value      = profile.name
-      bindableUserLocation.value  = profile.location.name
-      
-      openHttpClient.downloadImage(from: profile.pictureURI) { [weak self] result in
-        switch result {
-        case .success(let image):
-          DispatchQueue.main.async { self?.bindableProfileImage.value = image }
-        case .failure:
-          ()
-        }
-      }
+      profileCellViewModel.profile = profile
     }
   }
   
@@ -56,6 +46,14 @@ class SettingsViewModel {
         self.backendApiClient.userApi.updateLocation(name: name,
                                                   lat: lat,
                                                   lng: lng) { result in
+          switch result {
+          case .success(let profile):
+            self.profileStorage.set(profile)          
+          case .failure:
+            ()
+          case .none:
+            ()
+          }
         }
       }
     }

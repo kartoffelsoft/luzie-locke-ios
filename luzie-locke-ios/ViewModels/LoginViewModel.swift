@@ -49,6 +49,14 @@ class LoginViewModel {
                 self.backendApiClient.userApi.updateLocation(name: name,
                                                           lat: lat,
                                                           lng: lng) { result in
+                  switch result {
+                  case .success(let profile):
+                    self.storage.profile.set(profile)
+                  case .failure:
+                    ()
+                  case .none:
+                    ()
+                  }
                   self.delegate?.didLogin()
                 }
               } else {

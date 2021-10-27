@@ -7,12 +7,11 @@
 
 import UIKit
 
-class SettingsViewController: UICollectionViewController {
+class SettingsViewController: UIViewController {
 
   static let profileViewId = "ProfileViewId"
   
   private let viewModel:      SettingsViewModel
-  
   private let userMenuItems = [
     UserMenuItem(image: Images.listings, text: "Listings"),
     UserMenuItem(image: Images.purchases, text: "Purchaces"),
@@ -23,6 +22,8 @@ class SettingsViewController: UICollectionViewController {
     SettingsMenuItem(image: Images.location, text: "Verify neighbourhood"),
     SettingsMenuItem(image: Images.logout, text: "Logout")
   ]
+  
+  private var collectionView: UICollectionView!
   
   enum Section: Int {
     case profile = 0, userMenu, settingsMenu
@@ -36,7 +37,26 @@ class SettingsViewController: UICollectionViewController {
   
   init(viewModel: SettingsViewModel) {
     self.viewModel      = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
+    navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: ScreenTitleLabel("Settings"))
+    
+    configureCollectionView()
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    viewModel.load()
+  }
+  
+  private func configureCollectionView() {
+    let padding: CGFloat    = 15
+    let flowLayout          = UICollectionViewFlowLayout()
+    flowLayout.sectionInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
+    flowLayout.itemSize     = CGSize(width: view.bounds.width - padding * 2, height: 100)
     
     let layout = UICollectionViewCompositionalLayout { section, env in
       let padding: CGFloat = 15
@@ -70,76 +90,25 @@ class SettingsViewController: UICollectionViewController {
       }
     }
     
-    super.init(collectionViewLayout: layout)
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: ScreenTitleLabel("Settings"))
+    collectionView                  = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+    collectionView.delegate         = self
+    collectionView.dataSource       = self
+    collectionView.backgroundColor  = .systemBackground
     
     collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: ProfileCell.reuseIdentifier)
     collectionView.register(UserMenuCell.self, forCellWithReuseIdentifier: UserMenuCell.reuseIdentifier)
     collectionView.register(SettingsMenuCell.self, forCellWithReuseIdentifier: SettingsMenuCell.reuseIdentifier)
-    collectionView.backgroundColor = .systemBackground
-    
-    configureBindables()
-    viewModel.load()
+    view.addSubview(collectionView)
   }
   
-  private func configureBindables() {
-    viewModel.bindableProfileImage.bind { [weak self] (_) in
-      self?.collectionView.reloadData()
-    }
-    
-    viewModel.bindableUserName.bind { [weak self] (_) in
-      self?.collectionView.reloadData()
-    }
-    
-    viewModel.bindableUserLocation.bind { [weak self] (_) in
-      self?.collectionView.reloadData()
-    }
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
+}
+
+extension SettingsViewController: UICollectionViewDelegate {
   
-  override func numberOfSections(in collectionView: UICollectionView) -> Int {
-    return Section.numberOfSections
-  }
-  
-  override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    switch(Section(rawValue: section)) {
-    case .profile:
-      return 1
-    case .userMenu:
-      return userMenuItems.count
-    case .settingsMenu:
-      return settingsMenuItems.count
-    default:
-      return 0
-    }
-  }
-  
-  override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    switch(Section(rawValue: indexPath.section)) {
-    case .profile:
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCell.reuseIdentifier, for: indexPath) as! ProfileCell
-      cell.userImageView.image    = viewModel.bindableProfileImage.value
-      cell.userNameLabel.text     = viewModel.bindableUserName.value
-      cell.userLocationLabel.text = viewModel.bindableUserLocation.value
-      return cell
-    case .userMenu:
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserMenuCell.reuseIdentifier, for: indexPath) as! UserMenuCell
-      cell.item = userMenuItems[indexPath.row]
-      return cell
-    case .settingsMenu:
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingsMenuCell.reuseIdentifier, for: indexPath) as! SettingsMenuCell
-      cell.item = settingsMenuItems[indexPath.row]
-      return cell
-    default:
-      return  UICollectionViewCell()
-    }
-  }
-  
-  override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     switch Section(rawValue: indexPath.section) {
     case .profile:
       ()
@@ -164,7 +133,42 @@ class SettingsViewController: UICollectionViewController {
     }
   }
   
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
+  func numberOfSections(in collectionView: UICollectionView) -> Int {
+    return Section.numberOfSections
+  }
+}
+
+extension SettingsViewController: UICollectionViewDataSource {
+  
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    switch(Section(rawValue: section)) {
+    case .profile:
+      return 1
+    case .userMenu:
+      return userMenuItems.count
+    case .settingsMenu:
+      return settingsMenuItems.count
+    default:
+      return 0
+    }
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    switch(Section(rawValue: indexPath.section)) {
+    case .profile:
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCell.reuseIdentifier, for: indexPath) as! ProfileCell
+      cell.viewModel = viewModel.profileCellViewModel
+      return cell
+    case .userMenu:
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserMenuCell.reuseIdentifier, for: indexPath) as! UserMenuCell
+      cell.item = userMenuItems[indexPath.row]
+      return cell
+    case .settingsMenu:
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SettingsMenuCell.reuseIdentifier, for: indexPath) as! SettingsMenuCell
+      cell.item = settingsMenuItems[indexPath.row]
+      return cell
+    default:
+      return  UICollectionViewCell()
+    }
   }
 }

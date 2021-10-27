@@ -42,7 +42,6 @@ class UserAPIClient: UserAPI {
       switch result {
       case .success(let response):
         if let profile = response?.profile {
-          print("Success:", profile)
           completion(.success(profile))
         } else {
           completion(.failure(.unexpectedServerResponse))

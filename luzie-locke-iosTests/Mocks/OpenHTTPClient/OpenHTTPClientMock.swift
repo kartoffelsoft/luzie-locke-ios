@@ -10,7 +10,16 @@ import UIKit
 
 class OpenHTTPClientMock: OpenHTTP {
   
+  var isDownloadImageCalled = false
+  var downloadImageCompletion: ((Result<UIImage?, LLError>) -> Void)?
+  
+  
   func downloadImage(from urlString: String, completion: @escaping (Result<UIImage?, LLError>) -> Void) {
-
+    isDownloadImageCalled   = true
+    downloadImageCompletion = completion
+  }
+  
+  func fetchDownloadImageCompletionWith(result: (Result<UIImage?, LLError>)) {
+    downloadImageCompletion?(result)
   }
 }

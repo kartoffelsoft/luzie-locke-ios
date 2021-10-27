@@ -25,6 +25,6 @@ class AuthServiceMock: Auth {
   }
   
   func setAuthStateTo(_ state: Bool) {
-    authenticated = fake
+    authenticated = state
   }
 }
