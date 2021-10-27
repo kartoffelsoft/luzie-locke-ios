@@ -308,7 +308,7 @@
 		4A3B529627123DA800EF4F93 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4A3B52D027144F0B00EF4F93 /* Auth */,
+				4A3B52D127144FF200EF4F93 /* User.swift */,
 				4AEE8F702726E082004CB686 /* Item.swift */,
 			);
 			path = Models;
@@ -432,14 +432,6 @@
 				4AEE8F6A2725D9B2004CB686 /* Bindable.swift */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		4A3B52D027144F0B00EF4F93 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				4A3B52D127144FF200EF4F93 /* User.swift */,
-			);
-			path = Auth;
 			sourceTree = "<group>";
 		};
 		4A3B52D327159C8E00EF4F93 /* Coordinators */ = {

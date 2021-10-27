@@ -11,7 +11,7 @@ class SettingsViewModel {
   
   let coordinator:      SettingsCoordinator
   let auth:             Auth
-  let profileStorage:   AnyStorage<Profile>
+  let profileStorage:   AnyStorage<User>
   let openHttpClient:   OpenHTTP
   let backendApiClient: BackendAPIClient
   
@@ -19,7 +19,7 @@ class SettingsViewModel {
 
   init(coordinator:       SettingsCoordinator,
        auth:              Auth,
-       profileStorage:    AnyStorage<Profile>,
+       profileStorage:    AnyStorage<User>,
        openHttpClient:    OpenHTTP,
        backendApiClient:  BackendAPIClient) {
     self.coordinator      = coordinator

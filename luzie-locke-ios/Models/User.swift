@@ -7,13 +7,7 @@
 
 import Foundation
 
-struct User: Codable {
-  let profile: Profile
-  let accessToken: String
-  let refreshToken: String
-}
-
-struct Profile: Codable, Hashable {
+struct User: Codable, Hashable {
   let uid: String
   let name: String
   let email: String

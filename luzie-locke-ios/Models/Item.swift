@@ -9,7 +9,7 @@ import Foundation
 
 struct Item: Codable, Hashable {
   let _id: String
-  let owner: Profile?
+  let owner: User?
   let title: String
   let price: String
   let description: String

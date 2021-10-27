@@ -19,14 +19,15 @@ class ProfileCellViewModelTests: XCTestCase {
   
   var mockOpenHttpClient: OpenHTTPClientMock!
   
-  let testProfile = Profile(uid: "abc123",
-                            name: "Tester",
-                            email: "happy@coding.com",
-                            reputation: 10,
-                            pictureURI: "www.test.com/test",
-                            location: Location(name: "Playground",
-                                               geoJSON: GeoJSON(type: "2DPoint",
-                                                                coordinates: [12.34, 56.78])))
+  let testProfile = User(uid: "abc123",
+                         name: "Tester",
+                         email: "happy@coding.com",
+                         reputation: 10,
+                         pictureURI: "www.test.com/test",
+                         location: Location(name: "Playground",
+                                            geoJSON: GeoJSON(type: "2DPoint",
+                                                             coordinates: [12.34, 56.78])))
+  
   let testUIImage = UIImage(systemName: "location")
   
   override func setUpWithError() throws {
@@ -54,7 +55,7 @@ class ProfileCellViewModelTests: XCTestCase {
     }
   }
   
-  func whenProfileIsSet(_ profile: Profile) {
+  func whenProfileIsSet(_ profile: User) {
     sut.profile = profile
   }
   

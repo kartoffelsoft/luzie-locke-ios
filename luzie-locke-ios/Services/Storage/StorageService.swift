@@ -9,11 +9,11 @@ import Foundation
 
 class StorageService {
   
-  let profile:      AnyStorage<Profile>
+  let profile:      AnyStorage<User>
   let accessToken:  AnyStorage<String>
   let refreshToken: AnyStorage<String>
   
-  init(profile: AnyStorage<Profile>, accessToken: AnyStorage<String>, refreshToken: AnyStorage<String>) {
+  init(profile: AnyStorage<User>, accessToken: AnyStorage<String>, refreshToken: AnyStorage<String>) {
     self.profile      = profile
     self.accessToken  = accessToken
     self.refreshToken = refreshToken

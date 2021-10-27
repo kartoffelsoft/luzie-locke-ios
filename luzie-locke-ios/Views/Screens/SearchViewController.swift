@@ -9,9 +9,9 @@ import UIKit
 
 class SearchViewController: UIViewController {
   
-  var profileStorage: AnyStorage<Profile>
+  var profileStorage: AnyStorage<User>
   
-  init(profileStorage: AnyStorage<Profile>) {
+  init(profileStorage: AnyStorage<User>) {
     self.profileStorage = profileStorage
     super.init(nibName: nil, bundle: nil)
   }

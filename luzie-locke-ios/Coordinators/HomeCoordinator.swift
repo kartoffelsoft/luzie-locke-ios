@@ -12,12 +12,12 @@ class HomeCoordinator: Coordinator {
   var children = [Coordinator]()
   var navigationController: UINavigationController
   
-  let profileStorage:   AnyStorage<Profile>
+  let profileStorage:   AnyStorage<User>
   let openHttpClient:   OpenHTTP
   let backendApiClient: BackendAPIClient
   
   init(navigationController:  UINavigationController,
-       profileStorage:        AnyStorage<Profile>,
+       profileStorage:        AnyStorage<User>,
        openHttpClient:        OpenHTTP,
        backendApiClient:      BackendAPIClient) {
     self.navigationController = navigationController

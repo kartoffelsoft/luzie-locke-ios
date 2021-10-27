@@ -16,13 +16,13 @@ class SettingsCoordinator: Coordinator {
   var navigationController: UINavigationController
   
   let auth:             Auth
-  let profileStorage:   AnyStorage<Profile>
+  let profileStorage:   AnyStorage<User>
   let openHttpClient:   OpenHTTP
   let backendApiClient: BackendAPIClient
   
   init(navigationController:  UINavigationController,
        auth:                  Auth,
-       profileStorage:        AnyStorage<Profile>,
+       profileStorage:        AnyStorage<User>,
        openHttpClient:        OpenHTTP,
        backendApiClient:      BackendAPIClient) {
     self.navigationController = navigationController

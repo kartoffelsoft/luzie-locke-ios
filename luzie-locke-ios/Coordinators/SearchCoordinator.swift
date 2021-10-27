@@ -11,9 +11,9 @@ class SearchCoordinator: Coordinator {
   var children = [Coordinator]()
   var navigationController: UINavigationController
   
-  var profileStorage: AnyStorage<Profile>
+  var profileStorage: AnyStorage<User>
   
-  init(navigationController: UINavigationController, profileStorage: AnyStorage<Profile>) {
+  init(navigationController: UINavigationController, profileStorage: AnyStorage<User>) {
     self.navigationController = navigationController
     self.profileStorage = profileStorage
   }

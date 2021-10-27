@@ -9,7 +9,7 @@ import Foundation
 
 protocol BackendAuth {
   
-  func authenticate(uid: String, token: String, completion: @escaping (Result<Profile, LLError>?) -> Void)
+  func authenticate(uid: String, token: String, completion: @escaping (Result<User, LLError>?) -> Void)
   func isAuthenticated() -> Bool
   func logout()
 }
@@ -17,12 +17,12 @@ protocol BackendAuth {
 class BackendAuthService: BackendAuth {
   
   let backendApiClient:     BackendAPIClient
-  let profileStorage:       AnyStorage<Profile>
+  let profileStorage:       AnyStorage<User>
   let accessTokenStorage:   AnyStorage<String>
   let refreshTokenStorage:  AnyStorage<String>
 
   init(backendApiClient:      BackendAPIClient,
-       profileStorage:        AnyStorage<Profile>,
+       profileStorage:        AnyStorage<User>,
        accessTokenStorage:    AnyStorage<String>,
        refreshTokenStorage:   AnyStorage<String>) {
     self.backendApiClient     = backendApiClient
@@ -35,7 +35,7 @@ class BackendAuthService: BackendAuth {
     }
   }
   
-  func authenticate(uid: String, token: String, completion: @escaping (Result<Profile, LLError>?) -> Void) {
+  func authenticate(uid: String, token: String, completion: @escaping (Result<User, LLError>?) -> Void) {
     backendApiClient.userApi.authenticate(uid: uid, token: token) { [weak self] result in
       guard let self = self else { return }
       switch result {

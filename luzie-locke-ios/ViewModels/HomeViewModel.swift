@@ -10,7 +10,7 @@ import UIKit
 class HomeViewModel {
   
   let coordinator:      HomeCoordinator
-  let profileStorage:   AnyStorage<Profile>
+  let profileStorage:   AnyStorage<User>
   let openHttpClient:   OpenHTTP
   let backendApiClient: BackendAPIClient
 
@@ -19,7 +19,7 @@ class HomeViewModel {
 //  var bindableUserLocation  = Bindable<String>()
 
   init(coordinator:       HomeCoordinator,
-       profileStorage:    AnyStorage<Profile>,
+       profileStorage:    AnyStorage<User>,
        openHttpClient:    OpenHTTP,
        backendApiClient:  BackendAPIClient) {
     self.coordinator      = coordinator

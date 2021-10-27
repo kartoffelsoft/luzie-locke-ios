@@ -9,7 +9,7 @@ import UIKit
 
 class ProfileCellViewModel {
 
-  var profile: Profile? {
+  var profile: User? {
     didSet {
       bindableNameText.value     = profile?.name
       bindableLocationText.value = profile?.location.name
