@@ -91,6 +91,12 @@
 		4AEE8F8527281978004CB686 /* UserAPIClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F8427281978004CB686 /* UserAPIClientMock.swift */; };
 		4AEE8F8727288842004CB686 /* ProfileCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F8627288842004CB686 /* ProfileCellViewModel.swift */; };
 		4AEE8F8B27289C6D004CB686 /* ProfileCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F8A27289C6D004CB686 /* ProfileCellViewModelTests.swift */; };
+		4AEE8F8D27295F0A004CB686 /* ImageSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F8C27295F0A004CB686 /* ImageSelectView.swift */; };
+		4AEE8F8F272965C4004CB686 /* ImageSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F8E272965C4004CB686 /* ImageSelectCell.swift */; };
+		4AEE8F922729778D004CB686 /* ImageSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F912729778D004CB686 /* ImageSelectButton.swift */; };
+		4AEE8F9427298CF3004CB686 /* TextInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F9327298CF3004CB686 /* TextInputCell.swift */; };
+		4AEE8F992729F026004CB686 /* NumberInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F982729F026004CB686 /* NumberInputCell.swift */; };
+		4AEE8F9B272A0458004CB686 /* MultiLineTextInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F9A272A0458004CB686 /* MultiLineTextInputCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +194,12 @@
 		4AEE8F8427281978004CB686 /* UserAPIClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIClientMock.swift; sourceTree = "<group>"; };
 		4AEE8F8627288842004CB686 /* ProfileCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCellViewModel.swift; sourceTree = "<group>"; };
 		4AEE8F8A27289C6D004CB686 /* ProfileCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCellViewModelTests.swift; sourceTree = "<group>"; };
+		4AEE8F8C27295F0A004CB686 /* ImageSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectView.swift; sourceTree = "<group>"; };
+		4AEE8F8E272965C4004CB686 /* ImageSelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectCell.swift; sourceTree = "<group>"; };
+		4AEE8F912729778D004CB686 /* ImageSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectButton.swift; sourceTree = "<group>"; };
+		4AEE8F9327298CF3004CB686 /* TextInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputCell.swift; sourceTree = "<group>"; };
+		4AEE8F982729F026004CB686 /* NumberInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberInputCell.swift; sourceTree = "<group>"; };
+		4AEE8F9A272A0458004CB686 /* MultiLineTextInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineTextInputCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,18 +243,11 @@
 		4A155E5227240B0F00C8B867 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				4A155E5527240D1500C8B867 /* ImageMenu */,
+				4AEE8F9027297750004CB686 /*  Buttons */,
 				4A155E4127229D3B00C8B867 /* ImageViews */,
 				4A3B52B327126D6000EF4F93 /* Labels */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		4A155E5527240D1500C8B867 /* ImageMenu */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ImageMenu;
 			sourceTree = "<group>";
 		};
 		4A3B5259271239CE00EF4F93 = {
@@ -301,6 +306,7 @@
 				4AED5E8427219E5C00B7AC00 /* Cells */,
 				4A155E5227240B0F00C8B867 /* Components */,
 				4A3B529927123DCF00EF4F93 /* Screens */,
+				4AEE8F8C27295F0A004CB686 /* ImageSelectView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -592,6 +598,10 @@
 				4A155E5F2724D16600C8B867 /* UserMenuCell.swift */,
 				4A155E5B2724438B00C8B867 /* SettingsMenuCell.swift */,
 				4AEE8F6E2726DF93004CB686 /* ItemCell.swift */,
+				4AEE8F8E272965C4004CB686 /* ImageSelectCell.swift */,
+				4AEE8F9327298CF3004CB686 /* TextInputCell.swift */,
+				4AEE8F982729F026004CB686 /* NumberInputCell.swift */,
+				4AEE8F9A272A0458004CB686 /* MultiLineTextInputCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -660,6 +670,14 @@
 				4AEE8F8A27289C6D004CB686 /* ProfileCellViewModelTests.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		4AEE8F9027297750004CB686 /*  Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				4AEE8F912729778D004CB686 /* ImageSelectButton.swift */,
+			);
+			path = " Buttons";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -782,7 +800,10 @@
 				4A155E622725C1FD00C8B867 /* SettingsViewModel.swift in Sources */,
 				4AED5E6A271FF2B200B7AC00 /* BackendResponse.swift in Sources */,
 				4A3B52C92713A02D00EF4F93 /* UIViewController+Ext.swift in Sources */,
+				4AEE8F9B272A0458004CB686 /* MultiLineTextInputCell.swift in Sources */,
+				4AEE8F922729778D004CB686 /* ImageSelectButton.swift in Sources */,
 				4A3B52E12715C10500EF4F93 /* ChatsCoordinator.swift in Sources */,
+				4AEE8F8D27295F0A004CB686 /* ImageSelectView.swift in Sources */,
 				4A3B52CD2714419B00EF4F93 /* LLError.swift in Sources */,
 				4A3B52B527126DB000EF4F93 /* ScreenTitleLabel.swift in Sources */,
 				4A155E602724D16600C8B867 /* UserMenuCell.swift in Sources */,
@@ -798,6 +819,7 @@
 				4A3B529D2712421300EF4F93 /* SearchViewController.swift in Sources */,
 				4A3B52A62712539300EF4F93 /* FirebaseAuthService.swift in Sources */,
 				4AEE8F712726E082004CB686 /* Item.swift in Sources */,
+				4AEE8F9427298CF3004CB686 /* TextInputCell.swift in Sources */,
 				4AED5E8627219E7300B7AC00 /* ProfileCell.swift in Sources */,
 				4A155E482722F31C00C8B867 /* KHTTPClient.swift in Sources */,
 				4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */,
@@ -809,9 +831,11 @@
 				4AED5E6E2720039500B7AC00 /* AuthenticationResponse.swift in Sources */,
 				4A3B52A22712461500EF4F93 /* ChatsViewController.swift in Sources */,
 				4A3B5268271239CE00EF4F93 /* SceneDelegate.swift in Sources */,
+				4AEE8F8F272965C4004CB686 /* ImageSelectCell.swift in Sources */,
 				4A3B529B2712401D00EF4F93 /* HomeViewController.swift in Sources */,
 				4AEE8F742727BC93004CB686 /* ItemCreateViewController.swift in Sources */,
 				4AED5E65271F729F00B7AC00 /* TokenHeaderRequestInterceptor.swift in Sources */,
+				4AEE8F992729F026004CB686 /* NumberInputCell.swift in Sources */,
 				4AED5E5A271EBEE700B7AC00 /* KHTTPAPIClient.swift in Sources */,
 				4A3B52DF2715C0F200EF4F93 /* SearchCoordinator.swift in Sources */,
 				4A3B52DD2715BA3700EF4F93 /* HomeCoordinator.swift in Sources */,

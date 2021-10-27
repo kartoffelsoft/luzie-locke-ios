@@ -8,8 +8,16 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-
-  static let profileViewId = "ProfileViewId"
+  
+  enum Section: Int {
+    case profile = 0, userMenu, settingsMenu
+    static var numberOfSections: Int { return 3 }
+  }
+  
+  enum SettingsMenuRow: Int {
+    case neibourhood = 0, logout
+    static var numberOfSections: Int { return 2 }
+  }
   
   private let viewModel:      SettingsViewModel
   private let userMenuItems = [
@@ -24,16 +32,6 @@ class SettingsViewController: UIViewController {
   ]
   
   private var collectionView: UICollectionView!
-  
-  enum Section: Int {
-    case profile = 0, userMenu, settingsMenu
-    static var numberOfSections: Int { return 3 }
-  }
-  
-  enum SettingsMenuRow: Int {
-    case neibourhood = 0, logout
-    static var numberOfSections: Int { return 2 }
-  }
   
   init(viewModel: SettingsViewModel) {
     self.viewModel      = viewModel
