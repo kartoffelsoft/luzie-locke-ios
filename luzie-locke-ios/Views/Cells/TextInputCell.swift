@@ -9,20 +9,16 @@ import UIKit
 
 class TextInputCell: UICollectionViewCell {
   
-  static let reuseIdentifier = "TextInputCell"
+  static let reuseIdentifier  = "TextInputCell"
   
-  class CustomTextField: UITextField {
-    
-    override func textRect(forBounds bounds: CGRect) -> CGRect {
-      return bounds.insetBy(dx: 12, dy: 0)
-    }
-    
-    override func editingRect(forBounds bounds: CGRect) -> CGRect {
-      return bounds.insetBy(dx: 12, dy: 0)
+  private let textField       = SingleLineInputTextField()
+  
+  var placeholder: String? {
+    didSet {
+      textField.text      = placeholder
+      textField.textColor = .systemGray3
     }
   }
-  
-  let textField = CustomTextField()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -30,16 +26,30 @@ class TextInputCell: UICollectionViewCell {
   }
   
   private func configure() {
-    textField.translatesAutoresizingMaskIntoConstraints = false
-    textField.isUserInteractionEnabled                  = true
-    textField.backgroundColor                           = .white
-
     addSubview(textField)
-
+    
+    textField.delegate = self
     textField.pinToEdges(of: self)
   }
 
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+}
+
+extension TextInputCell: UITextFieldDelegate {
+  
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    if textField.textColor == .systemGray3 && textField.isFirstResponder {
+      textField.text = nil
+      textField.textColor = .label
+    }
+  }
+  
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    if let text = textField.text, text.isEmpty || text == "" {
+      textField.text = placeholder
+      textField.textColor = .systemGray3
+    }
   }
 }

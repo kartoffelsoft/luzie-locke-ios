@@ -97,6 +97,9 @@
 		4AEE8F9427298CF3004CB686 /* TextInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F9327298CF3004CB686 /* TextInputCell.swift */; };
 		4AEE8F992729F026004CB686 /* NumberInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F982729F026004CB686 /* NumberInputCell.swift */; };
 		4AEE8F9B272A0458004CB686 /* MultiLineTextInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F9A272A0458004CB686 /* MultiLineTextInputCell.swift */; };
+		4AEE8F9E272A8831004CB686 /* SingleLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F9D272A8831004CB686 /* SingleLineTextField.swift */; };
+		4AEE8FA0272A8A37004CB686 /* MultiLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F9F272A8A37004CB686 /* MultiLineTextField.swift */; };
+		4AEE8FA4272ABDD2004CB686 /* CustomGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8FA3272ABDD2004CB686 /* CustomGradient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,6 +203,9 @@
 		4AEE8F9327298CF3004CB686 /* TextInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputCell.swift; sourceTree = "<group>"; };
 		4AEE8F982729F026004CB686 /* NumberInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberInputCell.swift; sourceTree = "<group>"; };
 		4AEE8F9A272A0458004CB686 /* MultiLineTextInputCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineTextInputCell.swift; sourceTree = "<group>"; };
+		4AEE8F9D272A8831004CB686 /* SingleLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLineTextField.swift; sourceTree = "<group>"; };
+		4AEE8F9F272A8A37004CB686 /* MultiLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineTextField.swift; sourceTree = "<group>"; };
+		4AEE8FA3272ABDD2004CB686 /* CustomGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGradient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +249,7 @@
 		4A155E5227240B0F00C8B867 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				4AEE8F9C272A8800004CB686 /* TextFields */,
 				4AEE8F9027297750004CB686 /*  Buttons */,
 				4A155E4127229D3B00C8B867 /* ImageViews */,
 				4A3B52B327126D6000EF4F93 /* Labels */,
@@ -278,8 +285,9 @@
 				4A3B52D327159C8E00EF4F93 /* Coordinators */,
 				4A3B52A32712536F00EF4F93 /* Services */,
 				4AED5E44271E2A1A00B7AC00 /* Configs */,
-				4AED5E1B27197BD700B7AC00 /* Supports */,
+				4A3B529827123DC100EF4F93 /* Extensions */,
 				4A3B52CB2714415900EF4F93 /* Utilities */,
+				4AED5E1B27197BD700B7AC00 /* Supports */,
 				4A3B5265271239CE00EF4F93 /* AppDelegate.swift */,
 				4A3B5267271239CE00EF4F93 /* SceneDelegate.swift */,
 				4A3B526E271239CF00EF4F93 /* Assets.xcassets */,
@@ -424,7 +432,6 @@
 				4AED5E2E271C167B00B7AC00 /* Labels */,
 				4AED5E2B271B87C600B7AC00 /* Popups */,
 				4AED5E28271ADC2D00B7AC00 /* Buttons */,
-				4A3B529827123DC100EF4F93 /* Extensions */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -436,6 +443,7 @@
 				4AED5E7F2720C2D200B7AC00 /* JWTDecode.swift */,
 				4A155E422722A46300C8B867 /* Constants.swift */,
 				4AEE8F6A2725D9B2004CB686 /* Bindable.swift */,
+				4AEE8FA3272ABDD2004CB686 /* CustomGradient.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -680,6 +688,15 @@
 			path = " Buttons";
 			sourceTree = "<group>";
 		};
+		4AEE8F9C272A8800004CB686 /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				4AEE8F9D272A8831004CB686 /* SingleLineTextField.swift */,
+				4AEE8F9F272A8A37004CB686 /* MultiLineTextField.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -801,9 +818,11 @@
 				4AED5E6A271FF2B200B7AC00 /* BackendResponse.swift in Sources */,
 				4A3B52C92713A02D00EF4F93 /* UIViewController+Ext.swift in Sources */,
 				4AEE8F9B272A0458004CB686 /* MultiLineTextInputCell.swift in Sources */,
+				4AEE8FA4272ABDD2004CB686 /* CustomGradient.swift in Sources */,
 				4AEE8F922729778D004CB686 /* ImageSelectButton.swift in Sources */,
 				4A3B52E12715C10500EF4F93 /* ChatsCoordinator.swift in Sources */,
 				4AEE8F8D27295F0A004CB686 /* ImageSelectView.swift in Sources */,
+				4AEE8F9E272A8831004CB686 /* SingleLineTextField.swift in Sources */,
 				4A3B52CD2714419B00EF4F93 /* LLError.swift in Sources */,
 				4A3B52B527126DB000EF4F93 /* ScreenTitleLabel.swift in Sources */,
 				4A155E602724D16600C8B867 /* UserMenuCell.swift in Sources */,
@@ -821,6 +840,7 @@
 				4AEE8F712726E082004CB686 /* Item.swift in Sources */,
 				4AEE8F9427298CF3004CB686 /* TextInputCell.swift in Sources */,
 				4AED5E8627219E7300B7AC00 /* ProfileCell.swift in Sources */,
+				4AEE8FA0272A8A37004CB686 /* MultiLineTextField.swift in Sources */,
 				4A155E482722F31C00C8B867 /* KHTTPClient.swift in Sources */,
 				4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */,
 				4A3B5266271239CE00EF4F93 /* AppDelegate.swift in Sources */,

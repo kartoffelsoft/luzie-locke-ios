@@ -11,18 +11,14 @@ class NumberInputCell: UICollectionViewCell {
   
   static let reuseIdentifier = "NumberInputCell"
   
-  class CustomTextField: UITextField {
-    
-    override func textRect(forBounds bounds: CGRect) -> CGRect {
-      return bounds.insetBy(dx: 12, dy: 0)
-    }
-    
-    override func editingRect(forBounds bounds: CGRect) -> CGRect {
-      return bounds.insetBy(dx: 12, dy: 0)
+  private let textField      = SingleLineInputTextField()
+  
+  var placeholder: String? {
+    didSet {
+      textField.text      = placeholder
+      textField.textColor = .systemGray3
     }
   }
-  
-  let textField = CustomTextField()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -30,14 +26,10 @@ class NumberInputCell: UICollectionViewCell {
   }
   
   private func configure() {
-    textField.delegate                                  = self
-    textField.translatesAutoresizingMaskIntoConstraints = false
-    textField.isUserInteractionEnabled                  = true
-    textField.backgroundColor                           = .white
-    textField.keyboardType                              = UIKeyboardType.decimalPad
-    
     addSubview(textField)
-
+    
+    textField.delegate      = self
+    textField.keyboardType  = UIKeyboardType.decimalPad
     textField.pinToEdges(of: self)
   }
 
@@ -49,9 +41,22 @@ class NumberInputCell: UICollectionViewCell {
 extension NumberInputCell: UITextFieldDelegate {
   
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-    print(string)
     let allowedCharacters = CharacterSet.decimalDigits.union(CharacterSet (charactersIn: "."))
     let characterSet      = CharacterSet(charactersIn: string)
     return allowedCharacters.isSuperset(of: characterSet)
+  }
+  
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    if textField.textColor == .systemGray3 && textField.isFirstResponder {
+      textField.text = nil
+      textField.textColor = .label
+    }
+  }
+  
+  func textFieldDidEndEditing(_ textField: UITextField) {
+    if let text = textField.text, text.isEmpty || text == "" {
+      textField.text = placeholder
+      textField.textColor = .systemGray3
+    }
   }
 }

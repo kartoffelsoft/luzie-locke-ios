@@ -29,6 +29,7 @@ class HomeViewController: UIViewController {
     
     navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: ScreenTitleLabel("Home"))
     
+    configureNavigationBar()
     configureCollectionView()
     configureDataSource()
     configureAddButton()
@@ -41,18 +42,29 @@ class HomeViewController: UIViewController {
     updateData(on: items)
   }
   
+  func configureNavigationBar() {
+    if let navigationController = navigationController,
+       let image = CustomGradient.navBarBackground(on: navigationController.navigationBar) {
+      navigationController.navigationBar.barTintColor = UIColor(patternImage: image)
+    }
+  }
+  
   private func configureCollectionView() {
     let padding: CGFloat    = 15
     let flowLayout          = UICollectionViewFlowLayout()
     flowLayout.sectionInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
     flowLayout.itemSize     = CGSize(width: view.bounds.width - padding * 2, height: 100)
     
-    collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
-    view.addSubview(collectionView)
-    collectionView.delegate = self
-    collectionView.backgroundColor = .systemBackground
+    collectionView                  = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
+    collectionView.delegate         = self
     
     collectionView.register(ItemCell.self, forCellWithReuseIdentifier: ItemCell.reuseIdentifier)
+    
+    view.addSubview(collectionView)
+    
+    if let image = CustomGradient.mainBackground(on: collectionView) {
+      collectionView.backgroundColor = UIColor(patternImage: image)
+    }
   }
   
   func configureDataSource() {
@@ -63,8 +75,7 @@ class HomeViewController: UIViewController {
   }
 
   func configureAddButton() {
-    setButton.backgroundColor       = UIColor(named: "PrimaryColor")
-    setButton.imageView?.tintColor  = .white
+    setButton.backgroundColor = Colors.primaryColor
     
     setButton.setImage(Images.floatingAdd, for: .normal)
     setButton.addTarget(self, action: #selector(handleAdd), for: .touchUpInside)

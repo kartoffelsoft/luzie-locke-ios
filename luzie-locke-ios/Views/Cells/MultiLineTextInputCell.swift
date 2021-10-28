@@ -11,7 +11,14 @@ class MultiLineTextInputCell: UICollectionViewCell {
   
   static let reuseIdentifier = "MultiLineTextInputCell"
   
-  let textView = UITextView()
+  private let textField      = MultiLineInputTextField()
+  
+  var placeholder: String? {
+    didSet {
+      textField.text = placeholder
+      textField.textColor = .systemGray3
+    }
+  }
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -19,16 +26,30 @@ class MultiLineTextInputCell: UICollectionViewCell {
   }
   
   private func configure() {
-    textView.translatesAutoresizingMaskIntoConstraints = false
-    textView.isUserInteractionEnabled                  = true
-    textView.backgroundColor                           = .white
-
-    addSubview(textView)
-
-    textView.pinToEdges(of: self)
+    addSubview(textField)
+    
+    textField.delegate = self
+    textField.pinToEdges(of: self)
   }
-
+  
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+}
+
+extension MultiLineTextInputCell: UITextViewDelegate {
+
+  func textViewDidBeginEditing(_ textView: UITextView) {
+    if textField.textColor == .systemGray3 && textField.isFirstResponder {
+      textField.text = nil
+      textField.textColor = .label
+    }
+  }
+  
+  func textViewDidEndEditing(_ textView: UITextView) {
+    if textField.text.isEmpty || textField.text == "" {
+      textField.text = placeholder
+      textField.textColor = .systemGray3
+    }
   }
 }

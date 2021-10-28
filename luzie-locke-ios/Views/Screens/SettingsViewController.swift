@@ -43,11 +43,19 @@ class SettingsViewController: UIViewController {
     
     navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: ScreenTitleLabel("Settings"))
     
+    configureNavigationBar()
     configureCollectionView()
   }
   
   override func viewDidAppear(_ animated: Bool) {
     viewModel.load()
+  }
+  
+  func configureNavigationBar() {
+    if let navigationController = navigationController,
+       let image = CustomGradient.navBarBackground(on: navigationController.navigationBar) {
+      navigationController.navigationBar.barTintColor = UIColor(patternImage: image)
+    }
   }
   
   private func configureCollectionView() {
@@ -91,12 +99,15 @@ class SettingsViewController: UIViewController {
     collectionView                  = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
     collectionView.delegate         = self
     collectionView.dataSource       = self
-    collectionView.backgroundColor  = .systemBackground
     
     collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: ProfileCell.reuseIdentifier)
     collectionView.register(UserMenuCell.self, forCellWithReuseIdentifier: UserMenuCell.reuseIdentifier)
     collectionView.register(SettingsMenuCell.self, forCellWithReuseIdentifier: SettingsMenuCell.reuseIdentifier)
     view.addSubview(collectionView)
+    
+    if let image = CustomGradient.mainBackground(on: collectionView) {
+      collectionView.backgroundColor = UIColor(patternImage: image)
+    }
   }
   
   required init?(coder: NSCoder) {

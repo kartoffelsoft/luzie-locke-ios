@@ -20,9 +20,23 @@ class ItemCreateViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    configureNavigationBar()
     configureCollectionView()
   }
+
   
+  private func configureNavigationBar() {
+    if let navigationController = navigationController,
+       let image = CustomGradient.navBarBackground(on: navigationController.navigationBar) {
+      navigationController.navigationBar.barTintColor = UIColor(patternImage: image)
+    }
+    
+    navigationItem.rightBarButtonItem = UIBarButtonItem(image: Images.upload, style: .plain, target: self, action: #selector(handleUpload))
+    
+//    navigationItem.leftBarButtonItem = UIBarButtonItem(image: Images.upload, style: .plain, target: self, action: #selector(handleBack))
+  }
+
   private func configureCollectionView() {
     let padding: CGFloat    = 15
     let flowLayout          = UICollectionViewFlowLayout()
@@ -57,7 +71,7 @@ class ItemCreateViewController: UIViewController {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
         item.contentInsets = .init(top: padding, leading: padding, bottom: padding, trailing: padding)
         
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(176)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(310)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         
         return section
@@ -70,7 +84,6 @@ class ItemCreateViewController: UIViewController {
     collectionView                  = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
     collectionView.delegate         = self
     collectionView.dataSource       = self
-    collectionView.backgroundColor  = .systemGray6
     
     collectionView.register(ImageSelectCell.self, forCellWithReuseIdentifier: ImageSelectCell.reuseIdentifier)
     collectionView.register(TextInputCell.self, forCellWithReuseIdentifier: TextInputCell.reuseIdentifier)
@@ -78,6 +91,10 @@ class ItemCreateViewController: UIViewController {
     collectionView.register(MultiLineTextInputCell.self, forCellWithReuseIdentifier: MultiLineTextInputCell.reuseIdentifier)
     
     view.addSubview(collectionView)
+    
+    if let image = CustomGradient.mainBackground(on: collectionView) {
+      collectionView.backgroundColor = UIColor(patternImage: image)
+    }
   }
 }
 
@@ -101,6 +118,14 @@ extension ItemCreateViewController: UICollectionViewDelegate {
   func numberOfSections(in collectionView: UICollectionView) -> Int {
     return Section.numberOfSections
   }
+  
+  @objc private func handleUpload() {
+    print("handleUpload")
+  }
+  
+  @objc private func handleBack() {
+    print("handleBack")
+  }
 }
 
 extension ItemCreateViewController: UICollectionViewDataSource {
@@ -116,15 +141,15 @@ extension ItemCreateViewController: UICollectionViewDataSource {
       return cell
     case .title:
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextInputCell.reuseIdentifier, for: indexPath) as! TextInputCell
-      cell.textField.placeholder = "Title"
+      cell.placeholder = "Title"
       return cell
     case .price:
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NumberInputCell.reuseIdentifier, for: indexPath) as! NumberInputCell
-      cell.textField.placeholder = "Price"
+      cell.placeholder = "Price"
       return cell
     case .description:
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MultiLineTextInputCell.reuseIdentifier, for: indexPath) as! MultiLineTextInputCell
-//      cell.textField.placeholder = "Description"
+      cell.placeholder = "Description"
       return cell
     default:
       return  UICollectionViewCell()
