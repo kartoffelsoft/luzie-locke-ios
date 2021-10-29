@@ -11,6 +11,8 @@ class ImageSelectCell: UICollectionViewCell, UIImagePickerControllerDelegate, UI
   
   static let reuseIdentifier = "ImageSelectCell"
   
+  var viewModel: ImageSelectCellViewModel?
+  
   let imageButton1 = ImageSelectButton(type: .system)
   let imageButton2 = ImageSelectButton(type: .system)
   let imageButton3 = ImageSelectButton(type: .system)
@@ -20,15 +22,16 @@ class ImageSelectCell: UICollectionViewCell, UIImagePickerControllerDelegate, UI
     configure()
   }
   
-  private func configure() {    
+  private func configure() {
+    imageButton1.tag = 0
+    imageButton2.tag = 1
+    imageButton3.tag = 2
+    
     let stackView = UIStackView(arrangedSubviews: [ imageButton2, imageButton3 ])
     stackView.translatesAutoresizingMaskIntoConstraints = false
     stackView.axis                                      = .vertical
     stackView.spacing                                   = 4
     stackView.distribution                              = .fillEqually
-    
-    imageButton2.isEnabled = false
-    imageButton3.isEnabled = false
     
     addSubview(imageButton1)
     addSubview(stackView)
@@ -45,11 +48,13 @@ class ImageSelectCell: UICollectionViewCell, UIImagePickerControllerDelegate, UI
       stackView.trailingAnchor.constraint(equalTo: trailingAnchor)
     ])
     
-    imageButton1.addTarget(self, action: #selector(handleBack), for: .touchUpInside)
+    imageButton1.addTarget(self, action: #selector(handleSelectPhoto), for: .touchUpInside)
+    imageButton2.addTarget(self, action: #selector(handleSelectPhoto), for: .touchUpInside)
+    imageButton3.addTarget(self, action: #selector(handleSelectPhoto), for: .touchUpInside)
   }
   
-  @objc func handleBack(button: UIButton) {
-
+  @objc func handleSelectPhoto(button: UIButton) {
+    viewModel?.openImagePicker(button: button)
   }
   
   

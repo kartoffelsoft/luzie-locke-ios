@@ -17,10 +17,12 @@ enum Images {
   static let favorites          = UIImage(named: "FavoriteList")
   
   static let location           = UIImage(systemName: "location",
-                                          withConfiguration: UIImage.SymbolConfiguration(weight: .thin))
+                                          withConfiguration: UIImage.SymbolConfiguration(weight: .regular))?
+                                    .withTintColor(Colors.tertiaryColor, renderingMode: .alwaysOriginal)
   
   static let logout             = UIImage(systemName: "lock",
-                                          withConfiguration: UIImage.SymbolConfiguration(weight: .thin))
+                                          withConfiguration: UIImage.SymbolConfiguration(weight: .regular))?
+                                    .withTintColor(Colors.tertiaryColor, renderingMode: .alwaysOriginal)
   
   static let home               = UIImage(systemName: "house",
                                           withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
@@ -38,12 +40,9 @@ enum Images {
                                           withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .bold))?
                                     .withTintColor(Colors.secondaryColor, renderingMode: .alwaysOriginal)
   
-  static let selectDisabled     = UIImage(systemName: "lock",
-                                          withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .medium))
-  
-  static let selectEnabled      = UIImage(systemName: "photo",
+  static let selectImage        = UIImage(systemName: "photo",
                                           withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))?
-                                    .withTintColor(UIColor(named: "PrimaryColor")!, renderingMode: .alwaysOriginal)
+                                    .withTintColor(Colors.primaryColorLight1, renderingMode: .alwaysOriginal)
   
   static let upload             = UIImage(systemName: "icloud.and.arrow.up",
                                           withConfiguration: UIImage.SymbolConfiguration(weight: .bold))?
@@ -58,6 +57,7 @@ enum Colors {
   static let primaryColorDark1  = UIColor(named: "PrimaryColorDark1")!
   static let primaryColorDark2  = UIColor(named: "PrimaryColorDark2")!
   static let secondaryColor     = UIColor(named: "SecondaryColor")!
+  static let tertiaryColor      = UIColor(named: "TertiaryColor")!
 }
 
 enum Fonts {

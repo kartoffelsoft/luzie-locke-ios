@@ -43,7 +43,7 @@ extension MultiLineTextInputCell: UITextViewDelegate {
   func textViewDidBeginEditing(_ textView: UITextView) {
     if textField.textColor == .systemGray3 && textField.isFirstResponder {
       textField.text      = nil
-      textField.textColor = Colors.primaryColorDark1
+      textField.textColor = Colors.primaryColor
     }
   }
   

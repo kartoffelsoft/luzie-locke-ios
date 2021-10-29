@@ -24,6 +24,7 @@ class ItemCreateViewController: UIViewController {
   init(viewModel: ItemCreateViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
+    self.viewModel.delegate = self
   }
 
   override func viewDidLoad() {
@@ -152,6 +153,7 @@ extension ItemCreateViewController: UICollectionViewDataSource {
     switch Section(rawValue: indexPath.section) {
     case .imageSelect:
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageSelectCell.reuseIdentifier, for: indexPath) as! ImageSelectCell
+      cell.viewModel    = viewModel.imageSelectViewModel
       return cell
     case .title:
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextInputCell.reuseIdentifier, for: indexPath) as! TextInputCell
@@ -171,5 +173,16 @@ extension ItemCreateViewController: UICollectionViewDataSource {
     default:
       return  UICollectionViewCell()
     }
+  }
+}
+
+extension ItemCreateViewController: ItemCreateViewModelDelegate {
+  
+  func didOpenImagePicker(controller: UIImagePickerController) {
+    present(controller, animated: true)
+  }
+  
+  func didCloseImagePicker() {
+    dismiss(animated: true)
   }
 }

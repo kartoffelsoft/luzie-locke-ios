@@ -21,7 +21,7 @@ class HeaderLabel: UILabel {
   }
   
   private func configure() {
-    textColor                                   = .label
+    textColor                                   = Colors.primaryColor
     adjustsFontSizeToFitWidth                   = true
     minimumScaleFactor                          = 0.9
     lineBreakMode                               = .byTruncatingTail

@@ -7,13 +7,21 @@
 
 import UIKit
 
+protocol ItemCreateViewModelDelegate: AnyObject {
+  func didOpenImagePicker(controller: UIImagePickerController)
+  func didCloseImagePicker()
+}
+
 class ItemCreateViewModel {
+  
+  weak var delegate:        ItemCreateViewModelDelegate?
   
   let coordinator:          HomeCoordinator
   let profileStorage:       AnyStorage<User>
   let openHttpClient:       OpenHTTP
   let backendApiClient:     BackendAPIClient
 
+  let imageSelectViewModel: ImageSelectCellViewModel
   let titleViewModel:       TextInputCellViewModel
   let priceViewModel:       DecimalInputCellViewModel
   let descriptionViewModel: TextInputCellViewModel
@@ -27,12 +35,23 @@ class ItemCreateViewModel {
     self.openHttpClient   = openHttpClient
     self.backendApiClient = backendApiClient
     
+    imageSelectViewModel  = ImageSelectCellViewModel()
     titleViewModel        = TextInputCellViewModel()
     priceViewModel        = DecimalInputCellViewModel()
     descriptionViewModel  = TextInputCellViewModel()
+    
+    imageSelectViewModel.onOpenImagePicker  = self.openImagePicker
+    imageSelectViewModel.onCloseImagePicker = self.closeImagePicker
   }
   
   private func validate() -> Result<Void, LLError> {
+    
+    if imageSelectViewModel.selectedImages[0] == nil &&
+       imageSelectViewModel.selectedImages[0] == nil &&
+       imageSelectViewModel.selectedImages[0] == nil {
+      return .failure(.photoNotSelected)
+    }
+    
     guard let title = titleViewModel.text else             { return .failure(.titleInvalid) }
     if title.count < 3                                     { return .failure(.titleInvalid) }
 
@@ -50,5 +69,13 @@ class ItemCreateViewModel {
     case .success: ()
     case .failure(let error): completion(.failure(error))
     }
+  }
+  
+  func openImagePicker(_ controller: UIImagePickerController) {
+    delegate?.didOpenImagePicker(controller: controller)
+  }
+  
+  func closeImagePicker() {
+    delegate?.didCloseImagePicker()
   }
 }

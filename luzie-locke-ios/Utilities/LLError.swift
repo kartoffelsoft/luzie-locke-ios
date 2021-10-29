@@ -13,6 +13,7 @@ enum LLError: String, Error {
   case unexpectedServerResponse = "Unexpected response received from the server."
   case invalidResponse          = "Invalid response from the server. Please retry."
   case invalidData              = "The data received from the server was invalid. Please try again."
+  case photoNotSelected         = "Should upload at least one photo."
   case titleInvalid             = "The title is empty or too short. Must be at least 3 characters long."
   case descriptionInvalid       = "The description is empty or too short. Must be at least 9 characters long."
   case priceInvalid             = "The price is empty or invalid."

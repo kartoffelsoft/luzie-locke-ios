@@ -9,12 +9,6 @@ import UIKit
 
 class ImageSelectButton: UIButton {
   
-  override var isEnabled: Bool {
-    didSet {
-      setImage(isEnabled ? Images.selectEnabled : Images.selectDisabled, for: .normal)
-    }
-  }
-  
   override init(frame: CGRect) {
     super.init(frame: frame)
     configure()
@@ -31,7 +25,7 @@ class ImageSelectButton: UIButton {
     clipsToBounds                             = true
     adjustsImageWhenDisabled                  = true
     
-    setImage(Images.selectEnabled , for: .normal)
+    setImage(Images.selectImage , for: .normal)
   }
   
   required init?(coder: NSCoder) {

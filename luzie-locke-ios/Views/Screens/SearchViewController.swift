@@ -26,7 +26,6 @@ class SearchViewController: UIViewController {
   func configureSearchController() {
     let searchController                                    = UISearchController()
     searchController.searchResultsUpdater                   = self
-    searchController.searchBar.placeholder                  = "Search for an item"
     searchController.obscuresBackgroundDuringPresentation   = false
     navigationItem.searchController                         = searchController
     navigationItem.hidesSearchBarWhenScrolling              = false

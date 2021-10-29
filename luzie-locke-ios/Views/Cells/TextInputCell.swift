@@ -48,7 +48,7 @@ extension TextInputCell: UITextFieldDelegate {
   func textFieldDidBeginEditing(_ textField: UITextField) {
     if textField.textColor == .systemGray3 && textField.isFirstResponder {
       textField.text      = nil
-      textField.textColor = Colors.primaryColorDark1
+      textField.textColor = Colors.primaryColor
     }
   }
   

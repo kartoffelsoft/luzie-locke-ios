@@ -24,7 +24,7 @@ class SettingsMenuCell: UICollectionViewCell {
   }
   
   let symbol = UIImageView()
-  let title  = HeaderLabel(textAlignment: .left, font: Fonts.body)
+  let title  = HeaderLabel(textAlignment: .left, font: Fonts.subtitle)
   
   override init(frame: CGRect) {
     super.init(frame: frame)
