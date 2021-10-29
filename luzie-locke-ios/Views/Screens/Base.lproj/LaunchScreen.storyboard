@@ -16,6 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="2qO-tG-vkH">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="CJN-Y6-kbG">
                                 <rect key="frame" x="102" y="318" width="210" height="260"/>
                                 <constraints>
@@ -29,6 +32,10 @@
                         <constraints>
                             <constraint firstItem="CJN-Y6-kbG" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="4sE-ze-gru"/>
                             <constraint firstItem="CJN-Y6-kbG" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="5zC-zC-USb"/>
+                            <constraint firstAttribute="trailing" secondItem="2qO-tG-vkH" secondAttribute="trailing" id="bbd-Ew-Gb3"/>
+                            <constraint firstItem="2qO-tG-vkH" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="id6-Fa-f1G"/>
+                            <constraint firstItem="2qO-tG-vkH" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="44" id="tQ1-SV-CB2"/>
+                            <constraint firstAttribute="bottom" secondItem="2qO-tG-vkH" secondAttribute="bottom" id="vMh-Up-src"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -38,6 +45,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Background" width="577" height="552.5"/>
         <image name="Logo" width="341" height="341"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

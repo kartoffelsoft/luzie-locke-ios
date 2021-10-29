@@ -63,7 +63,7 @@ extension LoginViewController: LoginViewModelDelegate {
     }
   }
   
-  func didReceiveError(_ error: LLError) {
+  func didGetError(_ error: LLError) {
     presentAlertOnMainThread(
       title: "Unable to complete",
       message: error.rawValue,

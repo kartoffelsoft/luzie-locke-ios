@@ -13,7 +13,8 @@ class ScreenTitleLabel: UILabel {
     super.init(frame: .zero)
     
     self.text = text
-    textColor = UIColor.label
+    textColor = Colors.primaryColor
+    font      = UIFont(name: "Supercell-Magic", size: 15)
   }
   
   required init?(coder: NSCoder) {

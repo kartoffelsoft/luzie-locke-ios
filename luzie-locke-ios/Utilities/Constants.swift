@@ -10,14 +10,11 @@ import UIKit
 enum Images {
   static let avatarPlaceholder  = UIImage(named: "AvatarPlaceholder")
   
-  static let listings           = UIImage(systemName: "line.horizontal.3.circle",
-                                          withConfiguration: UIImage.SymbolConfiguration(weight: .thin))
+  static let listings           = UIImage(named: "List")
   
-  static let purchases          = UIImage(systemName: "bag.circle",
-                                          withConfiguration: UIImage.SymbolConfiguration(weight: .thin))
+  static let purchases          = UIImage(named: "ShoppingBag")
   
-  static let favorites          = UIImage(systemName: "heart.circle",
-                                          withConfiguration: UIImage.SymbolConfiguration(weight: .thin))
+  static let favorites          = UIImage(named: "FavoriteList")
   
   static let location           = UIImage(systemName: "location",
                                           withConfiguration: UIImage.SymbolConfiguration(weight: .thin))
@@ -34,7 +31,7 @@ enum Images {
   static let chats              = UIImage(systemName: "message",
                                           withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
   
-  static let settings           = UIImage(systemName: "person",
+  static let settings           = UIImage(systemName: "gearshape",
                                           withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
   
   static let floatingAdd        = UIImage(systemName: "plus",
@@ -42,9 +39,9 @@ enum Images {
                                     .withTintColor(Colors.secondaryColor, renderingMode: .alwaysOriginal)
   
   static let selectDisabled     = UIImage(systemName: "lock",
-                                          withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))
+                                          withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .medium))
   
-  static let selectEnabled      = UIImage(systemName: "plus",
+  static let selectEnabled      = UIImage(systemName: "photo",
                                           withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))?
                                     .withTintColor(UIColor(named: "PrimaryColor")!, renderingMode: .alwaysOriginal)
   
@@ -58,5 +55,14 @@ enum Colors {
   static let primaryColorLight1 = UIColor(named: "PrimaryColorLight1")!
   static let primaryColorLight2 = UIColor(named: "PrimaryColorLight2")!
   static let primaryColorLight3 = UIColor(named: "PrimaryColorLight3")!
+  static let primaryColorDark1  = UIColor(named: "PrimaryColorDark1")!
+  static let primaryColorDark2  = UIColor(named: "PrimaryColorDark2")!
   static let secondaryColor     = UIColor(named: "SecondaryColor")!
+}
+
+enum Fonts {
+  static let title      = UIFont(name: "SuperCell-Magic", size: 14)!
+  static let subtitle   = UIFont(name: "SuperCell-Magic", size: 12)!
+  static let body       = UIFont(name: "SuperCell-Magic", size: 10)!
+  static let caption    = UIFont(name: "SuperCell-Magic", size: 8)!
 }

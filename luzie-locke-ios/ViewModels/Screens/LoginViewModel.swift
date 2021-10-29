@@ -11,7 +11,7 @@ import GoogleSignIn
 
 protocol LoginViewModelDelegate: AnyObject {
   func didLogin()
-  func didReceiveError(_ error: LLError)
+  func didGetError(_ error: LLError)
 }
 
 class LoginViewModel {
@@ -68,7 +68,7 @@ class LoginViewModel {
           self.delegate?.didLogin()
         }
       case .failure(let error):
-        self.delegate?.didReceiveError(error)
+        self.delegate?.didGetError(error)
       case .none:
         ()
       }

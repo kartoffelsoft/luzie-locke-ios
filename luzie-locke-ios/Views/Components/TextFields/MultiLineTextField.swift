@@ -19,7 +19,7 @@ class MultiLineInputTextField: UITextView {
     layer.cornerRadius                        = 5
     layer.borderColor                         = UIColor(named: "PrimaryColor")?.cgColor
     textContainerInset                        = UIEdgeInsets(top: 12, left: 6, bottom: 6, right: 6)
-    font                                      = .systemFont(ofSize: 16)
+    font                                      = Fonts.body
   }
   
   required init?(coder: NSCoder) {

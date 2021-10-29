@@ -7,17 +7,17 @@
 
 import UIKit
 
-class KBodyLabel: UILabel {
+class BodyLabel: UILabel {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     configure()
   }
 
-  convenience init(textAlignment: NSTextAlignment, textStyle: UIFont.TextStyle = .body) {
+  convenience init(textAlignment: NSTextAlignment, font: UIFont = Fonts.body) {
     self.init(frame: .zero)
     self.textAlignment = textAlignment
-    self.font          = UIFont.preferredFont(forTextStyle: textStyle)
+    self.font          = font
   }
   
   private func configure() {

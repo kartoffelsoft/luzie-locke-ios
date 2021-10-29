@@ -12,8 +12,8 @@ class ProfileCell: UICollectionViewCell {
   static let reuseIdentifier = "ProfileCell"
   
   let userImageView     = AvatarImageView(radius: 30)
-  let userNameLabel     = KHeaderLabel(textAlignment: .left)
-  let userLocationLabel = KBodyLabel(textAlignment: .left, textStyle: .subheadline)
+  let userNameLabel     = HeaderLabel(textAlignment: .left)
+  let userLocationLabel = BodyLabel(textAlignment: .left, font: Fonts.caption)
   
   var viewModel: ProfileCellViewModel? {
     didSet {

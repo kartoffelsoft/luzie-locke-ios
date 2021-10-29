@@ -27,9 +27,10 @@ class HomeCoordinator: Coordinator {
     
     let vm = HomeViewModel(coordinator: self, profileStorage: profileStorage, openHttpClient: openHttpClient, backendApiClient: backendApiClient)
     let vc = HomeViewController(viewModel: vm)
-    vc.tabBarItem   = UITabBarItem(title: "Home",
-                                   image: Images.home,
-                                   selectedImage: Images.home)
+    
+    vc.tabBarItem = UITabBarItem(title: nil,
+                                 image: Images.home,
+                                 selectedImage: Images.home)
     
     navigationController.pushViewController(vc, animated: false)
   }
@@ -38,7 +39,11 @@ class HomeCoordinator: Coordinator {
   }
   
   func navigateToItemCreate() {
-    let vc = ItemCreateViewController()
+    let vm = ItemCreateViewModel(coordinator: self,
+                                 profileStorage: profileStorage,
+                                 openHttpClient: openHttpClient,
+                                 backendApiClient: backendApiClient)
+    let vc = ItemCreateViewController(viewModel: vm)
     navigationController.pushViewController(vc, animated: true)
   }
   

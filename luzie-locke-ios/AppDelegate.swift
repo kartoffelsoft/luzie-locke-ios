@@ -14,7 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     FirebaseApp.configure()
+    
     UIBarButtonItem.appearance().tintColor = Colors.primaryColor
+    UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "SuperCell-Magic", size: 12)!], for: UIControl.State.normal)
+    
     return true
   }
   

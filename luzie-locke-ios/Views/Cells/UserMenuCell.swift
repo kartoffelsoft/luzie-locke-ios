@@ -24,7 +24,7 @@ class UserMenuCell: UICollectionViewCell {
   }
   
   let symbol = UIImageView()
-  let title  = KHeaderLabel(textAlignment: .center, textStyle: .subheadline)
+  let title  = HeaderLabel(textAlignment: .center, font: Fonts.caption)
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -36,16 +36,6 @@ class UserMenuCell: UICollectionViewCell {
     title.translatesAutoresizingMaskIntoConstraints   = false
     
     symbol.tintColor = .darkGray
-    
-//    let container = UIStackView(arrangedSubviews: [symbol, title])
-//    container.axis      = .vertical
-//    container.alignment = .center
-//    container.spacing   = 5
-    
-//    addSubview(container)
-//    container.pinToEdges(of: self)
-//
-//    container.translatesAutoresizingMaskIntoConstraints = false
     
     addSubview(symbol)
     addSubview(title)

@@ -8,7 +8,7 @@
 import UIKit
 
 class ItemCreateViewController: UIViewController {
-  
+
   enum Section: Int {
     case imageSelect = 0, title, price, description
     static var numberOfSections: Int { return 4 }
@@ -16,8 +16,16 @@ class ItemCreateViewController: UIViewController {
   
   static let headerId = "HeaderId"
   
+  
+  private let viewModel: ItemCreateViewModel
+  
   private var collectionView: UICollectionView!
   
+  init(viewModel: ItemCreateViewModel) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -25,7 +33,6 @@ class ItemCreateViewController: UIViewController {
     configureCollectionView()
   }
 
-  
   private func configureNavigationBar() {
     if let navigationController = navigationController,
        let image = CustomGradient.navBarBackground(on: navigationController.navigationBar) {
@@ -33,8 +40,6 @@ class ItemCreateViewController: UIViewController {
     }
     
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: Images.upload, style: .plain, target: self, action: #selector(handleUpload))
-    
-//    navigationItem.leftBarButtonItem = UIBarButtonItem(image: Images.upload, style: .plain, target: self, action: #selector(handleBack))
   }
 
   private func configureCollectionView() {
@@ -81,13 +86,13 @@ class ItemCreateViewController: UIViewController {
       }
     }
     
-    collectionView                  = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
-    collectionView.delegate         = self
-    collectionView.dataSource       = self
+    collectionView            = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+    collectionView.delegate   = self
+    collectionView.dataSource = self
     
     collectionView.register(ImageSelectCell.self, forCellWithReuseIdentifier: ImageSelectCell.reuseIdentifier)
     collectionView.register(TextInputCell.self, forCellWithReuseIdentifier: TextInputCell.reuseIdentifier)
-    collectionView.register(NumberInputCell.self, forCellWithReuseIdentifier: NumberInputCell.reuseIdentifier)
+    collectionView.register(DecimalInputCell.self, forCellWithReuseIdentifier: DecimalInputCell.reuseIdentifier)
     collectionView.register(MultiLineTextInputCell.self, forCellWithReuseIdentifier: MultiLineTextInputCell.reuseIdentifier)
     
     view.addSubview(collectionView)
@@ -95,6 +100,10 @@ class ItemCreateViewController: UIViewController {
     if let image = CustomGradient.mainBackground(on: collectionView) {
       collectionView.backgroundColor = UIColor(patternImage: image)
     }
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 }
 
@@ -120,11 +129,16 @@ extension ItemCreateViewController: UICollectionViewDelegate {
   }
   
   @objc private func handleUpload() {
-    print("handleUpload")
-  }
-  
-  @objc private func handleBack() {
-    print("handleBack")
+    viewModel.upload { result in
+      switch result {
+      case .success: ()
+      case .failure(let error):
+        presentAlertOnMainThread(
+          title: "Unable to proceed",
+          message: error.rawValue,
+          buttonTitle: "OK")
+      }
+    }
   }
 }
 
@@ -141,15 +155,18 @@ extension ItemCreateViewController: UICollectionViewDataSource {
       return cell
     case .title:
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextInputCell.reuseIdentifier, for: indexPath) as! TextInputCell
-      cell.placeholder = "Title"
+      cell.placeholder  = "Title"
+      cell.viewModel    = viewModel.titleViewModel
       return cell
     case .price:
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NumberInputCell.reuseIdentifier, for: indexPath) as! NumberInputCell
-      cell.placeholder = "Price"
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DecimalInputCell.reuseIdentifier, for: indexPath) as! DecimalInputCell
+      cell.placeholder  = "Price"
+      cell.viewModel    = viewModel.priceViewModel
       return cell
     case .description:
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MultiLineTextInputCell.reuseIdentifier, for: indexPath) as! MultiLineTextInputCell
-      cell.placeholder = "Description"
+      cell.placeholder  = "Description"
+      cell.viewModel    = viewModel.descriptionViewModel
       return cell
     default:
       return  UICollectionViewCell()

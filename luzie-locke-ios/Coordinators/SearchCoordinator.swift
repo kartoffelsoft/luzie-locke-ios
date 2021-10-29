@@ -20,7 +20,7 @@ class SearchCoordinator: Coordinator {
   
   func start() {
     let vc = SearchViewController(profileStorage: profileStorage)
-    vc.tabBarItem = UITabBarItem(title: "Search",
+    vc.tabBarItem = UITabBarItem(title: nil,
                                  image: Images.search,
                                  selectedImage: Images.search)
     

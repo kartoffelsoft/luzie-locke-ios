@@ -18,7 +18,7 @@ class SingleLineInputTextField: UITextField {
     layer.borderColor                         = UIColor(named: "PrimaryColor")?.cgColor
     layer.borderWidth                         = 1
     layer.cornerRadius                        = 5
-    font                                      = .systemFont(ofSize: 16)
+    font                                      = Fonts.body
   }
   
   required init?(coder: NSCoder) {

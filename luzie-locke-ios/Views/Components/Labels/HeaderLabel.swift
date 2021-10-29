@@ -7,22 +7,21 @@
 
 import UIKit
 
-class KHeaderLabel: UILabel {
+class HeaderLabel: UILabel {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     configure()
   }
   
-  convenience init(textAlignment: NSTextAlignment, textStyle: UIFont.TextStyle = .headline) {
+  convenience init(textAlignment: NSTextAlignment, font: UIFont = Fonts.title) {
     self.init(frame: .zero)
     self.textAlignment  = textAlignment
-    self.font           = UIFont.preferredFont(forTextStyle: textStyle)
+    self.font           = font
   }
   
   private func configure() {
     textColor                                   = .label
-    font                                        = UIFont.preferredFont(forTextStyle: .headline)
     adjustsFontSizeToFitWidth                   = true
     minimumScaleFactor                          = 0.9
     lineBreakMode                               = .byTruncatingTail

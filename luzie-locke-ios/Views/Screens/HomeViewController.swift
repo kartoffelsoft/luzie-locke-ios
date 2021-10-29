@@ -35,7 +35,7 @@ class HomeViewController: UIViewController {
     configureAddButton()
     
     let v = Item(_id: "abc", owner: nil, title: "abc", price: "12", description: "222", images: ["sbc"], counts: nil, state: "active", createdAt: Date())
-             
+    
     let v1 = Item(_id: "ab2c", owner: nil, title: "a3bc", price: "12", description: "222", images: ["sbc"], counts: nil, state: "active", createdAt: Date())
     items = [v, v1]
     
@@ -68,12 +68,12 @@ class HomeViewController: UIViewController {
   }
   
   func configureDataSource() {
-      dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
-          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCell.reuseIdentifier, for: indexPath) as! ItemCell
-          return cell
-      })
+    dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCell.reuseIdentifier, for: indexPath) as! ItemCell
+      return cell
+    })
   }
-
+  
   func configureAddButton() {
     setButton.backgroundColor = Colors.primaryColor
     
@@ -89,13 +89,13 @@ class HomeViewController: UIViewController {
   }
   
   func updateData(on items: [Item]) {
-      var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
-      snapshot.appendSections([.main])
-      snapshot.appendItems(items)
-      
-      DispatchQueue.main.async {
-          self.dataSource.apply(snapshot, animatingDifferences: true)
-      }
+    var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+    snapshot.appendSections([.main])
+    snapshot.appendItems(items)
+    
+    DispatchQueue.main.async {
+      self.dataSource.apply(snapshot, animatingDifferences: true)
+    }
   }
   
   @objc func handleAdd() {

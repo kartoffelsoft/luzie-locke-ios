@@ -19,7 +19,7 @@ class SettingsViewController: UIViewController {
     static var numberOfSections: Int { return 2 }
   }
   
-  private let viewModel:      SettingsViewModel
+  private let viewModel: SettingsViewModel
   private let userMenuItems = [
     UserMenuItem(image: Images.listings, text: "Listings"),
     UserMenuItem(image: Images.purchases, text: "Purchaces"),
@@ -34,7 +34,7 @@ class SettingsViewController: UIViewController {
   private var collectionView: UICollectionView!
   
   init(viewModel: SettingsViewModel) {
-    self.viewModel      = viewModel
+    self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
   }
 

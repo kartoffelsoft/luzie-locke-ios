@@ -21,7 +21,7 @@ class ChatsCoordinator: Coordinator {
   
   func start() {
     let vc = ChatsViewController(profileStorage: profileStorage)
-    vc.tabBarItem = UITabBarItem(title: "Chat",
+    vc.tabBarItem = UITabBarItem(title: nil,
                                  image: Images.chats,
                                  selectedImage: Images.chats)
     

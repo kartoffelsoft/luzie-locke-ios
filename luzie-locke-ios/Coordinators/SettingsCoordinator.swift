@@ -33,7 +33,7 @@ class SettingsCoordinator: Coordinator {
     
     let vm = SettingsViewModel(coordinator: self, auth: auth, profileStorage: profileStorage, openHttpClient: openHttpClient, backendApiClient: backendApiClient)
     let vc = SettingsViewController(viewModel: vm)
-    vc.tabBarItem = UITabBarItem(title: "Settings",
+    vc.tabBarItem = UITabBarItem(title: nil,
                                  image: Images.settings,
                                  selectedImage: Images.settings)
     navigationController.pushViewController(vc, animated: false)

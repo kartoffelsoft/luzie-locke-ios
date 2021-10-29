@@ -13,6 +13,7 @@ class MultiLineTextInputCell: UICollectionViewCell {
   
   private let textField      = MultiLineInputTextField()
   
+  var viewModel: TextInputCellViewModel?
   var placeholder: String? {
     didSet {
       textField.text = placeholder
@@ -41,15 +42,19 @@ extension MultiLineTextInputCell: UITextViewDelegate {
 
   func textViewDidBeginEditing(_ textView: UITextView) {
     if textField.textColor == .systemGray3 && textField.isFirstResponder {
-      textField.text = nil
-      textField.textColor = .label
+      textField.text      = nil
+      textField.textColor = Colors.primaryColorDark1
     }
   }
   
   func textViewDidEndEditing(_ textView: UITextView) {
     if textField.text.isEmpty || textField.text == "" {
-      textField.text = placeholder
+      textField.text      = placeholder
       textField.textColor = .systemGray3
     }
+  }
+  
+  func textViewDidChange(_ textView: UITextView) {
+    viewModel?.text = textView.text
   }
 }
