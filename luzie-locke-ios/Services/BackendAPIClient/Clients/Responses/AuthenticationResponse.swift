@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AuthenticationResponse: Codable {
+struct AuthenticationResponse: Decodable {
   let profile: User
   let accessToken: String
   let refreshToken: String

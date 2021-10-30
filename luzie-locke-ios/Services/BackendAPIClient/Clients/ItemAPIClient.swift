@@ -8,9 +8,8 @@
 import Foundation
 
 protocol ItemAPI {
-//  func cretae(uid: String, token: String, completion: @escaping (Result<(profile: User, accessToken: String, refreshToken: String), LLError>?) -> Void)
-//
-//  func updateLocation(name: String, lat: Double, lng: Double, completion: @escaping (Result<User, LLError>?) -> Void)
+  
+  func create(title: String, price: String, description: String, images: [String?], completion: @escaping (Result<Void, LLError>) -> Void)
 }
 
 class ItemAPIClient: ItemAPI {
@@ -21,36 +20,17 @@ class ItemAPIClient: ItemAPI {
     self.client = client
   }
 
-//  func authenticate(uid: String, token: String, completion: @escaping (Result<(profile: User, accessToken: String, refreshToken: String), LLError>?) -> Void) {
-//    client.POST(AuthenticationRequest(uid: uid, token: token)) { result in
-//      switch result {
-//      case .success(let response):
-//        if let profile = response?.profile,
-//           let accessToken = response?.accessToken,
-//           let refreshToken = response?.refreshToken {
-//          completion(.success((profile: profile, accessToken: accessToken, refreshToken: refreshToken)))
-//        }
-//      case .failure(let error):
-//        print(error)
-//        completion(.failure(.unableToComplete))
-//      }
-//    }
-//  }
-//
-//  func updateLocation(name: String, lat: Double, lng: Double, completion: @escaping (Result<User, LLError>?) -> Void) {
-//    client.PATCH(UpdateLocationRequest(name: name, lat: lat, lng: lng)) { result in
-//      switch result {
-//      case .success(let response):
-//        if let profile = response?.profile {
-//          completion(.success(profile))
-//        } else {
-//          completion(.failure(.unexpectedServerResponse))
-//        }
-//
-//      case .failure(let error):
-//        print("error:", error)
-//        completion(.failure(.unableToComplete))
-//      }
-//    }
-//  }
+  func create(title: String, price: String, description: String, images: [String?], completion: @escaping (Result<Void, LLError>) -> Void) {
+    client.POST(ItemCreateRequest(title: title, price: price, description: description, images: images)) { result in
+      DispatchQueue.main.async {
+        switch result {
+        case .success:
+          completion(.success(()))
+        case .failure(let error):
+          print("[Error:\(#file):\(#line)] \(error)")
+          completion(.failure(.unableToComplete))
+        }
+      }
+    }
+  }
 }

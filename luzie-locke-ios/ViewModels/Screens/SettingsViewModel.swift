@@ -9,26 +9,26 @@ import UIKit
 
 class SettingsViewModel {
   
-  let coordinator:      SettingsCoordinator
-  let auth:             Auth
-  let profileStorage:   AnyStorage<User>
-  let openHttpClient:   OpenHTTP
-  let backendApiClient: BackendAPIClient
+  let coordinator:          SettingsCoordinator
+  let auth:                 Auth
+  let profileStorage:       AnyStorage<User>
+  let openHttpClient:       OpenHTTP
+  let backendApiClient:     BackendAPIClient
   
   let profileCellViewModel: ProfileCellViewModel
 
-  init(coordinator:       SettingsCoordinator,
-       auth:              Auth,
-       profileStorage:    AnyStorage<User>,
-       openHttpClient:    OpenHTTP,
-       backendApiClient:  BackendAPIClient) {
-    self.coordinator      = coordinator
-    self.auth             = auth
-    self.profileStorage   = profileStorage
-    self.openHttpClient   = openHttpClient
-    self.backendApiClient = backendApiClient
+  init(coordinator:         SettingsCoordinator,
+       auth:                Auth,
+       profileStorage:      AnyStorage<User>,
+       openHttpClient:      OpenHTTP,
+       backendApiClient:    BackendAPIClient) {
+    self.coordinator        = coordinator
+    self.auth               = auth
+    self.profileStorage     = profileStorage
+    self.openHttpClient     = openHttpClient
+    self.backendApiClient   = backendApiClient
     
-    profileCellViewModel =  ProfileCellViewModel(openHttpClient: openHttpClient)
+    profileCellViewModel    =  ProfileCellViewModel(openHttpClient: openHttpClient)
   }
   
   func load() {
@@ -44,8 +44,8 @@ class SettingsViewModel {
       
       if let name = name, let lat = lat, let lng = lng {
         self.backendApiClient.userApi.updateLocation(name: name,
-                                                  lat: lat,
-                                                  lng: lng) { result in
+                                                     lat: lat,
+                                                     lng: lng) { result in
           switch result {
           case .success(let profile):
             self.profileStorage.set(profile)          

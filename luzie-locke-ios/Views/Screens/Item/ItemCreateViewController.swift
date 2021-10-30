@@ -16,7 +16,6 @@ class ItemCreateViewController: UIViewController {
   
   static let headerId = "HeaderId"
   
-  
   private let viewModel: ItemCreateViewModel
   
   private var collectionView: UICollectionView!
@@ -32,6 +31,7 @@ class ItemCreateViewController: UIViewController {
 
     configureNavigationBar()
     configureCollectionView()
+    configureBindables()
   }
 
   private func configureNavigationBar() {
@@ -100,6 +100,18 @@ class ItemCreateViewController: UIViewController {
     
     if let image = CustomGradient.mainBackground(on: collectionView) {
       collectionView.backgroundColor = UIColor(patternImage: image)
+    }
+  }
+  
+  func configureBindables() {
+    viewModel.bindableIsLoading.bind { [weak self] isLoading in
+      guard let isLoading = isLoading else { return }
+      
+      if isLoading {
+        self?.showLoadingView()
+      } else {
+        self?.dismissLoadingView()
+      }
     }
   }
   

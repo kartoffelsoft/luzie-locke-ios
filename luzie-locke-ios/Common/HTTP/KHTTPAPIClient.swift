@@ -41,11 +41,10 @@ public class KHTTPAPIClient {
           if let data = data {
             do {
               let response = try JSONDecoder().decode(BackendResponse<T.Response>.self, from: data)
-              
               if response.status == "OK" {
                 completion(.success(response.data as T.Response?))
               } else {
-                print("[Error:\(#file):\(#line)] \(response.message ?? "")")
+                print("[Error:\(#file):\(#line)] \(response.message )")
                 completion(.failure(.serverErrorResponse))
               }
             } catch {
@@ -85,7 +84,7 @@ public class KHTTPAPIClient {
               if response.status == "OK" {
                 completion(.success(response.data as T.Response?))
               } else {
-                print("[Error:\(#file):\(#line)] \(response.message ?? "")")
+                print("[Error:\(#file):\(#line)] \(response.message )")
                 completion(.failure(.serverErrorResponse))
               }
             } catch {

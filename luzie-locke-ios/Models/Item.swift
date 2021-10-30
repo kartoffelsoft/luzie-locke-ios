@@ -13,7 +13,7 @@ struct Item: Codable, Hashable {
   let title: String
   let price: String
   let description: String
-  let images: [String]
+  let images: [String?]
   let counts: Counts?
   let state: String
   let createdAt: Date

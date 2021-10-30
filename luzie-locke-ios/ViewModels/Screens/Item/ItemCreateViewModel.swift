@@ -27,21 +27,23 @@ class ItemCreateViewModel {
   let priceViewModel:       DecimalInputCellViewModel
   let descriptionViewModel: TextInputCellViewModel
   
-  init(coordinator:       HomeCoordinator,
-       profileStorage:    AnyStorage<User>,
-       cloudStorage:      CloudStorage,
-       openHttpClient:    OpenHTTP,
-       itemApiClient:     ItemAPI) {
-    self.coordinator      = coordinator
-    self.profileStorage   = profileStorage
-    self.cloudStorage     = cloudStorage
-    self.openHttpClient   = openHttpClient
-    self.itemApiClient    = itemApiClient
+  var bindableIsLoading     = Bindable<Bool>()
+  
+  init(coordinator:         HomeCoordinator,
+       profileStorage:      AnyStorage<User>,
+       cloudStorage:        CloudStorage,
+       openHttpClient:      OpenHTTP,
+       itemApiClient:       ItemAPI) {
+    self.coordinator        = coordinator
+    self.profileStorage     = profileStorage
+    self.cloudStorage       = cloudStorage
+    self.openHttpClient     = openHttpClient
+    self.itemApiClient      = itemApiClient
     
-    imageSelectViewModel  = ImageSelectCellViewModel()
-    titleViewModel        = TextInputCellViewModel()
-    priceViewModel        = DecimalInputCellViewModel()
-    descriptionViewModel  = TextInputCellViewModel()
+    imageSelectViewModel    = ImageSelectCellViewModel()
+    titleViewModel          = TextInputCellViewModel()
+    priceViewModel          = DecimalInputCellViewModel()
+    descriptionViewModel    = TextInputCellViewModel()
     
     imageSelectViewModel.onOpenImagePicker  = self.openImagePicker
     imageSelectViewModel.onCloseImagePicker = self.closeImagePicker
@@ -70,11 +72,22 @@ class ItemCreateViewModel {
   func upload(completion: @escaping (Result<Void, LLError>) -> Void) {
     switch validate() {
     case .success:
+      bindableIsLoading.value = true
       executeImageUpload { [weak self] result in
         switch result {
         case .success(let imageUrls):
-          self?.executeBackendUpload(imageUrls: imageUrls)
+          self?.executeBackendUpload(imageUrls: imageUrls, completion: { result in
+            self?.bindableIsLoading.value = false
+            switch result {
+            case .success:
+              completion(.success(()))
+              self?.coordinator.popViewController()
+            case .failure(let error):
+              completion(.failure(error))
+            }
+          })
         case .failure(let error):
+          self?.bindableIsLoading.value = false
           completion(.failure(error))
         }
       }
@@ -119,7 +132,22 @@ class ItemCreateViewModel {
     }
   }
   
-  private func executeBackendUpload(imageUrls: [String?]) {
+  private func executeBackendUpload(imageUrls: [String?], completion: @escaping (Result<Void, LLError>) -> Void) {
     
+    if let title = titleViewModel.text,
+       let price = priceViewModel.text,
+       let description = descriptionViewModel.text {
+      
+      itemApiClient.create(title: title, price: price, description: description, images: imageUrls) { result in
+        switch result {
+        case .success:
+          completion(.success(()))
+        case .failure(let error):
+          completion(.failure(error))
+        }
+      }
+    } else {
+      completion(.failure(.unableToComplete))
+    }
   }
 }

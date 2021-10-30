@@ -51,6 +51,8 @@
 		4A47E6A8272CA01E00B9018A /* CloudStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6A7272CA01E00B9018A /* CloudStorage.swift */; };
 		4A47E6AA272CA0B500B9018A /* FirebaseCloudStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6A9272CA0B500B9018A /* FirebaseCloudStorage.swift */; };
 		4A47E6AD272D408F00B9018A /* ItemAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6AC272D408F00B9018A /* ItemAPIClient.swift */; };
+		4A47E6AF272D79E500B9018A /* ItemCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6AE272D79E500B9018A /* ItemCreateRequest.swift */; };
+		4A47E6B3272DE2EF00B9018A /* NoDataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6B2272DE2EF00B9018A /* NoDataResponse.swift */; };
 		4AED5E1D27197E1F00B7AC00 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */; };
 		4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */; };
 		4AED5E25271A0CFD00B7AC00 /* MKViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E24271A0CFD00B7AC00 /* MKViewMock.swift */; };
@@ -164,6 +166,8 @@
 		4A47E6A7272CA01E00B9018A /* CloudStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStorage.swift; sourceTree = "<group>"; };
 		4A47E6A9272CA0B500B9018A /* FirebaseCloudStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCloudStorage.swift; sourceTree = "<group>"; };
 		4A47E6AC272D408F00B9018A /* ItemAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemAPIClient.swift; sourceTree = "<group>"; };
+		4A47E6AE272D79E500B9018A /* ItemCreateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCreateRequest.swift; sourceTree = "<group>"; };
+		4A47E6B2272DE2EF00B9018A /* NoDataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataResponse.swift; sourceTree = "<group>"; };
 		4AED5E1927197BA400B7AC00 /* Frankfurt.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Frankfurt.gpx; sourceTree = "<group>"; };
 		4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerTests.swift; sourceTree = "<group>"; };
@@ -609,6 +613,7 @@
 			children = (
 				4AED5E3C271D95FC00B7AC00 /* AuthenticationRequest.swift */,
 				4AED5E60271EE71600B7AC00 /* UpdateLocationRequest.swift */,
+				4A47E6AE272D79E500B9018A /* ItemCreateRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -619,6 +624,7 @@
 				4AED5E69271FF2B200B7AC00 /* BackendResponse.swift */,
 				4AED5E6B271FF32E00B7AC00 /* UpdateLocationResponse.swift */,
 				4AED5E6D2720039500B7AC00 /* AuthenticationResponse.swift */,
+				4A47E6B2272DE2EF00B9018A /* NoDataResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -891,6 +897,7 @@
 				4A155E602724D16600C8B867 /* UserMenuCell.swift in Sources */,
 				4AED5E802720C2D200B7AC00 /* JWTDecode.swift in Sources */,
 				4AED5E7527201BCF00B7AC00 /* SimpleStringStorage.swift in Sources */,
+				4A47E6B3272DE2EF00B9018A /* NoDataResponse.swift in Sources */,
 				4A3B52D227144FF200EF4F93 /* User.swift in Sources */,
 				4AED5E1D27197E1F00B7AC00 /* MapViewController.swift in Sources */,
 				4A47E6AD272D408F00B9018A /* ItemAPIClient.swift in Sources */,
@@ -937,6 +944,7 @@
 				4AED5E3D271D95FC00B7AC00 /* AuthenticationRequest.swift in Sources */,
 				4AED5E32271C189E00B7AC00 /* BodyLabel.swift in Sources */,
 				4A47E6A8272CA01E00B9018A /* CloudStorage.swift in Sources */,
+				4A47E6AF272D79E500B9018A /* ItemCreateRequest.swift in Sources */,
 				4A47E6A2272C27F900B9018A /* ImageSelectCellViewModel.swift in Sources */,
 				4A155E5A272415A800C8B867 /* UIView+Ext.swift in Sources */,
 				4AED5E7327201AD200B7AC00 /* ProfileStorage.swift in Sources */,
