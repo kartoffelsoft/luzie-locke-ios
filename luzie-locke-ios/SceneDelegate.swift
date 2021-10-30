@@ -18,9 +18,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let openHttpClient        = OpenHTTPClient(client: httpClient)
     
     let httpApiClient         = KHTTPAPIClient(baseEndpoint: BackendConfig.host)
+    let itemApiClient         = ItemAPIClient(client: httpApiClient)
+    let userApiClient         = UserAPIClient(client: httpApiClient)
     let backendApiClient      = BackendAPIClient(
                                   client: httpApiClient,
-                                  userApi: UserAPIClient(client: httpApiClient))
+                                  userApi: userApiClient)
     
     let profileStorage        = AnyStorage(wrap: ProfileStorage(key: "Profile"))
     let accessTokenStorage    = AnyStorage(wrap: SimpleStringStorage(key: "AccessToken"))
@@ -30,6 +32,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                   profile: profileStorage,
                                   accessToken: accessTokenStorage,
                                   refreshToken: refreshTokenStorage)
+    
+    let cloudStorage          = FirebaseCloudStorage()
     
     let firebaseAuth          = FirebaseAuthService(google: GoogleSignInService())
     let backendAuth           = BackendAuthService(
@@ -50,11 +54,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
           storage: storageService,
           openHttpClient: openHttpClient,
           backendApiClient: backendApiClient,
-          loginCoordinator: LoginCoordinator(
-            navigationController: UINavigationController(),
-            auth: auth,
-            storage: storageService,
-            backendApiClient: backendApiClient)
+          loginCoordinator: LoginCoordinator(navigationController: UINavigationController(),
+                                             auth: auth,
+                                             storage: storageService,
+                                             backendApiClient: backendApiClient),
+          homeCoordinator: HomeCoordinator(navigationController: UINavigationController(),
+                                           profileStorage: profileStorage,
+                                           cloudStorage: cloudStorage,
+                                           openHttpClient: openHttpClient,
+                                           itemApiClient: itemApiClient)
         )
     )
   }

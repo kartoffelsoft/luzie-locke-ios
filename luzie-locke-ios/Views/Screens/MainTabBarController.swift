@@ -15,34 +15,32 @@ class MainTabBarController: UITabBarController {
   let backendApiClient:       BackendAPIClient
   let loginCoordinator:       Coordinator
   
-  let homeCoordinator:        HomeCoordinator
+  let homeCoordinator:        Coordinator
   let searchCoordinator:      SearchCoordinator
   let chatsCoordinator:       ChatsCoordinator
   let settingsCoordinator:    SettingsCoordinator
   
-  init(auth: Auth,
-       storage: StorageService,
-       openHttpClient: OpenHTTP,
-       backendApiClient: BackendAPIClient,
-       loginCoordinator: Coordinator) {
-    self.auth                   = auth
-    self.storage                = storage
-    self.openHttpClient         = openHttpClient
-    self.backendApiClient       = backendApiClient
-    self.loginCoordinator       = loginCoordinator
-    self.homeCoordinator        = HomeCoordinator(navigationController: UINavigationController(),
-                                                  profileStorage: storage.profile,
-                                                  openHttpClient: openHttpClient,
-                                                  backendApiClient: backendApiClient)
-    self.searchCoordinator      = SearchCoordinator(navigationController: UINavigationController(),
-                                                    profileStorage: storage.profile)
-    self.chatsCoordinator       = ChatsCoordinator(navigationController: UINavigationController(),
-                                                   profileStorage: storage.profile)
-    self.settingsCoordinator    = SettingsCoordinator(navigationController: UINavigationController(),
-                                                      auth: auth,
-                                                      profileStorage: storage.profile,
-                                                      openHttpClient: openHttpClient,
-                                                      backendApiClient: backendApiClient)
+  init(auth:                  Auth,
+       storage:               StorageService,
+       openHttpClient:        OpenHTTP,
+       backendApiClient:      BackendAPIClient,
+       loginCoordinator:      Coordinator,
+       homeCoordinator:       Coordinator) {
+    self.auth                 = auth
+    self.storage              = storage
+    self.openHttpClient       = openHttpClient
+    self.backendApiClient     = backendApiClient
+    self.loginCoordinator     = loginCoordinator
+    self.homeCoordinator      = homeCoordinator
+    self.searchCoordinator    = SearchCoordinator(navigationController: UINavigationController(),
+                                                  profileStorage: storage.profile)
+    self.chatsCoordinator     = ChatsCoordinator(navigationController: UINavigationController(),
+                                                 profileStorage: storage.profile)
+    self.settingsCoordinator  = SettingsCoordinator(navigationController: UINavigationController(),
+                                                    auth: auth,
+                                                    profileStorage: storage.profile,
+                                                    openHttpClient: openHttpClient,
+                                                    backendApiClient: backendApiClient)
     
     super.init(nibName: nil, bundle: nil)
   }
@@ -57,11 +55,11 @@ class MainTabBarController: UITabBarController {
     chatsCoordinator.start()
     settingsCoordinator.start()
     
-    view.backgroundColor            = .white
-    viewControllers                 = [ homeCoordinator.navigationController,
-                                        searchCoordinator.navigationController,
-                                        chatsCoordinator.navigationController,
-                                        settingsCoordinator.navigationController ]
+    view.backgroundColor = .white
+    viewControllers      = [ homeCoordinator.navigationController,
+                             searchCoordinator.navigationController,
+                             chatsCoordinator.navigationController,
+                             settingsCoordinator.navigationController ]
   }
   
   override func viewDidAppear(_ animated: Bool) {

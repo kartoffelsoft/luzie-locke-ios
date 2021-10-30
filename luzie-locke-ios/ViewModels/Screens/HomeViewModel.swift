@@ -12,7 +12,7 @@ class HomeViewModel {
   let coordinator:      HomeCoordinator
   let profileStorage:   AnyStorage<User>
   let openHttpClient:   OpenHTTP
-  let backendApiClient: BackendAPIClient
+  let itemApiClient:    ItemAPIClient
 
 //  var bindableProfileImage  = Bindable<UIImage>()
 //  var bindableUserName      = Bindable<String>()
@@ -21,11 +21,11 @@ class HomeViewModel {
   init(coordinator:       HomeCoordinator,
        profileStorage:    AnyStorage<User>,
        openHttpClient:    OpenHTTP,
-       backendApiClient:  BackendAPIClient) {
+       itemApiClient:     ItemAPIClient) {
     self.coordinator      = coordinator
     self.profileStorage   = profileStorage
     self.openHttpClient   = openHttpClient
-    self.backendApiClient = backendApiClient
+    self.itemApiClient = itemApiClient
   }
   
   func navigateToItemCreate() {

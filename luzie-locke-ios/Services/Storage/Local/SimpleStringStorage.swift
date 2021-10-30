@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SimpleStringStorage: Storage {
+class SimpleStringStorage: LocalStorage {
   
   private var data: String = ""
   private let key:  String

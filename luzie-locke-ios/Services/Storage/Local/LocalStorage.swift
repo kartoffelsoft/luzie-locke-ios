@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol Storage {
+protocol LocalStorage {
   
   associatedtype DataType
   func get() -> DataType?
@@ -15,13 +15,13 @@ protocol Storage {
   func clear()
 }
 
-class AnyStorage<DataType>: Storage {
+class AnyStorage<DataType>: LocalStorage {
   
   private let getObject:      () -> DataType?
   private let setObject:      (_ data: DataType) -> Void
   private let clearObject:    () -> Void
   
-  init<T: Storage>(wrap: T) where T.DataType == DataType {
+  init<T: LocalStorage>(wrap: T) where T.DataType == DataType {
     self.getObject      = wrap.get
     self.setObject      = wrap.set
     self.clearObject    = wrap.clear

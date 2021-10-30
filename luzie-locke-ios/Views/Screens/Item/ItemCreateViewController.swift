@@ -130,14 +130,13 @@ extension ItemCreateViewController: UICollectionViewDelegate {
   }
   
   @objc private func handleUpload() {
-    viewModel.upload { result in
+    viewModel.upload { [weak self] result in
       switch result {
       case .success: ()
       case .failure(let error):
-        presentAlertOnMainThread(
-          title: "Unable to proceed",
-          message: error.rawValue,
-          buttonTitle: "OK")
+        self?.presentAlertOnMainThread(title: "Unable to proceed",
+                                       message: error.rawValue,
+                                       buttonTitle: "OK")
       }
     }
   }

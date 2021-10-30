@@ -18,8 +18,9 @@ class ItemCreateViewModel {
   
   let coordinator:          HomeCoordinator
   let profileStorage:       AnyStorage<User>
+  let cloudStorage:         CloudStorage
   let openHttpClient:       OpenHTTP
-  let backendApiClient:     BackendAPIClient
+  let itemApiClient:        ItemAPI
 
   let imageSelectViewModel: ImageSelectCellViewModel
   let titleViewModel:       TextInputCellViewModel
@@ -28,12 +29,14 @@ class ItemCreateViewModel {
   
   init(coordinator:       HomeCoordinator,
        profileStorage:    AnyStorage<User>,
+       cloudStorage:      CloudStorage,
        openHttpClient:    OpenHTTP,
-       backendApiClient:  BackendAPIClient) {
+       itemApiClient:     ItemAPI) {
     self.coordinator      = coordinator
     self.profileStorage   = profileStorage
+    self.cloudStorage     = cloudStorage
     self.openHttpClient   = openHttpClient
-    self.backendApiClient = backendApiClient
+    self.itemApiClient    = itemApiClient
     
     imageSelectViewModel  = ImageSelectCellViewModel()
     titleViewModel        = TextInputCellViewModel()
@@ -47,8 +50,8 @@ class ItemCreateViewModel {
   private func validate() -> Result<Void, LLError> {
     
     if imageSelectViewModel.selectedImages[0] == nil &&
-       imageSelectViewModel.selectedImages[0] == nil &&
-       imageSelectViewModel.selectedImages[0] == nil {
+       imageSelectViewModel.selectedImages[1] == nil &&
+       imageSelectViewModel.selectedImages[2] == nil {
       return .failure(.photoNotSelected)
     }
     
@@ -64,18 +67,59 @@ class ItemCreateViewModel {
     return .success(())
   }
   
-  func upload(completion: (Result<Void, LLError>) -> Void) {
+  func upload(completion: @escaping (Result<Void, LLError>) -> Void) {
     switch validate() {
-    case .success: ()
-    case .failure(let error): completion(.failure(error))
+    case .success:
+      executeImageUpload { [weak self] result in
+        switch result {
+        case .success(let imageUrls):
+          self?.executeBackendUpload(imageUrls: imageUrls)
+        case .failure(let error):
+          completion(.failure(error))
+        }
+      }
+    case .failure(let error):
+      completion(.failure(error))
     }
   }
   
-  func openImagePicker(_ controller: UIImagePickerController) {
+  private func openImagePicker(_ controller: UIImagePickerController) {
     delegate?.didOpenImagePicker(controller: controller)
   }
   
-  func closeImagePicker() {
+  private func closeImagePicker() {
     delegate?.didCloseImagePicker()
+  }
+
+  private func executeImageUpload(completion: @escaping (Result<[String?], LLError>) -> Void) {
+    var imageUrls: [String?] = [ nil, nil, nil ]
+    
+    let dispatchGroup = DispatchGroup()
+
+    for i in 0 ..< 3 {
+      guard let image = imageSelectViewModel.selectedImages[i] else {
+        imageUrls[i] = nil
+        continue
+      }
+      
+      dispatchGroup.enter()
+      cloudStorage.uploadImage(image: image) { result in
+        switch result {
+        case .success(let url):
+          imageUrls[i] = url
+          dispatchGroup.leave()
+        case .failure(let error):
+          completion(.failure(error))
+        }
+      }
+    }
+  
+    dispatchGroup.notify(queue: .main) {
+      completion(.success(imageUrls))
+    }
+  }
+  
+  private func executeBackendUpload(imageUrls: [String?]) {
+    
   }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ProfileStorage: Storage {
+class ProfileStorage: LocalStorage {
   
   private var data: User?
   private let key: String

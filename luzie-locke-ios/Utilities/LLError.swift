@@ -9,6 +9,7 @@ import Foundation
 
 enum LLError: String, Error {
   case unableToComplete         = "Unable to complete your request. Please check your internet connection"
+  case unableToCompleteUpload   = "Unable to upload image(s). Please check your internet connection"
   case serverErrorResponse      = "The server reported an error."
   case unexpectedServerResponse = "Unexpected response received from the server."
   case invalidResponse          = "Invalid response from the server. Please retry."

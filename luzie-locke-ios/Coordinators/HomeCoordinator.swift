@@ -13,19 +13,22 @@ class HomeCoordinator: Coordinator {
   var navigationController: UINavigationController
   
   let profileStorage:   AnyStorage<User>
+  let cloudStorage:     CloudStorage
   let openHttpClient:   OpenHTTP
-  let backendApiClient: BackendAPIClient
+  let itemApiClient:    ItemAPIClient
   
   init(navigationController:  UINavigationController,
        profileStorage:        AnyStorage<User>,
+       cloudStorage:          CloudStorage,
        openHttpClient:        OpenHTTP,
-       backendApiClient:      BackendAPIClient) {
+       itemApiClient:         ItemAPIClient) {
     self.navigationController = navigationController
-    self.profileStorage = profileStorage
-    self.openHttpClient = openHttpClient
-    self.backendApiClient = backendApiClient
+    self.profileStorage       = profileStorage
+    self.cloudStorage         = cloudStorage
+    self.openHttpClient       = openHttpClient
+    self.itemApiClient        = itemApiClient
     
-    let vm = HomeViewModel(coordinator: self, profileStorage: profileStorage, openHttpClient: openHttpClient, backendApiClient: backendApiClient)
+    let vm = HomeViewModel(coordinator: self, profileStorage: profileStorage, openHttpClient: openHttpClient, itemApiClient: itemApiClient)
     let vc = HomeViewController(viewModel: vm)
     
     vc.tabBarItem = UITabBarItem(title: nil,
@@ -41,8 +44,9 @@ class HomeCoordinator: Coordinator {
   func navigateToItemCreate() {
     let vm = ItemCreateViewModel(coordinator: self,
                                  profileStorage: profileStorage,
+                                 cloudStorage: cloudStorage,
                                  openHttpClient: openHttpClient,
-                                 backendApiClient: backendApiClient)
+                                 itemApiClient: itemApiClient)
     let vc = ItemCreateViewController(viewModel: vm)
     navigationController.pushViewController(vc, animated: true)
   }
