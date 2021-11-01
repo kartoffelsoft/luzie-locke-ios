@@ -19,7 +19,7 @@ class ItemCell: UICollectionViewCell {
       titleLabel.text     = viewModel?.bindableTitleText.value
       locationLabel.text  = viewModel?.bindableLocationText.value
       priceLabel.text     = viewModel?.bindablePriceText.value
-      
+
       viewModel?.bindableItemImage.bind { [weak self] image in
         self?.imageView.image = image
       }

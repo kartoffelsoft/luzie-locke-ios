@@ -15,20 +15,23 @@ class HomeCoordinator: Coordinator {
   let profileStorage:   AnyStorage<User>
   let cloudStorage:     CloudStorage
   let openHttpClient:   OpenHTTP
-  let itemApiClient:    ItemAPIClient
+  let itemRepository:   ItemRepository
   
   init(navigationController:  UINavigationController,
        profileStorage:        AnyStorage<User>,
        cloudStorage:          CloudStorage,
        openHttpClient:        OpenHTTP,
-       itemApiClient:         ItemAPIClient) {
+       itemRepository:        ItemRepository) {
     self.navigationController = navigationController
     self.profileStorage       = profileStorage
     self.cloudStorage         = cloudStorage
     self.openHttpClient       = openHttpClient
-    self.itemApiClient        = itemApiClient
+    self.itemRepository       = itemRepository
     
-    let vm = HomeViewModel(coordinator: self, profileStorage: profileStorage, openHttpClient: openHttpClient, itemApiClient: itemApiClient)
+    let vm = HomeViewModel(coordinator: self,
+                           profileStorage: profileStorage,
+                           openHttpClient: openHttpClient,
+                           itemRepository: itemRepository)
     let vc = HomeViewController(viewModel: vm)
     
     vc.tabBarItem = UITabBarItem(title: nil,
@@ -46,7 +49,7 @@ class HomeCoordinator: Coordinator {
                                  profileStorage: profileStorage,
                                  cloudStorage: cloudStorage,
                                  openHttpClient: openHttpClient,
-                                 itemApiClient: itemApiClient)
+                                 itemRepository: itemRepository)
     let vc = ItemCreateViewController(viewModel: vm)
     navigationController.pushViewController(vc, animated: true)
   }

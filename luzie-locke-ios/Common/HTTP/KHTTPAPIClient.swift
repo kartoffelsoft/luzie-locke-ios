@@ -24,6 +24,45 @@ public class KHTTPAPIClient {
     self.baseEndpoint = baseEndpoint
   }
   
+  func GET<T>(_ request: T, completion: @escaping APIResultCallback<T.Response?>) where T : APIRequest {
+    guard
+      let url = URL(string: baseEndpoint + request.resourceName + request.toDictionary().urlQueryString)
+    else { return }
+    
+    print(url)
+    
+    var urlRequest          = URLRequest(url: url)
+    urlRequest.httpMethod   = "GET"
+    let interceptedRequest  = applyRequestInterceptors(urlRequest)
+    
+    httpClient.send(with: interceptedRequest) { result in
+      switch result {
+      case .success((_, let data)):
+        if let data = data {
+          do {
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .formatted(Formatter.iso8601)
+            
+            let response = try decoder.decode(BackendResponseDTO<T.Response>.self, from: data)
+            if response.status == "OK" {
+              completion(.success(response.data as T.Response?))
+            } else {
+              print("[Error:\(#file):\(#line)] \(response.message )")
+              completion(.failure(.serverErrorResponse))
+            }
+          } catch {
+            print("[Error:\(#file):\(#line)] \(error)")
+            completion(.failure(.unableToComplete))
+          }
+        } else {
+          completion(.failure(.unableToComplete))
+        }
+      case .failure:
+        completion(.failure(.unableToComplete))
+      }
+    }
+  }
+  
   func POST<T>(_ request: T, completion: @escaping APIResultCallback<T.Response?>) where T : APIRequest {
     guard let url = URL(string: baseEndpoint + request.resourceName) else { return }
     
@@ -40,7 +79,7 @@ public class KHTTPAPIClient {
         case .success((_, let data)):
           if let data = data {
             do {
-              let response = try JSONDecoder().decode(BackendResponse<T.Response>.self, from: data)
+              let response = try JSONDecoder().decode(BackendResponseDTO<T.Response>.self, from: data)
               if response.status == "OK" {
                 completion(.success(response.data as T.Response?))
               } else {
@@ -80,7 +119,7 @@ public class KHTTPAPIClient {
         case .success((_, let data)):
           if let data = data {
             do {
-              let response = try JSONDecoder().decode(BackendResponse<T.Response>.self, from: data)
+              let response = try JSONDecoder().decode(BackendResponseDTO<T.Response>.self, from: data)
               if response.status == "OK" {
                 completion(.success(response.data as T.Response?))
               } else {

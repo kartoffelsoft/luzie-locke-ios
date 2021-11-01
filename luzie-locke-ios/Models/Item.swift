@@ -8,19 +8,33 @@
 import Foundation
 
 struct Item: Codable, Hashable {
-  let _id: String
-  let owner: User?
-  let title: String
-  let price: String
-  let description: String
-  let images: [String?]
+  let _id: String?
+  let user: User?
+  let title: String?
+  let price: String?
+  let description: String?
+  let images: [String?]?
   let counts: Counts?
-  let state: String
-  let createdAt: Date
+  let state: String?
+  let createdAt: Date?
+  
+  init(_id: String? = nil, user: User? = nil, title: String? = nil,
+       price: String? = nil, description: String? = nil, images: [String?]? = nil,
+       counts: Counts? = nil, state: String? = nil, createdAt: Date? = nil) {
+    self._id          = _id
+    self.user         = user
+    self.title        = title
+    self.price        = price
+    self.description  = description
+    self.images       = images
+    self.counts       = counts
+    self.state        = state
+    self.createdAt    = createdAt
+  }
 }
 
 struct Counts: Codable, Hashable {
-  let chat: Int
-  let favorite: Int
-  let view: Int
+  let chat: Int?
+  let favorite: Int?
+  let view: Int?
 }

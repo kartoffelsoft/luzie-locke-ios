@@ -20,7 +20,7 @@ class ItemCreateViewModel {
   let profileStorage:       AnyStorage<User>
   let cloudStorage:         CloudStorage
   let openHttpClient:       OpenHTTP
-  let itemApiClient:        ItemAPI
+  let itemRepository:       ItemRepository
 
   let imageSelectViewModel: ImageSelectCellViewModel
   let titleViewModel:       TextInputCellViewModel
@@ -33,12 +33,12 @@ class ItemCreateViewModel {
        profileStorage:      AnyStorage<User>,
        cloudStorage:        CloudStorage,
        openHttpClient:      OpenHTTP,
-       itemApiClient:       ItemAPI) {
+       itemRepository:      ItemRepository) {
     self.coordinator        = coordinator
     self.profileStorage     = profileStorage
     self.cloudStorage       = cloudStorage
     self.openHttpClient     = openHttpClient
-    self.itemApiClient      = itemApiClient
+    self.itemRepository     = itemRepository
     
     imageSelectViewModel    = ImageSelectCellViewModel()
     titleViewModel          = TextInputCellViewModel()
@@ -138,7 +138,7 @@ class ItemCreateViewModel {
        let price = priceViewModel.text,
        let description = descriptionViewModel.text {
       
-      itemApiClient.create(title: title, price: price, description: description, images: imageUrls) { result in
+      itemRepository.create(Item(title: title, price: price, description: description, images: imageUrls)) { result in
         switch result {
         case .success:
           completion(.success(()))

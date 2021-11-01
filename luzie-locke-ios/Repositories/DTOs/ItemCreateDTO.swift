@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct ItemCreateRequest: APIRequest {
+struct ItemCreateRequestDTO: APIRequest {
   
-  typealias Response = NoDataResponse
+  typealias Response = VoidResponseDTO
   
   var resourceName: String {
     return "/api/items/"
@@ -20,11 +20,11 @@ struct ItemCreateRequest: APIRequest {
   let description:  String
   let images:       [String?]
   
-  init(title: String, price: String, description: String, images: [String?]) {
-    self.title        = title
-    self.price        = price
-    self.description  = description
-    self.images       = images
+  init(domain: Item) {
+    self.title        = domain.title!
+    self.price        = domain.price!
+    self.description  = domain.description!
+    self.images       = domain.images!
   }
   
   func toDictionary() -> [String: Any] {

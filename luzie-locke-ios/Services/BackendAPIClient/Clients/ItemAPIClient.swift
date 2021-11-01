@@ -21,16 +21,16 @@ class ItemAPIClient: ItemAPI {
   }
 
   func create(title: String, price: String, description: String, images: [String?], completion: @escaping (Result<Void, LLError>) -> Void) {
-    client.POST(ItemCreateRequest(title: title, price: price, description: description, images: images)) { result in
-      DispatchQueue.main.async {
-        switch result {
-        case .success:
-          completion(.success(()))
-        case .failure(let error):
-          print("[Error:\(#file):\(#line)] \(error)")
-          completion(.failure(.unableToComplete))
-        }
-      }
-    }
+//    client.POST(ItemCreateRequest(title: title, price: price, description: description, images: images)) { result in
+//      DispatchQueue.main.async {
+//        switch result {
+//        case .success:
+//          completion(.success(()))
+//        case .failure(let error):
+//          print("[Error:\(#file):\(#line)] \(error)")
+//          completion(.failure(.unableToComplete))
+//        }
+//      }
+//    }
   }
 }

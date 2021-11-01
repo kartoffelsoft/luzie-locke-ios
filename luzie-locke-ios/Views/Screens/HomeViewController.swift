@@ -32,14 +32,12 @@ class HomeViewController: UIViewController {
     configureNavigationBar()
     configureCollectionView()
     configureDataSource()
+    configureBindables()
     configureAddButton()
-    
-    let v = Item(_id: "abc", owner: nil, title: "abc", price: "12", description: "222", images: ["sbc"], counts: nil, state: "active", createdAt: Date())
-    
-    let v1 = Item(_id: "ab2c", owner: nil, title: "a3bc", price: "12", description: "222", images: ["sbc"], counts: nil, state: "active", createdAt: Date())
-    items = [v, v1]
-    
-    updateData(on: items)
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    viewModel.queryAllItems()
   }
   
   func configureNavigationBar() {
@@ -68,10 +66,19 @@ class HomeViewController: UIViewController {
   }
   
   func configureDataSource() {
-    dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
+    dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { [weak self] (collectionView, indexPath, follower) -> UICollectionViewCell? in
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCell.reuseIdentifier, for: indexPath) as! ItemCell
+      cell.viewModel = self?.viewModel.itemCellViewModels[indexPath.row]
       return cell
     })
+  }
+  
+  func configureBindables() {
+    viewModel.bindableItems.bind { [weak self] items in
+      if let items = items {
+        self?.updateData(on: items)
+      }
+    }
   }
   
   func configureAddButton() {

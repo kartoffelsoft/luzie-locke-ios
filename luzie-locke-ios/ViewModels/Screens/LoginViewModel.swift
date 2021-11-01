@@ -39,7 +39,9 @@ class LoginViewModel {
       
       switch result {
       case .success(let profile):
-        if profile.location.name.isEmpty {
+        guard let name = profile.location?.name else { return }
+        
+        if name.isEmpty {
           DispatchQueue.main.async {
             self.coordinator.navigateToMap(selectAction: { [weak self] name, lat, lng in
               guard let self = self else { return }

@@ -9,23 +9,42 @@ import UIKit
 
 class HomeViewModel {
   
-  let coordinator:      HomeCoordinator
-  let profileStorage:   AnyStorage<User>
-  let openHttpClient:   OpenHTTP
-  let itemApiClient:    ItemAPIClient
-
-//  var bindableProfileImage  = Bindable<UIImage>()
-//  var bindableUserName      = Bindable<String>()
-//  var bindableUserLocation  = Bindable<String>()
+  let coordinator:        HomeCoordinator
+  let profileStorage:     AnyStorage<User>
+  let openHttpClient:     OpenHTTP
+  let itemRepository:     ItemRepository
+  
+  var bindableItems      = Bindable<[Item]>()
+  var itemCellViewModels = [ItemCellViewModel]()
 
   init(coordinator:       HomeCoordinator,
        profileStorage:    AnyStorage<User>,
        openHttpClient:    OpenHTTP,
-       itemApiClient:     ItemAPIClient) {
+       itemRepository:    ItemRepository) {
     self.coordinator      = coordinator
     self.profileStorage   = profileStorage
     self.openHttpClient   = openHttpClient
-    self.itemApiClient = itemApiClient
+    self.itemRepository   = itemRepository
+  }
+  
+  func queryAllItems() {
+    itemRepository.readListAll { result in
+      switch result {
+      case .success(let items):
+        print("Success")
+        print(items)
+
+        self.itemCellViewModels = items.reduce([ItemCellViewModel](), { output, item in
+          let vm = ItemCellViewModel(openHttpClient: self.openHttpClient)
+          vm.item = item
+          return output + [vm]
+        })
+        
+        self.bindableItems.value = items
+      case .failure(let error):
+        print("Failed")
+      }
+    }
   }
   
   func navigateToItemCreate() {

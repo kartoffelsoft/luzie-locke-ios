@@ -18,11 +18,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let openHttpClient        = OpenHTTPClient(client: httpClient)
     
     let httpApiClient         = KHTTPAPIClient(baseEndpoint: BackendConfig.host)
-    let itemApiClient         = ItemAPIClient(client: httpApiClient)
     let userApiClient         = UserAPIClient(client: httpApiClient)
     let backendApiClient      = BackendAPIClient(
                                   client: httpApiClient,
                                   userApi: userApiClient)
+    
+    let itemRepository        = ItemRepository(backendClient: httpApiClient)
     
     let profileStorage        = AnyStorage(wrap: ProfileStorage(key: "Profile"))
     let accessTokenStorage    = AnyStorage(wrap: SimpleStringStorage(key: "AccessToken"))
@@ -62,7 +63,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                            profileStorage: profileStorage,
                                            cloudStorage: cloudStorage,
                                            openHttpClient: openHttpClient,
-                                           itemApiClient: itemApiClient)
+                                           itemRepository: itemRepository)
         )
     )
   }

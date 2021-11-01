@@ -12,9 +12,10 @@ class ItemCellViewModel {
   var item: Item? {
     didSet {
       bindableTitleText.value    = item?.title
-      bindableLocationText.value = item?.owner?.location.name
+      bindablePriceText.value    = item?.price
+      bindableLocationText.value = item?.user?.location?.name
       
-      downloadImage(from: item?.images[0])
+      downloadImage(from: item?.images![0])
     }
   }
   
