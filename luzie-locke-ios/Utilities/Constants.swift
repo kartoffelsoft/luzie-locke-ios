@@ -47,6 +47,14 @@ enum Images {
   static let upload             = UIImage(systemName: "icloud.and.arrow.up",
                                           withConfiguration: UIImage.SymbolConfiguration(weight: .bold))?
                                     .withTintColor(Colors.primaryColor, renderingMode: .alwaysOriginal)
+  
+  static let favoriteOff        = UIImage(systemName: "heart",
+                                          withConfiguration: UIImage.SymbolConfiguration(pointSize: 35, weight: .medium))?
+                                    .withTintColor(Colors.primaryColorLight3, renderingMode: .alwaysOriginal)
+  
+  static let favoriteOn         = UIImage(systemName: "heart.fill",
+                                          withConfiguration: UIImage.SymbolConfiguration(pointSize: 35, weight: .medium))?
+                                    .withTintColor(Colors.secondaryColor, renderingMode: .alwaysOriginal)
 }
 
 enum Colors {
@@ -61,6 +69,7 @@ enum Colors {
 }
 
 enum Fonts {
+  static let titleLarge = UIFont(name: "SuperCell-Magic", size: 22)!
   static let title      = UIFont(name: "SuperCell-Magic", size: 14)!
   static let subtitle   = UIFont(name: "SuperCell-Magic", size: 12)!
   static let body       = UIFont(name: "SuperCell-Magic", size: 10)!

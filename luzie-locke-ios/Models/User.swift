@@ -37,6 +37,6 @@ struct Location: Codable, Hashable {
 }
 
 struct GeoJSON: Codable, Hashable {
-  let type: String
-  let coordinates: [Double]
+  let type: String?
+  let coordinates: [Double]?
 }

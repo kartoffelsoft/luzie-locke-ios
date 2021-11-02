@@ -10,6 +10,7 @@ import Foundation
 protocol ItemRepositoryProtocol {
 
   func create(_ item: Item, completion: @escaping (Result<Void, LLError>) -> Void)
+  func read(_ id: String, completion: @escaping (Result<Item, LLError>) -> Void)
   func readListAll(completion: @escaping (Result<[Item], LLError>) -> Void)
 //  func update(_ item: T, completion: (Result<Void, LLError>) -> Void)
 //  func delete(_ item: T, completion: (Result<Void, LLError>) -> Void)
@@ -58,6 +59,26 @@ class ItemRepository: ItemRepositoryProtocol {
               return output + [item]
             })
             completion(.success(items))
+          } else {
+            completion(.failure(.unableToComplete))
+          }
+
+        case .failure(let error):
+          print("[Error:\(#file):\(#line)] \(error)")
+          completion(.failure(.unableToComplete))
+        }
+      }
+    }
+  }
+  
+  func read(_ id: String, completion: @escaping (Result<Item, LLError>) -> Void) {
+    backendClient.GET(ItemReadRequestDTO(id: id)) { result in
+      DispatchQueue.main.async {
+        switch result {
+        case .success(let response):
+          if let response = response {
+            let item = ItemTranslator.translateItemDTOToItem(dto: response.item)
+            completion(.success(item))
           } else {
             completion(.failure(.unableToComplete))
           }

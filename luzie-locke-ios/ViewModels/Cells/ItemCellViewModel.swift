@@ -35,7 +35,7 @@ class ItemCellViewModel {
       openHttpClient.downloadImage(from: url) { [weak self] result in
         switch result {
         case .success(let image):
-          DispatchQueue.main.async { self?.bindableItemImage.value = image }
+          self?.bindableItemImage.value = image
         case .failure:
           ()
         }

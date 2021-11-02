@@ -12,7 +12,7 @@ class HomeViewModel {
   let coordinator:        HomeCoordinator
   let profileStorage:     AnyStorage<User>
   let openHttpClient:     OpenHTTP
-  let itemRepository:     ItemRepository
+  let itemRepository:     ItemRepositoryProtocol
   
   var bindableItems      = Bindable<[Item]>()
   var itemCellViewModels = [ItemCellViewModel]()
@@ -20,7 +20,7 @@ class HomeViewModel {
   init(coordinator:       HomeCoordinator,
        profileStorage:    AnyStorage<User>,
        openHttpClient:    OpenHTTP,
-       itemRepository:    ItemRepository) {
+       itemRepository:    ItemRepositoryProtocol) {
     self.coordinator      = coordinator
     self.profileStorage   = profileStorage
     self.openHttpClient   = openHttpClient
@@ -49,6 +49,11 @@ class HomeViewModel {
   
   func navigateToItemCreate() {
     coordinator.navigateToItemCreate()
-
+  }
+  
+  func didSelectItemAt(indexPath: IndexPath) {
+    if let item = bindableItems.value?[indexPath.row], let id = item._id {
+      coordinator.navigateToItemDisplay(id: id)
+    }
   }
 }

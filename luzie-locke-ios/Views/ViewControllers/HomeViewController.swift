@@ -53,8 +53,8 @@ class HomeViewController: UIViewController {
     flowLayout.sectionInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
     flowLayout.itemSize     = CGSize(width: view.bounds.width - padding * 2, height: 100)
     
-    collectionView                  = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
-    collectionView.delegate         = self
+    collectionView          = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
+    collectionView.delegate = self
     
     collectionView.register(ItemCell.self, forCellWithReuseIdentifier: ItemCell.reuseIdentifier)
     
@@ -115,7 +115,8 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UICollectionViewDelegate {
+  
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    print(indexPath)
+    viewModel.didSelectItemAt(indexPath: indexPath)
   }
 }

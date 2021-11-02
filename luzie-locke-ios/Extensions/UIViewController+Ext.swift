@@ -48,4 +48,11 @@ extension UIViewController {
       containerView = nil
     }
   }
+  
+  func bindChildViewController(child: UIViewController, to parent: UIView) {
+    addChild(child)
+    parent.addSubview(child.view)
+    child.view.frame = parent.bounds
+    child.didMove(toParent: self)
+  }
 }

@@ -14,10 +14,11 @@ class HeaderLabel: UILabel {
     configure()
   }
   
-  convenience init(textAlignment: NSTextAlignment, font: UIFont = Fonts.title) {
+  convenience init(textAlignment: NSTextAlignment, font: UIFont = Fonts.title, textColor: UIColor = Colors.primaryColor) {
     self.init(frame: .zero)
     self.textAlignment  = textAlignment
     self.font           = font
+    self.textColor      = textColor
   }
   
   private func configure() {

@@ -54,6 +54,16 @@ class HomeCoordinator: Coordinator {
     navigationController.pushViewController(vc, animated: true)
   }
   
+  func navigateToItemDisplay(id: String) {
+    let vm = ItemDisplayViewModel(coordinator: self,
+                                  profileStorage: profileStorage,
+                                  openHttpClient: openHttpClient,
+                                  itemRepository: itemRepository,
+                                  id: id)
+    let vc = ItemDisplayViewController(viewModel: vm)
+    navigationController.pushViewController(vc, animated: true)
+  }
+  
   func popViewController() {
     navigationController.popViewController(animated: true)
   }

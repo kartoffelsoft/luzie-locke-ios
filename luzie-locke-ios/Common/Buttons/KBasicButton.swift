@@ -14,17 +14,16 @@ class KBasicButton: UIButton {
     configure()
   }
   
-  convenience init(backgroundColor: UIColor?, title: String) {
+  convenience init(backgroundColor: UIColor?, textColor: UIColor? = .white, title: String) {
     self.init(frame: .zero)
     self.backgroundColor = backgroundColor
     self.setTitle(title, for: .normal)
+    self.setTitleColor(textColor, for: .normal)
   }
   
   private func configure() {
-    setTitleColor(.white, for: .normal)
-    
     layer.cornerRadius                          = 10
-    titleLabel?.font                            = UIFont.preferredFont(forTextStyle: .headline)
+    titleLabel?.font                            = Fonts.subtitle
     translatesAutoresizingMaskIntoConstraints   = false
   }
   
