@@ -14,58 +14,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let scene = (scene as? UIWindowScene) else { return }
     
-    let httpClient            = KHTTPClient()
-    let openHttpClient        = OpenHTTPClient(client: httpClient)
-    
-    let httpApiClient         = KHTTPAPIClient(baseEndpoint: BackendConfig.host)
-    let userApiClient         = UserAPIClient(client: httpApiClient)
-    let backendApiClient      = BackendAPIClient(
-                                  client: httpApiClient,
-                                  userApi: userApiClient)
-    
-    let itemRepository        = ItemRepository(backendClient: httpApiClient)
-    
-    let profileStorage        = AnyStorage(wrap: ProfileStorage(key: "Profile"))
-    let accessTokenStorage    = AnyStorage(wrap: SimpleStringStorage(key: "AccessToken"))
-    let refreshTokenStorage   = AnyStorage(wrap: SimpleStringStorage(key: "RefreshToken"))
-    
-    let storageService        = StorageService(
-                                  profile: profileStorage,
-                                  accessToken: accessTokenStorage,
-                                  refreshToken: refreshTokenStorage)
-    
-    let cloudStorage          = FirebaseCloudStorage()
-    
-    let firebaseAuth          = FirebaseAuthService(google: GoogleSignInService())
-    let backendAuth           = BackendAuthService(
-                                  backendApiClient: backendApiClient,
-                                  profileStorage: profileStorage,
-                                  accessTokenStorage: accessTokenStorage,
-                                  refreshTokenStorage: refreshTokenStorage)
-    
-    let auth = AuthService(firebaseAuth: firebaseAuth, backendAuth: backendAuth)
+    let compositionRoot = CompositionRoot()
     
     window = UIWindow(windowScene: scene)
     window?.makeKeyAndVisible()
-    
-    window?.rootViewController = UINavigationController(
-      rootViewController:
-        MainTabBarController(
-          auth: auth,
-          storage: storageService,
-          openHttpClient: openHttpClient,
-          backendApiClient: backendApiClient,
-          loginCoordinator: LoginCoordinator(navigationController: UINavigationController(),
-                                             auth: auth,
-                                             storage: storageService,
-                                             backendApiClient: backendApiClient),
-          homeCoordinator: HomeCoordinator(navigationController: UINavigationController(),
-                                           profileStorage: profileStorage,
-                                           cloudStorage: cloudStorage,
-                                           openHttpClient: openHttpClient,
-                                           itemRepository: itemRepository)
-        )
-    )
+    window?.rootViewController = compositionRoot.makeMainTabBarController()
   }
   
   func sceneDidDisconnect(_ scene: UIScene) {

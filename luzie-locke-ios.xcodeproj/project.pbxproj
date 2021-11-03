@@ -69,6 +69,8 @@
 		4A47E6DC2731CEFA00B9018A /* ItemDisplayBriefViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6DB2731CEFA00B9018A /* ItemDisplayBriefViewModel.swift */; };
 		4A47E6DF2731D33400B9018A /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6DE2731D33400B9018A /* ImageViewModel.swift */; };
 		4A47E6E12731DA8F00B9018A /* SwipeImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6E02731DA8F00B9018A /* SwipeImageViewModel.swift */; };
+		4A47E6E42732BE9700B9018A /* CompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6E32732BE9700B9018A /* CompositionRoot.swift */; };
+		4A47E6E6273317FA00B9018A /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6E5273317FA00B9018A /* ViewControllerFactory.swift */; };
 		4AED5E1D27197E1F00B7AC00 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */; };
 		4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */; };
 		4AED5E25271A0CFD00B7AC00 /* MKViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E24271A0CFD00B7AC00 /* MKViewMock.swift */; };
@@ -200,6 +202,8 @@
 		4A47E6DB2731CEFA00B9018A /* ItemDisplayBriefViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDisplayBriefViewModel.swift; sourceTree = "<group>"; };
 		4A47E6DE2731D33400B9018A /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
 		4A47E6E02731DA8F00B9018A /* SwipeImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeImageViewModel.swift; sourceTree = "<group>"; };
+		4A47E6E32732BE9700B9018A /* CompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionRoot.swift; sourceTree = "<group>"; };
+		4A47E6E5273317FA00B9018A /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		4AED5E1927197BA400B7AC00 /* Frankfurt.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Frankfurt.gpx; sourceTree = "<group>"; };
 		4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerTests.swift; sourceTree = "<group>"; };
@@ -330,6 +334,7 @@
 		4A3B5264271239CE00EF4F93 /* luzie-locke-ios */ = {
 			isa = PBXGroup;
 			children = (
+				4A47E6E22732BE6400B9018A /* CompositionRoot */,
 				4A47E6B4272F104300B9018A /* Repositories */,
 				4A3B529627123DA800EF4F93 /* Models */,
 				4A3B529527123DA300EF4F93 /* Views */,
@@ -606,6 +611,15 @@
 				4A47E6E02731DA8F00B9018A /* SwipeImageViewModel.swift */,
 			);
 			path = SwipeImage;
+			sourceTree = "<group>";
+		};
+		4A47E6E22732BE6400B9018A /* CompositionRoot */ = {
+			isa = PBXGroup;
+			children = (
+				4A47E6E32732BE9700B9018A /* CompositionRoot.swift */,
+				4A47E6E5273317FA00B9018A /* ViewControllerFactory.swift */,
+			);
+			path = CompositionRoot;
 			sourceTree = "<group>";
 		};
 		4AED5E182719669600B7AC00 /* Map */ = {
@@ -988,6 +1002,7 @@
 				4A155E462722E03600C8B867 /* OpenHTTPClient.swift in Sources */,
 				4AED5E61271EE71600B7AC00 /* UpdateLocationRequest.swift in Sources */,
 				4A3B52A9271256CD00EF4F93 /* LoginViewController.swift in Sources */,
+				4A47E6E42732BE9700B9018A /* CompositionRoot.swift in Sources */,
 				4AEE8F772727E84F004CB686 /* ItemCellViewModel.swift in Sources */,
 				4A155E622725C1FD00C8B867 /* SettingsViewModel.swift in Sources */,
 				4AED5E6A271FF2B200B7AC00 /* BackendResponse.swift in Sources */,
@@ -1021,6 +1036,7 @@
 				4AEE8F712726E082004CB686 /* Item.swift in Sources */,
 				4A47E6B9272F622400B9018A /* ItemListReadDTO.swift in Sources */,
 				4AEE8F9427298CF3004CB686 /* TextInputCell.swift in Sources */,
+				4A47E6E6273317FA00B9018A /* ViewControllerFactory.swift in Sources */,
 				4AED5E8627219E7300B7AC00 /* ProfileCell.swift in Sources */,
 				4AEE8FA0272A8A37004CB686 /* MultiLineTextField.swift in Sources */,
 				4A155E482722F31C00C8B867 /* KHTTPClient.swift in Sources */,
