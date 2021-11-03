@@ -11,7 +11,7 @@ class ItemActionPanelView: UIView {
   
   let vm: ItemActionPanelViewModel
   
-  let priceLabel          = HeaderLabel(textAlignment: .left, textColor: Colors.primaryColorLight3)
+  let priceLabel          = HeaderLabel(textColor: Colors.primaryColorLight3, textAlignment: .left)
   
   private let chatButton  = KBasicButton(backgroundColor: Colors.primaryColorLight3,
                                          textColor: Colors.primaryColor,

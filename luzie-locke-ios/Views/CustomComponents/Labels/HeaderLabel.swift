@@ -14,15 +14,16 @@ class HeaderLabel: UILabel {
     configure()
   }
   
-  convenience init(textAlignment: NSTextAlignment, font: UIFont = Fonts.title, textColor: UIColor = Colors.primaryColor) {
+  convenience init(font: UIFont = Fonts.title,
+                   textColor: UIColor = Colors.primaryColor,
+                   textAlignment: NSTextAlignment = .left) {
     self.init(frame: .zero)
-    self.textAlignment  = textAlignment
     self.font           = font
     self.textColor      = textColor
+    self.textAlignment  = textAlignment
   }
   
   private func configure() {
-    textColor                                   = Colors.primaryColor
     adjustsFontSizeToFitWidth                   = true
     minimumScaleFactor                          = 0.9
     lineBreakMode                               = .byTruncatingTail

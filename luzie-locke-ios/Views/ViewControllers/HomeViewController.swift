@@ -11,13 +11,12 @@ class HomeViewController: UIViewController {
   
   enum Section { case main }
   
-  let viewModel: HomeViewModel
-  var items = [Item]()
-  
-  let setButton = KRoundButton(radius: 30)
-  
+  let viewModel:      HomeViewModel
   var collectionView: UICollectionView!
-  var dataSource: UICollectionViewDiffableDataSource<Section, Item>!
+  var dataSource:     UICollectionViewDiffableDataSource<Section, Item>!
+  
+  var items     = [Item]()
+  let setButton = KRoundButton(radius: 30)
   
   init(viewModel: HomeViewModel) {
     self.viewModel = viewModel

@@ -55,6 +55,10 @@ enum Images {
   static let favoriteOn         = UIImage(systemName: "heart.fill",
                                           withConfiguration: UIImage.SymbolConfiguration(pointSize: 35, weight: .medium))?
                                     .withTintColor(Colors.secondaryColor, renderingMode: .alwaysOriginal)
+  
+  static let chevronUp         = UIImage(systemName: "chevron.up",
+                                          withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .medium))?
+                                    .withTintColor(Colors.primaryColor, renderingMode: .alwaysOriginal)
 }
 
 enum Colors {

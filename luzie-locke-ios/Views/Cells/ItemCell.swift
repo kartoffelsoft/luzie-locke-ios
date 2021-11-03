@@ -39,9 +39,9 @@ class ItemCell: UICollectionViewCell {
   }
   
   let imageView     = UIImageView()
-  let titleLabel    = HeaderLabel(textAlignment: .left, font: Fonts.body)
-  let locationLabel = BodyLabel(textAlignment: .left, font: Fonts.body)
-  let priceLabel    = HeaderLabel(textAlignment: .left, font: Fonts.body)
+  let titleLabel    = HeaderLabel(font: Fonts.body, textAlignment: .left)
+  let locationLabel = BodyLabel(font: Fonts.body, textAlignment: .left)
+  let priceLabel    = HeaderLabel(font: Fonts.body, textAlignment: .left)
   let line          = UIView()
 
   override init(frame: CGRect) {

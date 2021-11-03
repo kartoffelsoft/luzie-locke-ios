@@ -13,7 +13,7 @@ class ProfileCell: UICollectionViewCell {
   
   let userImageView     = AvatarImageView(radius: 30)
   let userNameLabel     = HeaderLabel(textAlignment: .left)
-  let userLocationLabel = BodyLabel(textAlignment: .left, font: Fonts.caption)
+  let userLocationLabel = BodyLabel(font: Fonts.caption, textAlignment: .left)
   
   var viewModel: ProfileCellViewModel? {
     didSet {

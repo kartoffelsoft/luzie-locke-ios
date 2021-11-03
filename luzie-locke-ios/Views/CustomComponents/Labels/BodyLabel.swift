@@ -13,25 +13,27 @@ class BodyLabel: UILabel {
     super.init(frame: frame)
     configure()
   }
-
-  convenience init(textAlignment: NSTextAlignment, font: UIFont = Fonts.body) {
+  
+  convenience init(font: UIFont = Fonts.title,
+                   textColor: UIColor = .secondaryLabel,
+                   textAlignment: NSTextAlignment = .left) {
     self.init(frame: .zero)
-    self.textAlignment = textAlignment
-    self.font          = font
+    self.font           = font
+    self.textColor      = textColor
+    self.textAlignment  = textAlignment
   }
   
   private func configure() {
-    textColor                                   = .secondaryLabel
     adjustsFontForContentSizeCategory           = true
     adjustsFontSizeToFitWidth                   = true
     minimumScaleFactor                          = 0.75
     lineBreakMode                               = .byWordWrapping
     translatesAutoresizingMaskIntoConstraints   = false
+    numberOfLines                               = 0
   }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
 }
 
