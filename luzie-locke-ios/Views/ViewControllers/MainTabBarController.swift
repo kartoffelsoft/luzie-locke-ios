@@ -7,7 +7,13 @@
 
 import UIKit
 
+//protocol MainTabBarControllerDelegate: class {
+//  func didRequireLogin()
+//}
+
 class MainTabBarController: UITabBarController {
+  
+//  weak var delegate: MainTabBarControllerDelegate?
   
   typealias Factory = CoordinatorFactory & ViewControllerFactory
   
