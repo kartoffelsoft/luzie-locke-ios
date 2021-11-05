@@ -10,32 +10,27 @@ import MapKit
 
 class LoginCoordinator: Coordinator {
   
+  typealias Factory = ViewControllerFactory & ViewModelFactory
+  
+  let factory               : Factory
+  var navigationController  : UINavigationController
+  
   var children = [Coordinator]()
-  var navigationController: UINavigationController
   
-  let auth:             Auth
-  let storage:          StorageService
-  let backendApiClient: BackendAPIClient
-  
-  init(navigationController:  UINavigationController,
-       auth:                  Auth,
-       storage:               StorageService,
-       backendApiClient:      BackendAPIClient) {
-    
-    self.navigationController   = navigationController
-    self.auth                   = auth
-    self.storage                = storage
-    self.backendApiClient       = backendApiClient
+  init(factory:               Factory,
+       navigationController:  UINavigationController) {
+    self.factory              = factory
+    self.navigationController = navigationController
+
+  }
+
+  func start() {
+    let vm = factory.makeLoginViewModel(coordinator: self)
+    let vc = factory.makeLoginViewController(viewModel: vm)
     
     self.navigationController.modalPresentationStyle = .fullScreen
-    
-    let vm = LoginViewModel(coordinator: self, auth: auth, storage: storage, backendApiClient: backendApiClient)
-    let vc = LoginViewController(viewModel: vm)
-    
-    navigationController.pushViewController(vc, animated: false)
+    self.navigationController.pushViewController(vc, animated: false)
   }
-  
-  func start() {}
   
   func navigateToMap(selectAction: @escaping MapViewCallback) {
     let vc = MapViewController(mapView: MKMapView(), locationManager: CLLocationManager())

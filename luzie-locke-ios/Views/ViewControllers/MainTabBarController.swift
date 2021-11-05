@@ -9,10 +9,9 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
   
+  typealias Factory = CoordinatorFactory & ViewControllerFactory
+  
   let auth:                   Auth
-  let storage:                StorageService
-  let openHttpClient:         OpenHTTP
-  let backendApiClient:       BackendAPIClient
   let loginCoordinator:       Coordinator
   
   let homeCoordinator:        Coordinator
@@ -20,27 +19,13 @@ class MainTabBarController: UITabBarController {
   let chatsCoordinator:       ChatsCoordinator
   let settingsCoordinator:    SettingsCoordinator
   
-  init(auth:                  Auth,
-       storage:               StorageService,
-       openHttpClient:        OpenHTTP,
-       backendApiClient:      BackendAPIClient,
-       loginCoordinator:      Coordinator,
-       homeCoordinator:       Coordinator) {
+  init(factory: Factory, auth: Auth) {
     self.auth                 = auth
-    self.storage              = storage
-    self.openHttpClient       = openHttpClient
-    self.backendApiClient     = backendApiClient
-    self.loginCoordinator     = loginCoordinator
-    self.homeCoordinator      = homeCoordinator
-    self.searchCoordinator    = SearchCoordinator(navigationController: UINavigationController(),
-                                                  profileStorage: storage.profile)
-    self.chatsCoordinator     = ChatsCoordinator(navigationController: UINavigationController(),
-                                                 profileStorage: storage.profile)
-    self.settingsCoordinator  = SettingsCoordinator(navigationController: UINavigationController(),
-                                                    auth: auth,
-                                                    profileStorage: storage.profile,
-                                                    openHttpClient: openHttpClient,
-                                                    backendApiClient: backendApiClient)
+    self.loginCoordinator     = factory.makeLoginCoordinator()
+    self.homeCoordinator      = factory.makeHomeCoordinator()
+    self.searchCoordinator    = factory.makeSearchCoordinator()
+    self.chatsCoordinator     = factory.makeChatCoordinator()
+    self.settingsCoordinator  = factory.makeSettingsCoordinator()
     
     super.init(nibName: nil, bundle: nil)
   }

@@ -12,34 +12,24 @@ import MapKit
 
 class SettingsCoordinator: Coordinator {
   
+  typealias Factory = ViewControllerFactory & ViewModelFactory
+  
+  let factory               : Factory
+  var navigationController  : UINavigationController
+  
   var children = [Coordinator]()
-  var navigationController: UINavigationController
-  
-  let auth:             Auth
-  let profileStorage:   AnyStorage<User>
-  let openHttpClient:   OpenHTTP
-  let backendApiClient: BackendAPIClient
-  
-  init(navigationController:  UINavigationController,
-       auth:                  Auth,
-       profileStorage:        AnyStorage<User>,
-       openHttpClient:        OpenHTTP,
-       backendApiClient:      BackendAPIClient) {
+
+  init(factory                : Factory,
+       navigationController   : UINavigationController) {
+    self.factory              = factory
     self.navigationController = navigationController
-    self.auth                 = auth
-    self.profileStorage       = profileStorage
-    self.openHttpClient       = openHttpClient
-    self.backendApiClient     = backendApiClient
-    
-    let vm = SettingsViewModel(coordinator: self, auth: auth, profileStorage: profileStorage, openHttpClient: openHttpClient, backendApiClient: backendApiClient)
-    let vc = SettingsViewController(viewModel: vm)
-    vc.tabBarItem = UITabBarItem(title: nil,
-                                 image: Images.settings,
-                                 selectedImage: Images.settings)
-    navigationController.pushViewController(vc, animated: false)
   }
 
   func start() {
+    let vm = factory.makeSettingsViewModel(coordinator: self)
+    let vc = factory.makeSettingsViewController(viewModel: vm)
+
+    navigationController.pushViewController(vc, animated: false)
   }
   
   func navigateToMap(selectAction: @escaping MapViewCallback) {

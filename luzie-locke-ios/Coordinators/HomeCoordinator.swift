@@ -9,58 +9,34 @@ import UIKit
 
 class HomeCoordinator: Coordinator {
   
+  typealias Factory = CoordinatorFactory & ViewControllerFactory & ViewModelFactory
+  
+  let factory               : Factory
+  var navigationController  : UINavigationController
+  
   var children = [Coordinator]()
-  var navigationController: UINavigationController
-  
-  let profileStorage:   AnyStorage<User>
-  let cloudStorage:     CloudStorage
-  let openHttpClient:   OpenHTTP
-  let itemRepository:   ItemRepository
-  
-  init(navigationController:  UINavigationController,
-       profileStorage:        AnyStorage<User>,
-       cloudStorage:          CloudStorage,
-       openHttpClient:        OpenHTTP,
-       itemRepository:        ItemRepository) {
+
+  init(factory:               Factory,
+       navigationController:  UINavigationController) {
+    self.factory              = factory
     self.navigationController = navigationController
-    self.profileStorage       = profileStorage
-    self.cloudStorage         = cloudStorage
-    self.openHttpClient       = openHttpClient
-    self.itemRepository       = itemRepository
-    
-    let vm = HomeViewModel(coordinator: self,
-                           profileStorage: profileStorage,
-                           openHttpClient: openHttpClient,
-                           itemRepository: itemRepository)
-    let vc = HomeViewController(viewModel: vm)
-    
-    vc.tabBarItem = UITabBarItem(title: nil,
-                                 image: Images.home,
-                                 selectedImage: Images.home)
-    
-    navigationController.pushViewController(vc, animated: false)
   }
   
   func start() {
+    let vm = factory.makeHomeViewModel(coordinator: self)
+    let vc = factory.makeHomeViewController(viewModel: vm)
+    navigationController.pushViewController(vc, animated: false)
   }
   
   func navigateToItemCreate() {
-    let vm = ItemCreateViewModel(coordinator: self,
-                                 profileStorage: profileStorage,
-                                 cloudStorage: cloudStorage,
-                                 openHttpClient: openHttpClient,
-                                 itemRepository: itemRepository)
-    let vc = ItemCreateViewController(viewModel: vm)
+    let vm = factory.makeItemCreateViewModel(coordinator: self)
+    let vc = factory.makeItemCreateViewController(viewModel: vm)
     navigationController.pushViewController(vc, animated: true)
   }
   
   func navigateToItemDisplay(id: String) {
-    let vm = ItemDisplayViewModel(coordinator: self,
-                                  profileStorage: profileStorage,
-                                  openHttpClient: openHttpClient,
-                                  itemRepository: itemRepository,
-                                  id: id)
-    let vc = ItemDisplayViewController(viewModel: vm)
+    let vm = factory.makeItemDisplayViewModel(coordinator: self, id: id)
+    let vc = factory.makeItemDisplayViewController(viewModel: vm)
     navigationController.pushViewController(vc, animated: true)
   }
   

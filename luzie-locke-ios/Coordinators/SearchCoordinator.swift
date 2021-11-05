@@ -8,9 +8,10 @@
 import UIKit
 
 class SearchCoordinator: Coordinator {
-  var children = [Coordinator]()
+
   var navigationController: UINavigationController
-  
+  var children = [Coordinator]()
+
   var profileStorage: AnyStorage<User>
   
   init(navigationController: UINavigationController, profileStorage: AnyStorage<User>) {

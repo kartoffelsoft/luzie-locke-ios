@@ -9,8 +9,8 @@ import UIKit
 
 class ChatsCoordinator: Coordinator {
   
-  var children = [Coordinator]()
   var navigationController: UINavigationController
+  var children = [Coordinator]()
   
   var profileStorage: AnyStorage<User>
   
