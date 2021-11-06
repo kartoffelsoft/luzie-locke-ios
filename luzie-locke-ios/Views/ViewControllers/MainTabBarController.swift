@@ -7,13 +7,13 @@
 
 import UIKit
 
-//protocol MainTabBarControllerDelegate: class {
-//  func didRequireLogin()
-//}
+protocol MainTabBarControllerRouteDelegate: AnyObject {
+  func didRequireLogin(_ from: UIViewController)
+}
 
 class MainTabBarController: UITabBarController {
   
-//  weak var delegate: MainTabBarControllerDelegate?
+  weak var route: MainTabBarControllerRouteDelegate?
   
   typealias Factory = CoordinatorFactory & ViewControllerFactory
   
@@ -58,8 +58,10 @@ class MainTabBarController: UITabBarController {
     navigationController?.isNavigationBarHidden = true
     
     if !auth.isAuthenticated() {
-      self.loginCoordinator.start()
-      self.present(self.loginCoordinator.navigationController, animated: true)
+      print("Requires login")
+      route?.didRequireLogin(self)
+//      self.loginCoordinator.start()
+//      self.present(self.loginCoordinator.navigationController, animated: true)
     }
   }
   

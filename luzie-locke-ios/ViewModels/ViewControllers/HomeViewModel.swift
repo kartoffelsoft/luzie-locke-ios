@@ -31,9 +31,6 @@ class HomeViewModel {
     itemRepository.readListAll { result in
       switch result {
       case .success(let items):
-        print("Success")
-        print(items)
-
         self.itemCellViewModels = items.reduce([ItemCellViewModel](), { output, item in
           let vm = ItemCellViewModel(openHttpClient: self.openHttpClient)
           vm.item = item

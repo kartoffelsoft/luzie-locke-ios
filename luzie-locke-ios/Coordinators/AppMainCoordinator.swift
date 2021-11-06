@@ -5,32 +5,39 @@
 //  Created by Harry on 05.11.21.
 //
 
-import Foundation
+import UIKit
 
-class AppMainCoordinator: CoordinatorExt {
+class AppMainCoordinator: Coordinator {
 
-  typealias Factory = ViewControllerFactory
+  typealias Factory = ViewControllerFactory & CoordinatorFactory
   let factory: Factory
   
-  let router: Router
-  var children: [CoordinatorExt] = []
+  var navigationController: UINavigationController
+  var children: [Coordinator] = []
 
-  init(factory: Factory, router: Router) {
-    self.factory  = factory
-    self.router   = router
+  let window: UIWindow
+  
+  init(factory: Factory,
+       window: UIWindow,
+       navigationController: UINavigationController = UINavigationController()) {
+    self.factory                = factory
+    self.window                 = window
+    self.navigationController   = navigationController
   }
   
-  func present(animated: Bool, onDismiss: (() -> Void)?) {
+  func start() {
     let viewController = factory.makeMainTabBarController()
-    router.present(viewController, animated: animated, onDismiss: onDismiss)
+    viewController.route = self
+    window.rootViewController = viewController
+    window.makeKeyAndVisible()
   }
 }
 
-//
-//extension AppMainCoordinator: MainTabBarControllerDelegate {
-//  public func homeViewControllerDidPressScheduleAppointment(_ viewController: HomeViewController) {
-//    let router = ModalNavigationRouter(parentViewController: viewController)
-//    let coordinator = PetAppointmentBuilderCoordinator(router: router)
-//    presentChild(coordinator, animated: true)
-//  }
-//}
+extension AppMainCoordinator: MainTabBarControllerRouteDelegate{
+  
+  func didRequireLogin(_ from: UIViewController) {
+    let coordinator = factory.makeLoginCoordinator()
+    coordinator.start()
+    from.present(coordinator.navigationController, animated: true)
+  }
+}
