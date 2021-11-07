@@ -13,6 +13,8 @@ protocol CoordinatorFactory {
   func makeSearchCoordinator()    -> SearchCoordinator
   func makeChatCoordinator()      -> ChatsCoordinator
   func makeSettingsCoordinator()  -> SettingsCoordinator
+  
+  func makeItemDisplayCoordinator(navigationController: UINavigationController, id: String) -> ItemDisplayCoordinator
 }
 
 extension CompositionRoot: CoordinatorFactory {
@@ -40,5 +42,11 @@ extension CompositionRoot: CoordinatorFactory {
   func makeSettingsCoordinator() -> SettingsCoordinator {
     return SettingsCoordinator(factory: self,
                                navigationController: UINavigationController())
+  }
+  
+  func makeItemDisplayCoordinator(navigationController: UINavigationController, id: String)  -> ItemDisplayCoordinator {
+    return ItemDisplayCoordinator(factory: self,
+                                  navigationController: navigationController,
+                                  id: id)
   }
 }

@@ -11,8 +11,10 @@ protocol ViewModelFactory {
   func makeLoginViewModel(coordinator: LoginCoordinator) -> LoginViewModel
   func makeHomeViewModel(coordinator: HomeCoordinator) -> HomeViewModel
   func makeItemCreateViewModel(coordinator: HomeCoordinator) -> ItemCreateViewModel
-  func makeItemDisplayViewModel(coordinator: HomeCoordinator, id: String) -> ItemDisplayViewModel
   func makeSettingsViewModel(coordinator: SettingsCoordinator) -> SettingsViewModel
+  
+  func makeItemDisplayViewModel(coordinator: ItemDisplayCoordinator, id: String) -> ItemDisplayViewModel
+  func makeItemDisplayDetailViewModel(item: Item) -> ItemDisplayDetailViewModel
 }
 
 extension CompositionRoot: ViewModelFactory {
@@ -35,8 +37,16 @@ extension CompositionRoot: ViewModelFactory {
                                openHttpClient: openHttpClient,
                                itemRepository: itemRepository)
   }
+
+  func makeSettingsViewModel(coordinator: SettingsCoordinator) -> SettingsViewModel {
+    return SettingsViewModel(coordinator: coordinator,
+                             auth: auth,
+                             profileStorage: profileStorage,
+                             openHttpClient: openHttpClient,
+                             backendApiClient: backendApiClient)
+  }
   
-  func makeItemDisplayViewModel(coordinator: HomeCoordinator, id: String) -> ItemDisplayViewModel {
+  func makeItemDisplayViewModel(coordinator: ItemDisplayCoordinator, id: String) -> ItemDisplayViewModel {
     return ItemDisplayViewModel(coordinator: coordinator,
                                 profileStorage: profileStorage,
                                 openHttpClient: openHttpClient,
@@ -44,11 +54,9 @@ extension CompositionRoot: ViewModelFactory {
                                 id: id)
   }
   
-  func makeSettingsViewModel(coordinator: SettingsCoordinator) -> SettingsViewModel {
-    return SettingsViewModel(coordinator: coordinator,
-                             auth: auth,
-                             profileStorage: profileStorage,
-                             openHttpClient: openHttpClient,
-                             backendApiClient: backendApiClient)
+  func makeItemDisplayDetailViewModel(item: Item) -> ItemDisplayDetailViewModel {
+    let viewModel = ItemDisplayDetailViewModel(openHttpClient: openHttpClient)
+    viewModel.item = item
+    return viewModel
   }
 }

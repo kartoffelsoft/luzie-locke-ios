@@ -58,10 +58,7 @@ class MainTabBarController: UITabBarController {
     navigationController?.isNavigationBarHidden = true
     
     if !auth.isAuthenticated() {
-      print("Requires login")
       route?.didRequireLogin(self)
-//      self.loginCoordinator.start()
-//      self.present(self.loginCoordinator.navigationController, animated: true)
     }
   }
   

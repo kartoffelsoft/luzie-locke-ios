@@ -30,16 +30,10 @@ class ItemDisplayBriefViewController: UIViewController {
     
     configureLayout()
     configureBindables()
-    
-    moreButton.addTarget(self, action: #selector(onMoreButtonPress), for: .touchUpInside)
   }
   
   override func viewWillLayoutSubviews() {
     gradientLayer.frame = self.view.frame
-  }
-  
-  @objc private func onMoreButtonPress() {
-    print("pressed")
   }
   
   private func configureLayout() {
@@ -47,7 +41,6 @@ class ItemDisplayBriefViewController: UIViewController {
     configureGradientLayer()
     configureLabels()
     configureMoreButton()
-    
   }
   
   private func configureImageView() {
@@ -78,9 +71,8 @@ class ItemDisplayBriefViewController: UIViewController {
     view.addSubview(textStackView)
     
     NSLayoutConstraint.activate([
-      textStackView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor, constant: 20),
-      textStackView.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -20),
-      textStackView.bottomAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -50),
+      textStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+      textStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
       textStackView.heightAnchor.constraint(equalToConstant: 50)
     ])
   }
@@ -93,9 +85,11 @@ class ItemDisplayBriefViewController: UIViewController {
     view.addSubview(moreButton)
     
     NSLayoutConstraint.activate([
-      moreButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
+      moreButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
       moreButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20)
     ])
+    
+    moreButton.addTarget(self, action: #selector(onMoreButtonPress), for: .touchUpInside)
   }
   
   private func configureBindables() {
@@ -106,6 +100,10 @@ class ItemDisplayBriefViewController: UIViewController {
     viewModel.bindableLocationText.bind { [weak self] text in
       self?.locationLabel.text = text
     }
+  }
+  
+  @objc private func onMoreButtonPress() {
+    viewModel.didTapMoreButton(self)
   }
   
   required init?(coder: NSCoder) {

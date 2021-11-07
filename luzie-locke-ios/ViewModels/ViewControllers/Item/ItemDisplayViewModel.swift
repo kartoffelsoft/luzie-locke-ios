@@ -9,7 +9,7 @@ import UIKit
 
 class ItemDisplayViewModel {
   
-  private let coordinator:          HomeCoordinator
+  private let coordinator:          ItemDisplayCoordinator
   private let profileStorage:       AnyStorage<User>
   private let openHttpClient:       OpenHTTP
   private let itemRepository:       ItemRepositoryProtocol
@@ -27,7 +27,7 @@ class ItemDisplayViewModel {
     }
   }
   
-  init(coordinator:         HomeCoordinator,
+  init(coordinator:         ItemDisplayCoordinator,
        profileStorage:      AnyStorage<User>,
        openHttpClient:      OpenHTTP,
        itemRepository:      ItemRepositoryProtocol,
@@ -38,7 +38,7 @@ class ItemDisplayViewModel {
     self.itemRepository     = itemRepository
     self.id                 = id
     
-    itemDisplayBriefViewModel = ItemDisplayBriefViewModel(openHttpClient: openHttpClient)
+    itemDisplayBriefViewModel = ItemDisplayBriefViewModel(coordinator: coordinator, openHttpClient: openHttpClient)
     itemActionPanelViewModel  = ItemActionPanelViewModel()
   }
   
@@ -46,7 +46,6 @@ class ItemDisplayViewModel {
     itemRepository.read(id) { [weak self] result in
       switch result {
       case .success(let item): ()
-        print(item)
         self?.item = item
 
       case .failure(let error):

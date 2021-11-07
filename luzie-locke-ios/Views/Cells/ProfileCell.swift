@@ -11,26 +11,24 @@ class ProfileCell: UICollectionViewCell {
   
   static let reuseIdentifier = "ProfileCell"
   
-  let userImageView     = AvatarImageView(radius: 30)
-  let userNameLabel     = HeaderLabel(textAlignment: .left)
-  let userLocationLabel = BodyLabel(font: Fonts.caption, textAlignment: .left)
+  let userInfoView = UserInfoView()
   
   var viewModel: ProfileCellViewModel? {
     didSet {
-      userImageView.image     = viewModel?.bindableProfileImage.value
-      userNameLabel.text      = viewModel?.bindableNameText.value
-      userLocationLabel.text  = viewModel?.bindableLocationText.value
+      userInfoView.imageView.image     = viewModel?.bindableProfileImage.value
+      userInfoView.nameLabel.text      = viewModel?.bindableNameText.value
+      userInfoView.locationLabel.text  = viewModel?.bindableLocationText.value
       
       viewModel?.bindableProfileImage.bind { [weak self] image in
-        self?.userImageView.image = image
+        self?.userInfoView.imageView.image = image
       }
       
       viewModel?.bindableNameText.bind { [weak self] text in
-        self?.userNameLabel.text = text
+        self?.userInfoView.nameLabel.text = text
       }
       
       viewModel?.bindableLocationText.bind { [weak self] text in
-        self?.userLocationLabel.text = text
+        self?.userInfoView.locationLabel.text = text
       }
     }
   }
@@ -41,27 +39,8 @@ class ProfileCell: UICollectionViewCell {
   }
   
   private func configure() {
-    userImageView.layer.borderWidth = 3
-    userImageView.layer.borderColor = UIColor(named: "PrimaryColorLight2")?.cgColor
-
-    addSubview(userImageView)
-    addSubview(userNameLabel)
-    addSubview(userLocationLabel)
-    
-    NSLayoutConstraint.activate([
-      userImageView.topAnchor.constraint(equalTo: topAnchor),
-      userImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-      userImageView.widthAnchor.constraint(equalToConstant: 60),
-      userImageView.heightAnchor.constraint(equalToConstant: 60),
-      
-      userNameLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 15),
-      userNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-      userNameLabel.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor, constant: -12),
-      
-      userLocationLabel.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 15),
-      userLocationLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-      userLocationLabel.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor, constant: 12),
-    ])
+    addSubview(userInfoView)
+    userInfoView.pinToEdges(of: self)
   }
 
   required init?(coder: NSCoder) {

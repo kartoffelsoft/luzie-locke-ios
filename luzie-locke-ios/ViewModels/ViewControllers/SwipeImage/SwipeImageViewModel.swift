@@ -29,5 +29,4 @@ class SwipeImageViewModel {
   init(openHttpClient: OpenHTTP) {
     self.openHttpClient = openHttpClient
   }
-  
 }

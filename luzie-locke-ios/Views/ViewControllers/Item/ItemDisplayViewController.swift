@@ -9,6 +9,8 @@ import UIKit
 
 class ItemDisplayViewController: UIViewController {
 
+  weak var coordinator: ItemDisplayCoordinator?
+  
   private let viewModel:            ItemDisplayViewModel
   private let itemActionPanelView:  ItemActionPanelView
   

@@ -5,10 +5,11 @@
 //  Created by Harry on 02.11.21.
 //
 
-import Foundation
+import UIKit
 
 class ItemDisplayBriefViewModel {
   
+  private let coordinator: ItemDisplayCoordinator
   private let openHttpClient: OpenHTTP
   
   let swipeImageViewModel: SwipeImageViewModel
@@ -27,8 +28,15 @@ class ItemDisplayBriefViewModel {
     }
   }
   
-  init(openHttpClient: OpenHTTP) {
-    self.openHttpClient = openHttpClient
-    self.swipeImageViewModel = SwipeImageViewModel(openHttpClient: openHttpClient)
+  init(coordinator: ItemDisplayCoordinator, openHttpClient: OpenHTTP) {
+    self.coordinator          = coordinator
+    self.openHttpClient       = openHttpClient
+    self.swipeImageViewModel  = SwipeImageViewModel(openHttpClient: openHttpClient)
+  }
+  
+  func didTapMoreButton(_ viewController: UIViewController ) {
+    if let item = item {
+      coordinator.presentMore(viewController, item: item)
+    }
   }
 }

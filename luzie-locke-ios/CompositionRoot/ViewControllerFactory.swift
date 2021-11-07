@@ -11,9 +11,11 @@ protocol ViewControllerFactory {
   func makeMainTabBarController() -> MainTabBarController
   func makeLoginViewController(viewModel: LoginViewModel) -> LoginViewController
   func makeHomeViewController(viewModel: HomeViewModel) -> HomeViewController
-  func makeItemCreateViewController(viewModel: ItemCreateViewModel) -> ItemCreateViewController
-  func makeItemDisplayViewController(viewModel: ItemDisplayViewModel) -> ItemDisplayViewController
   func makeSettingsViewController(viewModel: SettingsViewModel) -> SettingsViewController
+  
+  func makeItemCreateViewController(viewModel: ItemCreateViewModel) -> ItemCreateViewController
+  func makeItemDisplayViewController(viewModel: ItemDisplayViewModel, coordinator: ItemDisplayCoordinator) -> ItemDisplayViewController
+  func makeItemDisplayDetailViewController(viewModel: ItemDisplayDetailViewModel) -> ItemDisplayDetailViewController
 }
 
 extension CompositionRoot: ViewControllerFactory {
@@ -32,17 +34,24 @@ extension CompositionRoot: ViewControllerFactory {
     return vc
   }
   
-  func makeItemCreateViewController(viewModel: ItemCreateViewModel) -> ItemCreateViewController {
-    return ItemCreateViewController(viewModel: viewModel)
-  }
-  
-  func makeItemDisplayViewController(viewModel: ItemDisplayViewModel) -> ItemDisplayViewController {
-    return ItemDisplayViewController(viewModel: viewModel)
-  }
-  
   func makeSettingsViewController(viewModel: SettingsViewModel) -> SettingsViewController {
     let vc = SettingsViewController(viewModel: viewModel)
     vc.tabBarItem = UITabBarItem(title: nil, image: Images.settings, selectedImage: Images.settings)
     return vc
+  }
+  
+  func makeItemCreateViewController(viewModel: ItemCreateViewModel) -> ItemCreateViewController {
+    return ItemCreateViewController(viewModel: viewModel)
+  }
+  
+  func makeItemDisplayViewController(viewModel: ItemDisplayViewModel, coordinator: ItemDisplayCoordinator) -> ItemDisplayViewController {
+    let viewController = ItemDisplayViewController(viewModel: viewModel)
+    viewController.coordinator = coordinator
+    return viewController
+  }
+  
+  func makeItemDisplayDetailViewController(viewModel: ItemDisplayDetailViewModel) -> ItemDisplayDetailViewController {
+    let viewController = ItemDisplayDetailViewController(viewModel: viewModel)
+    return viewController
   }
 }

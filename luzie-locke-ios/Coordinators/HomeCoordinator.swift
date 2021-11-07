@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeCoordinator: Coordinator {
+class HomeCoordinator: NSObject, Coordinator {
   
   typealias Factory = CoordinatorFactory & ViewControllerFactory & ViewModelFactory
   
@@ -25,6 +25,7 @@ class HomeCoordinator: Coordinator {
   func start() {
     let vm = factory.makeHomeViewModel(coordinator: self)
     let vc = factory.makeHomeViewController(viewModel: vm)
+    navigationController.delegate = self
     navigationController.pushViewController(vc, animated: false)
   }
   
@@ -35,12 +36,39 @@ class HomeCoordinator: Coordinator {
   }
   
   func navigateToItemDisplay(id: String) {
-    let vm = factory.makeItemDisplayViewModel(coordinator: self, id: id)
-    let vc = factory.makeItemDisplayViewController(viewModel: vm)
-    navigationController.pushViewController(vc, animated: true)
+    let coordinator = factory.makeItemDisplayCoordinator(navigationController: navigationController,
+                                                         id: id)
+    children.append(coordinator)
+    coordinator.start()
   }
   
   func popViewController() {
     navigationController.popViewController(animated: true)
+  }
+  
+  private func childDidFinish(_ child: Coordinator?) {
+    for (index, coordinator) in children.enumerated() {
+      if coordinator === child {
+        children.remove(at: index)
+        print("removed", children)
+        return
+      }
+    }
+  }
+}
+
+extension HomeCoordinator: UINavigationControllerDelegate {
+  func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+    guard let from = navigationController.transitionCoordinator?.viewController(forKey: .from) else {
+      return
+    }
+    
+    if navigationController.viewControllers.contains(from) {
+      return
+    }
+    
+    if let viewController = from as? ItemDisplayViewController {
+      childDidFinish(viewController.coordinator)
+    }
   }
 }

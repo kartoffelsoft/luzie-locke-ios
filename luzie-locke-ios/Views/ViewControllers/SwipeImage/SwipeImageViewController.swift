@@ -42,27 +42,27 @@ class SwipeImageViewController: UIPageViewController {
     for _ in 1...numberOfImages {
       let barView                 = UIView()
       barView.backgroundColor     = offColor
-      barView.layer.cornerRadius  = 2
+      barView.layer.cornerRadius  = 5
+      barView.widthAnchor.constraint(equalToConstant: 10).isActive = true
       pagerStackView.addArrangedSubview(barView)
     }
     
     pagerStackView.translatesAutoresizingMaskIntoConstraints  = false
     pagerStackView.arrangedSubviews.first?.backgroundColor    = onColor
-    pagerStackView.spacing                                    = 4
+    pagerStackView.spacing                                    = 5
     pagerStackView.distribution                               = .fillEqually
     
     view.addSubview(pagerStackView)
     
-    let padding: CGFloat = 8
     NSLayoutConstraint.activate([
-      pagerStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
-      pagerStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
-      pagerStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-      pagerStackView.heightAnchor.constraint(equalToConstant: 4)
+      pagerStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+      pagerStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      pagerStackView.heightAnchor.constraint(equalToConstant: 10),
     ])
   }
   
   func configureBindables() {
+    controllers = viewModel.bindableControllers.value
     viewModel.bindableControllers.bind { [weak self] controllers in
       self?.controllers = controllers
     }
