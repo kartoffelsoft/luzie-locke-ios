@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     FirebaseApp.configure()
     
     UIBarButtonItem.appearance().tintColor = Colors.primaryColor
-    UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: Fonts.title],
+    UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: Fonts.subtitle],
                                                         for: UIControl.State.normal)
     
     return true

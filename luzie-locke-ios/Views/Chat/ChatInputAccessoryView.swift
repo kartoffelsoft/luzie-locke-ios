@@ -10,16 +10,20 @@ import UIKit
 class ChatInputAccessoryView: UIView {
   
   let textField: UITextField = {
-    let tf          = UITextField()
-    tf.placeholder  = "Enter message"
-    tf.font         = .systemFont(ofSize: 16)
-    return tf
+    let field          = UITextField()
+    field.placeholder  = "Enter message"
+    field.font         = Fonts.body
+    field.textColor    = Colors.primaryColorLight3
+    field.attributedPlaceholder = NSAttributedString(
+      string: "Enter message",
+      attributes: [NSAttributedString.Key.foregroundColor: Colors.secondaryColor]
+    )
+    return field
   }()
   
   let sendButton: UIButton = {
     let button = UIButton()
     button.setImage(Images.messageSend, for: .normal)
-    button.setTitleColor(.black, for: .normal)
     button.heightAnchor.constraint(equalToConstant: 60).isActive = true
     button.widthAnchor.constraint(equalToConstant: 60).isActive = true
     return button
@@ -35,7 +39,7 @@ class ChatInputAccessoryView: UIView {
   }
 
   private func configure() {
-    backgroundColor     = .white
+    backgroundColor     = Colors.primaryColor
     layer.shadowOpacity = 0.1
     layer.shadowRadius  = 8
     layer.shadowOffset  = .init(width: 0, height: -8)
