@@ -34,7 +34,7 @@ class ItemDisplayBriefViewModel {
     self.swipeImageViewModel  = SwipeImageViewModel(openHttpClient: openHttpClient)
   }
   
-  func didTapMoreButton(_ viewController: UIViewController ) {
+  func didTapMoreButton(_ viewController: UIViewController) {
     if let item = item {
       coordinator.presentMore(viewController, item: item)
     }

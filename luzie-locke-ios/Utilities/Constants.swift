@@ -63,6 +63,10 @@ enum Images {
   static let chevronDown       = UIImage(systemName: "chevron.down",
                                           withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .medium))?
                                     .withTintColor(Colors.primaryColor, renderingMode: .alwaysOriginal)
+  
+  static let messageSend       = UIImage(systemName: "paperplane.circle",
+                                          withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))?
+                                    .withTintColor(Colors.primaryColor, renderingMode: .alwaysOriginal)
 }
 
 enum Colors {

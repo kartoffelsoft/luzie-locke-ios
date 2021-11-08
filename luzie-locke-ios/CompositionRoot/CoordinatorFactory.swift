@@ -8,11 +8,11 @@
 import UIKit
 
 protocol CoordinatorFactory {
-  func makeLoginCoordinator()     -> LoginCoordinator
-  func makeHomeCoordinator()      -> HomeCoordinator
-  func makeSearchCoordinator()    -> SearchCoordinator
-  func makeChatCoordinator()      -> ChatsCoordinator
-  func makeSettingsCoordinator()  -> SettingsCoordinator
+  func makeLoginCoordinator()         -> LoginCoordinator
+  func makeHomeCoordinator()          -> HomeCoordinator
+  func makeSearchCoordinator()        -> SearchCoordinator
+  func makeCommunicationCoordinator() -> CommunicationCoordinator
+  func makeSettingsCoordinator()      -> SettingsCoordinator
   
   func makeItemDisplayCoordinator(navigationController: UINavigationController, id: String) -> ItemDisplayCoordinator
 }
@@ -34,8 +34,8 @@ extension CompositionRoot: CoordinatorFactory {
                              profileStorage: profileStorage)
   }
   
-  func makeChatCoordinator() -> ChatsCoordinator {
-    return ChatsCoordinator(navigationController: UINavigationController(),
+  func makeCommunicationCoordinator() -> CommunicationCoordinator {
+    return CommunicationCoordinator(navigationController: UINavigationController(),
                             profileStorage: profileStorage)
   }
   

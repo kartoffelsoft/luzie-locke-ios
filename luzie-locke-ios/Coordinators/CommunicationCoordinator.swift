@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChatsCoordinator: Coordinator {
+class CommunicationCoordinator: Coordinator {
   
   var navigationController: UINavigationController
   var children = [Coordinator]()
@@ -20,7 +20,7 @@ class ChatsCoordinator: Coordinator {
   }
   
   func start() {
-    let vc = ChatsViewController(profileStorage: profileStorage)
+    let vc = CommunicationViewController(profileStorage: profileStorage)
     vc.tabBarItem = UITabBarItem(title: nil,
                                  image: Images.chats,
                                  selectedImage: Images.chats)

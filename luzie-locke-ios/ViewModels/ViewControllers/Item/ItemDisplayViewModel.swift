@@ -15,7 +15,8 @@ class ItemDisplayViewModel {
   private let itemRepository:       ItemRepositoryProtocol
   private let id:                   String
   
-  var bindableIsLoading       = Bindable<Bool>()
+  var bindableIsLoading = Bindable<Bool>()
+  let bindablePriceText = Bindable<NSAttributedString>()
   
   let itemDisplayBriefViewModel: ItemDisplayBriefViewModel
   let itemActionPanelViewModel:  ItemActionPanelViewModel
@@ -24,6 +25,12 @@ class ItemDisplayViewModel {
     didSet {
       itemActionPanelViewModel.item = item
       itemDisplayBriefViewModel.item = item
+      
+      if let item = item, let price = item.price {
+        let priceText = NSMutableAttributedString(string: "€ ", attributes: [.font: Fonts.title])
+        priceText.append(NSAttributedString(string: price, attributes: [.font: Fonts.titleLarge]))
+        bindablePriceText.value = priceText
+      }
     }
   }
   
@@ -39,7 +46,7 @@ class ItemDisplayViewModel {
     self.id                 = id
     
     itemDisplayBriefViewModel = ItemDisplayBriefViewModel(coordinator: coordinator, openHttpClient: openHttpClient)
-    itemActionPanelViewModel  = ItemActionPanelViewModel()
+    itemActionPanelViewModel  = ItemActionPanelViewModel(coordinator: coordinator, profileStorage: profileStorage)
   }
   
   func viewDidLoad() {

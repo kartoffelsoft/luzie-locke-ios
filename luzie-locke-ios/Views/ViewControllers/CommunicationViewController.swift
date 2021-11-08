@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ChatsViewController: UIViewController {
+class CommunicationViewController: UIViewController {
   
   var profileStorage: AnyStorage<User>
   

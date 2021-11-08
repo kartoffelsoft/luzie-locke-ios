@@ -19,7 +19,7 @@ class ItemDisplayViewController: UIViewController {
   
   init(viewModel: ItemDisplayViewModel) {
     self.viewModel            = viewModel
-    self.itemActionPanelView  = ItemActionPanelView(vm: viewModel.itemActionPanelViewModel)
+    self.itemActionPanelView  = ItemActionPanelView(viewModel: viewModel.itemActionPanelViewModel)
     self.briefViewController  = ItemDisplayBriefViewController(viewModel: viewModel.itemDisplayBriefViewModel)
     super.init(nibName: nil, bundle: nil)
   }
@@ -28,7 +28,6 @@ class ItemDisplayViewController: UIViewController {
     super.viewDidLoad()
     viewModel.viewDidLoad()
     
-//    navigationController?.navigationBar.isHidden = true
     tabBarController?.tabBar.isHidden = true
     
     configureLayout()

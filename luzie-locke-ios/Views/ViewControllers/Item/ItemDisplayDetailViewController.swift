@@ -26,11 +26,16 @@ class ItemDisplayDetailViewController: UIViewController {
     return view
   }()
 
+  private let closeButton: KRoundButton = {
+    let button = KRoundButton(radius: 20)
+    button.backgroundColor = Colors.primaryColorLight3
+    button.setImage(Images.chevronDown, for: .normal)
+    return button
+  }()
+  
   private let imageView         = UIView()
   private let userInfoView      = UserInfoView()
   private let itemInfoView      = ItemInfoView()
-
-  private let closeButton       = KRoundButton(radius: 20)
 
   init(viewModel: ItemDisplayDetailViewModel) {
     self.viewModel                = viewModel
@@ -88,9 +93,6 @@ class ItemDisplayDetailViewController: UIViewController {
   }
   
   private func configureCloseButton() {
-    closeButton.backgroundColor = Colors.primaryColorLight3
-    closeButton.setImage(Images.chevronDown, for: .normal)
-    
     scrollView.addSubview(closeButton)
     
     NSLayoutConstraint.activate([

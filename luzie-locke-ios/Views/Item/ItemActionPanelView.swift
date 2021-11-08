@@ -9,16 +9,22 @@ import UIKit
 
 class ItemActionPanelView: UIView {
   
-  let vm: ItemActionPanelViewModel
+  let viewModel: ItemActionPanelViewModel
   
-  let priceLabel          = HeaderLabel(textColor: Colors.primaryColorLight3, textAlignment: .left)
-  
+  private let priceLabel  = HeaderLabel(textColor: Colors.primaryColorLight3, textAlignment: .left)
   private let chatButton  = KBasicButton(backgroundColor: Colors.primaryColorLight3,
                                          textColor: Colors.primaryColor,
                                          title: "Chat")
   
-  init(vm: ItemActionPanelViewModel) {
-    self.vm = vm
+  private let favoriteButton: UIButton = {
+    let button = UIButton()
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.setImage(Images.favoriteOff, for: .normal)
+    return button
+  }()
+  
+  init(viewModel: ItemActionPanelViewModel) {
+    self.viewModel = viewModel
     super.init(frame: .zero)
     
     configureLayout()
@@ -28,20 +34,17 @@ class ItemActionPanelView: UIView {
   private func configureLayout() {
     translatesAutoresizingMaskIntoConstraints = false
     backgroundColor                           = Colors.primaryColor
-    
-    let favoriteImage = UIImageView(image: Images.favoriteOff)
-    favoriteImage.translatesAutoresizingMaskIntoConstraints = false
-    
-    addSubview(favoriteImage)
+
+    addSubview(favoriteButton)
     addSubview(priceLabel)
     addSubview(chatButton)
     
     let padding: CGFloat = 20
     NSLayoutConstraint.activate([
-      favoriteImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
-      favoriteImage.centerYAnchor.constraint(equalTo: centerYAnchor),
+      favoriteButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
+      favoriteButton.centerYAnchor.constraint(equalTo: centerYAnchor),
 
-      priceLabel.leadingAnchor.constraint(equalTo: favoriteImage.trailingAnchor, constant: 10),
+      priceLabel.leadingAnchor.constraint(equalTo: favoriteButton.trailingAnchor, constant: 10),
       priceLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
       priceLabel.heightAnchor.constraint(equalToConstant: 45),
       priceLabel.widthAnchor.constraint(equalToConstant: 65),
@@ -51,10 +54,21 @@ class ItemActionPanelView: UIView {
       chatButton.heightAnchor.constraint(equalToConstant: 40),
       chatButton.widthAnchor.constraint(equalToConstant: 65)
     ])
+    
+    favoriteButton.addTarget(self, action: #selector(handleFavoriteButtonTap), for: .touchUpInside)
+    chatButton.addTarget(self, action: #selector(handleChatButtonTap), for: .touchUpInside)
   }
   
+  @objc private func handleFavoriteButtonTap() {
+    viewModel.didTapFavoriteButton()
+  }
+  
+  @objc private func handleChatButtonTap() {
+    viewModel.didTapChatButton()
+  }
+
   private func configureBindables() {
-    vm.bindablePriceText.bind { [weak self] text in
+    viewModel.bindablePriceText.bind { [weak self] text in
       self?.priceLabel.attributedText = text
     }
   }
