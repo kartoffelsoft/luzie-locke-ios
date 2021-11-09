@@ -20,6 +20,13 @@ class CommunicationViewController: UIViewController {
     super.viewDidLoad()
     
     navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: ScreenTitleLabel("Chat"))
+    configureGradientBackground()
+  }
+  
+  func configureGradientBackground() {
+    if let image = CustomGradient.mainBackground(on: view) {
+      view.backgroundColor = UIColor(patternImage: image)
+    }
   }
   
   required init?(coder: NSCoder) {

@@ -21,13 +21,15 @@ class MessageCell: UICollectionViewCell {
   }()
   
   private let bubbleContainer = UIView()
-  var rightAlignConstraints: NSLayoutConstraint!
-  var leftAlignConstraints: NSLayoutConstraint!
+  private var rightAlignConstraints: NSLayoutConstraint!
+  private var leftAlignConstraints: NSLayoutConstraint!
+  private var widthConstraints: NSLayoutConstraint!
   
   var message: Message! {
     didSet {
-      print("@@#", message.text)
       textView.text = message.text
+      
+      widthConstraints.isActive = false
       
       if message.isFromCurrentUser {
         rightAlignConstraints.isActive = true
@@ -40,16 +42,18 @@ class MessageCell: UICollectionViewCell {
         bubbleContainer.backgroundColor = Colors.primaryColorLight2
         textView.textColor = Colors.tertiaryColor
       }
+      
+      widthConstraints.isActive = true
     }
   }
   
   override init(frame: CGRect) {
-    print("init@@")
     super.init(frame: frame)
     configure()
     
     rightAlignConstraints = bubbleContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15)
-    leftAlignConstraints = bubbleContainer.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15)
+    leftAlignConstraints  = bubbleContainer.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15)
+    widthConstraints      = bubbleContainer.widthAnchor.constraint(lessThanOrEqualToConstant: 260)
   }
   
   fileprivate func configure() {
@@ -58,9 +62,8 @@ class MessageCell: UICollectionViewCell {
     bubbleContainer.translatesAutoresizingMaskIntoConstraints = false
     
     NSLayoutConstraint.activate([
-      bubbleContainer.topAnchor.constraint(equalTo: topAnchor, constant: 2),
-      bubbleContainer.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -2),
-      bubbleContainer.widthAnchor.constraint(lessThanOrEqualToConstant: 260),
+      bubbleContainer.topAnchor.constraint(equalTo: topAnchor),
+      bubbleContainer.bottomAnchor.constraint(equalTo: bottomAnchor),
     ])
     
     bubbleContainer.addSubview(textView)

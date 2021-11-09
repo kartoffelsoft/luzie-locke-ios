@@ -48,31 +48,14 @@ class ChatViewController: UICollectionViewController {
   ]
 
   init() {
-//    let layout = UICollectionViewCompositionalLayout { section, env in
-//      let padding: CGFloat = 0
-//
-//      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(500)))
-//      item.contentInsets = .init(top: padding, leading: padding, bottom: padding, trailing: padding)
-//
-//      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(500)), subitems: [item])
-//      let section = NSCollectionLayoutSection(group: group)
-//
-//      return section
-//    }
-    
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .vertical
-//    layout.estimatedItemSize = .zero
-//    layout.itemSize = UICollectionViewFlowLayout.automaticSize
     
     super.init(collectionViewLayout: layout)
   }
 
   override func viewDidLoad() {
-    
-    
     super.viewDidLoad()
-    view.backgroundColor = .systemPink
 
     configureCollectionView()
     configureKeyboardInput()

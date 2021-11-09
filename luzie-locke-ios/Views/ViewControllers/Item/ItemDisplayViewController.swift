@@ -53,7 +53,7 @@ class ItemDisplayViewController: UIViewController {
     bottomSafeAreaView.translatesAutoresizingMaskIntoConstraints = false
     
     contentView.translatesAutoresizingMaskIntoConstraints = false
-    contentView.backgroundColor = .yellow
+    
     view.addSubview(contentView)
     view.addSubview(itemActionPanelView)
     view.addSubview(bottomSafeAreaView)

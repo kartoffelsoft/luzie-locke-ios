@@ -43,12 +43,20 @@ class SettingsViewController: UIViewController {
     
     navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: ScreenTitleLabel("Settings"))
     
+    configureGradientBackground()
     configureNavigationBar()
     configureCollectionView()
+
   }
   
   override func viewDidAppear(_ animated: Bool) {
     viewModel.load()
+  }
+  
+  func configureGradientBackground() {
+    if let image = CustomGradient.mainBackground(on: view) {
+      view.backgroundColor = UIColor(patternImage: image)
+    }
   }
   
   func configureNavigationBar() {
@@ -59,11 +67,6 @@ class SettingsViewController: UIViewController {
   }
   
   private func configureCollectionView() {
-    let padding: CGFloat    = 15
-    let flowLayout          = UICollectionViewFlowLayout()
-    flowLayout.sectionInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
-    flowLayout.itemSize     = CGSize(width: view.bounds.width - padding * 2, height: 100)
-    
     let layout = UICollectionViewCompositionalLayout { section, env in
       let padding: CGFloat = 15
       switch(Section(rawValue: section)) {
@@ -99,15 +102,12 @@ class SettingsViewController: UIViewController {
     collectionView                  = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
     collectionView.delegate         = self
     collectionView.dataSource       = self
+    collectionView.backgroundColor  = .clear
     
     collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: ProfileCell.reuseIdentifier)
     collectionView.register(UserMenuCell.self, forCellWithReuseIdentifier: UserMenuCell.reuseIdentifier)
     collectionView.register(SettingsMenuCell.self, forCellWithReuseIdentifier: SettingsMenuCell.reuseIdentifier)
     view.addSubview(collectionView)
-    
-    if let image = CustomGradient.mainBackground(on: collectionView) {
-      collectionView.backgroundColor = UIColor(patternImage: image)
-    }
   }
   
   required init?(coder: NSCoder) {

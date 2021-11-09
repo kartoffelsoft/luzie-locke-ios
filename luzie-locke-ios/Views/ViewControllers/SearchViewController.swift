@@ -20,7 +20,14 @@ class SearchViewController: UIViewController {
     super.viewDidLoad()
     
     navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: ScreenTitleLabel("Search"))
+    configureGradientBackground()
     configureSearchController()
+  }
+  
+  func configureGradientBackground() {
+    if let image = CustomGradient.mainBackground(on: view) {
+      view.backgroundColor = UIColor(patternImage: image)
+    }
   }
   
   func configureSearchController() {

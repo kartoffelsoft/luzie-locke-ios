@@ -28,6 +28,7 @@ class HomeViewController: UIViewController {
     
     navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: ScreenTitleLabel("Home"))
     
+    configureGradientBackground()
     configureNavigationBar()
     configureCollectionView()
     configureDataSource()
@@ -37,6 +38,12 @@ class HomeViewController: UIViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     viewModel.queryAllItems()
+  }
+  
+  func configureGradientBackground() {
+    if let image = CustomGradient.mainBackground(on: view) {
+      view.backgroundColor = UIColor(patternImage: image)
+    }
   }
   
   func configureNavigationBar() {
@@ -52,15 +59,16 @@ class HomeViewController: UIViewController {
     flowLayout.sectionInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
     flowLayout.itemSize     = CGSize(width: view.bounds.width - padding * 2, height: 100)
     
-    collectionView          = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
-    collectionView.delegate = self
+    collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: flowLayout)
+    collectionView.delegate         = self
+    collectionView.backgroundColor  = .clear
     
     collectionView.register(ItemCell.self, forCellWithReuseIdentifier: ItemCell.reuseIdentifier)
     
     view.addSubview(collectionView)
     
-    if let image = CustomGradient.mainBackground(on: collectionView) {
-      collectionView.backgroundColor = UIColor(patternImage: image)
+    if let image = CustomGradient.mainBackground(on: view) {
+      view.backgroundColor = UIColor(patternImage: image)
     }
   }
   
