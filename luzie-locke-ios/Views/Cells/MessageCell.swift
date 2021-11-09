@@ -13,7 +13,7 @@ class MessageCell: UICollectionViewCell {
 
   private let textView: UITextView = {
     let view = UITextView()
-    view.font             = Fonts.body//.systemFont(ofSize: 20)
+    view.font             = Fonts.body
     view.backgroundColor  = .clear
     view.isScrollEnabled  = false
     view.isEditable       = false
@@ -21,21 +21,22 @@ class MessageCell: UICollectionViewCell {
   }()
   
   private let bubbleContainer = UIView()
+  var rightAlignConstraints: NSLayoutConstraint!
+  var leftAlignConstraints: NSLayoutConstraint!
   
   var message: Message! {
     didSet {
+      print("@@#", message.text)
       textView.text = message.text
       
       if message.isFromCurrentUser {
-        NSLayoutConstraint.activate([
-          bubbleContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
-        ])
+        rightAlignConstraints.isActive = true
+        leftAlignConstraints.isActive = false
         bubbleContainer.backgroundColor = Colors.primaryColor
         textView.textColor = Colors.primaryColorLight3
       } else {
-        NSLayoutConstraint.activate([
-          bubbleContainer.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20)
-        ])
+        rightAlignConstraints.isActive = false
+        leftAlignConstraints.isActive = true
         bubbleContainer.backgroundColor = Colors.primaryColorLight2
         textView.textColor = Colors.tertiaryColor
       }
@@ -43,8 +44,12 @@ class MessageCell: UICollectionViewCell {
   }
   
   override init(frame: CGRect) {
+    print("init@@")
     super.init(frame: frame)
     configure()
+    
+    rightAlignConstraints = bubbleContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15)
+    leftAlignConstraints = bubbleContainer.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15)
   }
   
   fileprivate func configure() {
@@ -53,9 +58,9 @@ class MessageCell: UICollectionViewCell {
     bubbleContainer.translatesAutoresizingMaskIntoConstraints = false
     
     NSLayoutConstraint.activate([
-      bubbleContainer.topAnchor.constraint(equalTo: topAnchor),
-      bubbleContainer.bottomAnchor.constraint(equalTo: bottomAnchor),
-      bubbleContainer.widthAnchor.constraint(lessThanOrEqualToConstant: 250)
+      bubbleContainer.topAnchor.constraint(equalTo: topAnchor, constant: 2),
+      bubbleContainer.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -2),
+      bubbleContainer.widthAnchor.constraint(lessThanOrEqualToConstant: 260),
     ])
     
     bubbleContainer.addSubview(textView)

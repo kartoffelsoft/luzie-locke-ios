@@ -177,7 +177,7 @@ extension SettingsViewController: UICollectionViewDataSource {
       cell.item = settingsMenuItems[indexPath.row]
       return cell
     default:
-      return  UICollectionViewCell()
+      return UICollectionViewCell()
     }
   }
 }
