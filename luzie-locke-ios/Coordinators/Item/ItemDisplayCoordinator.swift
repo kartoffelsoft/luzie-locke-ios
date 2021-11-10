@@ -36,7 +36,8 @@ class ItemDisplayCoordinator: NSObject, Coordinator {
   }
   
   func navigateToChat() {
-    let viewController = ChatViewController()
+    let viewController        = factory.makeChatViewController()
+    viewController.viewModel  = factory.makeChatViewModel()
     navigationController.pushViewController(viewController, animated: true)
   }
 }

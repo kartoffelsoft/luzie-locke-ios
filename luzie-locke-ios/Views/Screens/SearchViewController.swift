@@ -34,6 +34,7 @@ class SearchViewController: UIViewController {
     let searchController                                    = UISearchController()
     searchController.searchResultsUpdater                   = self
     searchController.obscuresBackgroundDuringPresentation   = false
+//    searchController.searchBar.searchTextField.attributedPlaceholder =  NSAttributedString.init(string: "Search anything...", attributes: [NSAttributedString.Key.foregroundColor:UIColor.red])
     navigationItem.searchController                         = searchController
     navigationItem.hidesSearchBarWhenScrolling              = false
   }

@@ -10,11 +10,14 @@ import Foundation
 protocol ViewModelFactory {
   func makeLoginViewModel(coordinator: LoginCoordinator) -> LoginViewModel
   func makeHomeViewModel(coordinator: HomeCoordinator) -> HomeViewModel
-  func makeItemCreateViewModel(coordinator: HomeCoordinator) -> ItemCreateViewModel
+  func makeMessagesViewModel(coordinator: MessagesCoordinator) -> MessagesViewModel
   func makeSettingsViewModel(coordinator: SettingsCoordinator) -> SettingsViewModel
   
+  func makeItemCreateViewModel(coordinator: HomeCoordinator) -> ItemCreateViewModel
   func makeItemDisplayViewModel(coordinator: ItemDisplayCoordinator, id: String) -> ItemDisplayViewModel
   func makeItemDisplayDetailViewModel(item: Item) -> ItemDisplayDetailViewModel
+  
+  func makeChatViewModel() -> ChatViewModel
 }
 
 extension CompositionRoot: ViewModelFactory {
@@ -29,6 +32,20 @@ extension CompositionRoot: ViewModelFactory {
                          openHttpClient: openHttpClient,
                          itemRepository: itemRepository)
   }
+
+  func makeMessagesViewModel(coordinator: MessagesCoordinator) -> MessagesViewModel {
+    return MessagesViewModel(coordinator: coordinator,
+                             profileStorage: profileStorage)
+  }
+  
+  func makeSettingsViewModel(coordinator: SettingsCoordinator) -> SettingsViewModel {
+    return SettingsViewModel(coordinator: coordinator,
+                             auth: auth,
+                             profileStorage: profileStorage,
+                             openHttpClient: openHttpClient,
+                             backendApiClient: backendApiClient)
+  }
+  
   
   func makeItemCreateViewModel(coordinator: HomeCoordinator) -> ItemCreateViewModel {
     return ItemCreateViewModel(coordinator: coordinator,
@@ -36,14 +53,6 @@ extension CompositionRoot: ViewModelFactory {
                                cloudStorage: cloudStorage,
                                openHttpClient: openHttpClient,
                                itemRepository: itemRepository)
-  }
-
-  func makeSettingsViewModel(coordinator: SettingsCoordinator) -> SettingsViewModel {
-    return SettingsViewModel(coordinator: coordinator,
-                             auth: auth,
-                             profileStorage: profileStorage,
-                             openHttpClient: openHttpClient,
-                             backendApiClient: backendApiClient)
   }
   
   func makeItemDisplayViewModel(coordinator: ItemDisplayCoordinator, id: String) -> ItemDisplayViewModel {
@@ -58,5 +67,10 @@ extension CompositionRoot: ViewModelFactory {
     let viewModel = ItemDisplayDetailViewModel(openHttpClient: openHttpClient)
     viewModel.item = item
     return viewModel
+  }
+  
+  
+  func makeChatViewModel() -> ChatViewModel {
+    return ChatViewModel()
   }
 }

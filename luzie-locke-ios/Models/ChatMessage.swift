@@ -7,7 +7,7 @@
 
 import Firebase
 
-struct Message: Hashable{
+struct ChatMessage: Hashable{
   let text:               String
   let isFromCurrentUser:  Bool
   let fromId:             String

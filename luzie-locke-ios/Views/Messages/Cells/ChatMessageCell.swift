@@ -7,9 +7,9 @@
 
 import UIKit
 
-class MessageCell: UICollectionViewCell {
+class ChatMessageCell: UICollectionViewCell {
   
-  static let reuseIdentifier = "MessageCell"
+  static let reuseIdentifier = "ChatMessageCell"
 
   private let textView: UITextView = {
     let view = UITextView()
@@ -25,7 +25,7 @@ class MessageCell: UICollectionViewCell {
   private var leftAlignConstraints: NSLayoutConstraint!
   private var widthConstraints: NSLayoutConstraint!
   
-  var message: Message! {
+  var message: ChatMessage! {
     didSet {
       textView.text = message.text
       

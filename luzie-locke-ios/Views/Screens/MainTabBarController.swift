@@ -17,18 +17,18 @@ class MainTabBarController: UITabBarController {
   
   typealias Factory = CoordinatorFactory & ViewControllerFactory
   
-  let auth:                     Auth
+  let auth:                 Auth
   
-  let homeCoordinator:          Coordinator
-  let searchCoordinator:        SearchCoordinator
-  let communicationCoordinator: CommunicationCoordinator
-  let settingsCoordinator:      SettingsCoordinator
+  let homeCoordinator:      Coordinator
+  let searchCoordinator:    SearchCoordinator
+  let messagesCoordinator:  MessagesCoordinator
+  let settingsCoordinator:  SettingsCoordinator
   
   init(factory: Factory, auth: Auth) {
     self.auth                     = auth
     self.homeCoordinator          = factory.makeHomeCoordinator()
     self.searchCoordinator        = factory.makeSearchCoordinator()
-    self.communicationCoordinator = factory.makeCommunicationCoordinator()
+    self.messagesCoordinator      = factory.makeMessagesCoordinator()
     self.settingsCoordinator      = factory.makeSettingsCoordinator()
     
     super.init(nibName: nil, bundle: nil)
@@ -41,13 +41,13 @@ class MainTabBarController: UITabBarController {
     
     homeCoordinator.start()
     searchCoordinator.start()
-    communicationCoordinator.start()
+    messagesCoordinator.start()
     settingsCoordinator.start()
     
     view.backgroundColor = .white
-    viewControllers      = [ homeCoordinator.navigationController,
+    viewControllers      = [ //homeCoordinator.navigationController,
                              searchCoordinator.navigationController,
-                             communicationCoordinator.navigationController,
+                             messagesCoordinator.navigationController,
                              settingsCoordinator.navigationController ]
   }
   

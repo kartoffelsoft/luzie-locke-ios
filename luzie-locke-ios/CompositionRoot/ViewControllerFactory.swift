@@ -11,11 +11,14 @@ protocol ViewControllerFactory {
   func makeMainTabBarController() -> MainTabBarController
   func makeLoginViewController(viewModel: LoginViewModel) -> LoginViewController
   func makeHomeViewController(viewModel: HomeViewModel) -> HomeViewController
+  func makeMessagesViewController() -> MessagesViewController
   func makeSettingsViewController(viewModel: SettingsViewModel) -> SettingsViewController
   
   func makeItemCreateViewController(viewModel: ItemCreateViewModel) -> ItemCreateViewController
   func makeItemDisplayViewController(viewModel: ItemDisplayViewModel, coordinator: ItemDisplayCoordinator) -> ItemDisplayViewController
   func makeItemDisplayDetailViewController(viewModel: ItemDisplayDetailViewModel) -> ItemDisplayDetailViewController
+  
+  func makeChatViewController() -> ChatViewController
 }
 
 extension CompositionRoot: ViewControllerFactory {
@@ -29,16 +32,23 @@ extension CompositionRoot: ViewControllerFactory {
   }
   
   func makeHomeViewController(viewModel: HomeViewModel) -> HomeViewController {
-    let vc = HomeViewController(viewModel: viewModel)
-    vc.tabBarItem = UITabBarItem(title: nil, image: Images.home, selectedImage: Images.home)
-    return vc
+    let viewController = HomeViewController(viewModel: viewModel)
+    viewController.tabBarItem = UITabBarItem(title: nil, image: Images.home, selectedImage: Images.home)
+    return viewController
   }
   
-  func makeSettingsViewController(viewModel: SettingsViewModel) -> SettingsViewController {
-    let vc = SettingsViewController(viewModel: viewModel)
-    vc.tabBarItem = UITabBarItem(title: nil, image: Images.settings, selectedImage: Images.settings)
-    return vc
+  func makeMessagesViewController() -> MessagesViewController {
+    let viewController = MessagesViewController()
+    viewController.tabBarItem = UITabBarItem(title: nil, image: Images.chats, selectedImage: Images.chats)
+    return viewController
   }
+
+  func makeSettingsViewController(viewModel: SettingsViewModel) -> SettingsViewController {
+    let viewController = SettingsViewController(viewModel: viewModel)
+    viewController.tabBarItem = UITabBarItem(title: nil, image: Images.settings, selectedImage: Images.settings)
+    return viewController
+  }
+  
   
   func makeItemCreateViewController(viewModel: ItemCreateViewModel) -> ItemCreateViewController {
     return ItemCreateViewController(viewModel: viewModel)
@@ -53,5 +63,10 @@ extension CompositionRoot: ViewControllerFactory {
   func makeItemDisplayDetailViewController(viewModel: ItemDisplayDetailViewModel) -> ItemDisplayDetailViewController {
     let viewController = ItemDisplayDetailViewController(viewModel: viewModel)
     return viewController
+  }
+  
+  
+  func makeChatViewController() -> ChatViewController {
+    return ChatViewController()
   }
 }
