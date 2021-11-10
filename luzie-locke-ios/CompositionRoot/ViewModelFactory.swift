@@ -17,7 +17,7 @@ protocol ViewModelFactory {
   func makeItemDisplayViewModel(coordinator: ItemDisplayCoordinator, id: String) -> ItemDisplayViewModel
   func makeItemDisplayDetailViewModel(item: Item) -> ItemDisplayDetailViewModel
   
-  func makeChatViewModel() -> ChatViewModel
+  func makeChatViewModel(remoteUserId: String) -> ChatViewModel
 }
 
 extension CompositionRoot: ViewModelFactory {
@@ -72,8 +72,13 @@ extension CompositionRoot: ViewModelFactory {
     return viewModel
   }
   
-  
-  func makeChatViewModel() -> ChatViewModel {
-    return ChatViewModel()
+  func makeChatViewModel(remoteUserId: String) -> ChatViewModel {
+    if let user = profileRepository.read(), let id = user._id {
+      return ChatViewModel(localUserId: id,
+                           remoteUserId: remoteUserId,
+                           chatMessageRepository: ChatMessageRepository())
+    } else {
+      fatalError("User profile is missing.")
+    }
   }
 }

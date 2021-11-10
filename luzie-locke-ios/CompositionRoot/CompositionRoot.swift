@@ -18,7 +18,7 @@ class CompositionRoot {
   
   lazy var itemRepository        = ItemRepository(backendClient: httpApiClient)
   lazy var profileRepository     = ProfileRepository(key: "Profile")
-  
+
   lazy var accessTokenStorage    = AnyStorage(wrap: SimpleStringStorage(key: "AccessToken"))
   lazy var refreshTokenStorage   = AnyStorage(wrap: SimpleStringStorage(key: "RefreshToken"))
   

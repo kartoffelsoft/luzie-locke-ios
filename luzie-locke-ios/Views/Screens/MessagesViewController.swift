@@ -36,9 +36,6 @@ class MessagesViewController: UIViewController {
   }
   
   func configureCollectionView() {
-//    let layout = UICollectionViewFlowLayout()
-//    layout.scrollDirection = .vertical
-    
     let layout = UICollectionViewCompositionalLayout { section, env in
       let padding: CGFloat = 15
       let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(120)))

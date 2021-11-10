@@ -31,7 +31,7 @@ class ChatMessageCell: UICollectionViewCell {
       
       widthConstraints.isActive = false
       
-      if message.isFromCurrentUser {
+      if message.isFromSelf {
         rightAlignConstraints.isActive = true
         leftAlignConstraints.isActive = false
         bubbleContainer.backgroundColor = Colors.primaryColor
