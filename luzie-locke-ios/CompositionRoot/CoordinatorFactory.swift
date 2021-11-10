@@ -30,8 +30,7 @@ extension CompositionRoot: CoordinatorFactory {
   }
   
   func makeSearchCoordinator() -> SearchCoordinator {
-    return SearchCoordinator(navigationController: UINavigationController(),
-                             profileStorage: profileStorage)
+    return SearchCoordinator(navigationController: UINavigationController())
   }
   
   func makeMessagesCoordinator() -> MessagesCoordinator {

@@ -23,25 +23,28 @@ protocol ViewModelFactory {
 extension CompositionRoot: ViewModelFactory {
   
   func makeLoginViewModel(coordinator: LoginCoordinator) -> LoginViewModel {
-    LoginViewModel(coordinator: coordinator, auth: auth, storage: storageService, backendApiClient: backendApiClient)
+    return LoginViewModel(coordinator: coordinator,
+                          auth: auth,
+                          profileRepository: profileRepository,
+                          backendApiClient: backendApiClient)
   }
   
   func makeHomeViewModel(coordinator: HomeCoordinator) -> HomeViewModel {
     return HomeViewModel(coordinator: coordinator,
-                         profileStorage: profileStorage,
+                         profileRepository: profileRepository,
                          openHttpClient: openHttpClient,
                          itemRepository: itemRepository)
   }
 
   func makeMessagesViewModel(coordinator: MessagesCoordinator) -> MessagesViewModel {
     return MessagesViewModel(coordinator: coordinator,
-                             profileStorage: profileStorage)
+                             profileRepository: profileRepository)
   }
   
   func makeSettingsViewModel(coordinator: SettingsCoordinator) -> SettingsViewModel {
     return SettingsViewModel(coordinator: coordinator,
                              auth: auth,
-                             profileStorage: profileStorage,
+                             profileRepository: profileRepository,
                              openHttpClient: openHttpClient,
                              backendApiClient: backendApiClient)
   }
@@ -49,7 +52,7 @@ extension CompositionRoot: ViewModelFactory {
   
   func makeItemCreateViewModel(coordinator: HomeCoordinator) -> ItemCreateViewModel {
     return ItemCreateViewModel(coordinator: coordinator,
-                               profileStorage: profileStorage,
+                               profileRepository: profileRepository,
                                cloudStorage: cloudStorage,
                                openHttpClient: openHttpClient,
                                itemRepository: itemRepository)
@@ -57,7 +60,7 @@ extension CompositionRoot: ViewModelFactory {
   
   func makeItemDisplayViewModel(coordinator: ItemDisplayCoordinator, id: String) -> ItemDisplayViewModel {
     return ItemDisplayViewModel(coordinator: coordinator,
-                                profileStorage: profileStorage,
+                                profileRepository: profileRepository,
                                 openHttpClient: openHttpClient,
                                 itemRepository: itemRepository,
                                 id: id)

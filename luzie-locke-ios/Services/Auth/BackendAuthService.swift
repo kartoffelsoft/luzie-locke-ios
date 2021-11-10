@@ -17,16 +17,16 @@ protocol BackendAuth {
 class BackendAuthService: BackendAuth {
   
   let backendApiClient:     BackendAPIClient
-  let profileStorage:       AnyStorage<User>
+  let profileRepository:    ProfileRepositoryProtocol
   let accessTokenStorage:   AnyStorage<String>
   let refreshTokenStorage:  AnyStorage<String>
 
   init(backendApiClient:      BackendAPIClient,
-       profileStorage:        AnyStorage<User>,
+       profileRepository:     ProfileRepositoryProtocol,
        accessTokenStorage:    AnyStorage<String>,
        refreshTokenStorage:   AnyStorage<String>) {
     self.backendApiClient     = backendApiClient
-    self.profileStorage       = profileStorage
+    self.profileRepository    = profileRepository
     self.accessTokenStorage   = accessTokenStorage
     self.refreshTokenStorage  = refreshTokenStorage
     
@@ -40,7 +40,7 @@ class BackendAuthService: BackendAuth {
       guard let self = self else { return }
       switch result {
       case .success(let data):
-        self.profileStorage.set(data.profile)
+        self.profileRepository.update(data.profile)
         self.accessTokenStorage.set(data.accessToken)
         self.refreshTokenStorage.set(data.refreshToken)
         self.backendApiClient.configureTokenHeader(token: data.accessToken)
@@ -67,7 +67,7 @@ class BackendAuthService: BackendAuth {
   }
   
   func logout() {
-    self.profileStorage.clear()
+    self.profileRepository.delete()
     self.accessTokenStorage.clear()
     self.refreshTokenStorage.clear()
     self.backendApiClient.configureTokenHeader(token: "")

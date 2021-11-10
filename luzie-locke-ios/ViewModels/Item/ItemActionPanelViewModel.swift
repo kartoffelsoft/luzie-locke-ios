@@ -9,8 +9,8 @@ import UIKit
 
 class ItemActionPanelViewModel {
   
-  private let coordinator:    ItemDisplayCoordinator
-  private let profileStorage: AnyStorage<User>
+  private let coordinator:       ItemDisplayCoordinator
+  private let profileRepository: ProfileRepository
   
   let bindablePriceText = Bindable<NSAttributedString>()
   
@@ -24,9 +24,9 @@ class ItemActionPanelViewModel {
     }
   }
   
-  init(coordinator: ItemDisplayCoordinator, profileStorage: AnyStorage<User>) {
-    self.coordinator = coordinator
-    self.profileStorage = profileStorage
+  init(coordinator: ItemDisplayCoordinator, profileRepository: ProfileRepository) {
+    self.coordinator        = coordinator
+    self.profileRepository  = profileRepository
   }
   
   func didTapChatButton() {

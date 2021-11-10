@@ -10,21 +10,21 @@ import UIKit
 class HomeViewModel {
   
   let coordinator:        HomeCoordinator
-  let profileStorage:     AnyStorage<User>
+  let profileRepository:  ProfileRepository
   let openHttpClient:     OpenHTTP
   let itemRepository:     ItemRepositoryProtocol
   
-  var bindableItems      = Bindable<[Item]>()
-  var itemCellViewModels = [ItemCellViewModel]()
+  var bindableItems       = Bindable<[Item]>()
+  var itemCellViewModels  = [ItemCellViewModel]()
 
-  init(coordinator:       HomeCoordinator,
-       profileStorage:    AnyStorage<User>,
-       openHttpClient:    OpenHTTP,
-       itemRepository:    ItemRepositoryProtocol) {
-    self.coordinator      = coordinator
-    self.profileStorage   = profileStorage
-    self.openHttpClient   = openHttpClient
-    self.itemRepository   = itemRepository
+  init(coordinator:         HomeCoordinator,
+       profileRepository:   ProfileRepository,
+       openHttpClient:      OpenHTTP,
+       itemRepository:      ItemRepositoryProtocol) {
+    self.coordinator        = coordinator
+    self.profileRepository  = profileRepository
+    self.openHttpClient     = openHttpClient
+    self.itemRepository     = itemRepository
   }
   
   func queryAllItems() {

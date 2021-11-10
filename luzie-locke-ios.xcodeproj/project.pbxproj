@@ -85,6 +85,8 @@
 		4AC56674273B98AE00776DBD /* RecentMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56673273B98AE00776DBD /* RecentMessageCell.swift */; };
 		4AC56677273BB65200776DBD /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56676273BB65200776DBD /* MessagesViewModel.swift */; };
 		4AC5667A273BC30000776DBD /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56679273BC30000776DBD /* ChatViewModel.swift */; };
+		4AC5667C273BE3E000776DBD /* ChatMessageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC5667B273BE3E000776DBD /* ChatMessageRepository.swift */; };
+		4AC5667E273BE7E400776DBD /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC5667D273BE7E400776DBD /* ProfileRepository.swift */; };
 		4ADE3D312735807500ACBC60 /* AppMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */; };
 		4AED5E1D27197E1F00B7AC00 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */; };
 		4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */; };
@@ -112,7 +114,6 @@
 		4AED5E712720176900B7AC00 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E702720176900B7AC00 /* LocalStorage.swift */; };
 		4AED5E7327201AD200B7AC00 /* ProfileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7227201AD200B7AC00 /* ProfileStorage.swift */; };
 		4AED5E7527201BCF00B7AC00 /* SimpleStringStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7427201BCF00B7AC00 /* SimpleStringStorage.swift */; };
-		4AED5E7A27201E5000B7AC00 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7927201E5000B7AC00 /* StorageService.swift */; };
 		4AED5E7C27209C8D00B7AC00 /* BackendAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7B27209C8D00B7AC00 /* BackendAuthService.swift */; };
 		4AED5E7E2720A50400B7AC00 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7D2720A50400B7AC00 /* AuthService.swift */; };
 		4AED5E802720C2D200B7AC00 /* JWTDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7F2720C2D200B7AC00 /* JWTDecode.swift */; };
@@ -233,6 +234,8 @@
 		4AC56673273B98AE00776DBD /* RecentMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMessageCell.swift; sourceTree = "<group>"; };
 		4AC56676273BB65200776DBD /* MessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
 		4AC56679273BC30000776DBD /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		4AC5667B273BE3E000776DBD /* ChatMessageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageRepository.swift; sourceTree = "<group>"; };
+		4AC5667D273BE7E400776DBD /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
 		4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMainCoordinator.swift; sourceTree = "<group>"; };
 		4AED5E1927197BA400B7AC00 /* Frankfurt.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Frankfurt.gpx; sourceTree = "<group>"; };
 		4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -261,7 +264,6 @@
 		4AED5E702720176900B7AC00 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		4AED5E7227201AD200B7AC00 /* ProfileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorage.swift; sourceTree = "<group>"; };
 		4AED5E7427201BCF00B7AC00 /* SimpleStringStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleStringStorage.swift; sourceTree = "<group>"; };
-		4AED5E7927201E5000B7AC00 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		4AED5E7B27209C8D00B7AC00 /* BackendAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendAuthService.swift; sourceTree = "<group>"; };
 		4AED5E7D2720A50400B7AC00 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		4AED5E7F2720C2D200B7AC00 /* JWTDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTDecode.swift; sourceTree = "<group>"; };
@@ -612,7 +614,6 @@
 				4AED5E702720176900B7AC00 /* LocalStorage.swift */,
 				4AED5E7227201AD200B7AC00 /* ProfileStorage.swift */,
 				4AED5E7427201BCF00B7AC00 /* SimpleStringStorage.swift */,
-				4AED5E7927201E5000B7AC00 /* StorageService.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -623,6 +624,8 @@
 				4A47E6C22730950100B9018A /* Translators */,
 				4A47E6B7272F47BC00B9018A /* DTOs */,
 				4A47E6B5272F106100B9018A /* ItemRepository.swift */,
+				4AC5667B273BE3E000776DBD /* ChatMessageRepository.swift */,
+				4AC5667D273BE7E400776DBD /* ProfileRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -1147,6 +1150,7 @@
 				4A155E482722F31C00C8B867 /* KHTTPClient.swift in Sources */,
 				4A09C69B273730B900FD4E42 /* ItemDisplayDetailViewModel.swift in Sources */,
 				4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */,
+				4AC5667E273BE7E400776DBD /* ProfileRepository.swift in Sources */,
 				4A3B5266271239CE00EF4F93 /* AppDelegate.swift in Sources */,
 				4A155E4027229D3600C8B867 /* AvatarImageView.swift in Sources */,
 				4AEE8FAB272B5C69004CB686 /* ItemCreateViewModel.swift in Sources */,
@@ -1198,7 +1202,7 @@
 				4AEE8FAF272BD759004CB686 /* TextInputCellViewModel.swift in Sources */,
 				4AED5E7C27209C8D00B7AC00 /* BackendAuthService.swift in Sources */,
 				4A3B529F271242ED00EF4F93 /* SettingsViewController.swift in Sources */,
-				4AED5E7A27201E5000B7AC00 /* StorageService.swift in Sources */,
+				4AC5667C273BE3E000776DBD /* ChatMessageRepository.swift in Sources */,
 				4AC56677273BB65200776DBD /* MessagesViewModel.swift in Sources */,
 				4AED5E34271C199600B7AC00 /* KBasicButton.swift in Sources */,
 				4AED5E57271EBDF700B7AC00 /* KHTTPRequestInterceptor.swift in Sources */,

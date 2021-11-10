@@ -10,7 +10,6 @@ import UIKit
 class ItemDisplayViewModel {
   
   private let coordinator:          ItemDisplayCoordinator
-  private let profileStorage:       AnyStorage<User>
   private let openHttpClient:       OpenHTTP
   private let itemRepository:       ItemRepositoryProtocol
   private let id:                   String
@@ -35,18 +34,17 @@ class ItemDisplayViewModel {
   }
   
   init(coordinator:         ItemDisplayCoordinator,
-       profileStorage:      AnyStorage<User>,
+       profileRepository:   ProfileRepository,
        openHttpClient:      OpenHTTP,
        itemRepository:      ItemRepositoryProtocol,
        id:                  String) {
     self.coordinator        = coordinator
-    self.profileStorage     = profileStorage
     self.openHttpClient     = openHttpClient
     self.itemRepository     = itemRepository
     self.id                 = id
     
     itemDisplayBriefViewModel = ItemDisplayBriefViewModel(coordinator: coordinator, openHttpClient: openHttpClient)
-    itemActionPanelViewModel  = ItemActionPanelViewModel(coordinator: coordinator, profileStorage: profileStorage)
+    itemActionPanelViewModel  = ItemActionPanelViewModel(coordinator: coordinator, profileRepository: profileRepository)
   }
   
   func viewDidLoad() {

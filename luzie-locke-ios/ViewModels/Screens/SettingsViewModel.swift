@@ -11,7 +11,7 @@ class SettingsViewModel {
   
   let coordinator:          SettingsCoordinator
   let auth:                 Auth
-  let profileStorage:       AnyStorage<User>
+  let profileRepository:    ProfileRepository
   let openHttpClient:       OpenHTTP
   let backendApiClient:     BackendAPIClient
   
@@ -19,12 +19,12 @@ class SettingsViewModel {
 
   init(coordinator:         SettingsCoordinator,
        auth:                Auth,
-       profileStorage:      AnyStorage<User>,
+       profileRepository:   ProfileRepository,
        openHttpClient:      OpenHTTP,
        backendApiClient:    BackendAPIClient) {
     self.coordinator        = coordinator
     self.auth               = auth
-    self.profileStorage     = profileStorage
+    self.profileRepository  = profileRepository
     self.openHttpClient     = openHttpClient
     self.backendApiClient   = backendApiClient
     
@@ -32,7 +32,7 @@ class SettingsViewModel {
   }
   
   func load() {
-    if let profile = profileStorage.get() {
+    if let profile = profileRepository.read() {
       profileCellViewModel.profile = profile
     }
   }
@@ -48,7 +48,7 @@ class SettingsViewModel {
                                                      lng: lng) { result in
           switch result {
           case .success(let profile):
-            self.profileStorage.set(profile)          
+            self.profileRepository.update(profile)
           case .failure:
             ()
           case .none:

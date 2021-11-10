@@ -17,7 +17,7 @@ class ItemCreateViewModel {
   weak var delegate:        ItemCreateViewModelDelegate?
   
   let coordinator:          HomeCoordinator
-  let profileStorage:       AnyStorage<User>
+  let profileRepository:    ProfileRepository
   let cloudStorage:         CloudStorage
   let openHttpClient:       OpenHTTP
   let itemRepository:       ItemRepository
@@ -30,12 +30,12 @@ class ItemCreateViewModel {
   var bindableIsLoading     = Bindable<Bool>()
   
   init(coordinator:         HomeCoordinator,
-       profileStorage:      AnyStorage<User>,
+       profileRepository:   ProfileRepository,
        cloudStorage:        CloudStorage,
        openHttpClient:      OpenHTTP,
        itemRepository:      ItemRepository) {
     self.coordinator        = coordinator
-    self.profileStorage     = profileStorage
+    self.profileRepository  = profileRepository
     self.cloudStorage       = cloudStorage
     self.openHttpClient     = openHttpClient
     self.itemRepository     = itemRepository
