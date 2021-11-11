@@ -37,6 +37,14 @@ class ChatViewController: UICollectionViewController {
     viewModel?.didLoad()
   }
   
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    
+    if isMovingFromParent {
+      viewModel?.willDisappear()
+    }
+  }
+  
   private func configureCollectionView() {
     collectionView.backgroundColor = .clear
     collectionView.alwaysBounceVertical = true

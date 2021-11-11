@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import Firebase
 
 class MessagesViewController: UIViewController {
   
   var viewModel: MessagesViewModel?
 
   private var recentMessages: [RecentMessage] = [
-    RecentMessage(with: "sdhbr45rf23")
+    RecentMessage(dictionary: ["name": "Harry", "profileImageUrl": "Hi", "text": "Hi", "timestamp": Timestamp(date: Date())])
   ]
   
   private var collectionView: UICollectionView!

@@ -18,9 +18,9 @@ protocol ItemRepositoryProtocol {
 
 class ItemRepository: ItemRepositoryProtocol {
   
-  private let backendClient: KHTTPAPIClient
+  private let backendClient: BackendClient
   
-  init(backendClient: KHTTPAPIClient) {
+  init(backendClient: BackendClient) {
     self.backendClient = backendClient
   }
   

@@ -13,7 +13,7 @@ import Foundation
 //  func PATCH<DataType>(_ request: DataType, completion: @escaping APIResultCallback<DataType.Response?>) where DataType: APIRequest
 //}
 
-public class KHTTPAPIClient {
+public class BackendClient {
   
   public var globalRequestInterceptors = [KHTTPRequestInterceptor]()
   

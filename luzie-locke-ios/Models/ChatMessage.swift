@@ -8,6 +8,7 @@
 import Firebase
 
 struct ChatMessage {
+  
   let sender:     String
   let receiver:   String
   let text:       String

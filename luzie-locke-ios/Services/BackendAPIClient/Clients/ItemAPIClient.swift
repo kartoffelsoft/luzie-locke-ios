@@ -14,9 +14,9 @@ protocol ItemAPI {
 
 class ItemAPIClient: ItemAPI {
   
-  private let client: KHTTPAPIClient
+  private let client: BackendClient
   
-  init(client: KHTTPAPIClient) {
+  init(client: BackendClient) {
     self.client = client
   }
 

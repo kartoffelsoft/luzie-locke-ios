@@ -9,10 +9,10 @@ import Foundation
 
 class BackendAPIClient {
   
-  let client:   KHTTPAPIClient
+  let client:   BackendClient
   let userApi:  UserAPI
   
-  init(client: KHTTPAPIClient, userApi: UserAPI) {
+  init(client: BackendClient, userApi: UserAPI) {
     self.client   = client
     self.userApi  = userApi
     

@@ -73,10 +73,12 @@ extension CompositionRoot: ViewModelFactory {
   }
   
   func makeChatViewModel(remoteUserId: String) -> ChatViewModel {
-    if let user = profileRepository.read(), let id = user._id {
-      return ChatViewModel(localUserId: id,
-                           remoteUserId: remoteUserId,
-                           chatMessageRepository: ChatMessageRepository())
+    if let localUserProfile = profileRepository.read() {
+      return ChatViewModel(remoteUserId: remoteUserId,
+                           localUserProfile: localUserProfile,
+                           userProfileRepository: userProfileRepository,
+                           chatMessageRepository: ChatMessageRepository(),
+                           recentMessageRepository: RecentMessageRepository())
     } else {
       fatalError("User profile is missing.")
     }
