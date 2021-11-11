@@ -17,7 +17,7 @@ class ItemCreateViewModel {
   weak var delegate:        ItemCreateViewModelDelegate?
   
   let coordinator:          HomeCoordinator
-  let profileRepository:    ProfileRepository
+  let localProfileRepository:  LocalProfileRepository
   let cloudStorage:         CloudStorage
   let openHttpClient:       OpenHTTP
   let itemRepository:       ItemRepository
@@ -29,16 +29,16 @@ class ItemCreateViewModel {
   
   var bindableIsLoading     = Bindable<Bool>()
   
-  init(coordinator:         HomeCoordinator,
-       profileRepository:   ProfileRepository,
-       cloudStorage:        CloudStorage,
-       openHttpClient:      OpenHTTP,
-       itemRepository:      ItemRepository) {
-    self.coordinator        = coordinator
-    self.profileRepository  = profileRepository
-    self.cloudStorage       = cloudStorage
-    self.openHttpClient     = openHttpClient
-    self.itemRepository     = itemRepository
+  init(coordinator:             HomeCoordinator,
+       localProfileRepository:  LocalProfileRepository,
+       cloudStorage:            CloudStorage,
+       openHttpClient:          OpenHTTP,
+       itemRepository:          ItemRepository) {
+    self.coordinator            = coordinator
+    self.localProfileRepository = localProfileRepository
+    self.cloudStorage           = cloudStorage
+    self.openHttpClient         = openHttpClient
+    self.itemRepository         = itemRepository
     
     imageSelectViewModel    = ImageSelectCellViewModel()
     titleViewModel          = TextInputCellViewModel()

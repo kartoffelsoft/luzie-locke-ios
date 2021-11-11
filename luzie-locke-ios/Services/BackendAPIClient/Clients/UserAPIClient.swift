@@ -8,9 +8,9 @@
 import Foundation
 
 protocol UserAPI {
-  func authenticate(uid: String, token: String, completion: @escaping (Result<(profile: User, accessToken: String, refreshToken: String), LLError>?) -> Void)
+  func authenticate(uid: String, token: String, completion: @escaping (Result<(profile: UserProfile, accessToken: String, refreshToken: String), LLError>?) -> Void)
   
-  func updateLocation(name: String, lat: Double, lng: Double, completion: @escaping (Result<User, LLError>?) -> Void)
+  func updateLocation(name: String, lat: Double, lng: Double, completion: @escaping (Result<UserProfile, LLError>?) -> Void)
 }
 
 class UserAPIClient: UserAPI {
@@ -21,7 +21,7 @@ class UserAPIClient: UserAPI {
     self.client = client
   }
   
-  func authenticate(uid: String, token: String, completion: @escaping (Result<(profile: User, accessToken: String, refreshToken: String), LLError>?) -> Void) {
+  func authenticate(uid: String, token: String, completion: @escaping (Result<(profile: UserProfile, accessToken: String, refreshToken: String), LLError>?) -> Void) {
     client.POST(AuthenticationRequest(uid: uid, token: token)) { result in
       switch result {
       case .success(let response):
@@ -37,7 +37,7 @@ class UserAPIClient: UserAPI {
     }
   }
   
-  func updateLocation(name: String, lat: Double, lng: Double, completion: @escaping (Result<User, LLError>?) -> Void) {
+  func updateLocation(name: String, lat: Double, lng: Double, completion: @escaping (Result<UserProfile, LLError>?) -> Void) {
     client.PATCH(UpdateLocationRequest(name: name, lat: lat, lng: lng)) { result in
       switch result {
       case .success(let response):

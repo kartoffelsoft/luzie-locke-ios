@@ -9,22 +9,19 @@ import UIKit
 
 class HomeViewModel {
   
-  let coordinator:        HomeCoordinator
-  let profileRepository:  ProfileRepository
-  let openHttpClient:     OpenHTTP
-  let itemRepository:     ItemRepositoryProtocol
+  let coordinator:          HomeCoordinator
+  let openHttpClient:       OpenHTTP
+  let itemRepository:       ItemRepositoryProtocol
   
   var bindableItems       = Bindable<[Item]>()
   var itemCellViewModels  = [ItemCellViewModel]()
 
   init(coordinator:         HomeCoordinator,
-       profileRepository:   ProfileRepository,
        openHttpClient:      OpenHTTP,
        itemRepository:      ItemRepositoryProtocol) {
-    self.coordinator        = coordinator
-    self.profileRepository  = profileRepository
-    self.openHttpClient     = openHttpClient
-    self.itemRepository     = itemRepository
+    self.coordinator          = coordinator
+    self.openHttpClient       = openHttpClient
+    self.itemRepository       = itemRepository
   }
   
   func queryAllItems() {

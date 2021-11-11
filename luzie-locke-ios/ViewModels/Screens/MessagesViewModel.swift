@@ -9,13 +9,13 @@ import Foundation
 
 class MessagesViewModel {
   
-  let coordinator:          MessagesCoordinator
-  let profileRepository:    ProfileRepository
+  let coordinator:              MessagesCoordinator
+  let localProfileRepository:   LocalProfileRepository
 
-  init(coordinator:         MessagesCoordinator,
-       profileRepository:   ProfileRepository) {
-    self.coordinator        = coordinator
-    self.profileRepository  = profileRepository
+  init(coordinator:             MessagesCoordinator,
+       localProfileRepository:  LocalProfileRepository) {
+    self.coordinator            = coordinator
+    self.localProfileRepository = localProfileRepository
   }
   
   func didSelectItemAt(indexPath: IndexPath) {

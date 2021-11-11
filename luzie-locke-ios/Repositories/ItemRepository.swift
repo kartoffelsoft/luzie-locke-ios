@@ -46,7 +46,7 @@ class ItemRepository: ItemRepositoryProtocol {
           if let response = response {
             let items = response.items.reduce([Item](), { output, dto in
               let item = Item(_id: dto._id,
-                              user: User(location: Location(name: dto.user?.location.name)),
+                              user: UserProfile(location: UserProfile.Location(name: dto.user?.location.name)),
                               title: dto.title,
                               price: dto.price,
                               description: dto.description,

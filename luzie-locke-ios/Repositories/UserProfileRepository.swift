@@ -9,18 +9,29 @@ import Foundation
 
 protocol UserProfileRepositoryProtocol {
 
-  func read(_ id: String, completion: @escaping (Result<UserProfile, LLError>) -> Void)
+  func readLocal(completion: @escaping (Result<UserProfile, LLError>) -> Void)
+  func readRemote(_ id: String, completion: @escaping (Result<UserProfile, LLError>) -> Void)
 }
 
 class UserProfileRepository: UserProfileRepositoryProtocol {
   
   private let backendClient: BackendClient
+  private let localProfileRepository: LocalProfileRepository
   
-  init(backendClient: BackendClient) {
-    self.backendClient = backendClient
+  init(backendClient: BackendClient, localProfileRepository: LocalProfileRepository) {
+    self.backendClient          = backendClient
+    self.localProfileRepository = localProfileRepository
   }
   
-  func read(_ id: String, completion: @escaping (Result<UserProfile, LLError>) -> Void) {
+  func readLocal(completion: @escaping (Result<UserProfile, LLError>) -> Void) {
+    if let profile = localProfileRepository.read() {
+      completion(.success(profile))
+    } else {
+      completion(.failure(.unableToComplete))
+    }
+  }
+  
+  func readRemote(_ id: String, completion: @escaping (Result<UserProfile, LLError>) -> Void) {
     backendClient.GET(UserProfileReadRequestDTO(id: id)) { result in
       switch result {
       case .success(let response):

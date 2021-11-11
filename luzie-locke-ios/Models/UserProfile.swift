@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserProfile {
+struct UserProfile: Codable, Hashable {
   
   let _id: String?
   let name: String?

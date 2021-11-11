@@ -12,20 +12,19 @@ class ChatViewModel {
   var bindableMessages = Bindable<[ChatMessage]>()
   
   private let remoteUserId: String
-  private let localUserProfile: User
+
   private let userProfileRepository: UserProfileRepository
   private let chatMessageRepository: ChatMessageRepositoryProtocol
   private let recentMessageRepository: RecentMessageRepositoryProtocol
   
+  private var localUserProfile: UserProfile?
   private var remoteUserProfile: UserProfile?
-  
+
   init(remoteUserId: String,
-       localUserProfile: User,
        userProfileRepository: UserProfileRepository,
        chatMessageRepository: ChatMessageRepositoryProtocol,
        recentMessageRepository: RecentMessageRepositoryProtocol) {
     self.remoteUserId             = remoteUserId
-    self.localUserProfile         = localUserProfile
     self.userProfileRepository    = userProfileRepository
     self.chatMessageRepository    = chatMessageRepository
     self.recentMessageRepository  = recentMessageRepository
@@ -34,11 +33,21 @@ class ChatViewModel {
   }
   
   func didLoad() {
-    chatMessageRepository.read(localUserId: localUserProfile._id!, remoteUserId: remoteUserId) { [weak self] messages in
-      self?.bindableMessages.value?.append(contentsOf: messages)
+    userProfileRepository.readLocal() { [weak self] result in
+      guard let self = self else { return }
+      switch(result) {
+      case .success(let user):
+        self.localUserProfile = user
+        self.chatMessageRepository.read(localUserId: user._id!, remoteUserId: self.remoteUserId) { [weak self] messages in
+          self?.bindableMessages.value?.append(contentsOf: messages)
+        }
+        
+      case .failure(let error):
+        print(error)
+      }
     }
     
-    userProfileRepository.read(remoteUserId) { [weak self] result in
+    userProfileRepository.readRemote(remoteUserId) { [weak self] result in
       switch(result) {
       case .success(let user):
         self?.remoteUserProfile = user
@@ -53,10 +62,13 @@ class ChatViewModel {
   }
   
   func didTapSend(text: String) {
-    if let remoteUserProfile = remoteUserProfile {
+    if let remoteUserProfile = remoteUserProfile, let localUserProfile = localUserProfile {
       print("text", text)
       print("remoteUserId:", remoteUserId)
-      chatMessageRepository.create(localUserId: localUserProfile._id!, remoteUserId: remoteUserId, text: text)
+      chatMessageRepository.create(text: text,
+                                   localUserId: localUserProfile._id!,
+                                   remoteUserId: remoteUserProfile._id!)
+                                   
       recentMessageRepository.create(text: text,
                                      localUserId: localUserProfile._id!,
                                      localUserName: localUserProfile.name!,

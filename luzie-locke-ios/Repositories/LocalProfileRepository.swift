@@ -7,16 +7,16 @@
 
 import Foundation
 
-protocol ProfileRepositoryProtocol {
+protocol LocalProfileRepositoryProtocol {
 
-  func read() -> User?
-  func update(_ data: User)
+  func read() -> UserProfile?
+  func update(_ data: UserProfile)
   func delete()
 }
 
-class ProfileRepository: ProfileRepositoryProtocol {
+class LocalProfileRepository: LocalProfileRepositoryProtocol {
   
-  private var data: User?
+  private var data: UserProfile?
   private let key: String
   
   init(key: String) {
@@ -24,17 +24,17 @@ class ProfileRepository: ProfileRepositoryProtocol {
     
     if let stored = UserDefaults.standard.object(forKey: self.key) as? Data {
       let decoder = JSONDecoder()
-      if let data = try? decoder.decode(User.self, from: stored) {
+      if let data = try? decoder.decode(UserProfile.self, from: stored) {
         self.data = data
       }
     }
   }
   
-  func read() -> User? {
+  func read() -> UserProfile? {
     return data
   }
   
-  func update(_ data: User) {
+  func update(_ data: UserProfile) {
     let encoder = JSONEncoder()
     if let encoded = try? encoder.encode(data) {
       UserDefaults.standard.set(encoded, forKey: self.key)

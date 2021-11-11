@@ -9,7 +9,7 @@ import Firebase
 
 protocol ChatMessageRepositoryProtocol {
   
-  func create(localUserId: String, remoteUserId: String, text: String)
+  func create(text: String, localUserId: String, remoteUserId: String)
   func read(localUserId: String, remoteUserId: String, onReceive: @escaping ([ChatMessage]) -> Void)
   func stop()
 }
@@ -20,7 +20,7 @@ class ChatMessageRepository: ChatMessageRepositoryProtocol {
   
   private var listener: ListenerRegistration?
   
-  func create(localUserId: String, remoteUserId: String, text: String) {
+  func create(text: String, localUserId: String, remoteUserId: String) {
     let data = ["sender": localUserId, "receiver": remoteUserId, "text": text, "timestamp": Timestamp(date: Date())] as [String: Any]
     
     let senderCollection = Firestore.firestore().collection(storeName).document(localUserId).collection(remoteUserId)

@@ -25,26 +25,25 @@ extension CompositionRoot: ViewModelFactory {
   func makeLoginViewModel(coordinator: LoginCoordinator) -> LoginViewModel {
     return LoginViewModel(coordinator: coordinator,
                           auth: auth,
-                          profileRepository: profileRepository,
+                          localProfileRepository: localProfileRepository,
                           backendApiClient: backendApiClient)
   }
   
   func makeHomeViewModel(coordinator: HomeCoordinator) -> HomeViewModel {
     return HomeViewModel(coordinator: coordinator,
-                         profileRepository: profileRepository,
                          openHttpClient: openHttpClient,
                          itemRepository: itemRepository)
   }
 
   func makeMessagesViewModel(coordinator: MessagesCoordinator) -> MessagesViewModel {
     return MessagesViewModel(coordinator: coordinator,
-                             profileRepository: profileRepository)
+                             localProfileRepository: localProfileRepository)
   }
   
   func makeSettingsViewModel(coordinator: SettingsCoordinator) -> SettingsViewModel {
     return SettingsViewModel(coordinator: coordinator,
                              auth: auth,
-                             profileRepository: profileRepository,
+                             localProfileRepository: localProfileRepository,
                              openHttpClient: openHttpClient,
                              backendApiClient: backendApiClient)
   }
@@ -52,7 +51,7 @@ extension CompositionRoot: ViewModelFactory {
   
   func makeItemCreateViewModel(coordinator: HomeCoordinator) -> ItemCreateViewModel {
     return ItemCreateViewModel(coordinator: coordinator,
-                               profileRepository: profileRepository,
+                               localProfileRepository: localProfileRepository,
                                cloudStorage: cloudStorage,
                                openHttpClient: openHttpClient,
                                itemRepository: itemRepository)
@@ -60,7 +59,7 @@ extension CompositionRoot: ViewModelFactory {
   
   func makeItemDisplayViewModel(coordinator: ItemDisplayCoordinator, id: String) -> ItemDisplayViewModel {
     return ItemDisplayViewModel(coordinator: coordinator,
-                                profileRepository: profileRepository,
+                                localProfileRepository: localProfileRepository,
                                 openHttpClient: openHttpClient,
                                 itemRepository: itemRepository,
                                 id: id)
@@ -73,14 +72,9 @@ extension CompositionRoot: ViewModelFactory {
   }
   
   func makeChatViewModel(remoteUserId: String) -> ChatViewModel {
-    if let localUserProfile = profileRepository.read() {
-      return ChatViewModel(remoteUserId: remoteUserId,
-                           localUserProfile: localUserProfile,
-                           userProfileRepository: userProfileRepository,
-                           chatMessageRepository: ChatMessageRepository(),
-                           recentMessageRepository: RecentMessageRepository())
-    } else {
-      fatalError("User profile is missing.")
-    }
+    return ChatViewModel(remoteUserId: remoteUserId,
+                         userProfileRepository: userProfileRepository,
+                         chatMessageRepository: ChatMessageRepository(),
+                         recentMessageRepository: RecentMessageRepository())
   }
 }

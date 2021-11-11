@@ -9,7 +9,7 @@ import Foundation
 
 class ProfileStorage: LocalStorage {
   
-  private var data: User?
+  private var data: UserProfile?
   private let key: String
   
   init(key: String) {
@@ -17,17 +17,17 @@ class ProfileStorage: LocalStorage {
     
     if let stored = UserDefaults.standard.object(forKey: self.key) as? Data {
       let decoder = JSONDecoder()
-      if let data = try? decoder.decode(User.self, from: stored) {
+      if let data = try? decoder.decode(UserProfile.self, from: stored) {
         self.data = data
       }
     }
   }
   
-  func get() -> User? {
+  func get() -> UserProfile? {
     return data
   }
   
-  func set(_ data: User) {
+  func set(_ data: UserProfile) {
     let encoder = JSONEncoder()
     if let encoded = try? encoder.encode(data) {
       UserDefaults.standard.set(encoded, forKey: self.key)

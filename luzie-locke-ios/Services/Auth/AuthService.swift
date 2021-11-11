@@ -9,7 +9,7 @@ import UIKit
 
 protocol Auth {
   
-  func authenticate(_ caller: UIViewController, with provider: SignInProvider, completion: @escaping (Result<User, LLError>?) -> Void)
+  func authenticate(_ caller: UIViewController, with provider: SignInProvider, completion: @escaping (Result<UserProfile, LLError>?) -> Void)
   
   func isAuthenticated() -> Bool
   
@@ -26,7 +26,7 @@ class AuthService: Auth {
     self.backendAuth  = backendAuth
   }
   
-  func authenticate(_ caller: UIViewController, with provider: SignInProvider, completion: @escaping (Result<User, LLError>?) -> Void) {
+  func authenticate(_ caller: UIViewController, with provider: SignInProvider, completion: @escaping (Result<UserProfile, LLError>?) -> Void) {
     firebaseAuth.authenticate(caller, with: .google) { [weak self] result in
       guard let self = self else { return }
       switch result {

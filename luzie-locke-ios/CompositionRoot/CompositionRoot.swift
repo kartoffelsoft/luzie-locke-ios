@@ -17,8 +17,10 @@ class CompositionRoot {
                                                      userApi: userApiClient)
   
   lazy var itemRepository         = ItemRepository(backendClient: backendClient)
-  lazy var userProfileRepository  = UserProfileRepository(backendClient: backendClient)
-  lazy var profileRepository      = ProfileRepository(key: "Profile")
+  lazy var localProfileRepository = LocalProfileRepository(key: "Profile")
+  lazy var userProfileRepository  = UserProfileRepository(backendClient: backendClient,
+                                                          localProfileRepository: localProfileRepository)
+
 
   lazy var accessTokenStorage     = AnyStorage(wrap: SimpleStringStorage(key: "AccessToken"))
   lazy var refreshTokenStorage    = AnyStorage(wrap: SimpleStringStorage(key: "RefreshToken"))
@@ -27,7 +29,7 @@ class CompositionRoot {
 
   lazy var firebaseAuth           = FirebaseAuthService(google: GoogleSignInService())
   lazy var backendAuth            = BackendAuthService(backendApiClient: backendApiClient,
-                                                       profileRepository: profileRepository,
+                                                       localProfileRepository: localProfileRepository,
                                                        accessTokenStorage: accessTokenStorage,
                                                        refreshTokenStorage: refreshTokenStorage)
   

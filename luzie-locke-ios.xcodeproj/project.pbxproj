@@ -51,7 +51,6 @@
 		4A3B52C72713996000EF4F93 /* GoogleSignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52C62713996000EF4F93 /* GoogleSignInService.swift */; };
 		4A3B52C92713A02D00EF4F93 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52C82713A02D00EF4F93 /* UIViewController+Ext.swift */; };
 		4A3B52CD2714419B00EF4F93 /* LLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52CC2714419B00EF4F93 /* LLError.swift */; };
-		4A3B52D227144FF200EF4F93 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52D127144FF200EF4F93 /* User.swift */; };
 		4A3B52D527159CA300EF4F93 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52D427159CA300EF4F93 /* Coordinator.swift */; };
 		4A3B52DB2715ADEF00EF4F93 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52DA2715ADEF00EF4F93 /* LoginCoordinator.swift */; };
 		4A3B52DD2715BA3700EF4F93 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52DC2715BA3700EF4F93 /* HomeCoordinator.swift */; };
@@ -91,7 +90,7 @@
 		4AC56677273BB65200776DBD /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56676273BB65200776DBD /* MessagesViewModel.swift */; };
 		4AC5667A273BC30000776DBD /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56679273BC30000776DBD /* ChatViewModel.swift */; };
 		4AC5667C273BE3E000776DBD /* ChatMessageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC5667B273BE3E000776DBD /* ChatMessageRepository.swift */; };
-		4AC5667E273BE7E400776DBD /* ProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC5667D273BE7E400776DBD /* ProfileRepository.swift */; };
+		4AC5667E273BE7E400776DBD /* LocalProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC5667D273BE7E400776DBD /* LocalProfileRepository.swift */; };
 		4ADE3D312735807500ACBC60 /* AppMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */; };
 		4AED5E1D27197E1F00B7AC00 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */; };
 		4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */; };
@@ -205,7 +204,6 @@
 		4A3B52C62713996000EF4F93 /* GoogleSignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInService.swift; sourceTree = "<group>"; };
 		4A3B52C82713A02D00EF4F93 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		4A3B52CC2714419B00EF4F93 /* LLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLError.swift; sourceTree = "<group>"; };
-		4A3B52D127144FF200EF4F93 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4A3B52D427159CA300EF4F93 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		4A3B52DA2715ADEF00EF4F93 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		4A3B52DC2715BA3700EF4F93 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
@@ -245,7 +243,7 @@
 		4AC56676273BB65200776DBD /* MessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
 		4AC56679273BC30000776DBD /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		4AC5667B273BE3E000776DBD /* ChatMessageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageRepository.swift; sourceTree = "<group>"; };
-		4AC5667D273BE7E400776DBD /* ProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRepository.swift; sourceTree = "<group>"; };
+		4AC5667D273BE7E400776DBD /* LocalProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalProfileRepository.swift; sourceTree = "<group>"; };
 		4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMainCoordinator.swift; sourceTree = "<group>"; };
 		4AED5E1927197BA400B7AC00 /* Frankfurt.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Frankfurt.gpx; sourceTree = "<group>"; };
 		4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -455,9 +453,8 @@
 		4A3B529627123DA800EF4F93 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4A3B52D127144FF200EF4F93 /* User.swift */,
-				4A01D559273D4EA000EDFC1C /* UserProfile.swift */,
 				4AEE8F702726E082004CB686 /* Item.swift */,
+				4A01D559273D4EA000EDFC1C /* UserProfile.swift */,
 				4A09C6A727393E5E00FD4E42 /* ChatMessage.swift */,
 				4AC56671273B974700776DBD /* RecentMessage.swift */,
 			);
@@ -635,7 +632,7 @@
 				4A47E6C22730950100B9018A /* Translators */,
 				4A47E6B7272F47BC00B9018A /* DTOs */,
 				4A47E6B5272F106100B9018A /* ItemRepository.swift */,
-				4AC5667D273BE7E400776DBD /* ProfileRepository.swift */,
+				4AC5667D273BE7E400776DBD /* LocalProfileRepository.swift */,
 				4A01D553273D25D900EDFC1C /* UserProfileRepository.swift */,
 				4AC5667B273BE3E000776DBD /* ChatMessageRepository.swift */,
 				4A01D550273CFF0900EDFC1C /* RecentMessageRepository.swift */,
@@ -1144,7 +1141,6 @@
 				4A47E6D82731B8E000B9018A /* SwipeImageViewController.swift in Sources */,
 				4AED5E7527201BCF00B7AC00 /* SimpleStringStorage.swift in Sources */,
 				4A47E6B3272DE2EF00B9018A /* CommonDTO.swift in Sources */,
-				4A3B52D227144FF200EF4F93 /* User.swift in Sources */,
 				4AED5E1D27197E1F00B7AC00 /* MapViewController.swift in Sources */,
 				4A47E6BD2730288200B9018A /* ItemDisplayViewModel.swift in Sources */,
 				4A47E6AD272D408F00B9018A /* ItemAPIClient.swift in Sources */,
@@ -1167,7 +1163,7 @@
 				4A155E482722F31C00C8B867 /* KHTTPClient.swift in Sources */,
 				4A09C69B273730B900FD4E42 /* ItemDisplayDetailViewModel.swift in Sources */,
 				4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */,
-				4AC5667E273BE7E400776DBD /* ProfileRepository.swift in Sources */,
+				4AC5667E273BE7E400776DBD /* LocalProfileRepository.swift in Sources */,
 				4A3B5266271239CE00EF4F93 /* AppDelegate.swift in Sources */,
 				4A155E4027229D3600C8B867 /* AvatarImageView.swift in Sources */,
 				4AEE8FAB272B5C69004CB686 /* ItemCreateViewModel.swift in Sources */,

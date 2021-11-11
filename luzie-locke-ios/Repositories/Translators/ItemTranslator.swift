@@ -10,14 +10,16 @@ import Foundation
 class ItemTranslator {
   static func translateItemDTOToItem(dto: ItemDTO) -> Item {
     return Item(_id: dto._id,
-                user: User(_id: dto.user?._id,
-                           name: dto.user?.name,
-                           email: dto.user?.email,
-                           reputation: dto.user?.reputation,
-                           pictureURI: dto.user?.pictureURI,
-                           location: Location(name: dto.user?.location?.name,
-                                              geoJSON: GeoJSON(type: dto.user?.location?.geoJSON?.type,
-                                                               coordinates: dto.user?.location?.geoJSON?.coordinates))),
+                user: UserProfile(_id: dto.user?._id,
+                                  name: dto.user?.name,
+                                  email: dto.user?.email,
+                                  reputation: dto.user?.reputation,
+                                  pictureURI: dto.user?.pictureURI,
+                                  location: UserProfile.Location(
+                                    name: dto.user?.location?.name,
+                                    geoJSON: UserProfile.GeoJSON(
+                                      type: dto.user?.location?.geoJSON?.type,
+                                      coordinates: dto.user?.location?.geoJSON?.coordinates))),
                 title: dto.title,
                 price: dto.price,
                 description: dto.description,

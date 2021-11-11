@@ -9,7 +9,7 @@ import Foundation
 
 struct Item: Codable, Hashable {
   let _id: String?
-  let user: User?
+  let user: UserProfile?
   let title: String?
   let price: String?
   let description: String?
@@ -18,7 +18,7 @@ struct Item: Codable, Hashable {
   let state: String?
   let createdAt: Date?
   
-  init(_id: String? = nil, user: User? = nil, title: String? = nil,
+  init(_id: String? = nil, user: UserProfile? = nil, title: String? = nil,
        price: String? = nil, description: String? = nil, images: [String?]? = nil,
        counts: Counts? = nil, state: String? = nil, createdAt: Date? = nil) {
     self._id          = _id

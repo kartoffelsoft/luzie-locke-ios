@@ -16,21 +16,21 @@ protocol LoginViewModelDelegate: AnyObject {
 
 class LoginViewModel {
   
-  weak var delegate:      LoginViewModelDelegate?
+  weak var delegate:          LoginViewModelDelegate?
   
-  let coordinator:        LoginCoordinator
-  let auth:               Auth
-  let profileRepository:  ProfileRepositoryProtocol
-  let backendApiClient:   BackendAPIClient
+  let coordinator:            LoginCoordinator
+  let auth:                   Auth
+  let localProfileRepository: LocalProfileRepositoryProtocol
+  let backendApiClient:       BackendAPIClient
   
-  init(coordinator:       LoginCoordinator,
-       auth:              Auth,
-       profileRepository: ProfileRepositoryProtocol,
-       backendApiClient:  BackendAPIClient) {
-    self.coordinator       = coordinator
-    self.auth              = auth
-    self.profileRepository = profileRepository
-    self.backendApiClient  = backendApiClient
+  init(coordinator:             LoginCoordinator,
+       auth:                    Auth,
+       localProfileRepository:  LocalProfileRepositoryProtocol,
+       backendApiClient:        BackendAPIClient) {
+    self.coordinator            = coordinator
+    self.auth                   = auth
+    self.localProfileRepository = localProfileRepository
+    self.backendApiClient       = backendApiClient
   }
   
   func performGoogleLogin(_ calller: UIViewController) {
@@ -53,7 +53,7 @@ class LoginViewModel {
                                                           lng: lng) { result in
                   switch result {
                   case .success(let profile):
-                    self.profileRepository.update(profile)
+                    self.localProfileRepository.update(profile)
                   case .failure:
                     ()
                   case .none:

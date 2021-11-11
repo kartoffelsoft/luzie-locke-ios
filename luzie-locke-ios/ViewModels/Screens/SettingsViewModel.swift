@@ -9,30 +9,30 @@ import UIKit
 
 class SettingsViewModel {
   
-  let coordinator:          SettingsCoordinator
-  let auth:                 Auth
-  let profileRepository:    ProfileRepository
-  let openHttpClient:       OpenHTTP
-  let backendApiClient:     BackendAPIClient
+  let coordinator:              SettingsCoordinator
+  let auth:                     Auth
+  let localProfileRepository:   LocalProfileRepository
+  let openHttpClient:           OpenHTTP
+  let backendApiClient:         BackendAPIClient
   
-  let profileCellViewModel: ProfileCellViewModel
+  let profileCellViewModel:     ProfileCellViewModel
 
-  init(coordinator:         SettingsCoordinator,
-       auth:                Auth,
-       profileRepository:   ProfileRepository,
-       openHttpClient:      OpenHTTP,
-       backendApiClient:    BackendAPIClient) {
-    self.coordinator        = coordinator
-    self.auth               = auth
-    self.profileRepository  = profileRepository
-    self.openHttpClient     = openHttpClient
-    self.backendApiClient   = backendApiClient
+  init(coordinator:             SettingsCoordinator,
+       auth:                    Auth,
+       localProfileRepository:  LocalProfileRepository,
+       openHttpClient:          OpenHTTP,
+       backendApiClient:        BackendAPIClient) {
+    self.coordinator            = coordinator
+    self.auth                   = auth
+    self.localProfileRepository = localProfileRepository
+    self.openHttpClient         = openHttpClient
+    self.backendApiClient       = backendApiClient
     
     profileCellViewModel    =  ProfileCellViewModel(openHttpClient: openHttpClient)
   }
   
   func load() {
-    if let profile = profileRepository.read() {
+    if let profile = localProfileRepository.read() {
       profileCellViewModel.profile = profile
     }
   }
@@ -48,7 +48,7 @@ class SettingsViewModel {
                                                      lng: lng) { result in
           switch result {
           case .success(let profile):
-            self.profileRepository.update(profile)
+            self.localProfileRepository.update(profile)
           case .failure:
             ()
           case .none:

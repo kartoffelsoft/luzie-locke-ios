@@ -33,18 +33,18 @@ class ItemDisplayViewModel {
     }
   }
   
-  init(coordinator:         ItemDisplayCoordinator,
-       profileRepository:   ProfileRepository,
-       openHttpClient:      OpenHTTP,
-       itemRepository:      ItemRepositoryProtocol,
-       id:                  String) {
-    self.coordinator        = coordinator
-    self.openHttpClient     = openHttpClient
-    self.itemRepository     = itemRepository
-    self.id                 = id
+  init(coordinator:             ItemDisplayCoordinator,
+       localProfileRepository:  LocalProfileRepository,
+       openHttpClient:          OpenHTTP,
+       itemRepository:          ItemRepositoryProtocol,
+       id:                      String) {
+    self.coordinator            = coordinator
+    self.openHttpClient         = openHttpClient
+    self.itemRepository         = itemRepository
+    self.id                     = id
     
     itemDisplayBriefViewModel = ItemDisplayBriefViewModel(coordinator: coordinator, openHttpClient: openHttpClient)
-    itemActionPanelViewModel  = ItemActionPanelViewModel(coordinator: coordinator, profileRepository: profileRepository)
+    itemActionPanelViewModel  = ItemActionPanelViewModel(coordinator: coordinator, localProfileRepository: localProfileRepository)
   }
   
   func viewDidLoad() {

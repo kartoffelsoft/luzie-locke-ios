@@ -9,38 +9,38 @@ import Foundation
 
 protocol BackendAuth {
   
-  func authenticate(uid: String, token: String, completion: @escaping (Result<User, LLError>?) -> Void)
+  func authenticate(uid: String, token: String, completion: @escaping (Result<UserProfile, LLError>?) -> Void)
   func isAuthenticated() -> Bool
   func logout()
 }
 
 class BackendAuthService: BackendAuth {
   
-  let backendApiClient:     BackendAPIClient
-  let profileRepository:    ProfileRepositoryProtocol
-  let accessTokenStorage:   AnyStorage<String>
-  let refreshTokenStorage:  AnyStorage<String>
+  let backendApiClient:       BackendAPIClient
+  let localProfileRepository: LocalProfileRepositoryProtocol
+  let accessTokenStorage:     AnyStorage<String>
+  let refreshTokenStorage:    AnyStorage<String>
 
-  init(backendApiClient:      BackendAPIClient,
-       profileRepository:     ProfileRepositoryProtocol,
-       accessTokenStorage:    AnyStorage<String>,
-       refreshTokenStorage:   AnyStorage<String>) {
-    self.backendApiClient     = backendApiClient
-    self.profileRepository    = profileRepository
-    self.accessTokenStorage   = accessTokenStorage
-    self.refreshTokenStorage  = refreshTokenStorage
+  init(backendApiClient:        BackendAPIClient,
+       localProfileRepository:  LocalProfileRepositoryProtocol,
+       accessTokenStorage:      AnyStorage<String>,
+       refreshTokenStorage:     AnyStorage<String>) {
+    self.backendApiClient       = backendApiClient
+    self.localProfileRepository = localProfileRepository
+    self.accessTokenStorage     = accessTokenStorage
+    self.refreshTokenStorage    = refreshTokenStorage
     
     if let token = accessTokenStorage.get() {
       self.backendApiClient.configureTokenHeader(token: token)
     }
   }
   
-  func authenticate(uid: String, token: String, completion: @escaping (Result<User, LLError>?) -> Void) {
+  func authenticate(uid: String, token: String, completion: @escaping (Result<UserProfile, LLError>?) -> Void) {
     backendApiClient.userApi.authenticate(uid: uid, token: token) { [weak self] result in
       guard let self = self else { return }
       switch result {
       case .success(let data):
-        self.profileRepository.update(data.profile)
+        self.localProfileRepository.update(data.profile)
         self.accessTokenStorage.set(data.accessToken)
         self.refreshTokenStorage.set(data.refreshToken)
         self.backendApiClient.configureTokenHeader(token: data.accessToken)
@@ -67,7 +67,7 @@ class BackendAuthService: BackendAuth {
   }
   
   func logout() {
-    self.profileRepository.delete()
+    self.localProfileRepository.delete()
     self.accessTokenStorage.clear()
     self.refreshTokenStorage.clear()
     self.backendApiClient.configureTokenHeader(token: "")
