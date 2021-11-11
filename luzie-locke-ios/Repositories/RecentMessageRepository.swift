@@ -13,7 +13,7 @@ protocol RecentMessageRepositoryProtocol {
               localUserId: String, localUserName: String, localUserImageUrl: String,
               remoteUserId: String, remoteUserName: String, remoteUserImageUrl: String)
   
-  func read(localUserId: String, remoteUserId: String, onReceive: @escaping ([RecentMessage]) -> Void)
+  func read(localUserId: String, onReceive: @escaping ([RecentMessage]) -> Void)
   func stop()
 }
 
@@ -53,7 +53,7 @@ class RecentMessageRepository: RecentMessageRepositoryProtocol {
                        }
   }
   
-  func read(localUserId: String, remoteUserId: String, onReceive: @escaping ([RecentMessage]) -> Void) {
+  func read(localUserId: String, onReceive: @escaping ([RecentMessage]) -> Void) {
     
     listener = Firestore.firestore().collection(storeName).document(localUserId).collection(storeSubName).addSnapshotListener { (querySnapshot, error) in
       if let error = error {

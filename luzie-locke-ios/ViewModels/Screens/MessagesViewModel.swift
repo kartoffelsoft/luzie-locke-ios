@@ -9,13 +9,32 @@ import Foundation
 
 class MessagesViewModel {
   
-  let coordinator:              MessagesCoordinator
-  let localProfileRepository:   LocalProfileRepository
+  var bindableMessages = Bindable<[RecentMessage]>()
+  
+  private let coordinator:              MessagesCoordinator
+  private let localProfileRepository:   LocalProfileRepository
+  private let recentMessageRepository:  RecentMessageRepository
 
-  init(coordinator:             MessagesCoordinator,
-       localProfileRepository:  LocalProfileRepository) {
-    self.coordinator            = coordinator
-    self.localProfileRepository = localProfileRepository
+  init(coordinator:               MessagesCoordinator,
+       localProfileRepository:    LocalProfileRepository,
+       recentMessageRepository:   RecentMessageRepository) {
+    self.coordinator              = coordinator
+    self.localProfileRepository   = localProfileRepository
+    self.recentMessageRepository  = recentMessageRepository
+    
+    bindableMessages.value = [RecentMessage]()
+  }
+  
+  func didLoad() {
+    guard let profile = localProfileRepository.read() else { return }
+    
+    recentMessageRepository.read(localUserId: profile._id!) { [weak self] messages in
+      self?.bindableMessages.value?.append(contentsOf: messages)
+    }
+  }
+  
+  func willDisappear() {
+    recentMessageRepository.stop()
   }
   
   func didSelectItemAt(indexPath: IndexPath) {

@@ -13,17 +13,17 @@ class ChatViewModel {
   
   private let remoteUserId: String
 
-  private let userProfileRepository: UserProfileRepository
-  private let chatMessageRepository: ChatMessageRepositoryProtocol
-  private let recentMessageRepository: RecentMessageRepositoryProtocol
+  private let userProfileRepository:    UserProfileRepository
+  private let chatMessageRepository:    ChatMessageRepositoryProtocol
+  private let recentMessageRepository:  RecentMessageRepositoryProtocol
   
-  private var localUserProfile: UserProfile?
-  private var remoteUserProfile: UserProfile?
+  private var localUserProfile:   UserProfile?
+  private var remoteUserProfile:  UserProfile?
 
-  init(remoteUserId: String,
-       userProfileRepository: UserProfileRepository,
-       chatMessageRepository: ChatMessageRepositoryProtocol,
-       recentMessageRepository: RecentMessageRepositoryProtocol) {
+  init(remoteUserId:              String,
+       userProfileRepository:     UserProfileRepository,
+       chatMessageRepository:     ChatMessageRepositoryProtocol,
+       recentMessageRepository:   RecentMessageRepositoryProtocol) {
     self.remoteUserId             = remoteUserId
     self.userProfileRepository    = userProfileRepository
     self.chatMessageRepository    = chatMessageRepository
@@ -41,7 +41,6 @@ class ChatViewModel {
         self.chatMessageRepository.read(localUserId: user._id!, remoteUserId: self.remoteUserId) { [weak self] messages in
           self?.bindableMessages.value?.append(contentsOf: messages)
         }
-        
       case .failure(let error):
         print(error)
       }
@@ -63,8 +62,6 @@ class ChatViewModel {
   
   func didTapSend(text: String) {
     if let remoteUserProfile = remoteUserProfile, let localUserProfile = localUserProfile {
-      print("text", text)
-      print("remoteUserId:", remoteUserId)
       chatMessageRepository.create(text: text,
                                    localUserId: localUserProfile._id!,
                                    remoteUserId: remoteUserProfile._id!)

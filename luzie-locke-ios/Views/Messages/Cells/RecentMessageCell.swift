@@ -11,6 +11,12 @@ class RecentMessageCell: UICollectionViewCell {
   
   static let reuseIdentifier = "RecentMessageCell"
     
+  var message: RecentMessage! {
+    didSet {
+      
+    }
+  }
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     configure()

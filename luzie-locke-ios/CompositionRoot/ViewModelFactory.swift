@@ -37,7 +37,8 @@ extension CompositionRoot: ViewModelFactory {
 
   func makeMessagesViewModel(coordinator: MessagesCoordinator) -> MessagesViewModel {
     return MessagesViewModel(coordinator: coordinator,
-                             localProfileRepository: localProfileRepository)
+                             localProfileRepository: localProfileRepository,
+                             recentMessageRepository: RecentMessageRepository())
   }
   
   func makeSettingsViewModel(coordinator: SettingsCoordinator) -> SettingsViewModel {

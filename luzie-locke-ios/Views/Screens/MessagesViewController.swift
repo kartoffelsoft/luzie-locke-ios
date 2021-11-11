@@ -11,10 +11,6 @@ import Firebase
 class MessagesViewController: UIViewController {
   
   var viewModel: MessagesViewModel?
-
-  private var recentMessages: [RecentMessage] = [
-    RecentMessage(dictionary: ["name": "Harry", "profileImageUrl": "Hi", "text": "Hi", "timestamp": Timestamp(date: Date())])
-  ]
   
   private var collectionView: UICollectionView!
   
@@ -28,6 +24,17 @@ class MessagesViewController: UIViewController {
     navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: ScreenTitleLabel("Chat"))
     configureGradientBackground()
     configureCollectionView()
+    configureBindables()
+    
+    viewModel?.didLoad()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    
+    if isMovingFromParent {
+      viewModel?.willDisappear()
+    }
   }
   
   func configureGradientBackground() {
@@ -57,6 +64,14 @@ class MessagesViewController: UIViewController {
     view.addSubview(collectionView)
   }
   
+  func configureBindables() {
+    viewModel?.bindableMessages.bind { [weak self] messages in
+      print("@@@@")
+      print(messages)
+      self?.collectionView.reloadData()
+    }
+  }
+  
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -72,11 +87,14 @@ extension MessagesViewController: UICollectionViewDelegate {
 extension MessagesViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentMessageCell.reuseIdentifier, for: indexPath) as! RecentMessageCell
+    cell.message = viewModel?.bindableMessages.value![indexPath.row]
     return cell
   }
   
-  
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return recentMessages.count
+    if let messages = viewModel?.bindableMessages.value {
+      return messages.count
+    }
+    return 0
   }
 }

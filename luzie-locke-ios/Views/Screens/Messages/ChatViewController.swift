@@ -26,13 +26,10 @@ class ChatViewController: UICollectionViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    configureGradientBackground()
     configureCollectionView()
     configureKeyboardInput()
     configureBindables()
-
-    if let image = CustomGradient.mainBackground(on: view) {
-      view.backgroundColor = UIColor(patternImage: image)
-    }
     
     viewModel?.didLoad()
   }
@@ -42,6 +39,12 @@ class ChatViewController: UICollectionViewController {
     
     if isMovingFromParent {
       viewModel?.willDisappear()
+    }
+  }
+  
+  func configureGradientBackground() {
+    if let image = CustomGradient.mainBackground(on: view) {
+      view.backgroundColor = UIColor(patternImage: image)
     }
   }
   
