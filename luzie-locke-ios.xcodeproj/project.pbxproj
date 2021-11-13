@@ -124,6 +124,7 @@
 		4AED5E7E2720A50400B7AC00 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7D2720A50400B7AC00 /* AuthService.swift */; };
 		4AED5E802720C2D200B7AC00 /* JWTDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7F2720C2D200B7AC00 /* JWTDecode.swift */; };
 		4AED5E8627219E7300B7AC00 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E8527219E7300B7AC00 /* ProfileCell.swift */; };
+		4AEE61B027401942008055F9 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 4AEE61AF27401942008055F9 /* FirebaseMessaging */; };
 		4AEE8F6B2725D9B2004CB686 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F6A2725D9B2004CB686 /* Bindable.swift */; };
 		4AEE8F6D2726CC73004CB686 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F6C2726CC73004CB686 /* HomeViewModel.swift */; };
 		4AEE8F6F2726DF93004CB686 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F6E2726DF93004CB686 /* ItemCell.swift */; };
@@ -314,6 +315,7 @@
 			files = (
 				4A3B52B92712DC9100EF4F93 /* FirebaseAuth in Frameworks */,
 				4A3B52C02712DDCE00EF4F93 /* GoogleSignIn in Frameworks */,
+				4AEE61B027401942008055F9 /* FirebaseMessaging in Frameworks */,
 				4A3B52BB2712DC9100EF4F93 /* FirebaseStorage in Frameworks */,
 				4A3B52BD2712DC9100EF4F93 /* FirebaseFirestore in Frameworks */,
 			);
@@ -412,6 +414,7 @@
 				4A3B5264271239CE00EF4F93 /* luzie-locke-ios */,
 				4A3B527B271239CF00EF4F93 /* luzie-locke-iosTests */,
 				4A3B5263271239CE00EF4F93 /* Products */,
+				4AEE61AE27401942008055F9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -900,6 +903,13 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		4AEE61AE27401942008055F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4AEE8F722727BC6D004CB686 /* Item */ = {
 			isa = PBXGroup;
 			children = (
@@ -1043,6 +1053,7 @@
 				4A3B52BA2712DC9100EF4F93 /* FirebaseStorage */,
 				4A3B52BC2712DC9100EF4F93 /* FirebaseFirestore */,
 				4A3B52BF2712DDCE00EF4F93 /* GoogleSignIn */,
+				4AEE61AF27401942008055F9 /* FirebaseMessaging */,
 			);
 			productName = "luzie-locke-ios";
 			productReference = 4A3B5262271239CE00EF4F93 /* luzie-locke-ios.app */;
@@ -1564,6 +1575,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4A3B52BE2712DDCE00EF4F93 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignIn;
+		};
+		4AEE61AF27401942008055F9 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A3B52B72712DC9100EF4F93 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -30,9 +30,7 @@ class ItemActionPanelViewModel {
   }
   
   func didTapChatButton() {
-    print("Chat")
     guard let remoteUserId = item?.user?._id else { return }
-    print(remoteUserId)
     coordinator.navigateToChat(remoteUserId: remoteUserId)
   }
   
