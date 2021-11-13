@@ -83,8 +83,8 @@ class ItemRepository: ItemRepositoryProtocol {
             completion(.failure(.unableToComplete))
           }
 
-        case .failure(let error):
-          print("[Error:\(#file):\(#line)] \(error)")
+        case .failure(let err):
+          print("[Error:\(#file):\(#line)] \(err)")
           completion(.failure(.unableToComplete))
         }
       }

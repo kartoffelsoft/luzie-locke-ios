@@ -7,23 +7,73 @@
 
 import UIKit
 
-class RecentMessageCell: UICollectionViewCell {
+class RecentMessageCell: UITableViewCell {
   
   static let reuseIdentifier = "RecentMessageCell"
-    
-  var message: RecentMessage! {
+  
+  var viewModel: RecentMessageCellViewModel? {
     didSet {
+      userImageView.image = viewModel?.bindableImage.value
+      userNameLabel.text  = viewModel?.bindableNameText.value
+      messageLabel.text   = viewModel?.bindableMessageText.value
+      dateLabel.text      = viewModel?.bindableDateText.value
+
+      viewModel?.bindableImage.bind { [weak self] image in
+        self?.userImageView.image = image
+      }
       
+      viewModel?.bindableNameText.bind { [weak self] text in
+        self?.userNameLabel.text = text
+      }
+      
+      viewModel?.bindableMessageText.bind { [weak self] text in
+        self?.messageLabel.text = text
+      }
+      
+      viewModel?.bindableDateText.bind { [weak self] text in
+        self?.dateLabel.text = text
+      }
     }
   }
   
-  override init(frame: CGRect) {
-    super.init(frame: frame)
+  let userImageView = AvatarImageView(radius: 30)
+  let userNameLabel = HeaderLabel(font: Fonts.caption, textAlignment: .left)
+  let messageLabel  = BodyLabel(font: Fonts.detail, textAlignment: .left)
+  let dateLabel     = HeaderLabel(font: Fonts.detail, textColor: .tertiaryLabel, textAlignment: .left)
+  let line          = UIView()
+
+  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    super.init(style: style, reuseIdentifier: reuseIdentifier)
     configure()
   }
   
   fileprivate func configure() {
-    backgroundColor = .green
+    backgroundColor = Colors.primaryColorLight2.withAlphaComponent(0.1)
+    
+    userImageView.layer.borderWidth = 3
+    userImageView.layer.borderColor = UIColor(named: "PrimaryColorLight2")?.cgColor
+
+    let stackView     = UIStackView(arrangedSubviews: [userNameLabel, messageLabel])
+    stackView.axis    = .vertical
+    stackView.spacing = 10
+    stackView.translatesAutoresizingMaskIntoConstraints = false
+
+    addSubview(userImageView)
+    addSubview(stackView)
+    addSubview(dateLabel)
+    
+    NSLayoutConstraint.activate([
+      userImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+      userImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
+      userImageView.widthAnchor.constraint(equalToConstant: 60),
+      userImageView.heightAnchor.constraint(equalToConstant: 60),
+      
+      stackView.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 15),
+      stackView.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor),
+
+      dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+      dateLabel.bottomAnchor.constraint(equalTo: centerYAnchor)
+    ])
   }
   
   required init?(coder: NSCoder) {

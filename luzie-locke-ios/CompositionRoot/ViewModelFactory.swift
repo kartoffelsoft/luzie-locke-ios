@@ -37,7 +37,9 @@ extension CompositionRoot: ViewModelFactory {
 
   func makeMessagesViewModel(coordinator: MessagesCoordinator) -> MessagesViewModel {
     return MessagesViewModel(coordinator: coordinator,
+                             openHttpClient: openHttpClient,
                              localProfileRepository: localProfileRepository,
+                             chatMessageRepository: ChatMessageRepository(),
                              recentMessageRepository: RecentMessageRepository())
   }
   

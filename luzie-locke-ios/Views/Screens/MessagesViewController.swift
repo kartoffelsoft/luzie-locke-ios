@@ -8,11 +8,16 @@
 import UIKit
 import Firebase
 
+
+
 class MessagesViewController: UIViewController {
+  
+  enum Section { case main }
   
   var viewModel: MessagesViewModel?
   
-  private var collectionView: UICollectionView!
+  private let tableView = UITableView()
+  private var dataSource: UITableViewDiffableDataSource<Section, RecentMessage>!
   
   init() {
     super.init(nibName: nil, bundle: nil)
@@ -23,7 +28,8 @@ class MessagesViewController: UIViewController {
     
     navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: ScreenTitleLabel("Chat"))
     configureGradientBackground()
-    configureCollectionView()
+    configureTableView()
+    configureDataSource()
     configureBindables()
     
     viewModel?.didLoad()
@@ -43,32 +49,41 @@ class MessagesViewController: UIViewController {
     }
   }
   
-  func configureCollectionView() {
-    let layout = UICollectionViewCompositionalLayout { section, env in
-      let padding: CGFloat = 15
-      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(120)))
-      item.contentInsets = .init(top: padding, leading: padding, bottom: padding, trailing: padding)
-      
-      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(500)), subitems: [item])
-      let section = NSCollectionLayoutSection(group: group)
-      
-      return section
-    }
+  private func configureTableView() {
+    view.addSubview(tableView)
     
-    collectionView                  = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
-    collectionView.delegate         = self
-    collectionView.dataSource       = self
-    collectionView.backgroundColor  = .clear
+    tableView.frame         = view.bounds
+    tableView.rowHeight     = 80
+    tableView.delegate      = self
+    tableView.backgroundColor = .clear
+    tableView.tableFooterView = UIView(frame: .zero)
     
-    collectionView.register(RecentMessageCell.self, forCellWithReuseIdentifier: RecentMessageCell.reuseIdentifier)
-    view.addSubview(collectionView)
+    tableView.register(RecentMessageCell.self, forCellReuseIdentifier: RecentMessageCell.reuseIdentifier)
+  }
+  
+  private func configureDataSource() {
+    dataSource = UITableViewDiffableDataSource<Section, RecentMessage>(tableView: tableView, cellProvider: { [weak self] tableView, indexPath, itemIdentifier in
+      let cell = tableView.dequeueReusableCell(withIdentifier: RecentMessageCell.reuseIdentifier) as! RecentMessageCell
+      cell.viewModel = self?.viewModel?.recentMessagesViewModels[indexPath.row]
+      return cell
+    })
   }
   
   func configureBindables() {
-    viewModel?.bindableMessages.bind { [weak self] messages in
-      print("@@@@")
-      print(messages)
-      self?.collectionView.reloadData()
+    viewModel?.bindableRecentMessages.bind { [weak self] messages in
+      if let messages = messages {
+        self?.updateData(on: messages)
+      }
+    }
+  }
+  
+  private func updateData(on messages: [RecentMessage]) {
+    var snapshot = NSDiffableDataSourceSnapshot<Section, RecentMessage>()
+    snapshot.appendSections([.main])
+    snapshot.appendItems(messages)
+    
+    DispatchQueue.main.async {
+      self.dataSource.apply(snapshot, animatingDifferences: true)
     }
   }
   
@@ -77,24 +92,22 @@ class MessagesViewController: UIViewController {
   }
 }
 
-extension MessagesViewController: UICollectionViewDelegate {
+extension MessagesViewController: UITableViewDelegate {
   
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    viewModel?.didSelectItemAt(indexPath: indexPath)
-  }
-}
-
-extension MessagesViewController: UICollectionViewDataSource {
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentMessageCell.reuseIdentifier, for: indexPath) as! RecentMessageCell
-    cell.message = viewModel?.bindableMessages.value![indexPath.row]
-    return cell
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    viewModel?.didTapMessageAt(indexPath: indexPath)
   }
   
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    if let messages = viewModel?.bindableMessages.value {
-      return messages.count
+  func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    
+    let deleteAction = UIContextualAction(style: .normal, title: "") { [weak self] (_, _, completion) in
+      self?.viewModel?.didTapDeleteMessageAt(indexPath: indexPath)
+      completion(true)
     }
-    return 0
+    
+    deleteAction.image = Images.delete
+    deleteAction.backgroundColor = Colors.primaryColor
+    
+    return UISwipeActionsConfiguration(actions: [deleteAction])
   }
 }

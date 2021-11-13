@@ -67,6 +67,10 @@ enum Images {
   static let messageSend        = UIImage(systemName: "paperplane.circle",
                                           withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))?
                                     .withTintColor(Colors.secondaryColor, renderingMode: .alwaysOriginal)
+  
+  static let delete             = UIImage(systemName: "trash",
+                                          withConfiguration: UIImage.SymbolConfiguration(pointSize: 15, weight: .bold))?
+                                    .withTintColor(Colors.secondaryColor, renderingMode: .alwaysOriginal)
 }
 
 enum Colors {
@@ -86,4 +90,5 @@ enum Fonts {
   static let subtitle   = UIFont(name: "SuperCell-Magic", size: 15)!
   static let body       = UIFont(name: "SuperCell-Magic", size: 12)!
   static let caption    = UIFont(name: "SuperCell-Magic", size: 11)!
+  static let detail     = UIFont(name: "SuperCell-Magic", size: 9)!
 }

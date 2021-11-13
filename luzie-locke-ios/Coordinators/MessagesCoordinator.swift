@@ -28,7 +28,7 @@ class MessagesCoordinator: Coordinator {
     navigationController.pushViewController(viewController, animated: false)
   }
   
-  func navigateToChat(remoteUserId: String = "vSYEtPvIXzND6BSYYBBXwiVaI1v1") {
+  func navigateToChat(remoteUserId: String) {
     let viewController = factory.makeChatViewController()
     viewController.viewModel = factory.makeChatViewModel(remoteUserId: remoteUserId)
     navigationController.pushViewController(viewController, animated: true)

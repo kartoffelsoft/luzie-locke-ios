@@ -45,7 +45,7 @@ class MainTabBarController: UITabBarController {
     settingsCoordinator.start()
     
     view.backgroundColor = .white
-    viewControllers      = [ //homeCoordinator.navigationController,
+    viewControllers      = [ homeCoordinator.navigationController,
                              searchCoordinator.navigationController,
                              messagesCoordinator.navigationController,
                              settingsCoordinator.navigationController ]

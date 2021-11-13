@@ -31,7 +31,9 @@ class ItemActionPanelViewModel {
   
   func didTapChatButton() {
     print("Chat")
-    coordinator.navigateToChat()
+    guard let remoteUserId = item?.user?._id else { return }
+    print(remoteUserId)
+    coordinator.navigateToChat(remoteUserId: remoteUserId)
   }
   
   func didTapFavoriteButton() {

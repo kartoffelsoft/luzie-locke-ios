@@ -11,14 +11,16 @@ protocol ChatMessageRepositoryProtocol {
   
   func create(text: String, localUserId: String, remoteUserId: String)
   func read(localUserId: String, remoteUserId: String, onReceive: @escaping ([ChatMessage]) -> Void)
+  func delete(localUserId: String, remoteUserId: String, completion: @escaping (Result<Void, LLError>) -> Void)
   func stop()
 }
 
 class ChatMessageRepository: ChatMessageRepositoryProtocol {
   
   private let storeName = "messages"
-  
+
   private var listener: ListenerRegistration?
+  private lazy var firestore = Firestore.firestore()
   
   func create(text: String, localUserId: String, remoteUserId: String) {
     let data = ["sender": localUserId, "receiver": remoteUserId, "text": text, "timestamp": Timestamp(date: Date())] as [String: Any]
@@ -37,13 +39,13 @@ class ChatMessageRepository: ChatMessageRepositoryProtocol {
   func read(localUserId: String, remoteUserId: String, onReceive: @escaping ([ChatMessage]) -> Void) {
     let query = Firestore.firestore().collection(storeName).document(localUserId).collection(remoteUserId).order(by: "timestamp")
     
-    listener = query.addSnapshotListener { querySnapshot, error in
+    listener = query.addSnapshotListener { snapshot, error in
       if let error = error {
-        print("Failed to fetch messages: ", error)
+        print("[Error:\(#file):\(#line)] \(error)")
       }
       
       var messages = [ChatMessage]()
-      querySnapshot?.documentChanges.forEach({ (change) in
+      snapshot?.documentChanges.forEach({ (change) in
         if change.type == .added {
           let dictionary = change.document.data()
           messages.append(.init(dictionary: dictionary, localUserId: localUserId))
@@ -51,6 +53,31 @@ class ChatMessageRepository: ChatMessageRepositoryProtocol {
       })
       
       onReceive(messages)
+    }
+  }
+  
+  func delete(localUserId: String, remoteUserId: String, completion: @escaping (Result<Void, LLError>) -> Void = {_ in }) {
+    let collectionRef = firestore.collection(storeName).document(localUserId).collection(remoteUserId)
+    
+    collectionRef.limit(to: 100).getDocuments { (snapshot, error) in
+      if let error = error {
+        print("[Error:\(#file):\(#line)] \(error)")
+        completion(.failure(.serverErrorResponse))
+        return
+      }
+
+      let batch = collectionRef.firestore.batch()
+      snapshot?.documents.forEach { batch.deleteDocument($0.reference) }
+
+      batch.commit { error in
+        if let error = error {
+          print("[Error:\(#file):\(#line)] \(error)")
+          completion(.failure(.serverErrorResponse))
+        } else {
+          print("Batch write succeeded.")
+          completion(.success(()))
+        }
+      }
     }
   }
   

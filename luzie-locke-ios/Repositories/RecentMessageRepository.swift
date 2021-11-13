@@ -14,6 +14,7 @@ protocol RecentMessageRepositoryProtocol {
               remoteUserId: String, remoteUserName: String, remoteUserImageUrl: String)
   
   func read(localUserId: String, onReceive: @escaping ([RecentMessage]) -> Void)
+  func delete(localUserId: String, remoteUserId: String, completion: @escaping (Result<Void, LLError>) -> Void)
   func stop()
 }
 
@@ -33,9 +34,9 @@ class RecentMessageRepository: RecentMessageRepositoryProtocol {
     
     Firestore.firestore().collection(storeName).document(localUserId)
                          .collection(storeSubName).document(remoteUserId)
-                         .setData(senderdata) { err in
-                           if let err = err {
-                             print("Failed to save recent message: ", err)
+                         .setData(senderdata) { error in
+                           if let error = error {
+                             print("Failed to save recent message: ", error)
                              return
                            }
                          }
@@ -45,9 +46,9 @@ class RecentMessageRepository: RecentMessageRepositoryProtocol {
     
     Firestore.firestore().collection(storeName).document(remoteUserId)
                          .collection("recent-messages").document(localUserId)
-                         .setData(receiverData) { err in
-                           if let err = err {
-                               print("Failed to save recent message: ", err)
+                         .setData(receiverData) { error in
+                           if let error = error {
+                               print("Failed to save recent message: ", error)
                                return
                            }
                        }
@@ -69,6 +70,18 @@ class RecentMessageRepository: RecentMessageRepositoryProtocol {
       })
       
       onReceive(messages)
+    }
+  }
+  
+  func delete(localUserId: String, remoteUserId: String, completion: @escaping (Result<Void, LLError>) -> Void = {_ in }) {
+    Firestore.firestore().collection(storeName).document(localUserId).collection(storeSubName).document(remoteUserId).delete() { error in
+      if let error = error {
+        print("[Error:\(#file):\(#line)] \(error)")
+        completion(.failure(.serverErrorResponse))
+        return
+      }
+      
+      completion(.success(()))
     }
   }
   

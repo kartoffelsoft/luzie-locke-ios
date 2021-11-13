@@ -23,9 +23,9 @@ class FirebaseCloudStorage: CloudStorage {
         return
       }
       
-      ref.downloadURL(completion: { (url, err) in
-        if let err = err {
-          print("Failed to retrieve download URL: ", err)
+      ref.downloadURL(completion: { (url, error) in
+        if let error = error {
+          print("Failed to retrieve download URL: ", error)
           completion(.failure(.unableToCompleteUpload))
           return
         }

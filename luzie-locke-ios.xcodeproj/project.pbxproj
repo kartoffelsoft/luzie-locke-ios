@@ -12,6 +12,8 @@
 		4A01D556273D2B0B00EDFC1C /* UserProfileReadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D555273D2B0A00EDFC1C /* UserProfileReadDTO.swift */; };
 		4A01D558273D40B600EDFC1C /* UserTranslator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D557273D40B600EDFC1C /* UserTranslator.swift */; };
 		4A01D55A273D4EA000EDFC1C /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D559273D4EA000EDFC1C /* UserProfile.swift */; };
+		4A01D55E273DC64100EDFC1C /* RecentMessageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D55D273DC64100EDFC1C /* RecentMessageCellViewModel.swift */; };
+		4A01D561273DC94D00EDFC1C /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D560273DC94D00EDFC1C /* DateUtility.swift */; };
 		4A09C6982737120800FD4E42 /* ItemDisplayCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A09C6972737120800FD4E42 /* ItemDisplayCoordinator.swift */; };
 		4A09C69B273730B900FD4E42 /* ItemDisplayDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A09C69A273730B900FD4E42 /* ItemDisplayDetailViewModel.swift */; };
 		4A09C69E2738582700FD4E42 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A09C69D2738582700FD4E42 /* UserInfoView.swift */; };
@@ -165,6 +167,8 @@
 		4A01D555273D2B0A00EDFC1C /* UserProfileReadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileReadDTO.swift; sourceTree = "<group>"; };
 		4A01D557273D40B600EDFC1C /* UserTranslator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTranslator.swift; sourceTree = "<group>"; };
 		4A01D559273D4EA000EDFC1C /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		4A01D55D273DC64100EDFC1C /* RecentMessageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMessageCellViewModel.swift; sourceTree = "<group>"; };
+		4A01D560273DC94D00EDFC1C /* DateUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
 		4A09C6972737120800FD4E42 /* ItemDisplayCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDisplayCoordinator.swift; sourceTree = "<group>"; };
 		4A09C69A273730B900FD4E42 /* ItemDisplayDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDisplayDetailViewModel.swift; sourceTree = "<group>"; };
 		4A09C69D2738582700FD4E42 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
@@ -325,6 +329,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A01D55B273DC2F700EDFC1C /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				4A01D55C273DC2FE00EDFC1C /* Cells */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
+		4A01D55C273DC2FE00EDFC1C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4A01D55D273DC64100EDFC1C /* RecentMessageCellViewModel.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		4A09C6992737200F00FD4E42 /* Item */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,6 +484,7 @@
 		4A3B529727123DAD00EF4F93 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				4A01D55B273DC2F700EDFC1C /* Messages */,
 				4A47E6CE27316E0D00B9018A /* Item */,
 				4AEE8F752727E830004CB686 /* Cells */,
 				4AEE8FAC272BD456004CB686 /* Screens */,
@@ -580,6 +601,7 @@
 				4A155E422722A46300C8B867 /* Constants.swift */,
 				4AEE8F6A2725D9B2004CB686 /* Bindable.swift */,
 				4AEE8FA3272ABDD2004CB686 /* CustomGradient.swift */,
+				4A01D560273DC94D00EDFC1C /* DateUtility.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1117,6 +1139,7 @@
 				4A47E6D027316E1900B9018A /* ItemActionPanelViewModel.swift in Sources */,
 				4A155E462722E03600C8B867 /* OpenHTTPClient.swift in Sources */,
 				4A09C69E2738582700FD4E42 /* UserInfoView.swift in Sources */,
+				4A01D561273DC94D00EDFC1C /* DateUtility.swift in Sources */,
 				4AED5E61271EE71600B7AC00 /* UpdateLocationRequest.swift in Sources */,
 				4A3B52A9271256CD00EF4F93 /* LoginViewController.swift in Sources */,
 				4A01D558273D40B600EDFC1C /* UserTranslator.swift in Sources */,
@@ -1206,6 +1229,7 @@
 				4A47E6A8272CA01E00B9018A /* CloudStorage.swift in Sources */,
 				4A09C6982737120800FD4E42 /* ItemDisplayCoordinator.swift in Sources */,
 				4A09C6A627392DE100FD4E42 /* ChatInputAccessoryView.swift in Sources */,
+				4A01D55E273DC64100EDFC1C /* RecentMessageCellViewModel.swift in Sources */,
 				4A47E6DF2731D33400B9018A /* ImageViewModel.swift in Sources */,
 				4A47E6AF272D79E500B9018A /* ItemCreateDTO.swift in Sources */,
 				4A47E6A2272C27F900B9018A /* ImageSelectCellViewModel.swift in Sources */,
