@@ -21,7 +21,6 @@ class ItemDisplayDetailViewModel {
 
   var item: Item? {
     didSet {
-      print("@@")
       if let item = item, let images = item.images {
         swipeImageViewModel.urls = images.compactMap{ $0 }
         

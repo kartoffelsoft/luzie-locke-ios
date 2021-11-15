@@ -45,6 +45,10 @@ class HomeViewModel {
     coordinator.navigateToItemCreate()
   }
   
+  func navigateToItemSearch() {
+    coordinator.navigateToItemSearch()
+  }
+  
   func didSelectItemAt(indexPath: IndexPath) {
     if let item = bindableItems.value?[indexPath.row], let id = item._id {
       coordinator.navigateToItemDisplay(id: id)

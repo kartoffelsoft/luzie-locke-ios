@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     application.registerForRemoteNotifications()
     
     UIBarButtonItem.appearance().tintColor = Colors.primaryColor
-    UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: Fonts.subtitle],
+    UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: Fonts.body],
                                                         for: UIControl.State.normal)
     
     return true

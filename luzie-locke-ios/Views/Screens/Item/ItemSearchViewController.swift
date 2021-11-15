@@ -7,7 +7,9 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class ItemSearchViewController: UIViewController {
+  
+  private let searchController = UISearchController()
   
   init() {
     super.init(nibName: nil, bundle: nil)
@@ -16,7 +18,6 @@ class SearchViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: ScreenTitleLabel("Search"))
     configureGradientBackground()
     configureSearchController()
   }
@@ -38,12 +39,17 @@ class SearchViewController: UIViewController {
   }
   
   func configureSearchController() {
-    let searchController                                    = UISearchController()
-    searchController.searchResultsUpdater                   = self
-    searchController.obscuresBackgroundDuringPresentation   = false
+    searchController.searchResultsUpdater                       = self
+    searchController.obscuresBackgroundDuringPresentation       = false
+    searchController.searchBar.placeholder                      = ""
+    searchController.searchBar.searchTextField.tintColor        = Colors.primaryColor
+    searchController.searchBar.searchTextField.backgroundColor  = Colors.primaryColorLight2.withAlphaComponent(0.1)
+    searchController.searchBar.setImage(Images.search, for: .search, state: .normal)
+
+    
 //    searchController.searchBar.searchTextField.attributedPlaceholder =  NSAttributedString.init(string: "Search anything...", attributes: [NSAttributedString.Key.foregroundColor:UIColor.red])
-    navigationItem.searchController                         = searchController
-    navigationItem.hidesSearchBarWhenScrolling              = false
+    navigationItem.searchController             = searchController
+    navigationItem.hidesSearchBarWhenScrolling  = false
   }
   
   required init?(coder: NSCoder) {
@@ -52,7 +58,7 @@ class SearchViewController: UIViewController {
 }
 
 
-extension SearchViewController: UISearchResultsUpdating {
+extension ItemSearchViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
     //        guard let keyword = searchController.searchBar.text, !keyword.isEmpty else {
     //            isSearching = false

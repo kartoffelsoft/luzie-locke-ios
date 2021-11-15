@@ -20,14 +20,13 @@ class MainTabBarController: UITabBarController {
   let auth:                 Auth
   
   let homeCoordinator:      Coordinator
-  let searchCoordinator:    SearchCoordinator
   let messagesCoordinator:  MessagesCoordinator
   let settingsCoordinator:  SettingsCoordinator
   
   init(factory: Factory, auth: Auth) {
     self.auth                     = auth
     self.homeCoordinator          = factory.makeHomeCoordinator()
-    self.searchCoordinator        = factory.makeSearchCoordinator()
+//    self.searchCoordinator        = factory.makeSearchCoordinator()
     self.messagesCoordinator      = factory.makeMessagesCoordinator()
     self.settingsCoordinator      = factory.makeSettingsCoordinator()
     
@@ -40,13 +39,13 @@ class MainTabBarController: UITabBarController {
     configureTabBar()
     
     homeCoordinator.start()
-    searchCoordinator.start()
+//    searchCoordinator.start()
     messagesCoordinator.start()
     settingsCoordinator.start()
     
     view.backgroundColor = .white
     viewControllers      = [ homeCoordinator.navigationController,
-                             searchCoordinator.navigationController,
+//                             searchCoordinator.navigationController,
                              messagesCoordinator.navigationController,
                              settingsCoordinator.navigationController ]
   }

@@ -28,7 +28,8 @@ enum Images {
                                           withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
   
   static let search             = UIImage(systemName: "magnifyingglass",
-                                          withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+                                          withConfiguration: UIImage.SymbolConfiguration(weight: .bold))?
+                                    .withTintColor(Colors.primaryColor, renderingMode: .alwaysOriginal)
   
   static let chats              = UIImage(systemName: "message",
                                           withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
@@ -57,11 +58,11 @@ enum Images {
                                     .withTintColor(Colors.secondaryColor, renderingMode: .alwaysOriginal)
   
   static let chevronUp          = UIImage(systemName: "chevron.up",
-                                          withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .medium))?
+                                          withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .medium))?
                                     .withTintColor(Colors.primaryColor, renderingMode: .alwaysOriginal)
   
   static let chevronDown        = UIImage(systemName: "chevron.down",
-                                          withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .medium))?
+                                          withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .medium))?
                                     .withTintColor(Colors.primaryColor, renderingMode: .alwaysOriginal)
   
   static let messageSend        = UIImage(systemName: "paperplane.circle",
@@ -85,10 +86,10 @@ enum Colors {
 }
 
 enum Fonts {
-  static let titleLarge = UIFont(name: "SuperCell-Magic", size: 22)!
-  static let title      = UIFont(name: "SuperCell-Magic", size: 18)!
-  static let subtitle   = UIFont(name: "SuperCell-Magic", size: 15)!
-  static let body       = UIFont(name: "SuperCell-Magic", size: 12)!
-  static let caption    = UIFont(name: "SuperCell-Magic", size: 11)!
-  static let detail     = UIFont(name: "SuperCell-Magic", size: 9)!
+  static let titleLarge = UIFont(name: "SuperCell-Magic", size: 20)!
+  static let title      = UIFont(name: "SuperCell-Magic", size: 16)!
+  static let subtitle   = UIFont(name: "SuperCell-Magic", size: 13)!
+  static let body       = UIFont(name: "SuperCell-Magic", size: 11)!
+  static let caption    = UIFont(name: "SuperCell-Magic", size: 9)!
+  static let detail     = UIFont(name: "SuperCell-Magic", size: 7)!
 }

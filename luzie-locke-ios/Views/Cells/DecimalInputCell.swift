@@ -9,15 +9,16 @@ import UIKit
 
 class DecimalInputCell: UICollectionViewCell {
   
-  static let reuseIdentifier = "DecimalInputCell"
+  static let reuseIdentifier    = "DecimalInputCell"
   
-  private let textField      = SingleLineInputTextField()
+  private let textField         = SingleLineInputTextField()
+  private let placeholderColor  = Colors.primaryColorLight1
   
   var viewModel: DecimalInputCellViewModel?
   var placeholder: String? {
     didSet {
       textField.text      = placeholder
-      textField.textColor = .systemGray3
+      textField.textColor = placeholderColor
     }
   }
   
@@ -29,9 +30,10 @@ class DecimalInputCell: UICollectionViewCell {
   private func configure() {
     addSubview(textField)
     
-    textField.delegate      = self
-    textField.keyboardType  = UIKeyboardType.decimalPad
     textField.pinToEdges(of: self)
+    textField.delegate        = self
+    textField.keyboardType    = UIKeyboardType.decimalPad
+    textField.backgroundColor = Colors.primaryColorLight3.withAlphaComponent(0.2)
     textField.addTarget(self, action: #selector(handleInputChange), for: .editingChanged)
   }
 
@@ -51,7 +53,7 @@ extension DecimalInputCell: UITextFieldDelegate {
   }
   
   func textFieldDidBeginEditing(_ textField: UITextField) {
-    if textField.textColor == .systemGray3 && textField.isFirstResponder {
+    if textField.textColor == placeholderColor && textField.isFirstResponder {
       textField.text      = nil
       textField.textColor = Colors.primaryColor
     }
@@ -60,7 +62,7 @@ extension DecimalInputCell: UITextFieldDelegate {
   func textFieldDidEndEditing(_ textField: UITextField) {
     if let text = textField.text, text.isEmpty || text == "" {
       textField.text      = placeholder
-      textField.textColor = .systemGray3
+      textField.textColor = placeholderColor
     }
   }
 }

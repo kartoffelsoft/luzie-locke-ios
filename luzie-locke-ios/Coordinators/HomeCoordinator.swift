@@ -35,6 +35,12 @@ class HomeCoordinator: NSObject, Coordinator {
     navigationController.pushViewController(vc, animated: true)
   }
   
+  func navigateToItemSearch() {
+    let coordinator = factory.makeItemSearchCoordinator(navigationController: navigationController)
+    children.append(coordinator)
+    coordinator.start()
+  }
+  
   func navigateToItemDisplay(id: String) {
     let coordinator = factory.makeItemDisplayCoordinator(navigationController: navigationController,
                                                          id: id)

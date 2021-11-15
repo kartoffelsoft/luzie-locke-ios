@@ -29,9 +29,16 @@ class ItemCreateViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    configureGradientBackground()
     configureNavigationBar()
     configureCollectionView()
     configureBindables()
+  }
+  
+  func configureGradientBackground() {
+    if let image = CustomGradient.mainBackground(on: view) {
+      view.backgroundColor = UIColor(patternImage: image)
+    }
   }
 
   private func configureNavigationBar() {
@@ -87,9 +94,10 @@ class ItemCreateViewController: UIViewController {
       }
     }
     
-    collectionView            = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
-    collectionView.delegate   = self
-    collectionView.dataSource = self
+    collectionView                  = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+    collectionView.delegate         = self
+    collectionView.dataSource       = self
+    collectionView.backgroundColor  = .clear
     
     collectionView.register(ImageSelectCell.self, forCellWithReuseIdentifier: ImageSelectCell.reuseIdentifier)
     collectionView.register(TextInputCell.self, forCellWithReuseIdentifier: TextInputCell.reuseIdentifier)
@@ -97,10 +105,6 @@ class ItemCreateViewController: UIViewController {
     collectionView.register(MultiLineTextInputCell.self, forCellWithReuseIdentifier: MultiLineTextInputCell.reuseIdentifier)
     
     view.addSubview(collectionView)
-    
-    if let image = CustomGradient.mainBackground(on: collectionView) {
-      collectionView.backgroundColor = UIColor(patternImage: image)
-    }
   }
   
   func configureBindables() {

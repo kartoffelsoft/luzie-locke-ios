@@ -10,7 +10,7 @@ import UIKit
 class UserInfoView: UIView {
 
   let imageView     = AvatarImageView(radius: 30)
-  let nameLabel     = HeaderLabel(textAlignment: .left)
+  let nameLabel     = HeaderLabel(font: Fonts.subtitle, textAlignment: .left)
   let locationLabel = BodyLabel(font: Fonts.caption, textAlignment: .left)
   
   override init(frame: CGRect) {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchCoordinator: Coordinator {
+class ItemSearchCoordinator: Coordinator {
 
   var navigationController: UINavigationController
   var children = [Coordinator]()
@@ -17,11 +17,11 @@ class SearchCoordinator: Coordinator {
   }
   
   func start() {
-    let vc = SearchViewController()
+    let vc = ItemSearchViewController()
     vc.tabBarItem = UITabBarItem(title: nil,
                                  image: Images.search,
                                  selectedImage: Images.search)
     
-    navigationController.pushViewController(vc, animated: false)
+    navigationController.pushViewController(vc, animated: true)
   }
 }

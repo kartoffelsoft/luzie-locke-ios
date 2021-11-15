@@ -39,7 +39,7 @@ class ItemRepository: ItemRepositoryProtocol {
   }
   
   func readListAll(completion: @escaping (Result<[Item], LLError>) -> Void) {
-    backendClient.GET(ItemListReadAllRequestDTO(page: 1, limit: 5)) { result in
+    backendClient.GET(ItemListReadAllRequestDTO(page: 1, limit: 8)) { result in
       DispatchQueue.main.async {
         switch result {
         case .success(let response):

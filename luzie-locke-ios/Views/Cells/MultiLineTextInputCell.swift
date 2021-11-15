@@ -9,15 +9,16 @@ import UIKit
 
 class MultiLineTextInputCell: UICollectionViewCell {
   
-  static let reuseIdentifier = "MultiLineTextInputCell"
+  static let reuseIdentifier    = "MultiLineTextInputCell"
   
-  private let textField      = MultiLineInputTextField()
+  private let textField         = MultiLineInputTextField()
+  private let placeholderColor  = Colors.primaryColorLight1
   
   var viewModel: TextInputCellViewModel?
   var placeholder: String? {
     didSet {
       textField.text = placeholder
-      textField.textColor = .systemGray3
+      textField.textColor = placeholderColor
     }
   }
   
@@ -27,10 +28,12 @@ class MultiLineTextInputCell: UICollectionViewCell {
   }
   
   private func configure() {
+
     addSubview(textField)
-    
-    textField.delegate = self
+
     textField.pinToEdges(of: self)
+    textField.delegate = self
+    textField.backgroundColor = Colors.primaryColorLight3.withAlphaComponent(0.2)
   }
   
   required init?(coder: NSCoder) {
@@ -41,7 +44,7 @@ class MultiLineTextInputCell: UICollectionViewCell {
 extension MultiLineTextInputCell: UITextViewDelegate {
 
   func textViewDidBeginEditing(_ textView: UITextView) {
-    if textField.textColor == .systemGray3 && textField.isFirstResponder {
+    if textField.textColor == placeholderColor && textField.isFirstResponder {
       textField.text      = nil
       textField.textColor = Colors.primaryColor
     }
@@ -50,7 +53,7 @@ extension MultiLineTextInputCell: UITextViewDelegate {
   func textViewDidEndEditing(_ textView: UITextView) {
     if textField.text.isEmpty || textField.text == "" {
       textField.text      = placeholder
-      textField.textColor = .systemGray3
+      textField.textColor = placeholderColor
     }
   }
   

@@ -16,14 +16,13 @@ class ImageSelectButton: UIButton {
   
   private func configure() {
     translatesAutoresizingMaskIntoConstraints = false
-    backgroundColor                           = .systemBackground
+    backgroundColor                           = Colors.primaryColorLight2.withAlphaComponent(0.2)
+    clipsToBounds                             = true
+    adjustsImageWhenDisabled                  = true
     layer.cornerRadius                        = 8
     layer.borderWidth                         = 1
     layer.borderColor                         = UIColor(named: "PrimaryColor")?.cgColor
     layer.cornerRadius                        = 5
-    
-    clipsToBounds                             = true
-    adjustsImageWhenDisabled                  = true
     
     setImage(Images.selectImage , for: .normal)
   }

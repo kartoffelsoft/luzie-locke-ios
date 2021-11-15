@@ -29,7 +29,7 @@ class LoginCoordinator: Coordinator {
     let vc = factory.makeLoginViewController(viewModel: vm)
     
     self.navigationController.modalPresentationStyle = .fullScreen
-    self.navigationController.pushViewController(vc, animated: false)
+    self.navigationController.pushViewController(vc, animated: true)
   }
   
   func navigateToMap(selectAction: @escaping MapViewCallback) {

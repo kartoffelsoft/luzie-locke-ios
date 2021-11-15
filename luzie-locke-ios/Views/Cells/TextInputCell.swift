@@ -9,15 +9,16 @@ import UIKit
 
 class TextInputCell: UICollectionViewCell {
   
-  static let reuseIdentifier  = "TextInputCell"
+  static let reuseIdentifier    = "TextInputCell"
   
-  private let textField       = SingleLineInputTextField()
+  private let textField         = SingleLineInputTextField()
+  private let placeholderColor  = Colors.primaryColorLight1
   
   var viewModel: TextInputCellViewModel?
   var placeholder: String? {
     didSet {
       textField.text      = placeholder
-      textField.textColor = .systemGray3
+      textField.textColor = placeholderColor
     }
   }
   
@@ -28,9 +29,10 @@ class TextInputCell: UICollectionViewCell {
   
   private func configure() {
     addSubview(textField)
-    
-    textField.delegate = self
+
     textField.pinToEdges(of: self)
+    textField.delegate = self
+    textField.backgroundColor = Colors.primaryColorLight3.withAlphaComponent(0.2)
     textField.addTarget(self, action: #selector(handleInputChange), for: .editingChanged)
   }
 
@@ -46,7 +48,7 @@ class TextInputCell: UICollectionViewCell {
 extension TextInputCell: UITextFieldDelegate {
   
   func textFieldDidBeginEditing(_ textField: UITextField) {
-    if textField.textColor == .systemGray3 && textField.isFirstResponder {
+    if textField.textColor == placeholderColor && textField.isFirstResponder {
       textField.text      = nil
       textField.textColor = Colors.primaryColor
     }
@@ -55,7 +57,7 @@ extension TextInputCell: UITextFieldDelegate {
   func textFieldDidEndEditing(_ textField: UITextField) {
     if let text = textField.text, text.isEmpty || text == "" {
       textField.text      = placeholder
-      textField.textColor = .systemGray3
+      textField.textColor = placeholderColor
     }
   }
 }

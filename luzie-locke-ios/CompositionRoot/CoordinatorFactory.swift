@@ -10,10 +10,10 @@ import UIKit
 protocol CoordinatorFactory {
   func makeLoginCoordinator()     -> LoginCoordinator
   func makeHomeCoordinator()      -> HomeCoordinator
-  func makeSearchCoordinator()    -> SearchCoordinator
   func makeMessagesCoordinator()  -> MessagesCoordinator
   func makeSettingsCoordinator()  -> SettingsCoordinator
   
+  func makeItemSearchCoordinator(navigationController: UINavigationController) -> ItemSearchCoordinator
   func makeItemDisplayCoordinator(navigationController: UINavigationController, id: String) -> ItemDisplayCoordinator
 }
 
@@ -29,10 +29,6 @@ extension CompositionRoot: CoordinatorFactory {
                            navigationController: UINavigationController())
   }
   
-  func makeSearchCoordinator() -> SearchCoordinator {
-    return SearchCoordinator(navigationController: UINavigationController())
-  }
-  
   func makeMessagesCoordinator() -> MessagesCoordinator {
     return MessagesCoordinator(factory: self,
                                navigationController: UINavigationController())
@@ -41,6 +37,11 @@ extension CompositionRoot: CoordinatorFactory {
   func makeSettingsCoordinator() -> SettingsCoordinator {
     return SettingsCoordinator(factory: self,
                                navigationController: UINavigationController())
+  }
+  
+  
+  func makeItemSearchCoordinator(navigationController: UINavigationController) -> ItemSearchCoordinator {
+    return ItemSearchCoordinator(navigationController: navigationController)
   }
   
   func makeItemDisplayCoordinator(navigationController: UINavigationController, id: String)  -> ItemDisplayCoordinator {

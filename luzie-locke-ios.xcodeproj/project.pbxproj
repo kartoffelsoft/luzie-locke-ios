@@ -36,7 +36,7 @@
 		4A3B526F271239CF00EF4F93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A3B526E271239CF00EF4F93 /* Assets.xcassets */; };
 		4A3B5272271239CF00EF4F93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A3B5270271239CF00EF4F93 /* LaunchScreen.storyboard */; };
 		4A3B529B2712401D00EF4F93 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B529A2712401D00EF4F93 /* HomeViewController.swift */; };
-		4A3B529D2712421300EF4F93 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B529C2712421300EF4F93 /* SearchViewController.swift */; };
+		4A3B529D2712421300EF4F93 /* ItemSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B529C2712421300EF4F93 /* ItemSearchViewController.swift */; };
 		4A3B529F271242ED00EF4F93 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B529E271242ED00EF4F93 /* SettingsViewController.swift */; };
 		4A3B52A22712461500EF4F93 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52A12712461500EF4F93 /* MessagesViewController.swift */; };
 		4A3B52A62712539300EF4F93 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52A52712539300EF4F93 /* FirebaseAuthService.swift */; };
@@ -56,7 +56,7 @@
 		4A3B52D527159CA300EF4F93 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52D427159CA300EF4F93 /* Coordinator.swift */; };
 		4A3B52DB2715ADEF00EF4F93 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52DA2715ADEF00EF4F93 /* LoginCoordinator.swift */; };
 		4A3B52DD2715BA3700EF4F93 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52DC2715BA3700EF4F93 /* HomeCoordinator.swift */; };
-		4A3B52DF2715C0F200EF4F93 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52DE2715C0F200EF4F93 /* SearchCoordinator.swift */; };
+		4A3B52DF2715C0F200EF4F93 /* ItemSearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52DE2715C0F200EF4F93 /* ItemSearchCoordinator.swift */; };
 		4A3B52E12715C10500EF4F93 /* MessagesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52E02715C10500EF4F93 /* MessagesCoordinator.swift */; };
 		4A3B52E32715C11900EF4F93 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52E22715C11900EF4F93 /* SettingsCoordinator.swift */; };
 		4A3B52E52716083A00EF4F93 /* CoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52E42716083A00EF4F93 /* CoordinatorMock.swift */; };
@@ -125,6 +125,8 @@
 		4AED5E802720C2D200B7AC00 /* JWTDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7F2720C2D200B7AC00 /* JWTDecode.swift */; };
 		4AED5E8627219E7300B7AC00 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E8527219E7300B7AC00 /* ProfileCell.swift */; };
 		4AEE61B027401942008055F9 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 4AEE61AF27401942008055F9 /* FirebaseMessaging */; };
+		4AEE61B42740F965008055F9 /* LocationMenuPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE61B32740F965008055F9 /* LocationMenuPopoverController.swift */; };
+		4AEE61B62741B4EF008055F9 /* LocationMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE61B52741B4EF008055F9 /* LocationMenuButton.swift */; };
 		4AEE8F6B2725D9B2004CB686 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F6A2725D9B2004CB686 /* Bindable.swift */; };
 		4AEE8F6D2726CC73004CB686 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F6C2726CC73004CB686 /* HomeViewModel.swift */; };
 		4AEE8F6F2726DF93004CB686 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F6E2726DF93004CB686 /* ItemCell.swift */; };
@@ -196,7 +198,7 @@
 		4A3B5278271239CF00EF4F93 /* luzie-locke-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "luzie-locke-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3B527E271239CF00EF4F93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A3B529A2712401D00EF4F93 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		4A3B529C2712421300EF4F93 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		4A3B529C2712421300EF4F93 /* ItemSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSearchViewController.swift; sourceTree = "<group>"; };
 		4A3B529E271242ED00EF4F93 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4A3B52A12712461500EF4F93 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		4A3B52A52712539300EF4F93 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
@@ -212,7 +214,7 @@
 		4A3B52D427159CA300EF4F93 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		4A3B52DA2715ADEF00EF4F93 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		4A3B52DC2715BA3700EF4F93 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
-		4A3B52DE2715C0F200EF4F93 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		4A3B52DE2715C0F200EF4F93 /* ItemSearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSearchCoordinator.swift; sourceTree = "<group>"; };
 		4A3B52E02715C10500EF4F93 /* MessagesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCoordinator.swift; sourceTree = "<group>"; };
 		4A3B52E22715C11900EF4F93 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		4A3B52E42716083A00EF4F93 /* CoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorMock.swift; sourceTree = "<group>"; };
@@ -281,6 +283,8 @@
 		4AED5E7D2720A50400B7AC00 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		4AED5E7F2720C2D200B7AC00 /* JWTDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTDecode.swift; sourceTree = "<group>"; };
 		4AED5E8527219E7300B7AC00 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		4AEE61B32740F965008055F9 /* LocationMenuPopoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMenuPopoverController.swift; sourceTree = "<group>"; };
+		4AEE61B52741B4EF008055F9 /* LocationMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMenuButton.swift; sourceTree = "<group>"; };
 		4AEE8F6A2725D9B2004CB686 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		4AEE8F6C2726CC73004CB686 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		4AEE8F6E2726DF93004CB686 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
@@ -350,6 +354,7 @@
 		4A09C6992737200F00FD4E42 /* Item */ = {
 			isa = PBXGroup;
 			children = (
+				4A3B52DE2715C0F200EF4F93 /* ItemSearchCoordinator.swift */,
 				4A09C6972737120800FD4E42 /* ItemDisplayCoordinator.swift */,
 			);
 			path = Item;
@@ -463,6 +468,7 @@
 		4A3B529527123DA300EF4F93 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4AEE61B12740F905008055F9 /* PopoverMenu */,
 				4A09C6A427392DBB00FD4E42 /* Messages */,
 				4A09C69C273857FD00FD4E42 /* User */,
 				4A47E6CB27314CEE00B9018A /* Item */,
@@ -515,7 +521,6 @@
 				4A3B5269271239CE00EF4F93 /* MainTabBarController.swift */,
 				4A3B52A8271256CD00EF4F93 /* LoginViewController.swift */,
 				4A3B529A2712401D00EF4F93 /* HomeViewController.swift */,
-				4A3B529C2712421300EF4F93 /* SearchViewController.swift */,
 				4A3B52A12712461500EF4F93 /* MessagesViewController.swift */,
 				4A3B529E271242ED00EF4F93 /* SettingsViewController.swift */,
 				4A3B5270271239CF00EF4F93 /* LaunchScreen.storyboard */,
@@ -616,7 +621,6 @@
 				4A3B52D427159CA300EF4F93 /* Coordinator.swift */,
 				4A3B52DA2715ADEF00EF4F93 /* LoginCoordinator.swift */,
 				4A3B52DC2715BA3700EF4F93 /* HomeCoordinator.swift */,
-				4A3B52DE2715C0F200EF4F93 /* SearchCoordinator.swift */,
 				4A3B52E02715C10500EF4F93 /* MessagesCoordinator.swift */,
 				4A3B52E22715C11900EF4F93 /* SettingsCoordinator.swift */,
 				4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */,
@@ -910,6 +914,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4AEE61B12740F905008055F9 /* PopoverMenu */ = {
+			isa = PBXGroup;
+			children = (
+				4AEE61B32740F965008055F9 /* LocationMenuPopoverController.swift */,
+				4AEE61B52741B4EF008055F9 /* LocationMenuButton.swift */,
+			);
+			path = PopoverMenu;
+			sourceTree = "<group>";
+		};
 		4AEE8F722727BC6D004CB686 /* Item */ = {
 			isa = PBXGroup;
 			children = (
@@ -917,6 +930,7 @@
 				4A47E6BE273028BE00B9018A /* ItemDisplayViewController.swift */,
 				4A47E6D127317CA700B9018A /* ItemDisplayBriefViewController.swift */,
 				4A47E6D3273198E300B9018A /* ItemDisplayDetailViewController.swift */,
+				4A3B529C2712421300EF4F93 /* ItemSearchViewController.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -1145,6 +1159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AED5E5D271ECE9D00B7AC00 /* UserAPIClient.swift in Sources */,
+				4AEE61B62741B4EF008055F9 /* LocationMenuButton.swift in Sources */,
 				4AED5E712720176900B7AC00 /* LocalStorage.swift in Sources */,
 				4AEE8FB1272BD9D6004CB686 /* DecimalInputCellViewModel.swift in Sources */,
 				4A47E6D027316E1900B9018A /* ItemActionPanelViewModel.swift in Sources */,
@@ -1170,6 +1185,7 @@
 				4A3B52CD2714419B00EF4F93 /* LLError.swift in Sources */,
 				4A3B52B527126DB000EF4F93 /* ScreenTitleLabel.swift in Sources */,
 				4A47E6D4273198E300B9018A /* ItemDisplayDetailViewController.swift in Sources */,
+				4AEE61B42740F965008055F9 /* LocationMenuPopoverController.swift in Sources */,
 				4A155E602724D16600C8B867 /* UserMenuCell.swift in Sources */,
 				4AED5E802720C2D200B7AC00 /* JWTDecode.swift in Sources */,
 				4A47E6D82731B8E000B9018A /* SwipeImageViewController.swift in Sources */,
@@ -1185,7 +1201,7 @@
 				4AED5E7E2720A50400B7AC00 /* AuthService.swift in Sources */,
 				4AED5E2A271ADC8500B7AC00 /* KRoundButton.swift in Sources */,
 				4AC56672273B974700776DBD /* RecentMessage.swift in Sources */,
-				4A3B529D2712421300EF4F93 /* SearchViewController.swift in Sources */,
+				4A3B529D2712421300EF4F93 /* ItemSearchViewController.swift in Sources */,
 				4A3B52A62712539300EF4F93 /* FirebaseAuthService.swift in Sources */,
 				4A47E6A5272C814600B9018A /* CustomImagePickerController.swift in Sources */,
 				4AEE8F712726E082004CB686 /* Item.swift in Sources */,
@@ -1220,7 +1236,7 @@
 				4AEE8F992729F026004CB686 /* DecimalInputCell.swift in Sources */,
 				4A47E6CD27314D4600B9018A /* ItemActionPanelView.swift in Sources */,
 				4AED5E5A271EBEE700B7AC00 /* BackendClient.swift in Sources */,
-				4A3B52DF2715C0F200EF4F93 /* SearchCoordinator.swift in Sources */,
+				4A3B52DF2715C0F200EF4F93 /* ItemSearchCoordinator.swift in Sources */,
 				4A3B52DD2715BA3700EF4F93 /* HomeCoordinator.swift in Sources */,
 				4AED5E37271D92B400B7AC00 /* APIClient.swift in Sources */,
 				4A01D556273D2B0B00EDFC1C /* UserProfileReadDTO.swift in Sources */,

@@ -15,8 +15,8 @@ class SettingsViewController: UIViewController {
   }
   
   enum SettingsMenuRow: Int {
-    case neibourhood = 0, logout
-    static var numberOfSections: Int { return 2 }
+    case neighborhoodSetting = 0, verifyNeighborhood, logout
+    static var numberOfSections: Int { return 3 }
   }
   
   private let viewModel: SettingsViewModel
@@ -27,7 +27,8 @@ class SettingsViewController: UIViewController {
   ]
   
   private let settingsMenuItems = [
-    SettingsMenuItem(image: Images.location, text: "Verify neighbourhood"),
+    SettingsMenuItem(image: Images.location, text: "Neighborhood setting"),
+    SettingsMenuItem(image: Images.location, text: "Verify neighborhood"),
     SettingsMenuItem(image: Images.logout, text: "Logout")
   ]
   
@@ -125,7 +126,9 @@ extension SettingsViewController: UICollectionViewDelegate {
       ()
     case .settingsMenu:
       switch SettingsMenuRow(rawValue: indexPath.row) {
-      case .neibourhood:
+      case .neighborhoodSetting:
+        print("Neighbourhood!")
+      case .verifyNeighborhood:
         viewModel.navigateToMap()
       case .logout:
         viewModel.logout()

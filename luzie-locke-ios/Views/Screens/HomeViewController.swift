@@ -15,8 +15,9 @@ class HomeViewController: UIViewController {
   var collectionView: UICollectionView!
   var dataSource:     UICollectionViewDiffableDataSource<Section, Item>!
   
-  var items     = [Item]()
-  let setButton = KRoundButton(radius: 30)
+  var items           = [Item]()
+  let setButton       = KRoundButton(radius: 30)
+  let locationButton  = LocationMenuButton()
   
   init(viewModel: HomeViewModel) {
     self.viewModel = viewModel
@@ -26,7 +27,14 @@ class HomeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: ScreenTitleLabel("Home"))
+//    navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: ScreenTitleLabel("Home"))
+    locationButton.addTarget(self, action: #selector(handleMenuTap), for: .touchUpInside)
+    navigationItem.leftBarButtonItem = UIBarButtonItem(customView: locationButton)
+    
+//    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Kronberg", style: .plain, target: self, action: #selector(handleMenuTap))
+
+//    navigationItem.leftBarButtonItem = UIBarButtonItem(image: Images.upload, style: .plain, target: self, action: #selector(handleMenuTap))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(image: Images.search, style: .plain, target: self, action: #selector(handleSearchTap))
     
     configureGradientBackground()
     configureNavigationBar()
@@ -92,7 +100,7 @@ class HomeViewController: UIViewController {
     setButton.backgroundColor = Colors.primaryColor
     
     setButton.setImage(Images.floatingAdd, for: .normal)
-    setButton.addTarget(self, action: #selector(handleAdd), for: .touchUpInside)
+    setButton.addTarget(self, action: #selector(handleAddTap), for: .touchUpInside)
     
     view.addSubview(setButton)
     
@@ -112,8 +120,25 @@ class HomeViewController: UIViewController {
     }
   }
   
-  @objc func handleAdd() {
+  @objc func handleAddTap() {
     viewModel.navigateToItemCreate()
+  }
+  
+  @objc func handleMenuTap(sender: UIButton) {
+    let vc = LocationMenuViewController()
+    vc.preferredContentSize   = CGSize(width:200, height:100)
+    vc.modalPresentationStyle = UIModalPresentationStyle.popover
+  
+    guard let popoverController = vc.popoverPresentationController else { return }
+    popoverController.barButtonItem = navigationItem.leftBarButtonItem
+    popoverController.delegate      = self
+    locationButton.isMenuOpen       = true
+
+    self.present(vc, animated: true, completion: nil)
+  }
+  
+  @objc func handleSearchTap() {
+    viewModel.navigateToItemSearch()
   }
   
   required init?(coder: NSCoder) {
@@ -125,5 +150,17 @@ extension HomeViewController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     viewModel.didSelectItemAt(indexPath: indexPath)
+  }
+}
+
+extension HomeViewController: UIPopoverPresentationControllerDelegate {
+  
+  func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+      return .none
+  }
+  
+  func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
+    locationButton.isMenuOpen = false
+    return true
   }
 }
