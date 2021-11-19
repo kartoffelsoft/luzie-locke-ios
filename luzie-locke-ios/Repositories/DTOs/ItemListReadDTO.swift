@@ -25,22 +25,18 @@ struct ItemListReadAllRequestDTO: APIRequest {
 }
 
 struct ItemListDTO: Decodable, Hashable {
-  let _id:          String?
+  let id:          String?
   let user:         User?
   let title:        String?
   let price:        String?
   let description:  String?
-  let images:       [String?]?
+  let imageUrls:    [String?]?
   let counts:       Counts?
   let state:        String?
   let createdAt:    Date?
   
   struct User: Decodable, Hashable {
-    let location: Location
-  }
-  
-  struct Location: Codable, Hashable {
-    let name: String
+    let locationName: String
   }
   
   struct Counts: Codable, Hashable {
@@ -51,6 +47,5 @@ struct ItemListDTO: Decodable, Hashable {
 }
 
 struct ItemListReadAllResponseDTO: Decodable {
-  
   let items: [ItemListDTO]
 }

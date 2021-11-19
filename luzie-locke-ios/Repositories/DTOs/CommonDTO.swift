@@ -10,7 +10,7 @@ import Foundation
 struct VoidResponseDTO: Decodable {}
 
 struct BackendResponseDTO<Response: Decodable>: Decodable {
-  let status: String
+  let success: Bool
   let message: String
   let data: Response?
 }

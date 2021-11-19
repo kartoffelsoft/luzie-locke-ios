@@ -36,7 +36,7 @@ class UserProfileRepository: UserProfileRepositoryProtocol {
       switch result {
       case .success(let response):
         if let response = response {
-          let user = UserTranslator.translateUserProfileDTOToUser(dto: response.profile)
+          let user = UserTranslator.translateUserProfileDTOToUser(dto: response.user)
           completion(.success(user))
         } else {
           completion(.failure(.unableToComplete))

@@ -12,19 +12,19 @@ struct AuthenticationRequest: APIRequest {
   typealias Response = AuthenticationResponse
   
   var resourceName: String {
-    return "/api/users/login/google"
+    return "/api/auth/google"
   }
   
-  let uid:    String
+  let id:     String
   let token:  String
   
-  init(uid: String, token: String) {
-    self.uid    = uid
+  init(id: String, token: String) {
+    self.id     = id
     self.token  = token
   }
   
   func toDictionary() -> [String: Any] {
-    return [ "uid":    uid,
+    return [ "id":     id,
              "token":  token  ]
   }
 }

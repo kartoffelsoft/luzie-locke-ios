@@ -22,10 +22,10 @@ class UserAPIClient: UserAPI {
   }
   
   func authenticate(uid: String, token: String, completion: @escaping (Result<(profile: UserProfile, accessToken: String, refreshToken: String), LLError>?) -> Void) {
-    client.POST(AuthenticationRequest(uid: uid, token: token)) { result in
+    client.POST(AuthenticationRequest(id: uid, token: token)) { result in
       switch result {
       case .success(let response):
-        if let profile = response?.profile,
+        if let profile = response?.user,
            let accessToken = response?.accessToken,
            let refreshToken = response?.refreshToken {
           completion(.success((profile: profile, accessToken: accessToken, refreshToken: refreshToken)))

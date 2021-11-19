@@ -9,34 +9,26 @@ import Foundation
 
 struct UserProfile: Codable, Hashable {
   
-  let _id: String?
+  let id: String?
   let name: String?
   let email: String?
   let reputation: Int?
-  let pictureURI: String?
-  let location: Location?
-  
-  init(_id: String? = nil, name: String? = nil, email: String? = nil,
-       reputation: Int? = nil, pictureURI: String? = nil, location: Location? = nil) {
-    self._id        = _id
-    self.name       = name
-    self.email      = email
-    self.reputation = reputation
-    self.pictureURI = pictureURI
-    self.location   = location
-  }
-  
-  struct Location: Codable, Hashable {
-    let name: String?
-    let geoJSON: GeoJSON?
-    
-    init(name: String? = nil, geoJSON: GeoJSON? = nil) {
-      self.name = name
-      self.geoJSON = geoJSON
-    }
-  }
+  let imageUrl: String?
+  let locationName: String?
+  let locationCoordinates: Coordinates?
 
-  struct GeoJSON: Codable, Hashable {
+  init(id: String? = nil, name: String? = nil, email: String? = nil, reputation: Int? = nil,
+       imageUrl: String? = nil, locationName: String? = nil, locationCoordinates: Coordinates? = nil) {
+    self.id                   = id
+    self.name                 = name
+    self.email                = email
+    self.reputation           = reputation
+    self.imageUrl             = imageUrl
+    self.locationName         = locationName
+    self.locationCoordinates  = locationCoordinates
+  }
+  
+  struct Coordinates: Codable, Hashable {
     let type: String?
     let coordinates: [Double]?
   }

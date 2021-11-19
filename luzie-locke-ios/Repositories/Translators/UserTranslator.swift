@@ -9,15 +9,15 @@ import Foundation
 
 class UserTranslator {
   static func translateUserProfileDTOToUser(dto: UserProfileDTO) -> UserProfile {
-    return UserProfile(_id: dto._id,
+    return UserProfile(id: dto.id,
                        name: dto.name,
                        email: dto.email,
                        reputation: dto.reputation,
-                       pictureURI: dto.pictureURI,
-                       location: UserProfile.Location(
-                                   name: dto.location?.name,
-                                   geoJSON: UserProfile.GeoJSON(
-                                              type: dto.location?.geoJSON?.type,
-                                              coordinates: dto.location?.geoJSON?.coordinates)))
+                       imageUrl: dto.imageUrl,
+                       locationName: dto.locationName,
+                       locationCoordinates: UserProfile.Coordinates(
+                         type: dto.locationCoordinates?.type,
+                         coordinates: dto.locationCoordinates?.coordinates
+                       ))
   }
 }

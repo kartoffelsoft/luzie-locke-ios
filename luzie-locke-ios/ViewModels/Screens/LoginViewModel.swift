@@ -39,7 +39,7 @@ class LoginViewModel {
       
       switch result {
       case .success(let profile):
-        guard let name = profile.location?.name else { return }
+        guard let name = profile.locationName else { return }
         
         if name.isEmpty {
           DispatchQueue.main.async {

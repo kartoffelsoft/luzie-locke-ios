@@ -138,7 +138,7 @@ class ItemCreateViewModel {
        let price = priceViewModel.text,
        let description = descriptionViewModel.text {
       
-      itemRepository.create(Item(title: title, price: price, description: description, images: imageUrls)) { result in
+      itemRepository.create(Item(title: title, price: price, description: description, imageUrls: imageUrls)) { result in
         switch result {
         case .success:
           completion(.success(()))

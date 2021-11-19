@@ -13,9 +13,9 @@ class ItemCellViewModel {
     didSet {
       bindableTitleText.value    = item?.title
       bindablePriceText.value    = item?.price
-      bindableLocationText.value = item?.user?.location?.name
+      bindableLocationText.value = item?.user?.locationName
       
-      downloadImage(from: item?.images![0])
+      downloadImage(from: item?.imageUrls![0])
     }
   }
   

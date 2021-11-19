@@ -21,21 +21,21 @@ class ItemDisplayDetailViewModel {
 
   var item: Item? {
     didSet {
-      if let item = item, let images = item.images {
+      if let item = item, let images = item.imageUrls {
         swipeImageViewModel.urls = images.compactMap{ $0 }
         
         bindableUserNameText.value    = item.user?.name
-        bindableLocationText.value    = item.user?.location?.name
+        bindableLocationText.value    = item.user?.locationName
         bindableTitleText.value       = item.title
         bindableDescriptionText.value = item.description
         
         
         bindableUserNameText.value    = item.user?.name
-        bindableLocationText.value    = item.user?.location?.name
+        bindableLocationText.value    = item.user?.locationName
         bindableTitleText.value       = item.title
         bindableDescriptionText.value = item.description
         
-        if let url = item.user?.pictureURI {
+        if let url = item.user?.imageUrl {
           openHttpClient.downloadImage(from: url) { [weak self] result in
             switch result {
             case .success(let image):

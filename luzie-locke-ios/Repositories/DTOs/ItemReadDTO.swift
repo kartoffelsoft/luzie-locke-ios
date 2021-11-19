@@ -23,30 +23,26 @@ struct ItemReadRequestDTO: APIRequest {
 }
 
 struct ItemDTO: Decodable, Hashable {
-  let _id:          String?
+  let id:          String?
   let user:         UserProfile?
   let title:        String?
   let price:        String?
   let description:  String?
-  let images:       [String?]?
+  let imageUrls:    [String?]?
   let counts:       Counts?
   let state:        String?
   let createdAt:    Date?
   
   struct UserProfile: Decodable, Hashable {
-    let _id: String?
+    let id: String?
     let name: String?
     let email: String?
     let reputation: Int?
-    let pictureURI: String?
-    let location: Location?
-    
-    struct Location: Decodable, Hashable {
-      let name: String?
-      let geoJSON: GeoJSON?
-    }
+    let imageUrl: String?
+    let locationName: String?
+    let locationCoordinates: Coordinates?
 
-    struct GeoJSON: Codable, Hashable {
+    struct Coordinates: Codable, Hashable {
       let type: String?
       let coordinates: [Double]?
     }
@@ -60,6 +56,5 @@ struct ItemDTO: Decodable, Hashable {
 }
 
 struct ItemReadResponseDTO: Decodable {
-  
   let item: ItemDTO
 }

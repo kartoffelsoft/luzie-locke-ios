@@ -45,12 +45,12 @@ class ItemRepository: ItemRepositoryProtocol {
         case .success(let response):
           if let response = response {
             let items = response.items.reduce([Item](), { output, dto in
-              let item = Item(_id: dto._id,
-                              user: UserProfile(location: UserProfile.Location(name: dto.user?.location.name)),
+              let item = Item(id: dto.id,
+                              user: UserProfile(locationName: dto.user?.locationName),
                               title: dto.title,
                               price: dto.price,
                               description: dto.description,
-                              images: dto.images,
+                              imageUrls: dto.imageUrls,
                               counts: Counts(chat: dto.counts?.chat,
                                              favorite: dto.counts?.favorite,
                                              view: dto.counts?.view),

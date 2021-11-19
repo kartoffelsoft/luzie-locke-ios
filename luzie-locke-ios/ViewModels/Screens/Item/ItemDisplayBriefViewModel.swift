@@ -19,11 +19,11 @@ class ItemDisplayBriefViewModel {
   
   var item: Item? {
     didSet {
-      if let item = item, let images = item.images {
-        swipeImageViewModel.urls = images.compactMap{ $0 }
+      if let item = item, let imageUrls = item.imageUrls {
+        swipeImageViewModel.urls    = imageUrls.compactMap{ $0 }
         
-        bindableTitleText.value = item.title
-        bindableLocationText.value = item.user?.location?.name
+        bindableTitleText.value     = item.title
+        bindableLocationText.value  = item.user?.locationName
       }
     }
   }

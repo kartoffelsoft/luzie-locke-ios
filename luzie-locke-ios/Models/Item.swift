@@ -8,25 +8,25 @@
 import Foundation
 
 struct Item: Codable, Hashable {
-  let _id: String?
+  let id: String?
   let user: UserProfile?
   let title: String?
   let price: String?
   let description: String?
-  let images: [String?]?
+  let imageUrls: [String?]?
   let counts: Counts?
   let state: String?
   let createdAt: Date?
   
-  init(_id: String? = nil, user: UserProfile? = nil, title: String? = nil,
-       price: String? = nil, description: String? = nil, images: [String?]? = nil,
+  init(id: String? = nil, user: UserProfile? = nil, title: String? = nil,
+       price: String? = nil, description: String? = nil, imageUrls: [String?]? = nil,
        counts: Counts? = nil, state: String? = nil, createdAt: Date? = nil) {
-    self._id          = _id
+    self.id           = id
     self.user         = user
     self.title        = title
     self.price        = price
     self.description  = description
-    self.images       = images
+    self.imageUrls    = imageUrls
     self.counts       = counts
     self.state        = state
     self.createdAt    = createdAt

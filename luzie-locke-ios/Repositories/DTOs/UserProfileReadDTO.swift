@@ -24,29 +24,20 @@ struct UserProfileReadRequestDTO: APIRequest {
 
 struct UserProfileReadResponseDTO: Decodable {
   
-  let profile: UserProfileDTO
+  let user: UserProfileDTO
 }
 
 struct UserProfileDTO: Decodable, Hashable {
   
-  let _id: String?
+  let id: String?
   let name: String?
   let email: String?
   let reputation: Int?
-  let pictureURI: String?
-  let location: Location?
+  let imageUrl: String?
+  let locationName: String?
+  let locationCoordinates: Coordinates?
 
-  struct Location: Codable, Hashable {
-    let name: String?
-    let geoJSON: GeoJSON?
-    
-    init(name: String? = nil, geoJSON: GeoJSON? = nil) {
-      self.name = name
-      self.geoJSON = geoJSON
-    }
-  }
-
-  struct GeoJSON: Codable, Hashable {
+  struct Coordinates: Codable, Hashable {
     let type: String?
     let coordinates: [Double]?
   }

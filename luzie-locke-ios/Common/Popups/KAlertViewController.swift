@@ -11,7 +11,7 @@ class KAlertViewController: UIViewController {
   
   let containerView   = UIView()
   let titleLabel      = HeaderLabel(textAlignment: .center)
-  let messageLabel    = BodyLabel(textAlignment: .center)
+  let messageLabel    = BodyLabel(font: Fonts.body, textAlignment: .center)
   let actionButton    = KBasicButton(backgroundColor: UIColor(named: "PrimaryColor"), title: "OK")
   
   var alertTitle:     String?

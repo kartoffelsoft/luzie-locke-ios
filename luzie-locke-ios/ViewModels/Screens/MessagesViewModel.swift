@@ -49,7 +49,7 @@ class MessagesViewModel {
   func didLoad() {
     guard let profile = localProfileRepository.read() else { return }
     
-    recentMessageRepository.read(localUserId: profile._id!) { [weak self] messages in
+    recentMessageRepository.read(localUserId: profile.id!) { [weak self] messages in
       guard let self = self else { return }
       messages.forEach { message in
         self.recentMessagesDictionary[message.id] = message
@@ -78,7 +78,7 @@ class MessagesViewModel {
   }
   
   func didTapDeleteMessageAt(indexPath: IndexPath) {
-    guard let localUserId  = localProfileRepository.read()?._id else { return }
+    guard let localUserId  = localProfileRepository.read()?.id else { return }
     guard let remoteUserId = bindableRecentMessages.value?[indexPath.row].id else { return }
     
     recentMessageRepository.delete(localUserId: localUserId, remoteUserId: remoteUserId)

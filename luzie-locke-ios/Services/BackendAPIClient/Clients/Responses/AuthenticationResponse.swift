@@ -8,7 +8,7 @@
 import Foundation
 
 struct AuthenticationResponse: Decodable {
-  let profile: UserProfile
+  let user: UserProfile
   let accessToken: String
   let refreshToken: String
 }

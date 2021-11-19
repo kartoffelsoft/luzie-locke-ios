@@ -18,19 +18,19 @@ struct ItemCreateRequestDTO: APIRequest {
   let title:        String
   let price:        String
   let description:  String
-  let images:       [String?]
+  let imageUrls:    [String?]
   
   init(domain: Item) {
     self.title        = domain.title!
     self.price        = domain.price!
     self.description  = domain.description!
-    self.images       = domain.images!
+    self.imageUrls    = domain.imageUrls!
   }
   
   func toDictionary() -> [String: Any] {
     return [ "title":       title,
              "price":       price,
              "description": description,
-             "images":      images       ]
+             "imageUrls":   imageUrls      ]
   }
 }

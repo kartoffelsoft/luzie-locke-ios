@@ -44,7 +44,7 @@ public class BackendClient {
             decoder.dateDecodingStrategy = .formatted(Formatter.iso8601)
             
             let response = try decoder.decode(BackendResponseDTO<T.Response>.self, from: data)
-            if response.status == "OK" {
+            if response.success {
               completion(.success(response.data as T.Response?))
             } else {
               print("[Error:\(#file):\(#line)] \(response.message )")
@@ -80,7 +80,7 @@ public class BackendClient {
           if let data = data {
             do {
               let response = try JSONDecoder().decode(BackendResponseDTO<T.Response>.self, from: data)
-              if response.status == "OK" {
+              if response.success {
                 completion(.success(response.data as T.Response?))
               } else {
                 print("[Error:\(#file):\(#line)] \(response.message )")
@@ -120,7 +120,7 @@ public class BackendClient {
           if let data = data {
             do {
               let response = try JSONDecoder().decode(BackendResponseDTO<T.Response>.self, from: data)
-              if response.status == "OK" {
+              if response.success {
                 completion(.success(response.data as T.Response?))
               } else {
                 print("[Error:\(#file):\(#line)] \(response.message )")
