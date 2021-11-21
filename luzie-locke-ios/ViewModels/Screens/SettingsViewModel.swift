@@ -38,12 +38,12 @@ class SettingsViewModel {
   }
   
   func navigateToMap() {
-    coordinator.navigateToMap { [weak self] name, lat, lng in
+    coordinator.navigateToMap { [weak self] city, lat, lng in
       guard let self = self else { return }
       self.coordinator.popViewController()
       
-      if let name = name, let lat = lat, let lng = lng {
-        self.backendApiClient.userApi.updateLocation(name: name,
+      if let city = city, let lat = lat, let lng = lng {
+        self.backendApiClient.userApi.updateLocation(city: city,
                                                      lat: lat,
                                                      lng: lng) { result in
           switch result {

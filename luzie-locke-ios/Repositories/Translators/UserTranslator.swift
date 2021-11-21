@@ -14,10 +14,10 @@ class UserTranslator {
                        email: dto.email,
                        reputation: dto.reputation,
                        imageUrl: dto.imageUrl,
-                       locationName: dto.locationName,
-                       locationCoordinates: UserProfile.Coordinates(
-                         type: dto.locationCoordinates?.type,
-                         coordinates: dto.locationCoordinates?.coordinates
+                       city: dto.city,
+                       location: UserProfile.Location(
+                         type: dto.location?.type,
+                         coordinates: dto.location?.coordinates
                        ))
   }
 }

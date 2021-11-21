@@ -56,14 +56,11 @@ class ItemCell: UICollectionViewCell {
     imageView.clipsToBounds                                 = true
     imageView.translatesAutoresizingMaskIntoConstraints     = false
     
-    titleLabel.text                                         = "Hidsfdsgfdlkhdjgs;gldklksjgoie"
     titleLabel.numberOfLines                                = 0
     titleLabel.translatesAutoresizingMaskIntoConstraints    = false
     
-    locationLabel.text                                      = "Kronberg"
     locationLabel.translatesAutoresizingMaskIntoConstraints = false
     
-    priceLabel.text                                         = "10"
     priceLabel.translatesAutoresizingMaskIntoConstraints    = false
     
     let stackView = UIStackView(arrangedSubviews: [ titleLabel, locationLabel, priceLabel ])

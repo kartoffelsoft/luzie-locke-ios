@@ -25,13 +25,13 @@ class ItemDisplayDetailViewModel {
         swipeImageViewModel.urls = images.compactMap{ $0 }
         
         bindableUserNameText.value    = item.user?.name
-        bindableLocationText.value    = item.user?.locationName
+        bindableLocationText.value    = item.user?.city
         bindableTitleText.value       = item.title
         bindableDescriptionText.value = item.description
         
         
         bindableUserNameText.value    = item.user?.name
-        bindableLocationText.value    = item.user?.locationName
+        bindableLocationText.value    = item.user?.city
         bindableTitleText.value       = item.title
         bindableDescriptionText.value = item.description
         

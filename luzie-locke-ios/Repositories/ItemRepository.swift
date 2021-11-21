@@ -44,9 +44,9 @@ class ItemRepository: ItemRepositoryProtocol {
         switch result {
         case .success(let response):
           if let response = response {
-            let items = response.items.reduce([Item](), { output, dto in
+            let items = response.itemList.reduce([Item](), { output, dto in
               let item = Item(id: dto.id,
-                              user: UserProfile(locationName: dto.user?.locationName),
+                              user: UserProfile(city: dto.user?.city),
                               title: dto.title,
                               price: dto.price,
                               description: dto.description,
@@ -55,7 +55,7 @@ class ItemRepository: ItemRepositoryProtocol {
                                              favorite: dto.counts?.favorite,
                                              view: dto.counts?.view),
                               state: dto.state,
-                              createdAt: dto.createdAt)
+                              createdAt: Date(timeIntervalSince1970: dto.createdAt ?? 0))
               return output + [item]
             })
             completion(.success(items))

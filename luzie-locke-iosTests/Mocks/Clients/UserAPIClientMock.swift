@@ -14,7 +14,7 @@ class UserAPIClientMock: UserAPI {
     
   }
   
-  func updateLocation(name: String, lat: Double, lng: Double, completion: @escaping (Result<Profile, LLError>?) -> Void) {
+  func updateLocation(city: String, lat: Double, lng: Double, completion: @escaping (Result<Profile, LLError>?) -> Void) {
     
   }
 }

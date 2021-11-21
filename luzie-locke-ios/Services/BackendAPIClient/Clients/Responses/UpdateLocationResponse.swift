@@ -8,5 +8,5 @@
 import Foundation
 
 struct UpdateLocationResponse: Decodable {
-  let profile: UserProfile
+  let user: UserProfile
 }

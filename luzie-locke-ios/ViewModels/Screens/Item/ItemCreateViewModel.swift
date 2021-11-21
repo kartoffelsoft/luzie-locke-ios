@@ -14,20 +14,20 @@ protocol ItemCreateViewModelDelegate: AnyObject {
 
 class ItemCreateViewModel {
   
-  weak var delegate:        ItemCreateViewModelDelegate?
+  weak var delegate:          ItemCreateViewModelDelegate?
   
-  let coordinator:          HomeCoordinator
-  let localProfileRepository:  LocalProfileRepository
-  let cloudStorage:         CloudStorage
-  let openHttpClient:       OpenHTTP
-  let itemRepository:       ItemRepository
+  let coordinator:            HomeCoordinator
+  let localProfileRepository: LocalProfileRepository
+  let cloudStorage:           CloudStorage
+  let openHttpClient:         OpenHTTP
+  let itemRepository:         ItemRepository
 
-  let imageSelectViewModel: ImageSelectCellViewModel
-  let titleViewModel:       TextInputCellViewModel
-  let priceViewModel:       DecimalInputCellViewModel
-  let descriptionViewModel: TextInputCellViewModel
+  let imageSelectViewModel:   ImageSelectCellViewModel
+  let titleViewModel:         TextInputCellViewModel
+  let priceViewModel:         DecimalInputCellViewModel
+  let descriptionViewModel:   TextInputCellViewModel
   
-  var bindableIsLoading     = Bindable<Bool>()
+  var bindableIsLoading = Bindable<Bool>()
   
   init(coordinator:             HomeCoordinator,
        localProfileRepository:  LocalProfileRepository,
@@ -133,10 +133,16 @@ class ItemCreateViewModel {
   }
   
   private func executeBackendUpload(imageUrls: [String?], completion: @escaping (Result<Void, LLError>) -> Void) {
-    
+//    guard let title = titleViewModel.text,
+//          let price = priceViewModel.text,
+//          let description = descriptionViewModel.text,
+//          let profile = localProfileRepository.read(),
+//          let location =
     if let title = titleViewModel.text,
        let price = priceViewModel.text,
        let description = descriptionViewModel.text {
+      
+//      let profile = localProfileRepository.read()
       
       itemRepository.create(Item(title: title, price: price, description: description, imageUrls: imageUrls)) { result in
         switch result {

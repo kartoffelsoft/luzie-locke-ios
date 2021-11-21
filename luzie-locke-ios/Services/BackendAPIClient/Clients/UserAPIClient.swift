@@ -10,7 +10,7 @@ import Foundation
 protocol UserAPI {
   func authenticate(uid: String, token: String, completion: @escaping (Result<(profile: UserProfile, accessToken: String, refreshToken: String), LLError>?) -> Void)
   
-  func updateLocation(name: String, lat: Double, lng: Double, completion: @escaping (Result<UserProfile, LLError>?) -> Void)
+  func updateLocation(city: String, lat: Double, lng: Double, completion: @escaping (Result<UserProfile, LLError>?) -> Void)
 }
 
 class UserAPIClient: UserAPI {
@@ -37,11 +37,11 @@ class UserAPIClient: UserAPI {
     }
   }
   
-  func updateLocation(name: String, lat: Double, lng: Double, completion: @escaping (Result<UserProfile, LLError>?) -> Void) {
-    client.PATCH(UpdateLocationRequest(name: name, lat: lat, lng: lng)) { result in
+  func updateLocation(city: String, lat: Double, lng: Double, completion: @escaping (Result<UserProfile, LLError>?) -> Void) {
+    client.PATCH(UpdateLocationRequest(city: city, lat: lat, lng: lng)) { result in
       switch result {
       case .success(let response):
-        if let profile = response?.profile {
+        if let profile = response?.user {
           completion(.success(profile))
         } else {
           completion(.failure(.unexpectedServerResponse))

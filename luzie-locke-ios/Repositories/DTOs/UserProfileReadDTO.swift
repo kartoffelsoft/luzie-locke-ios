@@ -34,10 +34,10 @@ struct UserProfileDTO: Decodable, Hashable {
   let email: String?
   let reputation: Int?
   let imageUrl: String?
-  let locationName: String?
-  let locationCoordinates: Coordinates?
+  let city: String?
+  let location: Location?
 
-  struct Coordinates: Codable, Hashable {
+  struct Location: Codable, Hashable {
     let type: String?
     let coordinates: [Double]?
   }

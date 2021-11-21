@@ -23,7 +23,7 @@ struct ItemReadRequestDTO: APIRequest {
 }
 
 struct ItemDTO: Decodable, Hashable {
-  let id:          String?
+  let id:           String?
   let user:         UserProfile?
   let title:        String?
   let price:        String?
@@ -31,7 +31,7 @@ struct ItemDTO: Decodable, Hashable {
   let imageUrls:    [String?]?
   let counts:       Counts?
   let state:        String?
-  let createdAt:    Date?
+  let createdAt:    TimeInterval?
   
   struct UserProfile: Decodable, Hashable {
     let id: String?
@@ -39,10 +39,10 @@ struct ItemDTO: Decodable, Hashable {
     let email: String?
     let reputation: Int?
     let imageUrl: String?
-    let locationName: String?
-    let locationCoordinates: Coordinates?
+    let city: String?
+    let location: Location?
 
-    struct Coordinates: Codable, Hashable {
+    struct Location: Codable, Hashable {
       let type: String?
       let coordinates: [Double]?
     }

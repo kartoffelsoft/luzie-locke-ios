@@ -23,7 +23,7 @@ class ItemDisplayBriefViewModel {
         swipeImageViewModel.urls    = imageUrls.compactMap{ $0 }
         
         bindableTitleText.value     = item.title
-        bindableLocationText.value  = item.user?.locationName
+        bindableLocationText.value  = item.user?.city
       }
     }
   }

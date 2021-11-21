@@ -14,21 +14,21 @@ struct UserProfile: Codable, Hashable {
   let email: String?
   let reputation: Int?
   let imageUrl: String?
-  let locationName: String?
-  let locationCoordinates: Coordinates?
+  let city: String?
+  let location: Location?
 
   init(id: String? = nil, name: String? = nil, email: String? = nil, reputation: Int? = nil,
-       imageUrl: String? = nil, locationName: String? = nil, locationCoordinates: Coordinates? = nil) {
-    self.id                   = id
-    self.name                 = name
-    self.email                = email
-    self.reputation           = reputation
-    self.imageUrl             = imageUrl
-    self.locationName         = locationName
-    self.locationCoordinates  = locationCoordinates
+       imageUrl: String? = nil, city: String? = nil, location: Location? = nil) {
+    self.id         = id
+    self.name       = name
+    self.email      = email
+    self.reputation = reputation
+    self.imageUrl   = imageUrl
+    self.city       = city
+    self.location   = location
   }
   
-  struct Coordinates: Codable, Hashable {
+  struct Location: Codable, Hashable {
     let type: String?
     let coordinates: [Double]?
   }

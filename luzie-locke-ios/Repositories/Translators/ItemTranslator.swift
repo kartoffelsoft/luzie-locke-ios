@@ -15,16 +15,16 @@ class ItemTranslator {
                                   email: dto.user?.email,
                                   reputation: dto.user?.reputation,
                                   imageUrl: dto.user?.imageUrl,
-                                  locationName: dto.user?.locationName,
-                                  locationCoordinates: UserProfile.Coordinates(
-                                    type: dto.user?.locationCoordinates?.type,
-                                    coordinates: dto.user?.locationCoordinates?.coordinates)),
+                                  city: dto.user?.city,
+                                  location: UserProfile.Location(
+                                    type: dto.user?.location?.type,
+                                    coordinates: dto.user?.location?.coordinates)),
                 title: dto.title,
                 price: dto.price,
                 description: dto.description,
                 imageUrls: dto.imageUrls,
                 counts: Counts(chat: dto.counts?.chat, favorite: dto.counts?.favorite, view: dto.counts?.view),
                 state: dto.state,
-                createdAt: dto.createdAt)
+                createdAt: Date(timeIntervalSince1970: dto.createdAt ?? 0))
   }
 }

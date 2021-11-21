@@ -15,18 +15,18 @@ struct UpdateLocationRequest: APIRequest {
     return "/api/users/location"
   }
   
-  let name: String
+  let city: String
   let lat:  Double
   let lng:  Double
   
-  init(name: String, lat: Double, lng: Double) {
-    self.name = name
+  init(city: String, lat: Double, lng: Double) {
+    self.city = city
     self.lat  = lat
     self.lng  = lng
   }
   
   func toDictionary() -> [String: Any] {
-    return [ "name": name,
+    return [ "city": city,
              "lat":  lat,
              "lng":  lng   ]
   }

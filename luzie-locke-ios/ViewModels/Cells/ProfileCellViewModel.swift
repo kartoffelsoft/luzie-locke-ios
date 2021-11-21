@@ -12,7 +12,7 @@ class ProfileCellViewModel {
   var profile: UserProfile? {
     didSet {
       bindableNameText.value     = profile?.name
-      bindableLocationText.value = profile?.locationName
+      bindableLocationText.value = profile?.city
       
       downloadImage(from: profile?.imageUrl)
     }
