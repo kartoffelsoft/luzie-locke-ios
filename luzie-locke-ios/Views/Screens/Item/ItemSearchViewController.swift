@@ -31,6 +31,7 @@ class ItemSearchViewController: UIViewController {
     configureGradientBackground()
     configureSearchController()
     configureCollectionView()
+    configureDataSource()
     configureBindables()
   }
   
@@ -50,6 +51,14 @@ class ItemSearchViewController: UIViewController {
 
     navigationItem.searchController             = searchController
     navigationItem.hidesSearchBarWhenScrolling  = false
+  }
+  
+  private func configureDataSource() {
+    dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { [weak self] (collectionView, indexPath, follower) -> UICollectionViewCell? in
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCell.reuseIdentifier, for: indexPath) as! ItemCell
+      cell.viewModel = self?.viewModel.itemCellViewModels[indexPath.row]
+      return cell
+    })
   }
   
   private func configureCollectionView() {

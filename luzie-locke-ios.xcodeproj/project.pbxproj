@@ -440,6 +440,8 @@
 				4ADE3D2A27355B0200ACBC60 /* AppMain */,
 				4A47E6E22732BE6400B9018A /* CompositionRoot */,
 				4A3B52D327159C8E00EF4F93 /* Coordinators */,
+				4A47E6C22730950100B9018A /* Translators */,
+				4A47E6B7272F47BC00B9018A /* DTOs */,
 				4A47E6B4272F104300B9018A /* Repositories */,
 				4A3B529627123DA800EF4F93 /* Models */,
 				4A3B529527123DA300EF4F93 /* Views */,
@@ -660,8 +662,6 @@
 		4A47E6B4272F104300B9018A /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				4A47E6C22730950100B9018A /* Translators */,
-				4A47E6B7272F47BC00B9018A /* DTOs */,
 				4A47E6B5272F106100B9018A /* ItemRepository.swift */,
 				4AC5667D273BE7E400776DBD /* LocalProfileRepository.swift */,
 				4A01D553273D25D900EDFC1C /* UserProfileRepository.swift */,

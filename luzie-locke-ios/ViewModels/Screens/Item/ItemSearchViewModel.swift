@@ -55,7 +55,7 @@ class ItemSearchViewModel {
     
     isLoading = true
     
-    itemRepository.readListAll(cursor: cursor) { [weak self] result in
+    itemRepository.readListSearch(keyword: searchKeyword, cursor: cursor) { [weak self] result in
       guard let self = self else { return }
       self.isLoading = false
       
@@ -92,6 +92,7 @@ class ItemSearchViewModel {
 //  }
   
   func viewDidSetSearchKeyword(_ keyword: String) {
+    print("keyword: ", keyword)
     searchKeyword                 = keyword
     cursor                        = Date().timeIntervalSince1970 * 1000
     itemsDictionary               = [String: Item]()
