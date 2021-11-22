@@ -133,16 +133,9 @@ class ItemCreateViewModel {
   }
   
   private func executeBackendUpload(imageUrls: [String?], completion: @escaping (Result<Void, LLError>) -> Void) {
-//    guard let title = titleViewModel.text,
-//          let price = priceViewModel.text,
-//          let description = descriptionViewModel.text,
-//          let profile = localProfileRepository.read(),
-//          let location =
     if let title = titleViewModel.text,
        let price = priceViewModel.text,
        let description = descriptionViewModel.text {
-      
-//      let profile = localProfileRepository.read()
       
       itemRepository.create(Item(title: title, price: price, description: description, imageUrls: imageUrls)) { result in
         switch result {

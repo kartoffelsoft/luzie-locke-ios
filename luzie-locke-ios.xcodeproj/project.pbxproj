@@ -30,6 +30,7 @@
 		4A155E5C2724438B00C8B867 /* SettingsMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E5B2724438B00C8B867 /* SettingsMenuCell.swift */; };
 		4A155E602724D16600C8B867 /* UserMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E5F2724D16600C8B867 /* UserMenuCell.swift */; };
 		4A155E622725C1FD00C8B867 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E612725C1FD00C8B867 /* SettingsViewModel.swift */; };
+		4A22DB31274BDF2D00E5125B /* ItemSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB30274BDF2D00E5125B /* ItemSearchViewModel.swift */; };
 		4A3B5266271239CE00EF4F93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B5265271239CE00EF4F93 /* AppDelegate.swift */; };
 		4A3B5268271239CE00EF4F93 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B5267271239CE00EF4F93 /* SceneDelegate.swift */; };
 		4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B5269271239CE00EF4F93 /* MainTabBarController.swift */; };
@@ -188,6 +189,7 @@
 		4A155E5B2724438B00C8B867 /* SettingsMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMenuCell.swift; sourceTree = "<group>"; };
 		4A155E5F2724D16600C8B867 /* UserMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuCell.swift; sourceTree = "<group>"; };
 		4A155E612725C1FD00C8B867 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		4A22DB30274BDF2D00E5125B /* ItemSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSearchViewModel.swift; sourceTree = "<group>"; };
 		4A3B5262271239CE00EF4F93 /* luzie-locke-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "luzie-locke-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3B5265271239CE00EF4F93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A3B5267271239CE00EF4F93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1042,6 +1044,7 @@
 				4A47E6BC2730288200B9018A /* ItemDisplayViewModel.swift */,
 				4A47E6DB2731CEFA00B9018A /* ItemDisplayBriefViewModel.swift */,
 				4A09C69A273730B900FD4E42 /* ItemDisplayDetailViewModel.swift */,
+				4A22DB30274BDF2D00E5125B /* ItemSearchViewModel.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -1244,6 +1247,7 @@
 				4A155E5C2724438B00C8B867 /* SettingsMenuCell.swift in Sources */,
 				4AEE8F6B2725D9B2004CB686 /* Bindable.swift in Sources */,
 				4A47E6C42730952000B9018A /* ItemTranslator.swift in Sources */,
+				4A22DB31274BDF2D00E5125B /* ItemSearchViewModel.swift in Sources */,
 				4A155E432722A46300C8B867 /* Constants.swift in Sources */,
 				4A3B52E32715C11900EF4F93 /* SettingsCoordinator.swift in Sources */,
 				4AEE8F6D2726CC73004CB686 /* HomeViewModel.swift in Sources */,

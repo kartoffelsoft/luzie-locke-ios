@@ -11,9 +11,8 @@ class HomeViewController: UIViewController {
   
   enum Section { case main }
   
-  let viewModel: HomeViewModel
-  var items = [Item]()
-  
+  private let viewModel: HomeViewModel
+
   private var collectionView: UICollectionView!
   private var dataSource:     UICollectionViewDiffableDataSource<Section, Item>!
   
@@ -45,13 +44,13 @@ class HomeViewController: UIViewController {
     viewModel.viewDidLoad()
   }
   
-  func configureGradientBackground() {
+  private func configureGradientBackground() {
     if let image = CustomGradient.mainBackground(on: view) {
       view.backgroundColor = UIColor(patternImage: image)
     }
   }
   
-  func configureNavigationBar() {
+  private func configureNavigationBar() {
     if let navigationController = navigationController,
        let image = CustomGradient.navBarBackground(on: navigationController.navigationBar) {
       navigationController.navigationBar.barTintColor = UIColor(patternImage: image)
@@ -72,16 +71,12 @@ class HomeViewController: UIViewController {
     
     view.addSubview(collectionView)
     
-    if let image = CustomGradient.mainBackground(on: view) {
-      view.backgroundColor = UIColor(patternImage: image)
-    }
-    
     collectionView.refreshControl = refreshControl
     refreshControl.tintColor      = Colors.primaryColor
     refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
   }
   
-  func configureDataSource() {
+  private func configureDataSource() {
     dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { [weak self] (collectionView, indexPath, follower) -> UICollectionViewCell? in
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCell.reuseIdentifier, for: indexPath) as! ItemCell
       cell.viewModel = self?.viewModel.itemCellViewModels[indexPath.row]
@@ -89,7 +84,7 @@ class HomeViewController: UIViewController {
     })
   }
   
-  func configureBindables() {
+  private func configureBindables() {
     viewModel.bindableItems.bind { [weak self] items in
       if let items = items {
         self?.updateData(on: items)
@@ -97,7 +92,7 @@ class HomeViewController: UIViewController {
     }
   }
   
-  func configureAddButton() {
+  private func configureAddButton() {
     setButton.backgroundColor = Colors.primaryColor
     
     setButton.setImage(Images.floatingAdd, for: .normal)
@@ -111,7 +106,7 @@ class HomeViewController: UIViewController {
     ])
   }
   
-  func updateData(on items: [Item]) {
+  private func updateData(on items: [Item]) {
     var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
     snapshot.appendSections([.main])
     snapshot.appendItems(items)
@@ -122,11 +117,11 @@ class HomeViewController: UIViewController {
     }
   }
   
-  @objc func handleAddTap() {
+  @objc private func handleAddTap() {
     viewModel.navigateToItemCreate()
   }
   
-  @objc func handleMenuTap(sender: UIButton) {
+  @objc private func handleMenuTap(sender: UIButton) {
     let vc = LocationMenuViewController()
     vc.preferredContentSize   = CGSize(width:200, height:100)
     vc.modalPresentationStyle = UIModalPresentationStyle.popover
@@ -139,7 +134,7 @@ class HomeViewController: UIViewController {
     self.present(vc, animated: true, completion: nil)
   }
   
-  @objc func handleSearchTap() {
+  @objc private func handleSearchTap() {
     viewModel.navigateToItemSearch()
   }
   

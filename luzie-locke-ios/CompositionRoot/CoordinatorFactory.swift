@@ -41,7 +41,7 @@ extension CompositionRoot: CoordinatorFactory {
   
   
   func makeItemSearchCoordinator(navigationController: UINavigationController) -> ItemSearchCoordinator {
-    return ItemSearchCoordinator(navigationController: navigationController)
+    return ItemSearchCoordinator(factory: self, navigationController: navigationController)
   }
   
   func makeItemDisplayCoordinator(navigationController: UINavigationController, id: String)  -> ItemDisplayCoordinator {

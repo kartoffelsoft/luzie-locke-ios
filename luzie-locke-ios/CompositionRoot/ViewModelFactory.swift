@@ -13,6 +13,7 @@ protocol ViewModelFactory {
   func makeMessagesViewModel(coordinator: MessagesCoordinator) -> MessagesViewModel
   func makeSettingsViewModel(coordinator: SettingsCoordinator) -> SettingsViewModel
   
+  func makeItemSearchViewModel(coordinator: ItemSearchCoordinator) -> ItemSearchViewModel
   func makeItemCreateViewModel(coordinator: HomeCoordinator) -> ItemCreateViewModel
   func makeItemDisplayViewModel(coordinator: ItemDisplayCoordinator, id: String) -> ItemDisplayViewModel
   func makeItemDisplayDetailViewModel(item: Item) -> ItemDisplayDetailViewModel
@@ -51,6 +52,11 @@ extension CompositionRoot: ViewModelFactory {
                              backendApiClient: backendApiClient)
   }
   
+  func makeItemSearchViewModel(coordinator: ItemSearchCoordinator) -> ItemSearchViewModel {
+    return ItemSearchViewModel(coordinator: coordinator,
+                               openHttpClient: openHttpClient,
+                               itemRepository: itemRepository)
+  }
   
   func makeItemCreateViewModel(coordinator: HomeCoordinator) -> ItemCreateViewModel {
     return ItemCreateViewModel(coordinator: coordinator,

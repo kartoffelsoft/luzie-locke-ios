@@ -24,6 +24,25 @@ struct ItemListReadAllRequestDTO: APIRequest {
   }
 }
 
+struct ItemListReadSearchRequestDTO: APIRequest {
+  
+  typealias Response = ItemListReadAllResponseDTO
+  
+  var resourceName: String {
+    return "/api/items/search"
+  }
+  
+  let q: String
+  let cursor: Double
+  let limit: Int
+  
+  func toDictionary() -> [String: Any] {
+    return [ "q":       q,
+             "cursor":  cursor,
+             "limit":   limit   ]
+  }
+}
+
 struct ItemListDTO: Decodable, Hashable {
   let id:           String?
   let user:         User?

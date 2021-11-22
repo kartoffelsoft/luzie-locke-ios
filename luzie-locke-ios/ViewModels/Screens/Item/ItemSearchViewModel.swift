@@ -1,21 +1,21 @@
 //
-//  HomeViewModel.swift
+//  ItemSearchViewModel.swift
 //  luzie-locke-ios
 //
-//  Created by Harry on 25.10.21.
+//  Created by Harry on 22.11.21.
 //
 
 import UIKit
 
-protocol HomeViewModelDelegate: AnyObject {
+protocol ItemSearchViewModelDelegate: AnyObject {
   func didGetError(_ error: LLError)
 }
 
-class HomeViewModel {
+class ItemSearchViewModel {
   
-  weak var delegate:        HomeViewModelDelegate?
+  weak var delegate:        ItemSearchViewModelDelegate?
   
-  let coordinator:          HomeCoordinator
+  let coordinator:          ItemSearchCoordinator
   let openHttpClient:       OpenHTTP
   let itemRepository:       ItemRepositoryProtocol
   
@@ -27,9 +27,10 @@ class HomeViewModel {
   
   private var isLoading: Bool = false
   
-  var cursor: TimeInterval = Date().timeIntervalSince1970 * 1000
-
-  init(coordinator:         HomeCoordinator,
+  private var cursor: TimeInterval = Date().timeIntervalSince1970 * 1000
+  private var searchKeyword: String = ""
+  
+  init(coordinator:         ItemSearchCoordinator,
        openHttpClient:      OpenHTTP,
        itemRepository:      ItemRepositoryProtocol) {
     self.coordinator          = coordinator
@@ -82,15 +83,16 @@ class HomeViewModel {
     }
   }
   
-  func viewDidLoad() {
-    cursor                        = Date().timeIntervalSince1970 * 1000
-    itemsDictionary               = [String: Item]()
-    itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
-    
-    fetchList()
-  }
+//  func viewDidLoad() {
+//    cursor                        = Date().timeIntervalSince1970 * 1000
+//    itemsDictionary               = [String: Item]()
+//    itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
+//
+//    fetchList()
+//  }
   
-  func viewDidScrollToTop() {
+  func viewDidSetSearchKeyword(_ keyword: String) {
+    searchKeyword                 = keyword
     cursor                        = Date().timeIntervalSince1970 * 1000
     itemsDictionary               = [String: Item]()
     itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
@@ -100,14 +102,6 @@ class HomeViewModel {
   
   func viewDidScrollToBottom() {
     fetchList()
-  }
-  
-  func navigateToItemCreate() {
-    coordinator.navigateToItemCreate()
-  }
-  
-  func navigateToItemSearch() {
-    coordinator.navigateToItemSearch()
   }
   
   func didSelectItemAt(indexPath: IndexPath) {
