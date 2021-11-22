@@ -25,6 +25,7 @@ class ItemTranslator {
                 imageUrls: dto.imageUrls,
                 counts: Counts(chat: dto.counts?.chat, favorite: dto.counts?.favorite, view: dto.counts?.view),
                 state: dto.state,
-                createdAt: Date(timeIntervalSince1970: dto.createdAt ?? 0))
+                createdAt: Date(timeIntervalSince1970: dto.createdAt ?? 0),
+                modifiedAt: Date(timeIntervalSince1970: dto.modifiedAt ?? 0))
   }
 }

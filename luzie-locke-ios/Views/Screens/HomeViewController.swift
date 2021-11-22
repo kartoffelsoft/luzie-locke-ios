@@ -11,13 +11,15 @@ class HomeViewController: UIViewController {
   
   enum Section { case main }
   
-  let viewModel:      HomeViewModel
-  var collectionView: UICollectionView!
-  var dataSource:     UICollectionViewDiffableDataSource<Section, Item>!
+  let viewModel: HomeViewModel
+  var items = [Item]()
   
-  var items           = [Item]()
-  let setButton       = KRoundButton(radius: 30)
-  let locationButton  = LocationMenuButton()
+  private var collectionView: UICollectionView!
+  private var dataSource:     UICollectionViewDiffableDataSource<Section, Item>!
+  
+  private let setButton       = KRoundButton(radius: 30)
+  private let locationButton  = LocationMenuButton()
+  private let refreshControl  = UIRefreshControl()
   
   init(viewModel: HomeViewModel) {
     self.viewModel = viewModel
@@ -26,14 +28,11 @@ class HomeViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.viewModel.delegate = self
     
-//    navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: ScreenTitleLabel("Home"))
     locationButton.addTarget(self, action: #selector(handleMenuTap), for: .touchUpInside)
     navigationItem.leftBarButtonItem = UIBarButtonItem(customView: locationButton)
     
-//    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Kronberg", style: .plain, target: self, action: #selector(handleMenuTap))
-
-//    navigationItem.leftBarButtonItem = UIBarButtonItem(image: Images.upload, style: .plain, target: self, action: #selector(handleMenuTap))
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: Images.search, style: .plain, target: self, action: #selector(handleSearchTap))
     
     configureGradientBackground()
@@ -42,10 +41,8 @@ class HomeViewController: UIViewController {
     configureDataSource()
     configureBindables()
     configureAddButton()
-  }
-  
-  override func viewDidAppear(_ animated: Bool) {
-    viewModel.queryAllItems()
+    
+    viewModel.viewDidLoad()
   }
   
   func configureGradientBackground() {
@@ -78,6 +75,10 @@ class HomeViewController: UIViewController {
     if let image = CustomGradient.mainBackground(on: view) {
       view.backgroundColor = UIColor(patternImage: image)
     }
+    
+    collectionView.refreshControl = refreshControl
+    refreshControl.tintColor      = Colors.primaryColor
+    refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
   }
   
   func configureDataSource() {
@@ -116,6 +117,7 @@ class HomeViewController: UIViewController {
     snapshot.appendItems(items)
     
     DispatchQueue.main.async {
+      self.refreshControl.endRefreshing()
       self.dataSource.apply(snapshot, animatingDifferences: true)
     }
   }
@@ -141,12 +143,26 @@ class HomeViewController: UIViewController {
     viewModel.navigateToItemSearch()
   }
   
+  @objc private func handleRefresh() {
+    viewModel.viewDidScrollToTop()
+  }
+  
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 }
 
 extension HomeViewController: UICollectionViewDelegate {
+  
+  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    let offsetY         = scrollView.contentOffset.y
+    let height          = scrollView.frame.height
+    let contentHeight   = scrollView.contentSize.height
+
+    if(offsetY > contentHeight - height)  {
+      viewModel.viewDidScrollToBottom()
+    }
+  }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     viewModel.didSelectItemAt(indexPath: indexPath)
@@ -162,5 +178,18 @@ extension HomeViewController: UIPopoverPresentationControllerDelegate {
   func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {
     locationButton.isMenuOpen = false
     return true
+  }
+}
+
+extension HomeViewController: HomeViewModelDelegate {
+  
+  func didGetError(_ error: LLError) {
+
+    presentAlertOnMainThread(
+      title: "Unable to complete",
+      message: error.rawValue,
+      buttonTitle: "OK") {
+        self.refreshControl.endRefreshing()
+    }
   }
 }

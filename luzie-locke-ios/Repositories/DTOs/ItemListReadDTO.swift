@@ -15,12 +15,12 @@ struct ItemListReadAllRequestDTO: APIRequest {
     return "/api/items"
   }
   
-  let page: Int
+  let cursor: Double
   let limit: Int
   
   func toDictionary() -> [String: Any] {
-    return [ "page":  page,
-             "limit": limit ]
+    return [ "cursor":  cursor,
+             "limit":   limit   ]
   }
 }
 
@@ -34,6 +34,7 @@ struct ItemListDTO: Decodable, Hashable {
   let counts:       Counts?
   let state:        String?
   let createdAt:    TimeInterval?
+  let modifiedAt:   TimeInterval?
   
   struct User: Decodable, Hashable {
     let city: String
@@ -47,5 +48,6 @@ struct ItemListDTO: Decodable, Hashable {
 }
 
 struct ItemListReadAllResponseDTO: Decodable {
-  let itemList: [ItemListDTO]
+  let list: [ItemListDTO]
+  let nextCursor: Double
 }

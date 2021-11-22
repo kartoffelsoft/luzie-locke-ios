@@ -32,6 +32,7 @@ struct ItemDTO: Decodable, Hashable {
   let counts:       Counts?
   let state:        String?
   let createdAt:    TimeInterval?
+  let modifiedAt:   TimeInterval?
   
   struct UserProfile: Decodable, Hashable {
     let id: String?

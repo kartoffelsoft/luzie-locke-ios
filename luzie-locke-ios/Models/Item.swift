@@ -17,10 +17,11 @@ struct Item: Codable, Hashable {
   let counts: Counts?
   let state: String?
   let createdAt: Date?
+  let modifiedAt: Date?
   
   init(id: String? = nil, user: UserProfile? = nil, title: String? = nil,
        price: String? = nil, description: String? = nil, imageUrls: [String?]? = nil,
-       counts: Counts? = nil, state: String? = nil, createdAt: Date? = nil) {
+       counts: Counts? = nil, state: String? = nil, createdAt: Date? = nil, modifiedAt: Date? = nil) {
     self.id           = id
     self.user         = user
     self.title        = title
@@ -30,6 +31,7 @@ struct Item: Codable, Hashable {
     self.counts       = counts
     self.state        = state
     self.createdAt    = createdAt
+    self.modifiedAt   = modifiedAt
   }
 }
 

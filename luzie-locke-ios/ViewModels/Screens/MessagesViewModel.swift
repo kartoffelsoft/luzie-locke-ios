@@ -54,7 +54,7 @@ class MessagesViewModel {
       messages.forEach { message in
         self.recentMessagesDictionary[message.id] = message
         
-        if let viewModel  = self.recentMessagesViewModelsDictionary[message.id] {
+        if let viewModel = self.recentMessagesViewModelsDictionary[message.id] {
           viewModel.message = message
 
         } else {

@@ -11,12 +11,12 @@ fileprivate var containerView: UIView!
 
 extension UIViewController {
   
-  func presentAlertOnMainThread(title: String, message: String, buttonTitle: String) {
+  func presentAlertOnMainThread(title: String, message: String, buttonTitle: String, completion: (() -> Void)? = nil) {
     DispatchQueue.main.async {
       let alertVC = KAlertViewController(title: title, message: message, buttonTitle: buttonTitle)
       alertVC.modalPresentationStyle = .overFullScreen
       alertVC.modalTransitionStyle = .crossDissolve
-      self.present(alertVC, animated: true)
+      self.present(alertVC, animated: true, completion: completion)
     }
   }
   
@@ -27,7 +27,7 @@ extension UIViewController {
     containerView.backgroundColor   = .systemBackground
     containerView.alpha             = 0
     
-    UIView.animate(withDuration: 0.25) { containerView.alpha = 0.8 }
+    UIView.animate(withDuration: 0.25) { containerView.alpha = 0.3 }
     
     let activityIndicator = UIActivityIndicatorView(style: .large)
     containerView.addSubview(activityIndicator)
