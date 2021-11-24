@@ -11,18 +11,25 @@ class ItemCellViewModel {
 
   var item: Item? {
     didSet {
-      bindableTitleText.value    = item?.title
-      bindablePriceText.value    = item?.price
-      bindableLocationText.value = item?.user?.city
-      
-      downloadImage(from: item?.imageUrls![0])
+      if let item = item {
+        bindableTitleText.value    = item.title
+        bindableLocationText.value = item.user?.city
+        bindableDateText.value     = DateUtility.string(from: item.modifiedAt)
+        
+        let priceText = NSMutableAttributedString(string: "€ ", attributes: [.font: Fonts.detail])
+        priceText.append(NSAttributedString(string: item.price ?? "0", attributes: [.font: Fonts.body]))
+        bindablePriceText.value = priceText
+        
+        downloadImage(from: item.imageUrls![0])
+      }
     }
   }
   
   var bindableItemImage     = Bindable<UIImage>()
   var bindableTitleText     = Bindable<String>()
   var bindableLocationText  = Bindable<String>()
-  var bindablePriceText     = Bindable<String>()
+  var bindablePriceText     = Bindable<NSAttributedString>()
+  var bindableDateText      = Bindable<String>()
 
   let openHttpClient: OpenHTTP
 

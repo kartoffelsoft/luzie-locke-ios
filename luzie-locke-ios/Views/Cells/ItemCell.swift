@@ -15,11 +15,12 @@ class ItemCell: UICollectionViewCell {
 
   var viewModel: ItemCellViewModel? {
     didSet {
-      imageView.image     = viewModel?.bindableItemImage.value
-      titleLabel.text     = viewModel?.bindableTitleText.value
-      locationLabel.text  = viewModel?.bindableLocationText.value
-      priceLabel.text     = viewModel?.bindablePriceText.value
-
+      imageView.image           = viewModel?.bindableItemImage.value
+      titleLabel.text           = viewModel?.bindableTitleText.value
+      locationLabel.text        = viewModel?.bindableLocationText.value
+      priceLabel.attributedText = viewModel?.bindablePriceText.value
+      dateLabel.text            = viewModel?.bindableDateText.value
+      
       viewModel?.bindableItemImage.bind { [weak self] image in
         self?.imageView.image = image
       }
@@ -33,15 +34,20 @@ class ItemCell: UICollectionViewCell {
       }
       
       viewModel?.bindablePriceText.bind { [weak self] text in
-        self?.priceLabel.text = text
+        self?.priceLabel.attributedText = text
+      }
+      
+      viewModel?.bindableDateText.bind { [weak self] text in
+        self?.dateLabel.text = text
       }
     }
   }
   
   let imageView     = UIImageView()
-  let titleLabel    = HeaderLabel(font: Fonts.body, textAlignment: .left)
-  let locationLabel = BodyLabel(font: Fonts.body, textAlignment: .left)
-  let priceLabel    = HeaderLabel(font: Fonts.body, textAlignment: .left)
+  let titleLabel    = CustomLabel(font: Fonts.body, textColor: Colors.primaryColor)
+  let locationLabel = CustomLabel(font: Fonts.caption, textColor: Colors.secondaryColor)
+  let priceLabel    = CustomLabel(font: Fonts.body, textColor: Colors.primaryColor)
+  let dateLabel     = CustomLabel(font: Fonts.detail, textColor: .lightGray)
   let line          = UIView()
 
   override init(frame: CGRect) {
@@ -57,11 +63,6 @@ class ItemCell: UICollectionViewCell {
     imageView.translatesAutoresizingMaskIntoConstraints     = false
     
     titleLabel.numberOfLines                                = 0
-    titleLabel.translatesAutoresizingMaskIntoConstraints    = false
-    
-    locationLabel.translatesAutoresizingMaskIntoConstraints = false
-    
-    priceLabel.translatesAutoresizingMaskIntoConstraints    = false
     
     let stackView = UIStackView(arrangedSubviews: [ titleLabel, locationLabel, priceLabel ])
     stackView.axis                                          = .vertical
@@ -70,6 +71,7 @@ class ItemCell: UICollectionViewCell {
     
     addSubview(imageView)
     addSubview(stackView)
+    addSubview(dateLabel)
     
     NSLayoutConstraint.activate([
       imageView.topAnchor.constraint(equalTo: topAnchor),
@@ -80,6 +82,9 @@ class ItemCell: UICollectionViewCell {
       stackView.topAnchor.constraint(equalTo: topAnchor),
       stackView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 10),
       stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+      
+      dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+      dateLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
     ])
   }
 

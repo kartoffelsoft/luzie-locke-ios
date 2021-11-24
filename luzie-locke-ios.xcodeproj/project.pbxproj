@@ -36,6 +36,7 @@
 		4A22DB3A274E3D0F00E5125B /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB39274E3D0F00E5125B /* EmptyStateView.swift */; };
 		4A22DB3C274ED91800E5125B /* UserPurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB3B274ED91800E5125B /* UserPurchasesViewController.swift */; };
 		4A22DB3E274ED9D500E5125B /* UserPurchasesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB3D274ED9D500E5125B /* UserPurchasesViewModel.swift */; };
+		4A22DB40274F006D00E5125B /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB3F274F006D00E5125B /* CustomLabel.swift */; };
 		4A3B5266271239CE00EF4F93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B5265271239CE00EF4F93 /* AppDelegate.swift */; };
 		4A3B5268271239CE00EF4F93 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B5267271239CE00EF4F93 /* SceneDelegate.swift */; };
 		4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B5269271239CE00EF4F93 /* MainTabBarController.swift */; };
@@ -200,6 +201,7 @@
 		4A22DB39274E3D0F00E5125B /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		4A22DB3B274ED91800E5125B /* UserPurchasesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPurchasesViewController.swift; sourceTree = "<group>"; };
 		4A22DB3D274ED9D500E5125B /* UserPurchasesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPurchasesViewModel.swift; sourceTree = "<group>"; };
+		4A22DB3F274F006D00E5125B /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		4A3B5262271239CE00EF4F93 /* luzie-locke-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "luzie-locke-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3B5265271239CE00EF4F93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A3B5267271239CE00EF4F93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -482,7 +484,6 @@
 				4A3B529627123DA800EF4F93 /* Models */,
 				4A3B529527123DA300EF4F93 /* Views */,
 				4A3B529727123DAD00EF4F93 /* ViewModels */,
-				4A3B52CA2714415400EF4F93 /* Common */,
 				4A3B52A32712536F00EF4F93 /* Services */,
 				4AED5E44271E2A1A00B7AC00 /* Configs */,
 				4ADE3D292733CA3400ACBC60 /* Resources */,
@@ -508,7 +509,6 @@
 		4A3B529527123DA300EF4F93 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4AED5E28271ADC2D00B7AC00 /* Buttons */,
 				4A22DB38274E3CF300E5125B /* Misc */,
 				4AEE61B12740F905008055F9 /* Popups */,
 				4A09C6A427392DBB00FD4E42 /* Messages */,
@@ -575,6 +575,7 @@
 		4A3B52A32712536F00EF4F93 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				4AED5E58271EBEC900B7AC00 /* HTTP */,
 				4AED5E7827201E2D00B7AC00 /* Storage */,
 				4A155E442722E02800C8B867 /* OpenHTTPClient */,
 				4AED5E35271D928F00B7AC00 /* BackendAPIClient */,
@@ -620,6 +621,7 @@
 				4AED5E2F271C179F00B7AC00 /* HeaderLabel.swift */,
 				4AED5E31271C189E00B7AC00 /* BodyLabel.swift */,
 				4A3B52B427126DB000EF4F93 /* ScreenTitleLabel.swift */,
+				4A22DB3F274F006D00E5125B /* CustomLabel.swift */,
 			);
 			path = Labels;
 			sourceTree = "<group>";
@@ -633,14 +635,6 @@
 				4AED5E7D2720A50400B7AC00 /* AuthService.swift */,
 			);
 			path = Auth;
-			sourceTree = "<group>";
-		};
-		4A3B52CA2714415400EF4F93 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				4AED5E58271EBEC900B7AC00 /* HTTP */,
-			);
-			path = Common;
 			sourceTree = "<group>";
 		};
 		4A3B52CB2714415900EF4F93 /* Utilities */ = {
@@ -837,15 +831,6 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
-		4AED5E28271ADC2D00B7AC00 /* Buttons */ = {
-			isa = PBXGroup;
-			children = (
-				4AED5E29271ADC8500B7AC00 /* RoundButton.swift */,
-				4AED5E33271C199600B7AC00 /* BasicButton.swift */,
-			);
-			path = Buttons;
-			sourceTree = "<group>";
-		};
 		4AED5E35271D928F00B7AC00 /* BackendAPIClient */ = {
 			isa = PBXGroup;
 			children = (
@@ -1032,6 +1017,8 @@
 		4AEE8F9027297750004CB686 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				4AED5E29271ADC8500B7AC00 /* RoundButton.swift */,
+				4AED5E33271C199600B7AC00 /* BasicButton.swift */,
 				4AEE8F912729778D004CB686 /* ImageSelectButton.swift */,
 			);
 			path = Buttons;
@@ -1285,6 +1272,7 @@
 				4A47E6C42730952000B9018A /* ItemTranslator.swift in Sources */,
 				4A22DB31274BDF2D00E5125B /* ItemSearchViewModel.swift in Sources */,
 				4A155E432722A46300C8B867 /* Constants.swift in Sources */,
+				4A22DB40274F006D00E5125B /* CustomLabel.swift in Sources */,
 				4A3B52E32715C11900EF4F93 /* SettingsCoordinator.swift in Sources */,
 				4AEE8F6D2726CC73004CB686 /* HomeViewModel.swift in Sources */,
 				4AEE8F6F2726DF93004CB686 /* ItemCell.swift in Sources */,

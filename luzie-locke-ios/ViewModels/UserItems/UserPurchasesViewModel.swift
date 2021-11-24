@@ -61,7 +61,6 @@ class UserPurchasesViewModel {
       
       switch result {
       case .success((let items, let nextCursor)):
-        print(items)
         items.forEach { item in
           if let id = item.id {
             self.itemsDictionary[id] = item

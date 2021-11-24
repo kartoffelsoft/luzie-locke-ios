@@ -36,21 +36,16 @@ class BackendAuthService: BackendAuth {
   }
   
   func authenticate(uid: String, token: String, completion: @escaping (Result<UserProfile, LLError>?) -> Void) {
-    print("@1")
     backendApiClient.userApi.authenticate(uid: uid, token: token) { [weak self] result in
-      print("@2")
       guard let self = self else { return }
       switch result {
       case .success(let data):
-        print("@3")
         self.localProfileRepository.update(data.profile)
         self.accessTokenStorage.set(data.accessToken)
         self.refreshTokenStorage.set(data.refreshToken)
         self.backendApiClient.configureTokenHeader(token: data.accessToken)
         completion(.success(data.profile))
-        
       case .failure(let error):
-        print("@4")
         completion(.failure(error))
       case .none:
         ()

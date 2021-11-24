@@ -16,7 +16,7 @@ struct DateUtility {
       if Calendar.current.isDateInToday(date) {
         dateFormatter.dateFormat = "hh:mm"
       } else {
-        dateFormatter.dateFormat = "y.m.d"
+        dateFormatter.dateFormat = "MMM d, yyyy"
       }
       
       return dateFormatter.string(from: date)
