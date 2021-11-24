@@ -1,5 +1,5 @@
 //
-//  KAlertViewController.swift
+//  AlertViewController.swift
 //  luzie-locke-ios
 //
 //  Created by Harry on 23.09.21.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-class KAlertViewController: UIViewController {
+class AlertViewController: UIViewController {
   
   let containerView   = UIView()
   let titleLabel      = HeaderLabel(textAlignment: .center)
   let messageLabel    = BodyLabel(font: Fonts.body, textAlignment: .center)
-  let actionButton    = KBasicButton(backgroundColor: UIColor(named: "PrimaryColor"), title: "OK")
+  let actionButton    = BasicButton(backgroundColor: UIColor(named: "PrimaryColor"), title: "OK")
   
   var alertTitle:     String?
   var message:        String?

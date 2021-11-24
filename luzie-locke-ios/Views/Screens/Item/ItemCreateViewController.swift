@@ -29,7 +29,7 @@ class ItemCreateViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    configureGradientBackground()
+    configureBackground()
     configureNavigationBar()
     configureCollectionView()
     configureKeyboardInput()
@@ -41,7 +41,7 @@ class ItemCreateViewController: UIViewController {
     tabBarController?.tabBar.isHidden = true
   }
   
-  private func configureGradientBackground() {
+  private func configureBackground() {
     if let image = CustomGradient.mainBackground(on: view) {
       view.backgroundColor = UIColor(patternImage: image)
     }

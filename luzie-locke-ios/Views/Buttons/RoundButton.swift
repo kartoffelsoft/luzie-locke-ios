@@ -1,5 +1,5 @@
 //
-//  KRoundButton.swift
+//  RoundButton.swift
 //  luzie-locke-ios
 //
 //  Created by Harry on 16.10.21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class KRoundButton: UIButton {
+class RoundButton: UIButton {
   
   let radius: CGFloat
   

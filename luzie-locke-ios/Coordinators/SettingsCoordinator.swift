@@ -37,6 +37,16 @@ class SettingsCoordinator: Coordinator {
     navigationController.pushViewController(viewController, animated: true)
   }
   
+  func navigateToUserPurchases() {
+    let viewModel       = factory.makeUserPurchasesViewModel(coordinator: self)
+    let viewController  = factory.makeUserPurchasesViewController(viewModel: viewModel)
+    navigationController.pushViewController(viewController, animated: true)
+  }
+  
+  func navigateToUserFavorites() {
+
+  }
+
   func navigateToMap(selectAction: @escaping MapViewCallback) {
     let viewController = MapViewController(mapView: MKMapView(), locationManager: CLLocationManager())
     viewController.selectAction = selectAction

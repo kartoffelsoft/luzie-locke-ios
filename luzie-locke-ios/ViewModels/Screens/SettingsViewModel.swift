@@ -41,6 +41,14 @@ class SettingsViewModel {
     coordinator.navigateToUserListings()
   }
   
+  func didSelectPurchases() {
+    coordinator.navigateToUserPurchases()
+  }
+  
+  func didSelectFavorites() {
+    coordinator.navigateToUserFavorites()
+  }
+  
   func navigateToMap() {
     coordinator.navigateToMap { [weak self] city, lat, lng in
       guard let self = self else { return }

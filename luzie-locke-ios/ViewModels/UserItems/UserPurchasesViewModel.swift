@@ -1,20 +1,20 @@
 //
-//  UserListingsViewModel.swift
+//  UserPurchasesViewModel.swift
 //  luzie-locke-ios
 //
-//  Created by Harry on 23.11.21.
+//  Created by Harry on 24.11.21.
 //
 
 import Foundation
 
-protocol UserListingsViewModelDelegate: AnyObject {
+protocol UserPurchasesViewModelDelegate: AnyObject {
   
   func didGetError(_ error: LLError)
 }
 
-class UserListingsViewModel {
+class UserPurchasesViewModel {
   
-  weak var delegate:        UserListingsViewModelDelegate?
+  weak var delegate:        UserPurchasesViewModelDelegate?
   
   let coordinator:          SettingsCoordinator
   let openHttpClient:       OpenHTTP
@@ -23,7 +23,6 @@ class UserListingsViewModel {
   var bindableItems         = Bindable<[Item]>()
   var itemCellViewModels    = [ItemCellViewModel]()
   
-  private var segment: Int = 0
   private var itemsDictionary                 = [String: Item]()
   private var itemCellViewModelsDictionary    = [String: ItemCellViewModel]()
   
@@ -56,10 +55,7 @@ class UserListingsViewModel {
     
     isLoading = true
     
-    if segment == 0 {
-      
-
-    itemRepository.readListUserListings(cursor: cursor) { [weak self] result in
+    itemRepository.readListUserPurchases(cursor: cursor) { [weak self] result in
       guard let self = self else { return }
       self.isLoading = false
       
@@ -86,35 +82,6 @@ class UserListingsViewModel {
         self.delegate?.didGetError(error)
       }
     }
-    } else {
-      itemRepository.readListUserListingsClosed(cursor: cursor) { [weak self] result in
-        guard let self = self else { return }
-        self.isLoading = false
-        
-        switch result {
-        case .success((let items, let nextCursor)):
-          print(items)
-          items.forEach { item in
-            if let id = item.id {
-              self.itemsDictionary[id] = item
-              
-              if let viewModel = self.itemCellViewModelsDictionary[id] {
-                viewModel.item = item
-              } else {
-                let viewModel = ItemCellViewModel(openHttpClient: self.openHttpClient)
-                viewModel.item = item
-                self.itemCellViewModelsDictionary[id] = viewModel
-              }
-            }
-          }
-          
-          self.cursor = nextCursor
-          self.reload()
-        case .failure(let error):
-          self.delegate?.didGetError(error)
-        }
-      }
-    }
   }
   
   func viewDidLoad() {
@@ -134,16 +101,6 @@ class UserListingsViewModel {
   }
   
   func viewDidScrollToBottom() {
-    fetchList()
-  }
-  
-  func didChangeSegment(segment: Int) {
-    self.segment = segment
-    
-    cursor                        = Date().timeIntervalSince1970 * 1000
-    itemsDictionary               = [String: Item]()
-    itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
-    
     fetchList()
   }
   

@@ -12,9 +12,9 @@ class ItemActionPanelView: UIView {
   let viewModel: ItemActionPanelViewModel
   
   private let priceLabel  = HeaderLabel(textColor: Colors.primaryColorLight3, textAlignment: .left)
-  private let chatButton  = KBasicButton(backgroundColor: Colors.primaryColorLight3,
-                                         textColor: Colors.primaryColor,
-                                         title: "Chat")
+  private let chatButton  = BasicButton(backgroundColor: Colors.primaryColorLight3,
+                                        textColor: Colors.primaryColor,
+                                        title: "Chat")
   
   private let favoriteButton: UIButton = {
     let button = UIButton()

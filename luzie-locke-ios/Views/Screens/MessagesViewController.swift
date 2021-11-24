@@ -27,7 +27,7 @@ class MessagesViewController: UIViewController {
     super.viewDidLoad()
     
     navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: ScreenTitleLabel("Chat"))
-    configureGradientBackground()
+    configureBackground()
     configureTableView()
     configureDataSource()
     configureBindables()
@@ -43,7 +43,7 @@ class MessagesViewController: UIViewController {
     }
   }
   
-  func configureGradientBackground() {
+  func configureBackground() {
     if let image = CustomGradient.mainBackground(on: view) {
       view.backgroundColor = UIColor(patternImage: image)
     }

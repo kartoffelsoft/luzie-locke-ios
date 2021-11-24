@@ -25,7 +25,14 @@ class LoginViewController: UIViewController {
     navigationController?.navigationBar.isHidden    = true
     view.backgroundColor                            = .systemBackground
     
+    configureBackground()
     configureButtons()
+  }
+  
+  private func configureBackground() {
+    if let image = CustomGradient.mainBackground(on: view) {
+      view.backgroundColor = UIColor(patternImage: image)
+    }
   }
   
   private func configureButtons() {

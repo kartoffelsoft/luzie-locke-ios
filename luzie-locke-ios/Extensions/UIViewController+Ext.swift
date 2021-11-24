@@ -13,7 +13,7 @@ extension UIViewController {
   
   func presentAlertOnMainThread(title: String, message: String, buttonTitle: String, completion: (() -> Void)? = nil) {
     DispatchQueue.main.async {
-      let alertVC = KAlertViewController(title: title, message: message, buttonTitle: buttonTitle)
+      let alertVC = AlertViewController(title: title, message: message, buttonTitle: buttonTitle)
       alertVC.modalPresentationStyle = .overFullScreen
       alertVC.modalTransitionStyle = .crossDissolve
       self.present(alertVC, animated: true, completion: completion)

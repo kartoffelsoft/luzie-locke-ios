@@ -28,14 +28,14 @@ class ItemSearchViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    configureGradientBackground()
+    configureBackground()
     configureSearchController()
     configureCollectionView()
     configureDataSource()
     configureBindables()
   }
   
-  func configureGradientBackground() {
+  func configureBackground() {
     if let image = CustomGradient.mainBackground(on: view) {
       view.backgroundColor = UIColor(patternImage: image)
     }

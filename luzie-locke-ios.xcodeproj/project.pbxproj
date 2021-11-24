@@ -34,6 +34,8 @@
 		4A22DB34274D745300E5125B /* UserListingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB33274D745300E5125B /* UserListingsViewController.swift */; };
 		4A22DB37274D74E900E5125B /* UserListingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB36274D74E900E5125B /* UserListingsViewModel.swift */; };
 		4A22DB3A274E3D0F00E5125B /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB39274E3D0F00E5125B /* EmptyStateView.swift */; };
+		4A22DB3C274ED91800E5125B /* UserPurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB3B274ED91800E5125B /* UserPurchasesViewController.swift */; };
+		4A22DB3E274ED9D500E5125B /* UserPurchasesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB3D274ED9D500E5125B /* UserPurchasesViewModel.swift */; };
 		4A3B5266271239CE00EF4F93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B5265271239CE00EF4F93 /* AppDelegate.swift */; };
 		4A3B5268271239CE00EF4F93 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B5267271239CE00EF4F93 /* SceneDelegate.swift */; };
 		4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B5269271239CE00EF4F93 /* MainTabBarController.swift */; };
@@ -102,11 +104,11 @@
 		4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */; };
 		4AED5E25271A0CFD00B7AC00 /* MKViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E24271A0CFD00B7AC00 /* MKViewMock.swift */; };
 		4AED5E27271A0D1300B7AC00 /* CLLocationManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E26271A0D1300B7AC00 /* CLLocationManagerMock.swift */; };
-		4AED5E2A271ADC8500B7AC00 /* KRoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E29271ADC8500B7AC00 /* KRoundButton.swift */; };
-		4AED5E2D271B87ED00B7AC00 /* KAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E2C271B87ED00B7AC00 /* KAlertViewController.swift */; };
+		4AED5E2A271ADC8500B7AC00 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E29271ADC8500B7AC00 /* RoundButton.swift */; };
+		4AED5E2D271B87ED00B7AC00 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E2C271B87ED00B7AC00 /* AlertViewController.swift */; };
 		4AED5E30271C179F00B7AC00 /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E2F271C179F00B7AC00 /* HeaderLabel.swift */; };
 		4AED5E32271C189E00B7AC00 /* BodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E31271C189E00B7AC00 /* BodyLabel.swift */; };
-		4AED5E34271C199600B7AC00 /* KBasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E33271C199600B7AC00 /* KBasicButton.swift */; };
+		4AED5E34271C199600B7AC00 /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E33271C199600B7AC00 /* BasicButton.swift */; };
 		4AED5E37271D92B400B7AC00 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E36271D92B400B7AC00 /* APIClient.swift */; };
 		4AED5E39271D92EA00B7AC00 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E38271D92EA00B7AC00 /* APIRequest.swift */; };
 		4AED5E3D271D95FC00B7AC00 /* AuthenticationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E3C271D95FC00B7AC00 /* AuthenticationRequest.swift */; };
@@ -196,6 +198,8 @@
 		4A22DB33274D745300E5125B /* UserListingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListingsViewController.swift; sourceTree = "<group>"; };
 		4A22DB36274D74E900E5125B /* UserListingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListingsViewModel.swift; sourceTree = "<group>"; };
 		4A22DB39274E3D0F00E5125B /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		4A22DB3B274ED91800E5125B /* UserPurchasesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPurchasesViewController.swift; sourceTree = "<group>"; };
+		4A22DB3D274ED9D500E5125B /* UserPurchasesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPurchasesViewModel.swift; sourceTree = "<group>"; };
 		4A3B5262271239CE00EF4F93 /* luzie-locke-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "luzie-locke-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3B5265271239CE00EF4F93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A3B5267271239CE00EF4F93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -265,11 +269,11 @@
 		4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerTests.swift; sourceTree = "<group>"; };
 		4AED5E24271A0CFD00B7AC00 /* MKViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKViewMock.swift; sourceTree = "<group>"; };
 		4AED5E26271A0D1300B7AC00 /* CLLocationManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManagerMock.swift; sourceTree = "<group>"; };
-		4AED5E29271ADC8500B7AC00 /* KRoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KRoundButton.swift; sourceTree = "<group>"; };
-		4AED5E2C271B87ED00B7AC00 /* KAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KAlertViewController.swift; sourceTree = "<group>"; };
+		4AED5E29271ADC8500B7AC00 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		4AED5E2C271B87ED00B7AC00 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		4AED5E2F271C179F00B7AC00 /* HeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderLabel.swift; sourceTree = "<group>"; };
 		4AED5E31271C189E00B7AC00 /* BodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyLabel.swift; sourceTree = "<group>"; };
-		4AED5E33271C199600B7AC00 /* KBasicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBasicButton.swift; sourceTree = "<group>"; };
+		4AED5E33271C199600B7AC00 /* BasicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
 		4AED5E36271D92B400B7AC00 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		4AED5E38271D92EA00B7AC00 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		4AED5E3C271D95FC00B7AC00 /* AuthenticationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRequest.swift; sourceTree = "<group>"; };
@@ -421,20 +425,22 @@
 			path = CustomComponents;
 			sourceTree = "<group>";
 		};
-		4A22DB32274D6C8000E5125B /* UserMenus */ = {
+		4A22DB32274D6C8000E5125B /* UserItems */ = {
 			isa = PBXGroup;
 			children = (
 				4A22DB33274D745300E5125B /* UserListingsViewController.swift */,
+				4A22DB3B274ED91800E5125B /* UserPurchasesViewController.swift */,
 			);
-			path = UserMenus;
+			path = UserItems;
 			sourceTree = "<group>";
 		};
-		4A22DB35274D74D700E5125B /* UserMenus */ = {
+		4A22DB35274D74D700E5125B /* UserItems */ = {
 			isa = PBXGroup;
 			children = (
 				4A22DB36274D74E900E5125B /* UserListingsViewModel.swift */,
+				4A22DB3D274ED9D500E5125B /* UserPurchasesViewModel.swift */,
 			);
-			path = UserMenus;
+			path = UserItems;
 			sourceTree = "<group>";
 		};
 		4A22DB38274E3CF300E5125B /* Misc */ = {
@@ -502,8 +508,9 @@
 		4A3B529527123DA300EF4F93 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4AED5E28271ADC2D00B7AC00 /* Buttons */,
 				4A22DB38274E3CF300E5125B /* Misc */,
-				4AEE61B12740F905008055F9 /* PopoverMenu */,
+				4AEE61B12740F905008055F9 /* Popups */,
 				4A09C6A427392DBB00FD4E42 /* Messages */,
 				4A09C69C273857FD00FD4E42 /* User */,
 				4A47E6CB27314CEE00B9018A /* Item */,
@@ -528,7 +535,7 @@
 		4A3B529727123DAD00EF4F93 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				4A22DB35274D74D700E5125B /* UserMenus */,
+				4A22DB35274D74D700E5125B /* UserItems */,
 				4A01D55B273DC2F700EDFC1C /* Messages */,
 				4A47E6CE27316E0D00B9018A /* Item */,
 				4AEE8F752727E830004CB686 /* Cells */,
@@ -550,7 +557,7 @@
 		4A3B529927123DCF00EF4F93 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				4A22DB32274D6C8000E5125B /* UserMenus */,
+				4A22DB32274D6C8000E5125B /* UserItems */,
 				4A09C6A127391DEA00FD4E42 /* Messages */,
 				4A47E6D52731B88F00B9018A /* SwipeImage */,
 				4AEE8F722727BC6D004CB686 /* Item */,
@@ -632,8 +639,6 @@
 			isa = PBXGroup;
 			children = (
 				4AED5E58271EBEC900B7AC00 /* HTTP */,
-				4AED5E2B271B87C600B7AC00 /* Popups */,
-				4AED5E28271ADC2D00B7AC00 /* Buttons */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -835,18 +840,10 @@
 		4AED5E28271ADC2D00B7AC00 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				4AED5E29271ADC8500B7AC00 /* KRoundButton.swift */,
-				4AED5E33271C199600B7AC00 /* KBasicButton.swift */,
+				4AED5E29271ADC8500B7AC00 /* RoundButton.swift */,
+				4AED5E33271C199600B7AC00 /* BasicButton.swift */,
 			);
 			path = Buttons;
-			sourceTree = "<group>";
-		};
-		4AED5E2B271B87C600B7AC00 /* Popups */ = {
-			isa = PBXGroup;
-			children = (
-				4AED5E2C271B87ED00B7AC00 /* KAlertViewController.swift */,
-			);
-			path = Popups;
 			sourceTree = "<group>";
 		};
 		4AED5E35271D928F00B7AC00 /* BackendAPIClient */ = {
@@ -949,13 +946,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4AEE61B12740F905008055F9 /* PopoverMenu */ = {
+		4AEE61B12740F905008055F9 /* Popups */ = {
 			isa = PBXGroup;
 			children = (
+				4AED5E2C271B87ED00B7AC00 /* AlertViewController.swift */,
 				4AEE61B32740F965008055F9 /* LocationMenuPopoverController.swift */,
 				4AEE61B52741B4EF008055F9 /* LocationMenuButton.swift */,
 			);
-			path = PopoverMenu;
+			path = Popups;
 			sourceTree = "<group>";
 		};
 		4AEE8F722727BC6D004CB686 /* Item */ = {
@@ -1199,6 +1197,7 @@
 				4AED5E712720176900B7AC00 /* LocalStorage.swift in Sources */,
 				4AEE8FB1272BD9D6004CB686 /* DecimalInputCellViewModel.swift in Sources */,
 				4A47E6D027316E1900B9018A /* ItemActionPanelViewModel.swift in Sources */,
+				4A22DB3C274ED91800E5125B /* UserPurchasesViewController.swift in Sources */,
 				4A155E462722E03600C8B867 /* OpenHTTPClient.swift in Sources */,
 				4A09C69E2738582700FD4E42 /* UserInfoView.swift in Sources */,
 				4A01D561273DC94D00EDFC1C /* DateUtility.swift in Sources */,
@@ -1236,7 +1235,7 @@
 				4AEE8F8727288842004CB686 /* ProfileCellViewModel.swift in Sources */,
 				4A3B52C427131FE800EF4F93 /* LoginViewModel.swift in Sources */,
 				4AED5E7E2720A50400B7AC00 /* AuthService.swift in Sources */,
-				4AED5E2A271ADC8500B7AC00 /* KRoundButton.swift in Sources */,
+				4AED5E2A271ADC8500B7AC00 /* RoundButton.swift in Sources */,
 				4AC56672273B974700776DBD /* RecentMessage.swift in Sources */,
 				4A3B529D2712421300EF4F93 /* ItemSearchViewController.swift in Sources */,
 				4A22DB37274D74E900E5125B /* UserListingsViewModel.swift in Sources */,
@@ -1281,6 +1280,7 @@
 				4A01D556273D2B0B00EDFC1C /* UserProfileReadDTO.swift in Sources */,
 				4A47E6EA2733248B00B9018A /* ViewModelFactory.swift in Sources */,
 				4A155E5C2724438B00C8B867 /* SettingsMenuCell.swift in Sources */,
+				4A22DB3E274ED9D500E5125B /* UserPurchasesViewModel.swift in Sources */,
 				4AEE8F6B2725D9B2004CB686 /* Bindable.swift in Sources */,
 				4A47E6C42730952000B9018A /* ItemTranslator.swift in Sources */,
 				4A22DB31274BDF2D00E5125B /* ItemSearchViewModel.swift in Sources */,
@@ -1311,7 +1311,7 @@
 				4A3B529F271242ED00EF4F93 /* SettingsViewController.swift in Sources */,
 				4AC5667C273BE3E000776DBD /* ChatMessageRepository.swift in Sources */,
 				4AC56677273BB65200776DBD /* MessagesViewModel.swift in Sources */,
-				4AED5E34271C199600B7AC00 /* KBasicButton.swift in Sources */,
+				4AED5E34271C199600B7AC00 /* BasicButton.swift in Sources */,
 				4AED5E57271EBDF700B7AC00 /* KHTTPRequestInterceptor.swift in Sources */,
 				4AED5E46271E2A3200B7AC00 /* BackendConfig.swift in Sources */,
 				4A3B52DB2715ADEF00EF4F93 /* LoginCoordinator.swift in Sources */,
@@ -1321,7 +1321,7 @@
 				4AC56674273B98AE00776DBD /* RecentMessageCell.swift in Sources */,
 				4A47E6E827331E6F00B9018A /* CoordinatorFactory.swift in Sources */,
 				4A09C6A32739282A00FD4E42 /* ChatViewController.swift in Sources */,
-				4AED5E2D271B87ED00B7AC00 /* KAlertViewController.swift in Sources */,
+				4AED5E2D271B87ED00B7AC00 /* AlertViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,25 +1,24 @@
 //
-//  UserListingsViewController.swift
+//  UserPurchasesViewController.swift
 //  luzie-locke-ios
 //
-//  Created by Harry on 23.11.21.
+//  Created by Harry on 24.11.21.
 //
 
 import UIKit
 
-class UserListingsViewController: UIViewController {
+class UserPurchasesViewController: UIViewController {
   
   enum Section { case main }
   
-  private let viewModel: UserListingsViewModel
-  private var segmentedControl: UISegmentedControl!
+  private let viewModel:        UserPurchasesViewModel
   private var collectionView:   UICollectionView!
   private var dataSource:       UICollectionViewDiffableDataSource<Section, Item>!
 
   private let refreshControl  = UIRefreshControl()
   private let contentView     = UIView()
   
-  init(viewModel: UserListingsViewModel) {
+  init(viewModel: UserPurchasesViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
   }
@@ -27,8 +26,7 @@ class UserListingsViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    configureGradientBackground()
-    configureSegmentedControl()
+    configureBackground()
     configureCollectionView()
     configureDataSource()
     configureLayout()
@@ -42,24 +40,10 @@ class UserListingsViewController: UIViewController {
     tabBarController?.tabBar.isHidden = true
   }
 
-  private func configureGradientBackground() {
+  private func configureBackground() {
     if let image = CustomGradient.mainBackground(on: view) {
       view.backgroundColor = UIColor(patternImage: image)
     }
-  }
-  
-  private func configureSegmentedControl() {
-    segmentedControl = UISegmentedControl(items: ["Open", "Closed"])
-    segmentedControl.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
-    
-    segmentedControl.setTitleTextAttributes([
-      NSAttributedString.Key.font: Fonts.body,
-      NSAttributedString.Key.foregroundColor: UIColor.white
-    ], for: .normal)
-    
-    segmentedControl.selectedSegmentTintColor = Colors.primaryColorLight1
-    segmentedControl.backgroundColor          = Colors.primaryColorLight3
-    segmentedControl.selectedSegmentIndex     = 0
   }
   
   private func configureCollectionView() {
@@ -88,22 +72,15 @@ class UserListingsViewController: UIViewController {
   }
   
   private func configureLayout() {
-    segmentedControl.translatesAutoresizingMaskIntoConstraints = false
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     contentView.translatesAutoresizingMaskIntoConstraints = false
     
     contentView.addSubview(collectionView)
 
-    view.addSubview(segmentedControl)
     view.addSubview(contentView)
     
     NSLayoutConstraint.activate([
-      segmentedControl.heightAnchor.constraint(equalToConstant: 30),
-      segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-      segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      
-      contentView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
+      contentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
       contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
       contentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
@@ -141,10 +118,6 @@ class UserListingsViewController: UIViewController {
     }
   }
   
-  @objc private func handleSegmentChange() {
-    viewModel.didChangeSegment(segment: segmentedControl.selectedSegmentIndex)
-  }
-  
   @objc private func handleRefresh() {
     viewModel.viewDidScrollToTop()
   }
@@ -154,7 +127,7 @@ class UserListingsViewController: UIViewController {
   }
 }
 
-extension UserListingsViewController: UICollectionViewDelegate {
+extension UserPurchasesViewController: UICollectionViewDelegate {
   
   func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
     let offsetY         = scrollView.contentOffset.y

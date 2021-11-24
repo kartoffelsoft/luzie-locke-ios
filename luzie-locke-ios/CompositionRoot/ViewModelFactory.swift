@@ -20,6 +20,7 @@ protocol ViewModelFactory {
   
   func makeChatViewModel(remoteUserId: String) -> ChatViewModel
   func makeUserListingsViewModel(coordinator: SettingsCoordinator) -> UserListingsViewModel
+  func makeUserPurchasesViewModel(coordinator: SettingsCoordinator) -> UserPurchasesViewModel
 }
 
 extension CompositionRoot: ViewModelFactory {
@@ -93,4 +94,11 @@ extension CompositionRoot: ViewModelFactory {
                                  openHttpClient: openHttpClient,
                                  itemRepository: itemRepository)
   }
+  
+  func makeUserPurchasesViewModel(coordinator: SettingsCoordinator) -> UserPurchasesViewModel {
+    return UserPurchasesViewModel(coordinator: coordinator,
+                                  openHttpClient: openHttpClient,
+                                  itemRepository: itemRepository)
+  }
+  
 }

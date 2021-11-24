@@ -21,6 +21,7 @@ protocol ViewControllerFactory {
   
   func makeChatViewController() -> ChatViewController
   func makeUserListingsViewController(viewModel: UserListingsViewModel) -> UserListingsViewController
+  func makeUserPurchasesViewController(viewModel: UserPurchasesViewModel) -> UserPurchasesViewController
 }
 
 extension CompositionRoot: ViewControllerFactory {
@@ -77,5 +78,9 @@ extension CompositionRoot: ViewControllerFactory {
   
   func makeUserListingsViewController(viewModel: UserListingsViewModel) -> UserListingsViewController {
     return UserListingsViewController(viewModel: viewModel)
+  }
+  
+  func makeUserPurchasesViewController(viewModel: UserPurchasesViewModel) -> UserPurchasesViewController {
+    return UserPurchasesViewController(viewModel: viewModel)
   }
 }

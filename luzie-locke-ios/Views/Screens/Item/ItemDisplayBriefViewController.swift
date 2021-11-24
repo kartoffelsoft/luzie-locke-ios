@@ -16,7 +16,7 @@ class ItemDisplayBriefViewController: UIViewController {
   private let imageView     = UIView()
   private let titleLabel    = HeaderLabel(font: Fonts.subtitle, textColor: Colors.secondaryColor, textAlignment: .left)
   private let locationLabel = HeaderLabel(font: Fonts.subtitle, textColor: Colors.primaryColorLight3, textAlignment: .left)
-  private let moreButton    = KRoundButton(radius: 20)
+  private let moreButton    = RoundButton(radius: 20)
   private let gradientLayer = CAGradientLayer()
   
   init(viewModel: ItemDisplayBriefViewModel) {

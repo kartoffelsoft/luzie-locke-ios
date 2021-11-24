@@ -1,5 +1,5 @@
 //
-//  KBasicButton.swift
+//  BasicButton.swift
 //  luzie-locke-ios
 //
 //  Created by Harry on 17.10.21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class KBasicButton: UIButton {
+class BasicButton: UIButton {
   
   override init(frame: CGRect) {
     super.init(frame: frame)

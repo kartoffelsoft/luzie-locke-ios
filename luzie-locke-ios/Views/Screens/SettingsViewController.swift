@@ -49,7 +49,7 @@ class SettingsViewController: UIViewController {
     
     navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: ScreenTitleLabel("Settings"))
     
-    configureGradientBackground()
+    configureBackground()
     configureNavigationBar()
     configureCollectionView()
 
@@ -64,7 +64,7 @@ class SettingsViewController: UIViewController {
     viewModel.load()
   }
   
-  func configureGradientBackground() {
+  func configureBackground() {
     if let image = CustomGradient.mainBackground(on: view) {
       view.backgroundColor = UIColor(patternImage: image)
     }
@@ -137,9 +137,9 @@ extension SettingsViewController: UICollectionViewDelegate {
       case .listings:
         viewModel.didSelectListings()
       case .purchases:
-        ()
+        viewModel.didSelectPurchases()
       case .favorites:
-        ()
+        viewModel.didSelectFavorites()
       default:
         ()
       }

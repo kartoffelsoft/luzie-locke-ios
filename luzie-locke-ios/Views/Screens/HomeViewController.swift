@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
   private var collectionView: UICollectionView!
   private var dataSource:     UICollectionViewDiffableDataSource<Section, Item>!
   
-  private let setButton       = KRoundButton(radius: 30)
+  private let setButton       = RoundButton(radius: 30)
   private let locationButton  = LocationMenuButton()
   private let refreshControl  = UIRefreshControl()
   
@@ -34,7 +34,7 @@ class HomeViewController: UIViewController {
     
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: Images.search, style: .plain, target: self, action: #selector(handleSearchTap))
     
-    configureGradientBackground()
+    configureBackground()
     configureNavigationBar()
     configureCollectionView()
     configureDataSource()
@@ -49,7 +49,7 @@ class HomeViewController: UIViewController {
     tabBarController?.tabBar.isHidden = false
   }
   
-  private func configureGradientBackground() {
+  private func configureBackground() {
     if let image = CustomGradient.mainBackground(on: view) {
       view.backgroundColor = UIColor(patternImage: image)
     }
