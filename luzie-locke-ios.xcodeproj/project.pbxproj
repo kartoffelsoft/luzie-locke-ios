@@ -31,6 +31,8 @@
 		4A155E602724D16600C8B867 /* UserMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E5F2724D16600C8B867 /* UserMenuCell.swift */; };
 		4A155E622725C1FD00C8B867 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E612725C1FD00C8B867 /* SettingsViewModel.swift */; };
 		4A22DB31274BDF2D00E5125B /* ItemSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB30274BDF2D00E5125B /* ItemSearchViewModel.swift */; };
+		4A22DB34274D745300E5125B /* UserListingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB33274D745300E5125B /* UserListingsViewController.swift */; };
+		4A22DB37274D74E900E5125B /* UserListingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB36274D74E900E5125B /* UserListingsViewModel.swift */; };
 		4A3B5266271239CE00EF4F93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B5265271239CE00EF4F93 /* AppDelegate.swift */; };
 		4A3B5268271239CE00EF4F93 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B5267271239CE00EF4F93 /* SceneDelegate.swift */; };
 		4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B5269271239CE00EF4F93 /* MainTabBarController.swift */; };
@@ -69,7 +71,7 @@
 		4A47E6AF272D79E500B9018A /* ItemCreateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6AE272D79E500B9018A /* ItemCreateDTO.swift */; };
 		4A47E6B3272DE2EF00B9018A /* CommonDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6B2272DE2EF00B9018A /* CommonDTO.swift */; };
 		4A47E6B6272F106100B9018A /* ItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6B5272F106100B9018A /* ItemRepository.swift */; };
-		4A47E6B9272F622400B9018A /* ItemListReadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6B8272F622400B9018A /* ItemListReadDTO.swift */; };
+		4A47E6B9272F622400B9018A /* ItemReadListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6B8272F622400B9018A /* ItemReadListDTO.swift */; };
 		4A47E6BB272FE24200B9018A /* Dictionary+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6BA272FE24200B9018A /* Dictionary+Ext.swift */; };
 		4A47E6BD2730288200B9018A /* ItemDisplayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6BC2730288200B9018A /* ItemDisplayViewModel.swift */; };
 		4A47E6BF273028BE00B9018A /* ItemDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6BE273028BE00B9018A /* ItemDisplayViewController.swift */; };
@@ -190,6 +192,8 @@
 		4A155E5F2724D16600C8B867 /* UserMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuCell.swift; sourceTree = "<group>"; };
 		4A155E612725C1FD00C8B867 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		4A22DB30274BDF2D00E5125B /* ItemSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSearchViewModel.swift; sourceTree = "<group>"; };
+		4A22DB33274D745300E5125B /* UserListingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListingsViewController.swift; sourceTree = "<group>"; };
+		4A22DB36274D74E900E5125B /* UserListingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListingsViewModel.swift; sourceTree = "<group>"; };
 		4A3B5262271239CE00EF4F93 /* luzie-locke-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "luzie-locke-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3B5265271239CE00EF4F93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A3B5267271239CE00EF4F93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -228,7 +232,7 @@
 		4A47E6AE272D79E500B9018A /* ItemCreateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCreateDTO.swift; sourceTree = "<group>"; };
 		4A47E6B2272DE2EF00B9018A /* CommonDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonDTO.swift; sourceTree = "<group>"; };
 		4A47E6B5272F106100B9018A /* ItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRepository.swift; sourceTree = "<group>"; };
-		4A47E6B8272F622400B9018A /* ItemListReadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListReadDTO.swift; sourceTree = "<group>"; };
+		4A47E6B8272F622400B9018A /* ItemReadListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemReadListDTO.swift; sourceTree = "<group>"; };
 		4A47E6BA272FE24200B9018A /* Dictionary+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Ext.swift"; sourceTree = "<group>"; };
 		4A47E6BC2730288200B9018A /* ItemDisplayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDisplayViewModel.swift; sourceTree = "<group>"; };
 		4A47E6BE273028BE00B9018A /* ItemDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDisplayViewController.swift; sourceTree = "<group>"; };
@@ -415,6 +419,22 @@
 			path = CustomComponents;
 			sourceTree = "<group>";
 		};
+		4A22DB32274D6C8000E5125B /* UserMenus */ = {
+			isa = PBXGroup;
+			children = (
+				4A22DB33274D745300E5125B /* UserListingsViewController.swift */,
+			);
+			path = UserMenus;
+			sourceTree = "<group>";
+		};
+		4A22DB35274D74D700E5125B /* UserMenus */ = {
+			isa = PBXGroup;
+			children = (
+				4A22DB36274D74E900E5125B /* UserListingsViewModel.swift */,
+			);
+			path = UserMenus;
+			sourceTree = "<group>";
+		};
 		4A3B5259271239CE00EF4F93 = {
 			isa = PBXGroup;
 			children = (
@@ -497,6 +517,7 @@
 		4A3B529727123DAD00EF4F93 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				4A22DB35274D74D700E5125B /* UserMenus */,
 				4A01D55B273DC2F700EDFC1C /* Messages */,
 				4A47E6CE27316E0D00B9018A /* Item */,
 				4AEE8F752727E830004CB686 /* Cells */,
@@ -518,6 +539,7 @@
 		4A3B529927123DCF00EF4F93 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				4A22DB32274D6C8000E5125B /* UserMenus */,
 				4A09C6A127391DEA00FD4E42 /* Messages */,
 				4A47E6D52731B88F00B9018A /* SwipeImage */,
 				4AEE8F722727BC6D004CB686 /* Item */,
@@ -676,7 +698,7 @@
 			children = (
 				4A47E6B2272DE2EF00B9018A /* CommonDTO.swift */,
 				4A47E6AE272D79E500B9018A /* ItemCreateDTO.swift */,
-				4A47E6B8272F622400B9018A /* ItemListReadDTO.swift */,
+				4A47E6B8272F622400B9018A /* ItemReadListDTO.swift */,
 				4A47E6C02730759500B9018A /* ItemReadDTO.swift */,
 				4A01D555273D2B0A00EDFC1C /* UserProfileReadDTO.swift */,
 			);
@@ -1205,10 +1227,12 @@
 				4AED5E2A271ADC8500B7AC00 /* KRoundButton.swift in Sources */,
 				4AC56672273B974700776DBD /* RecentMessage.swift in Sources */,
 				4A3B529D2712421300EF4F93 /* ItemSearchViewController.swift in Sources */,
+				4A22DB37274D74E900E5125B /* UserListingsViewModel.swift in Sources */,
 				4A3B52A62712539300EF4F93 /* FirebaseAuthService.swift in Sources */,
 				4A47E6A5272C814600B9018A /* CustomImagePickerController.swift in Sources */,
+				4A22DB34274D745300E5125B /* UserListingsViewController.swift in Sources */,
 				4AEE8F712726E082004CB686 /* Item.swift in Sources */,
-				4A47E6B9272F622400B9018A /* ItemListReadDTO.swift in Sources */,
+				4A47E6B9272F622400B9018A /* ItemReadListDTO.swift in Sources */,
 				4AEE8F9427298CF3004CB686 /* TextInputCell.swift in Sources */,
 				4A47E6E6273317FA00B9018A /* ViewControllerFactory.swift in Sources */,
 				4AED5E8627219E7300B7AC00 /* ProfileCell.swift in Sources */,

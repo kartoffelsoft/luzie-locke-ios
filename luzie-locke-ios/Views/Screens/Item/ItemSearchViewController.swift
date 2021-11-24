@@ -48,7 +48,7 @@ class ItemSearchViewController: UIViewController {
     searchController.searchBar.searchTextField.tintColor        = Colors.primaryColor
     searchController.searchBar.searchTextField.backgroundColor  = Colors.primaryColorLight2.withAlphaComponent(0.1)
     searchController.searchBar.setImage(Images.search, for: .search, state: .normal)
-
+    
     navigationItem.searchController             = searchController
     navigationItem.hidesSearchBarWhenScrolling  = false
   }
@@ -121,9 +121,7 @@ extension ItemSearchViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
     debounceTimer?.invalidate()
     debounceTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { [weak self] _ in
-      print ("Debounce this...")
-      guard let keyword = searchController.searchBar.text, !keyword.isEmpty else {
-        print("Empty")
+      guard let keyword = searchController.searchBar.text else {
         return
       }
       

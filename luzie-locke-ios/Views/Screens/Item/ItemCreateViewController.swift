@@ -28,14 +28,16 @@ class ItemCreateViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    tabBarController?.tabBar.isHidden = true
+    
     configureGradientBackground()
     configureNavigationBar()
     configureCollectionView()
+    configureKeyboardInput()
     configureBindables()
   }
   
-  func configureGradientBackground() {
+  private func configureGradientBackground() {
     if let image = CustomGradient.mainBackground(on: view) {
       view.backgroundColor = UIColor(patternImage: image)
     }
@@ -94,10 +96,11 @@ class ItemCreateViewController: UIViewController {
       }
     }
     
-    collectionView                  = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
-    collectionView.delegate         = self
-    collectionView.dataSource       = self
-    collectionView.backgroundColor  = .clear
+    collectionView                      = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+    collectionView.delegate             = self
+    collectionView.dataSource           = self
+    collectionView.backgroundColor      = .clear
+    collectionView.keyboardDismissMode  = .interactive
     
     collectionView.register(ImageSelectCell.self, forCellWithReuseIdentifier: ImageSelectCell.reuseIdentifier)
     collectionView.register(TextInputCell.self, forCellWithReuseIdentifier: TextInputCell.reuseIdentifier)
@@ -107,7 +110,11 @@ class ItemCreateViewController: UIViewController {
     view.addSubview(collectionView)
   }
   
-  func configureBindables() {
+  private func configureKeyboardInput() {
+    NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+  }
+  
+  private func configureBindables() {
     viewModel.bindableIsLoading.bind { [weak self] isLoading in
       guard let isLoading = isLoading else { return }
       
@@ -155,6 +162,10 @@ extension ItemCreateViewController: UICollectionViewDelegate {
                                        buttonTitle: "OK")
       }
     }
+  }
+  
+  @objc private func handleKeyboardShow(notification:NSNotification) {
+    print("handleKeyboardShow")
   }
 }
 

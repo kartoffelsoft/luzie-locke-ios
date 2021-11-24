@@ -52,6 +52,7 @@ class ChatViewController: UICollectionViewController {
     collectionView.backgroundColor = .clear
     collectionView.alwaysBounceVertical = true
     collectionView.keyboardDismissMode  = .interactive
+    collectionView.alwaysBounceVertical = true
     collectionView.register(ChatMessageCell.self, forCellWithReuseIdentifier: ChatMessageCell.reuseIdentifier)
     
     view.addSubview(collectionView)

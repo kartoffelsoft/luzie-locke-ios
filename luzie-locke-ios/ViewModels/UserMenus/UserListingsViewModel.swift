@@ -1,21 +1,22 @@
 //
-//  ItemSearchViewModel.swift
+//  UserListingsViewModel.swift
 //  luzie-locke-ios
 //
-//  Created by Harry on 22.11.21.
+//  Created by Harry on 23.11.21.
 //
 
-import UIKit
+import Foundation
 
-protocol ItemSearchViewModelDelegate: AnyObject {
+protocol UserListingsViewModelDelegate: AnyObject {
+  
   func didGetError(_ error: LLError)
 }
 
-class ItemSearchViewModel {
+class UserListingsViewModel {
   
-  weak var delegate:        ItemSearchViewModelDelegate?
+  weak var delegate:        UserListingsViewModelDelegate?
   
-  let coordinator:          ItemSearchCoordinator
+  let coordinator:          SettingsCoordinator
   let openHttpClient:       OpenHTTP
   let itemRepository:       ItemRepositoryProtocol
   
@@ -27,10 +28,9 @@ class ItemSearchViewModel {
   
   private var isLoading: Bool = false
   
-  private var cursor: TimeInterval = Date().timeIntervalSince1970 * 1000
-  private var searchKeyword: String = ""
+  var cursor: TimeInterval = Date().timeIntervalSince1970 * 1000
   
-  init(coordinator:         ItemSearchCoordinator,
+  init(coordinator:         SettingsCoordinator,
        openHttpClient:      OpenHTTP,
        itemRepository:      ItemRepositoryProtocol) {
     self.coordinator          = coordinator
@@ -55,12 +55,13 @@ class ItemSearchViewModel {
     
     isLoading = true
     
-    itemRepository.readListSearch(keyword: searchKeyword, cursor: cursor) { [weak self] result in
+    itemRepository.readListUserListings(cursor: cursor) { [weak self] result in
       guard let self = self else { return }
       self.isLoading = false
       
       switch result {
       case .success((let items, let nextCursor)):
+        print(items)
         items.forEach { item in
           if let id = item.id {
             self.itemsDictionary[id] = item
@@ -83,24 +84,18 @@ class ItemSearchViewModel {
     }
   }
   
-//  func viewDidLoad() {
-//    cursor                        = Date().timeIntervalSince1970 * 1000
-//    itemsDictionary               = [String: Item]()
-//    itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
-//
-//    fetchList()
-//  }
-  
-  func viewDidSetSearchKeyword(_ keyword: String) {
-    searchKeyword                 = keyword
+  func viewDidLoad() {
     cursor                        = Date().timeIntervalSince1970 * 1000
     itemsDictionary               = [String: Item]()
     itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
     
-    if searchKeyword.isEmpty || searchKeyword.count < 2{
-      reload()
-      return
-    }
+    fetchList()
+  }
+  
+  func viewDidScrollToTop() {
+    cursor                        = Date().timeIntervalSince1970 * 1000
+    itemsDictionary               = [String: Item]()
+    itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
     
     fetchList()
   }
@@ -109,9 +104,15 @@ class ItemSearchViewModel {
     fetchList()
   }
   
-  func didSelectItemAt(indexPath: IndexPath) {
-    if let item = bindableItems.value?[indexPath.row], let id = item.id {
-      coordinator.navigateToItemDisplay(id: id)
+  func didChangeSegment(segment: Int) {
+    switch segment {
+    case 0:
+      ()
+    case 1:
+      ()
+    default:
+      ()
     }
   }
 }
+

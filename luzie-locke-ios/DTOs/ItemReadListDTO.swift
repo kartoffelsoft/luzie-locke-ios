@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct ItemListReadAllRequestDTO: APIRequest {
+struct ItemReadListRequestDTO: APIRequest {
   
-  typealias Response = ItemListReadAllResponseDTO
+  typealias Response = ItemReadListResponseDTO
   
   var resourceName: String {
     return "/api/items"
@@ -24,9 +24,9 @@ struct ItemListReadAllRequestDTO: APIRequest {
   }
 }
 
-struct ItemListReadSearchRequestDTO: APIRequest {
+struct ItemReadListSearchRequestDTO: APIRequest {
   
-  typealias Response = ItemListReadAllResponseDTO
+  typealias Response = ItemReadListResponseDTO
   
   var resourceName: String {
     return "/api/items/search"
@@ -39,6 +39,23 @@ struct ItemListReadSearchRequestDTO: APIRequest {
   func toDictionary() -> [String: Any] {
     return [ "q":       q,
              "cursor":  cursor,
+             "limit":   limit   ]
+  }
+}
+
+struct ItemReadListUserListingsRequestDTO: APIRequest {
+  
+  typealias Response = ItemReadListResponseDTO
+  
+  var resourceName: String {
+    return "/api/items/user"
+  }
+  
+  let cursor: Double
+  let limit: Int
+  
+  func toDictionary() -> [String: Any] {
+    return [ "cursor":  cursor,
              "limit":   limit   ]
   }
 }
@@ -66,7 +83,7 @@ struct ItemListDTO: Decodable, Hashable {
   }
 }
 
-struct ItemListReadAllResponseDTO: Decodable {
+struct ItemReadListResponseDTO: Decodable {
   let list: [ItemListDTO]
   let nextCursor: Double
 }

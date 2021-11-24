@@ -26,16 +26,21 @@ class SettingsCoordinator: Coordinator {
   }
 
   func start() {
-    let vm = factory.makeSettingsViewModel(coordinator: self)
-    let vc = factory.makeSettingsViewController(viewModel: vm)
-
-    navigationController.pushViewController(vc, animated: false)
+    let viewModel       = factory.makeSettingsViewModel(coordinator: self)
+    let viewController  = factory.makeSettingsViewController(viewModel: viewModel)
+    navigationController.pushViewController(viewController, animated: false)
+  }
+  
+  func navigateToUserListings() {
+    let viewModel       = factory.makeUserListingsViewModel(coordinator: self)
+    let viewController  = factory.makeUserListingsViewController(viewModel: viewModel)
+    navigationController.pushViewController(viewController, animated: true)
   }
   
   func navigateToMap(selectAction: @escaping MapViewCallback) {
-    let vc = MapViewController(mapView: MKMapView(), locationManager: CLLocationManager())
-    vc.selectAction = selectAction
-    navigationController.pushViewController(vc, animated: true)
+    let viewController = MapViewController(mapView: MKMapView(), locationManager: CLLocationManager())
+    viewController.selectAction = selectAction
+    navigationController.pushViewController(viewController, animated: true)
   }
   
   func popViewController() {

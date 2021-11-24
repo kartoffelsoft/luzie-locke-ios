@@ -29,8 +29,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     application.registerForRemoteNotifications()
     
     UIBarButtonItem.appearance().tintColor = Colors.primaryColor
-    UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: Fonts.body],
-                                                        for: UIControl.State.normal)
+    UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: Fonts.body], for: UIControl.State.normal)
+    
+    UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = [
+      NSAttributedString.Key.font: Fonts.body,
+      NSAttributedString.Key.foregroundColor: Colors.primaryColor
+    ]
     
     return true
   }

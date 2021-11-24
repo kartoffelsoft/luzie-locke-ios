@@ -14,6 +14,11 @@ class SettingsViewController: UIViewController {
     static var numberOfSections: Int { return 3 }
   }
   
+  enum UserMenuRow: Int {
+    case listings = 0, purchases, favorites
+    static var numberOfSections: Int { return 3 }
+  }
+  
   enum SettingsMenuRow: Int {
     case neighborhoodSetting = 0, verifyNeighborhood, logout
     static var numberOfSections: Int { return 3 }
@@ -123,7 +128,16 @@ extension SettingsViewController: UICollectionViewDelegate {
     case .profile:
       ()
     case .userMenu:
-      ()
+      switch UserMenuRow(rawValue: indexPath.row) {
+      case .listings:
+        viewModel.didSelectListings()
+      case .purchases:
+        ()
+      case .favorites:
+        ()
+      default:
+        ()
+      }
     case .settingsMenu:
       switch SettingsMenuRow(rawValue: indexPath.row) {
       case .neighborhoodSetting:

@@ -8,6 +8,7 @@
 import UIKit
 
 protocol HomeViewModelDelegate: AnyObject {
+  
   func didGetError(_ error: LLError)
 }
 
@@ -54,7 +55,7 @@ class HomeViewModel {
     
     isLoading = true
     
-    itemRepository.readListAll(cursor: cursor) { [weak self] result in
+    itemRepository.readList(cursor: cursor) { [weak self] result in
       guard let self = self else { return }
       self.isLoading = false
       

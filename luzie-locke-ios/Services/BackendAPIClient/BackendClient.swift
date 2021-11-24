@@ -57,7 +57,8 @@ public class BackendClient {
         } else {
           completion(.failure(.unableToComplete))
         }
-      case .failure:
+      case .failure(let error):
+        print("[Error:\(#file):\(#line)] \(error)")
         completion(.failure(.unableToComplete))
       }
     }
