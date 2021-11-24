@@ -28,17 +28,15 @@ class ItemDisplayViewController: UIViewController {
     super.viewDidLoad()
     viewModel.viewDidLoad()
     
-    tabBarController?.tabBar.isHidden = true
-    
     configureLayout()
     configureBindables()
   }
   
-  override func viewWillDisappear(_ animated: Bool) {
-    super.viewWillDisappear(true)
-    tabBarController?.tabBar.isHidden = false
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    tabBarController?.tabBar.isHidden = true
   }
-  
+    
   private func configureBindables() {
 //    viewModel.bindablePriceText.bind { [weak self] text in
 //      self?.itemActionPanelView.priceLabel.attributedText = text

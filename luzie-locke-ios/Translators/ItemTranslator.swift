@@ -8,6 +8,7 @@
 import Foundation
 
 class ItemTranslator {
+  
   static func translateItemDTOToItem(dto: ItemDTO) -> Item {
     return Item(id: dto.id,
                 user: UserProfile(id: dto.user?.id,
@@ -27,5 +28,23 @@ class ItemTranslator {
                 state: dto.state,
                 createdAt: Date(timeIntervalSince1970: dto.createdAt ?? 0),
                 modifiedAt: Date(timeIntervalSince1970: dto.modifiedAt ?? 0))
+  }
+
+  static func translateItemDTOListToItemList(dtoList: [ItemListDTO]) -> [Item] {
+    return dtoList.reduce([Item](), { output, dto in
+      let item = Item(id: dto.id,
+                      user: UserProfile(city: dto.user?.city),
+                      title: dto.title,
+                      price: dto.price,
+                      description: dto.description,
+                      imageUrls: dto.imageUrls,
+                      counts: Counts(chat: dto.counts?.chat,
+                                     favorite: dto.counts?.favorite,
+                                     view: dto.counts?.view),
+                      state: dto.state,
+                      createdAt: Date(timeIntervalSince1970: dto.createdAt ?? 0),
+                      modifiedAt: Date(timeIntervalSince1970: dto.modifiedAt ?? 0))
+      return output + [item]
+    })
   }
 }

@@ -44,6 +44,11 @@ class HomeViewController: UIViewController {
     viewModel.viewDidLoad()
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    tabBarController?.tabBar.isHidden = false
+  }
+  
   private func configureGradientBackground() {
     if let image = CustomGradient.mainBackground(on: view) {
       view.backgroundColor = UIColor(patternImage: image)

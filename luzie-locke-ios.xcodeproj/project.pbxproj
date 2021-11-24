@@ -33,6 +33,7 @@
 		4A22DB31274BDF2D00E5125B /* ItemSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB30274BDF2D00E5125B /* ItemSearchViewModel.swift */; };
 		4A22DB34274D745300E5125B /* UserListingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB33274D745300E5125B /* UserListingsViewController.swift */; };
 		4A22DB37274D74E900E5125B /* UserListingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB36274D74E900E5125B /* UserListingsViewModel.swift */; };
+		4A22DB3A274E3D0F00E5125B /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB39274E3D0F00E5125B /* EmptyStateView.swift */; };
 		4A3B5266271239CE00EF4F93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B5265271239CE00EF4F93 /* AppDelegate.swift */; };
 		4A3B5268271239CE00EF4F93 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B5267271239CE00EF4F93 /* SceneDelegate.swift */; };
 		4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B5269271239CE00EF4F93 /* MainTabBarController.swift */; };
@@ -194,6 +195,7 @@
 		4A22DB30274BDF2D00E5125B /* ItemSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSearchViewModel.swift; sourceTree = "<group>"; };
 		4A22DB33274D745300E5125B /* UserListingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListingsViewController.swift; sourceTree = "<group>"; };
 		4A22DB36274D74E900E5125B /* UserListingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListingsViewModel.swift; sourceTree = "<group>"; };
+		4A22DB39274E3D0F00E5125B /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		4A3B5262271239CE00EF4F93 /* luzie-locke-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "luzie-locke-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3B5265271239CE00EF4F93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A3B5267271239CE00EF4F93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -435,6 +437,14 @@
 			path = UserMenus;
 			sourceTree = "<group>";
 		};
+		4A22DB38274E3CF300E5125B /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				4A22DB39274E3D0F00E5125B /* EmptyStateView.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
 		4A3B5259271239CE00EF4F93 = {
 			isa = PBXGroup;
 			children = (
@@ -492,6 +502,7 @@
 		4A3B529527123DA300EF4F93 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4A22DB38274E3CF300E5125B /* Misc */,
 				4AEE61B12740F905008055F9 /* PopoverMenu */,
 				4A09C6A427392DBB00FD4E42 /* Messages */,
 				4A09C69C273857FD00FD4E42 /* User */,
@@ -1209,6 +1220,7 @@
 				4AEE8F9E272A8831004CB686 /* SingleLineTextField.swift in Sources */,
 				4A3B52CD2714419B00EF4F93 /* LLError.swift in Sources */,
 				4A3B52B527126DB000EF4F93 /* ScreenTitleLabel.swift in Sources */,
+				4A22DB3A274E3D0F00E5125B /* EmptyStateView.swift in Sources */,
 				4A47E6D4273198E300B9018A /* ItemDisplayDetailViewController.swift in Sources */,
 				4AEE61B42740F965008055F9 /* LocationMenuPopoverController.swift in Sources */,
 				4A155E602724D16600C8B867 /* UserMenuCell.swift in Sources */,

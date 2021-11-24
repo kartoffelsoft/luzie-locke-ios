@@ -12,7 +12,7 @@ import MapKit
 
 class SettingsCoordinator: Coordinator {
   
-  typealias Factory = ViewControllerFactory & ViewModelFactory
+  typealias Factory = CoordinatorFactory & ViewControllerFactory & ViewModelFactory
   
   let factory               : Factory
   var navigationController  : UINavigationController
@@ -41,6 +41,15 @@ class SettingsCoordinator: Coordinator {
     let viewController = MapViewController(mapView: MKMapView(), locationManager: CLLocationManager())
     viewController.selectAction = selectAction
     navigationController.pushViewController(viewController, animated: true)
+  }
+  
+  func navigateToItemDisplay(id: String) {
+    let coordinator = factory.makeItemDisplayCoordinator(
+      navigationController: navigationController,
+      id: id)
+    
+    children.append(coordinator)
+    coordinator.start()
   }
   
   func popViewController() {

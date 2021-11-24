@@ -55,7 +55,7 @@ class HomeViewModel {
     
     isLoading = true
     
-    itemRepository.readList(cursor: cursor) { [weak self] result in
+    itemRepository.readListLocal(cursor: cursor) { [weak self] result in
       guard let self = self else { return }
       self.isLoading = false
       

@@ -25,6 +25,7 @@ class SettingsMenuCell: UICollectionViewCell {
   
   let symbol = UIImageView()
   let title  = HeaderLabel(font: Fonts.body, textAlignment: .left)
+  let arrow  = UIImageView()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -32,13 +33,15 @@ class SettingsMenuCell: UICollectionViewCell {
   }
   
   private func configure() {
-    symbol.tintColor = .black
-    
     symbol.translatesAutoresizingMaskIntoConstraints  = false
     title.translatesAutoresizingMaskIntoConstraints   = false
+    arrow.translatesAutoresizingMaskIntoConstraints   = false
+    
+    arrow.image = Images.menuItemArrow
     
     addSubview(symbol)
     addSubview(title)
+    addSubview(arrow)
     
     let padding: CGFloat = 15
     NSLayoutConstraint.activate([
@@ -47,9 +50,14 @@ class SettingsMenuCell: UICollectionViewCell {
       symbol.widthAnchor.constraint(equalToConstant: 25),
       symbol.heightAnchor.constraint(equalToConstant: 25),
       
+      arrow.centerYAnchor.constraint(equalTo: centerYAnchor),
+      arrow.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
+      arrow.widthAnchor.constraint(equalToConstant: 10),
+      arrow.heightAnchor.constraint(equalToConstant: 15),
+      
       title.centerYAnchor.constraint(equalTo: centerYAnchor),
       title.leadingAnchor.constraint(equalTo: symbol.trailingAnchor, constant: padding),
-      title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
+      title.trailingAnchor.constraint(equalTo: arrow.leadingAnchor)
     ])
   }
 

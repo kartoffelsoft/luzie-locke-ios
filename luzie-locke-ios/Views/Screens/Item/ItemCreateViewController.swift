@@ -28,13 +28,17 @@ class ItemCreateViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    tabBarController?.tabBar.isHidden = true
     
     configureGradientBackground()
     configureNavigationBar()
     configureCollectionView()
     configureKeyboardInput()
     configureBindables()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    tabBarController?.tabBar.isHidden = true
   }
   
   private func configureGradientBackground() {

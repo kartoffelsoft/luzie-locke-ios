@@ -10,6 +10,8 @@ import UIKit
 enum Images {
   static let avatarPlaceholder  = UIImage(named: "AvatarPlaceholder")
   
+  static let mainLogo           = UIImage(named: "Logo")
+  
   static let listings           = UIImage(named: "List")
   
   static let purchases          = UIImage(named: "ShoppingBag")
@@ -65,6 +67,10 @@ enum Images {
                                           withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .medium))?
                                     .withTintColor(Colors.primaryColor, renderingMode: .alwaysOriginal)
   
+  static let menuItemArrow      = UIImage(systemName: "chevron.compact.right",
+                                          withConfiguration: UIImage.SymbolConfiguration(pointSize: 16, weight: .medium))?
+                                    .withTintColor(Colors.primaryColor, renderingMode: .alwaysOriginal)
+  
   static let messageSend        = UIImage(systemName: "paperplane.circle",
                                           withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))?
                                     .withTintColor(Colors.secondaryColor, renderingMode: .alwaysOriginal)
@@ -91,5 +97,5 @@ enum Fonts {
   static let subtitle   = UIFont(name: "SuperCell-Magic", size: 13)!
   static let body       = UIFont(name: "SuperCell-Magic", size: 11)!
   static let caption    = UIFont(name: "SuperCell-Magic", size: 9)!
-  static let detail     = UIFont(name: "SuperCell-Magic", size: 7)!
+  static let detail     = UIFont(name: "SuperCell-Magic", size: 8)!
 }

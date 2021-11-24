@@ -13,8 +13,11 @@ class UserListingsViewController: UIViewController {
   
   private let viewModel: UserListingsViewModel
   private var segmentedControl: UISegmentedControl!
-  private var collectionView: UICollectionView!
-  private var dataSource:     UICollectionViewDiffableDataSource<Section, Item>!
+  private var collectionView:   UICollectionView!
+  private var dataSource:       UICollectionViewDiffableDataSource<Section, Item>!
+
+  private let refreshControl  = UIRefreshControl()
+  private let contentView     = UIView()
   
   init(viewModel: UserListingsViewModel) {
     self.viewModel = viewModel
@@ -23,7 +26,6 @@ class UserListingsViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    tabBarController?.tabBar.isHidden = true
     
     configureGradientBackground()
     configureSegmentedControl()
@@ -33,6 +35,11 @@ class UserListingsViewController: UIViewController {
     configureBindables()
     
     viewModel.viewDidLoad()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    tabBarController?.tabBar.isHidden = true
   }
 
   private func configureGradientBackground() {
@@ -47,7 +54,7 @@ class UserListingsViewController: UIViewController {
     
     segmentedControl.setTitleTextAttributes([
       NSAttributedString.Key.font: Fonts.body,
-      NSAttributedString.Key.foregroundColor: UIColor.white//Colors.primaryColor
+      NSAttributedString.Key.foregroundColor: UIColor.white
     ], for: .normal)
     
     segmentedControl.selectedSegmentTintColor = Colors.primaryColorLight1
@@ -64,9 +71,12 @@ class UserListingsViewController: UIViewController {
     collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
     collectionView.delegate         = self
     collectionView.backgroundColor  = .clear
-    
+    collectionView.refreshControl = refreshControl
     
     collectionView.register(ItemCell.self, forCellWithReuseIdentifier: ItemCell.reuseIdentifier)
+
+    refreshControl.tintColor      = Colors.primaryColor
+    refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
   }
   
   private func configureDataSource() {
@@ -80,27 +90,36 @@ class UserListingsViewController: UIViewController {
   private func configureLayout() {
     segmentedControl.translatesAutoresizingMaskIntoConstraints = false
     collectionView.translatesAutoresizingMaskIntoConstraints = false
+    contentView.translatesAutoresizingMaskIntoConstraints = false
+    
+    contentView.addSubview(collectionView)
 
     view.addSubview(segmentedControl)
-    view.addSubview(collectionView)
+    view.addSubview(contentView)
     
     NSLayoutConstraint.activate([
       segmentedControl.heightAnchor.constraint(equalToConstant: 30),
       segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
       segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-
-      collectionView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
-      collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+      
+      contentView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
+      contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      contentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+      
+      collectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
+      collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+      collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+      collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
     ])
   }
   
   private func configureBindables() {
     viewModel.bindableItems.bind { [weak self] items in
+      guard let self = self else { return }
       if let items = items {
-        self?.updateData(on: items)
+        self.updateData(on: items)
       }
     }
   }
@@ -111,14 +130,23 @@ class UserListingsViewController: UIViewController {
     snapshot.appendItems(items)
     
     DispatchQueue.main.async {
-//      self.refreshControl.endRefreshing()
+      self.refreshControl.endRefreshing()
       self.dataSource.apply(snapshot, animatingDifferences: true)
+      
+      if items.isEmpty {
+        self.showEmptyStateView(with: "No item to show.", in: self.contentView)
+      } else {
+        self.removeEmptyStateView(in: self.contentView)
+      }
     }
   }
   
   @objc private func handleSegmentChange() {
-    print(segmentedControl.selectedSegmentIndex)
     viewModel.didChangeSegment(segment: segmentedControl.selectedSegmentIndex)
+  }
+  
+  @objc private func handleRefresh() {
+    viewModel.viewDidScrollToTop()
   }
   
   required init?(coder: NSCoder) {
@@ -134,11 +162,11 @@ extension UserListingsViewController: UICollectionViewDelegate {
     let contentHeight   = scrollView.contentSize.height
 
     if(offsetY > contentHeight - height)  {
-//      viewModel.viewDidScrollToBottom()
+      viewModel.viewDidScrollToBottom()
     }
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//    viewModel.didSelectItemAt(indexPath: indexPath)
+    viewModel.didSelectItemAt(indexPath: indexPath)
   }
 }
