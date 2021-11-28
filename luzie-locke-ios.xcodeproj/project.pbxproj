@@ -37,6 +37,8 @@
 		4A22DB3C274ED91800E5125B /* UserPurchasesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB3B274ED91800E5125B /* UserPurchasesViewController.swift */; };
 		4A22DB3E274ED9D500E5125B /* UserPurchasesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB3D274ED9D500E5125B /* UserPurchasesViewModel.swift */; };
 		4A22DB40274F006D00E5125B /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB3F274F006D00E5125B /* CustomLabel.swift */; };
+		4A22DB42275021FA00E5125B /* UserFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB41275021FA00E5125B /* UserFavoritesViewController.swift */; };
+		4A22DB442750225700E5125B /* UserFavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB432750225700E5125B /* UserFavoritesViewModel.swift */; };
 		4A3B5266271239CE00EF4F93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B5265271239CE00EF4F93 /* AppDelegate.swift */; };
 		4A3B5268271239CE00EF4F93 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B5267271239CE00EF4F93 /* SceneDelegate.swift */; };
 		4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B5269271239CE00EF4F93 /* MainTabBarController.swift */; };
@@ -202,6 +204,8 @@
 		4A22DB3B274ED91800E5125B /* UserPurchasesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPurchasesViewController.swift; sourceTree = "<group>"; };
 		4A22DB3D274ED9D500E5125B /* UserPurchasesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPurchasesViewModel.swift; sourceTree = "<group>"; };
 		4A22DB3F274F006D00E5125B /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		4A22DB41275021FA00E5125B /* UserFavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFavoritesViewController.swift; sourceTree = "<group>"; };
+		4A22DB432750225700E5125B /* UserFavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFavoritesViewModel.swift; sourceTree = "<group>"; };
 		4A3B5262271239CE00EF4F93 /* luzie-locke-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "luzie-locke-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3B5265271239CE00EF4F93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A3B5267271239CE00EF4F93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -432,6 +436,7 @@
 			children = (
 				4A22DB33274D745300E5125B /* UserListingsViewController.swift */,
 				4A22DB3B274ED91800E5125B /* UserPurchasesViewController.swift */,
+				4A22DB41275021FA00E5125B /* UserFavoritesViewController.swift */,
 			);
 			path = UserItems;
 			sourceTree = "<group>";
@@ -441,6 +446,7 @@
 			children = (
 				4A22DB36274D74E900E5125B /* UserListingsViewModel.swift */,
 				4A22DB3D274ED9D500E5125B /* UserPurchasesViewModel.swift */,
+				4A22DB432750225700E5125B /* UserFavoritesViewModel.swift */,
 			);
 			path = UserItems;
 			sourceTree = "<group>";
@@ -1183,6 +1189,7 @@
 				4AEE61B62741B4EF008055F9 /* LocationMenuButton.swift in Sources */,
 				4AED5E712720176900B7AC00 /* LocalStorage.swift in Sources */,
 				4AEE8FB1272BD9D6004CB686 /* DecimalInputCellViewModel.swift in Sources */,
+				4A22DB442750225700E5125B /* UserFavoritesViewModel.swift in Sources */,
 				4A47E6D027316E1900B9018A /* ItemActionPanelViewModel.swift in Sources */,
 				4A22DB3C274ED91800E5125B /* UserPurchasesViewController.swift in Sources */,
 				4A155E462722E03600C8B867 /* OpenHTTPClient.swift in Sources */,
@@ -1194,6 +1201,7 @@
 				4A47E6E42732BE9700B9018A /* CompositionRoot.swift in Sources */,
 				4AEE8F772727E84F004CB686 /* ItemCellViewModel.swift in Sources */,
 				4A155E622725C1FD00C8B867 /* SettingsViewModel.swift in Sources */,
+				4A22DB42275021FA00E5125B /* UserFavoritesViewController.swift in Sources */,
 				4AED5E6A271FF2B200B7AC00 /* BackendResponse.swift in Sources */,
 				4A3B52C92713A02D00EF4F93 /* UIViewController+Ext.swift in Sources */,
 				4AEE8F9B272A0458004CB686 /* MultiLineTextInputCell.swift in Sources */,

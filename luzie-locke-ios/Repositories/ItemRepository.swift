@@ -16,6 +16,7 @@ protocol ItemRepositoryProtocol {
   func readListUserListings(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
   func readListUserListingsClosed(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
   func readListUserPurchases(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
+  func readListUserFavorites(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
 //  func update(_ item: T, completion: (Result<Void, LLError>) -> Void)
 //  func delete(_ item: T, completion: (Result<Void, LLError>) -> Void)
 }
@@ -140,6 +141,25 @@ class ItemRepository: ItemRepositoryProtocol {
   
   func readListUserPurchases(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
     backendClient.GET(ItemReadListUserPurchasesRequestDTO(cursor: cursor, limit: 8)) { result in
+      switch result {
+      case .success(let response):
+        if let response = response {
+          completion(.success((
+            ItemTranslator.translateItemDTOListToItemList(dtoList: response.list),
+            response.nextCursor)))
+        } else {
+          completion(.failure(.unableToComplete))
+        }
+
+      case .failure(let error):
+        print("[Error:\(#file):\(#line)] \(error)")
+        completion(.failure(.unableToComplete))
+      }
+    }
+  }
+  
+  func readListUserFavorites(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
+    backendClient.GET(ItemReadListUserFavoritesRequestDTO(cursor: cursor, limit: 8)) { result in
       switch result {
       case .success(let response):
         if let response = response {

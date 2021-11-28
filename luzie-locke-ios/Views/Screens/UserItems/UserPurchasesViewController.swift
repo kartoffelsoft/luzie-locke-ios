@@ -25,6 +25,7 @@ class UserPurchasesViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.viewModel.delegate = self
     
     configureBackground()
     configureCollectionView()
@@ -141,5 +142,17 @@ extension UserPurchasesViewController: UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     viewModel.didSelectItemAt(indexPath: indexPath)
+  }
+}
+
+extension UserPurchasesViewController: UserPurchasesViewModelDelegate {
+  
+  func didGetError(_ error: LLError) {
+    presentAlertOnMainThread(
+      title: "Unable to complete",
+      message: error.rawValue,
+      buttonTitle: "OK") {
+        self.refreshControl.endRefreshing()
+    }
   }
 }

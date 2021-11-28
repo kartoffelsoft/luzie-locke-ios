@@ -184,7 +184,6 @@ extension HomeViewController: UIPopoverPresentationControllerDelegate {
 extension HomeViewController: HomeViewModelDelegate {
   
   func didGetError(_ error: LLError) {
-
     presentAlertOnMainThread(
       title: "Unable to complete",
       message: error.rawValue,

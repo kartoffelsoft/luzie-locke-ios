@@ -21,6 +21,7 @@ protocol ViewModelFactory {
   func makeChatViewModel(remoteUserId: String) -> ChatViewModel
   func makeUserListingsViewModel(coordinator: SettingsCoordinator) -> UserListingsViewModel
   func makeUserPurchasesViewModel(coordinator: SettingsCoordinator) -> UserPurchasesViewModel
+  func makeUserFavoritesViewModel(coordinator: SettingsCoordinator) -> UserFavoritesViewModel
 }
 
 extension CompositionRoot: ViewModelFactory {
@@ -101,4 +102,9 @@ extension CompositionRoot: ViewModelFactory {
                                   itemRepository: itemRepository)
   }
   
+  func makeUserFavoritesViewModel(coordinator: SettingsCoordinator) -> UserFavoritesViewModel {
+    return UserFavoritesViewModel(coordinator: coordinator,
+                                  openHttpClient: openHttpClient,
+                                  itemRepository: itemRepository)
+  }
 }

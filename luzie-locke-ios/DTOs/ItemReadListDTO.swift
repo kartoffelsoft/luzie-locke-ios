@@ -94,6 +94,23 @@ struct ItemReadListUserPurchasesRequestDTO: APIRequest {
   }
 }
 
+struct ItemReadListUserFavoritesRequestDTO: APIRequest {
+  
+  typealias Response = ItemReadListResponseDTO
+  
+  var resourceName: String {
+    return "/api/items/user/favorite"
+  }
+  
+  let cursor: Double
+  let limit: Int
+  
+  func toDictionary() -> [String: Any] {
+    return [ "cursor":  cursor,
+             "limit":   limit   ]
+  }
+}
+
 struct ItemListDTO: Decodable, Hashable {
   let id:           String?
   let user:         User?

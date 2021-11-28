@@ -44,7 +44,9 @@ class SettingsCoordinator: Coordinator {
   }
   
   func navigateToUserFavorites() {
-
+    let viewModel       = factory.makeUserFavoritesViewModel(coordinator: self)
+    let viewController  = factory.makeUserFavoritesViewController(viewModel: viewModel)
+    navigationController.pushViewController(viewController, animated: true)
   }
 
   func navigateToMap(selectAction: @escaping MapViewCallback) {
