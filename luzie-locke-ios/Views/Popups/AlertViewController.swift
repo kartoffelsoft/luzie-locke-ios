@@ -35,7 +35,7 @@ class AlertViewController: UIViewController {
     containerView.addSubview(actionButton)
     containerView.addSubview(messageLabel)
     configureContainerView()
-    configureTitleLable()
+    configureTitleLabel()
     configureActionButton()
     configureMessageLabel()
   }
@@ -55,7 +55,7 @@ class AlertViewController: UIViewController {
     ])
   }
   
-  func configureTitleLable() {
+  func configureTitleLabel() {
     titleLabel.text = alertTitle ?? "Something went wrong"
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     

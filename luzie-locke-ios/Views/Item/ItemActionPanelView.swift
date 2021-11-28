@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol ItemActionPanelViewDelegate: AnyObject {
+  
+  func didTapDeleteButton()
+}
+
 class ItemActionPanelView: UIView {
+  
+  weak var delegate: ItemActionPanelViewDelegate?
   
   let viewModel: ItemActionPanelViewModel
   
@@ -57,6 +64,9 @@ class ItemActionPanelView: UIView {
     sellerView.addSubview(sellerEditButton)
     sellerView.addSubview(sellerDeleteButton)
     
+    self.buyerView.isHidden   = true
+    self.sellerView.isHidden  = true
+    
     let padding: CGFloat = 20
     NSLayoutConstraint.activate([
       buyerFavoriteButton.leadingAnchor.constraint(equalTo: buyerView.leadingAnchor, constant: padding),
@@ -105,7 +115,7 @@ class ItemActionPanelView: UIView {
   }
   
   @objc private func handleDeleteButtonTap() {
-    viewModel.didTapDeleteButton()
+    delegate?.didTapDeleteButton()
   }
 
   private func configureBindables() {

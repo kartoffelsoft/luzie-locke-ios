@@ -14,9 +14,18 @@ extension UIViewController {
   func presentAlertOnMainThread(title: String, message: String, buttonTitle: String, completion: (() -> Void)? = nil) {
     DispatchQueue.main.async {
       let alertVC = AlertViewController(title: title, message: message, buttonTitle: buttonTitle)
-      alertVC.modalPresentationStyle = .overFullScreen
-      alertVC.modalTransitionStyle = .crossDissolve
+      alertVC.modalPresentationStyle  = .overFullScreen
+      alertVC.modalTransitionStyle    = .crossDissolve
       self.present(alertVC, animated: true, completion: completion)
+    }
+  }
+  
+  func presentConfirmOnMainThread(title: String, message: String, completion: (() -> Void)? = nil) {
+    DispatchQueue.main.async {
+      let viewController = ConfirmViewController(title: title, message: message, completion: completion)
+      viewController.modalPresentationStyle  = .overFullScreen
+      viewController.modalTransitionStyle    = .crossDissolve
+      self.present(viewController, animated: true, completion: nil)
     }
   }
   

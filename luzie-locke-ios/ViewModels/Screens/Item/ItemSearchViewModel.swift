@@ -83,14 +83,6 @@ class ItemSearchViewModel {
     }
   }
   
-//  func viewDidLoad() {
-//    cursor                        = Date().timeIntervalSince1970 * 1000
-//    itemsDictionary               = [String: Item]()
-//    itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
-//
-//    fetchList()
-//  }
-  
   func viewDidSetSearchKeyword(_ keyword: String) {
     searchKeyword                 = keyword
     cursor                        = Date().timeIntervalSince1970 * 1000

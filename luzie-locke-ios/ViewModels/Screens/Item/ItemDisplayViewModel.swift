@@ -50,9 +50,20 @@ class ItemDisplayViewModel {
   func viewDidLoad() {
     itemRepository.read(id) { [weak self] result in
       switch result {
-      case .success(let item): ()
+      case .success(let item):
         self?.item = item
 
+      case .failure(let error):
+        print("Failed")
+      }
+    }
+  }
+  
+  func didTapDeleteButton() {
+    itemRepository.delete(id) { [weak self] result in
+      switch result {
+      case .success():
+        ()
       case .failure(let error):
         print("Failed")
       }

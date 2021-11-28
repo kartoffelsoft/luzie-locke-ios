@@ -21,8 +21,6 @@ class ItemActionPanelViewModel {
       guard let sellerId  = item?.user?.id else { return }
       guard let localUserId  = localProfileRepository.read()?.id else { return }
       
-      print("sellerId: ", sellerId)
-      print("localUserId: ", localUserId)
       let priceText = NSMutableAttributedString(string: "€ ", attributes: [.font: Fonts.title])
       priceText.append(NSAttributedString(string: price, attributes: [.font: Fonts.titleLarge]))
       bindablePriceText.value = priceText
@@ -47,9 +45,5 @@ class ItemActionPanelViewModel {
 
   func didTapEditButton() {
     print("Edit")
-  }
-  
-  func didTapDeleteButton() {
-    print("Delete")
   }
 }

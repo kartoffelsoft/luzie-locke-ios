@@ -22,6 +22,8 @@ class ItemDisplayViewController: UIViewController {
     self.itemActionPanelView  = ItemActionPanelView(viewModel: viewModel.itemActionPanelViewModel)
     self.briefViewController  = ItemDisplayBriefViewController(viewModel: viewModel.itemDisplayBriefViewModel)
     super.init(nibName: nil, bundle: nil)
+    
+    self.itemActionPanelView.delegate = self
   }
   
   override func viewDidLoad() {
@@ -80,5 +82,16 @@ class ItemDisplayViewController: UIViewController {
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
+  }
+}
+
+extension ItemDisplayViewController: ItemActionPanelViewDelegate {
+  
+  func didTapDeleteButton() {
+    presentConfirmOnMainThread(
+      title: "Are you sure?",
+      message: "The item will be deleted and cannot be recovered.") {
+      self.viewModel.didTapDeleteButton()
+    }
   }
 }

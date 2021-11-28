@@ -18,7 +18,7 @@ protocol ItemRepositoryProtocol {
   func readListUserPurchases(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
   func readListUserFavorites(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
 //  func update(_ item: T, completion: (Result<Void, LLError>) -> Void)
-//  func delete(_ item: T, completion: (Result<Void, LLError>) -> Void)
+  func delete(_ id: String, completion: @escaping (Result<Void, LLError>) -> Void)
 }
 
 class ItemRepository: ItemRepositoryProtocol {
@@ -170,6 +170,18 @@ class ItemRepository: ItemRepositoryProtocol {
           completion(.failure(.unableToComplete))
         }
 
+      case .failure(let error):
+        print("[Error:\(#file):\(#line)] \(error)")
+        completion(.failure(.unableToComplete))
+      }
+    }
+  }
+  
+  func delete(_ id: String, completion:  @escaping (Result<Void, LLError>) -> Void) {
+    backendClient.DELETE(ItemDeleteRequestDTO(id: id)) { result in
+      switch result {
+      case .success:
+        completion(.success(()))
       case .failure(let error):
         print("[Error:\(#file):\(#line)] \(error)")
         completion(.failure(.unableToComplete))
