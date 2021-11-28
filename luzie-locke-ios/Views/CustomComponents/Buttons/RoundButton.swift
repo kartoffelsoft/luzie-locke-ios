@@ -2,58 +2,27 @@
 //  RoundButton.swift
 //  luzie-locke-ios
 //
-//  Created by Harry on 16.10.21.
+//  Created by Harry on 28.11.21.
 //
 
 import UIKit
 
 class RoundButton: UIButton {
   
-  let radius: CGFloat
+  private let radius: CGFloat
   
-  let pulseLayer      = CAShapeLayer()
-  let pulseAnimation  = CABasicAnimation(keyPath: "transform.scale")
-  
-  override var backgroundColor: UIColor? {
-    didSet {
-      pulseLayer.fillColor = backgroundColor?.withAlphaComponent(0.3).cgColor
-    }
-  }
-  
-  init(radius: CGFloat) {
+  init(radius: CGFloat = 20, image: UIImage? = nil,  backgroundColor: UIColor = .white) {
     self.radius = radius
     super.init(frame: .zero)
-    
-    configureButton()
-    configurePulseLayer()
+    self.setImage(image, for: .normal)
+    self.backgroundColor = backgroundColor
+
+    configure()
   }
   
-  private func configureButton() {
-    titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
+  private func configure() {
     translatesAutoresizingMaskIntoConstraints = false
     layer.cornerRadius = radius
-  }
-  
-  private func configurePulseLayer() {
-    let circularPath = UIBezierPath(arcCenter: .zero, radius: radius, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
-    pulseLayer.path = circularPath.cgPath
-    pulseLayer.position = .init(x: radius, y: radius)
-    
-    pulseAnimation.toValue = 1.3
-    pulseAnimation.duration = 0.8
-    pulseAnimation.autoreverses = true
-    pulseAnimation.repeatCount = Float.infinity
-    pulseAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
-    
-    layer.insertSublayer(pulseLayer, at: 0)
-  }
-  
-  func animatePulse() {
-    pulseLayer.add(pulseAnimation, forKey: "pulse")
-  }
-  
-  func stopPulse() {
-    pulseLayer.removeAllAnimations()
   }
   
   override var intrinsicContentSize: CGSize {
@@ -67,3 +36,4 @@ class RoundButton: UIButton {
     fatalError("init(coder:) has not been implemented")
   }
 }
+

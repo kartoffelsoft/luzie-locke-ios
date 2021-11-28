@@ -78,6 +78,14 @@ enum Images {
   static let delete             = UIImage(systemName: "trash",
                                           withConfiguration: UIImage.SymbolConfiguration(pointSize: 15, weight: .bold))?
                                     .withTintColor(Colors.secondaryColor, renderingMode: .alwaysOriginal)
+  
+  static let itemEdit           = UIImage(systemName: "pencil.circle",
+                                          withConfiguration: UIImage.SymbolConfiguration(pointSize: 35, weight: .medium))?
+                                    .withTintColor(Colors.secondaryColor, renderingMode: .alwaysOriginal)
+  
+  static let itemDelete         = UIImage(systemName: "trash.circle",
+                                          withConfiguration: UIImage.SymbolConfiguration(pointSize: 35, weight: .medium))?
+                                    .withTintColor(Colors.secondaryColor, renderingMode: .alwaysOriginal)
 }
 
 enum Colors {

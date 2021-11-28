@@ -25,8 +25,8 @@ class MapViewController: UIViewController {
   let locationManager:    CLLocationManager
   
   let locationLabel       = UILabel()
-  let setButton           = RoundButton(radius: 40)
-  let backButton          = RoundButton(radius: 20)
+  let setButton           = PulseRoundButton(radius: 40)
+  let backButton          = PulseRoundButton(radius: 20)
   
   init(mapView: MKMapView, locationManager: CLLocationManager) {
     self.mapView           = mapView

@@ -39,6 +39,7 @@
 		4A22DB40274F006D00E5125B /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB3F274F006D00E5125B /* CustomLabel.swift */; };
 		4A22DB42275021FA00E5125B /* UserFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB41275021FA00E5125B /* UserFavoritesViewController.swift */; };
 		4A22DB442750225700E5125B /* UserFavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB432750225700E5125B /* UserFavoritesViewModel.swift */; };
+		4A22DB462753B06D00E5125B /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A22DB452753B06D00E5125B /* RoundButton.swift */; };
 		4A3B5266271239CE00EF4F93 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B5265271239CE00EF4F93 /* AppDelegate.swift */; };
 		4A3B5268271239CE00EF4F93 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B5267271239CE00EF4F93 /* SceneDelegate.swift */; };
 		4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B5269271239CE00EF4F93 /* MainTabBarController.swift */; };
@@ -107,7 +108,7 @@
 		4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */; };
 		4AED5E25271A0CFD00B7AC00 /* MKViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E24271A0CFD00B7AC00 /* MKViewMock.swift */; };
 		4AED5E27271A0D1300B7AC00 /* CLLocationManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E26271A0D1300B7AC00 /* CLLocationManagerMock.swift */; };
-		4AED5E2A271ADC8500B7AC00 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E29271ADC8500B7AC00 /* RoundButton.swift */; };
+		4AED5E2A271ADC8500B7AC00 /* PulseRoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E29271ADC8500B7AC00 /* PulseRoundButton.swift */; };
 		4AED5E2D271B87ED00B7AC00 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E2C271B87ED00B7AC00 /* AlertViewController.swift */; };
 		4AED5E30271C179F00B7AC00 /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E2F271C179F00B7AC00 /* HeaderLabel.swift */; };
 		4AED5E32271C189E00B7AC00 /* BodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E31271C189E00B7AC00 /* BodyLabel.swift */; };
@@ -206,6 +207,7 @@
 		4A22DB3F274F006D00E5125B /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		4A22DB41275021FA00E5125B /* UserFavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFavoritesViewController.swift; sourceTree = "<group>"; };
 		4A22DB432750225700E5125B /* UserFavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFavoritesViewModel.swift; sourceTree = "<group>"; };
+		4A22DB452753B06D00E5125B /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		4A3B5262271239CE00EF4F93 /* luzie-locke-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "luzie-locke-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3B5265271239CE00EF4F93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A3B5267271239CE00EF4F93 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -275,7 +277,7 @@
 		4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerTests.swift; sourceTree = "<group>"; };
 		4AED5E24271A0CFD00B7AC00 /* MKViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKViewMock.swift; sourceTree = "<group>"; };
 		4AED5E26271A0D1300B7AC00 /* CLLocationManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManagerMock.swift; sourceTree = "<group>"; };
-		4AED5E29271ADC8500B7AC00 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		4AED5E29271ADC8500B7AC00 /* PulseRoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseRoundButton.swift; sourceTree = "<group>"; };
 		4AED5E2C271B87ED00B7AC00 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		4AED5E2F271C179F00B7AC00 /* HeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderLabel.swift; sourceTree = "<group>"; };
 		4AED5E31271C189E00B7AC00 /* BodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyLabel.swift; sourceTree = "<group>"; };
@@ -1023,9 +1025,10 @@
 		4AEE8F9027297750004CB686 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				4AED5E29271ADC8500B7AC00 /* RoundButton.swift */,
+				4AED5E29271ADC8500B7AC00 /* PulseRoundButton.swift */,
 				4AED5E33271C199600B7AC00 /* BasicButton.swift */,
 				4AEE8F912729778D004CB686 /* ImageSelectButton.swift */,
+				4A22DB452753B06D00E5125B /* RoundButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -1230,7 +1233,7 @@
 				4AEE8F8727288842004CB686 /* ProfileCellViewModel.swift in Sources */,
 				4A3B52C427131FE800EF4F93 /* LoginViewModel.swift in Sources */,
 				4AED5E7E2720A50400B7AC00 /* AuthService.swift in Sources */,
-				4AED5E2A271ADC8500B7AC00 /* RoundButton.swift in Sources */,
+				4AED5E2A271ADC8500B7AC00 /* PulseRoundButton.swift in Sources */,
 				4AC56672273B974700776DBD /* RecentMessage.swift in Sources */,
 				4A3B529D2712421300EF4F93 /* ItemSearchViewController.swift in Sources */,
 				4A22DB37274D74E900E5125B /* UserListingsViewModel.swift in Sources */,
@@ -1249,6 +1252,7 @@
 				4AC5667E273BE7E400776DBD /* LocalProfileRepository.swift in Sources */,
 				4A3B5266271239CE00EF4F93 /* AppDelegate.swift in Sources */,
 				4A155E4027229D3600C8B867 /* AvatarImageView.swift in Sources */,
+				4A22DB462753B06D00E5125B /* RoundButton.swift in Sources */,
 				4AEE8FAB272B5C69004CB686 /* ItemCreateViewModel.swift in Sources */,
 				4A47E6BB272FE24200B9018A /* Dictionary+Ext.swift in Sources */,
 				4A3B52D527159CA300EF4F93 /* Coordinator.swift in Sources */,

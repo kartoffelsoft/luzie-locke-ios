@@ -11,18 +11,26 @@ class ItemActionPanelView: UIView {
   
   let viewModel: ItemActionPanelViewModel
   
-  private let priceLabel  = HeaderLabel(textColor: Colors.primaryColorLight3, textAlignment: .left)
-  private let chatButton  = BasicButton(backgroundColor: Colors.primaryColorLight3,
-                                        textColor: Colors.primaryColor,
-                                        title: "Chat")
+  private let buyerView   = UIView()
+  private let sellerView  = UIView()
   
-  private let favoriteButton: UIButton = {
-    let button = UIButton()
-    button.translatesAutoresizingMaskIntoConstraints = false
-    button.setImage(Images.favoriteOff, for: .normal)
-    return button
-  }()
+  private let buyerPriceLabel     = HeaderLabel(textColor: Colors.primaryColorLight3, textAlignment: .left)
+  private let buyerChatButton     = BasicButton(backgroundColor: Colors.primaryColorLight3,
+                                                textColor: Colors.primaryColor,
+                                                title: "Chat")
+  private let buyerFavoriteButton = RoundButton(radius: 30,
+                                                image: Images.favoriteOff,
+                                                backgroundColor: Colors.primaryColor)
   
+  private let sellerPriceLabel    = HeaderLabel(textColor: Colors.secondaryColor,
+                                                textAlignment: .left)
+  private let sellerEditButton    = RoundButton(radius: 20,
+                                                image: Images.itemEdit,
+                                                backgroundColor: Colors.primaryColor)
+  private let sellerDeleteButton  = RoundButton(radius: 20,
+                                                image: Images.itemDelete,
+                                                backgroundColor: Colors.primaryColor)
+
   init(viewModel: ItemActionPanelViewModel) {
     self.viewModel = viewModel
     super.init(frame: .zero)
@@ -34,29 +42,54 @@ class ItemActionPanelView: UIView {
   private func configureLayout() {
     translatesAutoresizingMaskIntoConstraints = false
     backgroundColor                           = Colors.primaryColor
+    
+    addSubview(buyerView)
+    addSubview(sellerView)
+    
+    buyerView.pinToEdges(of: self)
+    sellerView.pinToEdges(of: self)
+    
+    buyerView.addSubview(buyerFavoriteButton)
+    buyerView.addSubview(buyerPriceLabel)
+    buyerView.addSubview(buyerChatButton)
 
-    addSubview(favoriteButton)
-    addSubview(priceLabel)
-    addSubview(chatButton)
+    sellerView.addSubview(sellerPriceLabel)
+    sellerView.addSubview(sellerEditButton)
+    sellerView.addSubview(sellerDeleteButton)
     
     let padding: CGFloat = 20
     NSLayoutConstraint.activate([
-      favoriteButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
-      favoriteButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+      buyerFavoriteButton.leadingAnchor.constraint(equalTo: buyerView.leadingAnchor, constant: padding),
+      buyerFavoriteButton.centerYAnchor.constraint(equalTo: buyerView.centerYAnchor),
 
-      priceLabel.leadingAnchor.constraint(equalTo: favoriteButton.trailingAnchor, constant: 10),
-      priceLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-      priceLabel.heightAnchor.constraint(equalToConstant: 45),
-      priceLabel.widthAnchor.constraint(equalToConstant: 65),
+      buyerPriceLabel.leadingAnchor.constraint(equalTo: buyerFavoriteButton.trailingAnchor, constant: 10),
+      buyerPriceLabel.centerYAnchor.constraint(equalTo: buyerView.centerYAnchor),
+      buyerPriceLabel.heightAnchor.constraint(equalToConstant: 45),
       
-      chatButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
-      chatButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-      chatButton.heightAnchor.constraint(equalToConstant: 40),
-      chatButton.widthAnchor.constraint(equalToConstant: 65)
+      buyerChatButton.trailingAnchor.constraint(equalTo: buyerView.trailingAnchor, constant: -padding),
+      buyerChatButton.centerYAnchor.constraint(equalTo: buyerView.centerYAnchor),
+      buyerChatButton.heightAnchor.constraint(equalToConstant: 40),
+      buyerChatButton.widthAnchor.constraint(equalToConstant: 65),
+      
+      sellerPriceLabel.leadingAnchor.constraint(equalTo: sellerView.leadingAnchor, constant: padding),
+      sellerPriceLabel.centerYAnchor.constraint(equalTo: sellerView.centerYAnchor),
+      sellerPriceLabel.heightAnchor.constraint(equalToConstant: 45),
+      
+      sellerDeleteButton.trailingAnchor.constraint(equalTo: sellerView.trailingAnchor, constant: -padding),
+      sellerDeleteButton.centerYAnchor.constraint(equalTo: sellerView.centerYAnchor),
+      sellerDeleteButton.heightAnchor.constraint(equalToConstant: 40),
+      sellerDeleteButton.widthAnchor.constraint(equalToConstant: 40),
+      
+      sellerEditButton.trailingAnchor.constraint(equalTo: sellerDeleteButton.leadingAnchor, constant: -5),
+      sellerEditButton.centerYAnchor.constraint(equalTo: sellerView.centerYAnchor),
+      sellerEditButton.heightAnchor.constraint(equalToConstant: 40),
+      sellerEditButton.widthAnchor.constraint(equalToConstant: 40),
     ])
     
-    favoriteButton.addTarget(self, action: #selector(handleFavoriteButtonTap), for: .touchUpInside)
-    chatButton.addTarget(self, action: #selector(handleChatButtonTap), for: .touchUpInside)
+    buyerFavoriteButton.addTarget(self, action: #selector(handleFavoriteButtonTap), for: .touchUpInside)
+    buyerChatButton.addTarget(self, action: #selector(handleChatButtonTap), for: .touchUpInside)
+    sellerEditButton.addTarget(self, action: #selector(handleEditButtonTap), for: .touchUpInside)
+    sellerDeleteButton.addTarget(self, action: #selector(handleDeleteButtonTap), for: .touchUpInside)
   }
   
   @objc private func handleFavoriteButtonTap() {
@@ -66,10 +99,26 @@ class ItemActionPanelView: UIView {
   @objc private func handleChatButtonTap() {
     viewModel.didTapChatButton()
   }
+  
+  @objc private func handleEditButtonTap() {
+    viewModel.didTapEditButton()
+  }
+  
+  @objc private func handleDeleteButtonTap() {
+    viewModel.didTapDeleteButton()
+  }
 
   private func configureBindables() {
     viewModel.bindablePriceText.bind { [weak self] text in
-      self?.priceLabel.attributedText = text
+      self?.buyerPriceLabel.attributedText  = text
+      self?.sellerPriceLabel.attributedText = text
+    }
+    
+    viewModel.bindableIsMine.bind { [weak self] isMine in
+      guard let self = self else { return }
+      guard let isMine = isMine else { return }
+      self.buyerView.isHidden   = isMine
+      self.sellerView.isHidden  = !isMine
     }
   }
   

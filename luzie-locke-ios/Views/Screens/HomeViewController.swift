@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
   private var collectionView: UICollectionView!
   private var dataSource:     UICollectionViewDiffableDataSource<Section, Item>!
   
-  private let setButton       = RoundButton(radius: 30)
+  private let setButton       = PulseRoundButton(radius: 30)
   private let locationButton  = LocationMenuButton()
   private let refreshControl  = UIRefreshControl()
   
