@@ -57,13 +57,8 @@ class ItemCreateViewController: UIViewController {
   }
 
   private func configureCollectionView() {
-    let padding: CGFloat    = 15
-    let flowLayout          = UICollectionViewFlowLayout()
-    flowLayout.sectionInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
-    flowLayout.itemSize     = CGSize(width: view.bounds.width - padding * 2, height: 100)
-    
     let layout = UICollectionViewCompositionalLayout { section, env in
-      let padding: CGFloat = 8
+      let padding: CGFloat = 4
       switch(Section(rawValue: section)) {
       case .imageSelect:
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
@@ -81,7 +76,7 @@ class ItemCreateViewController: UIViewController {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
         item.contentInsets = .init(top: padding, leading: padding, bottom: padding, trailing: padding)
         
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(70)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60)), subitems: [item])
         let section = NSCollectionLayoutSection(group: group)
         
         return section
