@@ -105,6 +105,7 @@
 		4AC5667E273BE7E400776DBD /* LocalProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC5667D273BE7E400776DBD /* LocalProfileRepository.swift */; };
 		4ACA81EA27540CBB003C7E0E /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA81E927540CBB003C7E0E /* ConfirmViewController.swift */; };
 		4ACA81EC2754255F003C7E0E /* ItemDeleteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA81EB2754255F003C7E0E /* ItemDeleteDTO.swift */; };
+		4ACA81EE2754C701003C7E0E /* Notification+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA81ED2754C701003C7E0E /* Notification+Ext.swift */; };
 		4ADE3D312735807500ACBC60 /* AppMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */; };
 		4AED5E1D27197E1F00B7AC00 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */; };
 		4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */; };
@@ -275,6 +276,7 @@
 		4AC5667D273BE7E400776DBD /* LocalProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalProfileRepository.swift; sourceTree = "<group>"; };
 		4ACA81E927540CBB003C7E0E /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		4ACA81EB2754255F003C7E0E /* ItemDeleteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDeleteDTO.swift; sourceTree = "<group>"; };
+		4ACA81ED2754C701003C7E0E /* Notification+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Ext.swift"; sourceTree = "<group>"; };
 		4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMainCoordinator.swift; sourceTree = "<group>"; };
 		4AED5E1927197BA400B7AC00 /* Frankfurt.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Frankfurt.gpx; sourceTree = "<group>"; };
 		4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 				4A3B52C82713A02D00EF4F93 /* UIViewController+Ext.swift */,
 				4A155E59272415A800C8B867 /* UIView+Ext.swift */,
 				4A47E6BA272FE24200B9018A /* Dictionary+Ext.swift */,
+				4ACA81ED2754C701003C7E0E /* Notification+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1234,6 +1237,7 @@
 				4AED5E1D27197E1F00B7AC00 /* MapViewController.swift in Sources */,
 				4A47E6BD2730288200B9018A /* ItemDisplayViewModel.swift in Sources */,
 				4A47E6AD272D408F00B9018A /* ItemAPIClient.swift in Sources */,
+				4ACA81EE2754C701003C7E0E /* Notification+Ext.swift in Sources */,
 				4A47E6AA272CA0B500B9018A /* FirebaseCloudStorage.swift in Sources */,
 				4A3B52C72713996000EF4F93 /* GoogleSignInService.swift in Sources */,
 				4AEE8F8727288842004CB686 /* ProfileCellViewModel.swift in Sources */,

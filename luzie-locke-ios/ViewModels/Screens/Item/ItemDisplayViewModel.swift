@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol ItemDisplayViewModelDelegate: AnyObject {
+  
+  func didGetError(_ error: LLError)
+}
+
 class ItemDisplayViewModel {
+  
+  weak var delegate:                ItemDisplayViewModelDelegate?
   
   private let coordinator:          ItemDisplayCoordinator
   private let openHttpClient:       OpenHTTP
@@ -49,23 +56,26 @@ class ItemDisplayViewModel {
   
   func viewDidLoad() {
     itemRepository.read(id) { [weak self] result in
+      guard let self = self else { return }
       switch result {
       case .success(let item):
-        self?.item = item
+        self.item = item
 
       case .failure(let error):
-        print("Failed")
+        self.delegate?.didGetError(error)
       }
     }
   }
   
   func didTapDeleteButton() {
     itemRepository.delete(id) { [weak self] result in
+      guard let self = self else { return }
       switch result {
       case .success():
-        ()
+        NotificationCenter.default.post(name: .didUpdateItemList, object: nil)
+        self.coordinator.popViewController()
       case .failure(let error):
-        print("Failed")
+        self.delegate?.didGetError(error)
       }
     }
   }

@@ -56,7 +56,6 @@ class HomeCoordinator: NSObject, Coordinator {
     for (index, coordinator) in children.enumerated() {
       if coordinator === child {
         children.remove(at: index)
-        print("removed", children)
         return
       }
     }

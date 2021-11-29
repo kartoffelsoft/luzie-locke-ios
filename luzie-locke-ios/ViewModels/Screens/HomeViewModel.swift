@@ -38,7 +38,7 @@ class HomeViewModel {
     self.itemRepository       = itemRepository
   }
   
-  private func reload() {
+  private func loadData() {
     itemCellViewModels = Array(itemCellViewModelsDictionary.values).sorted(by: { v1, v2 in
       return v1.item!.modifiedAt!.compare(v2.item!.modifiedAt!) == .orderedDescending
     })
@@ -76,14 +76,14 @@ class HomeViewModel {
         }
         
         self.cursor = nextCursor
-        self.reload()
+        self.loadData()
       case .failure(let error):
         self.delegate?.didGetError(error)
       }
     }
   }
   
-  func viewDidLoad() {
+  private func refresh() {
     cursor                        = Date().timeIntervalSince1970 * 1000
     itemsDictionary               = [String: Item]()
     itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
@@ -91,12 +91,16 @@ class HomeViewModel {
     fetchList()
   }
   
+  func viewDidLoad() {
+    refresh()
+  }
+  
   func viewDidScrollToTop() {
-    cursor                        = Date().timeIntervalSince1970 * 1000
-    itemsDictionary               = [String: Item]()
-    itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
-    
-    fetchList()
+    refresh()
+  }
+  
+  func viewDidUpdateItemList() {
+    refresh()
   }
   
   func viewDidScrollToBottom() {

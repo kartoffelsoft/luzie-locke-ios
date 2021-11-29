@@ -10,6 +10,7 @@ import Firebase
 import GoogleSignIn
 
 protocol LoginViewModelDelegate: AnyObject {
+  
   func didLogin()
   func didGetError(_ error: LLError)
 }

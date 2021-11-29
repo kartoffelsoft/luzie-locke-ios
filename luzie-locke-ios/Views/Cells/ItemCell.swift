@@ -47,7 +47,7 @@ class ItemCell: UICollectionViewCell {
   let titleLabel    = CustomLabel(font: Fonts.body, textColor: Colors.primaryColor)
   let locationLabel = CustomLabel(font: Fonts.caption, textColor: Colors.secondaryColor)
   let priceLabel    = CustomLabel(font: Fonts.body, textColor: Colors.primaryColor)
-  let dateLabel     = CustomLabel(font: Fonts.detail, textColor: .lightGray)
+  let dateLabel     = CustomLabel(font: Fonts.detail, textColor: .gray)
   let line          = UIView()
 
   override init(frame: CGRect) {

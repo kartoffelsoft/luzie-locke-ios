@@ -42,6 +42,8 @@ class HomeViewController: UIViewController {
     configureAddButton()
     
     viewModel.viewDidLoad()
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(handleDidUpdateItemList), name: .didUpdateItemList, object: nil)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -147,6 +149,14 @@ class HomeViewController: UIViewController {
     viewModel.viewDidScrollToTop()
   }
   
+  @objc private func handleDidUpdateItemList() {
+    viewModel.viewDidUpdateItemList()
+  }
+  
+  deinit {
+    NotificationCenter.default.removeObserver(self)
+  }
+  
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -172,7 +182,7 @@ extension HomeViewController: UICollectionViewDelegate {
 extension HomeViewController: UIPopoverPresentationControllerDelegate {
   
   func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-      return .none
+    return .none
   }
   
   func popoverPresentationControllerShouldDismissPopover(_ popoverPresentationController: UIPopoverPresentationController) -> Bool {

@@ -29,6 +29,12 @@ class ItemDisplayCoordinator: NSObject, Coordinator {
     navigationController.pushViewController(vc, animated: true)
   }
 
+  func popViewController() {
+    DispatchQueue.main.async {
+      self.navigationController.popViewController(animated: true)
+    }
+  }
+  
   func presentMore(_ viewController: UIViewController, item: Item) {
     let vm = factory.makeItemDisplayDetailViewModel(item: item)
     let vc = factory.makeItemDisplayDetailViewController(viewModel: vm)
