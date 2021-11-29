@@ -39,4 +39,18 @@ class FirebaseCloudStorage: CloudStorage {
       })
     }
   }
+  
+  func deleteImage(url: String, completion: @escaping (Result<Void, LLError>) -> Void) {
+    let ref = Storage.storage().reference(forURL: url)
+    
+    ref.delete { error in
+      if let error = error {
+        print("Failed to delete: ", error)
+        completion(.failure(.unableToComplete))
+        return
+      }
+      
+      completion(.success(()))
+    }
+  }
 }

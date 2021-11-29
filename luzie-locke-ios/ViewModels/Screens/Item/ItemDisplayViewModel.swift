@@ -68,12 +68,13 @@ class ItemDisplayViewModel {
   }
   
   func didTapDeleteButton() {
-    itemRepository.delete(id) { [weak self] result in
+    guard let item = item else { return }
+    itemRepository.delete(id, imageUrls: item.imageUrls) { [weak self] result in
       guard let self = self else { return }
       switch result {
       case .success():
-        NotificationCenter.default.post(name: .didUpdateItemList, object: nil)
         self.coordinator.popViewController()
+        NotificationCenter.default.post(name: .didUpdateItemList, object: nil)
       case .failure(let error):
         self.delegate?.didGetError(error)
       }

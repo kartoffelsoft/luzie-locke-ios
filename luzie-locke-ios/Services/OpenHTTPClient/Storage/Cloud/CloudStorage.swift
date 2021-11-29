@@ -10,4 +10,5 @@ import UIKit
 protocol CloudStorage {
   
   func uploadImage(image: UIImage, completion: @escaping (Result<String, LLError>) -> Void)
+  func deleteImage(url: String, completion: @escaping (Result<Void, LLError>) -> Void) 
 }

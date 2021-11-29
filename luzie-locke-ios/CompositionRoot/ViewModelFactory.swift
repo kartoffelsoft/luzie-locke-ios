@@ -64,7 +64,6 @@ extension CompositionRoot: ViewModelFactory {
   func makeItemCreateViewModel(coordinator: HomeCoordinator) -> ItemCreateViewModel {
     return ItemCreateViewModel(coordinator: coordinator,
                                localProfileRepository: localProfileRepository,
-                               cloudStorage: cloudStorage,
                                openHttpClient: openHttpClient,
                                itemRepository: itemRepository)
   }

@@ -106,6 +106,7 @@
 		4ACA81EA27540CBB003C7E0E /* ConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA81E927540CBB003C7E0E /* ConfirmViewController.swift */; };
 		4ACA81EC2754255F003C7E0E /* ItemDeleteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA81EB2754255F003C7E0E /* ItemDeleteDTO.swift */; };
 		4ACA81EE2754C701003C7E0E /* Notification+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA81ED2754C701003C7E0E /* Notification+Ext.swift */; };
+		4ACA81F02754CF28003C7E0E /* ImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA81EF2754CF28003C7E0E /* ImageRepository.swift */; };
 		4ADE3D312735807500ACBC60 /* AppMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */; };
 		4AED5E1D27197E1F00B7AC00 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */; };
 		4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */; };
@@ -277,6 +278,7 @@
 		4ACA81E927540CBB003C7E0E /* ConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmViewController.swift; sourceTree = "<group>"; };
 		4ACA81EB2754255F003C7E0E /* ItemDeleteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDeleteDTO.swift; sourceTree = "<group>"; };
 		4ACA81ED2754C701003C7E0E /* Notification+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Ext.swift"; sourceTree = "<group>"; };
+		4ACA81EF2754CF28003C7E0E /* ImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRepository.swift; sourceTree = "<group>"; };
 		4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMainCoordinator.swift; sourceTree = "<group>"; };
 		4AED5E1927197BA400B7AC00 /* Frankfurt.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Frankfurt.gpx; sourceTree = "<group>"; };
 		4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 		4A155E442722E02800C8B867 /* OpenHTTPClient */ = {
 			isa = PBXGroup;
 			children = (
+				4AED5E7827201E2D00B7AC00 /* Storage */,
 				4A155E452722E03600C8B867 /* OpenHTTPClient.swift */,
 			);
 			path = OpenHTTPClient;
@@ -591,7 +594,6 @@
 			isa = PBXGroup;
 			children = (
 				4AED5E58271EBEC900B7AC00 /* HTTP */,
-				4AED5E7827201E2D00B7AC00 /* Storage */,
 				4A155E442722E02800C8B867 /* OpenHTTPClient */,
 				4AED5E35271D928F00B7AC00 /* BackendAPIClient */,
 				4A3B52C5271398B500EF4F93 /* Auth */,
@@ -714,6 +716,7 @@
 				4A01D553273D25D900EDFC1C /* UserProfileRepository.swift */,
 				4AC5667B273BE3E000776DBD /* ChatMessageRepository.swift */,
 				4A01D550273CFF0900EDFC1C /* RecentMessageRepository.swift */,
+				4ACA81EF2754CF28003C7E0E /* ImageRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -1330,6 +1333,7 @@
 				4A47E6DA2731C5F000B9018A /* ImageViewController.swift in Sources */,
 				4ADE3D312735807500ACBC60 /* AppMainCoordinator.swift in Sources */,
 				4A47E6BF273028BE00B9018A /* ItemDisplayViewController.swift in Sources */,
+				4ACA81F02754CF28003C7E0E /* ImageRepository.swift in Sources */,
 				4AC56674273B98AE00776DBD /* RecentMessageCell.swift in Sources */,
 				4A47E6E827331E6F00B9018A /* CoordinatorFactory.swift in Sources */,
 				4A09C6A32739282A00FD4E42 /* ChatViewController.swift in Sources */,
