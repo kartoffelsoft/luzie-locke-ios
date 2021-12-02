@@ -1,20 +1,18 @@
 //
-//  SingleLineDecimalInputViewModel.swift
+//  DecimalInputViewModel.swift
 //  luzie-locke-ios
 //
-//  Created by Harry on 01.12.21.
+//  Created by Harry on 02.12.21.
 //
 
 import Foundation
 
-class SingleLineDecimalInputViewModel {
-
-  var text: String?
+class DecimalInputViewModel: InputViewModel {
   
   func isNextStringOkay(_ string: String) -> Bool {
     var allowed  = CharacterSet.decimalDigits
     
-    guard let text = self.text else {
+    guard let text = bindableText.value else {
       return allowed.isSuperset(of: CharacterSet(charactersIn: string))
     }
 

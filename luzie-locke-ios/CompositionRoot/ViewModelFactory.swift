@@ -15,6 +15,7 @@ protocol ViewModelFactory {
   
   func makeItemSearchViewModel(coordinator: ItemSearchCoordinator) -> ItemSearchViewModel
   func makeItemCreateViewModel(coordinator: HomeCoordinator) -> ItemCreateViewModel
+  func makeItemUpdateViewModel(coordinator: ItemDisplayCoordinator) -> ItemUpdateViewModel
   func makeItemDisplayViewModel(coordinator: ItemDisplayCoordinator, id: String) -> ItemDisplayViewModel
   func makeItemDisplayDetailViewModel(item: Item) -> ItemDisplayDetailViewModel
   
@@ -63,11 +64,15 @@ extension CompositionRoot: ViewModelFactory {
   
   func makeItemCreateViewModel(coordinator: HomeCoordinator) -> ItemCreateViewModel {
     return ItemCreateViewModel(coordinator: coordinator,
-                               localProfileRepository: localProfileRepository,
-                               openHttpClient: openHttpClient,
                                itemRepository: itemRepository)
   }
   
+  func makeItemUpdateViewModel(coordinator: ItemDisplayCoordinator) -> ItemUpdateViewModel {
+    return ItemUpdateViewModel(coordinator: coordinator,
+                               openHttpClient: openHttpClient,
+                               itemRepository: itemRepository)
+  }
+
   func makeItemDisplayViewModel(coordinator: ItemDisplayCoordinator, id: String) -> ItemDisplayViewModel {
     return ItemDisplayViewModel(coordinator: coordinator,
                                 localProfileRepository: localProfileRepository,

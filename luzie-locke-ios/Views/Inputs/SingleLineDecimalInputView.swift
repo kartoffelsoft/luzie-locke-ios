@@ -21,13 +21,21 @@ class SingleLineDecimalInputView: UIView {
   }
   
   private let textField         = CustomTextField()
-  private let placeholderColor  = Colors.primaryColorLight1
-  
-  var viewModel: SingleLineDecimalInputViewModel?
-  var placeholder: String? {
+
+  var viewModel: DecimalInputViewModel? {
     didSet {
-      textField.text      = placeholder
-      textField.textColor = placeholderColor
+      guard let viewModel = viewModel else { return }
+      
+      textField.text = viewModel.bindableText.value
+      textField.textColor = viewModel.bindableTextColor.value
+      
+      viewModel.bindableText.bind(observer: { [weak self] text in
+        self?.textField.text = text
+      })
+      
+      viewModel.bindableTextColor.bind(observer: { [weak self] color in
+        self?.textField.textColor = color
+      })
     }
   }
   
@@ -51,7 +59,7 @@ class SingleLineDecimalInputView: UIView {
   }
 
   @objc private func handleInputChange(textField: UITextField) {
-    viewModel?.text = textField.text
+    viewModel?.didChangeInput(text: textField.text)
   }
   
   required init?(coder: NSCoder) {
@@ -66,16 +74,12 @@ extension SingleLineDecimalInputView: UITextFieldDelegate {
   }
   
   func textFieldDidBeginEditing(_ textField: UITextField) {
-    if textField.textColor == placeholderColor && textField.isFirstResponder {
-      textField.text      = nil
-      textField.textColor = Colors.primaryColor
+    if textField.isFirstResponder {
+      viewModel?.didBeginEditing()
     }
   }
   
   func textFieldDidEndEditing(_ textField: UITextField) {
-    if let text = textField.text, text.isEmpty || text == "" {
-      textField.text      = placeholder
-      textField.textColor = placeholderColor
-    }
+    viewModel?.didEndEditing()
   }
 }

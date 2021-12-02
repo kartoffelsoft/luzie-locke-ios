@@ -44,6 +44,7 @@ class ItemActionPanelViewModel {
   }
 
   func didTapEditButton() {
-    print("Edit")
+    guard let item = item else { return }
+    coordinator.navigateToItemUpdate(item: item)
   }
 }

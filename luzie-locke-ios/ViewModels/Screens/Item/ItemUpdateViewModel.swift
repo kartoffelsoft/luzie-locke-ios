@@ -1,36 +1,48 @@
 //
-//  ItemCreateViewModel.swift
+//  ItemUpdateViewModel.swift
 //  luzie-locke-ios
 //
-//  Created by Harry on 29.10.21.
+//  Created by Harry on 02.12.21.
 //
 
 import UIKit
 
-protocol ItemCreateViewModelDelegate: AnyObject {
+protocol ItemUpdateViewModelDelegate: AnyObject {
   func didOpenImagePicker(controller: UIImagePickerController)
   func didCloseImagePicker()
 }
 
-class ItemCreateViewModel {
+class ItemUpdateViewModel {
   
-  weak var delegate:          ItemCreateViewModelDelegate?
+  weak var delegate:          ItemUpdateViewModelDelegate?
   
-  let coordinator:            HomeCoordinator
-  let itemRepository:         ItemRepository
+  private let coordinator:            ItemDisplayCoordinator
+  private let openHttpClient:         OpenHTTP
+  private let itemRepository:         ItemRepository
+  
+  var item: Item? {
+    didSet {
+      guard let item = item else { return }
+      titleViewModel.setInitialText(item.title)
+      priceViewModel.setInitialText(item.price)
+      descriptionViewModel.setInitialText(item.description)
+    }
+  }
 
   let imageSelectViewModel:   ImageSelectViewModel
   let titleViewModel:         InputViewModel
   let priceViewModel:         DecimalInputViewModel
   let descriptionViewModel:   InputViewModel
-  
+
   var bindableIsLoading = Bindable<Bool>()
   
-  init(coordinator:             HomeCoordinator,
-       itemRepository:          ItemRepository) {
-    self.coordinator            = coordinator
-    self.itemRepository         = itemRepository
-    
+  init(coordinator:         ItemDisplayCoordinator,
+       openHttpClient:      OpenHTTP,
+       itemRepository:      ItemRepository) {
+    self.coordinator        = coordinator
+    self.openHttpClient     = openHttpClient
+    self.itemRepository     = itemRepository
+
     imageSelectViewModel            = ImageSelectViewModel()
     titleViewModel                  = InputViewModel(placeholder: "Title")
     priceViewModel                  = DecimalInputViewModel(placeholder: "Price")

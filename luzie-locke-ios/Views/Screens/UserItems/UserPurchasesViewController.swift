@@ -39,6 +39,7 @@ class UserPurchasesViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     tabBarController?.tabBar.isHidden = true
+    navigationController?.isNavigationBarHidden = false
   }
 
   private func configureBackground() {

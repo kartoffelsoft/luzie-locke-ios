@@ -108,13 +108,14 @@
 		4ACA81F327568163003C7E0E /* SingleLineTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA81F227568163003C7E0E /* SingleLineTextInputView.swift */; };
 		4ACA81F527568466003C7E0E /* MultiLineTextInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA81F427568466003C7E0E /* MultiLineTextInputView.swift */; };
 		4ACA81F7275746D8003C7E0E /* SingleLineDecimalInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA81F6275746D8003C7E0E /* SingleLineDecimalInputView.swift */; };
-		4ACA81FA2757656C003C7E0E /* SingleLineTextInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA81F92757656C003C7E0E /* SingleLineTextInputViewModel.swift */; };
-		4ACA81FC275767B5003C7E0E /* SingleLineDecimalInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA81FB275767B5003C7E0E /* SingleLineDecimalInputViewModel.swift */; };
-		4ACA81FE275767C8003C7E0E /* MultiLineTextInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA81FD275767C8003C7E0E /* MultiLineTextInputViewModel.swift */; };
 		4ACA820227576BC4003C7E0E /* ImageSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA820127576BC4003C7E0E /* ImageSelectView.swift */; };
 		4ACA820427576F41003C7E0E /* ImageSelectAddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA820327576F41003C7E0E /* ImageSelectAddButton.swift */; };
 		4ACA8208275790ED003C7E0E /* ImageSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA8207275790ED003C7E0E /* ImageSelectViewModel.swift */; };
 		4ACA820A2757A39D003C7E0E /* ImageSelectElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA82092757A39D003C7E0E /* ImageSelectElementView.swift */; };
+		4ACA820C2758BA6C003C7E0E /* ItemUpdateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA820B2758BA6C003C7E0E /* ItemUpdateViewModel.swift */; };
+		4ACA820E2758BA93003C7E0E /* ItemUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA820D2758BA93003C7E0E /* ItemUpdateViewController.swift */; };
+		4ACA821027590BD3003C7E0E /* InputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA820F27590BD3003C7E0E /* InputViewModel.swift */; };
+		4ACA821227590C6E003C7E0E /* DecimalInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA821127590C6E003C7E0E /* DecimalInputViewModel.swift */; };
 		4ADE3D312735807500ACBC60 /* AppMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */; };
 		4AED5E1D27197E1F00B7AC00 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */; };
 		4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */; };
@@ -280,13 +281,14 @@
 		4ACA81F227568163003C7E0E /* SingleLineTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLineTextInputView.swift; sourceTree = "<group>"; };
 		4ACA81F427568466003C7E0E /* MultiLineTextInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineTextInputView.swift; sourceTree = "<group>"; };
 		4ACA81F6275746D8003C7E0E /* SingleLineDecimalInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLineDecimalInputView.swift; sourceTree = "<group>"; };
-		4ACA81F92757656C003C7E0E /* SingleLineTextInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLineTextInputViewModel.swift; sourceTree = "<group>"; };
-		4ACA81FB275767B5003C7E0E /* SingleLineDecimalInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLineDecimalInputViewModel.swift; sourceTree = "<group>"; };
-		4ACA81FD275767C8003C7E0E /* MultiLineTextInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLineTextInputViewModel.swift; sourceTree = "<group>"; };
 		4ACA820127576BC4003C7E0E /* ImageSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectView.swift; sourceTree = "<group>"; };
 		4ACA820327576F41003C7E0E /* ImageSelectAddButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectAddButton.swift; sourceTree = "<group>"; };
 		4ACA8207275790ED003C7E0E /* ImageSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectViewModel.swift; sourceTree = "<group>"; };
 		4ACA82092757A39D003C7E0E /* ImageSelectElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectElementView.swift; sourceTree = "<group>"; };
+		4ACA820B2758BA6C003C7E0E /* ItemUpdateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemUpdateViewModel.swift; sourceTree = "<group>"; };
+		4ACA820D2758BA93003C7E0E /* ItemUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemUpdateViewController.swift; sourceTree = "<group>"; };
+		4ACA820F27590BD3003C7E0E /* InputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewModel.swift; sourceTree = "<group>"; };
+		4ACA821127590C6E003C7E0E /* DecimalInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalInputViewModel.swift; sourceTree = "<group>"; };
 		4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMainCoordinator.swift; sourceTree = "<group>"; };
 		4AED5E1927197BA400B7AC00 /* Frankfurt.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Frankfurt.gpx; sourceTree = "<group>"; };
 		4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -813,9 +815,8 @@
 		4ACA81F827576543003C7E0E /* Inputs */ = {
 			isa = PBXGroup;
 			children = (
-				4ACA81F92757656C003C7E0E /* SingleLineTextInputViewModel.swift */,
-				4ACA81FB275767B5003C7E0E /* SingleLineDecimalInputViewModel.swift */,
-				4ACA81FD275767C8003C7E0E /* MultiLineTextInputViewModel.swift */,
+				4ACA820F27590BD3003C7E0E /* InputViewModel.swift */,
+				4ACA821127590C6E003C7E0E /* DecimalInputViewModel.swift */,
 			);
 			path = Inputs;
 			sourceTree = "<group>";
@@ -993,6 +994,7 @@
 			isa = PBXGroup;
 			children = (
 				4AEE8F732727BC93004CB686 /* ItemCreateViewController.swift */,
+				4ACA820D2758BA93003C7E0E /* ItemUpdateViewController.swift */,
 				4A47E6BE273028BE00B9018A /* ItemDisplayViewController.swift */,
 				4A47E6D127317CA700B9018A /* ItemDisplayBriefViewController.swift */,
 				4A47E6D3273198E300B9018A /* ItemDisplayDetailViewController.swift */,
@@ -1096,6 +1098,7 @@
 			isa = PBXGroup;
 			children = (
 				4AEE8FAA272B5C69004CB686 /* ItemCreateViewModel.swift */,
+				4ACA820B2758BA6C003C7E0E /* ItemUpdateViewModel.swift */,
 				4A47E6BC2730288200B9018A /* ItemDisplayViewModel.swift */,
 				4A47E6DB2731CEFA00B9018A /* ItemDisplayBriefViewModel.swift */,
 				4A09C69A273730B900FD4E42 /* ItemDisplayDetailViewModel.swift */,
@@ -1278,6 +1281,7 @@
 				4A3B5266271239CE00EF4F93 /* AppDelegate.swift in Sources */,
 				4A155E4027229D3600C8B867 /* AvatarImageView.swift in Sources */,
 				4A22DB462753B06D00E5125B /* RoundButton.swift in Sources */,
+				4ACA820C2758BA6C003C7E0E /* ItemUpdateViewModel.swift in Sources */,
 				4AEE8FAB272B5C69004CB686 /* ItemCreateViewModel.swift in Sources */,
 				4A47E6BB272FE24200B9018A /* Dictionary+Ext.swift in Sources */,
 				4A3B52D527159CA300EF4F93 /* Coordinator.swift in Sources */,
@@ -1314,6 +1318,7 @@
 				4ACA81F327568163003C7E0E /* SingleLineTextInputView.swift in Sources */,
 				4A22DB40274F006D00E5125B /* CustomLabel.swift in Sources */,
 				4A3B52E32715C11900EF4F93 /* SettingsCoordinator.swift in Sources */,
+				4ACA821027590BD3003C7E0E /* InputViewModel.swift in Sources */,
 				4AEE8F6D2726CC73004CB686 /* HomeViewModel.swift in Sources */,
 				4AEE8F6F2726DF93004CB686 /* ItemCell.swift in Sources */,
 				4A47E6D227317CA700B9018A /* ItemDisplayBriefViewController.swift in Sources */,
@@ -1334,16 +1339,15 @@
 				4A47E6DC2731CEFA00B9018A /* ItemDisplayBriefViewModel.swift in Sources */,
 				4AED5E39271D92EA00B7AC00 /* APIRequest.swift in Sources */,
 				4AC5667A273BC30000776DBD /* ChatViewModel.swift in Sources */,
-				4ACA81FA2757656C003C7E0E /* SingleLineTextInputViewModel.swift in Sources */,
 				4AED5E7C27209C8D00B7AC00 /* BackendAuthService.swift in Sources */,
 				4A3B529F271242ED00EF4F93 /* SettingsViewController.swift in Sources */,
 				4AC5667C273BE3E000776DBD /* ChatMessageRepository.swift in Sources */,
-				4ACA81FE275767C8003C7E0E /* MultiLineTextInputViewModel.swift in Sources */,
 				4AC56677273BB65200776DBD /* MessagesViewModel.swift in Sources */,
 				4AED5E34271C199600B7AC00 /* BasicButton.swift in Sources */,
+				4ACA820E2758BA93003C7E0E /* ItemUpdateViewController.swift in Sources */,
 				4AED5E57271EBDF700B7AC00 /* KHTTPRequestInterceptor.swift in Sources */,
 				4AED5E46271E2A3200B7AC00 /* BackendConfig.swift in Sources */,
-				4ACA81FC275767B5003C7E0E /* SingleLineDecimalInputViewModel.swift in Sources */,
+				4ACA821227590C6E003C7E0E /* DecimalInputViewModel.swift in Sources */,
 				4A3B52DB2715ADEF00EF4F93 /* LoginCoordinator.swift in Sources */,
 				4A47E6DA2731C5F000B9018A /* ImageViewController.swift in Sources */,
 				4ADE3D312735807500ACBC60 /* AppMainCoordinator.swift in Sources */,

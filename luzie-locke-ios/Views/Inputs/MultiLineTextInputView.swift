@@ -9,20 +9,28 @@ import UIKit
 
 
 protocol MultiLineTextInputViewDelegate: AnyObject {
-  func inputDidChange(_ textView: UITextView)
+  func didChangeInput(_ textView: UITextView)
 }
 
 class MultiLineTextInputView: UIView {
   weak var delegate: MultiLineTextInputViewDelegate?
   
-  let textView                  = UITextView()
-  private let placeholderColor  = Colors.primaryColorLight1
+  let textView = UITextView()
   
-  var viewModel: MultiLineTextInputViewModel?
-  var placeholder: String? {
+  var viewModel: InputViewModel? {
     didSet {
-      textView.text      = placeholder
-      textView.textColor = placeholderColor
+      guard let viewModel = viewModel else { return }
+      
+      textView.text = viewModel.bindableText.value
+      textView.textColor = viewModel.bindableTextColor.value
+      
+      viewModel.bindableText.bind(observer: { [weak self] text in
+        self?.textView.text = text
+      })
+      
+      viewModel.bindableTextColor.bind(observer: { [weak self] color in
+        self?.textView.textColor = color
+      })
     }
   }
   
@@ -54,21 +62,20 @@ class MultiLineTextInputView: UIView {
 extension MultiLineTextInputView: UITextViewDelegate {
 
   func textViewDidBeginEditing(_ textView: UITextView) {
-    if textView.textColor == placeholderColor && textView.isFirstResponder {
-      textView.text      = nil
-      textView.textColor = Colors.primaryColor
+    print("@@1")
+    if textView.isFirstResponder {
+      viewModel?.didBeginEditing()
     }
   }
   
   func textViewDidEndEditing(_ textView: UITextView) {
-    if textView.text.isEmpty || textView.text == "" {
-      textView.text      = placeholder
-      textView.textColor = placeholderColor
-    }
+    print("@@2")
+    viewModel?.didEndEditing()
   }
   
   func textViewDidChange(_ textView: UITextView) {
-    viewModel?.text = textView.text
-    delegate?.inputDidChange(textView)
+    print("@@3")
+    viewModel?.didChangeInput(text: textView.text)
+    delegate?.didChangeInput(textView)
   }
 }

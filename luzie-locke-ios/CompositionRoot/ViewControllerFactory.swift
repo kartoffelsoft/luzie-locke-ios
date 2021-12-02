@@ -16,6 +16,7 @@ protocol ViewControllerFactory {
   
   func makeItemSearchViewController(viewModel: ItemSearchViewModel) -> ItemSearchViewController
   func makeItemCreateViewController(viewModel: ItemCreateViewModel) -> ItemCreateViewController
+  func makeItemUpdateViewController(viewModel: ItemUpdateViewModel) -> ItemUpdateViewController
   func makeItemDisplayViewController(viewModel: ItemDisplayViewModel, coordinator: ItemDisplayCoordinator) -> ItemDisplayViewController
   func makeItemDisplayDetailViewController(viewModel: ItemDisplayDetailViewModel) -> ItemDisplayDetailViewController
   
@@ -59,6 +60,10 @@ extension CompositionRoot: ViewControllerFactory {
   
   func makeItemCreateViewController(viewModel: ItemCreateViewModel) -> ItemCreateViewController {
     return ItemCreateViewController(viewModel: viewModel)
+  }
+  
+  func makeItemUpdateViewController(viewModel: ItemUpdateViewModel) -> ItemUpdateViewController {
+    return ItemUpdateViewController(viewModel: viewModel)
   }
   
   func makeItemDisplayViewController(viewModel: ItemDisplayViewModel, coordinator: ItemDisplayCoordinator) -> ItemDisplayViewController {

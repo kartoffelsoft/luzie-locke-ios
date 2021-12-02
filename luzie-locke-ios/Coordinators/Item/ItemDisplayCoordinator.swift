@@ -41,9 +41,16 @@ class ItemDisplayCoordinator: NSObject, Coordinator {
     viewController.present(vc, animated: true, completion: nil)
   }
   
-  func navigateToChat(remoteUserId: String = "vSYEtPvIXzND6BSYYBBXwiVaI1v1") {
+  func navigateToChat(remoteUserId: String) {
     let viewController        = factory.makeChatViewController()
     viewController.viewModel  = factory.makeChatViewModel(remoteUserId: remoteUserId)
+    navigationController.pushViewController(viewController, animated: true)
+  }
+  
+  func navigateToItemUpdate(item: Item) {
+    let viewModel       = factory.makeItemUpdateViewModel(coordinator: self)
+    let viewController  = factory.makeItemUpdateViewController(viewModel: viewModel)
+    viewModel.item      = item
     navigationController.pushViewController(viewController, animated: true)
   }
 }

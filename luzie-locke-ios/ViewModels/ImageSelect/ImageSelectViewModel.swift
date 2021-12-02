@@ -9,7 +9,6 @@ import UIKit
 
 class ImageSelectViewModel: NSObject {
   
-  var selectedImages: [UIImage?] = []
   var bindableImages = Bindable<[UIImage]>()
   
   var onOpenImagePicker: ((UIImagePickerController) -> Void)?

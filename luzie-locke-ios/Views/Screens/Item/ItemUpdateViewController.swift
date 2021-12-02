@@ -1,13 +1,13 @@
 //
-//  ItemCreateViewController.swift
+//  ItemUpdateViewController.swift
 //  luzie-locke-ios
 //
-//  Created by Harry on 26.10.21.
+//  Created by Harry on 02.12.21.
 //
 
 import UIKit
 
-class ItemCreateViewController: UIViewController {
+class ItemUpdateViewController: UIViewController {
   
   private let scrollView            = UIScrollView()
   private let contentView           = UIView()
@@ -17,11 +17,11 @@ class ItemCreateViewController: UIViewController {
   private let descriptionInputView  = MultiLineTextInputView()
   private let imageSelectView       = ImageSelectView()
   
-  private let viewModel: ItemCreateViewModel
+  private let viewModel: ItemUpdateViewModel
   
   private let imageSelectViewHeight:  CGFloat = 60
   
-  init(viewModel: ItemCreateViewModel) {
+  init(viewModel: ItemUpdateViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
     self.viewModel.delegate = self
@@ -102,7 +102,7 @@ class ItemCreateViewController: UIViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardWillHideNotification, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
   }
-  
+
   @objc private func handleKeyboardShow(notification:NSNotification) {
     guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
 
@@ -144,14 +144,14 @@ class ItemCreateViewController: UIViewController {
   }
 }
 
-extension ItemCreateViewController: MultiLineTextInputViewDelegate {
+extension ItemUpdateViewController: MultiLineTextInputViewDelegate {
 
   func didChangeInput(_ textView: UITextView) {
     scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: textView.frame.height + titleInputView.frame.height + 30);
   }
 }
 
-extension ItemCreateViewController: ItemCreateViewModelDelegate {
+extension ItemUpdateViewController: ItemUpdateViewModelDelegate {
 
   func didOpenImagePicker(controller: UIImagePickerController) {
     present(controller, animated: true)
