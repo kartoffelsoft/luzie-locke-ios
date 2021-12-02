@@ -116,6 +116,7 @@
 		4ACA820E2758BA93003C7E0E /* ItemUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA820D2758BA93003C7E0E /* ItemUpdateViewController.swift */; };
 		4ACA821027590BD3003C7E0E /* InputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA820F27590BD3003C7E0E /* InputViewModel.swift */; };
 		4ACA821227590C6E003C7E0E /* DecimalInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA821127590C6E003C7E0E /* DecimalInputViewModel.swift */; };
+		4ACA821527595D26003C7E0E /* ItemUpdateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA821427595D26003C7E0E /* ItemUpdateDTO.swift */; };
 		4ADE3D312735807500ACBC60 /* AppMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */; };
 		4AED5E1D27197E1F00B7AC00 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */; };
 		4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */; };
@@ -289,6 +290,7 @@
 		4ACA820D2758BA93003C7E0E /* ItemUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemUpdateViewController.swift; sourceTree = "<group>"; };
 		4ACA820F27590BD3003C7E0E /* InputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewModel.swift; sourceTree = "<group>"; };
 		4ACA821127590C6E003C7E0E /* DecimalInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalInputViewModel.swift; sourceTree = "<group>"; };
+		4ACA821427595D26003C7E0E /* ItemUpdateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemUpdateDTO.swift; sourceTree = "<group>"; };
 		4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMainCoordinator.swift; sourceTree = "<group>"; };
 		4AED5E1927197BA400B7AC00 /* Frankfurt.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Frankfurt.gpx; sourceTree = "<group>"; };
 		4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -726,6 +728,7 @@
 				4A47E6C02730759500B9018A /* ItemReadDTO.swift */,
 				4ACA81EB2754255F003C7E0E /* ItemDeleteDTO.swift */,
 				4A01D555273D2B0A00EDFC1C /* UserProfileReadDTO.swift */,
+				4ACA821427595D26003C7E0E /* ItemUpdateDTO.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -1250,6 +1253,7 @@
 				4A47E6D4273198E300B9018A /* ItemDisplayDetailViewController.swift in Sources */,
 				4AEE61B42740F965008055F9 /* LocationMenuPopoverController.swift in Sources */,
 				4A155E602724D16600C8B867 /* UserMenuCell.swift in Sources */,
+				4ACA821527595D26003C7E0E /* ItemUpdateDTO.swift in Sources */,
 				4AED5E802720C2D200B7AC00 /* JWTDecode.swift in Sources */,
 				4A47E6D82731B8E000B9018A /* SwipeImageViewController.swift in Sources */,
 				4AED5E7527201BCF00B7AC00 /* SimpleStringStorage.swift in Sources */,

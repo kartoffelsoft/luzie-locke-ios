@@ -55,27 +55,32 @@ class ImageSelectView: UIView {
   }
   
   private func configureBindables() {
+    loadImages(viewModel?.bindableImages.value)
     viewModel?.bindableImages.bind { [weak self] images in
-      guard let images = images else { return }
-
-      self?.imageListStackView.arrangedSubviews.forEach {
-        $0.removeFromSuperview()
-      }
-      
-      images.enumerated().forEach { [weak self] (index, image) in
-        guard let self = self else { return }
-        let view = ImageSelectElementView()
-        self.imageListStackView.addArrangedSubview(view)
-        
-        view.delegate = self
-        view.setImage(image)
-        view.tag = index
-        view.heightAnchor.constraint(equalTo: self.imageListStackView.heightAnchor).isActive = true
-        view.widthAnchor.constraint(equalTo: view.heightAnchor).isActive = true
-      }
+      self?.loadImages(images)
     }
   }
 
+  private func loadImages(_ images: [UIImage]?) {
+    guard let images = images else { return }
+    
+    imageListStackView.arrangedSubviews.forEach {
+      $0.removeFromSuperview()
+    }
+    
+    images.enumerated().forEach { [weak self] (index, image) in
+      guard let self = self else { return }
+      let view = ImageSelectElementView()
+      self.imageListStackView.addArrangedSubview(view)
+      
+      view.delegate = self
+      view.setImage(image)
+      view.tag = index
+      view.heightAnchor.constraint(equalTo: self.imageListStackView.heightAnchor).isActive = true
+      view.widthAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+    }
+  }
+  
   @objc private func handleAddButtonTap() {
     viewModel?.openImagePicker()
   }

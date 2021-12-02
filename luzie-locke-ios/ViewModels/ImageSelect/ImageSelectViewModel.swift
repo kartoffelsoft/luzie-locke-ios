@@ -18,6 +18,10 @@ class ImageSelectViewModel: NSObject {
     bindableImages.value = [UIImage]()
   }
   
+  func setInitialImages(images: [UIImage]) {
+    bindableImages.value = images
+  }
+  
   func openImagePicker() {
     let controller = UIImagePickerController()
     controller.delegate = self

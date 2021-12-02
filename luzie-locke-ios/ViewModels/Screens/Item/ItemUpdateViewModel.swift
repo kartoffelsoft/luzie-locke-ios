@@ -26,6 +26,32 @@ class ItemUpdateViewModel {
       titleViewModel.setInitialText(item.title)
       priceViewModel.setInitialText(item.price)
       descriptionViewModel.setInitialText(item.description)
+      
+      if let urls = item.imageUrls {
+        var images = [UIImage](repeating: UIImage(), count: urls.count)
+        
+        let dispatchGroup = DispatchGroup()
+
+        for i in 0 ..< urls.count {
+          guard let url = urls[i] else { continue }
+          
+          dispatchGroup.enter()
+          
+          openHttpClient.downloadImage(from: url) { result in
+            switch result {
+            case .success(let image):
+              images[i] = image ?? UIImage()
+              dispatchGroup.leave()
+            case .failure:
+              ()
+            }
+          }
+        }
+      
+        dispatchGroup.notify(queue: .main) {
+          self.imageSelectViewModel.setInitialImages(images: images)
+        }
+      }
     }
   }
 
@@ -78,12 +104,14 @@ class ItemUpdateViewModel {
       guard let title = titleViewModel.getText(),
             let price = priceViewModel.getText(),
             let description = descriptionViewModel.getText(),
-            let images = imageSelectViewModel.bindableImages.value
+            let images = imageSelectViewModel.bindableImages.value,
+            let id = item?.id
       else {
+        completion(.failure(.unableToComplete))
         return
       }
 
-      itemRepository.create(title: title, price: price, description: description, images: images) { result in
+      itemRepository.update(id, title: title, price: price, description: description, images: images, oldImageUrls: item?.imageUrls) { result in
         switch result {
         case .success:
           completion(.success(()))

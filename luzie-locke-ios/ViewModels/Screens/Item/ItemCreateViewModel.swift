@@ -70,7 +70,7 @@ class ItemCreateViewModel {
       else {
         return
       }
-
+      
       itemRepository.create(title: title, price: price, description: description, images: images) { result in
         switch result {
         case .success:
