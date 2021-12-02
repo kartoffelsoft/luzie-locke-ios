@@ -1,13 +1,13 @@
 //
-//  ImageSelectButton.swift
+//  ImageSelectAddButton.swift
 //  luzie-locke-ios
 //
-//  Created by Harry on 27.10.21.
+//  Created by Harry on 01.12.21.
 //
 
 import UIKit
 
-class ImageSelectButton: UIButton {
+class ImageSelectAddButton: UIButton {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -19,10 +19,10 @@ class ImageSelectButton: UIButton {
     backgroundColor                           = Colors.primaryColorLight2.withAlphaComponent(0.2)
     clipsToBounds                             = true
     adjustsImageWhenDisabled                  = true
-    layer.cornerRadius                        = 8
-    layer.borderWidth                         = 1
-    layer.borderColor                         = UIColor(named: "PrimaryColor")?.cgColor
-    layer.cornerRadius                        = 5
+//    layer.cornerRadius                        = 8
+//    layer.borderWidth                         = 1
+//    layer.borderColor                         = UIColor(named: "PrimaryColor")?.cgColor
+//    layer.cornerRadius                        = 5
     
     setImage(Images.imageAdd , for: .normal)
   }

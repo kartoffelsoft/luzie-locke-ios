@@ -1,20 +1,29 @@
 //
-//  DecimalInputCell.swift
+//  SingleLineDecimalInputView.swift
 //  luzie-locke-ios
 //
-//  Created by Harry on 27.10.21.
+//  Created by Harry on 01.12.21.
 //
 
 import UIKit
 
-class DecimalInputCell: UICollectionViewCell {
+class SingleLineDecimalInputView: UIView {
   
-  static let reuseIdentifier    = "DecimalInputCell"
+  class CustomTextField: UITextField {
+    
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+      return bounds.insetBy(dx: 12, dy: 0)
+    }
+    
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+      return bounds.insetBy(dx: 12, dy: 0)
+    }
+  }
   
-  private let textField         = SingleLineInputTextField()
+  private let textField         = CustomTextField()
   private let placeholderColor  = Colors.primaryColorLight1
   
-  var viewModel: DecimalInputCellViewModel?
+  var viewModel: SingleLineDecimalInputViewModel?
   var placeholder: String? {
     didSet {
       textField.text      = placeholder
@@ -28,12 +37,16 @@ class DecimalInputCell: UICollectionViewCell {
   }
   
   private func configure() {
-    addSubview(textField)
+    translatesAutoresizingMaskIntoConstraints           = false
+    textField.translatesAutoresizingMaskIntoConstraints = false
     
+    addSubview(textField)
     textField.pinToEdges(of: self)
+
     textField.delegate        = self
+    textField.font            = Fonts.body
     textField.keyboardType    = UIKeyboardType.decimalPad
-    textField.backgroundColor = Colors.primaryColorLight3.withAlphaComponent(0.2)
+    textField.backgroundColor = .clear
     textField.addTarget(self, action: #selector(handleInputChange), for: .editingChanged)
   }
 
@@ -46,7 +59,7 @@ class DecimalInputCell: UICollectionViewCell {
   }
 }
 
-extension DecimalInputCell: UITextFieldDelegate {
+extension SingleLineDecimalInputView: UITextFieldDelegate {
   
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     return viewModel?.isNextStringOkay(string) ?? false

@@ -8,32 +8,43 @@
 import UIKit
 
 class ItemCreateViewController: UIViewController {
-
-  enum Section: Int {
-    case imageSelect = 0, title, price, description
-    static var numberOfSections: Int { return 4 }
-  }
   
-  static let headerId = "HeaderId"
+  private let scrollView            = UIScrollView()
+  private let contentView           = UIView()
+  
+  private let titleInputView        = SingleLineTextInputView()
+  private let priceInputView        = SingleLineDecimalInputView()
+  private let descriptionInputView  = MultiLineTextInputView()
+  private let imageSelectView       = ImageSelectView()
   
   private let viewModel: ItemCreateViewModel
   
-  private var collectionView: UICollectionView!
+  private let imageSelectViewHeight:  CGFloat = 60
   
   init(viewModel: ItemCreateViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
     self.viewModel.delegate = self
   }
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    titleInputView.placeholder        = "Title"
+    priceInputView.placeholder        = "Price"
+    descriptionInputView.placeholder  = "Description"
+    
+    titleInputView.viewModel          = viewModel.titleViewModel
+    priceInputView.viewModel          = viewModel.priceViewModel
+    descriptionInputView.viewModel    = viewModel.descriptionViewModel
+    imageSelectView.viewModel         = viewModel.imageSelectViewModel
+    
+    descriptionInputView.delegate = self
+    
     configureBackground()
     configureNavigationBar()
-    configureCollectionView()
+    configureLayout()
     configureKeyboardInput()
-    configureBindables()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -46,112 +57,81 @@ class ItemCreateViewController: UIViewController {
       view.backgroundColor = UIColor(patternImage: image)
     }
   }
-
+  
   private func configureNavigationBar() {
-    if let navigationController = navigationController,
-       let image = CustomGradient.navBarBackground(on: navigationController.navigationBar) {
-      navigationController.navigationBar.barTintColor = UIColor(patternImage: image)
-    }
-    
-    navigationItem.rightBarButtonItem = UIBarButtonItem(image: Images.upload, style: .plain, target: self, action: #selector(handleUpload))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(image: Images.upload, style: .plain, target: self, action: #selector(handleUploadButtonTap))
   }
+  
+  private func configureLayout() {
+    scrollView.translatesAutoresizingMaskIntoConstraints  = false
 
-  private func configureCollectionView() {
-    let layout = UICollectionViewCompositionalLayout { section, env in
-      let padding: CGFloat = 4
-      switch(Section(rawValue: section)) {
-      case .imageSelect:
-        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-        item.contentInsets = .init(top: padding, leading: padding, bottom: padding, trailing: padding)
-        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(250)), subitems: [item])
-        let section = NSCollectionLayoutSection(group: group)
-        
-        return section
-        
-      case .title:
-        fallthrough
-        
-      case .price:
-        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-        item.contentInsets = .init(top: padding, leading: padding, bottom: padding, trailing: padding)
-        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(60)), subitems: [item])
-        let section = NSCollectionLayoutSection(group: group)
-        
-        return section
-        
-      case .description:
-        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-        item.contentInsets = .init(top: padding, leading: padding, bottom: padding, trailing: padding)
-        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(310)), subitems: [item])
-        let section = NSCollectionLayoutSection(group: group)
-        
-        return section
-        
-      default:
-        return nil
-      }
-    }
+    view.addSubview(scrollView)
+    view.addSubview(imageSelectView)
     
-    collectionView                      = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
-    collectionView.delegate             = self
-    collectionView.dataSource           = self
-    collectionView.backgroundColor      = .clear
-    collectionView.keyboardDismissMode  = .interactive
+    scrollView.addSubview(titleInputView)
+    scrollView.addSubview(priceInputView)
+    scrollView.addSubview(descriptionInputView)
+
+    let padding: CGFloat = 10
     
-    collectionView.register(ImageSelectCell.self, forCellWithReuseIdentifier: ImageSelectCell.reuseIdentifier)
-    collectionView.register(TextInputCell.self, forCellWithReuseIdentifier: TextInputCell.reuseIdentifier)
-    collectionView.register(DecimalInputCell.self, forCellWithReuseIdentifier: DecimalInputCell.reuseIdentifier)
-    collectionView.register(MultiLineTextInputCell.self, forCellWithReuseIdentifier: MultiLineTextInputCell.reuseIdentifier)
-    
-    view.addSubview(collectionView)
+    NSLayoutConstraint.activate([
+      scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+      scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      scrollView.bottomAnchor.constraint(equalTo: imageSelectView.topAnchor),
+      
+      titleInputView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+      titleInputView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+      titleInputView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -padding * 2),
+      titleInputView.heightAnchor.constraint(equalToConstant: 40),
+      
+      priceInputView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+      priceInputView.topAnchor.constraint(equalTo: titleInputView.bottomAnchor),
+      priceInputView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -padding * 2),
+      priceInputView.heightAnchor.constraint(equalToConstant: 40),
+      
+      descriptionInputView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+      descriptionInputView.topAnchor.constraint(equalTo: priceInputView.bottomAnchor),
+      descriptionInputView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -padding * 2),
+      descriptionInputView.heightAnchor.constraint(greaterThanOrEqualToConstant: 300),
+      
+      imageSelectView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      imageSelectView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      imageSelectView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+      imageSelectView.heightAnchor.constraint(equalToConstant: imageSelectViewHeight)
+    ])
   }
   
   private func configureKeyboardInput() {
-    NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardWillHideNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
   }
   
-  private func configureBindables() {
-    viewModel.bindableIsLoading.bind { [weak self] isLoading in
-      guard let isLoading = isLoading else { return }
-      
-      if isLoading {
-        self?.showLoadingView()
-      } else {
-        self?.dismissLoadingView()
-      }
-    }
-  }
-  
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-}
+  @objc private func handleKeyboardShow(notification:NSNotification) {
+    guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
 
-extension ItemCreateViewController: UICollectionViewDelegate {
-  
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    switch Section(rawValue: indexPath.section) {
-    case .imageSelect:
-      ()
-    case .title:
-      ()
-    case .price:
-      ()
-    case .description:
-      ()
-    default:
-      ()
+    let keyboardScreenEndFrame = keyboardValue.cgRectValue
+    let keyboardViewEndFrame   = view.convert(keyboardScreenEndFrame, from: view.window)
+
+    if notification.name == UIResponder.keyboardWillHideNotification {
+      scrollView.contentInset = .zero
+//      imageSelectView.frame.origin.y = imageSelectViewOriginY
+//      UIView.animate(withDuration: 100) {
+//        self.view.layoutIfNeeded()
+//      }
+    } else {
+      scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height - view.safeAreaInsets.bottom - imageSelectViewHeight, right: 0)
+      
+//      imageSelectView.frame.origin.y = keyboardViewEndFrame.minY - imageSelectViewHeight
+//      UIView.animate(withDuration: 100) {
+//        self.view.layoutIfNeeded()
+//      }
     }
+
+    scrollView.scrollIndicatorInsets = scrollView.contentInset
   }
   
-  func numberOfSections(in collectionView: UICollectionView) -> Int {
-    return Section.numberOfSections
-  }
-  
-  @objc private func handleUpload() {
+  @objc private func handleUploadButtonTap() {
     viewModel.upload { [weak self] result in
       switch result {
       case .success: ()
@@ -163,50 +143,24 @@ extension ItemCreateViewController: UICollectionViewDelegate {
     }
   }
   
-  @objc private func handleKeyboardShow(notification:NSNotification) {
-    print("handleKeyboardShow")
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 }
 
-extension ItemCreateViewController: UICollectionViewDataSource {
-  
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 1
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    switch Section(rawValue: indexPath.section) {
-    case .imageSelect:
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageSelectCell.reuseIdentifier, for: indexPath) as! ImageSelectCell
-      cell.viewModel    = viewModel.imageSelectViewModel
-      return cell
-    case .title:
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextInputCell.reuseIdentifier, for: indexPath) as! TextInputCell
-      cell.placeholder  = "Title"
-      cell.viewModel    = viewModel.titleViewModel
-      return cell
-    case .price:
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DecimalInputCell.reuseIdentifier, for: indexPath) as! DecimalInputCell
-      cell.placeholder  = "Price"
-      cell.viewModel    = viewModel.priceViewModel
-      return cell
-    case .description:
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MultiLineTextInputCell.reuseIdentifier, for: indexPath) as! MultiLineTextInputCell
-      cell.placeholder  = "Description"
-      cell.viewModel    = viewModel.descriptionViewModel
-      return cell
-    default:
-      return  UICollectionViewCell()
-    }
+extension ItemCreateViewController: MultiLineTextInputViewDelegate {
+
+  func inputDidChange(_ textView: UITextView) {
+    scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: textView.frame.height + titleInputView.frame.height + 30);
   }
 }
 
 extension ItemCreateViewController: ItemCreateViewModelDelegate {
-  
+
   func didOpenImagePicker(controller: UIImagePickerController) {
     present(controller, animated: true)
   }
-  
+
   func didCloseImagePicker() {
     dismiss(animated: true)
   }

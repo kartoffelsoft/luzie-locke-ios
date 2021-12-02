@@ -21,10 +21,10 @@ class ItemCreateViewModel {
   let openHttpClient:         OpenHTTP
   let itemRepository:         ItemRepository
 
-  let imageSelectViewModel:   ImageSelectCellViewModel
-  let titleViewModel:         TextInputCellViewModel
-  let priceViewModel:         DecimalInputCellViewModel
-  let descriptionViewModel:   TextInputCellViewModel
+  let imageSelectViewModel:   ImageSelectViewModel
+  let titleViewModel:         SingleLineTextInputViewModel
+  let priceViewModel:         SingleLineDecimalInputViewModel
+  let descriptionViewModel:   MultiLineTextInputViewModel
   
   var bindableIsLoading = Bindable<Bool>()
   
@@ -37,10 +37,10 @@ class ItemCreateViewModel {
     self.openHttpClient         = openHttpClient
     self.itemRepository         = itemRepository
     
-    imageSelectViewModel    = ImageSelectCellViewModel()
-    titleViewModel          = TextInputCellViewModel()
-    priceViewModel          = DecimalInputCellViewModel()
-    descriptionViewModel    = TextInputCellViewModel()
+    imageSelectViewModel    = ImageSelectViewModel()
+    titleViewModel          = SingleLineTextInputViewModel()
+    priceViewModel          = SingleLineDecimalInputViewModel()
+    descriptionViewModel    = MultiLineTextInputViewModel()
     
     imageSelectViewModel.onOpenImagePicker  = self.openImagePicker
     imageSelectViewModel.onCloseImagePicker = self.closeImagePicker
@@ -48,9 +48,7 @@ class ItemCreateViewModel {
   
   private func validate() -> Result<Void, LLError> {
     
-    if imageSelectViewModel.selectedImages[0] == nil &&
-       imageSelectViewModel.selectedImages[1] == nil &&
-       imageSelectViewModel.selectedImages[2] == nil {
+    if imageSelectViewModel.bindableImages.value?.count == 0 {
       return .failure(.photoNotSelected)
     }
     
@@ -58,7 +56,7 @@ class ItemCreateViewModel {
     if title.count < 3                                     { return .failure(.titleInvalid) }
 
     guard let price = priceViewModel.text else             { return .failure(.priceInvalid) }
-    if price.last == "."                                   { return .failure(.priceInvalid)  }
+    if price.last == "."                                   { return .failure(.priceInvalid) }
 
     guard let description = descriptionViewModel.text else { return .failure(.descriptionInvalid) }
     if description.count < 3                               { return .failure(.descriptionInvalid) }
@@ -98,9 +96,9 @@ class ItemCreateViewModel {
   private func executeBackendUpload(completion: @escaping (Result<Void, LLError>) -> Void) {
     if let title = titleViewModel.text,
        let price = priceViewModel.text,
-       let description = descriptionViewModel.text {
-      
-      itemRepository.create(title: title, price: price, description: description, images: imageSelectViewModel.selectedImages) { result in
+       let description = descriptionViewModel.text,
+       let images = imageSelectViewModel.bindableImages.value {
+      itemRepository.create(title: title, price: price, description: description, images: images) { result in
         switch result {
         case .success:
           completion(.success(()))

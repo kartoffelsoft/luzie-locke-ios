@@ -9,7 +9,7 @@ import UIKit
 
 protocol ItemRepositoryProtocol {
 
-  func create(title: String, price: String, description: String, images: [UIImage?], completion: @escaping (Result<Void, LLError>) -> Void)
+  func create(title: String, price: String, description: String, images: [UIImage], completion: @escaping (Result<Void, LLError>) -> Void)
   func read(_ id: String, completion: @escaping (Result<Item, LLError>) -> Void)
   func readListLocal(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
   func readListSearch(keyword: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
@@ -31,19 +31,14 @@ class ItemRepository: ItemRepositoryProtocol {
     self.imageRepository = imageRepository
   }
   
-  func create(title: String, price: String, description: String, images: [UIImage?], completion: @escaping (Result<Void, LLError>) -> Void) {
-    var imageUrls: [String?] = [ nil, nil, nil ]
+  func create(title: String, price: String, description: String, images: [UIImage], completion: @escaping (Result<Void, LLError>) -> Void) {
+    var imageUrls = [String?](repeating: nil, count: images.count)
     
     let dispatchGroup = DispatchGroup()
 
-    for i in 0 ..< 3 {
-      guard let image = images[i] else {
-        imageUrls[i] = nil
-        continue
-      }
-      
+    for i in 0 ..< images.count {
       dispatchGroup.enter()
-      imageRepository.create(image: image) { result in
+      imageRepository.create(image: images[i]) { result in
         switch result {
         case .success(let url):
           imageUrls[i] = url

@@ -1,20 +1,29 @@
 //
-//  TextInputCell.swift
+//  SingleLineTextInputView.swift
 //  luzie-locke-ios
 //
-//  Created by Harry on 27.10.21.
+//  Created by Harry on 30.11.21.
 //
 
 import UIKit
 
-class TextInputCell: UICollectionViewCell {
+class SingleLineTextInputView: UIView {
   
-  static let reuseIdentifier    = "TextInputCell"
-  
-  private let textField         = SingleLineInputTextField()
+  class CustomTextField: UITextField {
+    
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
+      return bounds.insetBy(dx: 12, dy: 0)
+    }
+    
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
+      return bounds.insetBy(dx: 12, dy: 0)
+    }
+  }
+
+  private let textField         = CustomTextField()
   private let placeholderColor  = Colors.primaryColorLight1
   
-  var viewModel: TextInputCellViewModel?
+  var viewModel: SingleLineTextInputViewModel?
   var placeholder: String? {
     didSet {
       textField.text      = placeholder
@@ -28,14 +37,19 @@ class TextInputCell: UICollectionViewCell {
   }
   
   private func configure() {
+    translatesAutoresizingMaskIntoConstraints           = false
+    textField.translatesAutoresizingMaskIntoConstraints = false
+    
     addSubview(textField)
-
     textField.pinToEdges(of: self)
-    textField.delegate = self
-    textField.backgroundColor = Colors.primaryColorLight3.withAlphaComponent(0.2)
+    
+    textField.delegate        = self
+    textField.font            = Fonts.body
+    textField.backgroundColor = .clear
+    
     textField.addTarget(self, action: #selector(handleInputChange), for: .editingChanged)
   }
-
+  
   @objc private func handleInputChange(textField: UITextField) {
     viewModel?.text = textField.text
   }
@@ -45,7 +59,7 @@ class TextInputCell: UICollectionViewCell {
   }
 }
 
-extension TextInputCell: UITextFieldDelegate {
+extension SingleLineTextInputView: UITextFieldDelegate {
   
   func textFieldDidBeginEditing(_ textField: UITextField) {
     if textField.textColor == placeholderColor && textField.isFirstResponder {

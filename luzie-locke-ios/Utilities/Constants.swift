@@ -43,9 +43,7 @@ enum Images {
                                           withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .bold))?
                                     .withTintColor(Colors.secondaryColor, renderingMode: .alwaysOriginal)
   
-  static let selectImage        = UIImage(systemName: "photo",
-                                          withConfiguration: UIImage.SymbolConfiguration(pointSize: 30, weight: .medium))?
-                                    .withTintColor(Colors.primaryColorLight1, renderingMode: .alwaysOriginal)
+  static let imageAdd           = UIImage(named: "ImageAdd")
   
   static let upload             = UIImage(systemName: "icloud.and.arrow.up",
                                           withConfiguration: UIImage.SymbolConfiguration(weight: .bold))?
@@ -86,6 +84,10 @@ enum Images {
   static let itemDelete         = UIImage(systemName: "trash.circle",
                                           withConfiguration: UIImage.SymbolConfiguration(pointSize: 35, weight: .medium))?
                                     .withTintColor(Colors.secondaryColor, renderingMode: .alwaysOriginal)
+  
+  static let cross              = UIImage(systemName: "xmark.circle",
+                                          withConfiguration: UIImage.SymbolConfiguration(weight: .regular))?
+                                    .withTintColor(UIColor.white, renderingMode: .alwaysOriginal)
 }
 
 enum Colors {
