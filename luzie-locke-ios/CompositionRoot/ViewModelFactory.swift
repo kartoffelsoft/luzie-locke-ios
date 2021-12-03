@@ -78,6 +78,7 @@ extension CompositionRoot: ViewModelFactory {
                                 localProfileRepository: localProfileRepository,
                                 openHttpClient: openHttpClient,
                                 itemRepository: itemRepository,
+                                favoriteItemRepository: favoriteItemRepository,
                                 id: id)
   }
   

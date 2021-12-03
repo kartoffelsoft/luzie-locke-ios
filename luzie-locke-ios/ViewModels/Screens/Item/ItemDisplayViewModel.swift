@@ -14,12 +14,13 @@ protocol ItemDisplayViewModelDelegate: AnyObject {
 
 class ItemDisplayViewModel {
   
-  weak var delegate:                ItemDisplayViewModelDelegate?
+  weak var delegate:                  ItemDisplayViewModelDelegate?
   
-  private let coordinator:          ItemDisplayCoordinator
-  private let openHttpClient:       OpenHTTP
-  private let itemRepository:       ItemRepositoryProtocol
-  private let id:                   String
+  private let coordinator:            ItemDisplayCoordinator
+  private let openHttpClient:         OpenHTTP
+  private let itemRepository:         ItemRepositoryProtocol
+  private let favoriteItemRepository: FavoriteItemRepositoryProtocol
+  private let id:                     String
   
   var bindableIsLoading = Bindable<Bool>()
   let bindablePriceText = Bindable<NSAttributedString>()
@@ -44,14 +45,18 @@ class ItemDisplayViewModel {
        localProfileRepository:  LocalProfileRepository,
        openHttpClient:          OpenHTTP,
        itemRepository:          ItemRepositoryProtocol,
+       favoriteItemRepository:  FavoriteItemRepositoryProtocol,
        id:                      String) {
     self.coordinator            = coordinator
     self.openHttpClient         = openHttpClient
     self.itemRepository         = itemRepository
+    self.favoriteItemRepository = favoriteItemRepository
     self.id                     = id
     
     itemDisplayBriefViewModel = ItemDisplayBriefViewModel(coordinator: coordinator, openHttpClient: openHttpClient)
-    itemActionPanelViewModel  = ItemActionPanelViewModel(coordinator: coordinator, localProfileRepository: localProfileRepository)
+    itemActionPanelViewModel  = ItemActionPanelViewModel(coordinator: coordinator,
+                                                         localProfileRepository: localProfileRepository,
+                                                         favoriteItemRepository: favoriteItemRepository)
   }
   
   func viewDidLoad() {

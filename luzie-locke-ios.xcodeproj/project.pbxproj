@@ -119,6 +119,10 @@
 		4ADE3D312735807500ACBC60 /* AppMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */; };
 		4AE229A2275A2B7B0070350E /* ItemComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229A1275A2B7B0070350E /* ItemComposeViewController.swift */; };
 		4AE229A6275A33C40070350E /* ItemComposeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229A5275A33C40070350E /* ItemComposeViewModel.swift */; };
+		4AE229A8275A42D90070350E /* FavoriteItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229A7275A42D90070350E /* FavoriteItemRepository.swift */; };
+		4AE229AA275A49DD0070350E /* FavoriteItemCreateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229A9275A49DD0070350E /* FavoriteItemCreateDTO.swift */; };
+		4AE229AC275A51FD0070350E /* FavoriteItemDeleteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229AB275A51FD0070350E /* FavoriteItemDeleteDTO.swift */; };
+		4AE229AE275A707F0070350E /* FavoriteItemReadExistDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229AD275A707F0070350E /* FavoriteItemReadExistDTO.swift */; };
 		4AED5E1D27197E1F00B7AC00 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */; };
 		4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */; };
 		4AED5E25271A0CFD00B7AC00 /* MKViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E24271A0CFD00B7AC00 /* MKViewMock.swift */; };
@@ -293,6 +297,10 @@
 		4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMainCoordinator.swift; sourceTree = "<group>"; };
 		4AE229A1275A2B7B0070350E /* ItemComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComposeViewController.swift; sourceTree = "<group>"; };
 		4AE229A5275A33C40070350E /* ItemComposeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComposeViewModel.swift; sourceTree = "<group>"; };
+		4AE229A7275A42D90070350E /* FavoriteItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemRepository.swift; sourceTree = "<group>"; };
+		4AE229A9275A49DD0070350E /* FavoriteItemCreateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemCreateDTO.swift; sourceTree = "<group>"; };
+		4AE229AB275A51FD0070350E /* FavoriteItemDeleteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemDeleteDTO.swift; sourceTree = "<group>"; };
+		4AE229AD275A707F0070350E /* FavoriteItemReadExistDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemReadExistDTO.swift; sourceTree = "<group>"; };
 		4AED5E1927197BA400B7AC00 /* Frankfurt.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Frankfurt.gpx; sourceTree = "<group>"; };
 		4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerTests.swift; sourceTree = "<group>"; };
@@ -710,6 +718,7 @@
 			isa = PBXGroup;
 			children = (
 				4A47E6B5272F106100B9018A /* ItemRepository.swift */,
+				4AE229A7275A42D90070350E /* FavoriteItemRepository.swift */,
 				4AC5667D273BE7E400776DBD /* LocalProfileRepository.swift */,
 				4A01D553273D25D900EDFC1C /* UserProfileRepository.swift */,
 				4AC5667B273BE3E000776DBD /* ChatMessageRepository.swift */,
@@ -729,6 +738,9 @@
 				4ACA81EB2754255F003C7E0E /* ItemDeleteDTO.swift */,
 				4A01D555273D2B0A00EDFC1C /* UserProfileReadDTO.swift */,
 				4ACA821427595D26003C7E0E /* ItemUpdateDTO.swift */,
+				4AE229A9275A49DD0070350E /* FavoriteItemCreateDTO.swift */,
+				4AE229AB275A51FD0070350E /* FavoriteItemDeleteDTO.swift */,
+				4AE229AD275A707F0070350E /* FavoriteItemReadExistDTO.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -1277,6 +1289,7 @@
 				4A47E6B9272F622400B9018A /* ItemReadListDTO.swift in Sources */,
 				4A47E6E6273317FA00B9018A /* ViewControllerFactory.swift in Sources */,
 				4AED5E8627219E7300B7AC00 /* ProfileCell.swift in Sources */,
+				4AE229AC275A51FD0070350E /* FavoriteItemDeleteDTO.swift in Sources */,
 				4A155E482722F31C00C8B867 /* KHTTPClient.swift in Sources */,
 				4A09C69B273730B900FD4E42 /* ItemDisplayDetailViewModel.swift in Sources */,
 				4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */,
@@ -1284,6 +1297,7 @@
 				4ACA8208275790ED003C7E0E /* ImageSelectViewModel.swift in Sources */,
 				4A3B5266271239CE00EF4F93 /* AppDelegate.swift in Sources */,
 				4A155E4027229D3600C8B867 /* AvatarImageView.swift in Sources */,
+				4AE229A8275A42D90070350E /* FavoriteItemRepository.swift in Sources */,
 				4A22DB462753B06D00E5125B /* RoundButton.swift in Sources */,
 				4ACA820C2758BA6C003C7E0E /* ItemUpdateViewModel.swift in Sources */,
 				4AEE8FAB272B5C69004CB686 /* ItemCreateViewModel.swift in Sources */,
@@ -1298,6 +1312,7 @@
 				4A47E6E12731DA8F00B9018A /* SwipeImageViewModel.swift in Sources */,
 				4A3B52A22712461500EF4F93 /* MessagesViewController.swift in Sources */,
 				4A3B5268271239CE00EF4F93 /* SceneDelegate.swift in Sources */,
+				4AE229AE275A707F0070350E /* FavoriteItemReadExistDTO.swift in Sources */,
 				4ACA81EC2754255F003C7E0E /* ItemDeleteDTO.swift in Sources */,
 				4A3B529B2712401D00EF4F93 /* HomeViewController.swift in Sources */,
 				4ACA81F7275746D8003C7E0E /* SingleLineDecimalInputView.swift in Sources */,
@@ -1331,6 +1346,7 @@
 				4AED5E3D271D95FC00B7AC00 /* AuthenticationRequest.swift in Sources */,
 				4AED5E32271C189E00B7AC00 /* BodyLabel.swift in Sources */,
 				4A47E6A8272CA01E00B9018A /* CloudStorage.swift in Sources */,
+				4AE229AA275A49DD0070350E /* FavoriteItemCreateDTO.swift in Sources */,
 				4A09C6982737120800FD4E42 /* ItemDisplayCoordinator.swift in Sources */,
 				4A09C6A627392DE100FD4E42 /* ChatInputAccessoryView.swift in Sources */,
 				4A01D55E273DC64100EDFC1C /* RecentMessageCellViewModel.swift in Sources */,

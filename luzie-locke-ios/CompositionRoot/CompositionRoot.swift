@@ -20,6 +20,7 @@ class CompositionRoot {
 
   lazy var imageRepository        = ImageRepository(cloudStorage: cloudStorage)
   lazy var itemRepository         = ItemRepository(backendClient: backendClient, imageRepository: imageRepository)
+  lazy var favoriteItemRepository = FavoriteItemRepository(backendClient: backendClient)
   lazy var localProfileRepository = LocalProfileRepository(key: "Profile")
   lazy var userProfileRepository  = UserProfileRepository(backendClient: backendClient,
                                                           localProfileRepository: localProfileRepository)

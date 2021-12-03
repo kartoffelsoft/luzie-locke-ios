@@ -130,6 +130,14 @@ class ItemActionPanelView: UIView {
       self.buyerView.isHidden   = isMine
       self.sellerView.isHidden  = !isMine
     }
+    
+    viewModel.bindableFavoriteOn.bind { [weak self] favoriteOn in
+      guard let self = self else { return }
+      guard let favoriteOn = favoriteOn else { return }
+      DispatchQueue.main.async {
+        self.buyerFavoriteButton.setImage(favoriteOn ? Images.favoriteOn : Images.favoriteOff, for: .normal)
+      }
+    }
   }
   
   required init?(coder: NSCoder) {
