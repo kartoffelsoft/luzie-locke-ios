@@ -7,13 +7,9 @@
 
 import UIKit
 
-protocol ItemUpdateViewModelDelegate: AnyObject {
-  func didOpenImagePicker(controller: UIImagePickerController)
-}
-
-class ItemUpdateViewModel {
+class ItemUpdateViewModel: ItemComposeViewModel {
   
-  weak var delegate:          ItemUpdateViewModelDelegate?
+  weak var delegate:          ItemComposeViewModelDelegate?
   
   private let coordinator:            ItemDisplayCoordinator
   private let openHttpClient:         OpenHTTP

@@ -113,11 +113,12 @@
 		4ACA8208275790ED003C7E0E /* ImageSelectViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA8207275790ED003C7E0E /* ImageSelectViewModel.swift */; };
 		4ACA820A2757A39D003C7E0E /* ImageSelectElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA82092757A39D003C7E0E /* ImageSelectElementView.swift */; };
 		4ACA820C2758BA6C003C7E0E /* ItemUpdateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA820B2758BA6C003C7E0E /* ItemUpdateViewModel.swift */; };
-		4ACA820E2758BA93003C7E0E /* ItemUpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA820D2758BA93003C7E0E /* ItemUpdateViewController.swift */; };
 		4ACA821027590BD3003C7E0E /* InputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA820F27590BD3003C7E0E /* InputViewModel.swift */; };
 		4ACA821227590C6E003C7E0E /* DecimalInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA821127590C6E003C7E0E /* DecimalInputViewModel.swift */; };
 		4ACA821527595D26003C7E0E /* ItemUpdateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA821427595D26003C7E0E /* ItemUpdateDTO.swift */; };
 		4ADE3D312735807500ACBC60 /* AppMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */; };
+		4AE229A2275A2B7B0070350E /* ItemComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229A1275A2B7B0070350E /* ItemComposeViewController.swift */; };
+		4AE229A6275A33C40070350E /* ItemComposeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229A5275A33C40070350E /* ItemComposeViewModel.swift */; };
 		4AED5E1D27197E1F00B7AC00 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */; };
 		4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */; };
 		4AED5E25271A0CFD00B7AC00 /* MKViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E24271A0CFD00B7AC00 /* MKViewMock.swift */; };
@@ -155,7 +156,6 @@
 		4AEE8F6D2726CC73004CB686 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F6C2726CC73004CB686 /* HomeViewModel.swift */; };
 		4AEE8F6F2726DF93004CB686 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F6E2726DF93004CB686 /* ItemCell.swift */; };
 		4AEE8F712726E082004CB686 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F702726E082004CB686 /* Item.swift */; };
-		4AEE8F742727BC93004CB686 /* ItemCreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F732727BC93004CB686 /* ItemCreateViewController.swift */; };
 		4AEE8F772727E84F004CB686 /* ItemCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F762727E84F004CB686 /* ItemCellViewModel.swift */; };
 		4AEE8F7A272803FB004CB686 /* ProfileStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F79272803FB004CB686 /* ProfileStorageMock.swift */; };
 		4AEE8F7C27280504004CB686 /* SimpleStringStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F7B27280504004CB686 /* SimpleStringStorageMock.swift */; };
@@ -287,11 +287,12 @@
 		4ACA8207275790ED003C7E0E /* ImageSelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectViewModel.swift; sourceTree = "<group>"; };
 		4ACA82092757A39D003C7E0E /* ImageSelectElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectElementView.swift; sourceTree = "<group>"; };
 		4ACA820B2758BA6C003C7E0E /* ItemUpdateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemUpdateViewModel.swift; sourceTree = "<group>"; };
-		4ACA820D2758BA93003C7E0E /* ItemUpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemUpdateViewController.swift; sourceTree = "<group>"; };
 		4ACA820F27590BD3003C7E0E /* InputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewModel.swift; sourceTree = "<group>"; };
 		4ACA821127590C6E003C7E0E /* DecimalInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalInputViewModel.swift; sourceTree = "<group>"; };
 		4ACA821427595D26003C7E0E /* ItemUpdateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemUpdateDTO.swift; sourceTree = "<group>"; };
 		4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMainCoordinator.swift; sourceTree = "<group>"; };
+		4AE229A1275A2B7B0070350E /* ItemComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComposeViewController.swift; sourceTree = "<group>"; };
+		4AE229A5275A33C40070350E /* ItemComposeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComposeViewModel.swift; sourceTree = "<group>"; };
 		4AED5E1927197BA400B7AC00 /* Frankfurt.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Frankfurt.gpx; sourceTree = "<group>"; };
 		4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerTests.swift; sourceTree = "<group>"; };
@@ -329,7 +330,6 @@
 		4AEE8F6C2726CC73004CB686 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		4AEE8F6E2726DF93004CB686 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		4AEE8F702726E082004CB686 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		4AEE8F732727BC93004CB686 /* ItemCreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCreateViewController.swift; sourceTree = "<group>"; };
 		4AEE8F762727E84F004CB686 /* ItemCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellViewModel.swift; sourceTree = "<group>"; };
 		4AEE8F79272803FB004CB686 /* ProfileStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorageMock.swift; sourceTree = "<group>"; };
 		4AEE8F7B27280504004CB686 /* SimpleStringStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleStringStorageMock.swift; sourceTree = "<group>"; };
@@ -996,12 +996,11 @@
 		4AEE8F722727BC6D004CB686 /* Item */ = {
 			isa = PBXGroup;
 			children = (
-				4AEE8F732727BC93004CB686 /* ItemCreateViewController.swift */,
-				4ACA820D2758BA93003C7E0E /* ItemUpdateViewController.swift */,
 				4A47E6BE273028BE00B9018A /* ItemDisplayViewController.swift */,
 				4A47E6D127317CA700B9018A /* ItemDisplayBriefViewController.swift */,
 				4A47E6D3273198E300B9018A /* ItemDisplayDetailViewController.swift */,
 				4A3B529C2712421300EF4F93 /* ItemSearchViewController.swift */,
+				4AE229A1275A2B7B0070350E /* ItemComposeViewController.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -1100,6 +1099,7 @@
 		4AEE8FAD272BD46F004CB686 /* Item */ = {
 			isa = PBXGroup;
 			children = (
+				4AE229A5275A33C40070350E /* ItemComposeViewModel.swift */,
 				4AEE8FAA272B5C69004CB686 /* ItemCreateViewModel.swift */,
 				4ACA820B2758BA6C003C7E0E /* ItemUpdateViewModel.swift */,
 				4A47E6BC2730288200B9018A /* ItemDisplayViewModel.swift */,
@@ -1302,7 +1302,6 @@
 				4A3B529B2712401D00EF4F93 /* HomeViewController.swift in Sources */,
 				4ACA81F7275746D8003C7E0E /* SingleLineDecimalInputView.swift in Sources */,
 				4A47E6C12730759500B9018A /* ItemReadDTO.swift in Sources */,
-				4AEE8F742727BC93004CB686 /* ItemCreateViewController.swift in Sources */,
 				4AED5E65271F729F00B7AC00 /* TokenHeaderRequestInterceptor.swift in Sources */,
 				4A47E6CD27314D4600B9018A /* ItemActionPanelView.swift in Sources */,
 				4AED5E5A271EBEE700B7AC00 /* BackendClient.swift in Sources */,
@@ -1324,6 +1323,7 @@
 				4A3B52E32715C11900EF4F93 /* SettingsCoordinator.swift in Sources */,
 				4ACA821027590BD3003C7E0E /* InputViewModel.swift in Sources */,
 				4AEE8F6D2726CC73004CB686 /* HomeViewModel.swift in Sources */,
+				4AE229A6275A33C40070350E /* ItemComposeViewModel.swift in Sources */,
 				4AEE8F6F2726DF93004CB686 /* ItemCell.swift in Sources */,
 				4A47E6D227317CA700B9018A /* ItemDisplayBriefViewController.swift in Sources */,
 				4A01D554273D25D900EDFC1C /* UserProfileRepository.swift in Sources */,
@@ -1348,7 +1348,6 @@
 				4AC5667C273BE3E000776DBD /* ChatMessageRepository.swift in Sources */,
 				4AC56677273BB65200776DBD /* MessagesViewModel.swift in Sources */,
 				4AED5E34271C199600B7AC00 /* BasicButton.swift in Sources */,
-				4ACA820E2758BA93003C7E0E /* ItemUpdateViewController.swift in Sources */,
 				4AED5E57271EBDF700B7AC00 /* KHTTPRequestInterceptor.swift in Sources */,
 				4AED5E46271E2A3200B7AC00 /* BackendConfig.swift in Sources */,
 				4ACA821227590C6E003C7E0E /* DecimalInputViewModel.swift in Sources */,
@@ -1361,6 +1360,7 @@
 				4AC56674273B98AE00776DBD /* RecentMessageCell.swift in Sources */,
 				4A47E6E827331E6F00B9018A /* CoordinatorFactory.swift in Sources */,
 				4A09C6A32739282A00FD4E42 /* ChatViewController.swift in Sources */,
+				4AE229A2275A2B7B0070350E /* ItemComposeViewController.swift in Sources */,
 				4AED5E2D271B87ED00B7AC00 /* AlertViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,13 +7,9 @@
 
 import UIKit
 
-protocol ItemCreateViewModelDelegate: AnyObject {
-  func didOpenImagePicker(controller: UIImagePickerController)
-}
-
-class ItemCreateViewModel {
+class ItemCreateViewModel: ItemComposeViewModel {
   
-  weak var delegate:          ItemCreateViewModelDelegate?
+  weak var delegate:          ItemComposeViewModelDelegate?
   
   let coordinator:            HomeCoordinator
   let itemRepository:         ItemRepository

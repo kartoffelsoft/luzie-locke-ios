@@ -1,13 +1,13 @@
 //
-//  ItemCreateViewController.swift
+//  ItemComposeViewController.swift
 //  luzie-locke-ios
 //
-//  Created by Harry on 26.10.21.
+//  Created by Harry on 03.12.21.
 //
 
 import UIKit
 
-class ItemCreateViewController: UIViewController {
+class ItemComposeViewController: UIViewController {
   
   private let scrollView            = UIScrollView()
   private let contentView           = UIView()
@@ -17,11 +17,11 @@ class ItemCreateViewController: UIViewController {
   private let descriptionInputView  = MultiLineTextInputView()
   private let imageSelectView       = ImageSelectView()
   
-  private let viewModel: ItemCreateViewModel
+  private var viewModel: ItemComposeViewModel
   
   private let imageSelectViewHeight:  CGFloat = 60
   
-  init(viewModel: ItemCreateViewModel) {
+  init(viewModel: ItemComposeViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
     self.viewModel.delegate = self
@@ -144,14 +144,14 @@ class ItemCreateViewController: UIViewController {
   }
 }
 
-extension ItemCreateViewController: MultiLineTextInputViewDelegate {
+extension ItemComposeViewController: MultiLineTextInputViewDelegate {
 
   func didChangeInput(_ textView: UITextView) {
     scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: textView.frame.height + titleInputView.frame.height + 30);
   }
 }
 
-extension ItemCreateViewController: ItemCreateViewModelDelegate {
+extension ItemComposeViewController: ItemComposeViewModelDelegate {
 
   func didOpenImagePicker(controller: UIImagePickerController) {
     present(controller, animated: true)

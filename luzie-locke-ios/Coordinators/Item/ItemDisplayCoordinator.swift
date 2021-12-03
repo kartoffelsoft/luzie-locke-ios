@@ -55,7 +55,7 @@ class ItemDisplayCoordinator: NSObject, Coordinator {
   
   func navigateToItemUpdate(item: Item) {
     let viewModel       = factory.makeItemUpdateViewModel(coordinator: self)
-    let viewController  = factory.makeItemUpdateViewController(viewModel: viewModel)
+    let viewController  = factory.makeItemComposeViewController(viewModel: viewModel)
     viewModel.item      = item
     navigationController.pushViewController(viewController, animated: true)
   }

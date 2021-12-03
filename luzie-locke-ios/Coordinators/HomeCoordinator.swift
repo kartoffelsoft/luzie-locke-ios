@@ -30,9 +30,9 @@ class HomeCoordinator: NSObject, Coordinator {
   }
   
   func navigateToItemCreate() {
-    let vm = factory.makeItemCreateViewModel(coordinator: self)
-    let vc = factory.makeItemCreateViewController(viewModel: vm)
-    navigationController.pushViewController(vc, animated: true)
+    let viewModel       = factory.makeItemCreateViewModel(coordinator: self)
+    let viewController  = factory.makeItemComposeViewController(viewModel: viewModel)
+    navigationController.pushViewController(viewController, animated: true)
   }
   
   func navigateToItemSearch() {
