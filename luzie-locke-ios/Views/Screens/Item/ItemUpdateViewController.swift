@@ -156,8 +156,4 @@ extension ItemUpdateViewController: ItemUpdateViewModelDelegate {
   func didOpenImagePicker(controller: UIImagePickerController) {
     present(controller, animated: true)
   }
-
-  func didCloseImagePicker() {
-    dismiss(animated: true)
-  }
 }

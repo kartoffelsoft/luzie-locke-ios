@@ -12,7 +12,8 @@ class ImageSelectViewModel: NSObject {
   var bindableImages = Bindable<[UIImage]>()
   
   var onOpenImagePicker: ((UIImagePickerController) -> Void)?
-  var onCloseImagePicker: (() -> Void)?
+  
+  private var processing = false
   
   override init() {
     bindableImages.value = [UIImage]()
@@ -37,12 +38,18 @@ class ImageSelectViewModel: NSObject {
 extension ImageSelectViewModel: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-    let image = info[.originalImage] as? UIImage
+    if processing == false {
+      processing = true
+      let image = info[.originalImage] as? UIImage
+      
+      guard let images = bindableImages.value else { return }
+      guard let image  = image                else { return }
+      
+      bindableImages.value = images + [image]
 
-    guard let images = bindableImages.value else { return }
-    guard let image  = image                else { return }
-    
-    bindableImages.value = images + [image]
-    onCloseImagePicker?()
+      picker.dismiss(animated: true) {
+        self.processing = false
+      }
+    }
   }
 }

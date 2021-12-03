@@ -9,7 +9,6 @@ import UIKit
 
 protocol ItemCreateViewModelDelegate: AnyObject {
   func didOpenImagePicker(controller: UIImagePickerController)
-  func didCloseImagePicker()
 }
 
 class ItemCreateViewModel {
@@ -37,7 +36,6 @@ class ItemCreateViewModel {
     descriptionViewModel            = InputViewModel(placeholder: "Description")
     
     imageSelectViewModel.onOpenImagePicker  = self.openImagePicker
-    imageSelectViewModel.onCloseImagePicker = self.closeImagePicker
   }
   
   private func validate() -> Result<Void, LLError> {
@@ -88,9 +86,5 @@ class ItemCreateViewModel {
   
   private func openImagePicker(_ controller: UIImagePickerController) {
     delegate?.didOpenImagePicker(controller: controller)
-  }
-  
-  private func closeImagePicker() {
-    delegate?.didCloseImagePicker()
   }
 }

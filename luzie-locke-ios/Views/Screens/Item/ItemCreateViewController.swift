@@ -156,8 +156,4 @@ extension ItemCreateViewController: ItemCreateViewModelDelegate {
   func didOpenImagePicker(controller: UIImagePickerController) {
     present(controller, animated: true)
   }
-
-  func didCloseImagePicker() {
-    dismiss(animated: true)
-  }
 }

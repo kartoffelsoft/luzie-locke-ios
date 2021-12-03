@@ -62,19 +62,16 @@ class MultiLineTextInputView: UIView {
 extension MultiLineTextInputView: UITextViewDelegate {
 
   func textViewDidBeginEditing(_ textView: UITextView) {
-    print("@@1")
     if textView.isFirstResponder {
       viewModel?.didBeginEditing()
     }
   }
   
   func textViewDidEndEditing(_ textView: UITextView) {
-    print("@@2")
     viewModel?.didEndEditing()
   }
   
   func textViewDidChange(_ textView: UITextView) {
-    print("@@3")
     viewModel?.didChangeInput(text: textView.text)
     delegate?.didChangeInput(textView)
   }

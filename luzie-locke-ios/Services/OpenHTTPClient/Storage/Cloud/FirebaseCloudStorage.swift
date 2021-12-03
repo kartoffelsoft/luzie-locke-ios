@@ -11,8 +11,8 @@ import Firebase
 class FirebaseCloudStorage: CloudStorage {
   
   func uploadImage(image: UIImage, completion: @escaping (Result<String, LLError>) -> Void) {
-    guard let imageData = image.jpegData(compressionQuality: 0.1) else { return }
-    
+    guard let imageData = compressImage(image, maxByte: 200000) else { return }
+
     let filename = UUID().uuidString
     let ref = Storage.storage().reference(withPath: "/images/item/\(filename)")
     
@@ -52,5 +52,14 @@ class FirebaseCloudStorage: CloudStorage {
       
       completion(.success(()))
     }
+  }
+  
+  private func compressImage(_ image: UIImage, maxByte: Int) -> Data? {
+    guard let originalCount = image.jpegData(compressionQuality: 1)?.count else { return nil }
+    
+    let ratio: Int = originalCount / maxByte
+    let capped = min(max(ratio, 1), 10)
+    
+    return image.jpegData(compressionQuality: 1 / CGFloat(capped))
   }
 }

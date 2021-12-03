@@ -9,7 +9,6 @@ import UIKit
 
 protocol ItemUpdateViewModelDelegate: AnyObject {
   func didOpenImagePicker(controller: UIImagePickerController)
-  func didCloseImagePicker()
 }
 
 class ItemUpdateViewModel {
@@ -75,7 +74,6 @@ class ItemUpdateViewModel {
     descriptionViewModel            = InputViewModel(placeholder: "Description")
     
     imageSelectViewModel.onOpenImagePicker  = self.openImagePicker
-    imageSelectViewModel.onCloseImagePicker = self.closeImagePicker
   }
   
   private func validate() -> Result<Void, LLError> {
@@ -115,7 +113,7 @@ class ItemUpdateViewModel {
         switch result {
         case .success:
           completion(.success(()))
-          self.coordinator.popViewController()
+          self.coordinator.popToRootViewController()
           NotificationCenter.default.post(name: .didUpdateItemList, object: nil)
         case .failure(let error):
           completion(.failure(error))
@@ -128,9 +126,5 @@ class ItemUpdateViewModel {
   
   private func openImagePicker(_ controller: UIImagePickerController) {
     delegate?.didOpenImagePicker(controller: controller)
-  }
-  
-  private func closeImagePicker() {
-    delegate?.didCloseImagePicker()
   }
 }

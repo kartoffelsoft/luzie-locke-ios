@@ -277,7 +277,7 @@ class ItemRepository: ItemRepositoryProtocol {
               dispatchGroup.leave()
             case .failure(let error):
               print("[Error:\(#file):\(#line)] \(error)")
-              completion(.failure(.unableToComplete))
+              dispatchGroup.leave()
             }
           }
         }
