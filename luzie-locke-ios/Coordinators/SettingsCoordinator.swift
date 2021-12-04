@@ -8,6 +8,7 @@
 import Foundation
 
 import UIKit
+import SwiftUI
 import MapKit
 
 class SettingsCoordinator: Coordinator {
@@ -49,8 +50,13 @@ class SettingsCoordinator: Coordinator {
     navigationController.pushViewController(viewController, animated: true)
   }
 
-  func navigateToMap(selectAction: @escaping MapViewCallback) {
-    let viewController = MapViewController(mapView: MKMapView(), locationManager: CLLocationManager())
+  func navigateToNeighborhooodSetting() {
+    let viewController = UIHostingController(rootView: NeighbourhoodSettingView())
+    navigationController.pushViewController(viewController, animated: true)
+  }
+  
+  func navigateToVerifyNeighborhood(selectAction: @escaping MapViewCallback) {
+    let viewController = VerifyNeighborhoodViewController(mapView: MKMapView(), locationManager: CLLocationManager())
     viewController.selectAction = selectAction
     navigationController.pushViewController(viewController, animated: true)
   }

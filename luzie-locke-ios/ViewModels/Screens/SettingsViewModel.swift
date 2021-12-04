@@ -37,20 +37,24 @@ class SettingsViewModel {
     }
   }
   
-  func didSelectListings() {
+  func didTapListings() {
     coordinator.navigateToUserListings()
   }
   
-  func didSelectPurchases() {
+  func didTapPurchases() {
     coordinator.navigateToUserPurchases()
   }
   
-  func didSelectFavorites() {
+  func didTapFavorites() {
     coordinator.navigateToUserFavorites()
   }
   
-  func navigateToMap() {
-    coordinator.navigateToMap { [weak self] city, lat, lng in
+  func didTapNeighborhoodSetting() {
+    coordinator.navigateToNeighborhooodSetting()
+  }
+  
+  func didTapVerifyNeighborhood() {
+    coordinator.navigateToVerifyNeighborhood { [weak self] city, lat, lng in
       guard let self = self else { return }
       self.coordinator.popViewController()
       

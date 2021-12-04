@@ -135,20 +135,22 @@ extension SettingsViewController: UICollectionViewDelegate {
     case .userMenu:
       switch UserMenuRow(rawValue: indexPath.row) {
       case .listings:
-        viewModel.didSelectListings()
+        viewModel.didTapListings()
       case .purchases:
-        viewModel.didSelectPurchases()
+        viewModel.didTapPurchases()
       case .favorites:
-        viewModel.didSelectFavorites()
+        viewModel.didTapFavorites()
       default:
         ()
       }
     case .settingsMenu:
       switch SettingsMenuRow(rawValue: indexPath.row) {
       case .neighborhoodSetting:
-        print("Neighbourhood!")
+        viewModel.didTapNeighborhoodSetting()
+        tabBarController?.tabBar.isHidden = true
       case .verifyNeighborhood:
-        viewModel.navigateToMap()
+        viewModel.didTapVerifyNeighborhood()
+        tabBarController?.tabBar.isHidden = true
       case .logout:
         viewModel.logout()
         DispatchQueue.main.async {

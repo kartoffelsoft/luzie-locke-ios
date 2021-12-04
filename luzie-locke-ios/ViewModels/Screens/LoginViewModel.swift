@@ -44,7 +44,7 @@ class LoginViewModel {
         
         if name.isEmpty {
           DispatchQueue.main.async {
-            self.coordinator.navigateToMap(selectAction: { [weak self] city, lat, lng in
+            self.coordinator.navigateToVerifyNeighborhood(selectAction: { [weak self] city, lat, lng in
               guard let self = self else { return }
               self.coordinator.popViewController()
               

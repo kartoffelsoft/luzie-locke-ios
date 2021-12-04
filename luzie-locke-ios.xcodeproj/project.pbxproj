@@ -123,7 +123,9 @@
 		4AE229AA275A49DD0070350E /* FavoriteItemCreateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229A9275A49DD0070350E /* FavoriteItemCreateDTO.swift */; };
 		4AE229AC275A51FD0070350E /* FavoriteItemDeleteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229AB275A51FD0070350E /* FavoriteItemDeleteDTO.swift */; };
 		4AE229AE275A707F0070350E /* FavoriteItemReadExistDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229AD275A707F0070350E /* FavoriteItemReadExistDTO.swift */; };
-		4AED5E1D27197E1F00B7AC00 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */; };
+		4AE229B5275B9D820070350E /* NeighbourhoodSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229B4275B9D820070350E /* NeighbourhoodSettingView.swift */; };
+		4AE229B7275BB2BE0070350E /* MapViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229B6275BB2BE0070350E /* MapViewContainer.swift */; };
+		4AED5E1D27197E1F00B7AC00 /* VerifyNeighborhoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1C27197E1F00B7AC00 /* VerifyNeighborhoodViewController.swift */; };
 		4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */; };
 		4AED5E25271A0CFD00B7AC00 /* MKViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E24271A0CFD00B7AC00 /* MKViewMock.swift */; };
 		4AED5E27271A0D1300B7AC00 /* CLLocationManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E26271A0D1300B7AC00 /* CLLocationManagerMock.swift */; };
@@ -301,8 +303,10 @@
 		4AE229A9275A49DD0070350E /* FavoriteItemCreateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemCreateDTO.swift; sourceTree = "<group>"; };
 		4AE229AB275A51FD0070350E /* FavoriteItemDeleteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemDeleteDTO.swift; sourceTree = "<group>"; };
 		4AE229AD275A707F0070350E /* FavoriteItemReadExistDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemReadExistDTO.swift; sourceTree = "<group>"; };
+		4AE229B4275B9D820070350E /* NeighbourhoodSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighbourhoodSettingView.swift; sourceTree = "<group>"; };
+		4AE229B6275BB2BE0070350E /* MapViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewContainer.swift; sourceTree = "<group>"; };
 		4AED5E1927197BA400B7AC00 /* Frankfurt.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Frankfurt.gpx; sourceTree = "<group>"; };
-		4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		4AED5E1C27197E1F00B7AC00 /* VerifyNeighborhoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyNeighborhoodViewController.swift; sourceTree = "<group>"; };
 		4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerTests.swift; sourceTree = "<group>"; };
 		4AED5E24271A0CFD00B7AC00 /* MKViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKViewMock.swift; sourceTree = "<group>"; };
 		4AED5E26271A0D1300B7AC00 /* CLLocationManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManagerMock.swift; sourceTree = "<group>"; };
@@ -876,7 +880,9 @@
 		4AED5E182719669600B7AC00 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				4AED5E1C27197E1F00B7AC00 /* MapViewController.swift */,
+				4AE229B6275BB2BE0070350E /* MapViewContainer.swift */,
+				4AED5E1C27197E1F00B7AC00 /* VerifyNeighborhoodViewController.swift */,
+				4AE229B4275B9D820070350E /* NeighbourhoodSettingView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -1270,7 +1276,7 @@
 				4A47E6D82731B8E000B9018A /* SwipeImageViewController.swift in Sources */,
 				4AED5E7527201BCF00B7AC00 /* SimpleStringStorage.swift in Sources */,
 				4A47E6B3272DE2EF00B9018A /* CommonDTO.swift in Sources */,
-				4AED5E1D27197E1F00B7AC00 /* MapViewController.swift in Sources */,
+				4AED5E1D27197E1F00B7AC00 /* VerifyNeighborhoodViewController.swift in Sources */,
 				4A47E6BD2730288200B9018A /* ItemDisplayViewModel.swift in Sources */,
 				4A47E6AD272D408F00B9018A /* ItemAPIClient.swift in Sources */,
 				4ACA81EE2754C701003C7E0E /* Notification+Ext.swift in Sources */,
@@ -1309,6 +1315,7 @@
 				4AED5E30271C179F00B7AC00 /* HeaderLabel.swift in Sources */,
 				4AED5E3F271D9E8200B7AC00 /* BackendAPIClient.swift in Sources */,
 				4AED5E6E2720039500B7AC00 /* AuthenticationResponse.swift in Sources */,
+				4AE229B7275BB2BE0070350E /* MapViewContainer.swift in Sources */,
 				4A47E6E12731DA8F00B9018A /* SwipeImageViewModel.swift in Sources */,
 				4A3B52A22712461500EF4F93 /* MessagesViewController.swift in Sources */,
 				4A3B5268271239CE00EF4F93 /* SceneDelegate.swift in Sources */,
@@ -1375,6 +1382,7 @@
 				4ACA81F02754CF28003C7E0E /* ImageRepository.swift in Sources */,
 				4AC56674273B98AE00776DBD /* RecentMessageCell.swift in Sources */,
 				4A47E6E827331E6F00B9018A /* CoordinatorFactory.swift in Sources */,
+				4AE229B5275B9D820070350E /* NeighbourhoodSettingView.swift in Sources */,
 				4A09C6A32739282A00FD4E42 /* ChatViewController.swift in Sources */,
 				4AE229A2275A2B7B0070350E /* ItemComposeViewController.swift in Sources */,
 				4AED5E2D271B87ED00B7AC00 /* AlertViewController.swift in Sources */,

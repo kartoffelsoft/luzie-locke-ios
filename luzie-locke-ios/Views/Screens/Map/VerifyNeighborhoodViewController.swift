@@ -10,7 +10,7 @@ import MapKit
 
 typealias MapViewCallback = ((String?, CLLocationDegrees?, CLLocationDegrees?) -> Void)
 
-class MapViewController: UIViewController {
+class VerifyNeighborhoodViewController: UIViewController {
   
   var selectAction:       MapViewCallback?
   var currentLatitude:    CLLocationDegrees?
@@ -154,7 +154,7 @@ class MapViewController: UIViewController {
   }
 }
 
-extension MapViewController: CLLocationManagerDelegate {
+extension VerifyNeighborhoodViewController: CLLocationManagerDelegate {
   
   func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
     switch manager.authorizationStatus {
@@ -173,7 +173,7 @@ extension MapViewController: CLLocationManagerDelegate {
   }
 }
 
-extension MapViewController: MKMapViewDelegate {
+extension VerifyNeighborhoodViewController: MKMapViewDelegate {
   
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     if annotation is MKUserLocation {

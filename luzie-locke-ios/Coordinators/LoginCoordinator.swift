@@ -32,8 +32,8 @@ class LoginCoordinator: Coordinator {
     self.navigationController.pushViewController(vc, animated: true)
   }
   
-  func navigateToMap(selectAction: @escaping MapViewCallback) {
-    let vc = MapViewController(mapView: MKMapView(), locationManager: CLLocationManager())
+  func navigateToVerifyNeighborhood(selectAction: @escaping MapViewCallback) {
+    let vc = VerifyNeighborhoodViewController(mapView: MKMapView(), locationManager: CLLocationManager())
     vc.selectAction = selectAction
     navigationController.pushViewController(vc, animated: true)
   }
