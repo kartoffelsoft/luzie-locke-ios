@@ -51,7 +51,8 @@ class SettingsCoordinator: Coordinator {
   }
 
   func navigateToNeighborhooodSetting() {
-    let viewController = UIHostingController(rootView: NeighbourhoodSettingView())
+    let viewModel      = factory.makeNeighbourhoodSettingViewModel(coordinator: self)
+    let viewController = UIHostingController(rootView: NeighbourhoodSettingView().environmentObject(viewModel))
     navigationController.pushViewController(viewController, animated: true)
   }
   

@@ -124,7 +124,8 @@
 		4AE229AC275A51FD0070350E /* FavoriteItemDeleteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229AB275A51FD0070350E /* FavoriteItemDeleteDTO.swift */; };
 		4AE229AE275A707F0070350E /* FavoriteItemReadExistDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229AD275A707F0070350E /* FavoriteItemReadExistDTO.swift */; };
 		4AE229B5275B9D820070350E /* NeighbourhoodSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229B4275B9D820070350E /* NeighbourhoodSettingView.swift */; };
-		4AE229B7275BB2BE0070350E /* MapViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229B6275BB2BE0070350E /* MapViewContainer.swift */; };
+		4AE229B7275BB2BE0070350E /* NeighbourhoodSettingMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229B6275BB2BE0070350E /* NeighbourhoodSettingMap.swift */; };
+		4AE229BC275E092E0070350E /* NeighbourhoodSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229BB275E092E0070350E /* NeighbourhoodSettingViewModel.swift */; };
 		4AED5E1D27197E1F00B7AC00 /* VerifyNeighborhoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1C27197E1F00B7AC00 /* VerifyNeighborhoodViewController.swift */; };
 		4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */; };
 		4AED5E25271A0CFD00B7AC00 /* MKViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E24271A0CFD00B7AC00 /* MKViewMock.swift */; };
@@ -304,7 +305,8 @@
 		4AE229AB275A51FD0070350E /* FavoriteItemDeleteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemDeleteDTO.swift; sourceTree = "<group>"; };
 		4AE229AD275A707F0070350E /* FavoriteItemReadExistDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemReadExistDTO.swift; sourceTree = "<group>"; };
 		4AE229B4275B9D820070350E /* NeighbourhoodSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighbourhoodSettingView.swift; sourceTree = "<group>"; };
-		4AE229B6275BB2BE0070350E /* MapViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewContainer.swift; sourceTree = "<group>"; };
+		4AE229B6275BB2BE0070350E /* NeighbourhoodSettingMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighbourhoodSettingMap.swift; sourceTree = "<group>"; };
+		4AE229BB275E092E0070350E /* NeighbourhoodSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighbourhoodSettingViewModel.swift; sourceTree = "<group>"; };
 		4AED5E1927197BA400B7AC00 /* Frankfurt.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Frankfurt.gpx; sourceTree = "<group>"; };
 		4AED5E1C27197E1F00B7AC00 /* VerifyNeighborhoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyNeighborhoodViewController.swift; sourceTree = "<group>"; };
 		4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerTests.swift; sourceTree = "<group>"; };
@@ -506,6 +508,7 @@
 		4A3B5264271239CE00EF4F93 /* luzie-locke-ios */ = {
 			isa = PBXGroup;
 			children = (
+				4AE229BD275E2FCC0070350E /* SwiftUIComponents */,
 				4ADE3D2A27355B0200ACBC60 /* AppMain */,
 				4A47E6E22732BE6400B9018A /* CompositionRoot */,
 				4A3B52D327159C8E00EF4F93 /* Coordinators */,
@@ -877,12 +880,20 @@
 			path = AppMain;
 			sourceTree = "<group>";
 		};
+		4AE229BD275E2FCC0070350E /* SwiftUIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				4AE229B4275B9D820070350E /* NeighbourhoodSettingView.swift */,
+				4AE229BB275E092E0070350E /* NeighbourhoodSettingViewModel.swift */,
+				4AE229B6275BB2BE0070350E /* NeighbourhoodSettingMap.swift */,
+			);
+			path = SwiftUIComponents;
+			sourceTree = "<group>";
+		};
 		4AED5E182719669600B7AC00 /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				4AE229B6275BB2BE0070350E /* MapViewContainer.swift */,
 				4AED5E1C27197E1F00B7AC00 /* VerifyNeighborhoodViewController.swift */,
-				4AE229B4275B9D820070350E /* NeighbourhoodSettingView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -1315,7 +1326,7 @@
 				4AED5E30271C179F00B7AC00 /* HeaderLabel.swift in Sources */,
 				4AED5E3F271D9E8200B7AC00 /* BackendAPIClient.swift in Sources */,
 				4AED5E6E2720039500B7AC00 /* AuthenticationResponse.swift in Sources */,
-				4AE229B7275BB2BE0070350E /* MapViewContainer.swift in Sources */,
+				4AE229B7275BB2BE0070350E /* NeighbourhoodSettingMap.swift in Sources */,
 				4A47E6E12731DA8F00B9018A /* SwipeImageViewModel.swift in Sources */,
 				4A3B52A22712461500EF4F93 /* MessagesViewController.swift in Sources */,
 				4A3B5268271239CE00EF4F93 /* SceneDelegate.swift in Sources */,
@@ -1345,6 +1356,7 @@
 				4A3B52E32715C11900EF4F93 /* SettingsCoordinator.swift in Sources */,
 				4ACA821027590BD3003C7E0E /* InputViewModel.swift in Sources */,
 				4AEE8F6D2726CC73004CB686 /* HomeViewModel.swift in Sources */,
+				4AE229BC275E092E0070350E /* NeighbourhoodSettingViewModel.swift in Sources */,
 				4AE229A6275A33C40070350E /* ItemComposeViewModel.swift in Sources */,
 				4AEE8F6F2726DF93004CB686 /* ItemCell.swift in Sources */,
 				4A47E6D227317CA700B9018A /* ItemDisplayBriefViewController.swift in Sources */,

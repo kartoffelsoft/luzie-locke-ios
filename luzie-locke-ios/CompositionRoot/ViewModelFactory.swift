@@ -23,6 +23,8 @@ protocol ViewModelFactory {
   func makeUserListingsViewModel(coordinator: SettingsCoordinator) -> UserListingsViewModel
   func makeUserPurchasesViewModel(coordinator: SettingsCoordinator) -> UserPurchasesViewModel
   func makeUserFavoritesViewModel(coordinator: SettingsCoordinator) -> UserFavoritesViewModel
+  
+  func makeNeighbourhoodSettingViewModel(coordinator: SettingsCoordinator) -> NeighbourhoodSettingViewModel
 }
 
 extension CompositionRoot: ViewModelFactory {
@@ -111,5 +113,10 @@ extension CompositionRoot: ViewModelFactory {
     return UserFavoritesViewModel(coordinator: coordinator,
                                   openHttpClient: openHttpClient,
                                   itemRepository: itemRepository)
+  }
+  
+  func makeNeighbourhoodSettingViewModel(coordinator: SettingsCoordinator) -> NeighbourhoodSettingViewModel {
+    return NeighbourhoodSettingViewModel(coordinator: coordinator,
+                                         userProfileRepository: userProfileRepository)
   }
 }
