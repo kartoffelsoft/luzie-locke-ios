@@ -28,7 +28,7 @@ class ItemDisplayDetailViewController: UIViewController {
 
   private let closeButton: PulseRoundButton = {
     let button = PulseRoundButton(radius: 20)
-    button.backgroundColor = Colors.primaryColorLight3
+    button.backgroundColor = CustomUIColors.primaryColorLight3
     button.setImage(Images.chevronDown, for: .normal)
     return button
   }()

@@ -9,8 +9,8 @@ import UIKit
 
 class ItemInfoView: UIView {
 
-  let titleLabel        = HeaderLabel(font: Fonts.subtitle, textColor: Colors.primaryColor, textAlignment: .left)
-  let descriptionLabel  = BodyLabel(font: Fonts.subtitle, textAlignment: .left)
+  let titleLabel        = HeaderLabel(font: CustomUIFonts.subtitle, textColor: CustomUIColors.primaryColor, textAlignment: .left)
+  let descriptionLabel  = BodyLabel(font: CustomUIFonts.subtitle, textAlignment: .left)
   
   override init(frame: CGRect) {
     super.init(frame: frame)

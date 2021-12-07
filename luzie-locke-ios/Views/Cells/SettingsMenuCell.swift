@@ -24,7 +24,7 @@ class SettingsMenuCell: UICollectionViewCell {
   }
   
   let symbol = UIImageView()
-  let title  = HeaderLabel(font: Fonts.body, textAlignment: .left)
+  let title  = HeaderLabel(font: CustomUIFonts.body, textAlignment: .left)
   let arrow  = UIImageView()
   
   override init(frame: CGRect) {

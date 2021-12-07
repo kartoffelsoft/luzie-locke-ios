@@ -14,7 +14,7 @@ class CustomLabel: UILabel {
     configure()
   }
   
-  convenience init(font: UIFont = Fonts.body,
+  convenience init(font: UIFont = CustomUIFonts.body,
                    textColor: UIColor = .secondaryLabel) {
     self.init(frame: .zero)
     self.font           = font

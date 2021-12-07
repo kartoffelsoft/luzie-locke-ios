@@ -24,8 +24,8 @@ class ItemActionPanelViewModel {
       guard let sellerId  = item?.user?.id else { return }
       guard let localUserId  = localProfileRepository.read()?.id else { return }
       
-      let priceText = NSMutableAttributedString(string: "€ ", attributes: [.font: Fonts.title])
-      priceText.append(NSAttributedString(string: price, attributes: [.font: Fonts.titleLarge]))
+      let priceText = NSMutableAttributedString(string: "€ ", attributes: [.font: CustomUIFonts.title])
+      priceText.append(NSAttributedString(string: price, attributes: [.font: CustomUIFonts.titleLarge]))
       bindablePriceText.value = priceText
 
       bindableIsMine.value = (sellerId == localUserId)

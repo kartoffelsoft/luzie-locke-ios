@@ -43,8 +43,8 @@ class MainTabBarController: UITabBarController {
     settingsCoordinator.start()
     
     view.backgroundColor = .white
-    viewControllers      = [ //homeCoordinator.navigationController,
-                             //messagesCoordinator.navigationController,
+    viewControllers      = [ homeCoordinator.navigationController,
+                             messagesCoordinator.navigationController,
                              settingsCoordinator.navigationController ]
   }
   
@@ -58,9 +58,9 @@ class MainTabBarController: UITabBarController {
   }
   
   func configureTabBar() {
-    tabBar.tintColor                = Colors.secondaryColor
-    tabBar.unselectedItemTintColor  = Colors.primaryColorLight2
-    tabBar.barTintColor             = Colors.primaryColor
+    tabBar.tintColor                = CustomUIColors.secondaryColor
+    tabBar.unselectedItemTintColor  = CustomUIColors.primaryColorLight2
+    tabBar.barTintColor             = CustomUIColors.primaryColor
   }
   
   required init?(coder: NSCoder) {

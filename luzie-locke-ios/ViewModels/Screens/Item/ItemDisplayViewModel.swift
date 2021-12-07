@@ -34,8 +34,8 @@ class ItemDisplayViewModel {
       itemDisplayBriefViewModel.item = item
       
       if let item = item, let price = item.price {
-        let priceText = NSMutableAttributedString(string: "€ ", attributes: [.font: Fonts.title])
-        priceText.append(NSAttributedString(string: price, attributes: [.font: Fonts.titleLarge]))
+        let priceText = NSMutableAttributedString(string: "€ ", attributes: [.font: CustomUIFonts.title])
+        priceText.append(NSAttributedString(string: price, attributes: [.font: CustomUIFonts.titleLarge]))
         bindablePriceText.value = priceText
       }
     }

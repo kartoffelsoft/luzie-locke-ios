@@ -47,7 +47,7 @@ class MultiLineTextInputView: UIView {
     textView.pinToEdges(of: self)
     
     textView.delegate                 = self
-    textView.font                     = Fonts.body
+    textView.font                     = CustomUIFonts.body
     textView.isScrollEnabled          = false
     textView.isUserInteractionEnabled = true
     textView.backgroundColor          = .clear

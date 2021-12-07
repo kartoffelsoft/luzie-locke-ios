@@ -12,28 +12,32 @@ class NeighbourhoodSettingViewModel: NSObject, ObservableObject {
   @Published var currentCoordinate: CLLocationCoordinate2D?
   @Published var currentRadius: Double?
   @Published var currentRadiusText: String?
+  @Published var currentSpanDelta: Double?
   
   private let coordinator:            SettingsCoordinator
   private let userProfileRepository:  UserProfileRepository
   
   private let levelToRadiusMap: [Int: Double] = [
-    0: 0,
-    1: 3,
-    2: 5,
-    3: 10,
-    4: 20,
-    5: 30,
-    6: 50,
-    7: 100,
-    8: 200,
-    9: 300
+    0: 3,
+    1: 5,
+    2: 10,
+    3: 20,
+    4: 30,
+    5: 50,
+    6: 100,
+    7: 200,
+    8: 300,
+    9: 600
   ]
   
   private var currentLevel: Int? {
     didSet {
       guard let currentLevel = currentLevel else { return }
       currentRadius = levelToRadiusMap[currentLevel]
-      currentRadiusText = "\(currentRadius!) km"
+      if let currentRadius = currentRadius {
+        currentRadiusText = "\(currentRadius) km"
+        currentSpanDelta = currentRadius / 20
+      }
     }
   }
   
@@ -45,6 +49,7 @@ class NeighbourhoodSettingViewModel: NSObject, ObservableObject {
     currentLevel = 1
     currentRadius = levelToRadiusMap[1]
     currentRadiusText = "\(currentRadius!) km"
+    currentSpanDelta = currentRadius! / 20
   }
   
   func didTapMinus() {

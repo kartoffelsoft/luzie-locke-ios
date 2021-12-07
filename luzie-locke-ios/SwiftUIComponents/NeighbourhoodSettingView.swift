@@ -14,9 +14,9 @@ struct NeighbourhoodSettingView: View {
   
   var body: some View {
     ZStack(alignment: .top) {
-      NeighbourhoodSettingMap().edgesIgnoringSafeArea(.all)
+
       VStack {
-        Spacer()
+        NeighbourhoodSettingMap().edgesIgnoringSafeArea(.all)
         HStack {
           Spacer()
           Button {
@@ -24,28 +24,28 @@ struct NeighbourhoodSettingView: View {
           } label: {
             Image(systemName: "minus")
               .font(Font.body.weight(.bold))
-              .foregroundColor(Color(Colors.secondaryColor))
+              .foregroundColor(CustomColors.secondaryColor)
           }.frame(width: 40, height: 40)
-            .background(Color(Colors.primaryColor))
+            .background(CustomColors.primaryColor)
             .clipShape(Circle())
           HStack {
-            Text("Radius: ").foregroundColor(Color(Colors.tertiaryColor))
-            Text(viewModel.currentRadiusText ?? "---").foregroundColor(Color(Colors.primaryColor))
-          }.frame(width: 180, height: 40, alignment: .center)
-            .background(Color.white)
-            .cornerRadius(5)
+            Text("Radius: ").foregroundColor(CustomColors.primaryColor)
+              .frame(width: 90, height: 40, alignment: .center)
+            Text(viewModel.currentRadiusText ?? "---").foregroundColor(CustomColors.tertiaryColor)
+              .frame(width: 90, height: 40, alignment: .leading)
+          }
           Button {
             viewModel.didTapPlus()
           } label: {
             Image(systemName: "plus")
               .font(Font.body.weight(.bold))
-              .foregroundColor(Color(Colors.secondaryColor))
+              .foregroundColor(CustomColors.secondaryColor)
           }.frame(width: 40, height: 40)
-            .background(Color(Colors.primaryColor))
+            .background(CustomColors.primaryColor)
             .clipShape(Circle())
           Spacer()
-        }.font(Font(Fonts.body as CTFont))
-          .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+        }.padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+          .font(CustomFonts.body)
         HStack {
           Button {
             
@@ -53,14 +53,14 @@ struct NeighbourhoodSettingView: View {
             HStack {
               Spacer()
               VStack(alignment: .center) {
-                Text("APPLY").font(Font(Fonts.body as CTFont)).foregroundColor(Color(Colors.secondaryColor))
+                Text("APPLY").font(CustomFonts.body).foregroundColor(CustomColors.secondaryColor)
               }.padding()
               Spacer()
             }
-            .background(Color(Colors.primaryColor))
+            .background(CustomColors.primaryColor)
             .cornerRadius(15)
           }
-        }.padding()
+        }.padding(EdgeInsets(top: 0, leading: 5, bottom: 5, trailing: 5))
       }
     }
   }

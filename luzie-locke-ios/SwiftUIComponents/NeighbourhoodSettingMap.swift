@@ -55,10 +55,10 @@ struct NeighbourhoodSettingMap: UIViewRepresentable {
   func updateUIView(_ uiView: MKMapView, context: Context) {
     uiView.removeOverlays(uiView.overlays)
     
-    if let currentRadius = viewModel.currentRadius {
+    if let currentRadius = viewModel.currentRadius, let currentSpanDelta = viewModel.currentSpanDelta {
       
       let centerCoordinate = CLLocationCoordinate2D(latitude: 50.1211277, longitude: 8.4964812)
-      let span = MKCoordinateSpan(latitudeDelta: currentRadius/10, longitudeDelta: currentRadius/10)
+      let span = MKCoordinateSpan(latitudeDelta: currentSpanDelta, longitudeDelta: currentSpanDelta)
       let region = MKCoordinateRegion(center: centerCoordinate, span: span)
       uiView.setRegion(region, animated: true)
       

@@ -37,9 +37,9 @@ class RecentMessageCell: UITableViewCell {
   }
   
   let userImageView = AvatarImageView(radius: 30)
-  let userNameLabel = HeaderLabel(font: Fonts.caption, textAlignment: .left)
-  let messageLabel  = BodyLabel(font: Fonts.detail, textAlignment: .left)
-  let dateLabel     = HeaderLabel(font: Fonts.detail, textColor: .tertiaryLabel, textAlignment: .left)
+  let userNameLabel = HeaderLabel(font: CustomUIFonts.caption, textAlignment: .left)
+  let messageLabel  = BodyLabel(font: CustomUIFonts.detail, textAlignment: .left)
+  let dateLabel     = HeaderLabel(font: CustomUIFonts.detail, textColor: .tertiaryLabel, textAlignment: .left)
   let line          = UIView()
 
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -48,7 +48,7 @@ class RecentMessageCell: UITableViewCell {
   }
   
   fileprivate func configure() {
-    backgroundColor = Colors.primaryColorLight2.withAlphaComponent(0.1)
+    backgroundColor = CustomUIColors.primaryColorLight2.withAlphaComponent(0.1)
     
     userImageView.layer.borderWidth = 3
     userImageView.layer.borderColor = UIColor(named: "PrimaryColorLight2")?.cgColor

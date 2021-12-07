@@ -14,8 +14,8 @@ class ItemDisplayBriefViewController: UIViewController {
   private let swipeImageViewController: SwipeImageViewController
   
   private let imageView     = UIView()
-  private let titleLabel    = HeaderLabel(font: Fonts.subtitle, textColor: Colors.secondaryColor, textAlignment: .left)
-  private let locationLabel = HeaderLabel(font: Fonts.subtitle, textColor: Colors.primaryColorLight3, textAlignment: .left)
+  private let titleLabel    = HeaderLabel(font: CustomUIFonts.subtitle, textColor: CustomUIColors.secondaryColor, textAlignment: .left)
+  private let locationLabel = HeaderLabel(font: CustomUIFonts.subtitle, textColor: CustomUIColors.primaryColorLight3, textAlignment: .left)
   private let moreButton    = PulseRoundButton(radius: 20)
   private let gradientLayer = CAGradientLayer()
   
@@ -57,7 +57,7 @@ class ItemDisplayBriefViewController: UIViewController {
   }
   
   private func configureGradientLayer() {
-    gradientLayer.colors = [UIColor.clear.cgColor, Colors.primaryColor.cgColor]
+    gradientLayer.colors = [UIColor.clear.cgColor, CustomUIColors.primaryColor.cgColor]
     gradientLayer.locations = [0.5, 1.0]
     view.layer.addSublayer(gradientLayer)
   }
@@ -78,7 +78,7 @@ class ItemDisplayBriefViewController: UIViewController {
   }
   
   private func configureMoreButton() {
-    moreButton.backgroundColor = Colors.primaryColorLight3
+    moreButton.backgroundColor = CustomUIColors.primaryColorLight3
     moreButton.setImage(Images.chevronUp, for: .normal)
     moreButton.animatePulse()
     

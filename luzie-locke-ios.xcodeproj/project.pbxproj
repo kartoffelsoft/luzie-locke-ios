@@ -14,6 +14,10 @@
 		4A01D55A273D4EA000EDFC1C /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D559273D4EA000EDFC1C /* UserProfile.swift */; };
 		4A01D55E273DC64100EDFC1C /* RecentMessageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D55D273DC64100EDFC1C /* RecentMessageCellViewModel.swift */; };
 		4A01D561273DC94D00EDFC1C /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D560273DC94D00EDFC1C /* DateUtility.swift */; };
+		4A03E3B8275F622400EB0210 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3B7275F622400EB0210 /* CustomColors.swift */; };
+		4A03E3BA275F655B00EB0210 /* CustomUIFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3B9275F655B00EB0210 /* CustomUIFonts.swift */; };
+		4A03E3BC275F656C00EB0210 /* CustomUIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3BB275F656C00EB0210 /* CustomUIColors.swift */; };
+		4A03E3BE275F658D00EB0210 /* CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3BD275F658D00EB0210 /* CustomFonts.swift */; };
 		4A09C6982737120800FD4E42 /* ItemDisplayCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A09C6972737120800FD4E42 /* ItemDisplayCoordinator.swift */; };
 		4A09C69B273730B900FD4E42 /* ItemDisplayDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A09C69A273730B900FD4E42 /* ItemDisplayDetailViewModel.swift */; };
 		4A09C69E2738582700FD4E42 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A09C69D2738582700FD4E42 /* UserInfoView.swift */; };
@@ -195,6 +199,10 @@
 		4A01D559273D4EA000EDFC1C /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		4A01D55D273DC64100EDFC1C /* RecentMessageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMessageCellViewModel.swift; sourceTree = "<group>"; };
 		4A01D560273DC94D00EDFC1C /* DateUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
+		4A03E3B7275F622400EB0210 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
+		4A03E3B9275F655B00EB0210 /* CustomUIFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIFonts.swift; sourceTree = "<group>"; };
+		4A03E3BB275F656C00EB0210 /* CustomUIColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIColors.swift; sourceTree = "<group>"; };
+		4A03E3BD275F658D00EB0210 /* CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
 		4A09C6972737120800FD4E42 /* ItemDisplayCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDisplayCoordinator.swift; sourceTree = "<group>"; };
 		4A09C69A273730B900FD4E42 /* ItemDisplayDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDisplayDetailViewModel.swift; sourceTree = "<group>"; };
 		4A09C69D2738582700FD4E42 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
@@ -397,6 +405,17 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		4A03E3B6275F61F300EB0210 /* Contants */ = {
+			isa = PBXGroup;
+			children = (
+				4A03E3B7275F622400EB0210 /* CustomColors.swift */,
+				4A03E3BD275F658D00EB0210 /* CustomFonts.swift */,
+				4A03E3BB275F656C00EB0210 /* CustomUIColors.swift */,
+				4A03E3B9275F655B00EB0210 /* CustomUIFonts.swift */,
+			);
+			path = Contants;
+			sourceTree = "<group>";
+		};
 		4A09C6992737200F00FD4E42 /* Item */ = {
 			isa = PBXGroup;
 			children = (
@@ -508,6 +527,7 @@
 		4A3B5264271239CE00EF4F93 /* luzie-locke-ios */ = {
 			isa = PBXGroup;
 			children = (
+				4A03E3B6275F61F300EB0210 /* Contants */,
 				4AE229BD275E2FCC0070350E /* SwiftUIComponents */,
 				4ADE3D2A27355B0200ACBC60 /* AppMain */,
 				4A47E6E22732BE6400B9018A /* CompositionRoot */,
@@ -1276,6 +1296,7 @@
 				4A3B52E12715C10500EF4F93 /* MessagesCoordinator.swift in Sources */,
 				4A09C6AA27393F2000FD4E42 /* ChatMessageCell.swift in Sources */,
 				4A09C6A827393E5E00FD4E42 /* ChatMessage.swift in Sources */,
+				4A03E3BE275F658D00EB0210 /* CustomFonts.swift in Sources */,
 				4A3B52CD2714419B00EF4F93 /* LLError.swift in Sources */,
 				4A3B52B527126DB000EF4F93 /* ScreenTitleLabel.swift in Sources */,
 				4A22DB3A274E3D0F00E5125B /* EmptyStateView.swift in Sources */,
@@ -1283,6 +1304,7 @@
 				4AEE61B42740F965008055F9 /* LocationMenuPopoverController.swift in Sources */,
 				4A155E602724D16600C8B867 /* UserMenuCell.swift in Sources */,
 				4ACA821527595D26003C7E0E /* ItemUpdateDTO.swift in Sources */,
+				4A03E3BA275F655B00EB0210 /* CustomUIFonts.swift in Sources */,
 				4AED5E802720C2D200B7AC00 /* JWTDecode.swift in Sources */,
 				4A47E6D82731B8E000B9018A /* SwipeImageViewController.swift in Sources */,
 				4AED5E7527201BCF00B7AC00 /* SimpleStringStorage.swift in Sources */,
@@ -1309,6 +1331,7 @@
 				4AE229AC275A51FD0070350E /* FavoriteItemDeleteDTO.swift in Sources */,
 				4A155E482722F31C00C8B867 /* KHTTPClient.swift in Sources */,
 				4A09C69B273730B900FD4E42 /* ItemDisplayDetailViewModel.swift in Sources */,
+				4A03E3B8275F622400EB0210 /* CustomColors.swift in Sources */,
 				4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */,
 				4AC5667E273BE7E400776DBD /* LocalProfileRepository.swift in Sources */,
 				4ACA8208275790ED003C7E0E /* ImageSelectViewModel.swift in Sources */,
@@ -1367,6 +1390,7 @@
 				4A47E6A8272CA01E00B9018A /* CloudStorage.swift in Sources */,
 				4AE229AA275A49DD0070350E /* FavoriteItemCreateDTO.swift in Sources */,
 				4A09C6982737120800FD4E42 /* ItemDisplayCoordinator.swift in Sources */,
+				4A03E3BC275F656C00EB0210 /* CustomUIColors.swift in Sources */,
 				4A09C6A627392DE100FD4E42 /* ChatInputAccessoryView.swift in Sources */,
 				4A01D55E273DC64100EDFC1C /* RecentMessageCellViewModel.swift in Sources */,
 				4A47E6DF2731D33400B9018A /* ImageViewModel.swift in Sources */,

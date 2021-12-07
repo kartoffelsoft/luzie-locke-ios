@@ -61,7 +61,7 @@ class UserPurchasesViewController: UIViewController {
     
     collectionView.register(ItemCell.self, forCellWithReuseIdentifier: ItemCell.reuseIdentifier)
 
-    refreshControl.tintColor      = Colors.primaryColor
+    refreshControl.tintColor = CustomUIColors.primaryColor
     refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
   }
   

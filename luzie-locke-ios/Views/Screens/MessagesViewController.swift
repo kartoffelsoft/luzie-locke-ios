@@ -106,7 +106,7 @@ extension MessagesViewController: UITableViewDelegate {
     }
     
     deleteAction.image = Images.delete
-    deleteAction.backgroundColor = Colors.primaryColor
+    deleteAction.backgroundColor = CustomUIColors.primaryColor
     
     return UISwipeActionsConfiguration(actions: [deleteAction])
   }

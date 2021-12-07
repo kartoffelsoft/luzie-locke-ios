@@ -14,7 +14,7 @@ class BodyLabel: UILabel {
     configure()
   }
   
-  convenience init(font: UIFont = Fonts.title,
+  convenience init(font: UIFont = CustomUIFonts.title,
                    textColor: UIColor = .secondaryLabel,
                    textAlignment: NSTextAlignment = .left) {
     self.init(frame: .zero)

@@ -13,7 +13,7 @@ class ScreenTitleLabel: UILabel {
     super.init(frame: .zero)
     
     self.text = text
-    textColor = Colors.primaryColor
+    textColor = CustomUIColors.primaryColor
     font      = UIFont(name: "Supercell-Magic", size: 15)
   }
   

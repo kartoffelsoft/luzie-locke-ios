@@ -16,8 +16,8 @@ class ItemCellViewModel {
         bindableLocationText.value = item.user?.city
         bindableDateText.value     = DateUtility.string(from: item.modifiedAt)
         
-        let priceText = NSMutableAttributedString(string: "€ ", attributes: [.font: Fonts.detail])
-        priceText.append(NSAttributedString(string: item.price ?? "0", attributes: [.font: Fonts.body]))
+        let priceText = NSMutableAttributedString(string: "€ ", attributes: [.font: CustomUIFonts.detail])
+        priceText.append(NSAttributedString(string: item.price ?? "0", attributes: [.font: CustomUIFonts.body]))
         bindablePriceText.value = priceText
         
         downloadImage(from: item.imageUrls![0])

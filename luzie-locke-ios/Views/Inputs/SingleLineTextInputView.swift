@@ -52,7 +52,7 @@ class SingleLineTextInputView: UIView {
     textField.pinToEdges(of: self)
     
     textField.delegate        = self
-    textField.font            = Fonts.body
+    textField.font            = CustomUIFonts.body
     textField.backgroundColor = .clear
     
     textField.addTarget(self, action: #selector(handleInputChange), for: .editingChanged)

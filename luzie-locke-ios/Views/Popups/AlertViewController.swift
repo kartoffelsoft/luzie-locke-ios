@@ -11,7 +11,7 @@ class AlertViewController: UIViewController {
   
   let containerView   = UIView()
   let titleLabel      = HeaderLabel(textAlignment: .center)
-  let messageLabel    = BodyLabel(font: Fonts.body, textAlignment: .center)
+  let messageLabel    = BodyLabel(font: CustomUIFonts.body, textAlignment: .center)
   let actionButton    = BasicButton(backgroundColor: UIColor(named: "PrimaryColor"), title: "OK")
   
   var alertTitle:     String?

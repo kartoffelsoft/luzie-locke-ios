@@ -57,11 +57,11 @@ class UserFavoritesViewController: UIViewController {
     collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
     collectionView.delegate         = self
     collectionView.backgroundColor  = .clear
-    collectionView.refreshControl = refreshControl
+    collectionView.refreshControl   = refreshControl
     
     collectionView.register(ItemCell.self, forCellWithReuseIdentifier: ItemCell.reuseIdentifier)
 
-    refreshControl.tintColor      = Colors.primaryColor
+    refreshControl.tintColor = CustomUIColors.primaryColor
     refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
   }
   

@@ -11,7 +11,7 @@ class ConfirmViewController: UIViewController {
   
   private let containerView   = UIView()
   private let titleLabel      = HeaderLabel(textAlignment: .center)
-  private let messageLabel    = BodyLabel(font: Fonts.body, textAlignment: .center)
+  private let messageLabel    = BodyLabel(font: CustomUIFonts.body, textAlignment: .center)
   
   let okayButton      = BasicButton(backgroundColor: UIColor(named: "PrimaryColor"), title: "OK")
   let cancelButton    = BasicButton(backgroundColor: UIColor(named: "TertiaryColor"), title: "Cancel")
@@ -41,7 +41,7 @@ class ConfirmViewController: UIViewController {
   }
   
   func configureContainerView() {
-    containerView.backgroundColor     = Colors.primaryColorLight3
+    containerView.backgroundColor     = CustomUIColors.primaryColorLight3
     containerView.layer.cornerRadius  = 16
     containerView.layer.borderWidth   = 2
     containerView.layer.borderColor   = UIColor.white.cgColor

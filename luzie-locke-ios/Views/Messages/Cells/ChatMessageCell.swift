@@ -13,7 +13,7 @@ class ChatMessageCell: UICollectionViewCell {
 
   private let textView: UITextView = {
     let view = UITextView()
-    view.font             = Fonts.body
+    view.font             = CustomUIFonts.body
     view.backgroundColor  = .clear
     view.isScrollEnabled  = false
     view.isEditable       = false
@@ -34,13 +34,13 @@ class ChatMessageCell: UICollectionViewCell {
       if message.isFromSelf {
         rightAlignConstraints.isActive = true
         leftAlignConstraints.isActive = false
-        bubbleContainer.backgroundColor = Colors.primaryColor
-        textView.textColor = Colors.primaryColorLight3
+        bubbleContainer.backgroundColor = CustomUIColors.primaryColor
+        textView.textColor = CustomUIColors.primaryColorLight3
       } else {
         rightAlignConstraints.isActive = false
         leftAlignConstraints.isActive = true
-        bubbleContainer.backgroundColor = Colors.primaryColorLight2
-        textView.textColor = Colors.tertiaryColor
+        bubbleContainer.backgroundColor = CustomUIColors.primaryColorLight2
+        textView.textColor = CustomUIColors.tertiaryColor
       }
       
       widthConstraints.isActive = true

@@ -23,7 +23,7 @@ class BasicButton: UIButton {
   
   private func configure() {
     layer.cornerRadius                          = 10
-    titleLabel?.font                            = Fonts.subtitle
+    titleLabel?.font                            = CustomUIFonts.subtitle
     translatesAutoresizingMaskIntoConstraints   = false
   }
   

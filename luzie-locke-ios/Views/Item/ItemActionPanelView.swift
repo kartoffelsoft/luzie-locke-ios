@@ -21,22 +21,22 @@ class ItemActionPanelView: UIView {
   private let buyerView   = UIView()
   private let sellerView  = UIView()
   
-  private let buyerPriceLabel     = HeaderLabel(textColor: Colors.primaryColorLight3, textAlignment: .left)
-  private let buyerChatButton     = BasicButton(backgroundColor: Colors.primaryColorLight3,
-                                                textColor: Colors.primaryColor,
+  private let buyerPriceLabel     = HeaderLabel(textColor: CustomUIColors.primaryColorLight3, textAlignment: .left)
+  private let buyerChatButton     = BasicButton(backgroundColor: CustomUIColors.primaryColorLight3,
+                                                textColor: CustomUIColors.primaryColor,
                                                 title: "Chat")
   private let buyerFavoriteButton = RoundButton(radius: 30,
                                                 image: Images.favoriteOff,
-                                                backgroundColor: Colors.primaryColor)
+                                                backgroundColor: CustomUIColors.primaryColor)
   
-  private let sellerPriceLabel    = HeaderLabel(textColor: Colors.secondaryColor,
+  private let sellerPriceLabel    = HeaderLabel(textColor: CustomUIColors.secondaryColor,
                                                 textAlignment: .left)
   private let sellerEditButton    = RoundButton(radius: 20,
                                                 image: Images.itemEdit,
-                                                backgroundColor: Colors.primaryColor)
+                                                backgroundColor: CustomUIColors.primaryColor)
   private let sellerDeleteButton  = RoundButton(radius: 20,
                                                 image: Images.itemDelete,
-                                                backgroundColor: Colors.primaryColor)
+                                                backgroundColor: CustomUIColors.primaryColor)
 
   init(viewModel: ItemActionPanelViewModel) {
     self.viewModel = viewModel
@@ -48,7 +48,7 @@ class ItemActionPanelView: UIView {
   
   private func configureLayout() {
     translatesAutoresizingMaskIntoConstraints = false
-    backgroundColor                           = Colors.primaryColor
+    backgroundColor                           = CustomUIColors.primaryColor
     
     addSubview(buyerView)
     addSubview(sellerView)

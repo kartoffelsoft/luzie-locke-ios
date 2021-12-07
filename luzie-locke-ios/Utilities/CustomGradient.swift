@@ -14,11 +14,11 @@ class CustomGradient {
     gradient.frame      = view.bounds
     gradient.startPoint = CGPoint(x: 0, y: 0)
     gradient.endPoint   = CGPoint(x: 0, y: 1)
-    gradient.colors     = [ Colors.primaryColorLight3.cgColor,
-                            Colors.primaryColorLight3.cgColor,
-                            Colors.primaryColorLight2.cgColor,
-                            Colors.primaryColorLight1.cgColor,
-                            Colors.primaryColor.cgColor ]
+    gradient.colors     = [ CustomUIColors.primaryColorLight3.cgColor,
+                            CustomUIColors.primaryColorLight3.cgColor,
+                            CustomUIColors.primaryColorLight2.cgColor,
+                            CustomUIColors.primaryColorLight1.cgColor,
+                            CustomUIColors.primaryColor.cgColor ]
 
     var image: UIImage?
     
@@ -43,7 +43,7 @@ class CustomGradient {
     gradient.endPoint   = CGPoint(x: 0, y: 1)
     gradient.colors     = [ UIColor.white.cgColor,
                             UIColor.white.cgColor,
-                            Colors.primaryColorLight3.cgColor ]
+                            CustomUIColors.primaryColorLight3.cgColor ]
 
     var image: UIImage?
     var size = view.frame.size

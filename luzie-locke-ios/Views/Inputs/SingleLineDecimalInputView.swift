@@ -52,7 +52,7 @@ class SingleLineDecimalInputView: UIView {
     textField.pinToEdges(of: self)
 
     textField.delegate        = self
-    textField.font            = Fonts.body
+    textField.font            = CustomUIFonts.body
     textField.keyboardType    = UIKeyboardType.decimalPad
     textField.backgroundColor = .clear
     textField.addTarget(self, action: #selector(handleInputChange), for: .editingChanged)

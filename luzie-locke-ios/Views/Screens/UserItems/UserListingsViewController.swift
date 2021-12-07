@@ -55,12 +55,12 @@ class UserListingsViewController: UIViewController {
     segmentedControl.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
     
     segmentedControl.setTitleTextAttributes([
-      NSAttributedString.Key.font: Fonts.body,
+      NSAttributedString.Key.font: CustomUIFonts.body,
       NSAttributedString.Key.foregroundColor: UIColor.white
     ], for: .normal)
     
-    segmentedControl.selectedSegmentTintColor = Colors.primaryColorLight1
-    segmentedControl.backgroundColor          = Colors.primaryColorLight3
+    segmentedControl.selectedSegmentTintColor = CustomUIColors.primaryColorLight1
+    segmentedControl.backgroundColor          = CustomUIColors.primaryColorLight3
     segmentedControl.selectedSegmentIndex     = 0
   }
   
@@ -73,11 +73,11 @@ class UserListingsViewController: UIViewController {
     collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
     collectionView.delegate         = self
     collectionView.backgroundColor  = .clear
-    collectionView.refreshControl = refreshControl
+    collectionView.refreshControl   = refreshControl
     
     collectionView.register(ItemCell.self, forCellWithReuseIdentifier: ItemCell.reuseIdentifier)
 
-    refreshControl.tintColor      = Colors.primaryColor
+    refreshControl.tintColor = CustomUIColors.primaryColor
     refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
   }
   

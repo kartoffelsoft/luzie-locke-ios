@@ -49,7 +49,7 @@ class ItemDisplayViewController: UIViewController {
     bindChildViewController(child: briefViewController, to: contentView)
     
     let bottomSafeAreaView = UIView()
-    bottomSafeAreaView.backgroundColor = Colors.primaryColor
+    bottomSafeAreaView.backgroundColor = CustomUIColors.primaryColor
     bottomSafeAreaView.translatesAutoresizingMaskIntoConstraints = false
     
     contentView.translatesAutoresizingMaskIntoConstraints = false
