@@ -12,7 +12,7 @@ struct SettingsLocalLevelUpdateRequestDTO: APIRequest {
   typealias Response = VoidResponseDTO
   
   var resourceName: String {
-    return "/api/users/self/settings/local-level"
+    return "/api/settings/local-level"
   }
   
   let localLevel: Int

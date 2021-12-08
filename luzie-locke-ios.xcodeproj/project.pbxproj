@@ -440,6 +440,8 @@
 			isa = PBXGroup;
 			children = (
 				4A09C69D2738582700FD4E42 /* UserInfoView.swift */,
+				4A155E5F2724D16600C8B867 /* UserMenuCell.swift */,
+				4AED5E8527219E7300B7AC00 /* ProfileCell.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -581,7 +583,7 @@
 				4A09C6A427392DBB00FD4E42 /* Messages */,
 				4A09C69C273857FD00FD4E42 /* User */,
 				4A47E6CB27314CEE00B9018A /* Item */,
-				4AED5E8427219E5C00B7AC00 /* Cells */,
+				4AD53D182760B3C100F34874 /* Settings */,
 				4A155E5227240B0F00C8B867 /* CustomComponents */,
 				4A3B529927123DCF00EF4F93 /* Screens */,
 			);
@@ -604,10 +606,9 @@
 			children = (
 				4ACA8205275790C7003C7E0E /* ImageSelect */,
 				4ACA81F827576543003C7E0E /* Inputs */,
-				4A22DB35274D74D700E5125B /* UserItems */,
 				4A01D55B273DC2F700EDFC1C /* Messages */,
+				4AD53D172760B33600F34874 /* User */,
 				4A47E6CE27316E0D00B9018A /* Item */,
-				4AEE8F752727E830004CB686 /* Cells */,
 				4AEE8FAC272BD456004CB686 /* Screens */,
 			);
 			path = ViewModels;
@@ -797,6 +798,7 @@
 		4A47E6CB27314CEE00B9018A /* Item */ = {
 			isa = PBXGroup;
 			children = (
+				4AEE8F6E2726DF93004CB686 /* ItemCell.swift */,
 				4A47E6CC27314D4600B9018A /* ItemActionPanelView.swift */,
 				4A09C69F273865FA00FD4E42 /* ItemInfoView.swift */,
 			);
@@ -806,6 +808,7 @@
 		4A47E6CE27316E0D00B9018A /* Item */ = {
 			isa = PBXGroup;
 			children = (
+				4AEE8F762727E84F004CB686 /* ItemCellViewModel.swift */,
 				4A47E6CF27316E1900B9018A /* ItemActionPanelViewModel.swift */,
 			);
 			path = Item;
@@ -901,6 +904,22 @@
 				4AD53D10275FF53800F34874 /* SettingsLocalLevelUpdateDTO.swift */,
 				4AD53D12275FF81B00F34874 /* SettingsLocationReadDTO.swift */,
 				4AD53D14275FFA8000F34874 /* SettingsLocationUpdateDTO.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		4AD53D172760B33600F34874 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				4AEE8F8627288842004CB686 /* ProfileCellViewModel.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		4AD53D182760B3C100F34874 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4A155E5B2724438B00C8B867 /* SettingsMenuCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1038,17 +1057,6 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
-		4AED5E8427219E5C00B7AC00 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				4AED5E8527219E7300B7AC00 /* ProfileCell.swift */,
-				4A155E5F2724D16600C8B867 /* UserMenuCell.swift */,
-				4A155E5B2724438B00C8B867 /* SettingsMenuCell.swift */,
-				4AEE8F6E2726DF93004CB686 /* ItemCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		4AEE61AE27401942008055F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1077,15 +1085,6 @@
 				4AE229A1275A2B7B0070350E /* ItemComposeViewController.swift */,
 			);
 			path = Item;
-			sourceTree = "<group>";
-		};
-		4AEE8F752727E830004CB686 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				4AEE8F762727E84F004CB686 /* ItemCellViewModel.swift */,
-				4AEE8F8627288842004CB686 /* ProfileCellViewModel.swift */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		4AEE8F78272803E9004CB686 /* Storage */ = {
@@ -1159,6 +1158,7 @@
 		4AEE8FAC272BD456004CB686 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				4A22DB35274D74D700E5125B /* UserItems */,
 				4AC56678273BC2C300776DBD /* Messages */,
 				4A47E6DD2731D32500B9018A /* SwipeImage */,
 				4AEE8FAD272BD46F004CB686 /* Item */,

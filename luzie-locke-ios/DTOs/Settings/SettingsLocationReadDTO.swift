@@ -12,7 +12,7 @@ struct SettingsLocationReadRequestDTO: APIRequest {
   typealias Response = SettingsLocationReadResponseDTO
   
   var resourceName: String {
-    return "/api/users/self/settings/location"
+    return "/api/settings/location"
   }
   
   func toDictionary() -> [String: Any] {

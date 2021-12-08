@@ -12,7 +12,7 @@ struct SettingsLocalLevelReadRequestDTO: APIRequest {
   typealias Response = SettingsLocalLevelReadResponseDTO
   
   var resourceName: String {
-    return "/api/users/self/settings/local-level"
+    return "/api/settings/local-level"
   }
   
   func toDictionary() -> [String: Any] {

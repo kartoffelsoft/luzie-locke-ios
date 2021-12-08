@@ -12,7 +12,7 @@ struct UpdateLocationRequest: APIRequest {
   typealias Response = UpdateLocationResponse
   
   var resourceName: String {
-    return "/api/users/self/settings/location"
+    return "/api/settings/location"
   }
   
   let city: String

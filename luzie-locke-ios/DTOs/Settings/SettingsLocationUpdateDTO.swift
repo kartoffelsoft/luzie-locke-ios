@@ -12,7 +12,7 @@ struct SettingsLocationUpdateRequestDTO: APIRequest {
   typealias Response = VoidResponseDTO
   
   var resourceName: String {
-    return "/api/users/self/settings/location"
+    return "/api/settings/location"
   }
   
   let city: String
