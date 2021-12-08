@@ -34,6 +34,7 @@ struct UserProfileDTO: Decodable, Hashable {
   let email: String?
   let reputation: Int?
   let imageUrl: String?
+  let localLevel: Int?
   let city: String?
   let location: Location?
 
@@ -42,4 +43,3 @@ struct UserProfileDTO: Decodable, Hashable {
     let coordinates: [Double]?
   }
 }
-

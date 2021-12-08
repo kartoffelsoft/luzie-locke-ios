@@ -24,6 +24,7 @@ class CompositionRoot {
   lazy var localProfileRepository = LocalProfileRepository(key: "Profile")
   lazy var userProfileRepository  = UserProfileRepository(backendClient: backendClient,
                                                           localProfileRepository: localProfileRepository)
+  lazy var settingsRepository     = SettingsRepository(backendClient: backendClient)
 
   lazy var accessTokenStorage     = AnyStorage(wrap: SimpleStringStorage(key: "AccessToken"))
   lazy var refreshTokenStorage    = AnyStorage(wrap: SimpleStringStorage(key: "RefreshToken"))

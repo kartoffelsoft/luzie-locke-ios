@@ -120,6 +120,11 @@
 		4ACA821027590BD3003C7E0E /* InputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA820F27590BD3003C7E0E /* InputViewModel.swift */; };
 		4ACA821227590C6E003C7E0E /* DecimalInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA821127590C6E003C7E0E /* DecimalInputViewModel.swift */; };
 		4ACA821527595D26003C7E0E /* ItemUpdateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA821427595D26003C7E0E /* ItemUpdateDTO.swift */; };
+		4AD53D0A275FED1200F34874 /* SettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D09275FED1200F34874 /* SettingsRepository.swift */; };
+		4AD53D0E275FF31300F34874 /* SettingsLocalLevelReadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D0D275FF31300F34874 /* SettingsLocalLevelReadDTO.swift */; };
+		4AD53D11275FF53800F34874 /* SettingsLocalLevelUpdateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D10275FF53800F34874 /* SettingsLocalLevelUpdateDTO.swift */; };
+		4AD53D13275FF81B00F34874 /* SettingsLocationReadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D12275FF81B00F34874 /* SettingsLocationReadDTO.swift */; };
+		4AD53D15275FFA8000F34874 /* SettingsLocationUpdateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D14275FFA8000F34874 /* SettingsLocationUpdateDTO.swift */; };
 		4ADE3D312735807500ACBC60 /* AppMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */; };
 		4AE229A2275A2B7B0070350E /* ItemComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229A1275A2B7B0070350E /* ItemComposeViewController.swift */; };
 		4AE229A6275A33C40070350E /* ItemComposeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229A5275A33C40070350E /* ItemComposeViewModel.swift */; };
@@ -305,6 +310,12 @@
 		4ACA820F27590BD3003C7E0E /* InputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewModel.swift; sourceTree = "<group>"; };
 		4ACA821127590C6E003C7E0E /* DecimalInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalInputViewModel.swift; sourceTree = "<group>"; };
 		4ACA821427595D26003C7E0E /* ItemUpdateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemUpdateDTO.swift; sourceTree = "<group>"; };
+		4AD53D09275FED1200F34874 /* SettingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepository.swift; sourceTree = "<group>"; };
+		4AD53D0D275FF31300F34874 /* SettingsLocalLevelReadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLocalLevelReadDTO.swift; sourceTree = "<group>"; };
+		4AD53D10275FF53800F34874 /* SettingsLocalLevelUpdateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLocalLevelUpdateDTO.swift; sourceTree = "<group>"; };
+		4AD53D12275FF81B00F34874 /* SettingsLocationReadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLocationReadDTO.swift; sourceTree = "<group>"; };
+		4AD53D14275FFA8000F34874 /* SettingsLocationUpdateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLocationUpdateDTO.swift; sourceTree = "<group>"; };
+		4AD53D162760A10400F34874 /* Berlin.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Berlin.gpx; sourceTree = "<group>"; };
 		4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMainCoordinator.swift; sourceTree = "<group>"; };
 		4AE229A1275A2B7B0070350E /* ItemComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComposeViewController.swift; sourceTree = "<group>"; };
 		4AE229A5275A33C40070350E /* ItemComposeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComposeViewModel.swift; sourceTree = "<group>"; };
@@ -751,6 +762,7 @@
 				4AC5667B273BE3E000776DBD /* ChatMessageRepository.swift */,
 				4A01D550273CFF0900EDFC1C /* RecentMessageRepository.swift */,
 				4ACA81EF2754CF28003C7E0E /* ImageRepository.swift */,
+				4AD53D09275FED1200F34874 /* SettingsRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -758,6 +770,7 @@
 		4A47E6B7272F47BC00B9018A /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
+				4AD53D0F275FF51600F34874 /* Settings */,
 				4A47E6B2272DE2EF00B9018A /* CommonDTO.swift */,
 				4A47E6AE272D79E500B9018A /* ItemCreateDTO.swift */,
 				4A47E6B8272F622400B9018A /* ItemReadListDTO.swift */,
@@ -881,12 +894,24 @@
 			path = ImageSelect;
 			sourceTree = "<group>";
 		};
+		4AD53D0F275FF51600F34874 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4AD53D0D275FF31300F34874 /* SettingsLocalLevelReadDTO.swift */,
+				4AD53D10275FF53800F34874 /* SettingsLocalLevelUpdateDTO.swift */,
+				4AD53D12275FF81B00F34874 /* SettingsLocationReadDTO.swift */,
+				4AD53D14275FFA8000F34874 /* SettingsLocationUpdateDTO.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		4ADE3D292733CA3400ACBC60 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				4A3B526E271239CF00EF4F93 /* Assets.xcassets */,
 				4AEE8FA5272B4DD0004CB686 /* Fonts */,
 				4AED5E1927197BA400B7AC00 /* Frankfurt.gpx */,
+				4AD53D162760A10400F34874 /* Berlin.gpx */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1288,6 +1313,7 @@
 				4AEE8F772727E84F004CB686 /* ItemCellViewModel.swift in Sources */,
 				4A155E622725C1FD00C8B867 /* SettingsViewModel.swift in Sources */,
 				4A22DB42275021FA00E5125B /* UserFavoritesViewController.swift in Sources */,
+				4AD53D13275FF81B00F34874 /* SettingsLocationReadDTO.swift in Sources */,
 				4AED5E6A271FF2B200B7AC00 /* BackendResponse.swift in Sources */,
 				4A3B52C92713A02D00EF4F93 /* UIViewController+Ext.swift in Sources */,
 				4AEE8FA4272ABDD2004CB686 /* CustomGradient.swift in Sources */,
@@ -1325,6 +1351,7 @@
 				4A3B52A62712539300EF4F93 /* FirebaseAuthService.swift in Sources */,
 				4A22DB34274D745300E5125B /* UserListingsViewController.swift in Sources */,
 				4AEE8F712726E082004CB686 /* Item.swift in Sources */,
+				4AD53D0E275FF31300F34874 /* SettingsLocalLevelReadDTO.swift in Sources */,
 				4A47E6B9272F622400B9018A /* ItemReadListDTO.swift in Sources */,
 				4A47E6E6273317FA00B9018A /* ViewControllerFactory.swift in Sources */,
 				4AED5E8627219E7300B7AC00 /* ProfileCell.swift in Sources */,
@@ -1358,6 +1385,7 @@
 				4A3B529B2712401D00EF4F93 /* HomeViewController.swift in Sources */,
 				4ACA81F7275746D8003C7E0E /* SingleLineDecimalInputView.swift in Sources */,
 				4A47E6C12730759500B9018A /* ItemReadDTO.swift in Sources */,
+				4AD53D0A275FED1200F34874 /* SettingsRepository.swift in Sources */,
 				4AED5E65271F729F00B7AC00 /* TokenHeaderRequestInterceptor.swift in Sources */,
 				4A47E6CD27314D4600B9018A /* ItemActionPanelView.swift in Sources */,
 				4AED5E5A271EBEE700B7AC00 /* BackendClient.swift in Sources */,
@@ -1374,6 +1402,7 @@
 				4ACA820A2757A39D003C7E0E /* ImageSelectElementView.swift in Sources */,
 				4A22DB31274BDF2D00E5125B /* ItemSearchViewModel.swift in Sources */,
 				4A155E432722A46300C8B867 /* Constants.swift in Sources */,
+				4AD53D15275FFA8000F34874 /* SettingsLocationUpdateDTO.swift in Sources */,
 				4ACA81F327568163003C7E0E /* SingleLineTextInputView.swift in Sources */,
 				4A22DB40274F006D00E5125B /* CustomLabel.swift in Sources */,
 				4A3B52E32715C11900EF4F93 /* SettingsCoordinator.swift in Sources */,
@@ -1404,6 +1433,7 @@
 				4AC5667A273BC30000776DBD /* ChatViewModel.swift in Sources */,
 				4AED5E7C27209C8D00B7AC00 /* BackendAuthService.swift in Sources */,
 				4A3B529F271242ED00EF4F93 /* SettingsViewController.swift in Sources */,
+				4AD53D11275FF53800F34874 /* SettingsLocalLevelUpdateDTO.swift in Sources */,
 				4AC5667C273BE3E000776DBD /* ChatMessageRepository.swift in Sources */,
 				4AC56677273BB65200776DBD /* MessagesViewModel.swift in Sources */,
 				4AED5E34271C199600B7AC00 /* BasicButton.swift in Sources */,

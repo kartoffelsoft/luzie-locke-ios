@@ -14,16 +14,18 @@ struct UserProfile: Codable, Hashable {
   let email: String?
   let reputation: Int?
   let imageUrl: String?
+  let localLevel: Int?
   let city: String?
   let location: Location?
 
   init(id: String? = nil, name: String? = nil, email: String? = nil, reputation: Int? = nil,
-       imageUrl: String? = nil, city: String? = nil, location: Location? = nil) {
+       imageUrl: String? = nil, localLevel: Int? = nil, city: String? = nil, location: Location? = nil) {
     self.id         = id
     self.name       = name
     self.email      = email
     self.reputation = reputation
     self.imageUrl   = imageUrl
+    self.localLevel = localLevel
     self.city       = city
     self.location   = location
   }

@@ -62,16 +62,18 @@ class RecentMessageCell: UITableViewCell {
     addSubview(stackView)
     addSubview(dateLabel)
     
+    let padding: CGFloat = 10
     NSLayoutConstraint.activate([
-      userImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+      userImageView.topAnchor.constraint(equalTo: topAnchor, constant: padding),
       userImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
       userImageView.widthAnchor.constraint(equalToConstant: 60),
       userImageView.heightAnchor.constraint(equalToConstant: 60),
       
       stackView.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 15),
+      stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
       stackView.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor),
 
-      dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+      dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
       dateLabel.bottomAnchor.constraint(equalTo: centerYAnchor)
     ])
   }

@@ -48,7 +48,7 @@ struct NeighbourhoodSettingView: View {
           .font(CustomFonts.body)
         HStack {
           Button {
-            
+            viewModel.didTapApply()
           } label: {
             HStack {
               Spacer()

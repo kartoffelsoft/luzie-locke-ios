@@ -117,6 +117,6 @@ extension CompositionRoot: ViewModelFactory {
   
   func makeNeighbourhoodSettingViewModel(coordinator: SettingsCoordinator) -> NeighbourhoodSettingViewModel {
     return NeighbourhoodSettingViewModel(coordinator: coordinator,
-                                         userProfileRepository: userProfileRepository)
+                                         settingsRepository: settingsRepository)
   }
 }

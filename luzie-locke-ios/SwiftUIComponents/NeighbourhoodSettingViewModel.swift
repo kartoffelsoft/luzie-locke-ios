@@ -14,10 +14,10 @@ class NeighbourhoodSettingViewModel: NSObject, ObservableObject {
   @Published var currentRadiusText: String?
   @Published var currentSpanDelta: Double?
   
-  private let coordinator:            SettingsCoordinator
-  private let userProfileRepository:  UserProfileRepository
+  private let coordinator:        SettingsCoordinator
+  private let settingsRepository: SettingsRepositoryProtocol
   
-  private let levelToRadiusMap: [Int: Double] = [
+  private let localLevelToRadiusMap: [Int: Double] = [
     0: 3,
     1: 5,
     2: 10,
@@ -30,10 +30,10 @@ class NeighbourhoodSettingViewModel: NSObject, ObservableObject {
     9: 600
   ]
   
-  private var currentLevel: Int? {
+  private var currentLocalLevel: Int? {
     didSet {
-      guard let currentLevel = currentLevel else { return }
-      currentRadius = levelToRadiusMap[currentLevel]
+      guard let currentLocalLevel = currentLocalLevel else { return }
+      currentRadius = localLevelToRadiusMap[currentLocalLevel]
       if let currentRadius = currentRadius {
         currentRadiusText = "\(currentRadius) km"
         currentSpanDelta = currentRadius / 20
@@ -41,24 +41,56 @@ class NeighbourhoodSettingViewModel: NSObject, ObservableObject {
     }
   }
   
-  init(coordinator: SettingsCoordinator, userProfileRepository: UserProfileRepository) {
-    self.coordinator            = coordinator
-    self.userProfileRepository  = userProfileRepository
+  init(coordinator: SettingsCoordinator, settingsRepository: SettingsRepositoryProtocol) {
+    self.coordinator         = coordinator
+    self.settingsRepository  = settingsRepository
     super.init()
     
-    currentLevel = 1
-    currentRadius = levelToRadiusMap[1]
-    currentRadiusText = "\(currentRadius!) km"
-    currentSpanDelta = currentRadius! / 20
+    settingsRepository.readLocalLevel() { [weak self] result in
+      guard let self = self else { return }
+      switch(result) {
+      case .success(let localLevel):
+        DispatchQueue.main.async {
+          self.currentLocalLevel = localLevel
+        }
+      case .failure(let error):
+        print(error)
+      }
+    }
+    
+    settingsRepository.readLocation() { [weak self] result in
+      guard let self = self else { return }
+      switch(result) {
+      case .success((_, let lat, let lng)):
+        DispatchQueue.main.async {
+          self.currentCoordinate = CLLocationCoordinate2D(latitude: lat, longitude: lng)
+        }
+      case .failure(let error):
+        print(error)
+      }
+    }
   }
   
   func didTapMinus() {
-    guard let currentLevel = currentLevel else { return }
-    self.currentLevel = max(currentLevel - 1, 0)
+    guard let currentLocalLevel = currentLocalLevel else { return }
+    self.currentLocalLevel = max(currentLocalLevel - 1, 0)
   }
   
   func didTapPlus() {
-    guard let currentLevel = currentLevel else { return }
-    self.currentLevel = min(currentLevel + 1, levelToRadiusMap.count - 1)
+    guard let currentLocalLevel = currentLocalLevel else { return }
+    self.currentLocalLevel = min(currentLocalLevel + 1, localLevelToRadiusMap.count - 1)
+  }
+  
+  func didTapApply() {
+    guard let currentLocalLevel = currentLocalLevel else { return }
+    settingsRepository.updateLocalLevel(localLevel: currentLocalLevel) { [weak self] result in
+      guard let self = self else { return }
+      switch(result) {
+      case .success:
+        self.coordinator.popViewController()
+      case .failure(let error):
+        print(error)
+      }
+    }
   }
 }

@@ -1,15 +1,15 @@
 //
-//  LocationUpdateRequest.swift
+//  SettingsLocationUpdateDTO.swift
 //  luzie-locke-ios
 //
-//  Created by Harry on 19.10.21.
+//  Created by Harry on 07.12.21.
 //
 
 import Foundation
 
-struct UpdateLocationRequest: APIRequest {
+struct SettingsLocationUpdateRequestDTO: APIRequest {
   
-  typealias Response = UpdateLocationResponse
+  typealias Response = VoidResponseDTO
   
   var resourceName: String {
     return "/api/users/self/settings/location"
@@ -31,3 +31,4 @@ struct UpdateLocationRequest: APIRequest {
              "lng":  lng   ]
   }
 }
+
