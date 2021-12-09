@@ -9,7 +9,9 @@ import UIKit
 
 class EmptyStateView: UIView {
   
-  let messageLabel = HeaderLabel(textAlignment: .center)
+  let messageLabel = CustomLabel(font: CustomUIFonts.body,
+                                 textColor: .secondaryLabel,
+                                 textAlignment: .center)
   let logoImageView = UIImageView()
   
   override init(frame: CGRect) {
@@ -31,8 +33,7 @@ class EmptyStateView: UIView {
     addSubview(messageLabel)
     
     messageLabel.numberOfLines = 3
-    messageLabel.textColor = .secondaryLabel
-    
+
 //    logoImageView.image = Images.mainLogo
     logoImageView.translatesAutoresizingMaskIntoConstraints = false
     

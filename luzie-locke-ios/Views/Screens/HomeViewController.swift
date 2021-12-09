@@ -43,7 +43,7 @@ class HomeViewController: UIViewController {
     
     viewModel.viewDidLoad()
     
-    NotificationCenter.default.addObserver(self, selector: #selector(handleDidUpdateItemList), name: .didUpdateItemList, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(handleDidRequireItemListRefresh), name: .didRequireItemListRefresh, object: nil)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -149,8 +149,8 @@ class HomeViewController: UIViewController {
     viewModel.viewDidScrollToTop()
   }
   
-  @objc private func handleDidUpdateItemList() {
-    viewModel.viewDidUpdateItemList()
+  @objc private func handleDidRequireItemListRefresh() {
+    viewModel.viewDidRequireItemListRefresh()
   }
   
   deinit {

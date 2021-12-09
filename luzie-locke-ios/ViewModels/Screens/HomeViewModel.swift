@@ -99,7 +99,7 @@ class HomeViewModel {
     refresh()
   }
   
-  func viewDidUpdateItemList() {
+  func viewDidRequireItemListRefresh() {
     refresh()
   }
   

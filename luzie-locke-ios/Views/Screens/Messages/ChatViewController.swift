@@ -14,8 +14,6 @@ class ChatViewController: UICollectionViewController {
   
   private var chatInputAccessoryView: ChatInputAccessoryView!
 
-  private var messages = [ChatMessage]()
-
   init() {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .vertical
@@ -111,7 +109,8 @@ class ChatViewController: UICollectionViewController {
   }
 
   @objc private func handleKeyboardShow() {
-    collectionView.scrollToItem(at: [0, messages.count - 1],
+    guard let count = viewModel?.bindableMessages.value?.count else { return }
+    collectionView.scrollToItem(at: [0, count - 1],
                                 at: .bottom,
                                 animated: false)
   }

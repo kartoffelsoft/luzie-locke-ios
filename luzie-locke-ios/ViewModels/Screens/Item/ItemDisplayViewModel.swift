@@ -79,7 +79,7 @@ class ItemDisplayViewModel {
       switch result {
       case .success():
         self.coordinator.popViewController()
-        NotificationCenter.default.post(name: .didUpdateItemList, object: nil)
+        NotificationCenter.default.post(name: .didRequireItemListRefresh, object: nil)
       case .failure(let error):
         self.delegate?.didGetError(error)
       }

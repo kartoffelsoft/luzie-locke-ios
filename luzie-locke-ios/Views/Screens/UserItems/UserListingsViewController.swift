@@ -59,7 +59,7 @@ class UserListingsViewController: UIViewController {
       NSAttributedString.Key.foregroundColor: UIColor.white
     ], for: .normal)
     
-    segmentedControl.selectedSegmentTintColor = CustomUIColors.primaryColorLight1
+    segmentedControl.selectedSegmentTintColor = CustomUIColors.primaryColor
     segmentedControl.backgroundColor          = CustomUIColors.primaryColorLight3
     segmentedControl.selectedSegmentIndex     = 0
   }

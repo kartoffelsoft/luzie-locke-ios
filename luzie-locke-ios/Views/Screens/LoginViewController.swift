@@ -11,7 +11,6 @@ class LoginViewController: UIViewController {
   
   let viewModel       : LoginViewModel
   
-  private let googleButton = UIButton(type: .system)
   private let loginButton = BasicButton(backgroundColor: CustomUIColors.primaryColor, title: "LOGIN")
   private let dividerView = DividerView()
   
@@ -35,7 +34,6 @@ class LoginViewController: UIViewController {
     
     button.translatesAutoresizingMaskIntoConstraints = false
     button.titleLabel?.font = CustomUIFonts.caption
-    //      button.addTarget(self, action: #selector(handleGoToLogin), for: .touchUpInside)
     return button
   }()
   
@@ -65,6 +63,12 @@ class LoginViewController: UIViewController {
     return textField
   }()
   
+  private let googleButton: UIButton = {
+    let button = UIButton(type: .system)
+    button.setImage(UIImage(named: "GoogleButton")?.withRenderingMode(.alwaysOriginal), for: .normal)
+    return button
+  }()
+  
   init(viewModel: LoginViewModel) {
     self.viewModel      = viewModel
     super.init(nibName: nil, bundle: nil)
@@ -79,6 +83,7 @@ class LoginViewController: UIViewController {
     
     configureBackground()
     configureLayout()
+    configureHandlers()
   }
   
   private func configureBackground() {
@@ -88,17 +93,12 @@ class LoginViewController: UIViewController {
   }
   
   private func configureLayout() {
-    googleButton.setImage(UIImage(named: "GoogleButton")?.withRenderingMode(.alwaysOriginal), for: .normal)
-    googleButton.addTarget(self, action: #selector(handleGoogleButtonEvent), for: .touchUpInside)
+    let titleContainerView      = makeTitleContainerView()
+    let emailLoginContainerView = makeEmailLoginContainerView()
+
+    let containerView = UIStackView(
+      arrangedSubviews: [ titleContainerView, emailLoginContainerView, dividerView, googleButton ])
     
-    let titleContainerView = makeTitleContainerView()
-    
-    let inputContainerView = UIStackView(arrangedSubviews: [ emailTextField, passwordTextField, loginButton ])
-    inputContainerView.translatesAutoresizingMaskIntoConstraints  = false
-    inputContainerView.axis                                       = .vertical
-    inputContainerView.spacing                                    = 8
-    
-    let containerView = UIStackView(arrangedSubviews: [ titleContainerView, inputContainerView, dividerView, googleButton ])
     containerView.translatesAutoresizingMaskIntoConstraints = false
     containerView.axis                                      = .vertical
     containerView.spacing                                   = 25
@@ -116,30 +116,51 @@ class LoginViewController: UIViewController {
   }
   
   private func makeTitleContainerView() -> UIView {
-    let subTextContainerView = UIStackView(arrangedSubviews: [ subTextLabel, goToSignUpButton ])
-    subTextContainerView.translatesAutoresizingMaskIntoConstraints  = false
-    subTextContainerView.axis = .horizontal
-    subTextContainerView.spacing = 5
+    let subContainerView = UIStackView(arrangedSubviews: [ subTextLabel, goToSignUpButton ])
+    subContainerView.translatesAutoresizingMaskIntoConstraints  = false
+    subContainerView.axis = .horizontal
+    subContainerView.spacing = 5
     
-    let titleContainerView = UIView()
-    titleContainerView.translatesAutoresizingMaskIntoConstraints  = false
-    titleContainerView.addSubview(titleLabel)
-    titleContainerView.addSubview(subTextContainerView)
+    let containerView = UIView()
+    containerView.translatesAutoresizingMaskIntoConstraints  = false
+    containerView.addSubview(titleLabel)
+    containerView.addSubview(subContainerView)
     
     NSLayoutConstraint.activate([
-      titleContainerView.widthAnchor.constraint(equalToConstant: 300),
-      titleContainerView.heightAnchor.constraint(equalToConstant: 50),
+      containerView.widthAnchor.constraint(equalToConstant: 300),
+      containerView.heightAnchor.constraint(equalToConstant: 50),
     
-      titleLabel.centerXAnchor.constraint(equalTo: titleContainerView.centerXAnchor),
-      subTextContainerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-      subTextContainerView.centerXAnchor.constraint(equalTo: titleContainerView.centerXAnchor),
+      titleLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+      subContainerView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+      subContainerView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
     ])
     
-    return titleContainerView
+    return containerView
   }
   
+  private func makeEmailLoginContainerView() -> UIView {
+    let view = UIStackView(arrangedSubviews: [ emailTextField, passwordTextField, loginButton ])
+    view.translatesAutoresizingMaskIntoConstraints  = false
+    view.axis                                       = .vertical
+    view.spacing                                    = 8
+    return view
+  }
   
-  @objc private func handleGoogleButtonEvent() {
+  private func configureHandlers() {
+    goToSignUpButton.addTarget(self, action: #selector(handleGoToSignUpButtonTap), for: .touchUpInside)
+    loginButton.addTarget(self, action: #selector(handleLoginButtonTap), for: .touchUpInside)
+    googleButton.addTarget(self, action: #selector(handleGoogleButtonTap), for: .touchUpInside)
+  }
+  
+  @objc private func handleGoToSignUpButtonTap() {
+    print("handleGoToSignUpButtonTap")
+  }
+  
+  @objc private func handleLoginButtonTap() {
+    print("handleLoginButtonTap")
+  }
+  
+  @objc private func handleGoogleButtonTap() {
     viewModel.performGoogleLogin(self)
   }
   
@@ -152,6 +173,7 @@ extension LoginViewController: LoginViewModelDelegate {
   
   func didLogin() {
     DispatchQueue.main.async {
+      NotificationCenter.default.post(name: .didRequireItemListRefresh, object: nil)
       self.dismiss(animated: true)
     }
   }

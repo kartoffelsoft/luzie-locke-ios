@@ -15,10 +15,12 @@ class CustomLabel: UILabel {
   }
   
   convenience init(font: UIFont = CustomUIFonts.body,
-                   textColor: UIColor = .secondaryLabel) {
+                   textColor: UIColor = .secondaryLabel,
+                   textAlignment: NSTextAlignment = .left) {
     self.init(frame: .zero)
     self.font           = font
     self.textColor      = textColor
+    self.textAlignment  = textAlignment
   }
   
   private func configure() {
@@ -28,7 +30,6 @@ class CustomLabel: UILabel {
     lineBreakMode                               = .byWordWrapping
     translatesAutoresizingMaskIntoConstraints   = false
     numberOfLines                               = 0
-    textAlignment                               = .left
   }
   
   required init?(coder: NSCoder) {
