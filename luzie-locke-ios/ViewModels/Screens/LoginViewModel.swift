@@ -61,6 +61,8 @@ class LoginViewModel {
                     ()
                   }
                   self.delegate?.didLogin()
+                  NotificationCenter.default.post(name: .didUpdateItem, object: nil)
+                  NotificationCenter.default.post(name: .didLogin, object: nil)
                 }
               } else {
                 self.delegate?.didLogin()

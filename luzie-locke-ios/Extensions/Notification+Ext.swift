@@ -9,5 +9,6 @@ import Foundation
 
 extension Notification.Name {
   
-  static let didRequireItemListRefresh = Notification.Name("didRequireItemListRefresh")
+  static let didUpdateItem  = Notification.Name("didUpdateItem")
+  static let didLogin       = Notification.Name("didLogin")
 }

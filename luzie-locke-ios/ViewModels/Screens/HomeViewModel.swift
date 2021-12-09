@@ -36,6 +36,8 @@ class HomeViewModel {
     self.coordinator          = coordinator
     self.openHttpClient       = openHttpClient
     self.itemRepository       = itemRepository
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(handleDidUpdateItemNotification), name: .didUpdateItem, object: nil)
   }
   
   private func loadData() {
@@ -99,10 +101,6 @@ class HomeViewModel {
     refresh()
   }
   
-  func viewDidRequireItemListRefresh() {
-    refresh()
-  }
-  
   func viewDidScrollToBottom() {
     fetchList()
   }
@@ -119,5 +117,9 @@ class HomeViewModel {
     if let item = bindableItems.value?[indexPath.row], let id = item.id {
       coordinator.navigateToItemDisplay(id: id)
     }
+  }
+  
+  @objc private func handleDidUpdateItemNotification() {
+    refresh()
   }
 }

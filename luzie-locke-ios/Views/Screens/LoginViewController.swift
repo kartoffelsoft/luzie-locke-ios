@@ -173,7 +173,6 @@ extension LoginViewController: LoginViewModelDelegate {
   
   func didLogin() {
     DispatchQueue.main.async {
-      NotificationCenter.default.post(name: .didRequireItemListRefresh, object: nil)
       self.dismiss(animated: true)
     }
   }

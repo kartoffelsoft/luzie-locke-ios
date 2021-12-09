@@ -34,6 +34,8 @@ class MessagesViewModel {
     self.recentMessageRepository  = recentMessageRepository
     
     bindableRecentMessages.value = [RecentMessage]()
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(handleDidLoginNotification), name: .didLogin, object: nil)
   }
   
   private func reload() {
@@ -47,7 +49,18 @@ class MessagesViewModel {
   }
   
   func didLoad() {
+    refresh()
+  }
+  
+  func refresh() {
     guard let profile = localProfileRepository.read() else { return }
+    
+    print("@", profile)
+    
+    bindableRecentMessages.value          = [RecentMessage]()
+    recentMessagesViewModels              = [RecentMessageCellViewModel]()
+    recentMessagesDictionary              = [String: RecentMessage]()
+    recentMessagesViewModelsDictionary    = [String: RecentMessageCellViewModel]()
     
     recentMessageRepository.read(localUserId: profile.id!) { [weak self] messages in
       guard let self = self else { return }
@@ -89,5 +102,9 @@ class MessagesViewModel {
 
     recentMessagesViewModels.remove(at: indexPath.row)
     bindableRecentMessages.value?.remove(at: indexPath.row)
+  }
+  
+  @objc private func handleDidLoginNotification() {
+    refresh()
   }
 }

@@ -70,7 +70,7 @@ class ItemCreateViewModel: ItemComposeViewModel {
         case .success:
           completion(.success(()))
           self.coordinator.popViewController()
-          NotificationCenter.default.post(name: .didRequireItemListRefresh, object: nil)
+          NotificationCenter.default.post(name: .didUpdateItem, object: nil)
         case .failure(let error):
           completion(.failure(error))
         }

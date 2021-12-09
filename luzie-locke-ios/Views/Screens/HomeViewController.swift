@@ -42,8 +42,6 @@ class HomeViewController: UIViewController {
     configureAddButton()
     
     viewModel.viewDidLoad()
-    
-    NotificationCenter.default.addObserver(self, selector: #selector(handleDidRequireItemListRefresh), name: .didRequireItemListRefresh, object: nil)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -147,10 +145,6 @@ class HomeViewController: UIViewController {
   
   @objc private func handleRefresh() {
     viewModel.viewDidScrollToTop()
-  }
-  
-  @objc private func handleDidRequireItemListRefresh() {
-    viewModel.viewDidRequireItemListRefresh()
   }
   
   deinit {
