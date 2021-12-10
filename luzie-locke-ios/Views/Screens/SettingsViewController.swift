@@ -32,7 +32,7 @@ class SettingsViewController: UIViewController {
   ]
   
   private let settingsMenuItems = [
-    SettingsMenuItem(image: Images.location, text: "Neighborhood setting"),
+    SettingsMenuItem(image: Images.target, text: "Neighborhood setting"),
     SettingsMenuItem(image: Images.location, text: "Verify neighborhood"),
     SettingsMenuItem(image: Images.logout, text: "Logout")
   ]
@@ -47,12 +47,14 @@ class SettingsViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: ScreenTitleLabel("Settings"))
+    navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: CustomLabel(
+      font: CustomUIFonts.subtitle,
+      textColor: CustomUIColors.primaryColor,
+      text: "Settings"))
     
     configureBackground()
     configureNavigationBar()
     configureCollectionView()
-
   }
   
   override func viewWillAppear(_ animated: Bool) {

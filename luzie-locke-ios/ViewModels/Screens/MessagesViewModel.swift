@@ -55,15 +55,15 @@ class MessagesViewModel {
   func refresh() {
     guard let profile = localProfileRepository.read() else { return }
     
-    print("@", profile)
-    
     bindableRecentMessages.value          = [RecentMessage]()
     recentMessagesViewModels              = [RecentMessageCellViewModel]()
     recentMessagesDictionary              = [String: RecentMessage]()
     recentMessagesViewModelsDictionary    = [String: RecentMessageCellViewModel]()
     
+    print("refresh: ", profile.id!)
     recentMessageRepository.read(localUserId: profile.id!) { [weak self] messages in
       guard let self = self else { return }
+      print("get message,", messages)
       messages.forEach { message in
         self.recentMessagesDictionary[message.id] = message
         
@@ -86,19 +86,25 @@ class MessagesViewModel {
   }
   
   func didTapMessageAt(indexPath: IndexPath) {
-    guard let remoteUserId = bindableRecentMessages.value?[indexPath.row].id else { return }
-    coordinator.navigateToChat(remoteUserId: remoteUserId)
+    guard let remoteUserId = bindableRecentMessages.value?[indexPath.row].userId else { return }
+    guard let itemId = bindableRecentMessages.value?[indexPath.row].itemId else { return }
+    print("@@@")
+    print("remoteUserId:", remoteUserId)
+    print("itemId:", itemId)
+    coordinator.navigateToChat(remoteUserId: remoteUserId, itemId: itemId)
   }
   
   func didTapDeleteMessageAt(indexPath: IndexPath) {
     guard let localUserId  = localProfileRepository.read()?.id else { return }
-    guard let remoteUserId = bindableRecentMessages.value?[indexPath.row].id else { return }
+    guard let messageId = bindableRecentMessages.value?[indexPath.row].id else { return }
+    guard let remoteUserId = bindableRecentMessages.value?[indexPath.row].userId else { return }
+    guard let itemId = bindableRecentMessages.value?[indexPath.row].itemId else { return }
     
-    recentMessageRepository.delete(localUserId: localUserId, remoteUserId: remoteUserId)
-    chatMessageRepository.delete(localUserId: localUserId, remoteUserId: remoteUserId)
+    recentMessageRepository.delete(localUserId: localUserId, remoteUserId: remoteUserId, itemId: itemId)
+    chatMessageRepository.delete(localUserId: localUserId, remoteUserId: remoteUserId, itemId: itemId)
     
-    recentMessagesViewModelsDictionary[remoteUserId]  = nil
-    recentMessagesDictionary[remoteUserId]            = nil
+    recentMessagesViewModelsDictionary[messageId]  = nil
+    recentMessagesDictionary[messageId]            = nil
 
     recentMessagesViewModels.remove(at: indexPath.row)
     bindableRecentMessages.value?.remove(at: indexPath.row)

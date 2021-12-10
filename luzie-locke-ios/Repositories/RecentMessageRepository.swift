@@ -11,10 +11,10 @@ protocol RecentMessageRepositoryProtocol {
   
   func create(text: String,
               localUserId: String, localUserName: String, localUserImageUrl: String,
-              remoteUserId: String, remoteUserName: String, remoteUserImageUrl: String)
-  
+              remoteUserId: String, remoteUserName: String, remoteUserImageUrl: String,
+              itemId: String)
   func read(localUserId: String, onReceive: @escaping ([RecentMessage]) -> Void)
-  func delete(localUserId: String, remoteUserId: String, completion: @escaping (Result<Void, LLError>) -> Void)
+  func delete(localUserId: String, remoteUserId: String, itemId: String, completion: @escaping (Result<Void, LLError>) -> Void)
   func stop()
 }
 
@@ -27,13 +27,15 @@ class RecentMessageRepository: RecentMessageRepositoryProtocol {
   
   func create(text: String,
               localUserId: String, localUserName: String, localUserImageUrl: String,
-              remoteUserId: String, remoteUserName: String, remoteUserImageUrl: String) {
+              remoteUserId: String, remoteUserName: String, remoteUserImageUrl: String,
+              itemId: String) {
     
     let senderdata = [ "name": remoteUserName, "profileImageUrl": remoteUserImageUrl, "text": text,
-                       "timestamp": Timestamp(date: Date()), "id": remoteUserId ] as [String : Any]
+                       "timestamp": Timestamp(date: Date()), "id": remoteUserId + itemId,
+                       "userId": remoteUserId, "itemId": itemId] as [String : Any]
     
     Firestore.firestore().collection(storeName).document(localUserId)
-                         .collection(storeSubName).document(remoteUserId)
+                         .collection(storeSubName).document(remoteUserId + itemId)
                          .setData(senderdata) { error in
                            if let error = error {
                              print("Failed to save recent message: ", error)
@@ -42,10 +44,11 @@ class RecentMessageRepository: RecentMessageRepositoryProtocol {
                          }
     
     let receiverData = [ "name": localUserName, "profileImageUrl": localUserImageUrl, "text": text,
-                         "timestamp": Timestamp(date: Date()), "id": localUserId ] as [String : Any]
+                         "timestamp": Timestamp(date: Date()), "id": localUserId + itemId,
+                         "userId": localUserId, "itemId": itemId] as [String : Any]
     
     Firestore.firestore().collection(storeName).document(remoteUserId)
-                         .collection("recent-messages").document(localUserId)
+                         .collection("recent-messages").document(localUserId + itemId)
                          .setData(receiverData) { error in
                            if let error = error {
                                print("Failed to save recent message: ", error)
@@ -73,8 +76,8 @@ class RecentMessageRepository: RecentMessageRepositoryProtocol {
     }
   }
   
-  func delete(localUserId: String, remoteUserId: String, completion: @escaping (Result<Void, LLError>) -> Void = {_ in }) {
-    Firestore.firestore().collection(storeName).document(localUserId).collection(storeSubName).document(remoteUserId).delete() { error in
+  func delete(localUserId: String, remoteUserId: String, itemId: String, completion: @escaping (Result<Void, LLError>) -> Void = {_ in }) {
+    Firestore.firestore().collection(storeName).document(localUserId).collection(storeSubName).document(remoteUserId + itemId).delete() { error in
       if let error = error {
         print("[Error:\(#file):\(#line)] \(error)")
         completion(.failure(.serverErrorResponse))

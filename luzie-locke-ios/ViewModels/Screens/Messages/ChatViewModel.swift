@@ -12,6 +12,7 @@ class ChatViewModel {
   var bindableMessages = Bindable<[ChatMessage]>()
   
   private let remoteUserId: String
+  private let itemId: String
 
   private let userProfileRepository:    UserProfileRepository
   private let chatMessageRepository:    ChatMessageRepositoryProtocol
@@ -21,10 +22,12 @@ class ChatViewModel {
   private var remoteUserProfile:  UserProfile?
 
   init(remoteUserId:              String,
+       itemId:                    String,
        userProfileRepository:     UserProfileRepository,
        chatMessageRepository:     ChatMessageRepositoryProtocol,
        recentMessageRepository:   RecentMessageRepositoryProtocol) {
     self.remoteUserId             = remoteUserId
+    self.itemId                   = itemId
     self.userProfileRepository    = userProfileRepository
     self.chatMessageRepository    = chatMessageRepository
     self.recentMessageRepository  = recentMessageRepository
@@ -38,7 +41,7 @@ class ChatViewModel {
       switch(result) {
       case .success(let user):
         self.localUserProfile = user
-        self.chatMessageRepository.read(localUserId: user.id!, remoteUserId: self.remoteUserId) { [weak self] messages in
+        self.chatMessageRepository.read(localUserId: user.id!, remoteUserId: self.remoteUserId, itemId: self.itemId) { [weak self] messages in
           self?.bindableMessages.value?.append(contentsOf: messages)
         }
       case .failure(let error):
@@ -64,14 +67,17 @@ class ChatViewModel {
     if let remoteUserProfile = remoteUserProfile, let localUserProfile = localUserProfile {
       chatMessageRepository.create(text: text,
                                    localUserId: localUserProfile.id!,
-                                   remoteUserId: remoteUserProfile.id!)
+                                   remoteUserId: remoteUserProfile.id!,
+                                   itemId: itemId)
                                    
       recentMessageRepository.create(text: text,
                                      localUserId: localUserProfile.id!,
                                      localUserName: localUserProfile.name!,
                                      localUserImageUrl: localUserProfile.imageUrl ?? "",
-                                     remoteUserId: remoteUserId, remoteUserName: remoteUserProfile.name!,
-                                     remoteUserImageUrl: remoteUserProfile.imageUrl ?? "")
+                                     remoteUserId: remoteUserId,
+                                     remoteUserName: remoteUserProfile.name!,
+                                     remoteUserImageUrl: remoteUserProfile.imageUrl ?? "",
+                                     itemId: itemId)
     }
   }
 }

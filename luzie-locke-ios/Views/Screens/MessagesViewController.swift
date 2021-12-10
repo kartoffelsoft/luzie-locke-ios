@@ -26,7 +26,10 @@ class MessagesViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: ScreenTitleLabel("Chat"))
+    navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: CustomLabel(
+      font: CustomUIFonts.subtitle,
+      textColor: CustomUIColors.primaryColor,
+      text: "Chat"))
     configureBackground()
     configureTableView()
     configureDataSource()

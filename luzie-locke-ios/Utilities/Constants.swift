@@ -18,6 +18,10 @@ enum Images {
   
   static let favorites          = UIImage(named: "FavoriteList")
   
+  static let target             = UIImage(systemName: "target",
+                                          withConfiguration: UIImage.SymbolConfiguration(weight: .regular))?
+                                    .withTintColor(CustomUIColors.tertiaryColor, renderingMode: .alwaysOriginal)
+
   static let location           = UIImage(systemName: "location",
                                           withConfiguration: UIImage.SymbolConfiguration(weight: .regular))?
                                     .withTintColor(CustomUIColors.tertiaryColor, renderingMode: .alwaysOriginal)

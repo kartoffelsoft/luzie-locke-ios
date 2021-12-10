@@ -9,9 +9,9 @@ import Firebase
 
 protocol ChatMessageRepositoryProtocol {
   
-  func create(text: String, localUserId: String, remoteUserId: String)
-  func read(localUserId: String, remoteUserId: String, onReceive: @escaping ([ChatMessage]) -> Void)
-  func delete(localUserId: String, remoteUserId: String, completion: @escaping (Result<Void, LLError>) -> Void)
+  func create(text: String, localUserId: String, remoteUserId: String, itemId: String)
+  func read(localUserId: String, remoteUserId: String, itemId: String, onReceive: @escaping ([ChatMessage]) -> Void)
+  func delete(localUserId: String, remoteUserId: String, itemId: String, completion: @escaping (Result<Void, LLError>) -> Void)
   func stop()
 }
 
@@ -22,22 +22,22 @@ class ChatMessageRepository: ChatMessageRepositoryProtocol {
   private var listener: ListenerRegistration?
   private lazy var firestore = Firestore.firestore()
   
-  func create(text: String, localUserId: String, remoteUserId: String) {
+  func create(text: String, localUserId: String, remoteUserId: String, itemId: String) {
     let data = ["sender": localUserId, "receiver": remoteUserId, "text": text, "timestamp": Timestamp(date: Date())] as [String: Any]
     
-    let senderCollection = Firestore.firestore().collection(storeName).document(localUserId).collection(remoteUserId)
+    let senderCollection = Firestore.firestore().collection(storeName).document(localUserId).collection(remoteUserId + itemId)
     senderCollection.addDocument(data: data) { error in
       if let error = error { print("[Error:\(#file):\(#line)] \(error)") }
     }
     
-    let receiverCollection = Firestore.firestore().collection(storeName).document(remoteUserId).collection(localUserId)
+    let receiverCollection = Firestore.firestore().collection(storeName).document(remoteUserId).collection(localUserId + itemId)
     receiverCollection.addDocument(data: data) { error in
       if let error = error { print("[Error:\(#file):\(#line)] \(error)") }
     }
   }
   
-  func read(localUserId: String, remoteUserId: String, onReceive: @escaping ([ChatMessage]) -> Void) {
-    let query = Firestore.firestore().collection(storeName).document(localUserId).collection(remoteUserId).order(by: "timestamp")
+  func read(localUserId: String, remoteUserId: String, itemId: String, onReceive: @escaping ([ChatMessage]) -> Void) {
+    let query = Firestore.firestore().collection(storeName).document(localUserId).collection(remoteUserId + itemId).order(by: "timestamp")
     
     listener = query.addSnapshotListener { snapshot, error in
       if let error = error {
@@ -56,8 +56,8 @@ class ChatMessageRepository: ChatMessageRepositoryProtocol {
     }
   }
   
-  func delete(localUserId: String, remoteUserId: String, completion: @escaping (Result<Void, LLError>) -> Void = {_ in }) {
-    let collectionRef = firestore.collection(storeName).document(localUserId).collection(remoteUserId)
+  func delete(localUserId: String, remoteUserId: String, itemId: String, completion: @escaping (Result<Void, LLError>) -> Void = {_ in }) {
+    let collectionRef = firestore.collection(storeName).document(localUserId).collection(remoteUserId + itemId)
     
     collectionRef.limit(to: 100).getDocuments { (snapshot, error) in
       if let error = error {

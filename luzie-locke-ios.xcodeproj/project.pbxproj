@@ -57,7 +57,6 @@
 		4A3B52A9271256CD00EF4F93 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52A8271256CD00EF4F93 /* LoginViewController.swift */; };
 		4A3B52AB27125C0A00EF4F93 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52AA27125C0A00EF4F93 /* MainViewControllerTests.swift */; };
 		4A3B52B027125C6700EF4F93 /* AuthServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52AF27125C6700EF4F93 /* AuthServiceMock.swift */; };
-		4A3B52B527126DB000EF4F93 /* ScreenTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52B427126DB000EF4F93 /* ScreenTitleLabel.swift */; };
 		4A3B52B92712DC9100EF4F93 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4A3B52B82712DC9100EF4F93 /* FirebaseAuth */; };
 		4A3B52BB2712DC9100EF4F93 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 4A3B52BA2712DC9100EF4F93 /* FirebaseStorage */; };
 		4A3B52BD2712DC9100EF4F93 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 4A3B52BC2712DC9100EF4F93 /* FirebaseFirestore */; };
@@ -254,7 +253,6 @@
 		4A3B52A8271256CD00EF4F93 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4A3B52AA27125C0A00EF4F93 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
 		4A3B52AF27125C6700EF4F93 /* AuthServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthServiceMock.swift; sourceTree = "<group>"; };
-		4A3B52B427126DB000EF4F93 /* ScreenTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTitleLabel.swift; sourceTree = "<group>"; };
 		4A3B52C12712DF2100EF4F93 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4A3B52C327131FE800EF4F93 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4A3B52C62713996000EF4F93 /* GoogleSignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInService.swift; sourceTree = "<group>"; };
@@ -699,7 +697,6 @@
 			children = (
 				4AED5E2F271C179F00B7AC00 /* HeaderLabel.swift */,
 				4AED5E31271C189E00B7AC00 /* BodyLabel.swift */,
-				4A3B52B427126DB000EF4F93 /* ScreenTitleLabel.swift */,
 				4A22DB3F274F006D00E5125B /* CustomLabel.swift */,
 			);
 			path = Labels;
@@ -1342,7 +1339,6 @@
 				4A09C6A827393E5E00FD4E42 /* ChatMessage.swift in Sources */,
 				4A03E3BE275F658D00EB0210 /* CustomFonts.swift in Sources */,
 				4A3B52CD2714419B00EF4F93 /* LLError.swift in Sources */,
-				4A3B52B527126DB000EF4F93 /* ScreenTitleLabel.swift in Sources */,
 				4A22DB3A274E3D0F00E5125B /* EmptyStateView.swift in Sources */,
 				4A47E6D4273198E300B9018A /* ItemDisplayDetailViewController.swift in Sources */,
 				4AEE61B42740F965008055F9 /* LocationMenuPopoverController.swift in Sources */,

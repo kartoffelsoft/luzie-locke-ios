@@ -16,11 +16,13 @@ class CustomLabel: UILabel {
   
   convenience init(font: UIFont = CustomUIFonts.body,
                    textColor: UIColor = .secondaryLabel,
-                   textAlignment: NSTextAlignment = .left) {
+                   textAlignment: NSTextAlignment = .left,
+                   text: String? = nil) {
     self.init(frame: .zero)
     self.font           = font
     self.textColor      = textColor
     self.textAlignment  = textAlignment
+    self.text           = text
   }
   
   private func configure() {

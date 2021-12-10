@@ -1,5 +1,5 @@
 //
-//  KBodyLabel.swift
+//  BodyLabel.swift
 //  luzie-locke-ios
 //
 //  Created by Harry on 17.10.21.
