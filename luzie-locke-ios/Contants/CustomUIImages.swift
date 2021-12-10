@@ -9,7 +9,8 @@ import UIKit
 
 enum CustomUIImages {
   
-  static let envelope = UIImage(systemName: "envelope")!
-  static let lock     = UIImage(systemName: "lock")!
+  static let envelope           = UIImage(systemName: "envelope")!
+  static let lock               = UIImage(systemName: "lock")!
+  static let avatarPlaceholder  = UIImage(named: "AvatarPlaceholder")!
 }
                                   

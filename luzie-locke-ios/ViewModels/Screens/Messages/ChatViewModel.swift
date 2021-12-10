@@ -73,10 +73,8 @@ class ChatViewModel {
       recentMessageRepository.create(text: text,
                                      localUserId: localUserProfile.id!,
                                      localUserName: localUserProfile.name!,
-                                     localUserImageUrl: localUserProfile.imageUrl ?? "",
                                      remoteUserId: remoteUserId,
                                      remoteUserName: remoteUserProfile.name!,
-                                     remoteUserImageUrl: remoteUserProfile.imageUrl ?? "",
                                      itemId: itemId)
     }
   }

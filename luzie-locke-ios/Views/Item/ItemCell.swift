@@ -8,8 +8,6 @@
 import UIKit
 
 class ItemCell: UICollectionViewCell {
-
-  let placeholderImage = Images.avatarPlaceholder
   
   static let reuseIdentifier = "ItemCell"
 
@@ -43,7 +41,7 @@ class ItemCell: UICollectionViewCell {
     }
   }
   
-  let imageView     = UIImageView()
+  let imageView     = ItemImageView()
   let titleLabel    = CustomLabel(font: CustomUIFonts.body, textColor: CustomUIColors.primaryColor)
   let locationLabel = CustomLabel(font: CustomUIFonts.caption, textColor: CustomUIColors.secondaryColor)
   let priceLabel    = CustomLabel(font: CustomUIFonts.body, textColor: CustomUIColors.primaryColor)
@@ -56,12 +54,6 @@ class ItemCell: UICollectionViewCell {
   }
   
   private func configure() {
-    imageView.layer.cornerRadius                            = 10
-    imageView.image                                         = placeholderImage
-    imageView.contentMode                                   = .scaleAspectFill
-    imageView.clipsToBounds                                 = true
-    imageView.translatesAutoresizingMaskIntoConstraints     = false
-    
     titleLabel.numberOfLines                                = 0
     
     let stackView = UIStackView(arrangedSubviews: [ titleLabel, locationLabel, priceLabel ])

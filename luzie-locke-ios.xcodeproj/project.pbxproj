@@ -127,6 +127,10 @@
 		4AD53D1C2760C5FC00F34874 /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D1B2760C5FC00F34874 /* BasicTextField.swift */; };
 		4AD53D1F2760CC2700F34874 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D1E2760CC2700F34874 /* DividerView.swift */; };
 		4AD53D212760E19200F34874 /* CustomUIImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D202760E19200F34874 /* CustomUIImages.swift */; };
+		4AD53D232763728400F34874 /* ItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D222763728400F34874 /* ItemImageView.swift */; };
+		4AD53D26276378F000F34874 /* ImageDownloadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D25276378F000F34874 /* ImageDownloadUseCase.swift */; };
+		4AD53D2B2763883100F34874 /* UserImageUrlReadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D2A2763883100F34874 /* UserImageUrlReadDTO.swift */; };
+		4AD53D2D2763899E00F34874 /* ItemImageUrlReadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D2C2763899E00F34874 /* ItemImageUrlReadDTO.swift */; };
 		4ADE3D312735807500ACBC60 /* AppMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */; };
 		4AE229A2275A2B7B0070350E /* ItemComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229A1275A2B7B0070350E /* ItemComposeViewController.swift */; };
 		4AE229A6275A33C40070350E /* ItemComposeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229A5275A33C40070350E /* ItemComposeViewModel.swift */; };
@@ -320,6 +324,10 @@
 		4AD53D1B2760C5FC00F34874 /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
 		4AD53D1E2760CC2700F34874 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 		4AD53D202760E19200F34874 /* CustomUIImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIImages.swift; sourceTree = "<group>"; };
+		4AD53D222763728400F34874 /* ItemImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImageView.swift; sourceTree = "<group>"; };
+		4AD53D25276378F000F34874 /* ImageDownloadUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadUseCase.swift; sourceTree = "<group>"; };
+		4AD53D2A2763883100F34874 /* UserImageUrlReadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageUrlReadDTO.swift; sourceTree = "<group>"; };
+		4AD53D2C2763899E00F34874 /* ItemImageUrlReadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImageUrlReadDTO.swift; sourceTree = "<group>"; };
 		4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMainCoordinator.swift; sourceTree = "<group>"; };
 		4AE229A1275A2B7B0070350E /* ItemComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComposeViewController.swift; sourceTree = "<group>"; };
 		4AE229A5275A33C40070350E /* ItemComposeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComposeViewModel.swift; sourceTree = "<group>"; };
@@ -472,6 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				4A155E3F27229D3600C8B867 /* AvatarImageView.swift */,
+				4AD53D222763728400F34874 /* ItemImageView.swift */,
 			);
 			path = ImageViews;
 			sourceTree = "<group>";
@@ -547,9 +556,9 @@
 		4A3B5264271239CE00EF4F93 /* luzie-locke-ios */ = {
 			isa = PBXGroup;
 			children = (
+				4ADE3D2A27355B0200ACBC60 /* AppMain */,
 				4A03E3B6275F61F300EB0210 /* Contants */,
 				4AE229BD275E2FCC0070350E /* SwiftUIComponents */,
-				4ADE3D2A27355B0200ACBC60 /* AppMain */,
 				4A47E6E22732BE6400B9018A /* CompositionRoot */,
 				4A3B52D327159C8E00EF4F93 /* Coordinators */,
 				4A47E6C22730950100B9018A /* Translators */,
@@ -559,6 +568,7 @@
 				4A3B529527123DA300EF4F93 /* Views */,
 				4A3B529727123DAD00EF4F93 /* ViewModels */,
 				4A3B52A32712536F00EF4F93 /* Services */,
+				4AD53D242763787D00F34874 /* UseCases */,
 				4AED5E44271E2A1A00B7AC00 /* Configs */,
 				4ADE3D292733CA3400ACBC60 /* Resources */,
 				4A3B529827123DC100EF4F93 /* Extensions */,
@@ -777,6 +787,8 @@
 		4A47E6B7272F47BC00B9018A /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
+				4AD53D282763880A00F34874 /* Image */,
+				4AD53D27276387EF00F34874 /* FavoriteItem */,
 				4AD53D0F275FF51600F34874 /* Settings */,
 				4A47E6B2272DE2EF00B9018A /* CommonDTO.swift */,
 				4A47E6AE272D79E500B9018A /* ItemCreateDTO.swift */,
@@ -785,9 +797,6 @@
 				4ACA81EB2754255F003C7E0E /* ItemDeleteDTO.swift */,
 				4A01D555273D2B0A00EDFC1C /* UserProfileReadDTO.swift */,
 				4ACA821427595D26003C7E0E /* ItemUpdateDTO.swift */,
-				4AE229A9275A49DD0070350E /* FavoriteItemCreateDTO.swift */,
-				4AE229AB275A51FD0070350E /* FavoriteItemDeleteDTO.swift */,
-				4AE229AD275A707F0070350E /* FavoriteItemReadExistDTO.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -936,6 +945,33 @@
 				4AD53D1B2760C5FC00F34874 /* BasicTextField.swift */,
 			);
 			path = TextField;
+			sourceTree = "<group>";
+		};
+		4AD53D242763787D00F34874 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				4AD53D25276378F000F34874 /* ImageDownloadUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		4AD53D27276387EF00F34874 /* FavoriteItem */ = {
+			isa = PBXGroup;
+			children = (
+				4AE229A9275A49DD0070350E /* FavoriteItemCreateDTO.swift */,
+				4AE229AB275A51FD0070350E /* FavoriteItemDeleteDTO.swift */,
+				4AE229AD275A707F0070350E /* FavoriteItemReadExistDTO.swift */,
+			);
+			path = FavoriteItem;
+			sourceTree = "<group>";
+		};
+		4AD53D282763880A00F34874 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				4AD53D2A2763883100F34874 /* UserImageUrlReadDTO.swift */,
+				4AD53D2C2763899E00F34874 /* ItemImageUrlReadDTO.swift */,
+			);
+			path = Image;
 			sourceTree = "<group>";
 		};
 		4ADE3D292733CA3400ACBC60 /* Resources */ = {
@@ -1316,6 +1352,7 @@
 				4A22DB442750225700E5125B /* UserFavoritesViewModel.swift in Sources */,
 				4A47E6D027316E1900B9018A /* ItemActionPanelViewModel.swift in Sources */,
 				4A22DB3C274ED91800E5125B /* UserPurchasesViewController.swift in Sources */,
+				4AD53D2D2763899E00F34874 /* ItemImageUrlReadDTO.swift in Sources */,
 				4A155E462722E03600C8B867 /* OpenHTTPClient.swift in Sources */,
 				4A09C69E2738582700FD4E42 /* UserInfoView.swift in Sources */,
 				4A01D561273DC94D00EDFC1C /* DateUtility.swift in Sources */,
@@ -1337,6 +1374,7 @@
 				4AD53D1C2760C5FC00F34874 /* BasicTextField.swift in Sources */,
 				4A09C6AA27393F2000FD4E42 /* ChatMessageCell.swift in Sources */,
 				4A09C6A827393E5E00FD4E42 /* ChatMessage.swift in Sources */,
+				4AD53D2B2763883100F34874 /* UserImageUrlReadDTO.swift in Sources */,
 				4A03E3BE275F658D00EB0210 /* CustomFonts.swift in Sources */,
 				4A3B52CD2714419B00EF4F93 /* LLError.swift in Sources */,
 				4A22DB3A274E3D0F00E5125B /* EmptyStateView.swift in Sources */,
@@ -1399,6 +1437,7 @@
 				4ACA81EC2754255F003C7E0E /* ItemDeleteDTO.swift in Sources */,
 				4A3B529B2712401D00EF4F93 /* HomeViewController.swift in Sources */,
 				4ACA81F7275746D8003C7E0E /* SingleLineDecimalInputView.swift in Sources */,
+				4AD53D26276378F000F34874 /* ImageDownloadUseCase.swift in Sources */,
 				4A47E6C12730759500B9018A /* ItemReadDTO.swift in Sources */,
 				4AD53D0A275FED1200F34874 /* SettingsRepository.swift in Sources */,
 				4AED5E65271F729F00B7AC00 /* TokenHeaderRequestInterceptor.swift in Sources */,
@@ -1413,6 +1452,7 @@
 				4A155E5C2724438B00C8B867 /* SettingsMenuCell.swift in Sources */,
 				4A22DB3E274ED9D500E5125B /* UserPurchasesViewModel.swift in Sources */,
 				4AEE8F6B2725D9B2004CB686 /* Bindable.swift in Sources */,
+				4AD53D232763728400F34874 /* ItemImageView.swift in Sources */,
 				4A47E6C42730952000B9018A /* ItemTranslator.swift in Sources */,
 				4ACA820A2757A39D003C7E0E /* ImageSelectElementView.swift in Sources */,
 				4A22DB31274BDF2D00E5125B /* ItemSearchViewModel.swift in Sources */,

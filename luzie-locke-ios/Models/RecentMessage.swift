@@ -13,7 +13,6 @@ struct RecentMessage: Hashable {
   let userId:           String
   let itemId:           String
   let name:             String
-  let profileImageUrl:  String
   let text:             String
   let date:             Date
   
@@ -22,7 +21,6 @@ struct RecentMessage: Hashable {
     self.userId           = dictionary["userId"] as? String ?? ""
     self.itemId           = dictionary["itemId"] as? String ?? ""
     self.name             = dictionary["name"] as? String ?? ""
-    self.profileImageUrl  = dictionary["profileImageUrl"] as? String ?? ""
     self.text             = dictionary["text"] as? String ?? ""
     self.date             = (dictionary["timestamp"] as? Timestamp ?? Timestamp(date: Date())).dateValue()
   }

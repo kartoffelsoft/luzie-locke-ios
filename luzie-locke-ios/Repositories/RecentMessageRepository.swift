@@ -10,8 +10,8 @@ import Firebase
 protocol RecentMessageRepositoryProtocol {
   
   func create(text: String,
-              localUserId: String, localUserName: String, localUserImageUrl: String,
-              remoteUserId: String, remoteUserName: String, remoteUserImageUrl: String,
+              localUserId: String, localUserName: String,
+              remoteUserId: String, remoteUserName: String,
               itemId: String)
   func read(localUserId: String, onReceive: @escaping ([RecentMessage]) -> Void)
   func delete(localUserId: String, remoteUserId: String, itemId: String, completion: @escaping (Result<Void, LLError>) -> Void)
@@ -26,11 +26,11 @@ class RecentMessageRepository: RecentMessageRepositoryProtocol {
   private var listener: ListenerRegistration?
   
   func create(text: String,
-              localUserId: String, localUserName: String, localUserImageUrl: String,
-              remoteUserId: String, remoteUserName: String, remoteUserImageUrl: String,
+              localUserId: String, localUserName: String,
+              remoteUserId: String, remoteUserName: String,
               itemId: String) {
     
-    let senderdata = [ "name": remoteUserName, "profileImageUrl": remoteUserImageUrl, "text": text,
+    let senderdata = [ "name": remoteUserName, "text": text,
                        "timestamp": Timestamp(date: Date()), "id": remoteUserId + itemId,
                        "userId": remoteUserId, "itemId": itemId] as [String : Any]
     
@@ -43,7 +43,7 @@ class RecentMessageRepository: RecentMessageRepositoryProtocol {
                            }
                          }
     
-    let receiverData = [ "name": localUserName, "profileImageUrl": localUserImageUrl, "text": text,
+    let receiverData = [ "name": localUserName, "text": text,
                          "timestamp": Timestamp(date: Date()), "id": localUserId + itemId,
                          "userId": localUserId, "itemId": itemId] as [String : Any]
     

@@ -17,7 +17,10 @@ class CompositionRoot {
   lazy var userApiClient          = UserAPIClient(client: backendClient)
   lazy var backendApiClient       = BackendAPIClient(client: backendClient,
                                                      userApi: userApiClient)
-
+  
+  lazy var imageDownloadUseCase   = ImageDownloadUseCase(openHttpClient: openHttpClient,
+                                                         backendClient: backendClient)
+  
   lazy var imageRepository        = ImageRepository(cloudStorage: cloudStorage)
   lazy var itemRepository         = ItemRepository(backendClient: backendClient, imageRepository: imageRepository)
   lazy var favoriteItemRepository = FavoriteItemRepository(backendClient: backendClient)

@@ -13,13 +13,22 @@ class RecentMessageCell: UITableViewCell {
   
   var viewModel: RecentMessageCellViewModel? {
     didSet {
-      userImageView.image = viewModel?.bindableImage.value
+      itemImageView.image = viewModel?.bindableItemImage.value
+      userImageView.image = viewModel?.bindableUserImage.value
       userNameLabel.text  = viewModel?.bindableNameText.value
       messageLabel.text   = viewModel?.bindableMessageText.value
       dateLabel.text      = viewModel?.bindableDateText.value
 
-      viewModel?.bindableImage.bind { [weak self] image in
-        self?.userImageView.image = image
+      viewModel?.bindableItemImage.bind { [weak self] image in
+        DispatchQueue.main.async {
+          self?.itemImageView.image = image
+        }
+      }
+      
+      viewModel?.bindableUserImage.bind { [weak self] image in
+        DispatchQueue.main.async {
+          self?.userImageView.image = image
+        }
       }
       
       viewModel?.bindableNameText.bind { [weak self] text in
@@ -36,11 +45,11 @@ class RecentMessageCell: UITableViewCell {
     }
   }
   
-  let userImageView = AvatarImageView(radius: 30)
+  let itemImageView = ItemImageView()
+  let userImageView = AvatarImageView(radius: 20)
   let userNameLabel = HeaderLabel(font: CustomUIFonts.caption, textAlignment: .left)
   let messageLabel  = BodyLabel(font: CustomUIFonts.detail, textAlignment: .left)
   let dateLabel     = HeaderLabel(font: CustomUIFonts.detail, textColor: .tertiaryLabel, textAlignment: .left)
-  let line          = UIView()
 
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -50,28 +59,34 @@ class RecentMessageCell: UITableViewCell {
   fileprivate func configure() {
     backgroundColor = CustomUIColors.primaryColorLight2.withAlphaComponent(0.1)
     
-    userImageView.layer.borderWidth = 3
-    userImageView.layer.borderColor = UIColor(named: "PrimaryColorLight2")?.cgColor
+    userImageView.layer.borderWidth = 2
+    userImageView.layer.borderColor = CustomUIColors.secondaryColor.cgColor
 
     let stackView     = UIStackView(arrangedSubviews: [userNameLabel, messageLabel])
     stackView.axis    = .vertical
     stackView.spacing = 10
     stackView.translatesAutoresizingMaskIntoConstraints = false
 
+    addSubview(itemImageView)
     addSubview(userImageView)
     addSubview(stackView)
     addSubview(dateLabel)
     
     let padding: CGFloat = 10
     NSLayoutConstraint.activate([
-      userImageView.topAnchor.constraint(equalTo: topAnchor, constant: padding),
-      userImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
-      userImageView.widthAnchor.constraint(equalToConstant: 60),
-      userImageView.heightAnchor.constraint(equalToConstant: 60),
+      itemImageView.topAnchor.constraint(equalTo: topAnchor, constant: padding),
+      itemImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
+      itemImageView.widthAnchor.constraint(equalToConstant: 60),
+      itemImageView.heightAnchor.constraint(equalToConstant: 60),
       
-      stackView.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 15),
+      userImageView.leadingAnchor.constraint(equalTo: itemImageView.trailingAnchor, constant: -15),
+      userImageView.bottomAnchor.constraint(equalTo: itemImageView.bottomAnchor,constant: 5),
+      userImageView.widthAnchor.constraint(equalToConstant: 40),
+      userImageView.heightAnchor.constraint(equalToConstant: 40),
+      
+      stackView.leadingAnchor.constraint(equalTo: userImageView.trailingAnchor, constant: 8),
       stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
-      stackView.centerYAnchor.constraint(equalTo: userImageView.centerYAnchor),
+      stackView.centerYAnchor.constraint(equalTo: itemImageView.centerYAnchor),
 
       dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
       dateLabel.bottomAnchor.constraint(equalTo: centerYAnchor)

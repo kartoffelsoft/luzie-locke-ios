@@ -17,18 +17,18 @@ class MessagesViewModel {
   private var recentMessagesViewModelsDictionary    = [String: RecentMessageCellViewModel]()
   
   private let coordinator:              MessagesCoordinator
-  private let openHttpClient:           OpenHTTPClient
+  private let imageDownloadUseCase:     ImageDownloadUseCaseProtocol
   private let localProfileRepository:   LocalProfileRepository
   private let chatMessageRepository:    ChatMessageRepository
   private let recentMessageRepository:  RecentMessageRepository
 
   init(coordinator:               MessagesCoordinator,
-       openHttpClient:            OpenHTTPClient,
+       imageDownloadUseCase:      ImageDownloadUseCaseProtocol,
        localProfileRepository:    LocalProfileRepository,
        chatMessageRepository:     ChatMessageRepository,
        recentMessageRepository:   RecentMessageRepository) {
     self.coordinator              = coordinator
-    self.openHttpClient           = openHttpClient
+    self.imageDownloadUseCase     = imageDownloadUseCase
     self.localProfileRepository   = localProfileRepository
     self.chatMessageRepository    = chatMessageRepository
     self.recentMessageRepository  = recentMessageRepository
@@ -60,10 +60,9 @@ class MessagesViewModel {
     recentMessagesDictionary              = [String: RecentMessage]()
     recentMessagesViewModelsDictionary    = [String: RecentMessageCellViewModel]()
     
-    print("refresh: ", profile.id!)
     recentMessageRepository.read(localUserId: profile.id!) { [weak self] messages in
       guard let self = self else { return }
-      print("get message,", messages)
+
       messages.forEach { message in
         self.recentMessagesDictionary[message.id] = message
         
@@ -71,7 +70,7 @@ class MessagesViewModel {
           viewModel.message = message
 
         } else {
-          let viewModel = RecentMessageCellViewModel(openHttpClient: self.openHttpClient)
+          let viewModel = RecentMessageCellViewModel(imageDownloadUseCase: self.imageDownloadUseCase)
           viewModel.message = message
           self.recentMessagesViewModelsDictionary[message.id] = viewModel
         }
@@ -88,9 +87,7 @@ class MessagesViewModel {
   func didTapMessageAt(indexPath: IndexPath) {
     guard let remoteUserId = bindableRecentMessages.value?[indexPath.row].userId else { return }
     guard let itemId = bindableRecentMessages.value?[indexPath.row].itemId else { return }
-    print("@@@")
-    print("remoteUserId:", remoteUserId)
-    print("itemId:", itemId)
+
     coordinator.navigateToChat(remoteUserId: remoteUserId, itemId: itemId)
   }
   

@@ -15,31 +15,46 @@ class RecentMessageCellViewModel {
       bindableMessageText.value  = message?.text
       bindableDateText.value     = DateUtility.string(from: message?.date)
       
-      downloadImage(from: message?.profileImageUrl)
+      downloadUserImage(from: message?.userId)
+      downloadItemImage(from: message?.itemId)
     }
   }
   
-  var bindableImage        = Bindable<UIImage>()
+  var bindableItemImage    = Bindable<UIImage>()
+  var bindableUserImage    = Bindable<UIImage>()
   var bindableNameText     = Bindable<String>()
   var bindableMessageText  = Bindable<String>()
   var bindableDateText     = Bindable<String>()
   
-  let openHttpClient: OpenHTTP
+  private let imageDownloadUseCase: ImageDownloadUseCaseProtocol
 
-  init(openHttpClient: OpenHTTP) {
-    self.openHttpClient = openHttpClient
+  init(imageDownloadUseCase: ImageDownloadUseCaseProtocol) {
+    self.imageDownloadUseCase = imageDownloadUseCase
   }
   
-  private func downloadImage(from url: String?) {
-    if let url = url {
-      openHttpClient.downloadImage(from: url) { [weak self] result in
+  private func downloadUserImage(from userId: String?) {
+    if let userId = userId {
+      imageDownloadUseCase.getImage(userId: userId, completion: { [weak self] result in
         switch result {
         case .success(let image):
-          self?.bindableImage.value = image
+          self?.bindableUserImage.value = image
         case .failure:
           ()
         }
-      }
+      })
+    }
+  }
+  
+  private func downloadItemImage(from itemId: String?) {
+    if let itemId = itemId {
+      imageDownloadUseCase.getImage(itemId: itemId, completion: { [weak self] result in
+        switch result {
+        case .success(let image):
+          self?.bindableItemImage.value = image
+        case .failure:
+          ()
+        }
+      })
     }
   }
 }
