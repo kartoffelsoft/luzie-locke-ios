@@ -1,5 +1,5 @@
 //
-//  ImageDownloadUseCase.swift
+//  ImageUseCase.swift
 //  luzie-locke-ios
 //
 //  Created by Harry on 10.12.21.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol ImageDownloadUseCaseProtocol {
+protocol ImageUseCaseProtocol {
   
   func getImage(url: String, completion: @escaping (Result<UIImage?, LLError>) -> Void)
   func getImage(itemId: String, completion: @escaping (Result<UIImage?, LLError>) -> Void)
   func getImage(userId: String, completion: @escaping (Result<UIImage?, LLError>) -> Void)
 }
 
-class ImageDownloadUseCase: ImageDownloadUseCaseProtocol {
+class ImageUseCase: ImageUseCaseProtocol {
   
   private let openHttpClient: OpenHTTPClient
   private let backendClient:  BackendClient

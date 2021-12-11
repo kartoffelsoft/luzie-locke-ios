@@ -12,5 +12,6 @@ enum CustomUIImages {
   static let envelope           = UIImage(systemName: "envelope")!
   static let lock               = UIImage(systemName: "lock")!
   static let avatarPlaceholder  = UIImage(named: "AvatarPlaceholder")!
+  static let soldOut            = UIImage(named: "SoldOut")!
 }
                                   

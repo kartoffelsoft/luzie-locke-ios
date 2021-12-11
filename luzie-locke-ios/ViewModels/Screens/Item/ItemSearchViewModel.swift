@@ -16,7 +16,7 @@ class ItemSearchViewModel {
   weak var delegate:        ItemSearchViewModelDelegate?
   
   let coordinator:          ItemSearchCoordinator
-  let openHttpClient:       OpenHTTP
+  let imageUseCase:         ImageUseCaseProtocol
   let itemRepository:       ItemRepositoryProtocol
   
   var bindableItems         = Bindable<[Item]>()
@@ -30,11 +30,11 @@ class ItemSearchViewModel {
   private var cursor: TimeInterval = Date().timeIntervalSince1970 * 1000
   private var searchKeyword: String = ""
   
-  init(coordinator:         ItemSearchCoordinator,
-       openHttpClient:      OpenHTTP,
-       itemRepository:      ItemRepositoryProtocol) {
+  init(coordinator:           ItemSearchCoordinator,
+       imageUseCase:          ImageUseCaseProtocol,
+       itemRepository:        ItemRepositoryProtocol) {
     self.coordinator          = coordinator
-    self.openHttpClient       = openHttpClient
+    self.imageUseCase         = imageUseCase
     self.itemRepository       = itemRepository
   }
   
@@ -68,7 +68,7 @@ class ItemSearchViewModel {
             if let viewModel = self.itemCellViewModelsDictionary[id] {
               viewModel.item = item
             } else {
-              let viewModel = ItemCellViewModel(openHttpClient: self.openHttpClient)
+              let viewModel = ItemCellViewModel(imageUseCase: self.imageUseCase)
               viewModel.item = item
               self.itemCellViewModelsDictionary[id] = viewModel
             }

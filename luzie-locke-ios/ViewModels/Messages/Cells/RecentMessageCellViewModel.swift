@@ -26,15 +26,15 @@ class RecentMessageCellViewModel {
   var bindableMessageText  = Bindable<String>()
   var bindableDateText     = Bindable<String>()
   
-  private let imageDownloadUseCase: ImageDownloadUseCaseProtocol
+  private let imageUseCase: ImageUseCaseProtocol
 
-  init(imageDownloadUseCase: ImageDownloadUseCaseProtocol) {
-    self.imageDownloadUseCase = imageDownloadUseCase
+  init(imageUseCase: ImageUseCaseProtocol) {
+    self.imageUseCase = imageUseCase
   }
   
   private func downloadUserImage(from userId: String?) {
     if let userId = userId {
-      imageDownloadUseCase.getImage(userId: userId, completion: { [weak self] result in
+      imageUseCase.getImage(userId: userId, completion: { [weak self] result in
         switch result {
         case .success(let image):
           self?.bindableUserImage.value = image
@@ -47,7 +47,7 @@ class RecentMessageCellViewModel {
   
   private func downloadItemImage(from itemId: String?) {
     if let itemId = itemId {
-      imageDownloadUseCase.getImage(itemId: itemId, completion: { [weak self] result in
+      imageUseCase.getImage(itemId: itemId, completion: { [weak self] result in
         switch result {
         case .success(let image):
           self?.bindableItemImage.value = image

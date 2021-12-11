@@ -38,13 +38,13 @@ extension CompositionRoot: ViewModelFactory {
   
   func makeHomeViewModel(coordinator: HomeCoordinator) -> HomeViewModel {
     return HomeViewModel(coordinator: coordinator,
-                         openHttpClient: openHttpClient,
+                         imageUseCase: imageUseCase,
                          itemRepository: itemRepository)
   }
 
   func makeMessagesViewModel(coordinator: MessagesCoordinator) -> MessagesViewModel {
     return MessagesViewModel(coordinator: coordinator,
-                             imageDownloadUseCase: imageDownloadUseCase,
+                             imageUseCase: imageUseCase,
                              localProfileRepository: localProfileRepository,
                              chatMessageRepository: ChatMessageRepository(),
                              recentMessageRepository: RecentMessageRepository())
@@ -60,7 +60,7 @@ extension CompositionRoot: ViewModelFactory {
   
   func makeItemSearchViewModel(coordinator: ItemSearchCoordinator) -> ItemSearchViewModel {
     return ItemSearchViewModel(coordinator: coordinator,
-                               openHttpClient: openHttpClient,
+                               imageUseCase: imageUseCase,
                                itemRepository: itemRepository)
   }
   
@@ -100,19 +100,19 @@ extension CompositionRoot: ViewModelFactory {
   
   func makeUserListingsViewModel(coordinator: SettingsCoordinator) -> UserListingsViewModel {
     return UserListingsViewModel(coordinator: coordinator,
-                                 openHttpClient: openHttpClient,
+                                 imageUseCase: imageUseCase,
                                  itemRepository: itemRepository)
   }
   
   func makeUserPurchasesViewModel(coordinator: SettingsCoordinator) -> UserPurchasesViewModel {
     return UserPurchasesViewModel(coordinator: coordinator,
-                                  openHttpClient: openHttpClient,
+                                  imageUseCase: imageUseCase,
                                   itemRepository: itemRepository)
   }
   
   func makeUserFavoritesViewModel(coordinator: SettingsCoordinator) -> UserFavoritesViewModel {
     return UserFavoritesViewModel(coordinator: coordinator,
-                                  openHttpClient: openHttpClient,
+                                  imageUseCase: imageUseCase,
                                   itemRepository: itemRepository)
   }
   

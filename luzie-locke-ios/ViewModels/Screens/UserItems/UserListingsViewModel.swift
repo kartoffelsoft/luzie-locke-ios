@@ -17,7 +17,7 @@ class UserListingsViewModel {
   weak var delegate:        UserListingsViewModelDelegate?
   
   let coordinator:          SettingsCoordinator
-  let openHttpClient:       OpenHTTP
+  let imageUseCase:         ImageUseCaseProtocol
   let itemRepository:       ItemRepositoryProtocol
   
   var bindableItems         = Bindable<[Item]>()
@@ -31,11 +31,11 @@ class UserListingsViewModel {
   
   var cursor: TimeInterval = Date().timeIntervalSince1970 * 1000
   
-  init(coordinator:         SettingsCoordinator,
-       openHttpClient:      OpenHTTP,
-       itemRepository:      ItemRepositoryProtocol) {
+  init(coordinator:           SettingsCoordinator,
+       imageUseCase:          ImageUseCaseProtocol,
+       itemRepository:        ItemRepositoryProtocol) {
     self.coordinator          = coordinator
-    self.openHttpClient       = openHttpClient
+    self.imageUseCase         = imageUseCase
     self.itemRepository       = itemRepository
   }
   
@@ -71,7 +71,7 @@ class UserListingsViewModel {
             if let viewModel = self.itemCellViewModelsDictionary[id] {
               viewModel.item = item
             } else {
-              let viewModel = ItemCellViewModel(openHttpClient: self.openHttpClient)
+              let viewModel = ItemCellViewModel(imageUseCase: self.imageUseCase)
               viewModel.item = item
               self.itemCellViewModelsDictionary[id] = viewModel
             }

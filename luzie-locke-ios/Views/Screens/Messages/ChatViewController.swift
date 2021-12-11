@@ -12,6 +12,7 @@ class ChatViewController: UICollectionViewController {
 
   var viewModel: ChatViewModel?
   
+  private let soldOutView = SoldOutView()
   private var chatInputAccessoryView: ChatInputAccessoryView!
 
   init() {
@@ -23,8 +24,11 @@ class ChatViewController: UICollectionViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    
+    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "SELL", style: .plain, target: self, action: #selector(handleSellButtonTap))
+    
     configureBackground()
+    configureSoldOutView()
     configureCollectionView()
     configureKeyboardInput()
     configureBindables()
@@ -40,10 +44,18 @@ class ChatViewController: UICollectionViewController {
     }
   }
   
-  func configureBackground() {
+  private func configureBackground() {
     if let image = CustomGradient.mainBackground(on: view) {
       view.backgroundColor = UIColor(patternImage: image)
     }
+  }
+  
+  private func configureSoldOutView() {
+    soldOutView.translatesAutoresizingMaskIntoConstraints = false
+    soldOutView.isHidden = true
+    view.addSubview(soldOutView)
+
+    soldOutView.pinToEdges(of: view)
   }
   
   private func configureCollectionView() {
@@ -59,16 +71,23 @@ class ChatViewController: UICollectionViewController {
   private func configureKeyboardInput() {
     NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardDidShowNotification, object: nil)
 
-    chatInputAccessoryView = ChatInputAccessoryView(frame: .init(x: 0, y: 0, width: view.frame.width, height: 60))
-    chatInputAccessoryView.sendButton.addTarget(self, action: #selector(handleSend), for: .touchUpInside)
+    chatInputAccessoryView = ChatInputAccessoryView(frame: .init(x: 0, y: 0, width: view.frame.width, height: 90))
+    chatInputAccessoryView.sendButton.addTarget(self, action: #selector(handleSendButtonTap), for: .touchUpInside)
   }
   
   func configureBindables() {
+    
+    soldOutView.isHidden = viewModel?.bindableSoldOutViewIsHidden.value ?? true
+    
     viewModel?.bindableMessages.bind { [weak self] messages in
       if let messages = messages {
         self?.collectionView.reloadData()
         self?.collectionView.scrollToItem(at: [0, messages.count - 1], at: .bottom, animated: true)
       }
+    }
+    
+    viewModel?.bindableSoldOutViewIsHidden.bind { [weak self] isHidden in
+      self?.soldOutView.isHidden = isHidden ?? true
     }
   }
   
@@ -100,12 +119,16 @@ class ChatViewController: UICollectionViewController {
       return true
   }
   
-  @objc private func handleSend() {
+  @objc private func handleSendButtonTap() {
     guard let text = chatInputAccessoryView.textField.text else { return }
     if text.isEmpty { return }
     
     viewModel?.didTapSend(text: text)
     chatInputAccessoryView.textField.text = ""
+  }
+  
+  @objc private func handleSellButtonTap() {
+    viewModel?.didTapSell()
   }
 
   @objc private func handleKeyboardShow() {

@@ -17,7 +17,7 @@ class HomeViewModel {
   weak var delegate:        HomeViewModelDelegate?
   
   let coordinator:          HomeCoordinator
-  let openHttpClient:       OpenHTTP
+  let imageUseCase:         ImageUseCaseProtocol
   let itemRepository:       ItemRepositoryProtocol
   
   var bindableItems         = Bindable<[Item]>()
@@ -30,11 +30,11 @@ class HomeViewModel {
   
   var cursor: TimeInterval = Date().timeIntervalSince1970 * 1000
 
-  init(coordinator:         HomeCoordinator,
-       openHttpClient:      OpenHTTP,
-       itemRepository:      ItemRepositoryProtocol) {
+  init(coordinator:           HomeCoordinator,
+       imageUseCase:          ImageUseCaseProtocol,
+       itemRepository:        ItemRepositoryProtocol) {
     self.coordinator          = coordinator
-    self.openHttpClient       = openHttpClient
+    self.imageUseCase         = imageUseCase
     self.itemRepository       = itemRepository
     
     NotificationCenter.default.addObserver(self, selector: #selector(handleDidUpdateItemNotification), name: .didUpdateItem, object: nil)
@@ -70,7 +70,7 @@ class HomeViewModel {
             if let viewModel = self.itemCellViewModelsDictionary[id] {
               viewModel.item = item
             } else {
-              let viewModel = ItemCellViewModel(openHttpClient: self.openHttpClient)
+              let viewModel = ItemCellViewModel(imageUseCase: self.imageUseCase)
               viewModel.item = item
               self.itemCellViewModelsDictionary[id] = viewModel
             }

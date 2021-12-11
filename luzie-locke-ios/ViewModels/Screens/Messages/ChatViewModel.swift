@@ -10,11 +10,12 @@ import Foundation
 class ChatViewModel {
   
   var bindableMessages = Bindable<[ChatMessage]>()
+  var bindableSoldOutViewIsHidden = Bindable<Bool>()
   
   private let remoteUserId: String
   private let itemId: String
 
-  private let userProfileRepository:    UserProfileRepository
+  private let userProfileRepository:    UserProfileRepositoryProtocol
   private let chatMessageRepository:    ChatMessageRepositoryProtocol
   private let recentMessageRepository:  RecentMessageRepositoryProtocol
   
@@ -23,7 +24,7 @@ class ChatViewModel {
 
   init(remoteUserId:              String,
        itemId:                    String,
-       userProfileRepository:     UserProfileRepository,
+       userProfileRepository:     UserProfileRepositoryProtocol,
        chatMessageRepository:     ChatMessageRepositoryProtocol,
        recentMessageRepository:   RecentMessageRepositoryProtocol) {
     self.remoteUserId             = remoteUserId
@@ -32,7 +33,8 @@ class ChatViewModel {
     self.chatMessageRepository    = chatMessageRepository
     self.recentMessageRepository  = recentMessageRepository
     
-    bindableMessages.value = [ChatMessage]()
+    bindableMessages.value            = [ChatMessage]()
+    bindableSoldOutViewIsHidden.value = true
   }
   
   func didLoad() {
@@ -77,5 +79,9 @@ class ChatViewModel {
                                      remoteUserName: remoteUserProfile.name!,
                                      itemId: itemId)
     }
+  }
+  
+  func didTapSell() {
+    print("didTapSell")
   }
 }

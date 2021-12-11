@@ -31,15 +31,15 @@ class ItemCellViewModel {
   var bindablePriceText     = Bindable<NSAttributedString>()
   var bindableDateText      = Bindable<String>()
 
-  let openHttpClient: OpenHTTP
+  let imageUseCase: ImageUseCaseProtocol
 
-  init(openHttpClient: OpenHTTP) {
-    self.openHttpClient = openHttpClient
+  init(imageUseCase: ImageUseCaseProtocol) {
+    self.imageUseCase = imageUseCase
   }
   
   private func downloadImage(from url: String?) {
     if let url = url {
-      openHttpClient.downloadImage(from: url) { [weak self] result in
+      imageUseCase.getImage(url: url) { [weak self] result in
         switch result {
         case .success(let image):
           self?.bindableItemImage.value = image

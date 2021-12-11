@@ -17,18 +17,18 @@ class MessagesViewModel {
   private var recentMessagesViewModelsDictionary    = [String: RecentMessageCellViewModel]()
   
   private let coordinator:              MessagesCoordinator
-  private let imageDownloadUseCase:     ImageDownloadUseCaseProtocol
+  private let imageUseCase:             ImageUseCaseProtocol
   private let localProfileRepository:   LocalProfileRepository
   private let chatMessageRepository:    ChatMessageRepository
   private let recentMessageRepository:  RecentMessageRepository
 
   init(coordinator:               MessagesCoordinator,
-       imageDownloadUseCase:      ImageDownloadUseCaseProtocol,
+       imageUseCase:              ImageUseCaseProtocol,
        localProfileRepository:    LocalProfileRepository,
        chatMessageRepository:     ChatMessageRepository,
        recentMessageRepository:   RecentMessageRepository) {
     self.coordinator              = coordinator
-    self.imageDownloadUseCase     = imageDownloadUseCase
+    self.imageUseCase             = imageUseCase
     self.localProfileRepository   = localProfileRepository
     self.chatMessageRepository    = chatMessageRepository
     self.recentMessageRepository  = recentMessageRepository
@@ -70,7 +70,7 @@ class MessagesViewModel {
           viewModel.message = message
 
         } else {
-          let viewModel = RecentMessageCellViewModel(imageDownloadUseCase: self.imageDownloadUseCase)
+          let viewModel = RecentMessageCellViewModel(imageUseCase: self.imageUseCase)
           viewModel.message = message
           self.recentMessagesViewModelsDictionary[message.id] = viewModel
         }
