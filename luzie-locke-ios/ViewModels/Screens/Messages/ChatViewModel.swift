@@ -15,6 +15,7 @@ class ChatViewModel {
   private let remoteUserId: String
   private let itemId: String
 
+  private let itemStateUseCase:         ItemStateUseCaseProtocol
   private let userProfileRepository:    UserProfileRepositoryProtocol
   private let chatMessageRepository:    ChatMessageRepositoryProtocol
   private let recentMessageRepository:  RecentMessageRepositoryProtocol
@@ -24,11 +25,13 @@ class ChatViewModel {
 
   init(remoteUserId:              String,
        itemId:                    String,
+       itemStateUseCase:          ItemStateUseCaseProtocol,
        userProfileRepository:     UserProfileRepositoryProtocol,
        chatMessageRepository:     ChatMessageRepositoryProtocol,
        recentMessageRepository:   RecentMessageRepositoryProtocol) {
     self.remoteUserId             = remoteUserId
     self.itemId                   = itemId
+    self.itemStateUseCase         = itemStateUseCase
     self.userProfileRepository    = userProfileRepository
     self.chatMessageRepository    = chatMessageRepository
     self.recentMessageRepository  = recentMessageRepository
@@ -55,6 +58,15 @@ class ChatViewModel {
       switch(result) {
       case .success(let user):
         self?.remoteUserProfile = user
+      case .failure(let error):
+        print(error)
+      }
+    }
+    
+    itemStateUseCase.getState(itemId: itemId) { [weak self] result in
+      switch(result) {
+      case .success(let state):
+        self?.bindableSoldOutViewIsHidden.value = (state == "open")
       case .failure(let error):
         print(error)
       }

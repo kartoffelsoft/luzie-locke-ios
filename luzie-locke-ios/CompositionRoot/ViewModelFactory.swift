@@ -8,6 +8,7 @@
 import Foundation
 
 protocol ViewModelFactory {
+  
   func makeLoginViewModel(coordinator: LoginCoordinator) -> LoginViewModel
   func makeHomeViewModel(coordinator: HomeCoordinator) -> HomeViewModel
   func makeMessagesViewModel(coordinator: MessagesCoordinator) -> MessagesViewModel
@@ -93,6 +94,7 @@ extension CompositionRoot: ViewModelFactory {
   func makeChatViewModel(remoteUserId: String, itemId: String) -> ChatViewModel {
     return ChatViewModel(remoteUserId: remoteUserId,
                          itemId: itemId,
+                         itemStateUseCase: itemStateUseCase,
                          userProfileRepository: userProfileRepository,
                          chatMessageRepository: ChatMessageRepository(),
                          recentMessageRepository: RecentMessageRepository())

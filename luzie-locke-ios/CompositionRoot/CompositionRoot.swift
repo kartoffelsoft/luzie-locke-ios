@@ -18,9 +18,6 @@ class CompositionRoot {
   lazy var backendApiClient       = BackendAPIClient(client: backendClient,
                                                      userApi: userApiClient)
   
-  lazy var imageUseCase           = ImageUseCase(openHttpClient: openHttpClient,
-                                                 backendClient: backendClient)
-  
   lazy var imageRepository        = ImageRepository(cloudStorage: cloudStorage)
   lazy var itemRepository         = ItemRepository(backendClient: backendClient, imageRepository: imageRepository)
   lazy var favoriteItemRepository = FavoriteItemRepository(backendClient: backendClient)
@@ -29,6 +26,10 @@ class CompositionRoot {
                                                           localProfileRepository: localProfileRepository)
   lazy var settingsRepository     = SettingsRepository(backendClient: backendClient)
 
+  lazy var imageUseCase           = ImageUseCase(openHttpClient: openHttpClient,
+                                                 backendClient: backendClient)
+  lazy var itemStateUseCase       = ItemStateUseCase(itemRepository: itemRepository)
+  
   lazy var accessTokenStorage     = AnyStorage(wrap: SimpleStringStorage(key: "AccessToken"))
   lazy var refreshTokenStorage    = AnyStorage(wrap: SimpleStringStorage(key: "RefreshToken"))
 

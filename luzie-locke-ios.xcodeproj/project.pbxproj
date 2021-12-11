@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4A00FC202764A4FE007C5B11 /* SoldOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC1F2764A4FE007C5B11 /* SoldOutView.swift */; };
+		4A00FC242764DD43007C5B11 /* ItemStateReadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC232764DD43007C5B11 /* ItemStateReadDTO.swift */; };
+		4A00FC262764DF2D007C5B11 /* ItemStateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC252764DF2D007C5B11 /* ItemStateUseCase.swift */; };
 		4A01D551273CFF0900EDFC1C /* RecentMessageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D550273CFF0900EDFC1C /* RecentMessageRepository.swift */; };
 		4A01D554273D25D900EDFC1C /* UserProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D553273D25D900EDFC1C /* UserProfileRepository.swift */; };
 		4A01D556273D2B0B00EDFC1C /* UserProfileReadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D555273D2B0A00EDFC1C /* UserProfileReadDTO.swift */; };
@@ -129,7 +131,7 @@
 		4AD53D1F2760CC2700F34874 /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D1E2760CC2700F34874 /* DividerView.swift */; };
 		4AD53D212760E19200F34874 /* CustomUIImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D202760E19200F34874 /* CustomUIImages.swift */; };
 		4AD53D232763728400F34874 /* ItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D222763728400F34874 /* ItemImageView.swift */; };
-		4AD53D26276378F000F34874 /* ImageDownloadUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D25276378F000F34874 /* ImageDownloadUseCase.swift */; };
+		4AD53D26276378F000F34874 /* ImageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D25276378F000F34874 /* ImageUseCase.swift */; };
 		4AD53D2B2763883100F34874 /* UserImageUrlReadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D2A2763883100F34874 /* UserImageUrlReadDTO.swift */; };
 		4AD53D2D2763899E00F34874 /* ItemImageUrlReadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D2C2763899E00F34874 /* ItemImageUrlReadDTO.swift */; };
 		4ADE3D312735807500ACBC60 /* AppMainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */; };
@@ -205,6 +207,8 @@
 
 /* Begin PBXFileReference section */
 		4A00FC1F2764A4FE007C5B11 /* SoldOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldOutView.swift; sourceTree = "<group>"; };
+		4A00FC232764DD43007C5B11 /* ItemStateReadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStateReadDTO.swift; sourceTree = "<group>"; };
+		4A00FC252764DF2D007C5B11 /* ItemStateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStateUseCase.swift; sourceTree = "<group>"; };
 		4A01D550273CFF0900EDFC1C /* RecentMessageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMessageRepository.swift; sourceTree = "<group>"; };
 		4A01D553273D25D900EDFC1C /* UserProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileRepository.swift; sourceTree = "<group>"; };
 		4A01D555273D2B0A00EDFC1C /* UserProfileReadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileReadDTO.swift; sourceTree = "<group>"; };
@@ -327,7 +331,7 @@
 		4AD53D1E2760CC2700F34874 /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
 		4AD53D202760E19200F34874 /* CustomUIImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIImages.swift; sourceTree = "<group>"; };
 		4AD53D222763728400F34874 /* ItemImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImageView.swift; sourceTree = "<group>"; };
-		4AD53D25276378F000F34874 /* ImageDownloadUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadUseCase.swift; sourceTree = "<group>"; };
+		4AD53D25276378F000F34874 /* ImageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUseCase.swift; sourceTree = "<group>"; };
 		4AD53D2A2763883100F34874 /* UserImageUrlReadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageUrlReadDTO.swift; sourceTree = "<group>"; };
 		4AD53D2C2763899E00F34874 /* ItemImageUrlReadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImageUrlReadDTO.swift; sourceTree = "<group>"; };
 		4ADE3D302735807500ACBC60 /* AppMainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMainCoordinator.swift; sourceTree = "<group>"; };
@@ -414,6 +418,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A00FC212764DCDC007C5B11 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				4A00FC222764DD32007C5B11 /* State */,
+				4A47E6AE272D79E500B9018A /* ItemCreateDTO.swift */,
+				4A47E6B8272F622400B9018A /* ItemReadListDTO.swift */,
+				4A47E6C02730759500B9018A /* ItemReadDTO.swift */,
+				4ACA821427595D26003C7E0E /* ItemUpdateDTO.swift */,
+				4ACA81EB2754255F003C7E0E /* ItemDeleteDTO.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		4A00FC222764DD32007C5B11 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				4A00FC232764DD43007C5B11 /* ItemStateReadDTO.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
 		4A01D55B273DC2F700EDFC1C /* Messages */ = {
 			isa = PBXGroup;
 			children = (
@@ -790,16 +815,12 @@
 		4A47E6B7272F47BC00B9018A /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
+				4A00FC212764DCDC007C5B11 /* Items */,
 				4AD53D282763880A00F34874 /* Image */,
-				4AD53D27276387EF00F34874 /* FavoriteItem */,
+				4AD53D27276387EF00F34874 /* FavoriteItems */,
 				4AD53D0F275FF51600F34874 /* Settings */,
 				4A47E6B2272DE2EF00B9018A /* CommonDTO.swift */,
-				4A47E6AE272D79E500B9018A /* ItemCreateDTO.swift */,
-				4A47E6B8272F622400B9018A /* ItemReadListDTO.swift */,
-				4A47E6C02730759500B9018A /* ItemReadDTO.swift */,
-				4ACA81EB2754255F003C7E0E /* ItemDeleteDTO.swift */,
 				4A01D555273D2B0A00EDFC1C /* UserProfileReadDTO.swift */,
-				4ACA821427595D26003C7E0E /* ItemUpdateDTO.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -953,19 +974,20 @@
 		4AD53D242763787D00F34874 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				4AD53D25276378F000F34874 /* ImageDownloadUseCase.swift */,
+				4AD53D25276378F000F34874 /* ImageUseCase.swift */,
+				4A00FC252764DF2D007C5B11 /* ItemStateUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
 		};
-		4AD53D27276387EF00F34874 /* FavoriteItem */ = {
+		4AD53D27276387EF00F34874 /* FavoriteItems */ = {
 			isa = PBXGroup;
 			children = (
 				4AE229A9275A49DD0070350E /* FavoriteItemCreateDTO.swift */,
 				4AE229AB275A51FD0070350E /* FavoriteItemDeleteDTO.swift */,
 				4AE229AD275A707F0070350E /* FavoriteItemReadExistDTO.swift */,
 			);
-			path = FavoriteItem;
+			path = FavoriteItems;
 			sourceTree = "<group>";
 		};
 		4AD53D282763880A00F34874 /* Image */ = {
@@ -1417,6 +1439,7 @@
 				4A03E3B8275F622400EB0210 /* CustomColors.swift in Sources */,
 				4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */,
 				4AC5667E273BE7E400776DBD /* LocalProfileRepository.swift in Sources */,
+				4A00FC242764DD43007C5B11 /* ItemStateReadDTO.swift in Sources */,
 				4ACA8208275790ED003C7E0E /* ImageSelectViewModel.swift in Sources */,
 				4A3B5266271239CE00EF4F93 /* AppDelegate.swift in Sources */,
 				4A155E4027229D3600C8B867 /* AvatarImageView.swift in Sources */,
@@ -1440,8 +1463,9 @@
 				4ACA81EC2754255F003C7E0E /* ItemDeleteDTO.swift in Sources */,
 				4A3B529B2712401D00EF4F93 /* HomeViewController.swift in Sources */,
 				4ACA81F7275746D8003C7E0E /* SingleLineDecimalInputView.swift in Sources */,
-				4AD53D26276378F000F34874 /* ImageDownloadUseCase.swift in Sources */,
+				4AD53D26276378F000F34874 /* ImageUseCase.swift in Sources */,
 				4A47E6C12730759500B9018A /* ItemReadDTO.swift in Sources */,
+				4A00FC262764DF2D007C5B11 /* ItemStateUseCase.swift in Sources */,
 				4AD53D0A275FED1200F34874 /* SettingsRepository.swift in Sources */,
 				4AED5E65271F729F00B7AC00 /* TokenHeaderRequestInterceptor.swift in Sources */,
 				4A47E6CD27314D4600B9018A /* ItemActionPanelView.swift in Sources */,

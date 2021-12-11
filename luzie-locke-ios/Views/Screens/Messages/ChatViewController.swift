@@ -87,7 +87,9 @@ class ChatViewController: UICollectionViewController {
     }
     
     viewModel?.bindableSoldOutViewIsHidden.bind { [weak self] isHidden in
-      self?.soldOutView.isHidden = isHidden ?? true
+      DispatchQueue.main.async {
+        self?.soldOutView.isHidden = isHidden ?? true
+      }
     }
   }
   

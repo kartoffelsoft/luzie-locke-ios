@@ -11,6 +11,7 @@ protocol ItemRepositoryProtocol {
 
   func create(title: String, price: String, description: String, images: [UIImage], completion: @escaping (Result<Void, LLError>) -> Void)
   func read(_ id: String, completion: @escaping (Result<Item, LLError>) -> Void)
+  func readState(_ id: String, completion: @escaping (Result<String, LLError>) -> Void)
   func readListLocal(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
   func readListSearch(keyword: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
   func readListUserListings(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
@@ -72,6 +73,24 @@ class ItemRepository: ItemRepositoryProtocol {
       }
     }
   }
+  
+  func readState(_ id: String, completion: @escaping (Result<String, LLError>) -> Void) {
+    backendClient.GET(ItemStateReadRequestDTO(id: id)) { result in
+      switch result {
+      case .success(let response):
+        if let response = response {
+          completion(.success(response.state))
+        } else {
+          completion(.failure(.unableToComplete))
+        }
+        
+      case .failure(let err):
+        print("[Error:\(#file):\(#line)] \(err)")
+        completion(.failure(.unableToComplete))
+      }
+    }
+  }
+  
   
   func readListLocal(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
     backendClient.GET(ItemReadListRequestDTO(cursor: cursor, limit: 8)) { result in
