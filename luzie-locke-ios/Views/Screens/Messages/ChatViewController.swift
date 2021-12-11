@@ -25,7 +25,7 @@ class ChatViewController: UICollectionViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "SELL", style: .plain, target: self, action: #selector(handleSellButtonTap))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "SOLD", style: .plain, target: self, action: #selector(handleSoldButtonTap))
     
     configureBackground()
     configureSoldOutView()
@@ -127,8 +127,8 @@ class ChatViewController: UICollectionViewController {
     chatInputAccessoryView.textField.text = ""
   }
   
-  @objc private func handleSellButtonTap() {
-    viewModel?.didTapSell()
+  @objc private func handleSoldButtonTap() {
+    viewModel?.didTapSold()
   }
 
   @objc private func handleKeyboardShow() {

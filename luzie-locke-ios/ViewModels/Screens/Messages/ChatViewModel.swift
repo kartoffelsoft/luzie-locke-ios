@@ -81,7 +81,7 @@ class ChatViewModel {
     }
   }
   
-  func didTapSell() {
-    print("didTapSell")
+  func didTapSold() {
+    print("didTapSold")
   }
 }

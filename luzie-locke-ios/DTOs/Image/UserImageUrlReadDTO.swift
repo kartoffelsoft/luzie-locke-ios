@@ -12,9 +12,9 @@ struct UserImageUrlReadRequestDTO: APIRequest {
   typealias Response = UserImageUrlReadResponseDTO
   
   var resourceName: String {
-    return "/api/images/users/" + id
+    return "/api/users/" + id + "/image"
   }
-  
+
   let id: String
   
   func toDictionary() -> [String: Any] {

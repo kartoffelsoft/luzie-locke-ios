@@ -12,7 +12,7 @@ struct ItemImageUrlReadRequestDTO: APIRequest {
   typealias Response = ItemImageUrlReadResponseDTO
   
   var resourceName: String {
-    return "/api/images/items/" + id
+    return "/api/items/" + id + "/image"
   }
   
   let id: String
