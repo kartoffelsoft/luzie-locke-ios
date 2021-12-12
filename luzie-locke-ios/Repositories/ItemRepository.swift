@@ -15,9 +15,9 @@ protocol ItemRepositoryProtocol {
   func readTradeState(_ id: String, completion: @escaping (Result<(String, String, String), LLError>) -> Void)
   func readListLocal(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
   func readListSearch(keyword: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
-  func readListUserListings(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
-  func readListUserListingsClosed(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
-  func readListUserPurchases(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
+  func readListUserListings(id: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
+  func readListUserListingsClosed(id: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
+  func readListUserPurchases(id: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
   func readListUserFavorites(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
   
   func update(_ id: String, title: String, price: String, description: String, images: [UIImage], oldImageUrls: [String?]?, completion: @escaping (Result<Void, LLError>) -> Void)
@@ -132,8 +132,8 @@ class ItemRepository: ItemRepositoryProtocol {
     }
   }
   
-  func readListUserListings(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
-    backendClient.GET(ItemReadListUserListingsRequestDTO(cursor: cursor, limit: 8)) { result in
+  func readListUserListings(id: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
+    backendClient.GET(ItemReadListUserListingsRequestDTO(id: id, cursor: cursor, limit: 8)) { result in
       switch result {
       case .success(let response):
         if let response = response {
@@ -151,8 +151,8 @@ class ItemRepository: ItemRepositoryProtocol {
     }
   }
   
-  func readListUserListingsClosed(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
-    backendClient.GET(ItemReadListUserListingsClosedRequestDTO(cursor: cursor, limit: 8)) { result in
+  func readListUserListingsClosed(id: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
+    backendClient.GET(ItemReadListUserListingsClosedRequestDTO(id: id, cursor: cursor, limit: 8)) { result in
       switch result {
       case .success(let response):
         if let response = response {
@@ -170,8 +170,8 @@ class ItemRepository: ItemRepositoryProtocol {
     }
   }
   
-  func readListUserPurchases(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
-    backendClient.GET(ItemReadListUserPurchasesRequestDTO(cursor: cursor, limit: 8)) { result in
+  func readListUserPurchases(id: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
+    backendClient.GET(ItemReadListUserPurchasesRequestDTO(id: id, cursor: cursor, limit: 8)) { result in
       switch result {
       case .success(let response):
         if let response = response {

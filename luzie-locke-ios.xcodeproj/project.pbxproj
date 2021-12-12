@@ -11,6 +11,7 @@
 		4A00FC242764DD43007C5B11 /* ItemTradeStateReadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC232764DD43007C5B11 /* ItemTradeStateReadDTO.swift */; };
 		4A00FC262764DF2D007C5B11 /* ItemTradeStateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC252764DF2D007C5B11 /* ItemTradeStateUseCase.swift */; };
 		4A00FC2827654898007C5B11 /* ItemTradeStateUpdateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC2727654898007C5B11 /* ItemTradeStateUpdateDTO.swift */; };
+		4A00FC2A2766B2D1007C5B11 /* MyProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC292766B2D1007C5B11 /* MyProfileUseCase.swift */; };
 		4A01D551273CFF0900EDFC1C /* RecentMessageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D550273CFF0900EDFC1C /* RecentMessageRepository.swift */; };
 		4A01D554273D25D900EDFC1C /* UserProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D553273D25D900EDFC1C /* UserProfileRepository.swift */; };
 		4A01D556273D2B0B00EDFC1C /* UserProfileReadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D555273D2B0A00EDFC1C /* UserProfileReadDTO.swift */; };
@@ -211,6 +212,7 @@
 		4A00FC232764DD43007C5B11 /* ItemTradeStateReadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTradeStateReadDTO.swift; sourceTree = "<group>"; };
 		4A00FC252764DF2D007C5B11 /* ItemTradeStateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTradeStateUseCase.swift; sourceTree = "<group>"; };
 		4A00FC2727654898007C5B11 /* ItemTradeStateUpdateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTradeStateUpdateDTO.swift; sourceTree = "<group>"; };
+		4A00FC292766B2D1007C5B11 /* MyProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileUseCase.swift; sourceTree = "<group>"; };
 		4A01D550273CFF0900EDFC1C /* RecentMessageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMessageRepository.swift; sourceTree = "<group>"; };
 		4A01D553273D25D900EDFC1C /* UserProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileRepository.swift; sourceTree = "<group>"; };
 		4A01D555273D2B0A00EDFC1C /* UserProfileReadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileReadDTO.swift; sourceTree = "<group>"; };
@@ -979,6 +981,7 @@
 			children = (
 				4AD53D25276378F000F34874 /* ImageUseCase.swift */,
 				4A00FC252764DF2D007C5B11 /* ItemTradeStateUseCase.swift */,
+				4A00FC292766B2D1007C5B11 /* MyProfileUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1381,6 +1384,7 @@
 				4A47E6D027316E1900B9018A /* ItemActionPanelViewModel.swift in Sources */,
 				4A22DB3C274ED91800E5125B /* UserPurchasesViewController.swift in Sources */,
 				4AD53D2D2763899E00F34874 /* ItemImageUrlReadDTO.swift in Sources */,
+				4A00FC2A2766B2D1007C5B11 /* MyProfileUseCase.swift in Sources */,
 				4A155E462722E03600C8B867 /* OpenHTTPClient.swift in Sources */,
 				4A09C69E2738582700FD4E42 /* UserInfoView.swift in Sources */,
 				4A01D561273DC94D00EDFC1C /* DateUtility.swift in Sources */,

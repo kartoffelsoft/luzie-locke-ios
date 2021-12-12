@@ -17,6 +17,7 @@ class UserPurchasesViewModel {
   weak var delegate:        UserPurchasesViewModelDelegate?
   
   let coordinator:          SettingsCoordinator
+  let myProfileUseCase:     MyProfileUseCase
   let imageUseCase:         ImageUseCaseProtocol
   let itemRepository:       ItemRepositoryProtocol
   
@@ -31,9 +32,11 @@ class UserPurchasesViewModel {
   var cursor: TimeInterval = Date().timeIntervalSince1970 * 1000
   
   init(coordinator:           SettingsCoordinator,
+       myProfileUseCase:      MyProfileUseCase,
        imageUseCase:          ImageUseCaseProtocol,
        itemRepository:        ItemRepositoryProtocol) {
     self.coordinator          = coordinator
+    self.myProfileUseCase     = myProfileUseCase
     self.imageUseCase         = imageUseCase
     self.itemRepository       = itemRepository
   }
@@ -49,13 +52,15 @@ class UserPurchasesViewModel {
   }
   
   private func fetchList() {
+    guard let id = myProfileUseCase.getId() else { return }
+
     if isLoading || cursor == -1 {
       return
     }
-    
+
     isLoading = true
     
-    itemRepository.readListUserPurchases(cursor: cursor) { [weak self] result in
+    itemRepository.readListUserPurchases(id: id, cursor: cursor) { [weak self] result in
       guard let self = self else { return }
       self.isLoading = false
       

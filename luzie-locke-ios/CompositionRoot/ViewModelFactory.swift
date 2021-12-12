@@ -102,12 +102,14 @@ extension CompositionRoot: ViewModelFactory {
   
   func makeUserListingsViewModel(coordinator: SettingsCoordinator) -> UserListingsViewModel {
     return UserListingsViewModel(coordinator: coordinator,
+                                 myProfileUseCase: myProfileUseCase,
                                  imageUseCase: imageUseCase,
                                  itemRepository: itemRepository)
   }
   
   func makeUserPurchasesViewModel(coordinator: SettingsCoordinator) -> UserPurchasesViewModel {
     return UserPurchasesViewModel(coordinator: coordinator,
+                                  myProfileUseCase: myProfileUseCase,
                                   imageUseCase: imageUseCase,
                                   itemRepository: itemRepository)
   }

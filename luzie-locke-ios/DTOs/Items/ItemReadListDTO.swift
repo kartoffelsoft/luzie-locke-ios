@@ -48,9 +48,10 @@ struct ItemReadListUserListingsRequestDTO: APIRequest {
   typealias Response = ItemReadListResponseDTO
   
   var resourceName: String {
-    return "/api/items/user"
+    return "/api/users/" + id + "/items"
   }
   
+  let id: String
   let cursor: Double
   let limit: Int
   
@@ -65,9 +66,10 @@ struct ItemReadListUserListingsClosedRequestDTO: APIRequest {
   typealias Response = ItemReadListResponseDTO
   
   var resourceName: String {
-    return "/api/items/user/sold"
+    return "/api/users/" + id + "/items/sold"
   }
   
+  let id: String
   let cursor: Double
   let limit: Int
   
@@ -82,11 +84,12 @@ struct ItemReadListUserPurchasesRequestDTO: APIRequest {
   typealias Response = ItemReadListResponseDTO
   
   var resourceName: String {
-    return "/api/items/user/bought"
+    return "/api/users/" + id + "/items/bought"
   }
   
+  let id:     String
   let cursor: Double
-  let limit: Int
+  let limit:  Int
   
   func toDictionary() -> [String: Any] {
     return [ "cursor":  cursor,
