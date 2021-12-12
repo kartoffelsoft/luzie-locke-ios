@@ -25,8 +25,6 @@ class ChatViewController: UICollectionViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "SOLD", style: .plain, target: self, action: #selector(handleSoldButtonTap))
-    
     configureBackground()
     configureSoldOutView()
     configureCollectionView()
@@ -91,6 +89,22 @@ class ChatViewController: UICollectionViewController {
         self?.soldOutView.isHidden = isHidden ?? true
       }
     }
+
+    viewModel?.bindableActionButtonType.bind { [weak self] type in
+      guard let self = self else { return }
+      guard let type = type else { return }
+      
+      DispatchQueue.main.async {
+        switch type {
+        case .clear:
+          self.navigationItem.rightBarButtonItem = nil
+        case .sold:
+          self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "SOLD", style: .plain, target: self, action: #selector(self.handleSoldButtonTap))
+        case .reopen:
+          self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "REOPEN", style: .plain, target: self, action: #selector(self.handleReopenButtonTap))
+        }
+      }
+    }
   }
   
   override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -130,7 +144,19 @@ class ChatViewController: UICollectionViewController {
   }
   
   @objc private func handleSoldButtonTap() {
-    viewModel?.didTapSold()
+    presentConfirmOnMainThread(
+      title: "Are you sure?",
+      message: "This item will be shown as a sold item.") {
+        self.viewModel?.didTapSold()
+      }
+  }
+  
+  @objc private func handleReopenButtonTap() {
+    presentConfirmOnMainThread(
+      title: "Are you sure?",
+      message: "This item will be shown to your neighbours.") {
+        self.viewModel?.didTapReopen()
+      }
   }
 
   @objc private func handleKeyboardShow() {

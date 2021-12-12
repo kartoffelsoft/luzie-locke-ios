@@ -7,15 +7,22 @@
 
 import Foundation
 
+enum ChatViewActionButtonType {
+  case clear
+  case sold
+  case reopen
+}
+
 class ChatViewModel {
   
   var bindableMessages = Bindable<[ChatMessage]>()
   var bindableSoldOutViewIsHidden = Bindable<Bool>()
+  var bindableActionButtonType = Bindable<ChatViewActionButtonType>()
   
   private let remoteUserId: String
   private let itemId: String
 
-  private let itemStateUseCase:         ItemStateUseCaseProtocol
+  private let itemTradeStateUseCase:    ItemTradeStateUseCaseProtocol
   private let userProfileRepository:    UserProfileRepositoryProtocol
   private let chatMessageRepository:    ChatMessageRepositoryProtocol
   private let recentMessageRepository:  RecentMessageRepositoryProtocol
@@ -25,19 +32,20 @@ class ChatViewModel {
 
   init(remoteUserId:              String,
        itemId:                    String,
-       itemStateUseCase:          ItemStateUseCaseProtocol,
+       itemTradeStateUseCase:     ItemTradeStateUseCaseProtocol,
        userProfileRepository:     UserProfileRepositoryProtocol,
        chatMessageRepository:     ChatMessageRepositoryProtocol,
        recentMessageRepository:   RecentMessageRepositoryProtocol) {
     self.remoteUserId             = remoteUserId
     self.itemId                   = itemId
-    self.itemStateUseCase         = itemStateUseCase
+    self.itemTradeStateUseCase    = itemTradeStateUseCase
     self.userProfileRepository    = userProfileRepository
     self.chatMessageRepository    = chatMessageRepository
     self.recentMessageRepository  = recentMessageRepository
     
-    bindableMessages.value            = [ChatMessage]()
-    bindableSoldOutViewIsHidden.value = true
+    bindableMessages.value              = [ChatMessage]()
+    bindableSoldOutViewIsHidden.value   = true
+    bindableActionButtonType.value      = .clear
   }
   
   func didLoad() {
@@ -63,10 +71,19 @@ class ChatViewModel {
       }
     }
     
-    itemStateUseCase.getState(itemId: itemId) { [weak self] result in
+    itemTradeStateUseCase.getState(itemId: itemId) { [weak self] result in
       switch(result) {
-      case .success(let state):
-        self?.bindableSoldOutViewIsHidden.value = (state == "open")
+      case .success((let state, let sellerId, let buyerId)):
+        guard let userId = self?.localUserProfile?.id else { return }
+        
+        self?.bindableSoldOutViewIsHidden.value   = state == "open"
+        
+        if sellerId == userId {
+          self?.bindableActionButtonType.value = (state == "open") ? .sold : .reopen
+        } else {
+          self?.bindableActionButtonType.value =  .clear
+        }
+        
       case .failure(let error):
         print(error)
       }
@@ -94,6 +111,44 @@ class ChatViewModel {
   }
   
   func didTapSold() {
-    print("didTapSold")
+    itemTradeStateUseCase.setSold(itemId: itemId, buyerId: remoteUserId) { [weak self] result in
+      switch(result) {
+      case .success((let state, let sellerId, let buyerId)):
+        guard let userId = self?.localUserProfile?.id else { return }
+        
+        self?.bindableSoldOutViewIsHidden.value = state == "open"
+        
+        print("SellerId: ", sellerId)
+        print("userId: ", userId)
+        if sellerId == userId {
+          self?.bindableActionButtonType.value = (state == "open") ? .sold : .reopen
+        } else {
+          self?.bindableActionButtonType.value =  .clear
+        }
+        
+      case .failure(let error):
+        print(error)
+      }
+    }
+  }
+  
+  func didTapReopen() {
+    itemTradeStateUseCase.setOpen(itemId: itemId) { [weak self] result in
+      switch(result) {
+      case .success((let state, let sellerId, let buyerId)):
+        guard let userId = self?.localUserProfile?.id else { return }
+        
+        self?.bindableSoldOutViewIsHidden.value = state == "open"
+        
+        if sellerId == userId {
+          self?.bindableActionButtonType.value = (state == "open") ? .sold : .reopen
+        } else {
+          self?.bindableActionButtonType.value =  .clear
+        }
+        
+      case .failure(let error):
+        print(error)
+      }
+    }
   }
 }

@@ -10,15 +10,18 @@ import UIKit
 protocol ItemRepositoryProtocol {
 
   func create(title: String, price: String, description: String, images: [UIImage], completion: @escaping (Result<Void, LLError>) -> Void)
+  
   func read(_ id: String, completion: @escaping (Result<Item, LLError>) -> Void)
-  func readState(_ id: String, completion: @escaping (Result<String, LLError>) -> Void)
+  func readTradeState(_ id: String, completion: @escaping (Result<(String, String, String), LLError>) -> Void)
   func readListLocal(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
   func readListSearch(keyword: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
   func readListUserListings(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
   func readListUserListingsClosed(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
   func readListUserPurchases(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
   func readListUserFavorites(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
+  
   func update(_ id: String, title: String, price: String, description: String, images: [UIImage], oldImageUrls: [String?]?, completion: @escaping (Result<Void, LLError>) -> Void)
+  func updateTradeState(_ id: String, state: String, buyerId: String, completion: @escaping (Result<(String, String, String), LLError>) -> Void)
   func delete(_ id: String, imageUrls: [String?]?, completion: @escaping (Result<Void, LLError>) -> Void)
 }
 
@@ -74,12 +77,12 @@ class ItemRepository: ItemRepositoryProtocol {
     }
   }
   
-  func readState(_ id: String, completion: @escaping (Result<String, LLError>) -> Void) {
-    backendClient.GET(ItemStateReadRequestDTO(id: id)) { result in
+  func readTradeState(_ id: String, completion: @escaping (Result<(String, String, String), LLError>) -> Void) {
+    backendClient.GET(ItemTradeStateReadRequestDTO(id: id)) { result in
       switch result {
       case .success(let response):
         if let response = response {
-          completion(.success(response.state))
+          completion(.success((response.state, response.sellerId, response.buyerId)))
         } else {
           completion(.failure(.unableToComplete))
         }
@@ -90,7 +93,6 @@ class ItemRepository: ItemRepositoryProtocol {
       }
     }
   }
-  
   
   func readListLocal(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
     backendClient.GET(ItemReadListRequestDTO(cursor: cursor, limit: 8)) { result in
@@ -231,6 +233,23 @@ class ItemRepository: ItemRepositoryProtocol {
             return
           }
         }
+      case .failure(let error):
+        print("[Error:\(#file):\(#line)] \(error)")
+        completion(.failure(.unableToComplete))
+      }
+    }
+  }
+  
+  func updateTradeState(_ id: String, state: String, buyerId: String, completion: @escaping (Result<(String, String, String), LLError>) -> Void) {
+    backendClient.PATCH(ItemTradeStateUpdateRequestDTO(id: id, state: state, buyerId: buyerId)) { result in
+      switch result {
+      case .success(let response):
+        if let response = response {
+          completion(.success((response.state, response.sellerId, response.buyerId)))
+        } else {
+          completion(.failure(.unableToComplete))
+        }
+        
       case .failure(let error):
         print("[Error:\(#file):\(#line)] \(error)")
         completion(.failure(.unableToComplete))

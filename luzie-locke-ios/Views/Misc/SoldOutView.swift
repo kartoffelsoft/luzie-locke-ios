@@ -26,12 +26,14 @@ class SoldOutView: UIView {
 
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.image = CustomUIImages.soldOut
-
+    imageView.contentMode = .scaleAspectFit
     addSubview(imageView)
     
     NSLayoutConstraint.activate([
       imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-      imageView.centerYAnchor.constraint(equalTo: centerYAnchor)
+      imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+      imageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5),
+      imageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2)
     ])
   }
 }

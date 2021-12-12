@@ -28,7 +28,7 @@ class CompositionRoot {
 
   lazy var imageUseCase           = ImageUseCase(openHttpClient: openHttpClient,
                                                  backendClient: backendClient)
-  lazy var itemStateUseCase       = ItemStateUseCase(itemRepository: itemRepository)
+  lazy var itemTradeStateUseCase  = ItemTradeStateUseCase(itemRepository: itemRepository)
   
   lazy var accessTokenStorage     = AnyStorage(wrap: SimpleStringStorage(key: "AccessToken"))
   lazy var refreshTokenStorage    = AnyStorage(wrap: SimpleStringStorage(key: "RefreshToken"))

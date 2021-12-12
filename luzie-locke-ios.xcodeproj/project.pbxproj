@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4A00FC202764A4FE007C5B11 /* SoldOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC1F2764A4FE007C5B11 /* SoldOutView.swift */; };
-		4A00FC242764DD43007C5B11 /* ItemStateReadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC232764DD43007C5B11 /* ItemStateReadDTO.swift */; };
-		4A00FC262764DF2D007C5B11 /* ItemStateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC252764DF2D007C5B11 /* ItemStateUseCase.swift */; };
+		4A00FC242764DD43007C5B11 /* ItemTradeStateReadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC232764DD43007C5B11 /* ItemTradeStateReadDTO.swift */; };
+		4A00FC262764DF2D007C5B11 /* ItemTradeStateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC252764DF2D007C5B11 /* ItemTradeStateUseCase.swift */; };
+		4A00FC2827654898007C5B11 /* ItemTradeStateUpdateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC2727654898007C5B11 /* ItemTradeStateUpdateDTO.swift */; };
 		4A01D551273CFF0900EDFC1C /* RecentMessageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D550273CFF0900EDFC1C /* RecentMessageRepository.swift */; };
 		4A01D554273D25D900EDFC1C /* UserProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D553273D25D900EDFC1C /* UserProfileRepository.swift */; };
 		4A01D556273D2B0B00EDFC1C /* UserProfileReadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D555273D2B0A00EDFC1C /* UserProfileReadDTO.swift */; };
@@ -207,8 +208,9 @@
 
 /* Begin PBXFileReference section */
 		4A00FC1F2764A4FE007C5B11 /* SoldOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldOutView.swift; sourceTree = "<group>"; };
-		4A00FC232764DD43007C5B11 /* ItemStateReadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStateReadDTO.swift; sourceTree = "<group>"; };
-		4A00FC252764DF2D007C5B11 /* ItemStateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStateUseCase.swift; sourceTree = "<group>"; };
+		4A00FC232764DD43007C5B11 /* ItemTradeStateReadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTradeStateReadDTO.swift; sourceTree = "<group>"; };
+		4A00FC252764DF2D007C5B11 /* ItemTradeStateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTradeStateUseCase.swift; sourceTree = "<group>"; };
+		4A00FC2727654898007C5B11 /* ItemTradeStateUpdateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTradeStateUpdateDTO.swift; sourceTree = "<group>"; };
 		4A01D550273CFF0900EDFC1C /* RecentMessageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMessageRepository.swift; sourceTree = "<group>"; };
 		4A01D553273D25D900EDFC1C /* UserProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileRepository.swift; sourceTree = "<group>"; };
 		4A01D555273D2B0A00EDFC1C /* UserProfileReadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileReadDTO.swift; sourceTree = "<group>"; };
@@ -434,7 +436,8 @@
 		4A00FC222764DD32007C5B11 /* State */ = {
 			isa = PBXGroup;
 			children = (
-				4A00FC232764DD43007C5B11 /* ItemStateReadDTO.swift */,
+				4A00FC232764DD43007C5B11 /* ItemTradeStateReadDTO.swift */,
+				4A00FC2727654898007C5B11 /* ItemTradeStateUpdateDTO.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -975,7 +978,7 @@
 			isa = PBXGroup;
 			children = (
 				4AD53D25276378F000F34874 /* ImageUseCase.swift */,
-				4A00FC252764DF2D007C5B11 /* ItemStateUseCase.swift */,
+				4A00FC252764DF2D007C5B11 /* ItemTradeStateUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1411,6 +1414,7 @@
 				4AED5E802720C2D200B7AC00 /* JWTDecode.swift in Sources */,
 				4A47E6D82731B8E000B9018A /* SwipeImageViewController.swift in Sources */,
 				4AED5E7527201BCF00B7AC00 /* SimpleStringStorage.swift in Sources */,
+				4A00FC2827654898007C5B11 /* ItemTradeStateUpdateDTO.swift in Sources */,
 				4A47E6B3272DE2EF00B9018A /* CommonDTO.swift in Sources */,
 				4AED5E1D27197E1F00B7AC00 /* VerifyNeighborhoodViewController.swift in Sources */,
 				4A47E6BD2730288200B9018A /* ItemDisplayViewModel.swift in Sources */,
@@ -1439,7 +1443,7 @@
 				4A03E3B8275F622400EB0210 /* CustomColors.swift in Sources */,
 				4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */,
 				4AC5667E273BE7E400776DBD /* LocalProfileRepository.swift in Sources */,
-				4A00FC242764DD43007C5B11 /* ItemStateReadDTO.swift in Sources */,
+				4A00FC242764DD43007C5B11 /* ItemTradeStateReadDTO.swift in Sources */,
 				4ACA8208275790ED003C7E0E /* ImageSelectViewModel.swift in Sources */,
 				4A3B5266271239CE00EF4F93 /* AppDelegate.swift in Sources */,
 				4A155E4027229D3600C8B867 /* AvatarImageView.swift in Sources */,
@@ -1465,7 +1469,7 @@
 				4ACA81F7275746D8003C7E0E /* SingleLineDecimalInputView.swift in Sources */,
 				4AD53D26276378F000F34874 /* ImageUseCase.swift in Sources */,
 				4A47E6C12730759500B9018A /* ItemReadDTO.swift in Sources */,
-				4A00FC262764DF2D007C5B11 /* ItemStateUseCase.swift in Sources */,
+				4A00FC262764DF2D007C5B11 /* ItemTradeStateUseCase.swift in Sources */,
 				4AD53D0A275FED1200F34874 /* SettingsRepository.swift in Sources */,
 				4AED5E65271F729F00B7AC00 /* TokenHeaderRequestInterceptor.swift in Sources */,
 				4A47E6CD27314D4600B9018A /* ItemActionPanelView.swift in Sources */,
