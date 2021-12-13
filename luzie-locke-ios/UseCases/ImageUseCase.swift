@@ -36,7 +36,7 @@ class ImageUseCase: ImageUseCaseProtocol {
   }
   
   func getImage(itemId: String, completion: @escaping (Result<UIImage?, LLError>) -> Void) {
-    backendClient.GET(ItemImageUrlReadRequestDTO(id: itemId)) { [weak self] result in
+    backendClient.GET(ItemImageUrlReadRequest(id: itemId)) { [weak self] result in
       switch result {
       case .success(let response):
         if let response = response {
@@ -53,7 +53,7 @@ class ImageUseCase: ImageUseCaseProtocol {
   }
   
   func getImage(userId: String, completion: @escaping (Result<UIImage?, LLError>) -> Void) {
-    backendClient.GET(UserImageUrlReadRequestDTO(id: userId)) { [weak self] result in
+    backendClient.GET(UserImageUrlReadRequest(id: userId)) { [weak self] result in
       switch result {
       case .success(let response):
         if let response = response {

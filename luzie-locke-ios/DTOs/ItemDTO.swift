@@ -1,26 +1,11 @@
 //
-//  ItemReadDTO.swift
+//  ItemDTO.swift
 //  luzie-locke-ios
 //
-//  Created by Harry on 01.11.21.
+//  Created by Harry on 13.12.21.
 //
 
 import Foundation
-
-struct ItemReadRequestDTO: APIRequest {
-  
-  typealias Response = ItemReadResponseDTO
-  
-  var resourceName: String {
-    return "/api/items/" + id
-  }
-  
-  let id: String
-  
-  func toDictionary() -> [String: Any] {
-    return [ : ]
-  }
-}
 
 struct ItemDTO: Decodable, Hashable {
   let id:           String?
@@ -54,8 +39,4 @@ struct ItemDTO: Decodable, Hashable {
     let favorite: Int?
     let view: Int?
   }
-}
-
-struct ItemReadResponseDTO: Decodable {
-  let item: ItemDTO
 }

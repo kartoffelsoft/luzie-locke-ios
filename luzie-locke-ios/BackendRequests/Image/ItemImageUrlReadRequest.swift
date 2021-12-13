@@ -1,5 +1,5 @@
 //
-//  ImageReadDTO.swift
+//  ItemImageUrlReadDTO.swift
 //  luzie-locke-ios
 //
 //  Created by Harry on 10.12.21.
@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct UserImageUrlReadRequestDTO: APIRequest {
+struct ItemImageUrlReadRequest: APIRequest {
   
-  typealias Response = UserImageUrlReadResponseDTO
+  typealias Response = ItemImageUrlReadResponse
   
   var resourceName: String {
-    return "/api/users/" + id + "/image"
+    return "/api/items/" + id + "/image"
   }
-
+  
   let id: String
   
   func toDictionary() -> [String: Any] {
@@ -22,6 +22,6 @@ struct UserImageUrlReadRequestDTO: APIRequest {
   }
 }
 
-struct UserImageUrlReadResponseDTO: Decodable {
+struct ItemImageUrlReadResponse: Decodable {
   let url: String
 }

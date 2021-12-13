@@ -17,9 +17,9 @@ class UserListingsViewModel {
   weak var delegate:        UserListingsViewModelDelegate?
   
   let coordinator:          SettingsCoordinator
-  let myProfileUseCase:     MyProfileUseCase
   let imageUseCase:         ImageUseCaseProtocol
-  let itemRepository:       ItemRepositoryProtocol
+  let userOpenItemUseCase:  UserOpenItemUseCaseProtocol
+  let userSoldItemUseCase:  UserSoldItemUseCaseProtocol
   
   var bindableItems         = Bindable<[Item]>()
   var itemCellViewModels    = [ItemCellViewModel]()
@@ -33,13 +33,13 @@ class UserListingsViewModel {
   var cursor: TimeInterval = Date().timeIntervalSince1970 * 1000
   
   init(coordinator:           SettingsCoordinator,
-       myProfileUseCase:      MyProfileUseCase,
        imageUseCase:          ImageUseCaseProtocol,
-       itemRepository:        ItemRepositoryProtocol) {
+       userOpenItemUseCase:   UserOpenItemUseCaseProtocol,
+       userSoldItemUseCase:   UserSoldItemUseCaseProtocol) {
     self.coordinator          = coordinator
-    self.myProfileUseCase     = myProfileUseCase
     self.imageUseCase         = imageUseCase
-    self.itemRepository       = itemRepository
+    self.userOpenItemUseCase  = userOpenItemUseCase
+    self.userSoldItemUseCase  = userSoldItemUseCase
   }
   
   private func reload() {
@@ -53,17 +53,15 @@ class UserListingsViewModel {
   }
   
   private func fetchList() {
-    guard let id = myProfileUseCase.getId() else { return }
-            
     if isLoading || cursor == -1 {
       return
     }
     
     isLoading = true
     
-    let readList: (String, TimeInterval, @escaping (Result<(Array<Item>, Double), LLError>) -> ()) -> () = segment == 0 ? itemRepository.readListUserListings : itemRepository.readListUserListingsClosed
+    let readList: (TimeInterval, @escaping (Result<(Array<Item>, Double), LLError>) -> ()) -> () = segment == 0 ? userOpenItemUseCase.getItemList : userSoldItemUseCase.getItemList
 
-    readList(id, cursor) { [weak self] result in
+    readList(cursor) { [weak self] result in
       guard let self = self else { return }
       self.isLoading = false
       

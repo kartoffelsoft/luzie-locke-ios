@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct SettingsLocalLevelUpdateRequestDTO: APIRequest {
+struct SettingsLocalLevelUpdateRequest: APIRequest {
   
-  typealias Response = VoidResponseDTO
+  typealias Response = VoidResponse
   
   var resourceName: String {
     return "/api/settings/local-level"

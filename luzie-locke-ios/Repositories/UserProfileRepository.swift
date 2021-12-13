@@ -32,7 +32,7 @@ class UserProfileRepository: UserProfileRepositoryProtocol {
   }
   
   func readRemote(_ id: String, completion: @escaping (Result<UserProfile, LLError>) -> Void) {
-    backendClient.GET(UserProfileReadRequestDTO(id: id)) { result in
+    backendClient.GET(UserProfileReadRequest(id: id)) { result in
       switch result {
       case .success(let response):
         if let response = response {

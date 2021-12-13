@@ -41,7 +41,7 @@ public class BackendClient {
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .formatted(Formatter.iso8601)
             
-            let response = try decoder.decode(BackendResponseDTO<T.Response>.self, from: data)
+            let response = try decoder.decode(BackendResponse<T.Response>.self, from: data)
             if response.success {
               completion(.success(response.data as T.Response?))
             } else {
@@ -78,7 +78,7 @@ public class BackendClient {
         case .success((_, let data)):
           if let data = data {
             do {
-              let response = try JSONDecoder().decode(BackendResponseDTO<T.Response>.self, from: data)
+              let response = try JSONDecoder().decode(BackendResponse<T.Response>.self, from: data)
               if response.success {
                 completion(.success(response.data as T.Response?))
               } else {
@@ -118,7 +118,7 @@ public class BackendClient {
         case .success((_, let data)):
           if let data = data {
             do {
-              let response = try JSONDecoder().decode(BackendResponseDTO<T.Response>.self, from: data)
+              let response = try JSONDecoder().decode(BackendResponse<T.Response>.self, from: data)
               if response.success {
                 completion(.success(response.data as T.Response?))
               } else {
@@ -154,7 +154,7 @@ public class BackendClient {
       case .success((_, let data)):
         if let data = data {
           do {
-            let response = try JSONDecoder().decode(BackendResponseDTO<T.Response>.self, from: data)
+            let response = try JSONDecoder().decode(BackendResponse<T.Response>.self, from: data)
             if response.success {
               completion(.success(response.data as T.Response?))
             } else {

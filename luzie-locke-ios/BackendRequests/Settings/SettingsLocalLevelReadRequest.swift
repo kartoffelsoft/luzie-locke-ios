@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct SettingsLocalLevelReadRequestDTO: APIRequest {
+struct SettingsLocalLevelReadRequest: APIRequest {
   
-  typealias Response = SettingsLocalLevelReadResponseDTO
+  typealias Response = SettingsLocalLevelReadResponse
   
   var resourceName: String {
     return "/api/settings/local-level"
@@ -20,7 +20,7 @@ struct SettingsLocalLevelReadRequestDTO: APIRequest {
   }
 }
 
-struct SettingsLocalLevelReadResponseDTO: Decodable {
+struct SettingsLocalLevelReadResponse: Decodable {
   
   let localLevel: Int
 }

@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct SettingsLocationReadRequestDTO: APIRequest {
+struct SettingsLocationReadRequest: APIRequest {
   
-  typealias Response = SettingsLocationReadResponseDTO
+  typealias Response = SettingsLocationReadResponse
   
   var resourceName: String {
     return "/api/settings/location"
@@ -20,7 +20,7 @@ struct SettingsLocationReadRequestDTO: APIRequest {
   }
 }
 
-struct SettingsLocationReadResponseDTO: Decodable {
+struct SettingsLocationReadResponse: Decodable {
   
   let city: String
   let lat: Double

@@ -24,7 +24,7 @@ class SettingsRepository: SettingsRepositoryProtocol {
   }
   
   func readLocalLevel(completion: @escaping (Result<Int, LLError>) -> Void) {
-    backendClient.GET(SettingsLocalLevelReadRequestDTO()) { result in
+    backendClient.GET(SettingsLocalLevelReadRequest()) { result in
       switch result {
       case .success(let response):
         if let response = response {
@@ -41,7 +41,7 @@ class SettingsRepository: SettingsRepositoryProtocol {
   }
   
   func updateLocalLevel(localLevel: Int, completion: @escaping (Result<Void, LLError>) -> Void) {
-    backendClient.PATCH(SettingsLocalLevelUpdateRequestDTO(localLevel: localLevel)) { result in
+    backendClient.PATCH(SettingsLocalLevelUpdateRequest(localLevel: localLevel)) { result in
       switch result {
       case .success:
         completion(.success(()))
@@ -53,7 +53,7 @@ class SettingsRepository: SettingsRepositoryProtocol {
   }
   
   func readLocation(completion: @escaping (Result<(String, Double, Double), LLError>) -> Void) {
-    backendClient.GET(SettingsLocationReadRequestDTO()) { result in
+    backendClient.GET(SettingsLocationReadRequest()) { result in
       switch result {
       case .success(let response):
         if let response = response {
@@ -70,7 +70,7 @@ class SettingsRepository: SettingsRepositoryProtocol {
   }
   
   func updateLocation(city: String, lat: Double, lng: Double, completion: @escaping (Result<Void, LLError>) -> Void) {
-    backendClient.PATCH(SettingsLocationUpdateRequestDTO(city: city, lat: lat, lng: lng)) { result in
+    backendClient.PATCH(SettingsLocationUpdateRequest(city: city, lat: lat, lng: lng)) { result in
       switch result {
       case .success:
         completion(.success(()))

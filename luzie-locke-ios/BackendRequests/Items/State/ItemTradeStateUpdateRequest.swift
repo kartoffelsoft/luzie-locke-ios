@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct ItemTradeStateUpdateRequestDTO: APIRequest {
+struct ItemTradeStateUpdateRequest: APIRequest {
   
-  typealias Response = ItemTradeStateUpdateResponseDTO
+  typealias Response = ItemTradeStateUpdateResponse
   
   var resourceName: String {
     return "/api/items/" + id + "/trade-state"
@@ -25,7 +25,7 @@ struct ItemTradeStateUpdateRequestDTO: APIRequest {
   }
 }
 
-struct ItemTradeStateUpdateResponseDTO: Decodable {
+struct ItemTradeStateUpdateResponse: Decodable {
   let state: String
   let sellerId: String
   let buyerId: String

@@ -1,28 +1,26 @@
 //
-//  ItemUpdateDTO.swift
+//  ItemCreateRequest.swift
 //  luzie-locke-ios
 //
-//  Created by Harry on 02.12.21.
+//  Created by Harry on 30.10.21.
 //
 
 import Foundation
 
-struct ItemUpdateRequestDTO: APIRequest {
+struct ItemCreateRequest: APIRequest {
   
-  typealias Response = VoidResponseDTO
+  typealias Response = VoidResponse
   
   var resourceName: String {
-    return "/api/items/" + id
+    return "/api/items/"
   }
   
-  let id:           String
   let title:        String
   let price:        String
   let description:  String
   let imageUrls:    [String?]
   
   init(domain: Item) {
-    self.id           = domain.id!
     self.title        = domain.title!
     self.price        = domain.price!
     self.description  = domain.description!

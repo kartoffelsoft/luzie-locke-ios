@@ -8,21 +8,24 @@
 import Foundation
 
 class CompositionRoot {
-  lazy var httpClient             = KHTTPClient()
-  lazy var openHttpClient         = OpenHTTPClient(client: httpClient)
+  lazy var httpClient       = KHTTPClient()
+  lazy var openHttpClient   = OpenHTTPClient(client: httpClient)
   
-  lazy var cloudStorage           = FirebaseCloudStorage()
+  lazy var cloudStorage     = FirebaseCloudStorage()
   
-  lazy var backendClient          = BackendClient(baseEndpoint: BackendConfig.host)
-  lazy var userApiClient          = UserAPIClient(client: backendClient)
-  lazy var backendApiClient       = BackendAPIClient(client: backendClient,
+  lazy var backendClient    = BackendClient(baseEndpoint: BackendConfig.host)
+  lazy var userApiClient    = UserAPIClient(client: backendClient)
+  lazy var backendApiClient = BackendAPIClient(client: backendClient,
                                                      userApi: userApiClient)
   
-  lazy var imageRepository        = ImageRepository(cloudStorage: cloudStorage)
-  lazy var itemRepository         = ItemRepository(backendClient: backendClient, imageRepository: imageRepository)
-  lazy var favoriteItemRepository = FavoriteItemRepository(backendClient: backendClient)
-  lazy var localProfileRepository = LocalProfileRepository(key: "Profile")
-  lazy var userProfileRepository  = UserProfileRepository(backendClient: backendClient,
+  lazy var imageRepository          = ImageRepository(cloudStorage: cloudStorage)
+  lazy var itemRepository           = ItemRepository(backendClient: backendClient, imageRepository: imageRepository)
+  lazy var userOpenItemRepository   = UserOpenItemRepository(backendClient: backendClient)
+  lazy var userSoldItemRepository   = UserSoldItemRepository(backendClient: backendClient)
+  lazy var userBoughtItemRepository = UserBoughtItemRepository(backendClient: backendClient)
+  lazy var favoriteItemRepository   = FavoriteItemRepository(backendClient: backendClient)
+  lazy var localProfileRepository   = LocalProfileRepository(key: "Profile")
+  lazy var userProfileRepository    = UserProfileRepository(backendClient: backendClient,
                                                           localProfileRepository: localProfileRepository)
   lazy var settingsRepository     = SettingsRepository(backendClient: backendClient)
 
@@ -30,6 +33,12 @@ class CompositionRoot {
                                                  backendClient: backendClient)
   lazy var itemTradeStateUseCase  = ItemTradeStateUseCase(itemRepository: itemRepository)
   lazy var myProfileUseCase       = MyProfileUseCase(localProfileRepository: localProfileRepository)
+  lazy var userOpenItemUseCase    = UserOpenItemUseCase(localProfileRepository: localProfileRepository,
+                                                        userOpenItemRepository: userOpenItemRepository)
+  lazy var userSoldItemUseCase    = UserSoldItemUseCase(localProfileRepository: localProfileRepository,
+                                                        userSoldItemRepository: userSoldItemRepository)
+  lazy var userBoughtItemUseCase  = UserBoughtItemUseCase(localProfileRepository: localProfileRepository,
+                                                          userBoughtItemRepository: userBoughtItemRepository)
   lazy var favoriteItemUseCase    = FavoriteItemUseCase(localProfileRepository: localProfileRepository,
                                                         favoriteItemRepository: favoriteItemRepository)
   

@@ -7,26 +7,6 @@
 
 import Foundation
 
-struct UserProfileReadRequestDTO: APIRequest {
-  
-  typealias Response = UserProfileReadResponseDTO
-  
-  var resourceName: String {
-    return "/api/users/" + id
-  }
-  
-  let id: String
-  
-  func toDictionary() -> [String: Any] {
-    return [ : ]
-  }
-}
-
-struct UserProfileReadResponseDTO: Decodable {
-  
-  let user: UserProfileDTO
-}
-
 struct UserProfileDTO: Decodable, Hashable {
   
   let id: String?

@@ -1,15 +1,15 @@
 //
-//  ItemDelete.swift
+//  ItemReadDTO.swift
 //  luzie-locke-ios
 //
-//  Created by Harry on 28.11.21.
+//  Created by Harry on 01.11.21.
 //
 
 import Foundation
 
-struct ItemDeleteRequestDTO: APIRequest {
+struct ItemReadRequest: APIRequest {
   
-  typealias Response = VoidResponseDTO
+  typealias Response = ItemReadResponse
   
   var resourceName: String {
     return "/api/items/" + id
@@ -20,4 +20,8 @@ struct ItemDeleteRequestDTO: APIRequest {
   func toDictionary() -> [String: Any] {
     return [ : ]
   }
+}
+
+struct ItemReadResponse: Decodable {
+  let item: ItemDTO
 }

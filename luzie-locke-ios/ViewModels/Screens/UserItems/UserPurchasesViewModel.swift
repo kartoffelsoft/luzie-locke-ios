@@ -16,10 +16,9 @@ class UserPurchasesViewModel {
   
   weak var delegate:        UserPurchasesViewModelDelegate?
   
-  let coordinator:          SettingsCoordinator
-  let myProfileUseCase:     MyProfileUseCase
-  let imageUseCase:         ImageUseCaseProtocol
-  let itemRepository:       ItemRepositoryProtocol
+  private let coordinator:           SettingsCoordinator
+  private let imageUseCase:          ImageUseCaseProtocol
+  private let userBoughtItemUseCase: UserBoughtItemUseCaseProtocol
   
   var bindableItems         = Bindable<[Item]>()
   var itemCellViewModels    = [ItemCellViewModel]()
@@ -31,14 +30,12 @@ class UserPurchasesViewModel {
   
   var cursor: TimeInterval = Date().timeIntervalSince1970 * 1000
   
-  init(coordinator:           SettingsCoordinator,
-       myProfileUseCase:      MyProfileUseCase,
-       imageUseCase:          ImageUseCaseProtocol,
-       itemRepository:        ItemRepositoryProtocol) {
-    self.coordinator          = coordinator
-    self.myProfileUseCase     = myProfileUseCase
-    self.imageUseCase         = imageUseCase
-    self.itemRepository       = itemRepository
+  init(coordinator:             SettingsCoordinator,
+       imageUseCase:            ImageUseCaseProtocol,
+       userBoughtItemUseCase:   UserBoughtItemUseCaseProtocol) {
+    self.coordinator            = coordinator
+    self.imageUseCase           = imageUseCase
+    self.userBoughtItemUseCase  = userBoughtItemUseCase
   }
   
   private func reload() {
@@ -52,15 +49,13 @@ class UserPurchasesViewModel {
   }
   
   private func fetchList() {
-    guard let id = myProfileUseCase.getId() else { return }
-
     if isLoading || cursor == -1 {
       return
     }
 
     isLoading = true
     
-    itemRepository.readListUserPurchases(id: id, cursor: cursor) { [weak self] result in
+    userBoughtItemUseCase.getItemList(cursor: cursor) { [weak self] result in
       guard let self = self else { return }
       self.isLoading = false
       

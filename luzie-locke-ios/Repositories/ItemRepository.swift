@@ -15,9 +15,6 @@ protocol ItemRepositoryProtocol {
   func readTradeState(_ id: String, completion: @escaping (Result<(String, String, String), LLError>) -> Void)
   func readListLocal(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
   func readListSearch(keyword: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
-  func readListUserListings(id: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
-  func readListUserListingsClosed(id: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
-  func readListUserPurchases(id: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
   
   func update(_ id: String, title: String, price: String, description: String, images: [UIImage], oldImageUrls: [String?]?, completion: @escaping (Result<Void, LLError>) -> Void)
   func updateTradeState(_ id: String, state: String, buyerId: String, completion: @escaping (Result<(String, String, String), LLError>) -> Void)
@@ -38,7 +35,7 @@ class ItemRepository: ItemRepositoryProtocol {
     createImageUrls(images: images) { result in
       switch result {
       case .success(let imageUrls):
-        self.backendClient.POST(ItemCreateRequestDTO(domain: Item(title: title, price: price, description: description, imageUrls: imageUrls))) { result in
+        self.backendClient.POST(ItemCreateRequest(domain: Item(title: title, price: price, description: description, imageUrls: imageUrls))) { result in
           DispatchQueue.main.async {
             switch result {
             case .success:
@@ -57,7 +54,7 @@ class ItemRepository: ItemRepositoryProtocol {
   }
   
   func read(_ id: String, completion: @escaping (Result<Item, LLError>) -> Void) {
-    backendClient.GET(ItemReadRequestDTO(id: id)) { result in
+    backendClient.GET(ItemReadRequest(id: id)) { result in
       DispatchQueue.main.async {
         switch result {
         case .success(let response):
@@ -77,7 +74,7 @@ class ItemRepository: ItemRepositoryProtocol {
   }
   
   func readTradeState(_ id: String, completion: @escaping (Result<(String, String, String), LLError>) -> Void) {
-    backendClient.GET(ItemTradeStateReadRequestDTO(id: id)) { result in
+    backendClient.GET(ItemTradeStateReadRequest(id: id)) { result in
       switch result {
       case .success(let response):
         if let response = response {
@@ -94,7 +91,7 @@ class ItemRepository: ItemRepositoryProtocol {
   }
   
   func readListLocal(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
-    backendClient.GET(ItemReadListRequestDTO(cursor: cursor, limit: 8)) { result in
+    backendClient.GET(ItemReadListRequest(cursor: cursor, limit: 8)) { result in
       switch result {
       case .success(let response):
         if let response = response {
@@ -113,64 +110,7 @@ class ItemRepository: ItemRepositoryProtocol {
   }
   
   func readListSearch(keyword: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
-    backendClient.GET(ItemReadListSearchRequestDTO(q: keyword, cursor: cursor, limit: 8)) { result in
-      switch result {
-      case .success(let response):
-        if let response = response {
-          completion(.success((
-            ItemTranslator.translateItemDTOListToItemList(dtoList: response.list),
-            response.nextCursor)))
-        } else {
-          completion(.failure(.unableToComplete))
-        }
-
-      case .failure(let error):
-        print("[Error:\(#file):\(#line)] \(error)")
-        completion(.failure(.unableToComplete))
-      }
-    }
-  }
-  
-  func readListUserListings(id: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
-    backendClient.GET(ItemReadListUserListingsRequestDTO(id: id, cursor: cursor, limit: 8)) { result in
-      switch result {
-      case .success(let response):
-        if let response = response {
-          completion(.success((
-            ItemTranslator.translateItemDTOListToItemList(dtoList: response.list),
-            response.nextCursor)))
-        } else {
-          completion(.failure(.unableToComplete))
-        }
-
-      case .failure(let error):
-        print("[Error:\(#file):\(#line)] \(error)")
-        completion(.failure(.unableToComplete))
-      }
-    }
-  }
-  
-  func readListUserListingsClosed(id: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
-    backendClient.GET(ItemReadListUserListingsClosedRequestDTO(id: id, cursor: cursor, limit: 8)) { result in
-      switch result {
-      case .success(let response):
-        if let response = response {
-          completion(.success((
-            ItemTranslator.translateItemDTOListToItemList(dtoList: response.list),
-            response.nextCursor)))
-        } else {
-          completion(.failure(.unableToComplete))
-        }
-
-      case .failure(let error):
-        print("[Error:\(#file):\(#line)] \(error)")
-        completion(.failure(.unableToComplete))
-      }
-    }
-  }
-  
-  func readListUserPurchases(id: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
-    backendClient.GET(ItemReadListUserPurchasesRequestDTO(id: id, cursor: cursor, limit: 8)) { result in
+    backendClient.GET(ItemReadListSearchRequest(q: keyword, cursor: cursor, limit: 8)) { result in
       switch result {
       case .success(let response):
         if let response = response {
@@ -197,7 +137,7 @@ class ItemRepository: ItemRepositoryProtocol {
         self.createImageUrls(images: images) { result in
           switch result {
           case .success(let imageUrls):
-            self.backendClient.PATCH(ItemUpdateRequestDTO(domain: Item(id: id, title: title, price: price, description: description, imageUrls: imageUrls))) { result in
+            self.backendClient.PATCH(ItemUpdateRequest(domain: Item(id: id, title: title, price: price, description: description, imageUrls: imageUrls))) { result in
               DispatchQueue.main.async {
                 switch result {
                 case .success:
@@ -221,7 +161,7 @@ class ItemRepository: ItemRepositoryProtocol {
   }
   
   func updateTradeState(_ id: String, state: String, buyerId: String, completion: @escaping (Result<(String, String, String), LLError>) -> Void) {
-    backendClient.PATCH(ItemTradeStateUpdateRequestDTO(id: id, state: state, buyerId: buyerId)) { result in
+    backendClient.PATCH(ItemTradeStateUpdateRequest(id: id, state: state, buyerId: buyerId)) { result in
       switch result {
       case .success(let response):
         if let response = response {
@@ -241,7 +181,7 @@ class ItemRepository: ItemRepositoryProtocol {
     deleteImageUrls(imageUrls: imageUrls) { result in
       switch result {
       case .success:
-        self.backendClient.DELETE(ItemDeleteRequestDTO(id: id)) { result in
+        self.backendClient.DELETE(ItemDeleteRequest(id: id)) { result in
           switch result {
           case .success:
             completion(.success(()))
