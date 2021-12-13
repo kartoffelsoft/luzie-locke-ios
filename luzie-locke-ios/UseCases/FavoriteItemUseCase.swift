@@ -43,7 +43,6 @@ class FavoriteItemUseCase: FavoriteItemUseCaseProtocol {
   
   func isAdded(itemId: String, completion: @escaping (Result<Bool, LLError>) -> Void) {
     guard let userId = localProfileRepository.read()?.id else { return }
-    print(":@@##")
     favoriteItemRepository.read(userId: userId, itemId: itemId) { result in
       switch result {
       case .success(let favorite):

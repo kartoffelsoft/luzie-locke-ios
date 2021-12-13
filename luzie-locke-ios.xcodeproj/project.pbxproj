@@ -458,6 +458,7 @@
 			isa = PBXGroup;
 			children = (
 				4A00FC222764DD32007C5B11 /* State */,
+				4AD53D27276387EF00F34874 /* Favorite */,
 				4A47E6AE272D79E500B9018A /* ItemCreateRequest.swift */,
 				4A47E6B8272F622400B9018A /* ItemReadListRequest.swift */,
 				4A47E6C02730759500B9018A /* ItemReadRequest.swift */,
@@ -483,7 +484,6 @@
 			isa = PBXGroup;
 			children = (
 				4A00FC212764DCDC007C5B11 /* Items */,
-				4AD53D27276387EF00F34874 /* FavoriteItems */,
 				4A00FC3927677EF5007C5B11 /* Users */,
 				4AD53D0F275FF51600F34874 /* Settings */,
 				4AD53D282763880A00F34874 /* Image */,
@@ -656,11 +656,7 @@
 			children = (
 				4ADE3D2A27355B0200ACBC60 /* AppMain */,
 				4A47E6E22732BE6400B9018A /* CompositionRoot */,
-				4A03E3B6275F61F300EB0210 /* Contants */,
-				4AE229BD275E2FCC0070350E /* SwiftUIComponents */,
 				4A3B52D327159C8E00EF4F93 /* Coordinators */,
-				4A47E6C22730950100B9018A /* Translators */,
-				4A47E6B7272F47BC00B9018A /* DTOs */,
 				4A00FC342767751A007C5B11 /* BackendRequests */,
 				4A00FC3C276780A7007C5B11 /* BackendResponses */,
 				4A47E6B4272F104300B9018A /* Repositories */,
@@ -669,10 +665,12 @@
 				4A3B529727123DAD00EF4F93 /* ViewModels */,
 				4A3B52A32712536F00EF4F93 /* Services */,
 				4AD53D242763787D00F34874 /* UseCases */,
+				4A03E3B6275F61F300EB0210 /* Contants */,
 				4AED5E44271E2A1A00B7AC00 /* Configs */,
 				4ADE3D292733CA3400ACBC60 /* Resources */,
 				4A3B529827123DC100EF4F93 /* Extensions */,
 				4A3B52CB2714415900EF4F93 /* Utilities */,
+				4AE229BD275E2FCC0070350E /* SwiftUIComponents */,
 				4A3B5273271239CF00EF4F93 /* Info.plist */,
 				4A3B52C12712DF2100EF4F93 /* GoogleService-Info.plist */,
 			);
@@ -710,6 +708,8 @@
 		4A3B529627123DA800EF4F93 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4A47E6C22730950100B9018A /* Translators */,
+				4A47E6B7272F47BC00B9018A /* DTOs */,
 				4AEE8F702726E082004CB686 /* Item.swift */,
 				4A01D559273D4EA000EDFC1C /* UserProfile.swift */,
 				4A09C6A727393E5E00FD4E42 /* ChatMessage.swift */,
@@ -1058,7 +1058,7 @@
 			path = UseCases;
 			sourceTree = "<group>";
 		};
-		4AD53D27276387EF00F34874 /* FavoriteItems */ = {
+		4AD53D27276387EF00F34874 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
 				4AE229A9275A49DD0070350E /* FavoriteItemCreateRequest.swift */,
@@ -1066,7 +1066,7 @@
 				4AE229AD275A707F0070350E /* FavoriteItemReadRequest.swift */,
 				4A00FC3027676A85007C5B11 /* FavoriteItemReadListRequest.swift */,
 			);
-			path = FavoriteItems;
+			path = Favorite;
 			sourceTree = "<group>";
 		};
 		4AD53D282763880A00F34874 /* Image */ = {
