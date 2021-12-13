@@ -17,6 +17,7 @@ class UserFavoritesViewModel {
   weak var delegate:        UserFavoritesViewModelDelegate?
   
   let coordinator:          SettingsCoordinator
+  let favoriteItemUseCase:  FavoriteItemUseCaseProtocol
   let imageUseCase:         ImageUseCaseProtocol
   let itemRepository:       ItemRepositoryProtocol
   
@@ -31,9 +32,11 @@ class UserFavoritesViewModel {
   var cursor: TimeInterval = Date().timeIntervalSince1970 * 1000
   
   init(coordinator:           SettingsCoordinator,
+       favoriteItemUseCase:   FavoriteItemUseCaseProtocol,
        imageUseCase:          ImageUseCaseProtocol,
        itemRepository:        ItemRepositoryProtocol) {
     self.coordinator          = coordinator
+    self.favoriteItemUseCase  = favoriteItemUseCase
     self.imageUseCase         = imageUseCase
     self.itemRepository       = itemRepository
   }
@@ -55,7 +58,7 @@ class UserFavoritesViewModel {
     
     isLoading = true
     
-    itemRepository.readListUserFavorites(cursor: cursor) { [weak self] result in
+    favoriteItemUseCase.getMyList(cursor: cursor) { [weak self] result in
       guard let self = self else { return }
       self.isLoading = false
       

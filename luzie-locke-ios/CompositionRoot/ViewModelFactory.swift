@@ -78,10 +78,10 @@ extension CompositionRoot: ViewModelFactory {
 
   func makeItemDisplayViewModel(coordinator: ItemDisplayCoordinator, id: String) -> ItemDisplayViewModel {
     return ItemDisplayViewModel(coordinator: coordinator,
-                                localProfileRepository: localProfileRepository,
+                                myProfileUseCase: myProfileUseCase,
                                 openHttpClient: openHttpClient,
                                 itemRepository: itemRepository,
-                                favoriteItemRepository: favoriteItemRepository,
+                                favoriteItemUseCase: favoriteItemUseCase,
                                 id: id)
   }
   
@@ -116,6 +116,7 @@ extension CompositionRoot: ViewModelFactory {
   
   func makeUserFavoritesViewModel(coordinator: SettingsCoordinator) -> UserFavoritesViewModel {
     return UserFavoritesViewModel(coordinator: coordinator,
+                                  favoriteItemUseCase: favoriteItemUseCase,
                                   imageUseCase: imageUseCase,
                                   itemRepository: itemRepository)
   }

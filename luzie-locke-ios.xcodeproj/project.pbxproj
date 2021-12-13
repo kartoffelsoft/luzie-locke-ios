@@ -12,6 +12,10 @@
 		4A00FC262764DF2D007C5B11 /* ItemTradeStateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC252764DF2D007C5B11 /* ItemTradeStateUseCase.swift */; };
 		4A00FC2827654898007C5B11 /* ItemTradeStateUpdateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC2727654898007C5B11 /* ItemTradeStateUpdateDTO.swift */; };
 		4A00FC2A2766B2D1007C5B11 /* MyProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC292766B2D1007C5B11 /* MyProfileUseCase.swift */; };
+		4A00FC2D2767417A007C5B11 /* FavoriteItemUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC2C2767417A007C5B11 /* FavoriteItemUseCase.swift */; };
+		4A00FC2F27674CB3007C5B11 /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC2E27674CB3007C5B11 /* FavoriteItem.swift */; };
+		4A00FC3127676A85007C5B11 /* FavoriteItemReadListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC3027676A85007C5B11 /* FavoriteItemReadListRequest.swift */; };
+		4A00FC3327676B07007C5B11 /* ItemListElementDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC3227676B07007C5B11 /* ItemListElementDTO.swift */; };
 		4A01D551273CFF0900EDFC1C /* RecentMessageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D550273CFF0900EDFC1C /* RecentMessageRepository.swift */; };
 		4A01D554273D25D900EDFC1C /* UserProfileRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D553273D25D900EDFC1C /* UserProfileRepository.swift */; };
 		4A01D556273D2B0B00EDFC1C /* UserProfileReadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D555273D2B0A00EDFC1C /* UserProfileReadDTO.swift */; };
@@ -140,9 +144,9 @@
 		4AE229A2275A2B7B0070350E /* ItemComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229A1275A2B7B0070350E /* ItemComposeViewController.swift */; };
 		4AE229A6275A33C40070350E /* ItemComposeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229A5275A33C40070350E /* ItemComposeViewModel.swift */; };
 		4AE229A8275A42D90070350E /* FavoriteItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229A7275A42D90070350E /* FavoriteItemRepository.swift */; };
-		4AE229AA275A49DD0070350E /* FavoriteItemCreateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229A9275A49DD0070350E /* FavoriteItemCreateDTO.swift */; };
-		4AE229AC275A51FD0070350E /* FavoriteItemDeleteDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229AB275A51FD0070350E /* FavoriteItemDeleteDTO.swift */; };
-		4AE229AE275A707F0070350E /* FavoriteItemReadExistDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229AD275A707F0070350E /* FavoriteItemReadExistDTO.swift */; };
+		4AE229AA275A49DD0070350E /* FavoriteItemCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229A9275A49DD0070350E /* FavoriteItemCreateRequest.swift */; };
+		4AE229AC275A51FD0070350E /* FavoriteItemDeleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229AB275A51FD0070350E /* FavoriteItemDeleteRequest.swift */; };
+		4AE229AE275A707F0070350E /* FavoriteItemReadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229AD275A707F0070350E /* FavoriteItemReadRequest.swift */; };
 		4AE229B5275B9D820070350E /* NeighbourhoodSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229B4275B9D820070350E /* NeighbourhoodSettingView.swift */; };
 		4AE229B7275BB2BE0070350E /* NeighbourhoodSettingMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229B6275BB2BE0070350E /* NeighbourhoodSettingMap.swift */; };
 		4AE229BC275E092E0070350E /* NeighbourhoodSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229BB275E092E0070350E /* NeighbourhoodSettingViewModel.swift */; };
@@ -213,6 +217,10 @@
 		4A00FC252764DF2D007C5B11 /* ItemTradeStateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTradeStateUseCase.swift; sourceTree = "<group>"; };
 		4A00FC2727654898007C5B11 /* ItemTradeStateUpdateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTradeStateUpdateDTO.swift; sourceTree = "<group>"; };
 		4A00FC292766B2D1007C5B11 /* MyProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileUseCase.swift; sourceTree = "<group>"; };
+		4A00FC2C2767417A007C5B11 /* FavoriteItemUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemUseCase.swift; sourceTree = "<group>"; };
+		4A00FC2E27674CB3007C5B11 /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
+		4A00FC3027676A85007C5B11 /* FavoriteItemReadListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemReadListRequest.swift; sourceTree = "<group>"; };
+		4A00FC3227676B07007C5B11 /* ItemListElementDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListElementDTO.swift; sourceTree = "<group>"; };
 		4A01D550273CFF0900EDFC1C /* RecentMessageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMessageRepository.swift; sourceTree = "<group>"; };
 		4A01D553273D25D900EDFC1C /* UserProfileRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileRepository.swift; sourceTree = "<group>"; };
 		4A01D555273D2B0A00EDFC1C /* UserProfileReadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileReadDTO.swift; sourceTree = "<group>"; };
@@ -342,9 +350,9 @@
 		4AE229A1275A2B7B0070350E /* ItemComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComposeViewController.swift; sourceTree = "<group>"; };
 		4AE229A5275A33C40070350E /* ItemComposeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemComposeViewModel.swift; sourceTree = "<group>"; };
 		4AE229A7275A42D90070350E /* FavoriteItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemRepository.swift; sourceTree = "<group>"; };
-		4AE229A9275A49DD0070350E /* FavoriteItemCreateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemCreateDTO.swift; sourceTree = "<group>"; };
-		4AE229AB275A51FD0070350E /* FavoriteItemDeleteDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemDeleteDTO.swift; sourceTree = "<group>"; };
-		4AE229AD275A707F0070350E /* FavoriteItemReadExistDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemReadExistDTO.swift; sourceTree = "<group>"; };
+		4AE229A9275A49DD0070350E /* FavoriteItemCreateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemCreateRequest.swift; sourceTree = "<group>"; };
+		4AE229AB275A51FD0070350E /* FavoriteItemDeleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemDeleteRequest.swift; sourceTree = "<group>"; };
+		4AE229AD275A707F0070350E /* FavoriteItemReadRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemReadRequest.swift; sourceTree = "<group>"; };
 		4AE229B4275B9D820070350E /* NeighbourhoodSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighbourhoodSettingView.swift; sourceTree = "<group>"; };
 		4AE229B6275BB2BE0070350E /* NeighbourhoodSettingMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighbourhoodSettingMap.swift; sourceTree = "<group>"; };
 		4AE229BB275E092E0070350E /* NeighbourhoodSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighbourhoodSettingViewModel.swift; sourceTree = "<group>"; };
@@ -590,9 +598,9 @@
 			isa = PBXGroup;
 			children = (
 				4ADE3D2A27355B0200ACBC60 /* AppMain */,
+				4A47E6E22732BE6400B9018A /* CompositionRoot */,
 				4A03E3B6275F61F300EB0210 /* Contants */,
 				4AE229BD275E2FCC0070350E /* SwiftUIComponents */,
-				4A47E6E22732BE6400B9018A /* CompositionRoot */,
 				4A3B52D327159C8E00EF4F93 /* Coordinators */,
 				4A47E6C22730950100B9018A /* Translators */,
 				4A47E6B7272F47BC00B9018A /* DTOs */,
@@ -647,6 +655,7 @@
 				4A01D559273D4EA000EDFC1C /* UserProfile.swift */,
 				4A09C6A727393E5E00FD4E42 /* ChatMessage.swift */,
 				4AC56671273B974700776DBD /* RecentMessage.swift */,
+				4A00FC2E27674CB3007C5B11 /* FavoriteItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -825,6 +834,7 @@
 				4AD53D27276387EF00F34874 /* FavoriteItems */,
 				4AD53D0F275FF51600F34874 /* Settings */,
 				4A47E6B2272DE2EF00B9018A /* CommonDTO.swift */,
+				4A00FC3227676B07007C5B11 /* ItemListElementDTO.swift */,
 				4A01D555273D2B0A00EDFC1C /* UserProfileReadDTO.swift */,
 			);
 			path = DTOs;
@@ -982,6 +992,7 @@
 				4AD53D25276378F000F34874 /* ImageUseCase.swift */,
 				4A00FC252764DF2D007C5B11 /* ItemTradeStateUseCase.swift */,
 				4A00FC292766B2D1007C5B11 /* MyProfileUseCase.swift */,
+				4A00FC2C2767417A007C5B11 /* FavoriteItemUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -989,9 +1000,10 @@
 		4AD53D27276387EF00F34874 /* FavoriteItems */ = {
 			isa = PBXGroup;
 			children = (
-				4AE229A9275A49DD0070350E /* FavoriteItemCreateDTO.swift */,
-				4AE229AB275A51FD0070350E /* FavoriteItemDeleteDTO.swift */,
-				4AE229AD275A707F0070350E /* FavoriteItemReadExistDTO.swift */,
+				4AE229A9275A49DD0070350E /* FavoriteItemCreateRequest.swift */,
+				4AE229AB275A51FD0070350E /* FavoriteItemDeleteRequest.swift */,
+				4AE229AD275A707F0070350E /* FavoriteItemReadRequest.swift */,
+				4A00FC3027676A85007C5B11 /* FavoriteItemReadListRequest.swift */,
 			);
 			path = FavoriteItems;
 			sourceTree = "<group>";
@@ -1385,6 +1397,7 @@
 				4A22DB3C274ED91800E5125B /* UserPurchasesViewController.swift in Sources */,
 				4AD53D2D2763899E00F34874 /* ItemImageUrlReadDTO.swift in Sources */,
 				4A00FC2A2766B2D1007C5B11 /* MyProfileUseCase.swift in Sources */,
+				4A00FC2F27674CB3007C5B11 /* FavoriteItem.swift in Sources */,
 				4A155E462722E03600C8B867 /* OpenHTTPClient.swift in Sources */,
 				4A09C69E2738582700FD4E42 /* UserInfoView.swift in Sources */,
 				4A01D561273DC94D00EDFC1C /* DateUtility.swift in Sources */,
@@ -1441,7 +1454,7 @@
 				4A47E6B9272F622400B9018A /* ItemReadListDTO.swift in Sources */,
 				4A47E6E6273317FA00B9018A /* ViewControllerFactory.swift in Sources */,
 				4AED5E8627219E7300B7AC00 /* ProfileCell.swift in Sources */,
-				4AE229AC275A51FD0070350E /* FavoriteItemDeleteDTO.swift in Sources */,
+				4AE229AC275A51FD0070350E /* FavoriteItemDeleteRequest.swift in Sources */,
 				4A155E482722F31C00C8B867 /* KHTTPClient.swift in Sources */,
 				4A09C69B273730B900FD4E42 /* ItemDisplayDetailViewModel.swift in Sources */,
 				4A03E3B8275F622400EB0210 /* CustomColors.swift in Sources */,
@@ -1453,6 +1466,7 @@
 				4A155E4027229D3600C8B867 /* AvatarImageView.swift in Sources */,
 				4AE229A8275A42D90070350E /* FavoriteItemRepository.swift in Sources */,
 				4A22DB462753B06D00E5125B /* RoundButton.swift in Sources */,
+				4A00FC2D2767417A007C5B11 /* FavoriteItemUseCase.swift in Sources */,
 				4ACA820C2758BA6C003C7E0E /* ItemUpdateViewModel.swift in Sources */,
 				4AEE8FAB272B5C69004CB686 /* ItemCreateViewModel.swift in Sources */,
 				4A47E6BB272FE24200B9018A /* Dictionary+Ext.swift in Sources */,
@@ -1467,7 +1481,7 @@
 				4A47E6E12731DA8F00B9018A /* SwipeImageViewModel.swift in Sources */,
 				4A3B52A22712461500EF4F93 /* MessagesViewController.swift in Sources */,
 				4A3B5268271239CE00EF4F93 /* SceneDelegate.swift in Sources */,
-				4AE229AE275A707F0070350E /* FavoriteItemReadExistDTO.swift in Sources */,
+				4AE229AE275A707F0070350E /* FavoriteItemReadRequest.swift in Sources */,
 				4ACA81EC2754255F003C7E0E /* ItemDeleteDTO.swift in Sources */,
 				4A3B529B2712401D00EF4F93 /* HomeViewController.swift in Sources */,
 				4ACA81F7275746D8003C7E0E /* SingleLineDecimalInputView.swift in Sources */,
@@ -1496,6 +1510,7 @@
 				4ACA81F327568163003C7E0E /* SingleLineTextInputView.swift in Sources */,
 				4A22DB40274F006D00E5125B /* CustomLabel.swift in Sources */,
 				4A3B52E32715C11900EF4F93 /* SettingsCoordinator.swift in Sources */,
+				4A00FC3327676B07007C5B11 /* ItemListElementDTO.swift in Sources */,
 				4ACA821027590BD3003C7E0E /* InputViewModel.swift in Sources */,
 				4AEE8F6D2726CC73004CB686 /* HomeViewModel.swift in Sources */,
 				4AE229BC275E092E0070350E /* NeighbourhoodSettingViewModel.swift in Sources */,
@@ -1507,10 +1522,11 @@
 				4AED5E3D271D95FC00B7AC00 /* AuthenticationRequest.swift in Sources */,
 				4AED5E32271C189E00B7AC00 /* BodyLabel.swift in Sources */,
 				4A47E6A8272CA01E00B9018A /* CloudStorage.swift in Sources */,
-				4AE229AA275A49DD0070350E /* FavoriteItemCreateDTO.swift in Sources */,
+				4AE229AA275A49DD0070350E /* FavoriteItemCreateRequest.swift in Sources */,
 				4A09C6982737120800FD4E42 /* ItemDisplayCoordinator.swift in Sources */,
 				4A03E3BC275F656C00EB0210 /* CustomUIColors.swift in Sources */,
 				4A09C6A627392DE100FD4E42 /* ChatInputAccessoryView.swift in Sources */,
+				4A00FC3127676A85007C5B11 /* FavoriteItemReadListRequest.swift in Sources */,
 				4A01D55E273DC64100EDFC1C /* RecentMessageCellViewModel.swift in Sources */,
 				4A47E6DF2731D33400B9018A /* ImageViewModel.swift in Sources */,
 				4A47E6AF272D79E500B9018A /* ItemCreateDTO.swift in Sources */,

@@ -30,7 +30,7 @@ class ItemTranslator {
                 modifiedAt: Date(timeIntervalSince1970: (dto.modifiedAt ?? 0) / 1000))
   }
 
-  static func translateItemDTOListToItemList(dtoList: [ItemListDTO]) -> [Item] {
+  static func translateItemDTOListToItemList(dtoList: [ItemListElementDTO]) -> [Item] {
     return dtoList.reduce([Item](), { output, dto in
       let item = Item(id: dto.id,
                       user: UserProfile(city: dto.user?.city),

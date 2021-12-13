@@ -1,5 +1,5 @@
 //
-//  FavoriteItemDeleteDTO.swift
+//  FavoriteItemCreateDTO.swift
 //  luzie-locke-ios
 //
 //  Created by Harry on 03.12.21.
@@ -7,17 +7,18 @@
 
 import Foundation
 
-struct FavoriteItemDeleteRequestDTO: APIRequest {
+struct FavoriteItemCreateRequest: APIRequest {
   
   typealias Response = VoidResponseDTO
   
   var resourceName: String {
-    return "/api/items/user/favorite/" + itemId
+    return "/api/users/" + userId + "/favorite-items"
   }
   
+  let userId: String
   let itemId: String
   
   func toDictionary() -> [String: Any] {
-    return [ : ]
+    return [ "itemId": itemId ]
   }
 }

@@ -17,9 +17,7 @@ class ItemDisplayViewModel {
   weak var delegate:                  ItemDisplayViewModelDelegate?
   
   private let coordinator:            ItemDisplayCoordinator
-  private let openHttpClient:         OpenHTTP
   private let itemRepository:         ItemRepositoryProtocol
-  private let favoriteItemRepository: FavoriteItemRepositoryProtocol
   private let id:                     String
   
   var bindableIsLoading = Bindable<Bool>()
@@ -42,21 +40,19 @@ class ItemDisplayViewModel {
   }
   
   init(coordinator:             ItemDisplayCoordinator,
-       localProfileRepository:  LocalProfileRepository,
+       myProfileUseCase:        MyProfileUseCase,
        openHttpClient:          OpenHTTP,
        itemRepository:          ItemRepositoryProtocol,
-       favoriteItemRepository:  FavoriteItemRepositoryProtocol,
+       favoriteItemUseCase:     FavoriteItemUseCaseProtocol,
        id:                      String) {
     self.coordinator            = coordinator
-    self.openHttpClient         = openHttpClient
     self.itemRepository         = itemRepository
-    self.favoriteItemRepository = favoriteItemRepository
     self.id                     = id
     
     itemDisplayBriefViewModel = ItemDisplayBriefViewModel(coordinator: coordinator, openHttpClient: openHttpClient)
     itemActionPanelViewModel  = ItemActionPanelViewModel(coordinator: coordinator,
-                                                         localProfileRepository: localProfileRepository,
-                                                         favoriteItemRepository: favoriteItemRepository)
+                                                         myProfileUseCase: myProfileUseCase,
+                                                         favoriteItemUseCase: favoriteItemUseCase)
   }
   
   func viewDidLoad() {

@@ -73,7 +73,7 @@ class ChatViewModel {
     
     itemTradeStateUseCase.getState(itemId: itemId) { [weak self] result in
       switch(result) {
-      case .success((let state, let sellerId, let buyerId)):
+      case .success((let state, let sellerId, _)):
         guard let userId = self?.localUserProfile?.id else { return }
         
         self?.bindableSoldOutViewIsHidden.value   = state == "open"
@@ -113,7 +113,7 @@ class ChatViewModel {
   func didTapSold() {
     itemTradeStateUseCase.setSold(itemId: itemId, buyerId: remoteUserId) { [weak self] result in
       switch(result) {
-      case .success((let state, let sellerId, let buyerId)):
+      case .success((let state, let sellerId, _)):
         guard let userId = self?.localUserProfile?.id else { return }
         
         self?.bindableSoldOutViewIsHidden.value = state == "open"
@@ -135,7 +135,7 @@ class ChatViewModel {
   func didTapReopen() {
     itemTradeStateUseCase.setOpen(itemId: itemId) { [weak self] result in
       switch(result) {
-      case .success((let state, let sellerId, let buyerId)):
+      case .success((let state, let sellerId, _)):
         guard let userId = self?.localUserProfile?.id else { return }
         
         self?.bindableSoldOutViewIsHidden.value = state == "open"

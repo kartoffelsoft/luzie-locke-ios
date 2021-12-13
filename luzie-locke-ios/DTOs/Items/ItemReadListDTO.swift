@@ -48,7 +48,7 @@ struct ItemReadListUserListingsRequestDTO: APIRequest {
   typealias Response = ItemReadListResponseDTO
   
   var resourceName: String {
-    return "/api/users/" + id + "/items"
+    return "/api/users/" + id + "/open-items"
   }
   
   let id: String
@@ -66,7 +66,7 @@ struct ItemReadListUserListingsClosedRequestDTO: APIRequest {
   typealias Response = ItemReadListResponseDTO
   
   var resourceName: String {
-    return "/api/users/" + id + "/items/sold"
+    return "/api/users/" + id + "/sold-items"
   }
   
   let id: String
@@ -84,7 +84,7 @@ struct ItemReadListUserPurchasesRequestDTO: APIRequest {
   typealias Response = ItemReadListResponseDTO
   
   var resourceName: String {
-    return "/api/users/" + id + "/items/bought"
+    return "/api/users/" + id + "/bought-items"
   }
   
   let id:     String
@@ -97,47 +97,7 @@ struct ItemReadListUserPurchasesRequestDTO: APIRequest {
   }
 }
 
-struct ItemReadListUserFavoritesRequestDTO: APIRequest {
-  
-  typealias Response = ItemReadListResponseDTO
-  
-  var resourceName: String {
-    return "/api/items/user/favorite"
-  }
-  
-  let cursor: Double
-  let limit: Int
-  
-  func toDictionary() -> [String: Any] {
-    return [ "cursor":  cursor,
-             "limit":   limit   ]
-  }
-}
-
-struct ItemListDTO: Decodable, Hashable {
-  let id:           String?
-  let user:         User?
-  let title:        String?
-  let price:        String?
-  let description:  String?
-  let imageUrls:    [String?]?
-  let counts:       Counts?
-  let state:        String?
-  let createdAt:    TimeInterval?
-  let modifiedAt:   TimeInterval?
-  
-  struct User: Decodable, Hashable {
-    let city: String
-  }
-  
-  struct Counts: Codable, Hashable {
-    let chat: Int?
-    let favorite: Int?
-    let view: Int?
-  }
-}
-
 struct ItemReadListResponseDTO: Decodable {
-  let list: [ItemListDTO]
+  let list: [ItemListElementDTO]
   let nextCursor: Double
 }

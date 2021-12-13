@@ -30,6 +30,8 @@ class CompositionRoot {
                                                  backendClient: backendClient)
   lazy var itemTradeStateUseCase  = ItemTradeStateUseCase(itemRepository: itemRepository)
   lazy var myProfileUseCase       = MyProfileUseCase(localProfileRepository: localProfileRepository)
+  lazy var favoriteItemUseCase    = FavoriteItemUseCase(localProfileRepository: localProfileRepository,
+                                                        favoriteItemRepository: favoriteItemRepository)
   
   lazy var accessTokenStorage     = AnyStorage(wrap: SimpleStringStorage(key: "AccessToken"))
   lazy var refreshTokenStorage    = AnyStorage(wrap: SimpleStringStorage(key: "RefreshToken"))

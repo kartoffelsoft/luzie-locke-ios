@@ -9,9 +9,9 @@ import UIKit
 
 class ItemActionPanelViewModel {
   
-  private let coordinator:            ItemDisplayCoordinator
-  private let localProfileRepository: LocalProfileRepository
-  private let favoriteItemRepository: FavoriteItemRepositoryProtocol
+  private let coordinator:          ItemDisplayCoordinator
+  private let myProfileUseCase:     MyProfileUseCaseProtocol
+  private let favoriteItemUseCase:  FavoriteItemUseCaseProtocol
   
   let bindablePriceText   = Bindable<NSAttributedString>()
   let bindableIsMine      = Bindable<Bool>()
@@ -19,23 +19,23 @@ class ItemActionPanelViewModel {
   
   var item: Item? {
     didSet {
-      guard let itemId = item?.id else { return }
-      guard let price = item?.price else { return }
+      guard let itemId    = item?.id else { return }
+      guard let price     = item?.price else { return }
       guard let sellerId  = item?.user?.id else { return }
-      guard let localUserId  = localProfileRepository.read()?.id else { return }
+      guard let userId    = myProfileUseCase.getId() else { return }
       
       let priceText = NSMutableAttributedString(string: "€ ", attributes: [.font: CustomUIFonts.title])
       priceText.append(NSAttributedString(string: price, attributes: [.font: CustomUIFonts.titleLarge]))
       bindablePriceText.value = priceText
 
-      bindableIsMine.value = (sellerId == localUserId)
+      bindableIsMine.value = (sellerId == userId)
       
-      favoriteItemRepository.read(itemId) { [weak self] result in
+      favoriteItemUseCase.isAdded(itemId: itemId) { [weak self] result in
         guard let self = self else { return }
 
         switch result {
-        case .success(let on):
-          self.bindableFavoriteOn.value = on
+        case .success(let isAdded):
+          self.bindableFavoriteOn.value = isAdded
           
         case .failure(let error):
           print("[Error:\(#file):\(#line)] \(error)")
@@ -45,21 +45,20 @@ class ItemActionPanelViewModel {
     }
   }
   
-  init(coordinator: ItemDisplayCoordinator,
-       localProfileRepository: LocalProfileRepository,
-       favoriteItemRepository: FavoriteItemRepositoryProtocol) {
-    self.coordinator            = coordinator
-    self.localProfileRepository = localProfileRepository
-    self.favoriteItemRepository = favoriteItemRepository
+  init(coordinator:           ItemDisplayCoordinator,
+       myProfileUseCase:      MyProfileUseCaseProtocol,
+       favoriteItemUseCase:   FavoriteItemUseCaseProtocol) {
+    self.coordinator          = coordinator
+    self.myProfileUseCase     = myProfileUseCase
+    self.favoriteItemUseCase  = favoriteItemUseCase
   }
   
   func didTapFavoriteButton() {
-    guard let item = item, let id = item.id else { return }
+    guard let itemId = item?.id else { return }
     guard let favoriteOn = bindableFavoriteOn.value  else { return }
     
-
     if favoriteOn {
-      favoriteItemRepository.delete(id) { [weak self] result in
+      favoriteItemUseCase.remove(itemId: itemId) { [weak self] result in
         switch result {
         case .success:
           self?.bindableFavoriteOn.value = false
@@ -68,7 +67,7 @@ class ItemActionPanelViewModel {
         }
       }
     } else {
-      favoriteItemRepository.create(id) { [weak self] result in
+      favoriteItemUseCase.add(itemId: itemId) { [weak self] result in
         switch result {
         case .success:
           self?.bindableFavoriteOn.value = true
