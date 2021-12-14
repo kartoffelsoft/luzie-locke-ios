@@ -22,7 +22,7 @@ class ChatViewModel {
   private let remoteUserId: String
   private let itemId: String
 
-  private let itemTradeStateUseCase:    ItemTradeStateUseCaseProtocol
+  private let itemControlUseCase:       ItemControlUseCaseProtocol
   private let userProfileRepository:    UserProfileRepositoryProtocol
   private let chatMessageRepository:    ChatMessageRepositoryProtocol
   private let recentMessageRepository:  RecentMessageRepositoryProtocol
@@ -32,13 +32,13 @@ class ChatViewModel {
 
   init(remoteUserId:              String,
        itemId:                    String,
-       itemTradeStateUseCase:     ItemTradeStateUseCaseProtocol,
+       itemControlUseCase:        ItemControlUseCaseProtocol,
        userProfileRepository:     UserProfileRepositoryProtocol,
        chatMessageRepository:     ChatMessageRepositoryProtocol,
        recentMessageRepository:   RecentMessageRepositoryProtocol) {
     self.remoteUserId             = remoteUserId
     self.itemId                   = itemId
-    self.itemTradeStateUseCase    = itemTradeStateUseCase
+    self.itemControlUseCase       = itemControlUseCase
     self.userProfileRepository    = userProfileRepository
     self.chatMessageRepository    = chatMessageRepository
     self.recentMessageRepository  = recentMessageRepository
@@ -71,15 +71,15 @@ class ChatViewModel {
       }
     }
     
-    itemTradeStateUseCase.getState(itemId: itemId) { [weak self] result in
+    itemControlUseCase.getItem(itemId: itemId) { [weak self] result in
       switch(result) {
-      case .success((let state, let sellerId, _)):
+      case .success(let item):
         guard let userId = self?.localUserProfile?.id else { return }
         
-        self?.bindableSoldOutViewIsHidden.value   = state == "open"
+        self?.bindableSoldOutViewIsHidden.value = (item.state == "open")
         
-        if sellerId == userId {
-          self?.bindableActionButtonType.value = (state == "open") ? .sold : .reopen
+        if item.user?.id == userId {
+          self?.bindableActionButtonType.value = (item.state == "open") ? .sold : .reopen
         } else {
           self?.bindableActionButtonType.value =  .clear
         }
@@ -111,20 +111,11 @@ class ChatViewModel {
   }
   
   func didTapSold() {
-    itemTradeStateUseCase.setSold(itemId: itemId, buyerId: remoteUserId) { [weak self] result in
+    itemControlUseCase.setSold(itemId: itemId, buyerId: remoteUserId) { [weak self] result in
       switch(result) {
-      case .success((let state, let sellerId, _)):
-        guard let userId = self?.localUserProfile?.id else { return }
-        
-        self?.bindableSoldOutViewIsHidden.value = state == "open"
-        
-        print("SellerId: ", sellerId)
-        print("userId: ", userId)
-        if sellerId == userId {
-          self?.bindableActionButtonType.value = (state == "open") ? .sold : .reopen
-        } else {
-          self?.bindableActionButtonType.value =  .clear
-        }
+      case .success:
+        self?.bindableSoldOutViewIsHidden.value = false
+        self?.bindableActionButtonType.value = .reopen
         
       case .failure(let error):
         print(error)
@@ -133,18 +124,11 @@ class ChatViewModel {
   }
   
   func didTapReopen() {
-    itemTradeStateUseCase.setOpen(itemId: itemId) { [weak self] result in
+    itemControlUseCase.setOpen(itemId: itemId) { [weak self] result in
       switch(result) {
-      case .success((let state, let sellerId, _)):
-        guard let userId = self?.localUserProfile?.id else { return }
-        
-        self?.bindableSoldOutViewIsHidden.value = state == "open"
-        
-        if sellerId == userId {
-          self?.bindableActionButtonType.value = (state == "open") ? .sold : .reopen
-        } else {
-          self?.bindableActionButtonType.value =  .clear
-        }
+      case .success:
+        self?.bindableSoldOutViewIsHidden.value = true
+        self?.bindableActionButtonType.value = .sold
         
       case .failure(let error):
         print(error)

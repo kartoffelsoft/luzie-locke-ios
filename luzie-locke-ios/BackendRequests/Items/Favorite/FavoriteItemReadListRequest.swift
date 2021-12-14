@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct FavoriteItemReadListRequest: APIRequest {
+struct FavoriteItemListReadRequest: APIRequest {
   
-  typealias Response = FavoriteItemReadListResponse
+  typealias Response = FavoriteItemListReadResponse
   
   var resourceName: String {
     return "/api/users/" + userId + "/favorite-items"
@@ -25,7 +25,7 @@ struct FavoriteItemReadListRequest: APIRequest {
   }
 }
 
-struct FavoriteItemReadListResponse: Decodable {
+struct FavoriteItemListReadResponse: Decodable {
   let list: [ItemListElementDTO]
   let nextCursor: Double
 }

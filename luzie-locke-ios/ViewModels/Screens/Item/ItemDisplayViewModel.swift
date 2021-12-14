@@ -43,7 +43,7 @@ class ItemDisplayViewModel {
        myProfileUseCase:        MyProfileUseCase,
        openHttpClient:          OpenHTTP,
        itemRepository:          ItemRepositoryProtocol,
-       favoriteItemUseCase:     FavoriteItemUseCaseProtocol,
+       userFavoriteItemUseCase: UserFavoriteItemUseCaseProtocol,
        id:                      String) {
     self.coordinator            = coordinator
     self.itemRepository         = itemRepository
@@ -52,7 +52,7 @@ class ItemDisplayViewModel {
     itemDisplayBriefViewModel = ItemDisplayBriefViewModel(coordinator: coordinator, openHttpClient: openHttpClient)
     itemActionPanelViewModel  = ItemActionPanelViewModel(coordinator: coordinator,
                                                          myProfileUseCase: myProfileUseCase,
-                                                         favoriteItemUseCase: favoriteItemUseCase)
+                                                         userFavoriteItemUseCase: userFavoriteItemUseCase)
   }
   
   func viewDidLoad() {

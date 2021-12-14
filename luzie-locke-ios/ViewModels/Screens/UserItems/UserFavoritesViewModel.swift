@@ -16,10 +16,10 @@ class UserFavoritesViewModel {
   
   weak var delegate:        UserFavoritesViewModelDelegate?
   
-  let coordinator:          SettingsCoordinator
-  let favoriteItemUseCase:  FavoriteItemUseCaseProtocol
-  let imageUseCase:         ImageUseCaseProtocol
-  let itemRepository:       ItemRepositoryProtocol
+  let coordinator:              SettingsCoordinator
+  let userFavoriteItemUseCase:  UserFavoriteItemUseCaseProtocol
+  let imageUseCase:             ImageUseCaseProtocol
+  let itemRepository:           ItemRepositoryProtocol
   
   var bindableItems         = Bindable<[Item]>()
   var itemCellViewModels    = [ItemCellViewModel]()
@@ -31,14 +31,14 @@ class UserFavoritesViewModel {
   
   var cursor: TimeInterval = Date().timeIntervalSince1970 * 1000
   
-  init(coordinator:           SettingsCoordinator,
-       favoriteItemUseCase:   FavoriteItemUseCaseProtocol,
-       imageUseCase:          ImageUseCaseProtocol,
-       itemRepository:        ItemRepositoryProtocol) {
-    self.coordinator          = coordinator
-    self.favoriteItemUseCase  = favoriteItemUseCase
-    self.imageUseCase         = imageUseCase
-    self.itemRepository       = itemRepository
+  init(coordinator:               SettingsCoordinator,
+       userFavoriteItemUseCase:   UserFavoriteItemUseCaseProtocol,
+       imageUseCase:              ImageUseCaseProtocol,
+       itemRepository:            ItemRepositoryProtocol) {
+    self.coordinator              = coordinator
+    self.userFavoriteItemUseCase  = userFavoriteItemUseCase
+    self.imageUseCase             = imageUseCase
+    self.itemRepository           = itemRepository
   }
   
   private func reload() {
@@ -58,7 +58,7 @@ class UserFavoritesViewModel {
     
     isLoading = true
     
-    favoriteItemUseCase.getMyList(cursor: cursor) { [weak self] result in
+    userFavoriteItemUseCase.getMyList(cursor: cursor) { [weak self] result in
       guard let self = self else { return }
       self.isLoading = false
       

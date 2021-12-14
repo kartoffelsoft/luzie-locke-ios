@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol FavoriteItemUseCaseProtocol {
+protocol UserFavoriteItemUseCaseProtocol {
   
   func getMyList(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
   func add(itemId: String, completion: @escaping (Result<Void, LLError>) -> Void)
@@ -15,7 +15,7 @@ protocol FavoriteItemUseCaseProtocol {
   func isAdded(itemId: String, completion: @escaping (Result<Bool, LLError>) -> Void)
 }
 
-class FavoriteItemUseCase: FavoriteItemUseCaseProtocol {
+class UserFavoriteItemUseCase: UserFavoriteItemUseCaseProtocol {
   
   private let localProfileRepository: LocalProfileRepositoryProtocol
   private let favoriteItemRepository: FavoriteItemRepositoryProtocol

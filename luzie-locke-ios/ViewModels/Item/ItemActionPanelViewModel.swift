@@ -9,9 +9,9 @@ import UIKit
 
 class ItemActionPanelViewModel {
   
-  private let coordinator:          ItemDisplayCoordinator
-  private let myProfileUseCase:     MyProfileUseCaseProtocol
-  private let favoriteItemUseCase:  FavoriteItemUseCaseProtocol
+  private let coordinator:              ItemDisplayCoordinator
+  private let myProfileUseCase:         MyProfileUseCaseProtocol
+  private let userFavoriteItemUseCase:  UserFavoriteItemUseCaseProtocol
   
   let bindablePriceText   = Bindable<NSAttributedString>()
   let bindableIsMine      = Bindable<Bool>()
@@ -30,7 +30,7 @@ class ItemActionPanelViewModel {
 
       bindableIsMine.value = (sellerId == userId)
       
-      favoriteItemUseCase.isAdded(itemId: itemId) { [weak self] result in
+      userFavoriteItemUseCase.isAdded(itemId: itemId) { [weak self] result in
         guard let self = self else { return }
 
         switch result {
@@ -45,12 +45,12 @@ class ItemActionPanelViewModel {
     }
   }
   
-  init(coordinator:           ItemDisplayCoordinator,
-       myProfileUseCase:      MyProfileUseCaseProtocol,
-       favoriteItemUseCase:   FavoriteItemUseCaseProtocol) {
-    self.coordinator          = coordinator
-    self.myProfileUseCase     = myProfileUseCase
-    self.favoriteItemUseCase  = favoriteItemUseCase
+  init(coordinator:               ItemDisplayCoordinator,
+       myProfileUseCase:          MyProfileUseCaseProtocol,
+       userFavoriteItemUseCase:   UserFavoriteItemUseCaseProtocol) {
+    self.coordinator              = coordinator
+    self.myProfileUseCase         = myProfileUseCase
+    self.userFavoriteItemUseCase  = userFavoriteItemUseCase
   }
   
   func didTapFavoriteButton() {
@@ -58,7 +58,7 @@ class ItemActionPanelViewModel {
     guard let favoriteOn = bindableFavoriteOn.value  else { return }
     
     if favoriteOn {
-      favoriteItemUseCase.remove(itemId: itemId) { [weak self] result in
+      userFavoriteItemUseCase.remove(itemId: itemId) { [weak self] result in
         switch result {
         case .success:
           self?.bindableFavoriteOn.value = false
@@ -67,7 +67,7 @@ class ItemActionPanelViewModel {
         }
       }
     } else {
-      favoriteItemUseCase.add(itemId: itemId) { [weak self] result in
+      userFavoriteItemUseCase.add(itemId: itemId) { [weak self] result in
         switch result {
         case .success:
           self?.bindableFavoriteOn.value = true

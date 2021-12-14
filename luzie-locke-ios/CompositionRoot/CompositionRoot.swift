@@ -27,20 +27,20 @@ class CompositionRoot {
   lazy var localProfileRepository   = LocalProfileRepository(key: "Profile")
   lazy var userProfileRepository    = UserProfileRepository(backendClient: backendClient,
                                                           localProfileRepository: localProfileRepository)
-  lazy var settingsRepository     = SettingsRepository(backendClient: backendClient)
+  lazy var settingsRepository       = SettingsRepository(backendClient: backendClient)
 
-  lazy var imageUseCase           = ImageUseCase(openHttpClient: openHttpClient,
+  lazy var imageUseCase             = ImageUseCase(openHttpClient: openHttpClient,
                                                  backendClient: backendClient)
-  lazy var itemTradeStateUseCase  = ItemTradeStateUseCase(itemRepository: itemRepository)
-  lazy var myProfileUseCase       = MyProfileUseCase(localProfileRepository: localProfileRepository)
-  lazy var userOpenItemUseCase    = UserOpenItemUseCase(localProfileRepository: localProfileRepository,
+  lazy var itemControlUseCase       = ItemControlUseCase(itemRepository: itemRepository)
+  lazy var myProfileUseCase         = MyProfileUseCase(localProfileRepository: localProfileRepository)
+  lazy var userOpenItemUseCase      = UserOpenItemUseCase(localProfileRepository: localProfileRepository,
                                                         userOpenItemRepository: userOpenItemRepository)
-  lazy var userSoldItemUseCase    = UserSoldItemUseCase(localProfileRepository: localProfileRepository,
+  lazy var userSoldItemUseCase      = UserSoldItemUseCase(localProfileRepository: localProfileRepository,
                                                         userSoldItemRepository: userSoldItemRepository)
-  lazy var userBoughtItemUseCase  = UserBoughtItemUseCase(localProfileRepository: localProfileRepository,
+  lazy var userBoughtItemUseCase    = UserBoughtItemUseCase(localProfileRepository: localProfileRepository,
                                                           userBoughtItemRepository: userBoughtItemRepository)
-  lazy var favoriteItemUseCase    = FavoriteItemUseCase(localProfileRepository: localProfileRepository,
-                                                        favoriteItemRepository: favoriteItemRepository)
+  lazy var userFavoriteItemUseCase  = UserFavoriteItemUseCase(localProfileRepository: localProfileRepository,
+                                                             favoriteItemRepository: favoriteItemRepository)
   
   lazy var accessTokenStorage     = AnyStorage(wrap: SimpleStringStorage(key: "AccessToken"))
   lazy var refreshTokenStorage    = AnyStorage(wrap: SimpleStringStorage(key: "RefreshToken"))

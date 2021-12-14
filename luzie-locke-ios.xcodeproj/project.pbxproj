@@ -8,18 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		4A00FC202764A4FE007C5B11 /* SoldOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC1F2764A4FE007C5B11 /* SoldOutView.swift */; };
-		4A00FC242764DD43007C5B11 /* ItemTradeStateReadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC232764DD43007C5B11 /* ItemTradeStateReadRequest.swift */; };
-		4A00FC262764DF2D007C5B11 /* ItemTradeStateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC252764DF2D007C5B11 /* ItemTradeStateUseCase.swift */; };
-		4A00FC2827654898007C5B11 /* ItemTradeStateUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC2727654898007C5B11 /* ItemTradeStateUpdateRequest.swift */; };
+		4A00FC262764DF2D007C5B11 /* ItemControlUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC252764DF2D007C5B11 /* ItemControlUseCase.swift */; };
+		4A00FC2827654898007C5B11 /* ItemStateUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC2727654898007C5B11 /* ItemStateUpdateRequest.swift */; };
 		4A00FC2A2766B2D1007C5B11 /* MyProfileUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC292766B2D1007C5B11 /* MyProfileUseCase.swift */; };
-		4A00FC2D2767417A007C5B11 /* FavoriteItemUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC2C2767417A007C5B11 /* FavoriteItemUseCase.swift */; };
+		4A00FC2D2767417A007C5B11 /* UserFavoriteItemUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC2C2767417A007C5B11 /* UserFavoriteItemUseCase.swift */; };
 		4A00FC2F27674CB3007C5B11 /* FavoriteItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC2E27674CB3007C5B11 /* FavoriteItem.swift */; };
 		4A00FC3127676A85007C5B11 /* FavoriteItemReadListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC3027676A85007C5B11 /* FavoriteItemReadListRequest.swift */; };
 		4A00FC3327676B07007C5B11 /* ItemListElementDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC3227676B07007C5B11 /* ItemListElementDTO.swift */; };
 		4A00FC3627677D38007C5B11 /* VoidResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC3527677D38007C5B11 /* VoidResponse.swift */; };
 		4A00FC3827677D58007C5B11 /* BackendResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC3727677D58007C5B11 /* BackendResponse.swift */; };
 		4A00FC3B27677F0B007C5B11 /* UserProfileReadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC3A27677F0B007C5B11 /* UserProfileReadRequest.swift */; };
-		4A00FC40276780F3007C5B11 /* ItemReadListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC3F276780F3007C5B11 /* ItemReadListResponse.swift */; };
+		4A00FC40276780F3007C5B11 /* ItemListReadResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC3F276780F3007C5B11 /* ItemListReadResponse.swift */; };
 		4A00FC4327678145007C5B11 /* ItemDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC4227678145007C5B11 /* ItemDTO.swift */; };
 		4A00FC472767B831007C5B11 /* UserOpenItemUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC462767B831007C5B11 /* UserOpenItemUseCase.swift */; };
 		4A00FC492767B9C8007C5B11 /* UserOpenItemRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00FC482767B9C8007C5B11 /* UserOpenItemRepository.swift */; };
@@ -225,18 +224,17 @@
 
 /* Begin PBXFileReference section */
 		4A00FC1F2764A4FE007C5B11 /* SoldOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldOutView.swift; sourceTree = "<group>"; };
-		4A00FC232764DD43007C5B11 /* ItemTradeStateReadRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTradeStateReadRequest.swift; sourceTree = "<group>"; };
-		4A00FC252764DF2D007C5B11 /* ItemTradeStateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTradeStateUseCase.swift; sourceTree = "<group>"; };
-		4A00FC2727654898007C5B11 /* ItemTradeStateUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTradeStateUpdateRequest.swift; sourceTree = "<group>"; };
+		4A00FC252764DF2D007C5B11 /* ItemControlUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemControlUseCase.swift; sourceTree = "<group>"; };
+		4A00FC2727654898007C5B11 /* ItemStateUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStateUpdateRequest.swift; sourceTree = "<group>"; };
 		4A00FC292766B2D1007C5B11 /* MyProfileUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileUseCase.swift; sourceTree = "<group>"; };
-		4A00FC2C2767417A007C5B11 /* FavoriteItemUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemUseCase.swift; sourceTree = "<group>"; };
+		4A00FC2C2767417A007C5B11 /* UserFavoriteItemUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFavoriteItemUseCase.swift; sourceTree = "<group>"; };
 		4A00FC2E27674CB3007C5B11 /* FavoriteItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItem.swift; sourceTree = "<group>"; };
 		4A00FC3027676A85007C5B11 /* FavoriteItemReadListRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemReadListRequest.swift; sourceTree = "<group>"; };
 		4A00FC3227676B07007C5B11 /* ItemListElementDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListElementDTO.swift; sourceTree = "<group>"; };
 		4A00FC3527677D38007C5B11 /* VoidResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidResponse.swift; sourceTree = "<group>"; };
 		4A00FC3727677D58007C5B11 /* BackendResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendResponse.swift; sourceTree = "<group>"; };
 		4A00FC3A27677F0B007C5B11 /* UserProfileReadRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileReadRequest.swift; sourceTree = "<group>"; };
-		4A00FC3F276780F3007C5B11 /* ItemReadListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemReadListResponse.swift; sourceTree = "<group>"; };
+		4A00FC3F276780F3007C5B11 /* ItemListReadResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListReadResponse.swift; sourceTree = "<group>"; };
 		4A00FC4227678145007C5B11 /* ItemDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDTO.swift; sourceTree = "<group>"; };
 		4A00FC462767B831007C5B11 /* UserOpenItemUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOpenItemUseCase.swift; sourceTree = "<group>"; };
 		4A00FC482767B9C8007C5B11 /* UserOpenItemRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOpenItemRepository.swift; sourceTree = "<group>"; };
@@ -474,8 +472,7 @@
 		4A00FC222764DD32007C5B11 /* State */ = {
 			isa = PBXGroup;
 			children = (
-				4A00FC232764DD43007C5B11 /* ItemTradeStateReadRequest.swift */,
-				4A00FC2727654898007C5B11 /* ItemTradeStateUpdateRequest.swift */,
+				4A00FC2727654898007C5B11 /* ItemStateUpdateRequest.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -502,7 +499,7 @@
 		4A00FC3C276780A7007C5B11 /* BackendResponses */ = {
 			isa = PBXGroup;
 			children = (
-				4A00FC3F276780F3007C5B11 /* ItemReadListResponse.swift */,
+				4A00FC3F276780F3007C5B11 /* ItemListReadResponse.swift */,
 				4A00FC3727677D58007C5B11 /* BackendResponse.swift */,
 				4A00FC3527677D38007C5B11 /* VoidResponse.swift */,
 			);
@@ -1047,10 +1044,10 @@
 		4AD53D242763787D00F34874 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				4A00FC252764DF2D007C5B11 /* ItemControlUseCase.swift */,
 				4AD53D25276378F000F34874 /* ImageUseCase.swift */,
-				4A00FC252764DF2D007C5B11 /* ItemTradeStateUseCase.swift */,
 				4A00FC292766B2D1007C5B11 /* MyProfileUseCase.swift */,
-				4A00FC2C2767417A007C5B11 /* FavoriteItemUseCase.swift */,
+				4A00FC2C2767417A007C5B11 /* UserFavoriteItemUseCase.swift */,
 				4A00FC462767B831007C5B11 /* UserOpenItemUseCase.swift */,
 				4A00FC512767C96F007C5B11 /* UserSoldItemUseCase.swift */,
 				4A00FC572767D45F007C5B11 /* UserBoughtItemUseCase.swift */,
@@ -1488,12 +1485,12 @@
 				4AEE61B42740F965008055F9 /* LocationMenuPopoverController.swift in Sources */,
 				4A155E602724D16600C8B867 /* UserMenuCell.swift in Sources */,
 				4ACA821527595D26003C7E0E /* ItemUpdateRequest.swift in Sources */,
-				4A00FC40276780F3007C5B11 /* ItemReadListResponse.swift in Sources */,
+				4A00FC40276780F3007C5B11 /* ItemListReadResponse.swift in Sources */,
 				4A03E3BA275F655B00EB0210 /* CustomUIFonts.swift in Sources */,
 				4AED5E802720C2D200B7AC00 /* JWTDecode.swift in Sources */,
 				4A47E6D82731B8E000B9018A /* SwipeImageViewController.swift in Sources */,
 				4AED5E7527201BCF00B7AC00 /* SimpleStringStorage.swift in Sources */,
-				4A00FC2827654898007C5B11 /* ItemTradeStateUpdateRequest.swift in Sources */,
+				4A00FC2827654898007C5B11 /* ItemStateUpdateRequest.swift in Sources */,
 				4AED5E1D27197E1F00B7AC00 /* VerifyNeighborhoodViewController.swift in Sources */,
 				4A00FC3B27677F0B007C5B11 /* UserProfileReadRequest.swift in Sources */,
 				4A00FC4C2767BAF7007C5B11 /* UserOpenItemListReadRequest.swift in Sources */,
@@ -1523,13 +1520,12 @@
 				4A03E3B8275F622400EB0210 /* CustomColors.swift in Sources */,
 				4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */,
 				4AC5667E273BE7E400776DBD /* LocalProfileRepository.swift in Sources */,
-				4A00FC242764DD43007C5B11 /* ItemTradeStateReadRequest.swift in Sources */,
 				4ACA8208275790ED003C7E0E /* ImageSelectViewModel.swift in Sources */,
 				4A3B5266271239CE00EF4F93 /* AppDelegate.swift in Sources */,
 				4A155E4027229D3600C8B867 /* AvatarImageView.swift in Sources */,
 				4AE229A8275A42D90070350E /* FavoriteItemRepository.swift in Sources */,
 				4A22DB462753B06D00E5125B /* RoundButton.swift in Sources */,
-				4A00FC2D2767417A007C5B11 /* FavoriteItemUseCase.swift in Sources */,
+				4A00FC2D2767417A007C5B11 /* UserFavoriteItemUseCase.swift in Sources */,
 				4ACA820C2758BA6C003C7E0E /* ItemUpdateViewModel.swift in Sources */,
 				4AEE8FAB272B5C69004CB686 /* ItemCreateViewModel.swift in Sources */,
 				4A47E6BB272FE24200B9018A /* Dictionary+Ext.swift in Sources */,
@@ -1553,7 +1549,7 @@
 				4ACA81F7275746D8003C7E0E /* SingleLineDecimalInputView.swift in Sources */,
 				4AD53D26276378F000F34874 /* ImageUseCase.swift in Sources */,
 				4A47E6C12730759500B9018A /* ItemReadRequest.swift in Sources */,
-				4A00FC262764DF2D007C5B11 /* ItemTradeStateUseCase.swift in Sources */,
+				4A00FC262764DF2D007C5B11 /* ItemControlUseCase.swift in Sources */,
 				4AD53D0A275FED1200F34874 /* SettingsRepository.swift in Sources */,
 				4AED5E65271F729F00B7AC00 /* TokenHeaderRequestInterceptor.swift in Sources */,
 				4A47E6CD27314D4600B9018A /* ItemActionPanelView.swift in Sources */,

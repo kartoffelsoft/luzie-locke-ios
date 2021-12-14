@@ -81,7 +81,7 @@ extension CompositionRoot: ViewModelFactory {
                                 myProfileUseCase: myProfileUseCase,
                                 openHttpClient: openHttpClient,
                                 itemRepository: itemRepository,
-                                favoriteItemUseCase: favoriteItemUseCase,
+                                userFavoriteItemUseCase: userFavoriteItemUseCase,
                                 id: id)
   }
   
@@ -94,7 +94,7 @@ extension CompositionRoot: ViewModelFactory {
   func makeChatViewModel(remoteUserId: String, itemId: String) -> ChatViewModel {
     return ChatViewModel(remoteUserId: remoteUserId,
                          itemId: itemId,
-                         itemTradeStateUseCase: itemTradeStateUseCase,
+                         itemControlUseCase: itemControlUseCase,
                          userProfileRepository: userProfileRepository,
                          chatMessageRepository: ChatMessageRepository(),
                          recentMessageRepository: RecentMessageRepository())
@@ -115,7 +115,7 @@ extension CompositionRoot: ViewModelFactory {
   
   func makeUserFavoritesViewModel(coordinator: SettingsCoordinator) -> UserFavoritesViewModel {
     return UserFavoritesViewModel(coordinator: coordinator,
-                                  favoriteItemUseCase: favoriteItemUseCase,
+                                  userFavoriteItemUseCase: userFavoriteItemUseCase,
                                   imageUseCase: imageUseCase,
                                   itemRepository: itemRepository)
   }

@@ -17,8 +17,8 @@ class UserOpenItemUseCase: UserOpenItemUseCaseProtocol {
   private let localProfileRepository: LocalProfileRepositoryProtocol
   private let userOpenItemRepository: UserOpenItemRepositoryProtocol
   
-  init(localProfileRepository: LocalProfileRepositoryProtocol,
-       userOpenItemRepository: UserOpenItemRepositoryProtocol) {
+  init(localProfileRepository:  LocalProfileRepositoryProtocol,
+       userOpenItemRepository:  UserOpenItemRepositoryProtocol) {
     self.localProfileRepository = localProfileRepository
     self.userOpenItemRepository = userOpenItemRepository
   }

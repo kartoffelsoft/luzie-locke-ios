@@ -17,8 +17,8 @@ class UserSoldItemUseCase: UserSoldItemUseCaseProtocol {
   private let localProfileRepository: LocalProfileRepositoryProtocol
   private let userSoldItemRepository: UserSoldItemRepositoryProtocol
   
-  init(localProfileRepository: LocalProfileRepositoryProtocol,
-       userSoldItemRepository: UserSoldItemRepositoryProtocol) {
+  init(localProfileRepository:  LocalProfileRepositoryProtocol,
+       userSoldItemRepository:  UserSoldItemRepositoryProtocol) {
     self.localProfileRepository = localProfileRepository
     self.userSoldItemRepository = userSoldItemRepository
   }

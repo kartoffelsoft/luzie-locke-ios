@@ -9,7 +9,7 @@ import Foundation
 
 struct UserOpenItemListReadRequest: APIRequest {
   
-  typealias Response = ItemReadListResponse
+  typealias Response = ItemListReadResponse
   
   var resourceName: String {
     return "/api/users/" + userId + "/open-items"

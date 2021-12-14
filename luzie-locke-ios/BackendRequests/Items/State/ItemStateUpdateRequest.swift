@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct ItemTradeStateUpdateRequest: APIRequest {
+struct ItemStateUpdateRequest: APIRequest {
   
-  typealias Response = ItemTradeStateUpdateResponse
+  typealias Response = VoidResponse
   
   var resourceName: String {
-    return "/api/items/" + id + "/trade-state"
+    return "/api/items/" + id
   }
   
   let id:           String
@@ -23,10 +23,4 @@ struct ItemTradeStateUpdateRequest: APIRequest {
     return [ "state":   state,
              "buyerId": buyerId ]
   }
-}
-
-struct ItemTradeStateUpdateResponse: Decodable {
-  let state: String
-  let sellerId: String
-  let buyerId: String
 }

@@ -48,7 +48,7 @@ class FavoriteItemRepository: FavoriteItemRepositoryProtocol {
   }
   
   func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
-    backendClient.GET(FavoriteItemReadListRequest(userId: userId, cursor: cursor, limit: 8)) { result in
+    backendClient.GET(FavoriteItemListReadRequest(userId: userId, cursor: cursor, limit: 8)) { result in
       switch result {
       case .success(let response):
         if let response = response {

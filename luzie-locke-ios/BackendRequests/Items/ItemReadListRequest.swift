@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct ItemReadListRequest: APIRequest {
+struct ItemListReadRequest: APIRequest {
   
-  typealias Response = ItemReadListResponse
+  typealias Response = ItemListReadResponse
   
   var resourceName: String {
     return "/api/items"
@@ -26,7 +26,7 @@ struct ItemReadListRequest: APIRequest {
 
 struct ItemReadListSearchRequest: APIRequest {
   
-  typealias Response = ItemReadListResponse
+  typealias Response = ItemListReadResponse
   
   var resourceName: String {
     return "/api/items/search"

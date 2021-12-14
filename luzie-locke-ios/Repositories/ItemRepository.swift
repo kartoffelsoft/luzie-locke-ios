@@ -12,12 +12,11 @@ protocol ItemRepositoryProtocol {
   func create(title: String, price: String, description: String, images: [UIImage], completion: @escaping (Result<Void, LLError>) -> Void)
   
   func read(_ id: String, completion: @escaping (Result<Item, LLError>) -> Void)
-  func readTradeState(_ id: String, completion: @escaping (Result<(String, String, String), LLError>) -> Void)
   func readListLocal(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
   func readListSearch(keyword: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
   
   func update(_ id: String, title: String, price: String, description: String, images: [UIImage], oldImageUrls: [String?]?, completion: @escaping (Result<Void, LLError>) -> Void)
-  func updateTradeState(_ id: String, state: String, buyerId: String, completion: @escaping (Result<(String, String, String), LLError>) -> Void)
+  func updateState(_ id: String, state: String, buyerId: String, completion: @escaping (Result<Void, LLError>) -> Void)
   func delete(_ id: String, imageUrls: [String?]?, completion: @escaping (Result<Void, LLError>) -> Void)
 }
 
@@ -73,25 +72,8 @@ class ItemRepository: ItemRepositoryProtocol {
     }
   }
   
-  func readTradeState(_ id: String, completion: @escaping (Result<(String, String, String), LLError>) -> Void) {
-    backendClient.GET(ItemTradeStateReadRequest(id: id)) { result in
-      switch result {
-      case .success(let response):
-        if let response = response {
-          completion(.success((response.state, response.sellerId, response.buyerId)))
-        } else {
-          completion(.failure(.unableToComplete))
-        }
-        
-      case .failure(let err):
-        print("[Error:\(#file):\(#line)] \(err)")
-        completion(.failure(.unableToComplete))
-      }
-    }
-  }
-  
   func readListLocal(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
-    backendClient.GET(ItemReadListRequest(cursor: cursor, limit: 8)) { result in
+    backendClient.GET(ItemListReadRequest(cursor: cursor, limit: 8)) { result in
       switch result {
       case .success(let response):
         if let response = response {
@@ -160,15 +142,11 @@ class ItemRepository: ItemRepositoryProtocol {
     }
   }
   
-  func updateTradeState(_ id: String, state: String, buyerId: String, completion: @escaping (Result<(String, String, String), LLError>) -> Void) {
-    backendClient.PATCH(ItemTradeStateUpdateRequest(id: id, state: state, buyerId: buyerId)) { result in
+  func updateState(_ id: String, state: String, buyerId: String, completion: @escaping (Result<Void, LLError>) -> Void) {
+    backendClient.PATCH(ItemStateUpdateRequest(id: id, state: state, buyerId: buyerId)) { result in
       switch result {
-      case .success(let response):
-        if let response = response {
-          completion(.success((response.state, response.sellerId, response.buyerId)))
-        } else {
-          completion(.failure(.unableToComplete))
-        }
+      case .success:
+        completion(.success(()))
         
       case .failure(let error):
         print("[Error:\(#file):\(#line)] \(error)")
