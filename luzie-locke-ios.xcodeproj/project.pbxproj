@@ -95,6 +95,7 @@
 		4A3B52E12715C10500EF4F93 /* MessagesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52E02715C10500EF4F93 /* MessagesCoordinator.swift */; };
 		4A3B52E32715C11900EF4F93 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52E22715C11900EF4F93 /* SettingsCoordinator.swift */; };
 		4A3B52E52716083A00EF4F93 /* CoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52E42716083A00EF4F93 /* CoordinatorMock.swift */; };
+		4A475B932768E1E900D26B85 /* ChatInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A475B922768E1E900D26B85 /* ChatInformationView.swift */; };
 		4A47E6A8272CA01E00B9018A /* CloudStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6A7272CA01E00B9018A /* CloudStorage.swift */; };
 		4A47E6AA272CA0B500B9018A /* FirebaseCloudStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6A9272CA0B500B9018A /* FirebaseCloudStorage.swift */; };
 		4A47E6AD272D408F00B9018A /* ItemAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6AC272D408F00B9018A /* ItemAPIClient.swift */; };
@@ -311,6 +312,7 @@
 		4A3B52E02715C10500EF4F93 /* MessagesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCoordinator.swift; sourceTree = "<group>"; };
 		4A3B52E22715C11900EF4F93 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
 		4A3B52E42716083A00EF4F93 /* CoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorMock.swift; sourceTree = "<group>"; };
+		4A475B922768E1E900D26B85 /* ChatInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInformationView.swift; sourceTree = "<group>"; };
 		4A47E6A7272CA01E00B9018A /* CloudStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStorage.swift; sourceTree = "<group>"; };
 		4A47E6A9272CA0B500B9018A /* FirebaseCloudStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCloudStorage.swift; sourceTree = "<group>"; };
 		4A47E6AC272D408F00B9018A /* ItemAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemAPIClient.swift; sourceTree = "<group>"; };
@@ -625,6 +627,7 @@
 				4A22DB39274E3D0F00E5125B /* EmptyStateView.swift */,
 				4AD53D1E2760CC2700F34874 /* DividerView.swift */,
 				4A00FC1F2764A4FE007C5B11 /* SoldOutView.swift */,
+				4A475B922768E1E900D26B85 /* ChatInformationView.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -1531,6 +1534,7 @@
 				4A47E6BB272FE24200B9018A /* Dictionary+Ext.swift in Sources */,
 				4A3B52D527159CA300EF4F93 /* Coordinator.swift in Sources */,
 				4A09C6A0273865FA00FD4E42 /* ItemInfoView.swift in Sources */,
+				4A475B932768E1E900D26B85 /* ChatInformationView.swift in Sources */,
 				4A00FC3827677D58007C5B11 /* BackendResponse.swift in Sources */,
 				4A01D55A273D4EA000EDFC1C /* UserProfile.swift in Sources */,
 				4A47E6B6272F106100B9018A /* ItemRepository.swift in Sources */,

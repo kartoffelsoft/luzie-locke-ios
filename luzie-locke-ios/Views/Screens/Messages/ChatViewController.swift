@@ -12,6 +12,7 @@ class ChatViewController: UICollectionViewController {
 
   var viewModel: ChatViewModel?
   
+  private let chatInformationView = ChatInformationView()
   private let soldOutView = SoldOutView()
   private var chatInputAccessoryView: ChatInputAccessoryView!
 
@@ -26,7 +27,6 @@ class ChatViewController: UICollectionViewController {
     super.viewDidLoad()
     
     configureBackground()
-    configureSoldOutView()
     configureCollectionView()
     configureKeyboardInput()
     configureBindables()
@@ -46,13 +46,12 @@ class ChatViewController: UICollectionViewController {
     if let image = CustomGradient.mainBackground(on: view) {
       view.backgroundColor = UIColor(patternImage: image)
     }
-  }
-  
-  private func configureSoldOutView() {
-    soldOutView.translatesAutoresizingMaskIntoConstraints = false
+    
+    view.addSubview(chatInformationView)
+    chatInformationView.pinToEdges(of: view)
+    
     soldOutView.isHidden = true
     view.addSubview(soldOutView)
-
     soldOutView.pinToEdges(of: view)
   }
   
@@ -73,8 +72,10 @@ class ChatViewController: UICollectionViewController {
     chatInputAccessoryView.sendButton.addTarget(self, action: #selector(handleSendButtonTap), for: .touchUpInside)
   }
   
-  func configureBindables() {
+  private func configureBindables() {
     
+    chatInformationView.itemImage = viewModel?.bindableItemImage.value
+    chatInformationView.buyerImage = viewModel?.bindableBuyerImage.value
     soldOutView.isHidden = viewModel?.bindableSoldOutViewIsHidden.value ?? true
     
     viewModel?.bindableMessages.bind { [weak self] messages in
@@ -84,12 +85,30 @@ class ChatViewController: UICollectionViewController {
       }
     }
     
+    viewModel?.bindableItemImage.bind { [weak self] image in
+      DispatchQueue.main.async {
+        self?.chatInformationView.itemImage = image
+      }
+    }
+    
+    viewModel?.bindableBuyerImage.bind { [weak self] image in
+      DispatchQueue.main.async {
+        self?.chatInformationView.buyerImage = image
+      }
+    }
+    
+    viewModel?.bindableIsOwner.bind { [weak self] isOwner in
+      DispatchQueue.main.async {
+        self?.chatInformationView.alignment = isOwner! ? .left : .right
+      }
+    }
+    
     viewModel?.bindableSoldOutViewIsHidden.bind { [weak self] isHidden in
       DispatchQueue.main.async {
         self?.soldOutView.isHidden = isHidden ?? true
       }
     }
-
+  
     viewModel?.bindableActionButtonType.bind { [weak self] type in
       guard let self = self else { return }
       guard let type = type else { return }

@@ -51,7 +51,7 @@ class UserListingsViewController: UIViewController {
   }
   
   private func configureSegmentedControl() {
-    segmentedControl = UISegmentedControl(items: ["Open", "Closed"])
+    segmentedControl = UISegmentedControl(items: ["Open", "Sold0"])
     segmentedControl.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
     
     segmentedControl.setTitleTextAttributes([

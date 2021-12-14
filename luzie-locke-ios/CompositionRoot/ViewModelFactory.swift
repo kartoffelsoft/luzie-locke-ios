@@ -94,6 +94,7 @@ extension CompositionRoot: ViewModelFactory {
   func makeChatViewModel(remoteUserId: String, itemId: String) -> ChatViewModel {
     return ChatViewModel(remoteUserId: remoteUserId,
                          itemId: itemId,
+                         imageUseCase: imageUseCase,
                          itemControlUseCase: itemControlUseCase,
                          userProfileRepository: userProfileRepository,
                          chatMessageRepository: ChatMessageRepository(),

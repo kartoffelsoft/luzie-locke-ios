@@ -13,5 +13,7 @@ enum CustomUIImages {
   static let lock               = UIImage(systemName: "lock")!
   static let avatarPlaceholder  = UIImage(named: "AvatarPlaceholder")!
   static let soldOut            = UIImage(named: "SoldOut")!
+  static let interestedRight    = UIImage(named: "InterestedRight")!
+  static let interestedLeft     = UIImage(named: "InterestedLeft")!
 }
                                   
