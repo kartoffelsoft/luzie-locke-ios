@@ -17,14 +17,14 @@ class VerifyNeighborhoodViewModel: NSObject, ObservableObject {
 
   private let locationManager:    CLLocationManager
   private let coordinator:        SettingsCoordinator
-  private let settingsRepository: SettingsRepositoryProtocol
+  private let settingsUseCase:    SettingsUseCaseProtocol
   
-  init(locationManager: CLLocationManager,
-       coordinator: SettingsCoordinator,
-       settingsRepository: SettingsRepositoryProtocol) {
-    self.locationManager     = locationManager
-    self.coordinator         = coordinator
-    self.settingsRepository  = settingsRepository
+  init(locationManager:     CLLocationManager,
+       coordinator:         SettingsCoordinator,
+       settingsUseCase:     SettingsUseCaseProtocol) {
+    self.locationManager    = locationManager
+    self.coordinator        = coordinator
+    self.settingsUseCase    = settingsUseCase
     super.init()
     
     requestUserLocation()
@@ -57,16 +57,18 @@ class VerifyNeighborhoodViewModel: NSObject, ObservableObject {
   }
 
   func didTapApply() {
-//    guard let currentLocalLevel = currentLocalLevel else { return }
-//    settingsRepository.updateLocalLevel(localLevel: currentLocalLevel) { [weak self] result in
-//      guard let self = self else { return }
-//      switch(result) {
-//      case .success:
-//        self.coordinator.popViewController()
-//      case .failure(let error):
-//        print(error)
-//      }
-//    }
+    guard let city = currentLocation,
+          let lat = currentLatitude,
+          let lng = currentLongitude else { return }
+
+    settingsUseCase.setLocation(city: city, lat: lat, lng: lng) { result in
+      switch result {
+      case .success:
+        self.coordinator.popViewController()
+      case .failure(let error):
+        print(error)
+      }
+    }
   }
 }
 

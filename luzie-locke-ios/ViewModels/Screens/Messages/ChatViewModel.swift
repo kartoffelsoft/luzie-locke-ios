@@ -93,10 +93,6 @@ class ChatViewModel {
         self.configureButtons(state: state, isOwner: isOwner)
         self.configureItemImage(imageUrl: imageUrl)
         self.configureBuyerImage(buyerId: buyerId)
-
-        print("@:", isOwner)
-        print("@@:", ownerId)
-        print("@@@:", userId)
         self.bindableIsOwner.value = isOwner
         
       case .failure(let error):

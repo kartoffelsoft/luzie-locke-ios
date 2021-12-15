@@ -13,6 +13,7 @@ protocol SettingsRepositoryProtocol {
   func updateLocalLevel(localLevel: Int, completion: @escaping (Result<Void, LLError>) -> Void)
   
   func readLocation(completion: @escaping (Result<(String, Double, Double), LLError>) -> Void)
+  func updateLocation(city: String, lat: Double, lng: Double, completion: @escaping (Result<Void, LLError>) -> Void)
 }
 
 class SettingsRepository: SettingsRepositoryProtocol {

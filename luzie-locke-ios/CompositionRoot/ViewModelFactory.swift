@@ -131,12 +131,12 @@ extension CompositionRoot: ViewModelFactory {
   
   func makeNeighborhoodSettingViewModel(coordinator: SettingsCoordinator) -> NeighborhoodSettingViewModel {
     return NeighborhoodSettingViewModel(coordinator: coordinator,
-                                        settingsRepository: settingsRepository)
+                                        settingsUseCase: settingsUseCase)
   }
   
   func makeVerifyNeighborhoodViewModel(coordinator: SettingsCoordinator) -> VerifyNeighborhoodViewModel {
     return VerifyNeighborhoodViewModel(locationManager: CLLocationManager(),
                                        coordinator: coordinator,
-                                       settingsRepository: settingsRepository)
+                                       settingsUseCase: settingsUseCase)
   }
 }

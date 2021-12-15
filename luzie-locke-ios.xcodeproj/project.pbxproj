@@ -125,6 +125,7 @@
 		4AA6CE14276A4F5400FF0C91 /* VerifyNeighborhoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA6CE13276A4F5400FF0C91 /* VerifyNeighborhoodView.swift */; };
 		4AA6CE16276A4F8A00FF0C91 /* VerifyNeighborhoodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA6CE15276A4F8A00FF0C91 /* VerifyNeighborhoodViewModel.swift */; };
 		4AA6CE18276A4FD500FF0C91 /* VerifyNeighborhoodMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA6CE17276A4FD500FF0C91 /* VerifyNeighborhoodMap.swift */; };
+		4AA6CE1A276A986000FF0C91 /* SettingsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA6CE19276A986000FF0C91 /* SettingsUseCase.swift */; };
 		4AC56672273B974700776DBD /* RecentMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56671273B974700776DBD /* RecentMessage.swift */; };
 		4AC56674273B98AE00776DBD /* RecentMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56673273B98AE00776DBD /* RecentMessageCell.swift */; };
 		4AC56677273BB65200776DBD /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56676273BB65200776DBD /* MessagesViewModel.swift */; };
@@ -347,6 +348,7 @@
 		4AA6CE13276A4F5400FF0C91 /* VerifyNeighborhoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyNeighborhoodView.swift; sourceTree = "<group>"; };
 		4AA6CE15276A4F8A00FF0C91 /* VerifyNeighborhoodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyNeighborhoodViewModel.swift; sourceTree = "<group>"; };
 		4AA6CE17276A4FD500FF0C91 /* VerifyNeighborhoodMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyNeighborhoodMap.swift; sourceTree = "<group>"; };
+		4AA6CE19276A986000FF0C91 /* SettingsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUseCase.swift; sourceTree = "<group>"; };
 		4AC56671273B974700776DBD /* RecentMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMessage.swift; sourceTree = "<group>"; };
 		4AC56673273B98AE00776DBD /* RecentMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMessageCell.swift; sourceTree = "<group>"; };
 		4AC56676273BB65200776DBD /* MessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
@@ -1101,6 +1103,7 @@
 				4A00FC462767B831007C5B11 /* UserOpenItemUseCase.swift */,
 				4A00FC512767C96F007C5B11 /* UserSoldItemUseCase.swift */,
 				4A00FC572767D45F007C5B11 /* UserBoughtItemUseCase.swift */,
+				4AA6CE19276A986000FF0C91 /* SettingsUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1652,6 +1655,7 @@
 				4A09C6A627392DE100FD4E42 /* ChatInputAccessoryView.swift in Sources */,
 				4A00FC3127676A85007C5B11 /* FavoriteItemReadListRequest.swift in Sources */,
 				4A01D55E273DC64100EDFC1C /* RecentMessageCellViewModel.swift in Sources */,
+				4AA6CE1A276A986000FF0C91 /* SettingsUseCase.swift in Sources */,
 				4A47E6DF2731D33400B9018A /* ImageViewModel.swift in Sources */,
 				4A47E6AF272D79E500B9018A /* ItemCreateRequest.swift in Sources */,
 				4A155E5A272415A800C8B867 /* UIView+Ext.swift in Sources */,

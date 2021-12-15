@@ -10,10 +10,13 @@ import Foundation
 protocol MyProfileUseCaseProtocol {
   
   func getId() -> String?
+  
+  func setLocalLevel(localLevel: Int)
+  func setLocation(city: String, lat: Double, lng: Double)
 }
 
 class MyProfileUseCase: MyProfileUseCaseProtocol {
-  
+
   private let localProfileRepository: LocalProfileRepositoryProtocol
   
   init(localProfileRepository: LocalProfileRepositoryProtocol) {
@@ -22,5 +25,23 @@ class MyProfileUseCase: MyProfileUseCaseProtocol {
   
   func getId() -> String? {
     return localProfileRepository.read()?.id
+  }
+  
+  func setLocalLevel(localLevel: Int) {
+    guard let p = localProfileRepository.read() else { return }
+    
+    localProfileRepository.update(
+      UserProfile(id: p.id, name: p.name, email: p.email, reputation: p.reputation,
+                  imageUrl: p.imageUrl, localLevel: localLevel, city: p.city,
+                  location: p.location))
+  }
+  
+  func setLocation(city: String, lat: Double, lng: Double) {
+    guard let p = localProfileRepository.read() else { return }
+    
+    localProfileRepository.update(
+      UserProfile(id: p.id, name: p.name, email: p.email, reputation: p.reputation,
+                  imageUrl: p.imageUrl, localLevel: p.localLevel, city: city,
+                  location: UserProfile.Location(type: "Point", coordinates: [ lng, lat ])))
   }
 }

@@ -14,8 +14,8 @@ class NeighborhoodSettingViewModel: NSObject, ObservableObject {
   @Published var currentRadiusText: String?
   @Published var currentSpanDelta: Double?
   
-  private let coordinator:        SettingsCoordinator
-  private let settingsRepository: SettingsRepositoryProtocol
+  private let coordinator:     SettingsCoordinator
+  private let settingsUseCase: SettingsUseCaseProtocol
   
   private let localLevelToRadiusMap: [Int: Double] = [
     0: 3,
@@ -41,12 +41,12 @@ class NeighborhoodSettingViewModel: NSObject, ObservableObject {
     }
   }
   
-  init(coordinator: SettingsCoordinator, settingsRepository: SettingsRepositoryProtocol) {
-    self.coordinator         = coordinator
-    self.settingsRepository  = settingsRepository
+  init(coordinator: SettingsCoordinator, settingsUseCase: SettingsUseCaseProtocol) {
+    self.coordinator     = coordinator
+    self.settingsUseCase = settingsUseCase
     super.init()
     
-    settingsRepository.readLocalLevel() { [weak self] result in
+    settingsUseCase.getLocalLevel() { [weak self] result in
       guard let self = self else { return }
       switch(result) {
       case .success(let localLevel):
@@ -58,7 +58,7 @@ class NeighborhoodSettingViewModel: NSObject, ObservableObject {
       }
     }
     
-    settingsRepository.readLocation() { [weak self] result in
+    settingsUseCase.getLocation() { [weak self] result in
       guard let self = self else { return }
       switch(result) {
       case .success((_, let lat, let lng)):
@@ -83,7 +83,7 @@ class NeighborhoodSettingViewModel: NSObject, ObservableObject {
   
   func didTapApply() {
     guard let currentLocalLevel = currentLocalLevel else { return }
-    settingsRepository.updateLocalLevel(localLevel: currentLocalLevel) { [weak self] result in
+    settingsUseCase.setLocalLevel(localLevel: currentLocalLevel) { [weak self] result in
       guard let self = self else { return }
       switch(result) {
       case .success:

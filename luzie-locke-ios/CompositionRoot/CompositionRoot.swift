@@ -41,6 +41,8 @@ class CompositionRoot {
                                                           userBoughtItemRepository: userBoughtItemRepository)
   lazy var userFavoriteItemUseCase  = UserFavoriteItemUseCase(localProfileRepository: localProfileRepository,
                                                              favoriteItemRepository: favoriteItemRepository)
+  lazy var settingsUseCase          = SettingsUseCase(settingsRepository: settingsRepository,
+                                                      myProfileUseCase: myProfileUseCase)
   
   lazy var accessTokenStorage     = AnyStorage(wrap: SimpleStringStorage(key: "AccessToken"))
   lazy var refreshTokenStorage    = AnyStorage(wrap: SimpleStringStorage(key: "RefreshToken"))
