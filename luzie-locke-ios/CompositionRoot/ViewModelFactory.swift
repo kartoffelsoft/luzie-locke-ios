@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 protocol ViewModelFactory {
   
@@ -27,7 +28,8 @@ protocol ViewModelFactory {
   func makeUserPurchasesViewModel(coordinator: SettingsCoordinator) -> UserPurchasesViewModel
   func makeUserFavoritesViewModel(coordinator: SettingsCoordinator) -> UserFavoritesViewModel
   
-  func makeNeighbourhoodSettingViewModel(coordinator: SettingsCoordinator) -> NeighbourhoodSettingViewModel
+  func makeNeighborhoodSettingViewModel(coordinator: SettingsCoordinator) -> NeighborhoodSettingViewModel
+  func makeVerifyNeighborhoodViewModel(coordinator: SettingsCoordinator) -> VerifyNeighborhoodViewModel
 }
 
 extension CompositionRoot: ViewModelFactory {
@@ -127,8 +129,14 @@ extension CompositionRoot: ViewModelFactory {
                                   itemRepository: itemRepository)
   }
   
-  func makeNeighbourhoodSettingViewModel(coordinator: SettingsCoordinator) -> NeighbourhoodSettingViewModel {
-    return NeighbourhoodSettingViewModel(coordinator: coordinator,
-                                         settingsRepository: settingsRepository)
+  func makeNeighborhoodSettingViewModel(coordinator: SettingsCoordinator) -> NeighborhoodSettingViewModel {
+    return NeighborhoodSettingViewModel(coordinator: coordinator,
+                                        settingsRepository: settingsRepository)
+  }
+  
+  func makeVerifyNeighborhoodViewModel(coordinator: SettingsCoordinator) -> VerifyNeighborhoodViewModel {
+    return VerifyNeighborhoodViewModel(locationManager: CLLocationManager(),
+                                       coordinator: coordinator,
+                                       settingsRepository: settingsRepository)
   }
 }

@@ -51,17 +51,22 @@ class SettingsCoordinator: Coordinator {
   }
 
   func navigateToNeighborhooodSetting() {
-    let viewModel      = factory.makeNeighbourhoodSettingViewModel(coordinator: self)
-    let viewController = UIHostingController(rootView: NeighbourhoodSettingView().environmentObject(viewModel))
+    let viewModel      = factory.makeNeighborhoodSettingViewModel(coordinator: self)
+    let viewController = UIHostingController(rootView: NeighborhoodSettingView().environmentObject(viewModel))
     navigationController.pushViewController(viewController, animated: true)
   }
   
-  func navigateToVerifyNeighborhood(selectAction: @escaping MapViewCallback) {
-    let viewController = VerifyNeighborhoodViewController(mapView: MKMapView(), locationManager: CLLocationManager())
-    viewController.selectAction = selectAction
+  func navigateToVerifyNeighborhood() {
+    let viewModel      = factory.makeVerifyNeighborhoodViewModel(coordinator: self)
+    let viewController = UIHostingController(rootView: VerifyNeighborhoodView().environmentObject(viewModel))
     navigationController.pushViewController(viewController, animated: true)
   }
-  
+
+  //  func navigateToVerifyNeighborhood(selectAction: @escaping MapViewCallback) {
+  //    let viewController = VerifyNeighborhoodViewController(mapView: MKMapView(), locationManager: CLLocationManager())
+  //    viewController.selectAction = selectAction
+  //    navigationController.pushViewController(viewController, animated: true)
+  //  }
   func navigateToItemDisplay(id: String) {
     let coordinator = factory.makeItemDisplayCoordinator(
       navigationController: navigationController,

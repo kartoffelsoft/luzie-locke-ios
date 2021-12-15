@@ -40,7 +40,7 @@ class SignUpViewController: UIViewController {
     textField.placeholder = "Enter name"
     textField.keyboardType = .emailAddress
 
-    textField.leftView = UIImageView(image: CustomUIImages.envelope.withTintColor(CustomUIColors.primaryColorLight1, renderingMode: .alwaysOriginal))
+    textField.leftView = UIImageView(image: CustomUIImages.person.withTintColor(CustomUIColors.primaryColorLight1, renderingMode: .alwaysOriginal))
     textField.leftViewMode = .always
     textField.layer.sublayerTransform = CATransform3DMakeTranslation(12, 0, 0);
     return textField
@@ -73,7 +73,7 @@ class SignUpViewController: UIViewController {
     textField.placeholder = "Verify password"
     textField.isSecureTextEntry = true
     
-    textField.leftView = UIImageView(image: CustomUIImages.lock.withTintColor(CustomUIColors.primaryColorLight1, renderingMode: .alwaysOriginal))
+    textField.leftView = UIImageView(image: CustomUIImages.verify.withTintColor(CustomUIColors.primaryColorLight1, renderingMode: .alwaysOriginal))
     textField.leftViewMode = .always
     textField.layer.sublayerTransform = CATransform3DMakeTranslation(12, 0, 0);
     return textField

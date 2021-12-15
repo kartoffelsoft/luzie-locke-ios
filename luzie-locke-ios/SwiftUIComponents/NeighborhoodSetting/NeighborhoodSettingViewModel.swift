@@ -1,5 +1,5 @@
 //
-//  NeighbourhoodSettingViewModel.swift
+//  NeighborhoodSettingViewModel.swift
 //  luzie-locke-ios
 //
 //  Created by Harry on 06.12.21.
@@ -7,7 +7,7 @@
 
 import MapKit
 
-class NeighbourhoodSettingViewModel: NSObject, ObservableObject {
+class NeighborhoodSettingViewModel: NSObject, ObservableObject {
   
   @Published var currentCoordinate: CLLocationCoordinate2D?
   @Published var currentRadius: Double?

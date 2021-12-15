@@ -122,6 +122,9 @@
 		4A47E6EA2733248B00B9018A /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6E92733248B00B9018A /* ViewModelFactory.swift */; };
 		4AA6CE0D2769E07E00FF0C91 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA6CE0C2769E07E00FF0C91 /* SignUpViewController.swift */; };
 		4AA6CE102769E0B300FF0C91 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA6CE0F2769E0B300FF0C91 /* SignUpViewModel.swift */; };
+		4AA6CE14276A4F5400FF0C91 /* VerifyNeighborhoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA6CE13276A4F5400FF0C91 /* VerifyNeighborhoodView.swift */; };
+		4AA6CE16276A4F8A00FF0C91 /* VerifyNeighborhoodViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA6CE15276A4F8A00FF0C91 /* VerifyNeighborhoodViewModel.swift */; };
+		4AA6CE18276A4FD500FF0C91 /* VerifyNeighborhoodMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA6CE17276A4FD500FF0C91 /* VerifyNeighborhoodMap.swift */; };
 		4AC56672273B974700776DBD /* RecentMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56671273B974700776DBD /* RecentMessage.swift */; };
 		4AC56674273B98AE00776DBD /* RecentMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56673273B98AE00776DBD /* RecentMessageCell.swift */; };
 		4AC56677273BB65200776DBD /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC56676273BB65200776DBD /* MessagesViewModel.swift */; };
@@ -162,9 +165,9 @@
 		4AE229AA275A49DD0070350E /* FavoriteItemCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229A9275A49DD0070350E /* FavoriteItemCreateRequest.swift */; };
 		4AE229AC275A51FD0070350E /* FavoriteItemDeleteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229AB275A51FD0070350E /* FavoriteItemDeleteRequest.swift */; };
 		4AE229AE275A707F0070350E /* FavoriteItemReadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229AD275A707F0070350E /* FavoriteItemReadRequest.swift */; };
-		4AE229B5275B9D820070350E /* NeighbourhoodSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229B4275B9D820070350E /* NeighbourhoodSettingView.swift */; };
-		4AE229B7275BB2BE0070350E /* NeighbourhoodSettingMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229B6275BB2BE0070350E /* NeighbourhoodSettingMap.swift */; };
-		4AE229BC275E092E0070350E /* NeighbourhoodSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229BB275E092E0070350E /* NeighbourhoodSettingViewModel.swift */; };
+		4AE229B5275B9D820070350E /* NeighborhoodSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229B4275B9D820070350E /* NeighborhoodSettingView.swift */; };
+		4AE229B7275BB2BE0070350E /* NeighborhoodSettingMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229B6275BB2BE0070350E /* NeighborhoodSettingMap.swift */; };
+		4AE229BC275E092E0070350E /* NeighborhoodSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229BB275E092E0070350E /* NeighborhoodSettingViewModel.swift */; };
 		4AED5E1D27197E1F00B7AC00 /* VerifyNeighborhoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1C27197E1F00B7AC00 /* VerifyNeighborhoodViewController.swift */; };
 		4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */; };
 		4AED5E25271A0CFD00B7AC00 /* MKViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E24271A0CFD00B7AC00 /* MKViewMock.swift */; };
@@ -341,6 +344,9 @@
 		4A47E6E92733248B00B9018A /* ViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
 		4AA6CE0C2769E07E00FF0C91 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4AA6CE0F2769E0B300FF0C91 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		4AA6CE13276A4F5400FF0C91 /* VerifyNeighborhoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyNeighborhoodView.swift; sourceTree = "<group>"; };
+		4AA6CE15276A4F8A00FF0C91 /* VerifyNeighborhoodViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyNeighborhoodViewModel.swift; sourceTree = "<group>"; };
+		4AA6CE17276A4FD500FF0C91 /* VerifyNeighborhoodMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyNeighborhoodMap.swift; sourceTree = "<group>"; };
 		4AC56671273B974700776DBD /* RecentMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMessage.swift; sourceTree = "<group>"; };
 		4AC56673273B98AE00776DBD /* RecentMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMessageCell.swift; sourceTree = "<group>"; };
 		4AC56676273BB65200776DBD /* MessagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
@@ -382,9 +388,9 @@
 		4AE229A9275A49DD0070350E /* FavoriteItemCreateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemCreateRequest.swift; sourceTree = "<group>"; };
 		4AE229AB275A51FD0070350E /* FavoriteItemDeleteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemDeleteRequest.swift; sourceTree = "<group>"; };
 		4AE229AD275A707F0070350E /* FavoriteItemReadRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemReadRequest.swift; sourceTree = "<group>"; };
-		4AE229B4275B9D820070350E /* NeighbourhoodSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighbourhoodSettingView.swift; sourceTree = "<group>"; };
-		4AE229B6275BB2BE0070350E /* NeighbourhoodSettingMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighbourhoodSettingMap.swift; sourceTree = "<group>"; };
-		4AE229BB275E092E0070350E /* NeighbourhoodSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighbourhoodSettingViewModel.swift; sourceTree = "<group>"; };
+		4AE229B4275B9D820070350E /* NeighborhoodSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodSettingView.swift; sourceTree = "<group>"; };
+		4AE229B6275BB2BE0070350E /* NeighborhoodSettingMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodSettingMap.swift; sourceTree = "<group>"; };
+		4AE229BB275E092E0070350E /* NeighborhoodSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodSettingViewModel.swift; sourceTree = "<group>"; };
 		4AED5E1927197BA400B7AC00 /* Frankfurt.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Frankfurt.gpx; sourceTree = "<group>"; };
 		4AED5E1C27197E1F00B7AC00 /* VerifyNeighborhoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyNeighborhoodViewController.swift; sourceTree = "<group>"; };
 		4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerTests.swift; sourceTree = "<group>"; };
@@ -976,6 +982,26 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		4AA6CE11276A4E1E00FF0C91 /* NeighborhoodSetting */ = {
+			isa = PBXGroup;
+			children = (
+				4AE229B4275B9D820070350E /* NeighborhoodSettingView.swift */,
+				4AE229BB275E092E0070350E /* NeighborhoodSettingViewModel.swift */,
+				4AE229B6275BB2BE0070350E /* NeighborhoodSettingMap.swift */,
+			);
+			path = NeighborhoodSetting;
+			sourceTree = "<group>";
+		};
+		4AA6CE12276A4E3400FF0C91 /* VerifyNeighborhood */ = {
+			isa = PBXGroup;
+			children = (
+				4AA6CE13276A4F5400FF0C91 /* VerifyNeighborhoodView.swift */,
+				4AA6CE15276A4F8A00FF0C91 /* VerifyNeighborhoodViewModel.swift */,
+				4AA6CE17276A4FD500FF0C91 /* VerifyNeighborhoodMap.swift */,
+			);
+			path = VerifyNeighborhood;
+			sourceTree = "<group>";
+		};
 		4AC56675273B98B700776DBD /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1122,9 +1148,8 @@
 		4AE229BD275E2FCC0070350E /* SwiftUIComponents */ = {
 			isa = PBXGroup;
 			children = (
-				4AE229B4275B9D820070350E /* NeighbourhoodSettingView.swift */,
-				4AE229BB275E092E0070350E /* NeighbourhoodSettingViewModel.swift */,
-				4AE229B6275BB2BE0070350E /* NeighbourhoodSettingMap.swift */,
+				4AA6CE12276A4E3400FF0C91 /* VerifyNeighborhood */,
+				4AA6CE11276A4E1E00FF0C91 /* NeighborhoodSetting */,
 			);
 			path = SwiftUIComponents;
 			sourceTree = "<group>";
@@ -1502,6 +1527,7 @@
 				4A09C6AA27393F2000FD4E42 /* ChatMessageCell.swift in Sources */,
 				4A09C6A827393E5E00FD4E42 /* ChatMessage.swift in Sources */,
 				4AD53D2B2763883100F34874 /* UserImageUrlReadRequest.swift in Sources */,
+				4AA6CE14276A4F5400FF0C91 /* VerifyNeighborhoodView.swift in Sources */,
 				4A03E3BE275F658D00EB0210 /* CustomFonts.swift in Sources */,
 				4A3B52CD2714419B00EF4F93 /* LLError.swift in Sources */,
 				4A22DB3A274E3D0F00E5125B /* EmptyStateView.swift in Sources */,
@@ -1543,6 +1569,7 @@
 				4A155E482722F31C00C8B867 /* KHTTPClient.swift in Sources */,
 				4A09C69B273730B900FD4E42 /* ItemDisplayDetailViewModel.swift in Sources */,
 				4A03E3B8275F622400EB0210 /* CustomColors.swift in Sources */,
+				4AA6CE18276A4FD500FF0C91 /* VerifyNeighborhoodMap.swift in Sources */,
 				4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */,
 				4AC5667E273BE7E400776DBD /* LocalProfileRepository.swift in Sources */,
 				4ACA8208275790ED003C7E0E /* ImageSelectViewModel.swift in Sources */,
@@ -1565,8 +1592,9 @@
 				4AED5E30271C179F00B7AC00 /* HeaderLabel.swift in Sources */,
 				4AED5E3F271D9E8200B7AC00 /* BackendAPIClient.swift in Sources */,
 				4AED5E6E2720039500B7AC00 /* AuthenticationResponse.swift in Sources */,
-				4AE229B7275BB2BE0070350E /* NeighbourhoodSettingMap.swift in Sources */,
+				4AE229B7275BB2BE0070350E /* NeighborhoodSettingMap.swift in Sources */,
 				4A00FC542767D3B5007C5B11 /* UserBoughtItemRepository.swift in Sources */,
+				4AA6CE16276A4F8A00FF0C91 /* VerifyNeighborhoodViewModel.swift in Sources */,
 				4A47E6E12731DA8F00B9018A /* SwipeImageViewModel.swift in Sources */,
 				4A3B52A22712461500EF4F93 /* MessagesViewController.swift in Sources */,
 				4A3B5268271239CE00EF4F93 /* SceneDelegate.swift in Sources */,
@@ -1606,7 +1634,7 @@
 				4A00FC3327676B07007C5B11 /* ItemListElementDTO.swift in Sources */,
 				4ACA821027590BD3003C7E0E /* InputViewModel.swift in Sources */,
 				4AEE8F6D2726CC73004CB686 /* HomeViewModel.swift in Sources */,
-				4AE229BC275E092E0070350E /* NeighbourhoodSettingViewModel.swift in Sources */,
+				4AE229BC275E092E0070350E /* NeighborhoodSettingViewModel.swift in Sources */,
 				4AE229A6275A33C40070350E /* ItemComposeViewModel.swift in Sources */,
 				4AEE8F6F2726DF93004CB686 /* ItemCell.swift in Sources */,
 				4A47E6D227317CA700B9018A /* ItemDisplayBriefViewController.swift in Sources */,
@@ -1651,7 +1679,7 @@
 				4ACA81F02754CF28003C7E0E /* ImageRepository.swift in Sources */,
 				4AC56674273B98AE00776DBD /* RecentMessageCell.swift in Sources */,
 				4A47E6E827331E6F00B9018A /* CoordinatorFactory.swift in Sources */,
-				4AE229B5275B9D820070350E /* NeighbourhoodSettingView.swift in Sources */,
+				4AE229B5275B9D820070350E /* NeighborhoodSettingView.swift in Sources */,
 				4A09C6A32739282A00FD4E42 /* ChatViewController.swift in Sources */,
 				4AE229A2275A2B7B0070350E /* ItemComposeViewController.swift in Sources */,
 				4AED5E2D271B87ED00B7AC00 /* AlertViewController.swift in Sources */,

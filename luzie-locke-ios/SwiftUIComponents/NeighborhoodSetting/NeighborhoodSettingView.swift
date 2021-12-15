@@ -1,5 +1,5 @@
 //
-//  RadiusSettingView.swift
+//  NeighborhoodSettingView.swift
 //  luzie-locke-ios
 //
 //  Created by Harry on 04.12.21.
@@ -8,15 +8,15 @@
 import SwiftUI
 import MapKit
 
-struct NeighbourhoodSettingView: View {
+struct NeighborhoodSettingView: View {
   
-  @EnvironmentObject var viewModel: NeighbourhoodSettingViewModel
+  @EnvironmentObject var viewModel: NeighborhoodSettingViewModel
   
   var body: some View {
     ZStack(alignment: .top) {
 
       VStack {
-        NeighbourhoodSettingMap().edgesIgnoringSafeArea(.all)
+        NeighborhoodSettingMap().edgesIgnoringSafeArea(.all)
         HStack {
           Spacer()
           Button {
