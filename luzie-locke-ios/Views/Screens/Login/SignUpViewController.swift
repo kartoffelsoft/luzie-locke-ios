@@ -1,40 +1,49 @@
 //
-//  LoginViewController.swift
+//  SignUpViewController.swift
 //  luzie-locke-ios
 //
-//  Created by Harry on 10.10.21.
+//  Created by Harry on 15.12.21.
 //
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class SignUpViewController: UIViewController {
   
-  let viewModel: LoginViewModel
+  let viewModel: SignUpViewModel
   
-  private let loginButton = BasicButton(backgroundColor: CustomUIColors.primaryColor, title: "LOGIN")
-  private let dividerView = DividerView()
+  private let signUpButton = BasicButton(backgroundColor: CustomUIColors.primaryColor, title: "SIGN UP")
   
   private let titleLabel: CustomLabel = {
     let label = CustomLabel(font: CustomUIFonts.title, textColor: CustomUIColors.primaryColor)
     label.textAlignment = .center
-    label.text = "Log in"
+    label.text = "Sign up"
     return label
   }()
   
   private let subTextLabel: CustomLabel = {
     let label = CustomLabel(font: CustomUIFonts.caption, textColor: CustomUIColors.primaryColorLight1)
-    label.text = "No account?"
+    label.text = "Already member?"
     return label
   }()
   
-  private var goToSignUpButton: UIButton = {
+  private var goToLoginButton: UIButton = {
     let button = UIButton(type: .system)
-    button.setTitle("Sign up", for: .normal)
+    button.setTitle("Login", for: .normal)
     button.setTitleColor(CustomUIColors.tertiaryColor, for: .normal)
-    
     button.translatesAutoresizingMaskIntoConstraints = false
     button.titleLabel?.font = CustomUIFonts.caption
     return button
+  }()
+  
+  private let nameTextField: BasicTextField = {
+    let textField = BasicTextField(padding: 32, height: 50)
+    textField.placeholder = "Enter name"
+    textField.keyboardType = .emailAddress
+
+    textField.leftView = UIImageView(image: CustomUIImages.envelope.withTintColor(CustomUIColors.primaryColorLight1, renderingMode: .alwaysOriginal))
+    textField.leftViewMode = .always
+    textField.layer.sublayerTransform = CATransform3DMakeTranslation(12, 0, 0);
+    return textField
   }()
   
   private let emailTextField: BasicTextField = {
@@ -45,8 +54,6 @@ class LoginViewController: UIViewController {
     textField.leftView = UIImageView(image: CustomUIImages.envelope.withTintColor(CustomUIColors.primaryColorLight1, renderingMode: .alwaysOriginal))
     textField.leftViewMode = .always
     textField.layer.sublayerTransform = CATransform3DMakeTranslation(12, 0, 0);
-    
-//    textField.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
     return textField
   }()
   
@@ -57,29 +64,29 @@ class LoginViewController: UIViewController {
     
     textField.leftView = UIImageView(image: CustomUIImages.lock.withTintColor(CustomUIColors.primaryColorLight1, renderingMode: .alwaysOriginal))
     textField.leftViewMode = .always
-    textField.layer.sublayerTransform = CATransform3DMakeTranslation(14, 0, 0);
-    
-    //    textField.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
+    textField.layer.sublayerTransform = CATransform3DMakeTranslation(14, 0, 0)
     return textField
   }()
   
-  private let googleButton: UIButton = {
-    let button = UIButton(type: .system)
-    button.setBackgroundImage(UIImage(named: "GoogleButton")?.withRenderingMode(.alwaysOriginal), for: .normal)
-    button.imageView?.contentMode = .scaleAspectFit
-    button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 30)
-    return button
+  private let verifyPasswordTextField: BasicTextField = {
+    let textField = BasicTextField(padding: 32, height: 50)
+    textField.placeholder = "Verify password"
+    textField.isSecureTextEntry = true
+    
+    textField.leftView = UIImageView(image: CustomUIImages.lock.withTintColor(CustomUIColors.primaryColorLight1, renderingMode: .alwaysOriginal))
+    textField.leftViewMode = .always
+    textField.layer.sublayerTransform = CATransform3DMakeTranslation(12, 0, 0);
+    return textField
   }()
   
-  init(viewModel: LoginViewModel) {
-    self.viewModel      = viewModel
+  init(viewModel: SignUpViewModel) {
+    self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    viewModel.delegate                              = self
+
     navigationController?.navigationBar.isHidden    = true
     view.backgroundColor                            = .systemBackground
     
@@ -97,10 +104,9 @@ class LoginViewController: UIViewController {
   private func configureLayout() {
     let titleContainerView      = makeTitleContainerView()
     let emailLoginContainerView = makeEmailLoginContainerView()
-    let thirdPartyContainerView = makeThirdPartyContainerView()
 
     let containerView = UIStackView(
-      arrangedSubviews: [ titleContainerView, emailLoginContainerView, dividerView, thirdPartyContainerView ])
+      arrangedSubviews: [ titleContainerView, emailLoginContainerView ])
     
     containerView.translatesAutoresizingMaskIntoConstraints = false
     containerView.axis                                      = .vertical
@@ -116,7 +122,7 @@ class LoginViewController: UIViewController {
   }
   
   private func makeTitleContainerView() -> UIView {
-    let subContainerView = UIStackView(arrangedSubviews: [ subTextLabel, goToSignUpButton ])
+    let subContainerView = UIStackView(arrangedSubviews: [ subTextLabel, goToLoginButton ])
     subContainerView.translatesAutoresizingMaskIntoConstraints  = false
     subContainerView.axis = .horizontal
     subContainerView.spacing = 5
@@ -138,68 +144,32 @@ class LoginViewController: UIViewController {
   }
   
   private func makeEmailLoginContainerView() -> UIView {
-    let view = UIStackView(arrangedSubviews: [ emailTextField, passwordTextField, loginButton ])
+    let view = UIStackView(arrangedSubviews: [ nameTextField, emailTextField, passwordTextField, verifyPasswordTextField, signUpButton ])
     view.translatesAutoresizingMaskIntoConstraints  = false
     view.axis                                       = .vertical
     view.spacing                                    = 8
     
     NSLayoutConstraint.activate([
-      loginButton.heightAnchor.constraint(equalToConstant: 45),
-    ])
-    
-    return view
-  }
-  
-  private func makeThirdPartyContainerView() -> UIView {
-    let view = UIStackView(arrangedSubviews: [ googleButton ])
-    view.translatesAutoresizingMaskIntoConstraints  = false
-    view.axis                                       = .vertical
-    view.spacing                                    = 8
-    view.alignment                                  = .center
-    
-    NSLayoutConstraint.activate([
-      googleButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6),
-      googleButton.heightAnchor.constraint(equalTo: googleButton.widthAnchor, multiplier: 0.25)
+      signUpButton.heightAnchor.constraint(equalToConstant: 45),
     ])
     
     return view
   }
   
   private func configureHandlers() {
-    goToSignUpButton.addTarget(self, action: #selector(handleGoToSignUpButtonTap), for: .touchUpInside)
-    loginButton.addTarget(self, action: #selector(handleLoginButtonTap), for: .touchUpInside)
-    googleButton.addTarget(self, action: #selector(handleGoogleButtonTap), for: .touchUpInside)
+    goToLoginButton.addTarget(self, action: #selector(handleGoToLoginButtonTap), for: .touchUpInside)
+    signUpButton.addTarget(self, action: #selector(handleSignUpButtonTap), for: .touchUpInside)
   }
   
-  @objc private func handleGoToSignUpButtonTap() {
-    viewModel.didTapGoToSignUp()
+  @objc private func handleGoToLoginButtonTap() {
+    viewModel.didTapGoToLogin()
   }
   
-  @objc private func handleLoginButtonTap() {
+  @objc private func handleSignUpButtonTap() {
     print("handleLoginButtonTap")
   }
-  
-  @objc private func handleGoogleButtonTap() {
-    viewModel.performGoogleLogin(self)
-  }
-  
+
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
-  }
-}
-
-extension LoginViewController: LoginViewModelDelegate {
-  
-  func didLogin() {
-    DispatchQueue.main.async {
-      self.dismiss(animated: true)
-    }
-  }
-  
-  func didGetError(_ error: LLError) {
-    presentAlertOnMainThread(
-      title: "Unable to complete",
-      message: error.rawValue,
-      buttonTitle: "OK")
   }
 }

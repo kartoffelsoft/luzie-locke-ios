@@ -38,6 +38,12 @@ class LoginCoordinator: Coordinator {
     navigationController.pushViewController(vc, animated: true)
   }
   
+  func navigateToSignUp() {
+    let viewModel       = factory.makeSignUpViewModel(coordinator: self)
+    let viewController  = factory.makeSignUpViewController(viewModel: viewModel)
+    navigationController.pushViewController(viewController, animated: true)
+  }
+  
   func popViewController() {
     navigationController.popViewController(animated: true)
   }

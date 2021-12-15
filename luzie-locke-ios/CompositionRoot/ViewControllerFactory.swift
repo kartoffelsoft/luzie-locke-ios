@@ -8,11 +8,14 @@
 import UIKit
 
 protocol ViewControllerFactory {
+  
   func makeMainTabBarController() -> MainTabBarController
   func makeLoginViewController(viewModel: LoginViewModel) -> LoginViewController
   func makeHomeViewController(viewModel: HomeViewModel) -> HomeViewController
   func makeMessagesViewController() -> MessagesViewController
   func makeSettingsViewController(viewModel: SettingsViewModel) -> SettingsViewController
+  
+  func makeSignUpViewController(viewModel: SignUpViewModel) -> SignUpViewController
   
   func makeItemSearchViewController(viewModel: ItemSearchViewModel) -> ItemSearchViewController
   func makeItemComposeViewController(viewModel: ItemComposeViewModel) -> ItemComposeViewController
@@ -51,6 +54,10 @@ extension CompositionRoot: ViewControllerFactory {
     let viewController = SettingsViewController(viewModel: viewModel)
     viewController.tabBarItem = UITabBarItem(title: nil, image: Images.settings, selectedImage: Images.settings)
     return viewController
+  }
+  
+  func makeSignUpViewController(viewModel: SignUpViewModel) -> SignUpViewController {
+    return SignUpViewController(viewModel: viewModel)
   }
   
   func makeItemSearchViewController(viewModel: ItemSearchViewModel) -> ItemSearchViewController {

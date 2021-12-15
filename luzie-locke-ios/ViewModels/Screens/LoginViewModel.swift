@@ -83,4 +83,8 @@ class LoginViewModel {
       }
     }
   }
+  
+  func didTapGoToSignUp() {
+    coordinator.navigateToSignUp()
+  }
 }
