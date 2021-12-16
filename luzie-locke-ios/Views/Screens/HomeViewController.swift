@@ -90,9 +90,15 @@ class HomeViewController: UIViewController {
   }
   
   private func configureBindables() {
+    locationButton.setTitle(viewModel.bindableCityName.value, for: .normal)
+    
     viewModel.bindableItems.bind { [weak self] items in
-      if let items = items {
-        self?.updateData(on: items)
+      self?.updateData(on: items)
+    }
+    
+    viewModel.bindableCityName.bind { [weak self] name in
+      DispatchQueue.main.async {
+        self?.locationButton.setTitle(name, for: .normal)
       }
     }
   }
@@ -111,7 +117,8 @@ class HomeViewController: UIViewController {
     ])
   }
   
-  private func updateData(on items: [Item]) {
+  private func updateData(on items: [Item]?) {
+    guard let items = items else { return }
     var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
     snapshot.appendSections([.main])
     snapshot.appendItems(items)

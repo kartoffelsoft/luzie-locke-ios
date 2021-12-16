@@ -107,6 +107,10 @@ class MessagesViewModel {
     bindableRecentMessages.value?.remove(at: indexPath.row)
   }
   
+  func viewDidScrollToTop() {
+    refresh()
+  }
+  
   @objc private func handleDidLoginNotification() {
     refresh()
   }

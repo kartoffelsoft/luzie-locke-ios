@@ -23,7 +23,6 @@ class LocationMenuButton: UIButton {
   }
   
   private func configure() {
-    setTitle("Kronberg", for: .normal)
     setTitleColor(CustomUIColors.primaryColor, for: .normal)
     titleLabel?.font          = CustomUIFonts.body
     titleLabel?.lineBreakMode = .byClipping

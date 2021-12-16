@@ -17,23 +17,10 @@ class NeighborhoodSettingViewModel: NSObject, ObservableObject {
   private let coordinator:     SettingsCoordinator
   private let settingsUseCase: SettingsUseCaseProtocol
   
-  private let localLevelToRadiusMap: [Int: Double] = [
-    0: 3,
-    1: 5,
-    2: 10,
-    3: 20,
-    4: 30,
-    5: 50,
-    6: 100,
-    7: 200,
-    8: 300,
-    9: 600
-  ]
-  
   private var currentLocalLevel: Int? {
     didSet {
       guard let currentLocalLevel = currentLocalLevel else { return }
-      currentRadius = localLevelToRadiusMap[currentLocalLevel]
+      currentRadius = RadiusSettingsConfig.map[currentLocalLevel]
       if let currentRadius = currentRadius {
         currentRadiusText = "\(currentRadius) km"
         currentSpanDelta = currentRadius / 20
@@ -78,7 +65,7 @@ class NeighborhoodSettingViewModel: NSObject, ObservableObject {
   
   func didTapPlus() {
     guard let currentLocalLevel = currentLocalLevel else { return }
-    self.currentLocalLevel = min(currentLocalLevel + 1, localLevelToRadiusMap.count - 1)
+    self.currentLocalLevel = min(currentLocalLevel + 1, RadiusSettingsConfig.map.count - 1)
   }
   
   func didTapApply() {
@@ -87,6 +74,7 @@ class NeighborhoodSettingViewModel: NSObject, ObservableObject {
       guard let self = self else { return }
       switch(result) {
       case .success:
+        NotificationCenter.default.post(name: .didUpdateLocationSettings, object: nil)
         self.coordinator.popViewController()
       case .failure(let error):
         print(error)

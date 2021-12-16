@@ -17,8 +17,9 @@ class MessagesViewController: UIViewController {
   var viewModel: MessagesViewModel?
   
   private let tableView = UITableView()
+  private let refreshControl  = UIRefreshControl()
   private var dataSource: UITableViewDiffableDataSource<Section, RecentMessage>!
-  
+
   init() {
     super.init(nibName: nil, bundle: nil)
   }
@@ -46,7 +47,7 @@ class MessagesViewController: UIViewController {
     }
   }
   
-  func configureBackground() {
+  private func configureBackground() {
     if let image = CustomGradient.mainBackground(on: view) {
       view.backgroundColor = UIColor(patternImage: image)
     }
@@ -62,6 +63,10 @@ class MessagesViewController: UIViewController {
     tableView.tableFooterView = UIView(frame: .zero)
     
     tableView.register(RecentMessageCell.self, forCellReuseIdentifier: RecentMessageCell.reuseIdentifier)
+    
+    tableView.refreshControl = refreshControl
+    refreshControl.tintColor      = CustomUIColors.primaryColor
+    refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
   }
   
   private func configureDataSource() {
@@ -72,7 +77,7 @@ class MessagesViewController: UIViewController {
     })
   }
   
-  func configureBindables() {
+  private func configureBindables() {
     viewModel?.bindableRecentMessages.bind { [weak self] messages in
       if let messages = messages {
         self?.updateData(on: messages)
@@ -86,8 +91,13 @@ class MessagesViewController: UIViewController {
     snapshot.appendItems(messages)
     
     DispatchQueue.main.async {
+      self.refreshControl.endRefreshing()
       self.dataSource.apply(snapshot, animatingDifferences: true)
     }
+  }
+  
+  @objc private func handleRefresh() {
+    viewModel?.viewDidScrollToTop()
   }
   
   required init?(coder: NSCoder) {

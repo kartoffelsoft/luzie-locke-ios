@@ -49,6 +49,7 @@
 		4A09C6A827393E5E00FD4E42 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A09C6A727393E5E00FD4E42 /* ChatMessage.swift */; };
 		4A09C6AA27393F2000FD4E42 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A09C6A927393F2000FD4E42 /* ChatMessageCell.swift */; };
 		4A145AB4276B36280059CACD /* PopCoordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AB3276B36280059CACD /* PopCoordinatable.swift */; };
+		4A145AB6276B5E6A0059CACD /* RadiusSettingsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AB5276B5E6A0059CACD /* RadiusSettingsConfig.swift */; };
 		4A155E4027229D3600C8B867 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E3F27229D3600C8B867 /* AvatarImageView.swift */; };
 		4A155E432722A46300C8B867 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E422722A46300C8B867 /* Constants.swift */; };
 		4A155E462722E03600C8B867 /* OpenHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E452722E03600C8B867 /* OpenHTTPClient.swift */; };
@@ -272,6 +273,7 @@
 		4A09C6A727393E5E00FD4E42 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		4A09C6A927393F2000FD4E42 /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
 		4A145AB3276B36280059CACD /* PopCoordinatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopCoordinatable.swift; sourceTree = "<group>"; };
+		4A145AB5276B5E6A0059CACD /* RadiusSettingsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusSettingsConfig.swift; sourceTree = "<group>"; };
 		4A155E3F27229D3600C8B867 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		4A155E422722A46300C8B867 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4A155E452722E03600C8B867 /* OpenHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHTTPClient.swift; sourceTree = "<group>"; };
@@ -1189,6 +1191,7 @@
 			isa = PBXGroup;
 			children = (
 				4AED5E45271E2A3200B7AC00 /* BackendConfig.swift */,
+				4A145AB5276B5E6A0059CACD /* RadiusSettingsConfig.swift */,
 			);
 			path = Configs;
 			sourceTree = "<group>";
@@ -1653,6 +1656,7 @@
 				4A155E5A272415A800C8B867 /* UIView+Ext.swift in Sources */,
 				4AED5E7327201AD200B7AC00 /* ProfileStorage.swift in Sources */,
 				4AD53D1F2760CC2700F34874 /* DividerView.swift in Sources */,
+				4A145AB6276B5E6A0059CACD /* RadiusSettingsConfig.swift in Sources */,
 				4ACA820427576F41003C7E0E /* ImageSelectAddButton.swift in Sources */,
 				4AED5E63271EE9B000B7AC00 /* DefaultHeadersRequestInterceptor.swift in Sources */,
 				4A47E6DC2731CEFA00B9018A /* ItemDisplayBriefViewModel.swift in Sources */,

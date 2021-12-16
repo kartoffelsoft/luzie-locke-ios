@@ -43,6 +43,7 @@ extension CompositionRoot: ViewModelFactory {
   
   func makeHomeViewModel(coordinator: HomeCoordinator) -> HomeViewModel {
     return HomeViewModel(coordinator: coordinator,
+                         myProfileUseCase: myProfileUseCase,
                          imageUseCase: imageUseCase,
                          itemRepository: itemRepository)
   }

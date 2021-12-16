@@ -14,30 +14,37 @@ protocol HomeViewModelDelegate: AnyObject {
 
 class HomeViewModel {
   
-  weak var delegate:        HomeViewModelDelegate?
+  weak var delegate:            HomeViewModelDelegate?
   
-  let coordinator:          HomeCoordinator
-  let imageUseCase:         ImageUseCaseProtocol
-  let itemRepository:       ItemRepositoryProtocol
+  private let coordinator:      HomeCoordinator
+  private let myProfileUseCase: MyProfileUseCaseProtocol
+  private let imageUseCase:     ImageUseCaseProtocol
+  private let itemRepository:   ItemRepositoryProtocol
   
-  var bindableItems         = Bindable<[Item]>()
-  var itemCellViewModels    = [ItemCellViewModel]()
+  var itemCellViewModels        = [ItemCellViewModel]()
   
+  var bindableItems             = Bindable<[Item]>()
+  var bindableCityName          = Bindable<String>()
+  
+  private var isLoading                       = false
   private var itemsDictionary                 = [String: Item]()
   private var itemCellViewModelsDictionary    = [String: ItemCellViewModel]()
-  
-  private var isLoading: Bool = false
   
   var cursor: TimeInterval = Date().timeIntervalSince1970 * 1000
 
   init(coordinator:           HomeCoordinator,
+       myProfileUseCase:      MyProfileUseCaseProtocol,
        imageUseCase:          ImageUseCaseProtocol,
        itemRepository:        ItemRepositoryProtocol) {
     self.coordinator          = coordinator
+    self.myProfileUseCase     = myProfileUseCase
     self.imageUseCase         = imageUseCase
     self.itemRepository       = itemRepository
     
-    NotificationCenter.default.addObserver(self, selector: #selector(handleDidUpdateItemNotification), name: .didUpdateItem, object: nil)
+    bindableCityName.value = myProfileUseCase.getCityName()
+    
+    NotificationCenter.default.addObserver(self, selector: #selector(handleRefreshRequest), name: .didUpdateItem, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(handleRefreshRequest), name: .didUpdateLocationSettings, object: nil)
   }
   
   private func loadData() {
@@ -86,6 +93,7 @@ class HomeViewModel {
   }
   
   private func refresh() {
+    bindableCityName.value        = myProfileUseCase.getCityName()
     cursor                        = Date().timeIntervalSince1970 * 1000
     itemsDictionary               = [String: Item]()
     itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
@@ -119,7 +127,7 @@ class HomeViewModel {
     }
   }
   
-  @objc private func handleDidUpdateItemNotification() {
+  @objc private func handleRefreshRequest() {
     refresh()
   }
 }

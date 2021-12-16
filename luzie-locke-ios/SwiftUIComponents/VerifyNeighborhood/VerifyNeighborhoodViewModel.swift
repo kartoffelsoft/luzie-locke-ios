@@ -64,7 +64,7 @@ class VerifyNeighborhoodViewModel: NSObject, ObservableObject {
     settingsUseCase.setLocation(city: city, lat: lat, lng: lng) { result in
       switch result {
       case .success:
-
+        NotificationCenter.default.post(name: .didUpdateLocationSettings, object: nil)
         self.coordinator.popViewController()
       case .failure(let error):
         print(error)
