@@ -37,7 +37,7 @@ extension CompositionRoot: ViewModelFactory {
   func makeLoginViewModel(coordinator: LoginCoordinator) -> LoginViewModel {
     return LoginViewModel(coordinator: coordinator,
                           auth: auth,
-                          localProfileRepository: localProfileRepository,
+                          myProfileUseCase: myProfileUseCase,
                           backendApiClient: backendApiClient)
   }
   

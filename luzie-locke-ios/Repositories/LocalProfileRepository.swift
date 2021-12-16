@@ -43,7 +43,7 @@ class LocalProfileRepository: LocalProfileRepositoryProtocol {
   }
   
   func delete() {
-    data = nil
-    // delete UserDefault
+    UserDefaults.standard.removeObject(forKey: self.key)
+    UserDefaults.standard.synchronize()
   }
 }

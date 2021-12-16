@@ -13,6 +13,8 @@ protocol MyProfileUseCaseProtocol {
   
   func setLocalLevel(localLevel: Int)
   func setLocation(city: String, lat: Double, lng: Double)
+  
+  func isLocationSet() -> Bool
 }
 
 class MyProfileUseCase: MyProfileUseCaseProtocol {
@@ -43,5 +45,11 @@ class MyProfileUseCase: MyProfileUseCaseProtocol {
       UserProfile(id: p.id, name: p.name, email: p.email, reputation: p.reputation,
                   imageUrl: p.imageUrl, localLevel: p.localLevel, city: city,
                   location: UserProfile.Location(type: "Point", coordinates: [ lng, lat ])))
+  }
+  
+  func isLocationSet() -> Bool {
+    guard let city = localProfileRepository.read()?.city else { return false }
+
+    return !city.isEmpty
   }
 }

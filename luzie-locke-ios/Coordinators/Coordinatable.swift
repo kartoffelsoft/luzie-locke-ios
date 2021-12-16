@@ -8,6 +8,7 @@
 import UIKit
 
 protocol Coordinatable: AnyObject {
+  
   var children: [Coordinatable] { get set }
   
   var navigationController: UINavigationController { get set }

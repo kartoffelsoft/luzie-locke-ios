@@ -170,7 +170,6 @@
 		4AE229B5275B9D820070350E /* NeighborhoodSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229B4275B9D820070350E /* NeighborhoodSettingView.swift */; };
 		4AE229B7275BB2BE0070350E /* NeighborhoodSettingMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229B6275BB2BE0070350E /* NeighborhoodSettingMap.swift */; };
 		4AE229BC275E092E0070350E /* NeighborhoodSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE229BB275E092E0070350E /* NeighborhoodSettingViewModel.swift */; };
-		4AED5E1D27197E1F00B7AC00 /* VerifyNeighborhoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1C27197E1F00B7AC00 /* VerifyNeighborhoodViewController.swift */; };
 		4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */; };
 		4AED5E25271A0CFD00B7AC00 /* MKViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E24271A0CFD00B7AC00 /* MKViewMock.swift */; };
 		4AED5E27271A0D1300B7AC00 /* CLLocationManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E26271A0D1300B7AC00 /* CLLocationManagerMock.swift */; };
@@ -396,7 +395,6 @@
 		4AE229B6275BB2BE0070350E /* NeighborhoodSettingMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodSettingMap.swift; sourceTree = "<group>"; };
 		4AE229BB275E092E0070350E /* NeighborhoodSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeighborhoodSettingViewModel.swift; sourceTree = "<group>"; };
 		4AED5E1927197BA400B7AC00 /* Frankfurt.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Frankfurt.gpx; sourceTree = "<group>"; };
-		4AED5E1C27197E1F00B7AC00 /* VerifyNeighborhoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyNeighborhoodViewController.swift; sourceTree = "<group>"; };
 		4AED5E1F2719D60000B7AC00 /* MapViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerTests.swift; sourceTree = "<group>"; };
 		4AED5E24271A0CFD00B7AC00 /* MKViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKViewMock.swift; sourceTree = "<group>"; };
 		4AED5E26271A0D1300B7AC00 /* CLLocationManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLLocationManagerMock.swift; sourceTree = "<group>"; };
@@ -765,7 +763,6 @@
 				4A09C6A127391DEA00FD4E42 /* Messages */,
 				4A47E6D52731B88F00B9018A /* SwipeImage */,
 				4AEE8F722727BC6D004CB686 /* Item */,
-				4AED5E182719669600B7AC00 /* Map */,
 				4A3B5269271239CE00EF4F93 /* MainTabBarController.swift */,
 				4A3B52A8271256CD00EF4F93 /* LoginViewController.swift */,
 				4A3B529A2712401D00EF4F93 /* HomeViewController.swift */,
@@ -1160,14 +1157,6 @@
 			path = SwiftUIComponents;
 			sourceTree = "<group>";
 		};
-		4AED5E182719669600B7AC00 /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				4AED5E1C27197E1F00B7AC00 /* VerifyNeighborhoodViewController.swift */,
-			);
-			path = Map;
-			sourceTree = "<group>";
-		};
 		4AED5E1E2719D5BF00B7AC00 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -1548,7 +1537,6 @@
 				4A47E6D82731B8E000B9018A /* SwipeImageViewController.swift in Sources */,
 				4AED5E7527201BCF00B7AC00 /* SimpleStringStorage.swift in Sources */,
 				4A00FC2827654898007C5B11 /* ItemStateUpdateRequest.swift in Sources */,
-				4AED5E1D27197E1F00B7AC00 /* VerifyNeighborhoodViewController.swift in Sources */,
 				4A00FC3B27677F0B007C5B11 /* UserProfileReadRequest.swift in Sources */,
 				4A00FC4C2767BAF7007C5B11 /* UserOpenItemListReadRequest.swift in Sources */,
 				4A47E6BD2730288200B9018A /* ItemDisplayViewModel.swift in Sources */,

@@ -88,6 +88,11 @@ class LoginViewController: UIViewController {
     configureHandlers()
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    viewModel.viewDidAppear()
+  }
+  
   private func configureBackground() {
     if let image = CustomGradient.mainBackground(on: view) {
       view.backgroundColor = UIColor(patternImage: image)

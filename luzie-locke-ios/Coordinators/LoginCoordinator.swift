@@ -6,8 +6,8 @@
 //
 
 import UIKit
-import SwiftUI
 import MapKit
+import SwiftUI
 
 class LoginCoordinator: Coordinatable {
   
@@ -32,12 +32,6 @@ class LoginCoordinator: Coordinatable {
     self.navigationController.pushViewController(vc, animated: true)
   }
   
-  func navigateToVerifyNeighborhood(selectAction: @escaping MapViewCallback) {
-    let vc = VerifyNeighborhoodViewController(mapView: MKMapView(), locationManager: CLLocationManager())
-    vc.selectAction = selectAction
-    navigationController.pushViewController(vc, animated: true)
-  }
-  
   func navigateToVerifyNeighborhood() {
     let viewModel      = factory.makeVerifyNeighborhoodViewModel(coordinator: self)
     let viewController = UIHostingController(rootView: VerifyNeighborhoodView().environmentObject(viewModel))
@@ -49,7 +43,6 @@ class LoginCoordinator: Coordinatable {
     let viewController  = factory.makeSignUpViewController(viewModel: viewModel)
     navigationController.pushViewController(viewController, animated: true)
   }
-
 }
 
 extension LoginCoordinator: PopCoordinatable {

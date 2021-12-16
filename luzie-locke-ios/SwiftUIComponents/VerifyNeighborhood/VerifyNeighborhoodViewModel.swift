@@ -64,6 +64,7 @@ class VerifyNeighborhoodViewModel: NSObject, ObservableObject {
     settingsUseCase.setLocation(city: city, lat: lat, lng: lng) { result in
       switch result {
       case .success:
+
         self.coordinator.popViewController()
       case .failure(let error):
         print(error)
