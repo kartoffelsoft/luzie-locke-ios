@@ -7,13 +7,13 @@
 
 import UIKit
 
-class AppMainCoordinator: Coordinator {
+class AppMainCoordinator: Coordinatable {
 
   typealias Factory = ViewControllerFactory & CoordinatorFactory
   let factory: Factory
   
   var navigationController: UINavigationController
-  var children: [Coordinator] = []
+  var children: [Coordinatable] = []
 
   let window: UIWindow
   

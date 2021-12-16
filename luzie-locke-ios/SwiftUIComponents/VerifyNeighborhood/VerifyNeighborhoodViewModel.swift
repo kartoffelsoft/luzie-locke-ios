@@ -16,11 +16,11 @@ class VerifyNeighborhoodViewModel: NSObject, ObservableObject {
   private var currentLongitude:   CLLocationDegrees?
 
   private let locationManager:    CLLocationManager
-  private let coordinator:        SettingsCoordinator
+  private let coordinator:        PopCoordinatable
   private let settingsUseCase:    SettingsUseCaseProtocol
   
   init(locationManager:     CLLocationManager,
-       coordinator:         SettingsCoordinator,
+       coordinator:         PopCoordinatable,
        settingsUseCase:     SettingsUseCaseProtocol) {
     self.locationManager    = locationManager
     self.coordinator        = coordinator

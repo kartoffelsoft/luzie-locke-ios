@@ -7,13 +7,13 @@
 
 import UIKit
 
-class ItemSearchCoordinator: Coordinator {
+class ItemSearchCoordinator: Coordinatable {
   
   typealias Factory = CoordinatorFactory & ViewControllerFactory & ViewModelFactory
   
   let factory: Factory
   var navigationController: UINavigationController
-  var children = [Coordinator]()
+  var children = [Coordinatable]()
   
   init(factory: Factory,
        navigationController: UINavigationController) {

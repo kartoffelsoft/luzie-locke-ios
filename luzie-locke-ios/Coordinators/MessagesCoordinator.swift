@@ -7,12 +7,12 @@
 
 import UIKit
 
-class MessagesCoordinator: Coordinator {
+class MessagesCoordinator: Coordinatable {
   
   typealias Factory = CoordinatorFactory & ViewControllerFactory & ViewModelFactory
   
   var navigationController: UINavigationController
-  var children = [Coordinator]()
+  var children = [Coordinatable]()
   
   private let factory: Factory
   

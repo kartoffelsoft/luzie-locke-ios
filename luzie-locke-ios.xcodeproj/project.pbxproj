@@ -48,6 +48,7 @@
 		4A09C6A627392DE100FD4E42 /* ChatInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A09C6A527392DE100FD4E42 /* ChatInputAccessoryView.swift */; };
 		4A09C6A827393E5E00FD4E42 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A09C6A727393E5E00FD4E42 /* ChatMessage.swift */; };
 		4A09C6AA27393F2000FD4E42 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A09C6A927393F2000FD4E42 /* ChatMessageCell.swift */; };
+		4A145AB4276B36280059CACD /* PopCoordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AB3276B36280059CACD /* PopCoordinatable.swift */; };
 		4A155E4027229D3600C8B867 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E3F27229D3600C8B867 /* AvatarImageView.swift */; };
 		4A155E432722A46300C8B867 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E422722A46300C8B867 /* Constants.swift */; };
 		4A155E462722E03600C8B867 /* OpenHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E452722E03600C8B867 /* OpenHTTPClient.swift */; };
@@ -88,7 +89,7 @@
 		4A3B52C72713996000EF4F93 /* GoogleSignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52C62713996000EF4F93 /* GoogleSignInService.swift */; };
 		4A3B52C92713A02D00EF4F93 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52C82713A02D00EF4F93 /* UIViewController+Ext.swift */; };
 		4A3B52CD2714419B00EF4F93 /* LLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52CC2714419B00EF4F93 /* LLError.swift */; };
-		4A3B52D527159CA300EF4F93 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52D427159CA300EF4F93 /* Coordinator.swift */; };
+		4A3B52D527159CA300EF4F93 /* Coordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52D427159CA300EF4F93 /* Coordinatable.swift */; };
 		4A3B52DB2715ADEF00EF4F93 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52DA2715ADEF00EF4F93 /* LoginCoordinator.swift */; };
 		4A3B52DD2715BA3700EF4F93 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52DC2715BA3700EF4F93 /* HomeCoordinator.swift */; };
 		4A3B52DF2715C0F200EF4F93 /* ItemSearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52DE2715C0F200EF4F93 /* ItemSearchCoordinator.swift */; };
@@ -271,6 +272,7 @@
 		4A09C6A527392DE100FD4E42 /* ChatInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputAccessoryView.swift; sourceTree = "<group>"; };
 		4A09C6A727393E5E00FD4E42 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
 		4A09C6A927393F2000FD4E42 /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
+		4A145AB3276B36280059CACD /* PopCoordinatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopCoordinatable.swift; sourceTree = "<group>"; };
 		4A155E3F27229D3600C8B867 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		4A155E422722A46300C8B867 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4A155E452722E03600C8B867 /* OpenHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHTTPClient.swift; sourceTree = "<group>"; };
@@ -311,7 +313,7 @@
 		4A3B52C62713996000EF4F93 /* GoogleSignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInService.swift; sourceTree = "<group>"; };
 		4A3B52C82713A02D00EF4F93 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		4A3B52CC2714419B00EF4F93 /* LLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLError.swift; sourceTree = "<group>"; };
-		4A3B52D427159CA300EF4F93 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		4A3B52D427159CA300EF4F93 /* Coordinatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinatable.swift; sourceTree = "<group>"; };
 		4A3B52DA2715ADEF00EF4F93 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		4A3B52DC2715BA3700EF4F93 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		4A3B52DE2715C0F200EF4F93 /* ItemSearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSearchCoordinator.swift; sourceTree = "<group>"; };
@@ -854,7 +856,8 @@
 			isa = PBXGroup;
 			children = (
 				4A09C6992737200F00FD4E42 /* Item */,
-				4A3B52D427159CA300EF4F93 /* Coordinator.swift */,
+				4A3B52D427159CA300EF4F93 /* Coordinatable.swift */,
+				4A145AB3276B36280059CACD /* PopCoordinatable.swift */,
 				4A3B52DA2715ADEF00EF4F93 /* LoginCoordinator.swift */,
 				4A3B52DC2715BA3700EF4F93 /* HomeCoordinator.swift */,
 				4A3B52E02715C10500EF4F93 /* MessagesCoordinator.swift */,
@@ -1585,7 +1588,7 @@
 				4ACA820C2758BA6C003C7E0E /* ItemUpdateViewModel.swift in Sources */,
 				4AEE8FAB272B5C69004CB686 /* ItemCreateViewModel.swift in Sources */,
 				4A47E6BB272FE24200B9018A /* Dictionary+Ext.swift in Sources */,
-				4A3B52D527159CA300EF4F93 /* Coordinator.swift in Sources */,
+				4A3B52D527159CA300EF4F93 /* Coordinatable.swift in Sources */,
 				4A09C6A0273865FA00FD4E42 /* ItemInfoView.swift in Sources */,
 				4A475B932768E1E900D26B85 /* ChatInformationView.swift in Sources */,
 				4A00FC3827677D58007C5B11 /* BackendResponse.swift in Sources */,
@@ -1646,6 +1649,7 @@
 				4AED5E6C271FF32E00B7AC00 /* UpdateLocationResponse.swift in Sources */,
 				4AED5E3D271D95FC00B7AC00 /* AuthenticationRequest.swift in Sources */,
 				4AED5E32271C189E00B7AC00 /* BodyLabel.swift in Sources */,
+				4A145AB4276B36280059CACD /* PopCoordinatable.swift in Sources */,
 				4A47E6A8272CA01E00B9018A /* CloudStorage.swift in Sources */,
 				4AE229AA275A49DD0070350E /* FavoriteItemCreateRequest.swift in Sources */,
 				4A09C6982737120800FD4E42 /* ItemDisplayCoordinator.swift in Sources */,

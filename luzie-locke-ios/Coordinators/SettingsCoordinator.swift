@@ -11,14 +11,14 @@ import UIKit
 import SwiftUI
 import MapKit
 
-class SettingsCoordinator: Coordinator {
+class SettingsCoordinator: Coordinatable {
   
   typealias Factory = CoordinatorFactory & ViewControllerFactory & ViewModelFactory
   
   let factory               : Factory
   var navigationController  : UINavigationController
   
-  var children = [Coordinator]()
+  var children = [Coordinatable]()
 
   init(factory                : Factory,
        navigationController   : UINavigationController) {
@@ -62,11 +62,6 @@ class SettingsCoordinator: Coordinator {
     navigationController.pushViewController(viewController, animated: true)
   }
 
-  //  func navigateToVerifyNeighborhood(selectAction: @escaping MapViewCallback) {
-  //    let viewController = VerifyNeighborhoodViewController(mapView: MKMapView(), locationManager: CLLocationManager())
-  //    viewController.selectAction = selectAction
-  //    navigationController.pushViewController(viewController, animated: true)
-  //  }
   func navigateToItemDisplay(id: String) {
     let coordinator = factory.makeItemDisplayCoordinator(
       navigationController: navigationController,
@@ -75,10 +70,15 @@ class SettingsCoordinator: Coordinator {
     children.append(coordinator)
     coordinator.start()
   }
-  
+}
+
+extension SettingsCoordinator: PopCoordinatable {
+
   func popViewController() {
     DispatchQueue.main.async {
       self.navigationController.popViewController(animated: true)
     }
   }
+  
+  func popToRootViewController() {}
 }

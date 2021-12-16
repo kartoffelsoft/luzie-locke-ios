@@ -29,7 +29,7 @@ protocol ViewModelFactory {
   func makeUserFavoritesViewModel(coordinator: SettingsCoordinator) -> UserFavoritesViewModel
   
   func makeNeighborhoodSettingViewModel(coordinator: SettingsCoordinator) -> NeighborhoodSettingViewModel
-  func makeVerifyNeighborhoodViewModel(coordinator: SettingsCoordinator) -> VerifyNeighborhoodViewModel
+  func makeVerifyNeighborhoodViewModel(coordinator: PopCoordinatable) -> VerifyNeighborhoodViewModel
 }
 
 extension CompositionRoot: ViewModelFactory {
@@ -134,7 +134,7 @@ extension CompositionRoot: ViewModelFactory {
                                         settingsUseCase: settingsUseCase)
   }
   
-  func makeVerifyNeighborhoodViewModel(coordinator: SettingsCoordinator) -> VerifyNeighborhoodViewModel {
+  func makeVerifyNeighborhoodViewModel(coordinator: PopCoordinatable) -> VerifyNeighborhoodViewModel {
     return VerifyNeighborhoodViewModel(locationManager: CLLocationManager(),
                                        coordinator: coordinator,
                                        settingsUseCase: settingsUseCase)

@@ -7,14 +7,14 @@
 
 import UIKit
 
-class HomeCoordinator: NSObject, Coordinator {
+class HomeCoordinator: NSObject, Coordinatable {
   
   typealias Factory = CoordinatorFactory & ViewControllerFactory & ViewModelFactory
   
   let factory               : Factory
   var navigationController  : UINavigationController
   
-  var children = [Coordinator]()
+  var children = [Coordinatable]()
 
   init(factory:               Factory,
        navigationController:  UINavigationController) {
@@ -48,11 +48,7 @@ class HomeCoordinator: NSObject, Coordinator {
     coordinator.start()
   }
   
-  func popViewController() {
-    navigationController.popViewController(animated: true)
-  }
-  
-  private func childDidFinish(_ child: Coordinator?) {
+  private func childDidFinish(_ child: Coordinatable?) {
     for (index, coordinator) in children.enumerated() {
       if coordinator === child {
         children.remove(at: index)
@@ -62,7 +58,19 @@ class HomeCoordinator: NSObject, Coordinator {
   }
 }
 
+extension HomeCoordinator: PopCoordinatable {
+  
+  func popViewController() {
+    DispatchQueue.main.async {
+      self.navigationController.popViewController(animated: true)
+    }
+  }
+  
+  func popToRootViewController() {}
+}
+
 extension HomeCoordinator: UINavigationControllerDelegate {
+  
   func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
     guard let from = navigationController.transitionCoordinator?.viewController(forKey: .from) else {
       return

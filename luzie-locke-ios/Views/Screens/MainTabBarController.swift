@@ -19,7 +19,7 @@ class MainTabBarController: UITabBarController {
   
   let auth:                 Auth
   
-  let homeCoordinator:      Coordinator
+  let homeCoordinator:      Coordinatable
   let messagesCoordinator:  MessagesCoordinator
   let settingsCoordinator:  SettingsCoordinator
   

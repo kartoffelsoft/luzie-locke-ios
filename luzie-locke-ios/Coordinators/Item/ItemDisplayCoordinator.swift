@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ItemDisplayCoordinator: NSObject, Coordinator {
+class ItemDisplayCoordinator: NSObject, Coordinatable {
   
   typealias Factory = CoordinatorFactory & ViewControllerFactory & ViewModelFactory
   
@@ -15,7 +15,7 @@ class ItemDisplayCoordinator: NSObject, Coordinator {
   var navigationController: UINavigationController
   let id:                   String
   
-  var children = [Coordinator]()
+  var children = [Coordinatable]()
   
   init(factory: Factory, navigationController: UINavigationController, id: String) {
     self.factory              = factory
@@ -29,18 +29,6 @@ class ItemDisplayCoordinator: NSObject, Coordinator {
     navigationController.pushViewController(vc, animated: true)
   }
 
-  func popViewController() {
-    DispatchQueue.main.async {
-      self.navigationController.popViewController(animated: true)
-    }
-  }
-  
-  func popToRootViewController() {
-    DispatchQueue.main.async {
-      self.navigationController.popToRootViewController(animated: true)
-    }
-  }
-  
   func presentMore(_ viewController: UIViewController, item: Item) {
     let vm = factory.makeItemDisplayDetailViewModel(item: item)
     let vc = factory.makeItemDisplayDetailViewController(viewModel: vm)
@@ -58,5 +46,20 @@ class ItemDisplayCoordinator: NSObject, Coordinator {
     let viewController  = factory.makeItemComposeViewController(viewModel: viewModel)
     viewModel.item      = item
     navigationController.pushViewController(viewController, animated: true)
+  }
+}
+
+extension ItemDisplayCoordinator: PopCoordinatable {
+
+  func popViewController() {
+    DispatchQueue.main.async {
+      self.navigationController.popViewController(animated: true)
+    }
+  }
+  
+  func popToRootViewController() {
+    DispatchQueue.main.async {
+      self.navigationController.popToRootViewController(animated: true)
+    }
   }
 }
