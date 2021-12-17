@@ -9,8 +9,14 @@ import UIKit
 
 class ItemInfoView: UIView {
 
-  let titleLabel        = HeaderLabel(font: CustomUIFonts.subtitle, textColor: CustomUIColors.primaryColor, textAlignment: .left)
-  let descriptionLabel  = BodyLabel(font: CustomUIFonts.subtitle, textAlignment: .left)
+//  let titleLabel        = HeaderLabel(font: CustomUIFonts.subtitle, textColor: CustomUIColors.primaryColor, textAlignment: .left)
+  let titleLabel        = CustomLabel(font: CustomUIFonts.subtitle,
+                                      textColor: CustomUIColors.primaryColor,
+                                      textAlignment: .left)
+  
+  let descriptionLabel  = CustomLabel(font: CustomUIFonts.body,
+                                      textColor: .secondaryLabel,
+                                      textAlignment: .left)
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -23,7 +29,7 @@ class ItemInfoView: UIView {
     let stackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
     stackView.translatesAutoresizingMaskIntoConstraints = false
     stackView.axis                                      = .vertical
-    stackView.spacing                                   = 10
+    stackView.spacing                                   = 12
     
     addSubview(stackView)
     

@@ -72,6 +72,7 @@ class ItemDisplayBriefViewController: UIViewController {
     
     NSLayoutConstraint.activate([
       textStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+      textStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
       textStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
       textStackView.heightAnchor.constraint(equalToConstant: 50)
     ])

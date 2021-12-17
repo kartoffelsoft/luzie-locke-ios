@@ -34,6 +34,7 @@ class ImageSelectElementView: UIView {
     deleteButton.translatesAutoresizingMaskIntoConstraints  = false
 
     imageView.clipsToBounds       = true
+    imageView.contentMode         = .scaleAspectFill
     imageView.layer.cornerRadius  = 5
     
     deleteButton.setImage(Images.cross, for: .normal)

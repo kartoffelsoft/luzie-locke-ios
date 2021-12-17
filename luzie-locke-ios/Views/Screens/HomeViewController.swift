@@ -27,11 +27,11 @@ class HomeViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.viewModel.delegate = self
+    viewModel.delegate = self
     
     locationButton.addTarget(self, action: #selector(handleMenuTap), for: .touchUpInside)
-    navigationItem.leftBarButtonItem = UIBarButtonItem(customView: locationButton)
     
+    navigationItem.leftBarButtonItem = UIBarButtonItem(customView: locationButton)
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: Images.search, style: .plain, target: self, action: #selector(handleSearchTap))
     
     configureBackground()
@@ -91,7 +91,8 @@ class HomeViewController: UIViewController {
   
   private func configureBindables() {
     locationButton.setTitle(viewModel.bindableCityName.value, for: .normal)
-    
+    locationButton.sizeToFit()
+
     viewModel.bindableItems.bind { [weak self] items in
       self?.updateData(on: items)
     }
@@ -99,6 +100,7 @@ class HomeViewController: UIViewController {
     viewModel.bindableCityName.bind { [weak self] name in
       DispatchQueue.main.async {
         self?.locationButton.setTitle(name, for: .normal)
+        self?.locationButton.sizeToFit()
       }
     }
   }
