@@ -35,13 +35,13 @@ class ItemSearchViewController: UIViewController {
     configureBindables()
   }
   
-  func configureBackground() {
+  private func configureBackground() {
     if let image = CustomGradient.mainBackground(on: view) {
       view.backgroundColor = UIColor(patternImage: image)
     }
   }
   
-  func configureSearchController() {
+  private func configureSearchController() {
     searchController.searchResultsUpdater                       = self
     searchController.obscuresBackgroundDuringPresentation       = false
     searchController.searchBar.placeholder                      = ""
@@ -120,22 +120,13 @@ extension ItemSearchViewController: UISearchResultsUpdating {
   
   func updateSearchResults(for searchController: UISearchController) {
     debounceTimer?.invalidate()
+    
     debounceTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { [weak self] _ in
       guard let keyword = searchController.searchBar.text else {
         return
       }
-      
+
       self?.viewModel.viewDidSetSearchKeyword(keyword)
     }
-
-    //        guard let keyword = searchController.searchBar.text, !keyword.isEmpty else {
-    //            isSearching = false
-    //            filteredFollowers.removeAll()
-    //            updateData(on: followers)
-    //            return
-    //        }
-    //        isSearching = true
-    //        filteredFollowers = followers.filter { $0.login.lowercased().contains(keyword.lowercased()) }
-    //        updateData(on: filteredFollowers)
   }
 }

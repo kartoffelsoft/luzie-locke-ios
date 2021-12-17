@@ -92,7 +92,7 @@ class ItemRepository: ItemRepositoryProtocol {
   }
   
   func readListSearch(keyword: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
-    backendClient.GET(ItemReadListSearchRequest(q: keyword, cursor: cursor, limit: 8)) { result in
+    backendClient.GET(ItemReadListSearchRequest(q: SearchString(keyword), cursor: cursor, limit: 8)) { result in
       switch result {
       case .success(let response):
         if let response = response {

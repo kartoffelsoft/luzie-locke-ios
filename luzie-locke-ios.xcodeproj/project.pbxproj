@@ -50,6 +50,7 @@
 		4A09C6AA27393F2000FD4E42 /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A09C6A927393F2000FD4E42 /* ChatMessageCell.swift */; };
 		4A145AB4276B36280059CACD /* PopCoordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AB3276B36280059CACD /* PopCoordinatable.swift */; };
 		4A145AB6276B5E6A0059CACD /* RadiusSettingsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AB5276B5E6A0059CACD /* RadiusSettingsConfig.swift */; };
+		4A145AB9276CD3AE0059CACD /* SearchString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AB8276CD3AE0059CACD /* SearchString.swift */; };
 		4A155E4027229D3600C8B867 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E3F27229D3600C8B867 /* AvatarImageView.swift */; };
 		4A155E432722A46300C8B867 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E422722A46300C8B867 /* Constants.swift */; };
 		4A155E462722E03600C8B867 /* OpenHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E452722E03600C8B867 /* OpenHTTPClient.swift */; };
@@ -274,6 +275,7 @@
 		4A09C6A927393F2000FD4E42 /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
 		4A145AB3276B36280059CACD /* PopCoordinatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopCoordinatable.swift; sourceTree = "<group>"; };
 		4A145AB5276B5E6A0059CACD /* RadiusSettingsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusSettingsConfig.swift; sourceTree = "<group>"; };
+		4A145AB8276CD3AE0059CACD /* SearchString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchString.swift; sourceTree = "<group>"; };
 		4A155E3F27229D3600C8B867 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		4A155E422722A46300C8B867 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4A155E452722E03600C8B867 /* OpenHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHTTPClient.swift; sourceTree = "<group>"; };
@@ -729,6 +731,7 @@
 				4A09C6A727393E5E00FD4E42 /* ChatMessage.swift */,
 				4AC56671273B974700776DBD /* RecentMessage.swift */,
 				4A00FC2E27674CB3007C5B11 /* FavoriteItem.swift */,
+				4A145AB8276CD3AE0059CACD /* SearchString.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1553,6 +1556,7 @@
 				4AED5E2A271ADC8500B7AC00 /* PulseRoundButton.swift in Sources */,
 				4AC56672273B974700776DBD /* RecentMessage.swift in Sources */,
 				4A3B529D2712421300EF4F93 /* ItemSearchViewController.swift in Sources */,
+				4A145AB9276CD3AE0059CACD /* SearchString.swift in Sources */,
 				4AD53D212760E19200F34874 /* CustomUIImages.swift in Sources */,
 				4A22DB37274D74E900E5125B /* UserListingsViewModel.swift in Sources */,
 				4A3B52A62712539300EF4F93 /* FirebaseAuthService.swift in Sources */,

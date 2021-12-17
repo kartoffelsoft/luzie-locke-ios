@@ -9,7 +9,6 @@ import UIKit
 
 class ItemInfoView: UIView {
 
-//  let titleLabel        = HeaderLabel(font: CustomUIFonts.subtitle, textColor: CustomUIColors.primaryColor, textAlignment: .left)
   let titleLabel        = CustomLabel(font: CustomUIFonts.subtitle,
                                       textColor: CustomUIColors.primaryColor,
                                       textAlignment: .left)

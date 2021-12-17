@@ -32,12 +32,14 @@ struct ItemReadListSearchRequest: APIRequest {
     return "/api/items/search"
   }
   
-  let q: String
+  let q: SearchString
   let cursor: Double
   let limit: Int
   
   func toDictionary() -> [String: Any] {
-    return [ "q":       q,
+    
+    
+    return [ "q":       q.toString(),
              "cursor":  cursor,
              "limit":   limit   ]
   }
