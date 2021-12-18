@@ -11,9 +11,6 @@ class VerifyNeighborhoodViewModel: NSObject, ObservableObject {
   
   @Published var currentLocation:   String?
   @Published var currentCoordinate: CLLocationCoordinate2D?
-  
-  private var currentLatitude:    CLLocationDegrees?
-  private var currentLongitude:   CLLocationDegrees?
 
   private let locationManager:    CLLocationManager
   private let coordinator:        PopCoordinatable
@@ -47,8 +44,7 @@ class VerifyNeighborhoodViewModel: NSObject, ObservableObject {
             let firstPlacemark = placemarks.first else { return }
       
       self?.currentLocation = firstPlacemark.locality
-      self?.currentLatitude = location.coordinate.latitude
-      self?.currentLongitude = location.coordinate.longitude
+      self?.currentCoordinate = location.coordinate
     }
   }
   
@@ -58,8 +54,8 @@ class VerifyNeighborhoodViewModel: NSObject, ObservableObject {
 
   func didTapApply() {
     guard let city = currentLocation,
-          let lat = currentLatitude,
-          let lng = currentLongitude else { return }
+          let lat = currentCoordinate?.latitude,
+          let lng = currentCoordinate?.longitude else { return }
 
     settingsUseCase.setLocation(city: city, lat: lat, lng: lng) { result in
       switch result {

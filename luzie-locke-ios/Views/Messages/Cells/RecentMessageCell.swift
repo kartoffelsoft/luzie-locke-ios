@@ -61,6 +61,7 @@ class RecentMessageCell: UITableViewCell {
     
     userImageView.layer.borderWidth = 2
     userImageView.layer.borderColor = CustomUIColors.secondaryColor.cgColor
+    userImageView.layer.backgroundColor = CustomUIColors.primaryColorLight3.cgColor
 
     let stackView     = UIStackView(arrangedSubviews: [userNameLabel, messageLabel])
     stackView.axis    = .vertical
