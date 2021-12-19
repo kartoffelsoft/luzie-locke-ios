@@ -37,8 +37,8 @@ class ItemDisplayBriefViewController: UIViewController {
   }
   
   private func configureLayout() {
-    configureImageView()
     configureGradientLayer()
+    configureImageView()
     configureLabels()
     configureMoreButton()
   }
@@ -64,18 +64,20 @@ class ItemDisplayBriefViewController: UIViewController {
   
   private func configureLabels() {
     let textStackView = UIStackView(arrangedSubviews: [titleLabel, locationLabel])
+
     textStackView.translatesAutoresizingMaskIntoConstraints = false
     textStackView.axis                                      = .vertical
     textStackView.distribution                              = .equalSpacing
-    
     view.addSubview(textStackView)
-    
+
     NSLayoutConstraint.activate([
-      textStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-      textStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+      textStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       textStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
       textStackView.heightAnchor.constraint(equalToConstant: 50)
     ])
+
+    textStackView.layoutMargins = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+    textStackView.isLayoutMarginsRelativeArrangement = true
   }
   
   private func configureMoreButton() {

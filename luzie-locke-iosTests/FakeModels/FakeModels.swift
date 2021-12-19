@@ -42,7 +42,7 @@ class FakeModels {
   
   static func itemListElement(
     id: String = Faker.datatype.id(),
-    title: String = "tbd",
+    title: String = Faker.lorem.sentenece(),
     city: String = Faker.address.city(),
     price: String = String(Faker.datatype.int()),
     imageUrl: String = Faker.image.imageUrl(),

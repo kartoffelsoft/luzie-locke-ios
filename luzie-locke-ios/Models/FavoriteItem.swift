@@ -21,6 +21,5 @@ struct FavoriteItem {
     self.user       = dto.user
     self.item       = dto.item
     self.createdAt  = Date(timeIntervalSince1970: dto.createdAt / 1000)
-
   }
 }

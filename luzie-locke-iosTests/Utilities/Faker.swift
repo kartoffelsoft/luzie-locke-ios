@@ -13,6 +13,7 @@ class Faker {
   static let datatype = Datatype()
   static let address  = Address()
   static let image    = Image()
+  static let lorem    = Lorem()
   
   class Name {
     
@@ -62,6 +63,25 @@ class Faker {
               [ "github", "stackoverflow", "yelp", "sktelecom" ].randomElement()! + "." +
               [ "com", "net", "io", "de" ].randomElement()! + "/" +
               Faker.datatype.id()
+    }
+  }
+  
+  class Lorem {
+    
+    fileprivate init() {}
+    
+    func sentenece(wordCount: Int = 4) -> String {
+      let words = [
+        "Lorem", "ipsum", "dolor", "sit", "amet,", "consectetur", "adipiscing", "elit,",
+        "sed", "do", "eiusmod", "tempor", "incididunt", "ut", "labore", "et", "dolore", "magna",
+        "aliqua.", "Ut", "enim", "ad", "minim", "veniam,", "quis", "nostrud", "exercitation"
+      ]
+      
+      var s = ""
+      for _ in 0 ..< wordCount {
+        s.append(words.randomElement()!)
+      }
+      return s
     }
   }
 }
