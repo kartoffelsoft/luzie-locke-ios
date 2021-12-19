@@ -9,7 +9,7 @@ import Foundation
 
 protocol UserBoughtItemUseCaseProtocol {
   
-  func getItemList(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
+  func getItemList(cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void)
 }
 
 class UserBoughtItemUseCase: UserBoughtItemUseCaseProtocol {
@@ -23,7 +23,7 @@ class UserBoughtItemUseCase: UserBoughtItemUseCaseProtocol {
     self.userBoughtItemRepository = userBoughtItemRepository
   }
   
-  func getItemList(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
+  func getItemList(cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void) {
     guard let userId = localProfileRepository.read()?.id else { return }
     userBoughtItemRepository.readItemList(userId: userId, cursor: cursor, completion: completion)
   }

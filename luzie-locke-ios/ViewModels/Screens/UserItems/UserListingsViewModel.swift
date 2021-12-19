@@ -21,11 +21,11 @@ class UserListingsViewModel {
   let userOpenItemUseCase:  UserOpenItemUseCaseProtocol
   let userSoldItemUseCase:  UserSoldItemUseCaseProtocol
   
-  var bindableItems         = Bindable<[Item]>()
+  var bindableItems         = Bindable<[ItemListElement]>()
   var itemCellViewModels    = [ItemCellViewModel]()
   
   private var segment: Int = 0
-  private var itemsDictionary                 = [String: Item]()
+  private var itemsDictionary                 = [String: ItemListElement]()
   private var itemCellViewModelsDictionary    = [String: ItemCellViewModel]()
   
   private var isLoading: Bool = false
@@ -44,11 +44,11 @@ class UserListingsViewModel {
   
   private func reload() {
     itemCellViewModels = Array(itemCellViewModelsDictionary.values).sorted(by: { v1, v2 in
-      return v1.item!.modifiedAt!.compare(v2.item!.modifiedAt!) == .orderedDescending
+      return v1.model!.modifiedAt.compare(v2.model!.modifiedAt) == .orderedDescending
     })
     
     bindableItems.value = Array(itemsDictionary.values).sorted(by: { m1, m2 in
-      return m1.modifiedAt!.compare(m2.modifiedAt!) == .orderedDescending
+      return m1.modifiedAt.compare(m2.modifiedAt) == .orderedDescending
     })
   }
   
@@ -59,7 +59,7 @@ class UserListingsViewModel {
     
     isLoading = true
     
-    let readList: (TimeInterval, @escaping (Result<(Array<Item>, Double), LLError>) -> ()) -> () = segment == 0 ? userOpenItemUseCase.getItemList : userSoldItemUseCase.getItemList
+    let readList: (TimeInterval, @escaping (Result<(Array<ItemListElement>, Double), LLError>) -> ()) -> () = segment == 0 ? userOpenItemUseCase.getItemList : userSoldItemUseCase.getItemList
 
     readList(cursor) { [weak self] result in
       guard let self = self else { return }
@@ -68,16 +68,14 @@ class UserListingsViewModel {
       switch result {
       case .success((let items, let nextCursor)):
         items.forEach { item in
-          if let id = item.id {
-            self.itemsDictionary[id] = item
-            
-            if let viewModel = self.itemCellViewModelsDictionary[id] {
-              viewModel.item = item
-            } else {
-              let viewModel = ItemCellViewModel(imageUseCase: self.imageUseCase)
-              viewModel.item = item
-              self.itemCellViewModelsDictionary[id] = viewModel
-            }
+          self.itemsDictionary[item.id] = item
+
+          if let viewModel = self.itemCellViewModelsDictionary[item.id] {
+            viewModel.model = item
+          } else {
+            let viewModel = ItemCellViewModel(imageUseCase: self.imageUseCase)
+            viewModel.model = item
+            self.itemCellViewModelsDictionary[item.id] = viewModel
           }
         }
         
@@ -91,7 +89,7 @@ class UserListingsViewModel {
   
   func viewDidLoad() {
     cursor                        = Date().timeIntervalSince1970 * 1000
-    itemsDictionary               = [String: Item]()
+    itemsDictionary               = [String: ItemListElement]()
     itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
     
     fetchList()
@@ -99,7 +97,7 @@ class UserListingsViewModel {
   
   func viewDidScrollToTop() {
     cursor                        = Date().timeIntervalSince1970 * 1000
-    itemsDictionary               = [String: Item]()
+    itemsDictionary               = [String: ItemListElement]()
     itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
     
     fetchList()
@@ -113,15 +111,15 @@ class UserListingsViewModel {
     self.segment = segment
     
     cursor                        = Date().timeIntervalSince1970 * 1000
-    itemsDictionary               = [String: Item]()
+    itemsDictionary               = [String: ItemListElement]()
     itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
     
     fetchList()
   }
   
   func didSelectItemAt(indexPath: IndexPath) {
-    if let item = bindableItems.value?[indexPath.row], let id = item.id {
-      coordinator.navigateToItemDisplay(id: id)
+    if let item = bindableItems.value?[indexPath.row] {
+      coordinator.navigateToItemDisplay(id: item.id)
     }
   }
 }

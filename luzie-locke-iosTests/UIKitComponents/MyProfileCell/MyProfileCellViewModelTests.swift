@@ -17,16 +17,16 @@ class MyProfileCellViewModelTests: XCTestCase {
   var userNameLabel:      UILabel!
   var userLocationLabel:  UILabel!
   
-  var mockOpenHttpClient: OpenHTTPClientMock!
+  var imageUseCaseMock:   ImageUseCaseMock!
   
-  let fakeMyProfile = FakeModels.myProfileCellModel()
-  let fakeUIImage   = UIImage(systemName: "location")
+  let fakeModel   = FakeModels.userProfileBrief()
+  let fakeUIImage = UIImage(systemName: "location")
   
   override func setUpWithError() throws {
     try super.setUpWithError()
     
-    mockOpenHttpClient  = OpenHTTPClientMock()
-    sut                 = MyProfileCellViewModel(openHttpClient: mockOpenHttpClient)
+    imageUseCaseMock    = ImageUseCaseMock()
+    sut                 = MyProfileCellViewModel(imageUseCase: imageUseCaseMock)
     
     userImageView       = UIImageView()
     userNameLabel       = UILabel()
@@ -47,12 +47,12 @@ class MyProfileCellViewModelTests: XCTestCase {
     }
   }
   
-  func whenProfileIsSet(_ profile: MyProfileCellModel) {
-    sut.model = profile
+  func whenModelIsSet(_ model: UserProfileBrief) {
+    sut.model = model
   }
   
-  func whenHttpClientFetchedResultWith(_ result: Result<UIImage?, LLError>) {
-    mockOpenHttpClient.fetchDownloadImageCompletionWith(result: result)
+  func whenImageIsFetchedWith(_ result: Result<UIImage?, LLError>) {
+    imageUseCaseMock.fetchCompletionWith(result)
   }
   
   func theNameTextShouldBe(_ expected: String) {
@@ -63,42 +63,42 @@ class MyProfileCellViewModelTests: XCTestCase {
     XCTAssertEqual(expected, userLocationLabel.text)
   }
   
-  func shouldTriggerImageDownload() {
-    XCTAssertTrue(mockOpenHttpClient.isDownloadImageCalled)
+  func shouldTriggerGetImage() {
+    XCTAssertTrue(imageUseCaseMock.getImageIsCalled)
   }
   
   func theImageShouldBe(_ expected: UIImage?) {
     XCTAssertEqual(expected, userImageView.image)
   }
 
-  func testShouldLoadTextsWhenProfileIsSet() throws {
+  func testShouldLoadTextsWhenModelIsSet() throws {
     givenThatViewModelIsBound()
     
-    whenProfileIsSet(fakeMyProfile)
-    theNameTextShouldBe(fakeMyProfile.name)
-    theLocationTextShouldBe(fakeMyProfile.city)
+    whenModelIsSet(fakeModel)
+    theNameTextShouldBe(fakeModel.name)
+    theLocationTextShouldBe(fakeModel.city)
   }
   
-  func testShouldTriggerImageDownloadWhenProfileIsSet() throws {
+  func testShouldTriggerImageDownloadWhenModelIsSet() throws {
     givenThatViewModelIsBound()
     
-    whenProfileIsSet(fakeMyProfile)
-    shouldTriggerImageDownload()
+    whenModelIsSet(fakeModel)
+    shouldTriggerGetImage()
   }
   
   func testShouldLoadImageWhenDownloadSucceeded() throws {
     givenThatViewModelIsBound()
     
-    whenProfileIsSet(fakeMyProfile)
-    whenHttpClientFetchedResultWith(.success(fakeUIImage))
+    whenModelIsSet(fakeModel)
+    whenImageIsFetchedWith(.success(fakeUIImage))
     theImageShouldBe(fakeUIImage)
   }
   
   func testShouldNotLoadImageWhenDownloadIsFailed() throws {
     givenThatViewModelIsBound()
     
-    whenProfileIsSet(fakeMyProfile)
-    whenHttpClientFetchedResultWith(.failure(.unableToComplete))
+    whenModelIsSet(fakeModel)
+    whenImageIsFetchedWith(.failure(.unableToComplete))
     theImageShouldBe(nil)
   }
 }

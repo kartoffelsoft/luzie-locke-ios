@@ -9,7 +9,7 @@ import Foundation
 
 protocol UserFavoriteItemUseCaseProtocol {
   
-  func getMyList(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
+  func getMyList(cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void)
   func add(itemId: String, completion: @escaping (Result<Void, LLError>) -> Void)
   func remove(itemId: String, completion: @escaping (Result<Void, LLError>) -> Void)
   func isAdded(itemId: String, completion: @escaping (Result<Bool, LLError>) -> Void)
@@ -26,7 +26,7 @@ class UserFavoriteItemUseCase: UserFavoriteItemUseCaseProtocol {
     self.favoriteItemRepository = favoriteItemRepository
   }
   
-  func getMyList(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
+  func getMyList(cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void) {
     guard let userId = localProfileRepository.read()?.id else { return }
     favoriteItemRepository.readItemList(userId: userId, cursor: cursor, completion: completion)
   }

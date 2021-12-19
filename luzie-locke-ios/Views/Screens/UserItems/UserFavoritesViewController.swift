@@ -13,7 +13,7 @@ class UserFavoritesViewController: UIViewController {
   
   private let viewModel:        UserFavoritesViewModel
   private var collectionView:   UICollectionView!
-  private var dataSource:       UICollectionViewDiffableDataSource<Section, Item>!
+  private var dataSource:       UICollectionViewDiffableDataSource<Section, ItemListElement>!
 
   private let refreshControl  = UIRefreshControl()
   private let contentView     = UIView()
@@ -66,7 +66,7 @@ class UserFavoritesViewController: UIViewController {
   }
   
   private func configureDataSource() {
-    dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { [weak self] (collectionView, indexPath, follower) -> UICollectionViewCell? in
+    dataSource = UICollectionViewDiffableDataSource<Section, ItemListElement>(collectionView: collectionView, cellProvider: { [weak self] (collectionView, indexPath, follower) -> UICollectionViewCell? in
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCell.reuseIdentifier, for: indexPath) as! ItemCell
       cell.viewModel = self?.viewModel.itemCellViewModels[indexPath.row]
       return cell
@@ -103,8 +103,8 @@ class UserFavoritesViewController: UIViewController {
     }
   }
   
-  private func updateData(on items: [Item]) {
-    var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+  private func updateData(on items: [ItemListElement]) {
+    var snapshot = NSDiffableDataSourceSnapshot<Section, ItemListElement>()
     snapshot.appendSections([.main])
     snapshot.appendItems(items)
     

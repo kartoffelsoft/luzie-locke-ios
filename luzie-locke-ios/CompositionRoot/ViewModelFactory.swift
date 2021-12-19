@@ -60,7 +60,7 @@ extension CompositionRoot: ViewModelFactory {
     return SettingsViewModel(coordinator: coordinator,
                              auth: auth,
                              myProfileUseCase: myProfileUseCase,
-                             openHttpClient: openHttpClient,
+                             imageUseCase: imageUseCase,
                              backendApiClient: backendApiClient)
   }
   

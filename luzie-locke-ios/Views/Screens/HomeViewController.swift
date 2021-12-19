@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
   private let viewModel: HomeViewModel
 
   private var collectionView: UICollectionView!
-  private var dataSource:     UICollectionViewDiffableDataSource<Section, Item>!
+  private var dataSource:     UICollectionViewDiffableDataSource<Section, ItemListElement>!
   
   private let setButton       = PulseRoundButton(radius: 30)
   private let locationButton  = LocationMenuButton()
@@ -82,7 +82,7 @@ class HomeViewController: UIViewController {
   }
   
   private func configureDataSource() {
-    dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { [weak self] (collectionView, indexPath, follower) -> UICollectionViewCell? in
+    dataSource = UICollectionViewDiffableDataSource<Section, ItemListElement>(collectionView: collectionView, cellProvider: { [weak self] (collectionView, indexPath, follower) -> UICollectionViewCell? in
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCell.reuseIdentifier, for: indexPath) as! ItemCell
       cell.viewModel = self?.viewModel.itemCellViewModels[indexPath.row]
       return cell
@@ -119,9 +119,9 @@ class HomeViewController: UIViewController {
     ])
   }
   
-  private func updateData(on items: [Item]?) {
+  private func updateData(on items: [ItemListElement]?) {
     guard let items = items else { return }
-    var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+    var snapshot = NSDiffableDataSourceSnapshot<Section, ItemListElement>()
     snapshot.appendSections([.main])
     snapshot.appendItems(items)
     

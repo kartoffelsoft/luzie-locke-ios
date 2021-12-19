@@ -19,10 +19,10 @@ class ItemSearchViewModel {
   let imageUseCase:         ImageUseCaseProtocol
   let itemRepository:       ItemRepositoryProtocol
   
-  var bindableItems         = Bindable<[Item]>()
+  var bindableItems         = Bindable<[ItemListElement]>()
   var itemCellViewModels    = [ItemCellViewModel]()
   
-  private var itemsDictionary                 = [String: Item]()
+  private var itemsDictionary                 = [String: ItemListElement]()
   private var itemCellViewModelsDictionary    = [String: ItemCellViewModel]()
   
   private var isLoading: Bool = false
@@ -40,11 +40,11 @@ class ItemSearchViewModel {
   
   private func reload() {
     itemCellViewModels = Array(itemCellViewModelsDictionary.values).sorted(by: { v1, v2 in
-      return v1.item!.modifiedAt!.compare(v2.item!.modifiedAt!) == .orderedDescending
+      return v1.model!.modifiedAt.compare(v2.model!.modifiedAt) == .orderedDescending
     })
     
     bindableItems.value = Array(itemsDictionary.values).sorted(by: { m1, m2 in
-      return m1.modifiedAt!.compare(m2.modifiedAt!) == .orderedDescending
+      return m1.modifiedAt.compare(m2.modifiedAt) == .orderedDescending
     })
   }
   
@@ -62,16 +62,14 @@ class ItemSearchViewModel {
       switch result {
       case .success((let items, let nextCursor)):
         items.forEach { item in
-          if let id = item.id {
-            self.itemsDictionary[id] = item
-            
-            if let viewModel = self.itemCellViewModelsDictionary[id] {
-              viewModel.item = item
-            } else {
-              let viewModel = ItemCellViewModel(imageUseCase: self.imageUseCase)
-              viewModel.item = item
-              self.itemCellViewModelsDictionary[id] = viewModel
-            }
+          self.itemsDictionary[item.id] = item
+
+          if let viewModel = self.itemCellViewModelsDictionary[item.id] {
+            viewModel.model = item
+          } else {
+            let viewModel = ItemCellViewModel(imageUseCase: self.imageUseCase)
+            viewModel.model = item
+            self.itemCellViewModelsDictionary[item.id] = viewModel
           }
         }
         
@@ -86,7 +84,7 @@ class ItemSearchViewModel {
   func viewDidSetSearchKeyword(_ keyword: String) {
     searchKeyword                 = keyword
     cursor                        = Date().timeIntervalSince1970 * 1000
-    itemsDictionary               = [String: Item]()
+    itemsDictionary               = [String: ItemListElement]()
     itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
     
     if searchKeyword.isEmpty || searchKeyword.count < 2{
@@ -102,8 +100,8 @@ class ItemSearchViewModel {
   }
   
   func didSelectItemAt(indexPath: IndexPath) {
-    if let item = bindableItems.value?[indexPath.row], let id = item.id {
-      coordinator.navigateToItemDisplay(id: id)
+    if let item = bindableItems.value?[indexPath.row] {
+      coordinator.navigateToItemDisplay(id: item.id)
     }
   }
 }

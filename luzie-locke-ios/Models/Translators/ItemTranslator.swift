@@ -30,21 +30,23 @@ class ItemTranslator {
                 modifiedAt: Date(timeIntervalSince1970: (dto.modifiedAt ?? 0) / 1000))
   }
 
-  static func translateItemDTOListToItemList(dtoList: [ItemListElementDTO]) -> [Item] {
-    return dtoList.reduce([Item](), { output, dto in
-      let item = Item(id: dto.id,
-                      user: UserProfile(city: dto.user?.city),
-                      title: dto.title,
-                      price: dto.price,
-                      description: dto.description,
-                      imageUrls: dto.imageUrls,
-                      counts: Counts(chat: dto.counts?.chat,
-                                     favorite: dto.counts?.favorite,
-                                     view: dto.counts?.view),
-                      state: dto.state,
-                      createdAt: Date(timeIntervalSince1970: (dto.createdAt ?? 0) / 1000),
-                      modifiedAt: Date(timeIntervalSince1970: (dto.modifiedAt ?? 0) / 1000))
-      return output + [item]
+  static func translateItemDTOListToItemList(dtoList: [ItemListElementDTO]) -> [ItemListElement] {
+    return dtoList.reduce([ItemListElement](), { output, dto in
+      guard let id          = dto.id            else { return output }
+      guard let title       = dto.title         else { return output }
+      guard let city        = dto.user?.city    else { return output }
+      guard let price       = dto.price         else { return output }
+      guard let imageUrl    = dto.imageUrls?[0] else { return output }
+      guard let modifiedAt  = dto.modifiedAt    else { return output }
+      
+      let element = ItemListElement(id: id,
+                                    title: title,
+                                    city: city,
+                                    price: price,
+                                    imageUrl: imageUrl,
+                                    modifiedAt: Date(timeIntervalSince1970: modifiedAt / 1000))
+      
+      return output + [element]
     })
   }
 }

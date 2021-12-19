@@ -11,7 +11,7 @@ protocol FavoriteItemRepositoryProtocol {
 
   func create(userId: String, itemId: String, completion: @escaping (Result<Void, LLError>) -> Void)
   func read(userId: String, itemId: String, completion: @escaping (Result<FavoriteItem?, LLError>) -> Void)
-  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
+  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void)
   func delete(userId: String, itemId: String, completion: @escaping (Result<Void, LLError>) -> Void)
 }
 
@@ -47,7 +47,7 @@ class FavoriteItemRepository: FavoriteItemRepositoryProtocol {
     }
   }
   
-  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
+  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void) {
     backendClient.GET(FavoriteItemListReadRequest(userId: userId, cursor: cursor, limit: 8)) { result in
       switch result {
       case .success(let response):

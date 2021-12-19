@@ -12,8 +12,8 @@ protocol ItemRepositoryProtocol {
   func create(title: String, price: String, description: String, images: [UIImage], completion: @escaping (Result<Void, LLError>) -> Void)
   
   func read(_ id: String, completion: @escaping (Result<Item, LLError>) -> Void)
-  func readListLocal(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
-  func readListSearch(keyword: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
+  func readListLocal(cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void)
+  func readListSearch(keyword: String, cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void)
   
   func update(_ id: String, title: String, price: String, description: String, images: [UIImage], oldImageUrls: [String?]?, completion: @escaping (Result<Void, LLError>) -> Void)
   func updateState(_ id: String, state: String, buyerId: String, completion: @escaping (Result<Void, LLError>) -> Void)
@@ -72,7 +72,7 @@ class ItemRepository: ItemRepositoryProtocol {
     }
   }
   
-  func readListLocal(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
+  func readListLocal(cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void) {
     backendClient.GET(ItemListReadRequest(cursor: cursor, limit: 8)) { result in
       switch result {
       case .success(let response):
@@ -91,7 +91,7 @@ class ItemRepository: ItemRepositoryProtocol {
     }
   }
   
-  func readListSearch(keyword: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
+  func readListSearch(keyword: String, cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void) {
     backendClient.GET(ItemReadListSearchRequest(q: SearchString(keyword), cursor: cursor, limit: 8)) { result in
       switch result {
       case .success(let response):

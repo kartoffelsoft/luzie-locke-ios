@@ -1,0 +1,1452 @@
+diff --git a/luzie-locke-ios.xcodeproj/project.pbxproj b/luzie-locke-ios.xcodeproj/project.pbxproj
+index 8407ad8..c6d1189 100644
+--- a/luzie-locke-ios.xcodeproj/project.pbxproj
++++ b/luzie-locke-ios.xcodeproj/project.pbxproj
+@@ -53,7 +53,9 @@
+ 		4A145AB9276CD3AE0059CACD /* SearchString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AB8276CD3AE0059CACD /* SearchString.swift */; };
+ 		4A145ABD276F281D0059CACD /* Faker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145ABC276F281D0059CACD /* Faker.swift */; };
+ 		4A145AC0276F56FF0059CACD /* FakeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145ABF276F56FF0059CACD /* FakeModels.swift */; };
+-		4A145AC3276F78E40059CACD /* MyProfileCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AC2276F78E40059CACD /* MyProfileCellModel.swift */; };
++		4A145AC8276F965C0059CACD /* ImageUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AC7276F965C0059CACD /* ImageUseCaseMock.swift */; };
++		4A145ACF276FAE870059CACD /* ItemListElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145ACE276FAE870059CACD /* ItemListElement.swift */; };
++		4A145AD1276FAEC60059CACD /* UserProfileBrief.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AD0276FAEC60059CACD /* UserProfileBrief.swift */; };
+ 		4A155E4027229D3600C8B867 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E3F27229D3600C8B867 /* AvatarImageView.swift */; };
+ 		4A155E432722A46300C8B867 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E422722A46300C8B867 /* Constants.swift */; };
+ 		4A155E462722E03600C8B867 /* OpenHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E452722E03600C8B867 /* OpenHTTPClient.swift */; };
+@@ -281,7 +283,9 @@
+ 		4A145AB8276CD3AE0059CACD /* SearchString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchString.swift; sourceTree = "<group>"; };
+ 		4A145ABC276F281D0059CACD /* Faker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faker.swift; sourceTree = "<group>"; };
+ 		4A145ABF276F56FF0059CACD /* FakeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeModels.swift; sourceTree = "<group>"; };
+-		4A145AC2276F78E40059CACD /* MyProfileCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileCellModel.swift; sourceTree = "<group>"; };
++		4A145AC7276F965C0059CACD /* ImageUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUseCaseMock.swift; sourceTree = "<group>"; };
++		4A145ACE276FAE870059CACD /* ItemListElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListElement.swift; sourceTree = "<group>"; };
++		4A145AD0276FAEC60059CACD /* UserProfileBrief.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileBrief.swift; sourceTree = "<group>"; };
+ 		4A155E3F27229D3600C8B867 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
+ 		4A155E422722A46300C8B867 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+ 		4A155E452722E03600C8B867 /* OpenHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHTTPClient.swift; sourceTree = "<group>"; };
+@@ -619,6 +623,8 @@
+ 		4A145AC4276F87390059CACD /* UIKitComponents */ = {
+ 			isa = PBXGroup;
+ 			children = (
++				4A145ACD276FAE720059CACD /* Models */,
++				4A145AC9276F997D0059CACD /* ItemCell */,
+ 				4A145AC5276F874C0059CACD /* MyProfileCell */,
+ 			);
+ 			path = UIKitComponents;
+@@ -628,12 +634,44 @@
+ 			isa = PBXGroup;
+ 			children = (
+ 				4AED5E8527219E7300B7AC00 /* MyProfileCell.swift */,
+-				4A145AC2276F78E40059CACD /* MyProfileCellModel.swift */,
+ 				4AEE8F8627288842004CB686 /* MyProfileCellViewModel.swift */,
+ 			);
+ 			path = MyProfileCell;
+ 			sourceTree = "<group>";
+ 		};
++		4A145AC6276F963D0059CACD /* UseCases */ = {
++			isa = PBXGroup;
++			children = (
++				4A145AC7276F965C0059CACD /* ImageUseCaseMock.swift */,
++			);
++			path = UseCases;
++			sourceTree = "<group>";
++		};
++		4A145AC9276F997D0059CACD /* ItemCell */ = {
++			isa = PBXGroup;
++			children = (
++				4AEE8F6E2726DF93004CB686 /* ItemCell.swift */,
++				4AEE8F762727E84F004CB686 /* ItemCellViewModel.swift */,
++			);
++			path = ItemCell;
++			sourceTree = "<group>";
++		};
++		4A145ACC276FAE440059CACD /* ItemCell */ = {
++			isa = PBXGroup;
++			children = (
++			);
++			path = ItemCell;
++			sourceTree = "<group>";
++		};
++		4A145ACD276FAE720059CACD /* Models */ = {
++			isa = PBXGroup;
++			children = (
++				4A145ACE276FAE870059CACD /* ItemListElement.swift */,
++				4A145AD0276FAEC60059CACD /* UserProfileBrief.swift */,
++			);
++			path = Models;
++			sourceTree = "<group>";
++		};
+ 		4A155E4127229D3B00C8B867 /* ImageViews */ = {
+ 			isa = PBXGroup;
+ 			children = (
+@@ -745,7 +783,7 @@
+ 			children = (
+ 				4A145ABB276F28110059CACD /* Utilities */,
+ 				4A145ABE276F56E70059CACD /* FakeModels */,
+-				4AEE8F8827289C39004CB686 /* ViewModel */,
++				4AEE8F8827289C39004CB686 /* UIKitComponents */,
+ 				4A3B52AE27125C4A00EF4F93 /* Mocks */,
+ 				4A3B52AC27125C3000EF4F93 /* Views */,
+ 				4A3B527E271239CF00EF4F93 /* Info.plist */,
+@@ -792,7 +830,6 @@
+ 				4ACA8205275790C7003C7E0E /* ImageSelect */,
+ 				4ACA81F827576543003C7E0E /* Inputs */,
+ 				4A01D55B273DC2F700EDFC1C /* Messages */,
+-				4AD53D172760B33600F34874 /* User */,
+ 				4A47E6CE27316E0D00B9018A /* Item */,
+ 				4AEE8FAC272BD456004CB686 /* Screens */,
+ 			);
+@@ -859,6 +896,7 @@
+ 		4A3B52AE27125C4A00EF4F93 /* Mocks */ = {
+ 			isa = PBXGroup;
+ 			children = (
++				4A145AC6276F963D0059CACD /* UseCases */,
+ 				4AEE8F8327281968004CB686 /* Clients */,
+ 				4AEE8F80272818B5004CB686 /* BackendAPIClient */,
+ 				4AEE8F7D27281438004CB686 /* OpenHTTPClient */,
+@@ -978,7 +1016,6 @@
+ 		4A47E6CB27314CEE00B9018A /* Item */ = {
+ 			isa = PBXGroup;
+ 			children = (
+-				4AEE8F6E2726DF93004CB686 /* ItemCell.swift */,
+ 				4A47E6CC27314D4600B9018A /* ItemActionPanelView.swift */,
+ 				4A09C69F273865FA00FD4E42 /* ItemInfoView.swift */,
+ 			);
+@@ -988,7 +1025,6 @@
+ 		4A47E6CE27316E0D00B9018A /* Item */ = {
+ 			isa = PBXGroup;
+ 			children = (
+-				4AEE8F762727E84F004CB686 /* ItemCellViewModel.swift */,
+ 				4A47E6CF27316E1900B9018A /* ItemActionPanelViewModel.swift */,
+ 			);
+ 			path = Item;
+@@ -1124,13 +1160,6 @@
+ 			path = Settings;
+ 			sourceTree = "<group>";
+ 		};
+-		4AD53D172760B33600F34874 /* User */ = {
+-			isa = PBXGroup;
+-			children = (
+-			);
+-			path = User;
+-			sourceTree = "<group>";
+-		};
+ 		4AD53D182760B3C100F34874 /* Settings */ = {
+ 			isa = PBXGroup;
+ 			children = (
+@@ -1369,20 +1398,21 @@
+ 			path = Clients;
+ 			sourceTree = "<group>";
+ 		};
+-		4AEE8F8827289C39004CB686 /* ViewModel */ = {
++		4AEE8F8827289C39004CB686 /* UIKitComponents */ = {
+ 			isa = PBXGroup;
+ 			children = (
+-				4AEE8F8927289C53004CB686 /* Cells */,
++				4A145ACC276FAE440059CACD /* ItemCell */,
++				4AEE8F8927289C53004CB686 /* MyProfileCell */,
+ 			);
+-			path = ViewModel;
++			path = UIKitComponents;
+ 			sourceTree = "<group>";
+ 		};
+-		4AEE8F8927289C53004CB686 /* Cells */ = {
++		4AEE8F8927289C53004CB686 /* MyProfileCell */ = {
+ 			isa = PBXGroup;
+ 			children = (
+ 				4AEE8F8A27289C6D004CB686 /* ProfileCellViewModelTests.swift */,
+ 			);
+-			path = Cells;
++			path = MyProfileCell;
+ 			sourceTree = "<group>";
+ 		};
+ 		4AEE8F9027297750004CB686 /* Buttons */ = {
+@@ -1670,6 +1700,7 @@
+ 				4A22DB3E274ED9D500E5125B /* UserPurchasesViewModel.swift in Sources */,
+ 				4AEE8F6B2725D9B2004CB686 /* Bindable.swift in Sources */,
+ 				4AD53D232763728400F34874 /* ItemImageView.swift in Sources */,
++				4A145AD1276FAEC60059CACD /* UserProfileBrief.swift in Sources */,
+ 				4A47E6C42730952000B9018A /* ItemTranslator.swift in Sources */,
+ 				4ACA820A2757A39D003C7E0E /* ImageSelectElementView.swift in Sources */,
+ 				4A22DB31274BDF2D00E5125B /* ItemSearchViewModel.swift in Sources */,
+@@ -1725,13 +1756,13 @@
+ 				4AED5E46271E2A3200B7AC00 /* BackendConfig.swift in Sources */,
+ 				4ACA821227590C6E003C7E0E /* DecimalInputViewModel.swift in Sources */,
+ 				4A3B52DB2715ADEF00EF4F93 /* LoginCoordinator.swift in Sources */,
+-				4A145AC3276F78E40059CACD /* MyProfileCellModel.swift in Sources */,
+ 				4A47E6DA2731C5F000B9018A /* ImageViewController.swift in Sources */,
+ 				4ADE3D312735807500ACBC60 /* AppMainCoordinator.swift in Sources */,
+ 				4A47E6BF273028BE00B9018A /* ItemDisplayViewController.swift in Sources */,
+ 				4ACA81F527568466003C7E0E /* MultiLineTextInputView.swift in Sources */,
+ 				4ACA81F02754CF28003C7E0E /* ImageRepository.swift in Sources */,
+ 				4AC56674273B98AE00776DBD /* RecentMessageCell.swift in Sources */,
++				4A145ACF276FAE870059CACD /* ItemListElement.swift in Sources */,
+ 				4A47E6E827331E6F00B9018A /* CoordinatorFactory.swift in Sources */,
+ 				4AE229B5275B9D820070350E /* NeighborhoodSettingView.swift in Sources */,
+ 				4A09C6A32739282A00FD4E42 /* ChatViewController.swift in Sources */,
+@@ -1747,6 +1778,7 @@
+ 			files = (
+ 				4AED5E25271A0CFD00B7AC00 /* MKViewMock.swift in Sources */,
+ 				4AEE8F7C27280504004CB686 /* SimpleStringStorageMock.swift in Sources */,
++				4A145AC8276F965C0059CACD /* ImageUseCaseMock.swift in Sources */,
+ 				4A3B52B027125C6700EF4F93 /* AuthServiceMock.swift in Sources */,
+ 				4A145AC0276F56FF0059CACD /* FakeModels.swift in Sources */,
+ 				4AED5E27271A0D1300B7AC00 /* CLLocationManagerMock.swift in Sources */,
+diff --git a/luzie-locke-ios/CompositionRoot/ViewModelFactory.swift b/luzie-locke-ios/CompositionRoot/ViewModelFactory.swift
+index 8d6a878..0e48203 100644
+--- a/luzie-locke-ios/CompositionRoot/ViewModelFactory.swift
++++ b/luzie-locke-ios/CompositionRoot/ViewModelFactory.swift
+@@ -60,7 +60,7 @@ extension CompositionRoot: ViewModelFactory {
+     return SettingsViewModel(coordinator: coordinator,
+                              auth: auth,
+                              myProfileUseCase: myProfileUseCase,
+-                             openHttpClient: openHttpClient,
++                             imageUseCase: imageUseCase,
+                              backendApiClient: backendApiClient)
+   }
+   
+diff --git a/luzie-locke-ios/Models/Translators/ItemTranslator.swift b/luzie-locke-ios/Models/Translators/ItemTranslator.swift
+index 20a49bb..62be95f 100644
+--- a/luzie-locke-ios/Models/Translators/ItemTranslator.swift
++++ b/luzie-locke-ios/Models/Translators/ItemTranslator.swift
+@@ -30,21 +30,27 @@ class ItemTranslator {
+                 modifiedAt: Date(timeIntervalSince1970: (dto.modifiedAt ?? 0) / 1000))
+   }
+ 
+-  static func translateItemDTOListToItemList(dtoList: [ItemListElementDTO]) -> [Item] {
+-    return dtoList.reduce([Item](), { output, dto in
+-      let item = Item(id: dto.id,
+-                      user: UserProfile(city: dto.user?.city),
+-                      title: dto.title,
+-                      price: dto.price,
+-                      description: dto.description,
+-                      imageUrls: dto.imageUrls,
+-                      counts: Counts(chat: dto.counts?.chat,
+-                                     favorite: dto.counts?.favorite,
+-                                     view: dto.counts?.view),
+-                      state: dto.state,
+-                      createdAt: Date(timeIntervalSince1970: (dto.createdAt ?? 0) / 1000),
+-                      modifiedAt: Date(timeIntervalSince1970: (dto.modifiedAt ?? 0) / 1000))
+-      return output + [item]
++  static func translateItemDTOListToItemList(dtoList: [ItemListElementDTO]) -> [ItemListElement] {
++    return dtoList.reduce([ItemListElement](), { output, dto in
++      guard let id          = dto.id            else { return output }
++      guard let title       = dto.title         else { return output }
++      guard let city        = dto.user?.city    else { return output }
++      guard let price       = dto.price         else { return output }
++      guard let imageUrl    = dto.imageUrls?[0] else { return output }
++      guard let modifiedAt  = dto.modifiedAt    else { return output }
++
++      if id == "ckxaufdx1000188sl0kqc15k2" {
++        print("@$#= ", Date(timeIntervalSince1970: modifiedAt / 1000))
++      }
++
++      let element = ItemListElement(id: id,
++                                    title: title,
++                                    city: city,
++                                    price: price,
++                                    imageUrl: imageUrl,
++                                    modifiedAt: Date(timeIntervalSince1970: modifiedAt / 1000))
++      
++      return output + [element]
+     })
+   }
+ }
+diff --git a/luzie-locke-ios/Repositories/FavoriteItemRepository.swift b/luzie-locke-ios/Repositories/FavoriteItemRepository.swift
+index 7eee294..28eed5f 100644
+--- a/luzie-locke-ios/Repositories/FavoriteItemRepository.swift
++++ b/luzie-locke-ios/Repositories/FavoriteItemRepository.swift
+@@ -11,7 +11,7 @@ protocol FavoriteItemRepositoryProtocol {
+ 
+   func create(userId: String, itemId: String, completion: @escaping (Result<Void, LLError>) -> Void)
+   func read(userId: String, itemId: String, completion: @escaping (Result<FavoriteItem?, LLError>) -> Void)
+-  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
++  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void)
+   func delete(userId: String, itemId: String, completion: @escaping (Result<Void, LLError>) -> Void)
+ }
+ 
+@@ -47,7 +47,7 @@ class FavoriteItemRepository: FavoriteItemRepositoryProtocol {
+     }
+   }
+   
+-  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
++  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void) {
+     backendClient.GET(FavoriteItemListReadRequest(userId: userId, cursor: cursor, limit: 8)) { result in
+       switch result {
+       case .success(let response):
+diff --git a/luzie-locke-ios/Repositories/ItemRepository.swift b/luzie-locke-ios/Repositories/ItemRepository.swift
+index bf9b928..24deefa 100644
+--- a/luzie-locke-ios/Repositories/ItemRepository.swift
++++ b/luzie-locke-ios/Repositories/ItemRepository.swift
+@@ -12,8 +12,8 @@ protocol ItemRepositoryProtocol {
+   func create(title: String, price: String, description: String, images: [UIImage], completion: @escaping (Result<Void, LLError>) -> Void)
+   
+   func read(_ id: String, completion: @escaping (Result<Item, LLError>) -> Void)
+-  func readListLocal(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
+-  func readListSearch(keyword: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
++  func readListLocal(cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void)
++  func readListSearch(keyword: String, cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void)
+   
+   func update(_ id: String, title: String, price: String, description: String, images: [UIImage], oldImageUrls: [String?]?, completion: @escaping (Result<Void, LLError>) -> Void)
+   func updateState(_ id: String, state: String, buyerId: String, completion: @escaping (Result<Void, LLError>) -> Void)
+@@ -72,7 +72,7 @@ class ItemRepository: ItemRepositoryProtocol {
+     }
+   }
+   
+-  func readListLocal(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
++  func readListLocal(cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void) {
+     backendClient.GET(ItemListReadRequest(cursor: cursor, limit: 8)) { result in
+       switch result {
+       case .success(let response):
+@@ -91,7 +91,7 @@ class ItemRepository: ItemRepositoryProtocol {
+     }
+   }
+   
+-  func readListSearch(keyword: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
++  func readListSearch(keyword: String, cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void) {
+     backendClient.GET(ItemReadListSearchRequest(q: SearchString(keyword), cursor: cursor, limit: 8)) { result in
+       switch result {
+       case .success(let response):
+diff --git a/luzie-locke-ios/Repositories/UserBoughtItemRepository.swift b/luzie-locke-ios/Repositories/UserBoughtItemRepository.swift
+index f4c221e..463d51f 100644
+--- a/luzie-locke-ios/Repositories/UserBoughtItemRepository.swift
++++ b/luzie-locke-ios/Repositories/UserBoughtItemRepository.swift
+@@ -9,7 +9,7 @@ import Foundation
+ 
+ protocol UserBoughtItemRepositoryProtocol {
+ 
+-  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
++  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void)
+ }
+ 
+ class UserBoughtItemRepository: UserBoughtItemRepositoryProtocol {
+@@ -20,7 +20,7 @@ class UserBoughtItemRepository: UserBoughtItemRepositoryProtocol {
+     self.backendClient = backendClient
+   }
+   
+-  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
++  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void) {
+     backendClient.GET(ItemBoughtItemListReadRequest(userId: userId, cursor: cursor, limit: 8)) { result in
+       switch result {
+       case .success(let response):
+diff --git a/luzie-locke-ios/Repositories/UserOpenItemRepository.swift b/luzie-locke-ios/Repositories/UserOpenItemRepository.swift
+index 5d38ee2..a81277f 100644
+--- a/luzie-locke-ios/Repositories/UserOpenItemRepository.swift
++++ b/luzie-locke-ios/Repositories/UserOpenItemRepository.swift
+@@ -9,7 +9,7 @@ import Foundation
+ 
+ protocol UserOpenItemRepositoryProtocol {
+ 
+-  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
++  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void)
+ }
+ 
+ class UserOpenItemRepository: UserOpenItemRepositoryProtocol {
+@@ -20,7 +20,7 @@ class UserOpenItemRepository: UserOpenItemRepositoryProtocol {
+     self.backendClient = backendClient
+   }
+   
+-  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
++  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void) {
+     backendClient.GET(UserOpenItemListReadRequest(userId: userId, cursor: cursor, limit: 8)) { result in
+       switch result {
+       case .success(let response):
+diff --git a/luzie-locke-ios/Repositories/UserSoldItemRepository.swift b/luzie-locke-ios/Repositories/UserSoldItemRepository.swift
+index eb1d898..bbb40c3 100644
+--- a/luzie-locke-ios/Repositories/UserSoldItemRepository.swift
++++ b/luzie-locke-ios/Repositories/UserSoldItemRepository.swift
+@@ -9,7 +9,7 @@ import Foundation
+ 
+ protocol UserSoldItemRepositoryProtocol {
+ 
+-  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
++  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void)
+ }
+ 
+ class UserSoldItemRepository: UserSoldItemRepositoryProtocol {
+@@ -20,7 +20,7 @@ class UserSoldItemRepository: UserSoldItemRepositoryProtocol {
+     self.backendClient = backendClient
+   }
+   
+-  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
++  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void) {
+     backendClient.GET(UserSoldItemListReadRequest(userId: userId, cursor: cursor, limit: 8)) { result in
+       switch result {
+       case .success(let response):
+diff --git a/luzie-locke-ios/UIKitComponents/MyProfileCell/MyProfileCellModel.swift b/luzie-locke-ios/UIKitComponents/MyProfileCell/MyProfileCellModel.swift
+deleted file mode 100644
+index c9349cc..0000000
+--- a/luzie-locke-ios/UIKitComponents/MyProfileCell/MyProfileCellModel.swift
++++ /dev/null
+@@ -1,15 +0,0 @@
+-//
+-//  MyProfileCellModel.swift
+-//  luzie-locke-ios
+-//
+-//  Created by Harry on 19.12.21.
+-//
+-
+-import Foundation
+-
+-struct MyProfileCellModel {
+-  
+-  let name: String
+-  let city: String
+-  let imageUrl: String
+-}
+diff --git a/luzie-locke-ios/UIKitComponents/MyProfileCell/MyProfileCellViewModel.swift b/luzie-locke-ios/UIKitComponents/MyProfileCell/MyProfileCellViewModel.swift
+index 10f87af..90aadb7 100644
+--- a/luzie-locke-ios/UIKitComponents/MyProfileCell/MyProfileCellViewModel.swift
++++ b/luzie-locke-ios/UIKitComponents/MyProfileCell/MyProfileCellViewModel.swift
+@@ -9,28 +9,14 @@ import UIKit
+ 
+ class MyProfileCellViewModel {
+ 
+-  var model: MyProfileCellModel? {
++  var model: UserProfileBrief? {
+     didSet {
+-      bindableNameText.value     = model?.name
+-      bindableLocationText.value = model?.city
++      guard let model = model else { return }
+       
+-      downloadImage(from: model?.imageUrl)
+-    }
+-  }
+-  
+-  var bindableProfileImage  = Bindable<UIImage>()
+-  var bindableNameText      = Bindable<String>()
+-  var bindableLocationText  = Bindable<String>()
+-
+-  let openHttpClient: OpenHTTP
+-
+-  init(openHttpClient: OpenHTTP) {
+-    self.openHttpClient = openHttpClient
+-  }
+-  
+-  private func downloadImage(from url: String?) {
+-    if let url = url {
+-      openHttpClient.downloadImage(from: url) { [weak self] result in
++      bindableNameText.value     = model.name
++      bindableLocationText.value = model.city
++      
++      imageUseCase.getImage(url: model.imageUrl){ [weak self] result in
+         switch result {
+         case .success(let image):
+           self?.bindableProfileImage.value = image
+@@ -40,4 +26,14 @@ class MyProfileCellViewModel {
+       }
+     }
+   }
++  
++  var bindableProfileImage  = Bindable<UIImage>()
++  var bindableNameText      = Bindable<String>()
++  var bindableLocationText  = Bindable<String>()
++
++  private let imageUseCase: ImageUseCaseProtocol
++
++  init(imageUseCase: ImageUseCaseProtocol) {
++    self.imageUseCase = imageUseCase
++  }
+ }
+diff --git a/luzie-locke-ios/UseCases/UserBoughtItemUseCase.swift b/luzie-locke-ios/UseCases/UserBoughtItemUseCase.swift
+index 7ee5928..97901d2 100644
+--- a/luzie-locke-ios/UseCases/UserBoughtItemUseCase.swift
++++ b/luzie-locke-ios/UseCases/UserBoughtItemUseCase.swift
+@@ -9,7 +9,7 @@ import Foundation
+ 
+ protocol UserBoughtItemUseCaseProtocol {
+   
+-  func getItemList(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
++  func getItemList(cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void)
+ }
+ 
+ class UserBoughtItemUseCase: UserBoughtItemUseCaseProtocol {
+@@ -23,7 +23,7 @@ class UserBoughtItemUseCase: UserBoughtItemUseCaseProtocol {
+     self.userBoughtItemRepository = userBoughtItemRepository
+   }
+   
+-  func getItemList(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
++  func getItemList(cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void) {
+     guard let userId = localProfileRepository.read()?.id else { return }
+     userBoughtItemRepository.readItemList(userId: userId, cursor: cursor, completion: completion)
+   }
+diff --git a/luzie-locke-ios/UseCases/UserFavoriteItemUseCase.swift b/luzie-locke-ios/UseCases/UserFavoriteItemUseCase.swift
+index d68e3e2..9257c50 100644
+--- a/luzie-locke-ios/UseCases/UserFavoriteItemUseCase.swift
++++ b/luzie-locke-ios/UseCases/UserFavoriteItemUseCase.swift
+@@ -9,7 +9,7 @@ import Foundation
+ 
+ protocol UserFavoriteItemUseCaseProtocol {
+   
+-  func getMyList(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
++  func getMyList(cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void)
+   func add(itemId: String, completion: @escaping (Result<Void, LLError>) -> Void)
+   func remove(itemId: String, completion: @escaping (Result<Void, LLError>) -> Void)
+   func isAdded(itemId: String, completion: @escaping (Result<Bool, LLError>) -> Void)
+@@ -26,7 +26,7 @@ class UserFavoriteItemUseCase: UserFavoriteItemUseCaseProtocol {
+     self.favoriteItemRepository = favoriteItemRepository
+   }
+   
+-  func getMyList(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
++  func getMyList(cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void) {
+     guard let userId = localProfileRepository.read()?.id else { return }
+     favoriteItemRepository.readItemList(userId: userId, cursor: cursor, completion: completion)
+   }
+diff --git a/luzie-locke-ios/UseCases/UserOpenItemUseCase.swift b/luzie-locke-ios/UseCases/UserOpenItemUseCase.swift
+index 17d9dc1..421d911 100644
+--- a/luzie-locke-ios/UseCases/UserOpenItemUseCase.swift
++++ b/luzie-locke-ios/UseCases/UserOpenItemUseCase.swift
+@@ -9,7 +9,7 @@ import Foundation
+ 
+ protocol UserOpenItemUseCaseProtocol {
+   
+-  func getItemList(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
++  func getItemList(cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void)
+ }
+ 
+ class UserOpenItemUseCase: UserOpenItemUseCaseProtocol {
+@@ -23,7 +23,7 @@ class UserOpenItemUseCase: UserOpenItemUseCaseProtocol {
+     self.userOpenItemRepository = userOpenItemRepository
+   }
+   
+-  func getItemList(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
++  func getItemList(cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void) {
+     guard let userId = localProfileRepository.read()?.id else { return }
+     userOpenItemRepository.readItemList(userId: userId, cursor: cursor, completion: completion)
+   }
+diff --git a/luzie-locke-ios/UseCases/UserSoldItemUseCase.swift b/luzie-locke-ios/UseCases/UserSoldItemUseCase.swift
+index e918e1e..d5cc5e4 100644
+--- a/luzie-locke-ios/UseCases/UserSoldItemUseCase.swift
++++ b/luzie-locke-ios/UseCases/UserSoldItemUseCase.swift
+@@ -9,7 +9,7 @@ import Foundation
+ 
+ protocol UserSoldItemUseCaseProtocol {
+   
+-  func getItemList(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
++  func getItemList(cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void)
+ }
+ 
+ class UserSoldItemUseCase: UserSoldItemUseCaseProtocol {
+@@ -23,7 +23,7 @@ class UserSoldItemUseCase: UserSoldItemUseCaseProtocol {
+     self.userSoldItemRepository = userSoldItemRepository
+   }
+   
+-  func getItemList(cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
++  func getItemList(cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void) {
+     guard let userId = localProfileRepository.read()?.id else { return }
+     userSoldItemRepository.readItemList(userId: userId, cursor: cursor, completion: completion)
+   }
+diff --git a/luzie-locke-ios/ViewModels/Item/ItemCellViewModel.swift b/luzie-locke-ios/ViewModels/Item/ItemCellViewModel.swift
+deleted file mode 100644
+index 9778c91..0000000
+--- a/luzie-locke-ios/ViewModels/Item/ItemCellViewModel.swift
++++ /dev/null
+@@ -1,52 +0,0 @@
+-//
+-//  ItemCellViewModel.swift
+-//  luzie-locke-ios
+-//
+-//  Created by Harry on 26.10.21.
+-//
+-
+-import UIKit
+-
+-class ItemCellViewModel {
+-
+-  var item: Item? {
+-    didSet {
+-      if let item = item {
+-        bindableTitleText.value    = item.title
+-        bindableLocationText.value = item.user?.city
+-        bindableDateText.value     = DateUtility.string(from: item.modifiedAt)
+-        
+-        let priceText = NSMutableAttributedString(string: "€ ", attributes: [.font: CustomUIFonts.detail])
+-        priceText.append(NSAttributedString(string: item.price ?? "0", attributes: [.font: CustomUIFonts.body]))
+-        bindablePriceText.value = priceText
+-        
+-        downloadImage(from: item.imageUrls![0])
+-      }
+-    }
+-  }
+-  
+-  var bindableItemImage     = Bindable<UIImage>()
+-  var bindableTitleText     = Bindable<String>()
+-  var bindableLocationText  = Bindable<String>()
+-  var bindablePriceText     = Bindable<NSAttributedString>()
+-  var bindableDateText      = Bindable<String>()
+-
+-  let imageUseCase: ImageUseCaseProtocol
+-
+-  init(imageUseCase: ImageUseCaseProtocol) {
+-    self.imageUseCase = imageUseCase
+-  }
+-  
+-  private func downloadImage(from url: String?) {
+-    if let url = url {
+-      imageUseCase.getImage(url: url) { [weak self] result in
+-        switch result {
+-        case .success(let image):
+-          self?.bindableItemImage.value = image
+-        case .failure:
+-          ()
+-        }
+-      }
+-    }
+-  }
+-}
+diff --git a/luzie-locke-ios/ViewModels/Screens/HomeViewModel.swift b/luzie-locke-ios/ViewModels/Screens/HomeViewModel.swift
+index f4ff185..a12b2e5 100644
+--- a/luzie-locke-ios/ViewModels/Screens/HomeViewModel.swift
++++ b/luzie-locke-ios/ViewModels/Screens/HomeViewModel.swift
+@@ -23,11 +23,11 @@ class HomeViewModel {
+   
+   var itemCellViewModels        = [ItemCellViewModel]()
+   
+-  var bindableItems             = Bindable<[Item]>()
++  var bindableItems             = Bindable<[ItemListElement]>()
+   var bindableCityName          = Bindable<String>()
+   
+   private var isLoading                       = false
+-  private var itemsDictionary                 = [String: Item]()
++  private var itemsDictionary                 = [String: ItemListElement]()
+   private var itemCellViewModelsDictionary    = [String: ItemCellViewModel]()
+   
+   var cursor: TimeInterval = Date().timeIntervalSince1970 * 1000
+@@ -49,11 +49,12 @@ class HomeViewModel {
+   
+   private func loadData() {
+     itemCellViewModels = Array(itemCellViewModelsDictionary.values).sorted(by: { v1, v2 in
+-      return v1.item!.modifiedAt!.compare(v2.item!.modifiedAt!) == .orderedDescending
++      print("@", v1.model!)
++      return v1.model!.modifiedAt.compare(v2.model!.modifiedAt) == .orderedDescending
+     })
+     
+     bindableItems.value = Array(itemsDictionary.values).sorted(by: { m1, m2 in
+-      return m1.modifiedAt!.compare(m2.modifiedAt!) == .orderedDescending
++      return m1.modifiedAt.compare(m2.modifiedAt) == .orderedDescending
+     })
+   }
+   
+@@ -71,16 +72,14 @@ class HomeViewModel {
+       switch result {
+       case .success((let items, let nextCursor)):
+         items.forEach { item in
+-          if let id = item.id {
+-            self.itemsDictionary[id] = item
+-            
+-            if let viewModel = self.itemCellViewModelsDictionary[id] {
+-              viewModel.item = item
+-            } else {
+-              let viewModel = ItemCellViewModel(imageUseCase: self.imageUseCase)
+-              viewModel.item = item
+-              self.itemCellViewModelsDictionary[id] = viewModel
+-            }
++          self.itemsDictionary[item.id] = item
++          
++          if let viewModel = self.itemCellViewModelsDictionary[item.id] {
++            viewModel.model = item
++          } else {
++            let viewModel = ItemCellViewModel(imageUseCase: self.imageUseCase)
++            viewModel.model = item
++            self.itemCellViewModelsDictionary[item.id] = viewModel
+           }
+         }
+         
+@@ -95,7 +94,7 @@ class HomeViewModel {
+   private func refresh() {
+     bindableCityName.value        = myProfileUseCase.getCity()
+     cursor                        = Date().timeIntervalSince1970 * 1000
+-    itemsDictionary               = [String: Item]()
++    itemsDictionary               = [String: ItemListElement]()
+     itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
+     
+     fetchList()
+@@ -122,8 +121,8 @@ class HomeViewModel {
+   }
+   
+   func didSelectItemAt(indexPath: IndexPath) {
+-    if let item = bindableItems.value?[indexPath.row], let id = item.id {
+-      coordinator.navigateToItemDisplay(id: id)
++    if let item = bindableItems.value?[indexPath.row] {
++      coordinator.navigateToItemDisplay(id: item.id)
+     }
+   }
+   
+diff --git a/luzie-locke-ios/ViewModels/Screens/Item/ItemSearchViewModel.swift b/luzie-locke-ios/ViewModels/Screens/Item/ItemSearchViewModel.swift
+index 9060d62..ab5994b 100644
+--- a/luzie-locke-ios/ViewModels/Screens/Item/ItemSearchViewModel.swift
++++ b/luzie-locke-ios/ViewModels/Screens/Item/ItemSearchViewModel.swift
+@@ -19,10 +19,10 @@ class ItemSearchViewModel {
+   let imageUseCase:         ImageUseCaseProtocol
+   let itemRepository:       ItemRepositoryProtocol
+   
+-  var bindableItems         = Bindable<[Item]>()
++  var bindableItems         = Bindable<[ItemListElement]>()
+   var itemCellViewModels    = [ItemCellViewModel]()
+   
+-  private var itemsDictionary                 = [String: Item]()
++  private var itemsDictionary                 = [String: ItemListElement]()
+   private var itemCellViewModelsDictionary    = [String: ItemCellViewModel]()
+   
+   private var isLoading: Bool = false
+@@ -40,11 +40,11 @@ class ItemSearchViewModel {
+   
+   private func reload() {
+     itemCellViewModels = Array(itemCellViewModelsDictionary.values).sorted(by: { v1, v2 in
+-      return v1.item!.modifiedAt!.compare(v2.item!.modifiedAt!) == .orderedDescending
++      return v1.model!.modifiedAt.compare(v2.model!.modifiedAt) == .orderedDescending
+     })
+     
+     bindableItems.value = Array(itemsDictionary.values).sorted(by: { m1, m2 in
+-      return m1.modifiedAt!.compare(m2.modifiedAt!) == .orderedDescending
++      return m1.modifiedAt.compare(m2.modifiedAt) == .orderedDescending
+     })
+   }
+   
+@@ -62,16 +62,14 @@ class ItemSearchViewModel {
+       switch result {
+       case .success((let items, let nextCursor)):
+         items.forEach { item in
+-          if let id = item.id {
+-            self.itemsDictionary[id] = item
+-            
+-            if let viewModel = self.itemCellViewModelsDictionary[id] {
+-              viewModel.item = item
+-            } else {
+-              let viewModel = ItemCellViewModel(imageUseCase: self.imageUseCase)
+-              viewModel.item = item
+-              self.itemCellViewModelsDictionary[id] = viewModel
+-            }
++          self.itemsDictionary[item.id] = item
++
++          if let viewModel = self.itemCellViewModelsDictionary[item.id] {
++            viewModel.model = item
++          } else {
++            let viewModel = ItemCellViewModel(imageUseCase: self.imageUseCase)
++            viewModel.model = item
++            self.itemCellViewModelsDictionary[item.id] = viewModel
+           }
+         }
+         
+@@ -86,7 +84,7 @@ class ItemSearchViewModel {
+   func viewDidSetSearchKeyword(_ keyword: String) {
+     searchKeyword                 = keyword
+     cursor                        = Date().timeIntervalSince1970 * 1000
+-    itemsDictionary               = [String: Item]()
++    itemsDictionary               = [String: ItemListElement]()
+     itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
+     
+     if searchKeyword.isEmpty || searchKeyword.count < 2{
+@@ -102,8 +100,8 @@ class ItemSearchViewModel {
+   }
+   
+   func didSelectItemAt(indexPath: IndexPath) {
+-    if let item = bindableItems.value?[indexPath.row], let id = item.id {
+-      coordinator.navigateToItemDisplay(id: id)
++    if let item = bindableItems.value?[indexPath.row] {
++      coordinator.navigateToItemDisplay(id: item.id)
+     }
+   }
+ }
+diff --git a/luzie-locke-ios/ViewModels/Screens/SettingsViewModel.swift b/luzie-locke-ios/ViewModels/Screens/SettingsViewModel.swift
+index d650860..e0e7907 100644
+--- a/luzie-locke-ios/ViewModels/Screens/SettingsViewModel.swift
++++ b/luzie-locke-ios/ViewModels/Screens/SettingsViewModel.swift
+@@ -12,7 +12,6 @@ class SettingsViewModel {
+   let coordinator:              SettingsCoordinator
+   let auth:                     Auth
+   let myProfileUseCase:         MyProfileUseCaseProtocol
+-  let openHttpClient:           OpenHTTP
+   let backendApiClient:         BackendAPIClient
+   
+   let myProfileCellViewModel:   MyProfileCellViewModel
+@@ -20,15 +19,14 @@ class SettingsViewModel {
+   init(coordinator:             SettingsCoordinator,
+        auth:                    Auth,
+        myProfileUseCase:        MyProfileUseCaseProtocol,
+-       openHttpClient:          OpenHTTP,
++       imageUseCase:            ImageUseCaseProtocol,
+        backendApiClient:        BackendAPIClient) {
+     self.coordinator            = coordinator
+     self.auth                   = auth
+     self.myProfileUseCase       = myProfileUseCase
+-    self.openHttpClient         = openHttpClient
+     self.backendApiClient       = backendApiClient
+     
+-    myProfileCellViewModel      =  MyProfileCellViewModel(openHttpClient: openHttpClient)
++    myProfileCellViewModel      =  MyProfileCellViewModel(imageUseCase: imageUseCase)
+   }
+   
+   func load() {
+@@ -36,7 +34,7 @@ class SettingsViewModel {
+        let city = myProfileUseCase.getCity(),
+        let imageUrl = myProfileUseCase.getImageUrl()
+     {
+-      myProfileCellViewModel.model = MyProfileCellModel(name: name, city: city, imageUrl: imageUrl)
++      myProfileCellViewModel.model = UserProfileBrief(name: name, city: city, imageUrl: imageUrl)
+     }
+   }
+   
+diff --git a/luzie-locke-ios/ViewModels/Screens/UserItems/UserFavoritesViewModel.swift b/luzie-locke-ios/ViewModels/Screens/UserItems/UserFavoritesViewModel.swift
+index ae540e9..6d2b789 100644
+--- a/luzie-locke-ios/ViewModels/Screens/UserItems/UserFavoritesViewModel.swift
++++ b/luzie-locke-ios/ViewModels/Screens/UserItems/UserFavoritesViewModel.swift
+@@ -21,10 +21,10 @@ class UserFavoritesViewModel {
+   let imageUseCase:             ImageUseCaseProtocol
+   let itemRepository:           ItemRepositoryProtocol
+   
+-  var bindableItems         = Bindable<[Item]>()
++  var bindableItems         = Bindable<[ItemListElement]>()
+   var itemCellViewModels    = [ItemCellViewModel]()
+   
+-  private var itemsDictionary                 = [String: Item]()
++  private var itemsDictionary                 = [String: ItemListElement]()
+   private var itemCellViewModelsDictionary    = [String: ItemCellViewModel]()
+   
+   private var isLoading: Bool = false
+@@ -43,11 +43,11 @@ class UserFavoritesViewModel {
+   
+   private func reload() {
+     itemCellViewModels = Array(itemCellViewModelsDictionary.values).sorted(by: { v1, v2 in
+-      return v1.item!.modifiedAt!.compare(v2.item!.modifiedAt!) == .orderedDescending
++      return v1.model!.modifiedAt.compare(v2.model!.modifiedAt) == .orderedDescending
+     })
+     
+     bindableItems.value = Array(itemsDictionary.values).sorted(by: { m1, m2 in
+-      return m1.modifiedAt!.compare(m2.modifiedAt!) == .orderedDescending
++      return m1.modifiedAt.compare(m2.modifiedAt) == .orderedDescending
+     })
+   }
+   
+@@ -65,16 +65,14 @@ class UserFavoritesViewModel {
+       switch result {
+       case .success((let items, let nextCursor)):
+         items.forEach { item in
+-          if let id = item.id {
+-            self.itemsDictionary[id] = item
++          self.itemsDictionary[item.id] = item
+             
+-            if let viewModel = self.itemCellViewModelsDictionary[id] {
+-              viewModel.item = item
+-            } else {
+-              let viewModel = ItemCellViewModel(imageUseCase: self.imageUseCase)
+-              viewModel.item = item
+-              self.itemCellViewModelsDictionary[id] = viewModel
+-            }
++          if let viewModel = self.itemCellViewModelsDictionary[item.id] {
++            viewModel.model = item
++          } else {
++            let viewModel = ItemCellViewModel(imageUseCase: self.imageUseCase)
++            viewModel.model = item
++            self.itemCellViewModelsDictionary[item.id] = viewModel
+           }
+         }
+         
+@@ -88,7 +86,7 @@ class UserFavoritesViewModel {
+   
+   func viewDidLoad() {
+     cursor                        = Date().timeIntervalSince1970 * 1000
+-    itemsDictionary               = [String: Item]()
++    itemsDictionary               = [String: ItemListElement]()
+     itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
+     
+     fetchList()
+@@ -96,7 +94,7 @@ class UserFavoritesViewModel {
+   
+   func viewDidScrollToTop() {
+     cursor                        = Date().timeIntervalSince1970 * 1000
+-    itemsDictionary               = [String: Item]()
++    itemsDictionary               = [String: ItemListElement]()
+     itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
+     
+     fetchList()
+@@ -107,8 +105,8 @@ class UserFavoritesViewModel {
+   }
+   
+   func didSelectItemAt(indexPath: IndexPath) {
+-    if let item = bindableItems.value?[indexPath.row], let id = item.id {
+-      coordinator.navigateToItemDisplay(id: id)
++    if let item = bindableItems.value?[indexPath.row] {
++      coordinator.navigateToItemDisplay(id: item.id)
+     }
+   }
+ }
+diff --git a/luzie-locke-ios/ViewModels/Screens/UserItems/UserListingsViewModel.swift b/luzie-locke-ios/ViewModels/Screens/UserItems/UserListingsViewModel.swift
+index 3070115..e6c3527 100644
+--- a/luzie-locke-ios/ViewModels/Screens/UserItems/UserListingsViewModel.swift
++++ b/luzie-locke-ios/ViewModels/Screens/UserItems/UserListingsViewModel.swift
+@@ -21,11 +21,11 @@ class UserListingsViewModel {
+   let userOpenItemUseCase:  UserOpenItemUseCaseProtocol
+   let userSoldItemUseCase:  UserSoldItemUseCaseProtocol
+   
+-  var bindableItems         = Bindable<[Item]>()
++  var bindableItems         = Bindable<[ItemListElement]>()
+   var itemCellViewModels    = [ItemCellViewModel]()
+   
+   private var segment: Int = 0
+-  private var itemsDictionary                 = [String: Item]()
++  private var itemsDictionary                 = [String: ItemListElement]()
+   private var itemCellViewModelsDictionary    = [String: ItemCellViewModel]()
+   
+   private var isLoading: Bool = false
+@@ -44,11 +44,11 @@ class UserListingsViewModel {
+   
+   private func reload() {
+     itemCellViewModels = Array(itemCellViewModelsDictionary.values).sorted(by: { v1, v2 in
+-      return v1.item!.modifiedAt!.compare(v2.item!.modifiedAt!) == .orderedDescending
++      return v1.model!.modifiedAt.compare(v2.model!.modifiedAt) == .orderedDescending
+     })
+     
+     bindableItems.value = Array(itemsDictionary.values).sorted(by: { m1, m2 in
+-      return m1.modifiedAt!.compare(m2.modifiedAt!) == .orderedDescending
++      return m1.modifiedAt.compare(m2.modifiedAt) == .orderedDescending
+     })
+   }
+   
+@@ -59,7 +59,7 @@ class UserListingsViewModel {
+     
+     isLoading = true
+     
+-    let readList: (TimeInterval, @escaping (Result<(Array<Item>, Double), LLError>) -> ()) -> () = segment == 0 ? userOpenItemUseCase.getItemList : userSoldItemUseCase.getItemList
++    let readList: (TimeInterval, @escaping (Result<(Array<ItemListElement>, Double), LLError>) -> ()) -> () = segment == 0 ? userOpenItemUseCase.getItemList : userSoldItemUseCase.getItemList
+ 
+     readList(cursor) { [weak self] result in
+       guard let self = self else { return }
+@@ -68,16 +68,14 @@ class UserListingsViewModel {
+       switch result {
+       case .success((let items, let nextCursor)):
+         items.forEach { item in
+-          if let id = item.id {
+-            self.itemsDictionary[id] = item
+-            
+-            if let viewModel = self.itemCellViewModelsDictionary[id] {
+-              viewModel.item = item
+-            } else {
+-              let viewModel = ItemCellViewModel(imageUseCase: self.imageUseCase)
+-              viewModel.item = item
+-              self.itemCellViewModelsDictionary[id] = viewModel
+-            }
++          self.itemsDictionary[item.id] = item
++
++          if let viewModel = self.itemCellViewModelsDictionary[item.id] {
++            viewModel.model = item
++          } else {
++            let viewModel = ItemCellViewModel(imageUseCase: self.imageUseCase)
++            viewModel.model = item
++            self.itemCellViewModelsDictionary[item.id] = viewModel
+           }
+         }
+         
+@@ -91,7 +89,7 @@ class UserListingsViewModel {
+   
+   func viewDidLoad() {
+     cursor                        = Date().timeIntervalSince1970 * 1000
+-    itemsDictionary               = [String: Item]()
++    itemsDictionary               = [String: ItemListElement]()
+     itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
+     
+     fetchList()
+@@ -99,7 +97,7 @@ class UserListingsViewModel {
+   
+   func viewDidScrollToTop() {
+     cursor                        = Date().timeIntervalSince1970 * 1000
+-    itemsDictionary               = [String: Item]()
++    itemsDictionary               = [String: ItemListElement]()
+     itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
+     
+     fetchList()
+@@ -113,15 +111,15 @@ class UserListingsViewModel {
+     self.segment = segment
+     
+     cursor                        = Date().timeIntervalSince1970 * 1000
+-    itemsDictionary               = [String: Item]()
++    itemsDictionary               = [String: ItemListElement]()
+     itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
+     
+     fetchList()
+   }
+   
+   func didSelectItemAt(indexPath: IndexPath) {
+-    if let item = bindableItems.value?[indexPath.row], let id = item.id {
+-      coordinator.navigateToItemDisplay(id: id)
++    if let item = bindableItems.value?[indexPath.row] {
++      coordinator.navigateToItemDisplay(id: item.id)
+     }
+   }
+ }
+diff --git a/luzie-locke-ios/ViewModels/Screens/UserItems/UserPurchasesViewModel.swift b/luzie-locke-ios/ViewModels/Screens/UserItems/UserPurchasesViewModel.swift
+index 84b31ff..4b8f100 100644
+--- a/luzie-locke-ios/ViewModels/Screens/UserItems/UserPurchasesViewModel.swift
++++ b/luzie-locke-ios/ViewModels/Screens/UserItems/UserPurchasesViewModel.swift
+@@ -20,10 +20,10 @@ class UserPurchasesViewModel {
+   private let imageUseCase:          ImageUseCaseProtocol
+   private let userBoughtItemUseCase: UserBoughtItemUseCaseProtocol
+   
+-  var bindableItems         = Bindable<[Item]>()
++  var bindableItems         = Bindable<[ItemListElement]>()
+   var itemCellViewModels    = [ItemCellViewModel]()
+   
+-  private var itemsDictionary                 = [String: Item]()
++  private var itemsDictionary                 = [String: ItemListElement]()
+   private var itemCellViewModelsDictionary    = [String: ItemCellViewModel]()
+   
+   private var isLoading: Bool = false
+@@ -40,11 +40,11 @@ class UserPurchasesViewModel {
+   
+   private func reload() {
+     itemCellViewModels = Array(itemCellViewModelsDictionary.values).sorted(by: { v1, v2 in
+-      return v1.item!.modifiedAt!.compare(v2.item!.modifiedAt!) == .orderedDescending
++      return v1.model!.modifiedAt.compare(v2.model!.modifiedAt) == .orderedDescending
+     })
+     
+     bindableItems.value = Array(itemsDictionary.values).sorted(by: { m1, m2 in
+-      return m1.modifiedAt!.compare(m2.modifiedAt!) == .orderedDescending
++      return m1.modifiedAt.compare(m2.modifiedAt) == .orderedDescending
+     })
+   }
+   
+@@ -62,16 +62,14 @@ class UserPurchasesViewModel {
+       switch result {
+       case .success((let items, let nextCursor)):
+         items.forEach { item in
+-          if let id = item.id {
+-            self.itemsDictionary[id] = item
+-            
+-            if let viewModel = self.itemCellViewModelsDictionary[id] {
+-              viewModel.item = item
+-            } else {
+-              let viewModel = ItemCellViewModel(imageUseCase: self.imageUseCase)
+-              viewModel.item = item
+-              self.itemCellViewModelsDictionary[id] = viewModel
+-            }
++          self.itemsDictionary[item.id] = item
++          
++          if let viewModel = self.itemCellViewModelsDictionary[item.id] {
++            viewModel.model = item
++          } else {
++            let viewModel = ItemCellViewModel(imageUseCase: self.imageUseCase)
++            viewModel.model = item
++            self.itemCellViewModelsDictionary[item.id] = viewModel
+           }
+         }
+         
+@@ -85,7 +83,7 @@ class UserPurchasesViewModel {
+   
+   func viewDidLoad() {
+     cursor                        = Date().timeIntervalSince1970 * 1000
+-    itemsDictionary               = [String: Item]()
++    itemsDictionary               = [String: ItemListElement]()
+     itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
+     
+     fetchList()
+@@ -93,7 +91,7 @@ class UserPurchasesViewModel {
+   
+   func viewDidScrollToTop() {
+     cursor                        = Date().timeIntervalSince1970 * 1000
+-    itemsDictionary               = [String: Item]()
++    itemsDictionary               = [String: ItemListElement]()
+     itemCellViewModelsDictionary  = [String: ItemCellViewModel]()
+     
+     fetchList()
+@@ -104,8 +102,8 @@ class UserPurchasesViewModel {
+   }
+   
+   func didSelectItemAt(indexPath: IndexPath) {
+-    if let item = bindableItems.value?[indexPath.row], let id = item.id {
+-      coordinator.navigateToItemDisplay(id: id)
++    if let item = bindableItems.value?[indexPath.row] {
++      coordinator.navigateToItemDisplay(id: item.id)
+     }
+   }
+ }
+diff --git a/luzie-locke-ios/Views/Item/ItemCell.swift b/luzie-locke-ios/Views/Item/ItemCell.swift
+deleted file mode 100644
+index 8155c2c..0000000
+--- a/luzie-locke-ios/Views/Item/ItemCell.swift
++++ /dev/null
+@@ -1,86 +0,0 @@
+-//
+-//  ItemCell.swift
+-//  luzie-locke-ios
+-//
+-//  Created by Harry on 25.10.21.
+-//
+-
+-import UIKit
+-
+-class ItemCell: UICollectionViewCell {
+-  
+-  static let reuseIdentifier = "ItemCell"
+-
+-  var viewModel: ItemCellViewModel? {
+-    didSet {
+-      imageView.image           = viewModel?.bindableItemImage.value
+-      titleLabel.text           = viewModel?.bindableTitleText.value
+-      locationLabel.text        = viewModel?.bindableLocationText.value
+-      priceLabel.attributedText = viewModel?.bindablePriceText.value
+-      dateLabel.text            = viewModel?.bindableDateText.value
+-      
+-      viewModel?.bindableItemImage.bind { [weak self] image in
+-        self?.imageView.image = image
+-      }
+-      
+-      viewModel?.bindableTitleText.bind { [weak self] text in
+-        self?.titleLabel.text = text
+-      }
+-      
+-      viewModel?.bindableLocationText.bind { [weak self] text in
+-        self?.locationLabel.text = text
+-      }
+-      
+-      viewModel?.bindablePriceText.bind { [weak self] text in
+-        self?.priceLabel.attributedText = text
+-      }
+-      
+-      viewModel?.bindableDateText.bind { [weak self] text in
+-        self?.dateLabel.text = text
+-      }
+-    }
+-  }
+-  
+-  let imageView     = ItemImageView()
+-  let titleLabel    = CustomLabel(font: CustomUIFonts.body, textColor: CustomUIColors.primaryColor)
+-  let locationLabel = CustomLabel(font: CustomUIFonts.caption, textColor: CustomUIColors.secondaryColor)
+-  let priceLabel    = CustomLabel(font: CustomUIFonts.body, textColor: CustomUIColors.primaryColor)
+-  let dateLabel     = CustomLabel(font: CustomUIFonts.detail, textColor: .gray)
+-  let line          = UIView()
+-
+-  override init(frame: CGRect) {
+-    super.init(frame: frame)
+-    configure()
+-  }
+-  
+-  private func configure() {
+-    titleLabel.numberOfLines                                = 0
+-    
+-    let stackView = UIStackView(arrangedSubviews: [ titleLabel, locationLabel, priceLabel ])
+-    stackView.axis                                          = .vertical
+-    stackView.spacing                                       = 5
+-    stackView.translatesAutoresizingMaskIntoConstraints     = false
+-    
+-    addSubview(imageView)
+-    addSubview(stackView)
+-    addSubview(dateLabel)
+-    
+-    NSLayoutConstraint.activate([
+-      imageView.topAnchor.constraint(equalTo: topAnchor),
+-      imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+-      imageView.widthAnchor.constraint(equalToConstant: 100),
+-      imageView.heightAnchor.constraint(equalToConstant: 100),
+-      
+-      stackView.topAnchor.constraint(equalTo: topAnchor),
+-      stackView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 10),
+-      stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+-      
+-      dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+-      dateLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
+-    ])
+-  }
+-
+-  required init?(coder: NSCoder) {
+-    fatalError("init(coder:) has not been implemented")
+-  }
+-}
+diff --git a/luzie-locke-ios/Views/Screens/HomeViewController.swift b/luzie-locke-ios/Views/Screens/HomeViewController.swift
+index 879fbdf..ae7fcea 100644
+--- a/luzie-locke-ios/Views/Screens/HomeViewController.swift
++++ b/luzie-locke-ios/Views/Screens/HomeViewController.swift
+@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
+   private let viewModel: HomeViewModel
+ 
+   private var collectionView: UICollectionView!
+-  private var dataSource:     UICollectionViewDiffableDataSource<Section, Item>!
++  private var dataSource:     UICollectionViewDiffableDataSource<Section, ItemListElement>!
+   
+   private let setButton       = PulseRoundButton(radius: 30)
+   private let locationButton  = LocationMenuButton()
+@@ -82,7 +82,7 @@ class HomeViewController: UIViewController {
+   }
+   
+   private func configureDataSource() {
+-    dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { [weak self] (collectionView, indexPath, follower) -> UICollectionViewCell? in
++    dataSource = UICollectionViewDiffableDataSource<Section, ItemListElement>(collectionView: collectionView, cellProvider: { [weak self] (collectionView, indexPath, follower) -> UICollectionViewCell? in
+       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCell.reuseIdentifier, for: indexPath) as! ItemCell
+       cell.viewModel = self?.viewModel.itemCellViewModels[indexPath.row]
+       return cell
+@@ -119,9 +119,9 @@ class HomeViewController: UIViewController {
+     ])
+   }
+   
+-  private func updateData(on items: [Item]?) {
++  private func updateData(on items: [ItemListElement]?) {
+     guard let items = items else { return }
+-    var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
++    var snapshot = NSDiffableDataSourceSnapshot<Section, ItemListElement>()
+     snapshot.appendSections([.main])
+     snapshot.appendItems(items)
+     
+diff --git a/luzie-locke-ios/Views/Screens/Item/ItemSearchViewController.swift b/luzie-locke-ios/Views/Screens/Item/ItemSearchViewController.swift
+index 34a7429..df80a9f 100644
+--- a/luzie-locke-ios/Views/Screens/Item/ItemSearchViewController.swift
++++ b/luzie-locke-ios/Views/Screens/Item/ItemSearchViewController.swift
+@@ -16,7 +16,7 @@ class ItemSearchViewController: UIViewController {
+ 
+   private var debounceTimer:  Timer?
+   private var collectionView: UICollectionView!
+-  private var dataSource:     UICollectionViewDiffableDataSource<Section, Item>!
++  private var dataSource:     UICollectionViewDiffableDataSource<Section, ItemListElement>!
+ 
+   private let searchController = UISearchController()
+ 
+@@ -54,7 +54,7 @@ class ItemSearchViewController: UIViewController {
+   }
+   
+   private func configureDataSource() {
+-    dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { [weak self] (collectionView, indexPath, follower) -> UICollectionViewCell? in
++    dataSource = UICollectionViewDiffableDataSource<Section, ItemListElement>(collectionView: collectionView, cellProvider: { [weak self] (collectionView, indexPath, follower) -> UICollectionViewCell? in
+       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCell.reuseIdentifier, for: indexPath) as! ItemCell
+       cell.viewModel = self?.viewModel.itemCellViewModels[indexPath.row]
+       return cell
+@@ -84,8 +84,8 @@ class ItemSearchViewController: UIViewController {
+     }
+   }
+   
+-  private func updateData(on items: [Item]) {
+-    var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
++  private func updateData(on items: [ItemListElement]) {
++    var snapshot = NSDiffableDataSourceSnapshot<Section, ItemListElement>()
+     snapshot.appendSections([.main])
+     snapshot.appendItems(items)
+     
+diff --git a/luzie-locke-ios/Views/Screens/UserItems/UserFavoritesViewController.swift b/luzie-locke-ios/Views/Screens/UserItems/UserFavoritesViewController.swift
+index 27e5dc4..c9aae8b 100644
+--- a/luzie-locke-ios/Views/Screens/UserItems/UserFavoritesViewController.swift
++++ b/luzie-locke-ios/Views/Screens/UserItems/UserFavoritesViewController.swift
+@@ -13,7 +13,7 @@ class UserFavoritesViewController: UIViewController {
+   
+   private let viewModel:        UserFavoritesViewModel
+   private var collectionView:   UICollectionView!
+-  private var dataSource:       UICollectionViewDiffableDataSource<Section, Item>!
++  private var dataSource:       UICollectionViewDiffableDataSource<Section, ItemListElement>!
+ 
+   private let refreshControl  = UIRefreshControl()
+   private let contentView     = UIView()
+@@ -66,7 +66,7 @@ class UserFavoritesViewController: UIViewController {
+   }
+   
+   private func configureDataSource() {
+-    dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { [weak self] (collectionView, indexPath, follower) -> UICollectionViewCell? in
++    dataSource = UICollectionViewDiffableDataSource<Section, ItemListElement>(collectionView: collectionView, cellProvider: { [weak self] (collectionView, indexPath, follower) -> UICollectionViewCell? in
+       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCell.reuseIdentifier, for: indexPath) as! ItemCell
+       cell.viewModel = self?.viewModel.itemCellViewModels[indexPath.row]
+       return cell
+@@ -103,8 +103,8 @@ class UserFavoritesViewController: UIViewController {
+     }
+   }
+   
+-  private func updateData(on items: [Item]) {
+-    var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
++  private func updateData(on items: [ItemListElement]) {
++    var snapshot = NSDiffableDataSourceSnapshot<Section, ItemListElement>()
+     snapshot.appendSections([.main])
+     snapshot.appendItems(items)
+     
+diff --git a/luzie-locke-ios/Views/Screens/UserItems/UserListingsViewController.swift b/luzie-locke-ios/Views/Screens/UserItems/UserListingsViewController.swift
+index 943ae8a..c60bfe4 100644
+--- a/luzie-locke-ios/Views/Screens/UserItems/UserListingsViewController.swift
++++ b/luzie-locke-ios/Views/Screens/UserItems/UserListingsViewController.swift
+@@ -14,7 +14,7 @@ class UserListingsViewController: UIViewController {
+   private let viewModel: UserListingsViewModel
+   private var segmentedControl: UISegmentedControl!
+   private var collectionView:   UICollectionView!
+-  private var dataSource:       UICollectionViewDiffableDataSource<Section, Item>!
++  private var dataSource:       UICollectionViewDiffableDataSource<Section, ItemListElement>!
+ 
+   private let refreshControl  = UIRefreshControl()
+   private let contentView     = UIView()
+@@ -82,7 +82,7 @@ class UserListingsViewController: UIViewController {
+   }
+   
+   private func configureDataSource() {
+-    dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { [weak self] (collectionView, indexPath, follower) -> UICollectionViewCell? in
++    dataSource = UICollectionViewDiffableDataSource<Section, ItemListElement>(collectionView: collectionView, cellProvider: { [weak self] (collectionView, indexPath, follower) -> UICollectionViewCell? in
+       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCell.reuseIdentifier, for: indexPath) as! ItemCell
+       cell.viewModel = self?.viewModel.itemCellViewModels[indexPath.row]
+       return cell
+@@ -126,8 +126,8 @@ class UserListingsViewController: UIViewController {
+     }
+   }
+   
+-  private func updateData(on items: [Item]) {
+-    var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
++  private func updateData(on items: [ItemListElement]) {
++    var snapshot = NSDiffableDataSourceSnapshot<Section, ItemListElement>()
+     snapshot.appendSections([.main])
+     snapshot.appendItems(items)
+     
+diff --git a/luzie-locke-ios/Views/Screens/UserItems/UserPurchasesViewController.swift b/luzie-locke-ios/Views/Screens/UserItems/UserPurchasesViewController.swift
+index 4322e13..7501ff0 100644
+--- a/luzie-locke-ios/Views/Screens/UserItems/UserPurchasesViewController.swift
++++ b/luzie-locke-ios/Views/Screens/UserItems/UserPurchasesViewController.swift
+@@ -13,7 +13,7 @@ class UserPurchasesViewController: UIViewController {
+   
+   private let viewModel:        UserPurchasesViewModel
+   private var collectionView:   UICollectionView!
+-  private var dataSource:       UICollectionViewDiffableDataSource<Section, Item>!
++  private var dataSource:       UICollectionViewDiffableDataSource<Section, ItemListElement>!
+ 
+   private let refreshControl  = UIRefreshControl()
+   private let contentView     = UIView()
+@@ -66,7 +66,7 @@ class UserPurchasesViewController: UIViewController {
+   }
+   
+   private func configureDataSource() {
+-    dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView, cellProvider: { [weak self] (collectionView, indexPath, follower) -> UICollectionViewCell? in
++    dataSource = UICollectionViewDiffableDataSource<Section, ItemListElement>(collectionView: collectionView, cellProvider: { [weak self] (collectionView, indexPath, follower) -> UICollectionViewCell? in
+       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCell.reuseIdentifier, for: indexPath) as! ItemCell
+       cell.viewModel = self?.viewModel.itemCellViewModels[indexPath.row]
+       return cell
+@@ -103,8 +103,8 @@ class UserPurchasesViewController: UIViewController {
+     }
+   }
+   
+-  private func updateData(on items: [Item]) {
+-    var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
++  private func updateData(on items: [ItemListElement]) {
++    var snapshot = NSDiffableDataSourceSnapshot<Section, ItemListElement>()
+     snapshot.appendSections([.main])
+     snapshot.appendItems(items)
+     
+diff --git a/luzie-locke-iosTests/FakeModels/FakeModels.swift b/luzie-locke-iosTests/FakeModels/FakeModels.swift
+index 2d47ef8..ed1dc7a 100644
+--- a/luzie-locke-iosTests/FakeModels/FakeModels.swift
++++ b/luzie-locke-iosTests/FakeModels/FakeModels.swift
+@@ -30,13 +30,13 @@ class FakeModels {
+                        location: location)
+   }
+   
+-  static func myProfileCellModel(
++  static func userProfileBrief(
+     name: String = Faker.name.findName(),
+     imageUrl: String = Faker.image.imageUrl(),
+     city: String = Faker.address.city()
+-  ) -> MyProfileCellModel {
+-    return MyProfileCellModel(name: name,
+-                              city: city,
+-                              imageUrl: imageUrl)
++  ) -> UserProfileBrief {
++    return UserProfileBrief(name: name,
++                            city: city,
++                            imageUrl: imageUrl)
+   }
+ }
+diff --git a/luzie-locke-iosTests/ViewModel/Cells/ProfileCellViewModelTests.swift b/luzie-locke-iosTests/ViewModel/Cells/ProfileCellViewModelTests.swift
+deleted file mode 100644
+index 2ea0ab4..0000000
+--- a/luzie-locke-iosTests/ViewModel/Cells/ProfileCellViewModelTests.swift
++++ /dev/null
+@@ -1,104 +0,0 @@
+-//
+-//  MyProfileCellViewModel.swift
+-//  luzie-locke-iosTests
+-//
+-//  Created by Harry on 26.10.21.
+-//
+-
+-import XCTest
+-
+-@testable import luzie_locke_ios
+-
+-class MyProfileCellViewModelTests: XCTestCase {
+-
+-  var sut: MyProfileCellViewModel!
+-  
+-  var userImageView:      UIImageView!
+-  var userNameLabel:      UILabel!
+-  var userLocationLabel:  UILabel!
+-  
+-  var mockOpenHttpClient: OpenHTTPClientMock!
+-  
+-  let fakeMyProfile = FakeModels.myProfileCellModel()
+-  let fakeUIImage   = UIImage(systemName: "location")
+-  
+-  override func setUpWithError() throws {
+-    try super.setUpWithError()
+-    
+-    mockOpenHttpClient  = OpenHTTPClientMock()
+-    sut                 = MyProfileCellViewModel(openHttpClient: mockOpenHttpClient)
+-    
+-    userImageView       = UIImageView()
+-    userNameLabel       = UILabel()
+-    userLocationLabel   = UILabel()
+-  }
+-  
+-  func givenThatViewModelIsBound() {
+-    sut.bindableProfileImage.bind { [weak self] image in
+-      self?.userImageView.image = image
+-    }
+-    
+-    sut?.bindableNameText.bind { [weak self] text in
+-      self?.userNameLabel.text = text
+-    }
+-    
+-    sut?.bindableLocationText.bind { [weak self] text in
+-      self?.userLocationLabel.text = text
+-    }
+-  }
+-  
+-  func whenProfileIsSet(_ profile: MyProfileCellModel) {
+-    sut.model = profile
+-  }
+-  
+-  func whenHttpClientFetchedResultWith(_ result: Result<UIImage?, LLError>) {
+-    mockOpenHttpClient.fetchDownloadImageCompletionWith(result: result)
+-  }
+-  
+-  func theNameTextShouldBe(_ expected: String) {
+-    XCTAssertEqual(expected, userNameLabel.text)
+-  }
+-  
+-  func theLocationTextShouldBe(_ expected: String) {
+-    XCTAssertEqual(expected, userLocationLabel.text)
+-  }
+-  
+-  func shouldTriggerImageDownload() {
+-    XCTAssertTrue(mockOpenHttpClient.isDownloadImageCalled)
+-  }
+-  
+-  func theImageShouldBe(_ expected: UIImage?) {
+-    XCTAssertEqual(expected, userImageView.image)
+-  }
+-
+-  func testShouldLoadTextsWhenProfileIsSet() throws {
+-    givenThatViewModelIsBound()
+-    
+-    whenProfileIsSet(fakeMyProfile)
+-    theNameTextShouldBe(fakeMyProfile.name)
+-    theLocationTextShouldBe(fakeMyProfile.city)
+-  }
+-  
+-  func testShouldTriggerImageDownloadWhenProfileIsSet() throws {
+-    givenThatViewModelIsBound()
+-    
+-    whenProfileIsSet(fakeMyProfile)
+-    shouldTriggerImageDownload()
+-  }
+-  
+-  func testShouldLoadImageWhenDownloadSucceeded() throws {
+-    givenThatViewModelIsBound()
+-    
+-    whenProfileIsSet(fakeMyProfile)
+-    whenHttpClientFetchedResultWith(.success(fakeUIImage))
+-    theImageShouldBe(fakeUIImage)
+-  }
+-  
+-  func testShouldNotLoadImageWhenDownloadIsFailed() throws {
+-    givenThatViewModelIsBound()
+-    
+-    whenProfileIsSet(fakeMyProfile)
+-    whenHttpClientFetchedResultWith(.failure(.unableToComplete))
+-    theImageShouldBe(nil)
+-  }
+-}

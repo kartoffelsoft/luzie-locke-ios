@@ -30,13 +30,29 @@ class FakeModels {
                        location: location)
   }
   
-  static func myProfileCellModel(
+  static func userProfileBrief(
     name: String = Faker.name.findName(),
     imageUrl: String = Faker.image.imageUrl(),
     city: String = Faker.address.city()
-  ) -> MyProfileCellModel {
-    return MyProfileCellModel(name: name,
-                              city: city,
-                              imageUrl: imageUrl)
+  ) -> UserProfileBrief {
+    return UserProfileBrief(name: name,
+                            city: city,
+                            imageUrl: imageUrl)
+  }
+  
+  static func itemListElement(
+    id: String = Faker.datatype.id(),
+    title: String = "tbd",
+    city: String = Faker.address.city(),
+    price: String = String(Faker.datatype.int()),
+    imageUrl: String = Faker.image.imageUrl(),
+    modifiedAt: Date = Date()
+  ) -> ItemListElement {
+    return ItemListElement(id: id,
+                           title: title,
+                           city: city,
+                           price: price,
+                           imageUrl: imageUrl,
+                           modifiedAt: modifiedAt)
   }
 }

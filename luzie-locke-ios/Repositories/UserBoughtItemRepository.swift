@@ -9,7 +9,7 @@ import Foundation
 
 protocol UserBoughtItemRepositoryProtocol {
 
-  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void)
+  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void)
 }
 
 class UserBoughtItemRepository: UserBoughtItemRepositoryProtocol {
@@ -20,7 +20,7 @@ class UserBoughtItemRepository: UserBoughtItemRepositoryProtocol {
     self.backendClient = backendClient
   }
   
-  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([Item], TimeInterval), LLError>) -> Void) {
+  func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void) {
     backendClient.GET(ItemBoughtItemListReadRequest(userId: userId, cursor: cursor, limit: 8)) { result in
       switch result {
       case .success(let response):

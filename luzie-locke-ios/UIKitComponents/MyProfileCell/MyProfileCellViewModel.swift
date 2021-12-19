@@ -9,28 +9,14 @@ import UIKit
 
 class MyProfileCellViewModel {
 
-  var model: MyProfileCellModel? {
+  var model: UserProfileBrief? {
     didSet {
-      bindableNameText.value     = model?.name
-      bindableLocationText.value = model?.city
+      guard let model = model else { return }
       
-      downloadImage(from: model?.imageUrl)
-    }
-  }
-  
-  var bindableProfileImage  = Bindable<UIImage>()
-  var bindableNameText      = Bindable<String>()
-  var bindableLocationText  = Bindable<String>()
-
-  let openHttpClient: OpenHTTP
-
-  init(openHttpClient: OpenHTTP) {
-    self.openHttpClient = openHttpClient
-  }
-  
-  private func downloadImage(from url: String?) {
-    if let url = url {
-      openHttpClient.downloadImage(from: url) { [weak self] result in
+      bindableNameText.value     = model.name
+      bindableLocationText.value = model.city
+      
+      imageUseCase.getImage(url: model.imageUrl){ [weak self] result in
         switch result {
         case .success(let image):
           self?.bindableProfileImage.value = image
@@ -39,5 +25,15 @@ class MyProfileCellViewModel {
         }
       }
     }
+  }
+  
+  var bindableProfileImage  = Bindable<UIImage>()
+  var bindableNameText      = Bindable<String>()
+  var bindableLocationText  = Bindable<String>()
+
+  private let imageUseCase: ImageUseCaseProtocol
+
+  init(imageUseCase: ImageUseCaseProtocol) {
+    self.imageUseCase = imageUseCase
   }
 }

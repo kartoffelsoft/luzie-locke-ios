@@ -41,10 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
   
   func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
     messaging.token { token, _ in
-      guard let token = token else {
+      guard let _ = token else {
         return
       }
-      print("Token: \(token)")
     }
   }
   
