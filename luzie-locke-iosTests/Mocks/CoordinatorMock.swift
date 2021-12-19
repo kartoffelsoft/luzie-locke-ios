@@ -8,8 +8,8 @@
 import UIKit
 @testable import luzie_locke_ios
 
-class CoordinatorMock: Coordinator {
-  var children = [Coordinator]()
+class CoordinatorMock: Coordinatable {
+  var children = [Coordinatable]()
   var navigationController = UINavigationController()
   
   func start() {

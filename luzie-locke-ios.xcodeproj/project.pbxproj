@@ -51,6 +51,9 @@
 		4A145AB4276B36280059CACD /* PopCoordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AB3276B36280059CACD /* PopCoordinatable.swift */; };
 		4A145AB6276B5E6A0059CACD /* RadiusSettingsConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AB5276B5E6A0059CACD /* RadiusSettingsConfig.swift */; };
 		4A145AB9276CD3AE0059CACD /* SearchString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AB8276CD3AE0059CACD /* SearchString.swift */; };
+		4A145ABD276F281D0059CACD /* Faker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145ABC276F281D0059CACD /* Faker.swift */; };
+		4A145AC0276F56FF0059CACD /* FakeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145ABF276F56FF0059CACD /* FakeModels.swift */; };
+		4A145AC3276F78E40059CACD /* MyProfileCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AC2276F78E40059CACD /* MyProfileCellModel.swift */; };
 		4A155E4027229D3600C8B867 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E3F27229D3600C8B867 /* AvatarImageView.swift */; };
 		4A155E432722A46300C8B867 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E422722A46300C8B867 /* Constants.swift */; };
 		4A155E462722E03600C8B867 /* OpenHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E452722E03600C8B867 /* OpenHTTPClient.swift */; };
@@ -199,7 +202,7 @@
 		4AED5E7C27209C8D00B7AC00 /* BackendAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7B27209C8D00B7AC00 /* BackendAuthService.swift */; };
 		4AED5E7E2720A50400B7AC00 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7D2720A50400B7AC00 /* AuthService.swift */; };
 		4AED5E802720C2D200B7AC00 /* JWTDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7F2720C2D200B7AC00 /* JWTDecode.swift */; };
-		4AED5E8627219E7300B7AC00 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E8527219E7300B7AC00 /* ProfileCell.swift */; };
+		4AED5E8627219E7300B7AC00 /* MyProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E8527219E7300B7AC00 /* MyProfileCell.swift */; };
 		4AEE61B027401942008055F9 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 4AEE61AF27401942008055F9 /* FirebaseMessaging */; };
 		4AEE61B42740F965008055F9 /* LocationMenuPopoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE61B32740F965008055F9 /* LocationMenuPopoverController.swift */; };
 		4AEE61B62741B4EF008055F9 /* LocationMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE61B52741B4EF008055F9 /* LocationMenuButton.swift */; };
@@ -213,7 +216,7 @@
 		4AEE8F7F2728144A004CB686 /* OpenHTTPClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F7E2728144A004CB686 /* OpenHTTPClientMock.swift */; };
 		4AEE8F82272818D3004CB686 /* BackendAPIClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F81272818D3004CB686 /* BackendAPIClientMock.swift */; };
 		4AEE8F8527281978004CB686 /* UserAPIClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F8427281978004CB686 /* UserAPIClientMock.swift */; };
-		4AEE8F8727288842004CB686 /* ProfileCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F8627288842004CB686 /* ProfileCellViewModel.swift */; };
+		4AEE8F8727288842004CB686 /* MyProfileCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F8627288842004CB686 /* MyProfileCellViewModel.swift */; };
 		4AEE8F8B27289C6D004CB686 /* ProfileCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F8A27289C6D004CB686 /* ProfileCellViewModelTests.swift */; };
 		4AEE8F922729778D004CB686 /* ImageSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F912729778D004CB686 /* ImageSelectButton.swift */; };
 		4AEE8FA4272ABDD2004CB686 /* CustomGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8FA3272ABDD2004CB686 /* CustomGradient.swift */; };
@@ -276,6 +279,9 @@
 		4A145AB3276B36280059CACD /* PopCoordinatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopCoordinatable.swift; sourceTree = "<group>"; };
 		4A145AB5276B5E6A0059CACD /* RadiusSettingsConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusSettingsConfig.swift; sourceTree = "<group>"; };
 		4A145AB8276CD3AE0059CACD /* SearchString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchString.swift; sourceTree = "<group>"; };
+		4A145ABC276F281D0059CACD /* Faker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faker.swift; sourceTree = "<group>"; };
+		4A145ABF276F56FF0059CACD /* FakeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeModels.swift; sourceTree = "<group>"; };
+		4A145AC2276F78E40059CACD /* MyProfileCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileCellModel.swift; sourceTree = "<group>"; };
 		4A155E3F27229D3600C8B867 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		4A155E422722A46300C8B867 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4A155E452722E03600C8B867 /* OpenHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHTTPClient.swift; sourceTree = "<group>"; };
@@ -426,7 +432,7 @@
 		4AED5E7B27209C8D00B7AC00 /* BackendAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendAuthService.swift; sourceTree = "<group>"; };
 		4AED5E7D2720A50400B7AC00 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		4AED5E7F2720C2D200B7AC00 /* JWTDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTDecode.swift; sourceTree = "<group>"; };
-		4AED5E8527219E7300B7AC00 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		4AED5E8527219E7300B7AC00 /* MyProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileCell.swift; sourceTree = "<group>"; };
 		4AEE61B32740F965008055F9 /* LocationMenuPopoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMenuPopoverController.swift; sourceTree = "<group>"; };
 		4AEE61B52741B4EF008055F9 /* LocationMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMenuButton.swift; sourceTree = "<group>"; };
 		4AEE8F6A2725D9B2004CB686 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
@@ -439,7 +445,7 @@
 		4AEE8F7E2728144A004CB686 /* OpenHTTPClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHTTPClientMock.swift; sourceTree = "<group>"; };
 		4AEE8F81272818D3004CB686 /* BackendAPIClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendAPIClientMock.swift; sourceTree = "<group>"; };
 		4AEE8F8427281978004CB686 /* UserAPIClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIClientMock.swift; sourceTree = "<group>"; };
-		4AEE8F8627288842004CB686 /* ProfileCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCellViewModel.swift; sourceTree = "<group>"; };
+		4AEE8F8627288842004CB686 /* MyProfileCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileCellViewModel.swift; sourceTree = "<group>"; };
 		4AEE8F8A27289C6D004CB686 /* ProfileCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCellViewModelTests.swift; sourceTree = "<group>"; };
 		4AEE8F912729778D004CB686 /* ImageSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectButton.swift; sourceTree = "<group>"; };
 		4AEE8FA3272ABDD2004CB686 /* CustomGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGradient.swift; sourceTree = "<group>"; };
@@ -566,7 +572,6 @@
 			children = (
 				4A09C69D2738582700FD4E42 /* UserInfoView.swift */,
 				4A155E5F2724D16600C8B867 /* UserMenuCell.swift */,
-				4AED5E8527219E7300B7AC00 /* ProfileCell.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -586,6 +591,47 @@
 				4A09C6A527392DE100FD4E42 /* ChatInputAccessoryView.swift */,
 			);
 			path = Messages;
+			sourceTree = "<group>";
+		};
+		4A145ABB276F28110059CACD /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4A145ABC276F281D0059CACD /* Faker.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		4A145ABE276F56E70059CACD /* FakeModels */ = {
+			isa = PBXGroup;
+			children = (
+				4A145ABF276F56FF0059CACD /* FakeModels.swift */,
+			);
+			path = FakeModels;
+			sourceTree = "<group>";
+		};
+		4A145AC1276F78D30059CACD /* User */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		4A145AC4276F87390059CACD /* UIKitComponents */ = {
+			isa = PBXGroup;
+			children = (
+				4A145AC5276F874C0059CACD /* MyProfileCell */,
+			);
+			path = UIKitComponents;
+			sourceTree = "<group>";
+		};
+		4A145AC5276F874C0059CACD /* MyProfileCell */ = {
+			isa = PBXGroup;
+			children = (
+				4AED5E8527219E7300B7AC00 /* MyProfileCell.swift */,
+				4A145AC2276F78E40059CACD /* MyProfileCellModel.swift */,
+				4AEE8F8627288842004CB686 /* MyProfileCellViewModel.swift */,
+			);
+			path = MyProfileCell;
 			sourceTree = "<group>";
 		};
 		4A155E4127229D3B00C8B867 /* ImageViews */ = {
@@ -686,6 +732,7 @@
 				4ADE3D292733CA3400ACBC60 /* Resources */,
 				4A3B529827123DC100EF4F93 /* Extensions */,
 				4A3B52CB2714415900EF4F93 /* Utilities */,
+				4A145AC4276F87390059CACD /* UIKitComponents */,
 				4AE229BD275E2FCC0070350E /* SwiftUIComponents */,
 				4A3B5273271239CF00EF4F93 /* Info.plist */,
 				4A3B52C12712DF2100EF4F93 /* GoogleService-Info.plist */,
@@ -696,6 +743,8 @@
 		4A3B527B271239CF00EF4F93 /* luzie-locke-iosTests */ = {
 			isa = PBXGroup;
 			children = (
+				4A145ABB276F28110059CACD /* Utilities */,
+				4A145ABE276F56E70059CACD /* FakeModels */,
 				4AEE8F8827289C39004CB686 /* ViewModel */,
 				4A3B52AE27125C4A00EF4F93 /* Mocks */,
 				4A3B52AC27125C3000EF4F93 /* Views */,
@@ -724,6 +773,7 @@
 		4A3B529627123DA800EF4F93 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4A145AC1276F78D30059CACD /* User */,
 				4A47E6C22730950100B9018A /* Translators */,
 				4A47E6B7272F47BC00B9018A /* DTOs */,
 				4AEE8F702726E082004CB686 /* Item.swift */,
@@ -1077,7 +1127,6 @@
 		4AD53D172760B33600F34874 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				4AEE8F8627288842004CB686 /* ProfileCellViewModel.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1550,7 +1599,7 @@
 				4ACA81EE2754C701003C7E0E /* Notification+Ext.swift in Sources */,
 				4A47E6AA272CA0B500B9018A /* FirebaseCloudStorage.swift in Sources */,
 				4A3B52C72713996000EF4F93 /* GoogleSignInService.swift in Sources */,
-				4AEE8F8727288842004CB686 /* ProfileCellViewModel.swift in Sources */,
+				4AEE8F8727288842004CB686 /* MyProfileCellViewModel.swift in Sources */,
 				4A3B52C427131FE800EF4F93 /* LoginViewModel.swift in Sources */,
 				4AED5E7E2720A50400B7AC00 /* AuthService.swift in Sources */,
 				4AED5E2A271ADC8500B7AC00 /* PulseRoundButton.swift in Sources */,
@@ -1565,7 +1614,7 @@
 				4AD53D0E275FF31300F34874 /* SettingsLocalLevelReadRequest.swift in Sources */,
 				4A47E6B9272F622400B9018A /* ItemReadListRequest.swift in Sources */,
 				4A47E6E6273317FA00B9018A /* ViewControllerFactory.swift in Sources */,
-				4AED5E8627219E7300B7AC00 /* ProfileCell.swift in Sources */,
+				4AED5E8627219E7300B7AC00 /* MyProfileCell.swift in Sources */,
 				4AE229AC275A51FD0070350E /* FavoriteItemDeleteRequest.swift in Sources */,
 				4A155E482722F31C00C8B867 /* KHTTPClient.swift in Sources */,
 				4A09C69B273730B900FD4E42 /* ItemDisplayDetailViewModel.swift in Sources */,
@@ -1676,6 +1725,7 @@
 				4AED5E46271E2A3200B7AC00 /* BackendConfig.swift in Sources */,
 				4ACA821227590C6E003C7E0E /* DecimalInputViewModel.swift in Sources */,
 				4A3B52DB2715ADEF00EF4F93 /* LoginCoordinator.swift in Sources */,
+				4A145AC3276F78E40059CACD /* MyProfileCellModel.swift in Sources */,
 				4A47E6DA2731C5F000B9018A /* ImageViewController.swift in Sources */,
 				4ADE3D312735807500ACBC60 /* AppMainCoordinator.swift in Sources */,
 				4A47E6BF273028BE00B9018A /* ItemDisplayViewController.swift in Sources */,
@@ -1698,6 +1748,7 @@
 				4AED5E25271A0CFD00B7AC00 /* MKViewMock.swift in Sources */,
 				4AEE8F7C27280504004CB686 /* SimpleStringStorageMock.swift in Sources */,
 				4A3B52B027125C6700EF4F93 /* AuthServiceMock.swift in Sources */,
+				4A145AC0276F56FF0059CACD /* FakeModels.swift in Sources */,
 				4AED5E27271A0D1300B7AC00 /* CLLocationManagerMock.swift in Sources */,
 				4AEE8F7F2728144A004CB686 /* OpenHTTPClientMock.swift in Sources */,
 				4AEE8F7A272803FB004CB686 /* ProfileStorageMock.swift in Sources */,
@@ -1705,6 +1756,7 @@
 				4A3B52AB27125C0A00EF4F93 /* MainViewControllerTests.swift in Sources */,
 				4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */,
 				4AEE8F82272818D3004CB686 /* BackendAPIClientMock.swift in Sources */,
+				4A145ABD276F281D0059CACD /* Faker.swift in Sources */,
 				4A3B52E52716083A00EF4F93 /* CoordinatorMock.swift in Sources */,
 				4AEE8F8527281978004CB686 /* UserAPIClientMock.swift in Sources */,
 			);

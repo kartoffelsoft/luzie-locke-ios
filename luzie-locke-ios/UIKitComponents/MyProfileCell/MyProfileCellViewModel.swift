@@ -1,5 +1,5 @@
 //
-//  ProfileCellViewModel.swift
+//  MyProfileCellViewModel.swift
 //  luzie-locke-ios
 //
 //  Created by Harry on 26.10.21.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-class ProfileCellViewModel {
+class MyProfileCellViewModel {
 
-  var profile: UserProfile? {
+  var model: MyProfileCellModel? {
     didSet {
-      bindableNameText.value     = profile?.name
-      bindableLocationText.value = profile?.city
+      bindableNameText.value     = model?.name
+      bindableLocationText.value = model?.city
       
-      downloadImage(from: profile?.imageUrl)
+      downloadImage(from: model?.imageUrl)
     }
   }
   

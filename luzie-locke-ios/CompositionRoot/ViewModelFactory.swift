@@ -59,7 +59,7 @@ extension CompositionRoot: ViewModelFactory {
   func makeSettingsViewModel(coordinator: SettingsCoordinator) -> SettingsViewModel {
     return SettingsViewModel(coordinator: coordinator,
                              auth: auth,
-                             localProfileRepository: localProfileRepository,
+                             myProfileUseCase: myProfileUseCase,
                              openHttpClient: openHttpClient,
                              backendApiClient: backendApiClient)
   }

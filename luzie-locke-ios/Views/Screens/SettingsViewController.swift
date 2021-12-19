@@ -117,7 +117,7 @@ class SettingsViewController: UIViewController {
     collectionView.dataSource       = self
     collectionView.backgroundColor  = .clear
     
-    collectionView.register(ProfileCell.self, forCellWithReuseIdentifier: ProfileCell.reuseIdentifier)
+    collectionView.register(MyProfileCell.self, forCellWithReuseIdentifier: MyProfileCell.reuseIdentifier)
     collectionView.register(UserMenuCell.self, forCellWithReuseIdentifier: UserMenuCell.reuseIdentifier)
     collectionView.register(SettingsMenuCell.self, forCellWithReuseIdentifier: SettingsMenuCell.reuseIdentifier)
     view.addSubview(collectionView)
@@ -191,8 +191,8 @@ extension SettingsViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     switch(Section(rawValue: indexPath.section)) {
     case .profile:
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCell.reuseIdentifier, for: indexPath) as! ProfileCell
-      cell.viewModel = viewModel.profileCellViewModel
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyProfileCell.reuseIdentifier, for: indexPath) as! MyProfileCell
+      cell.viewModel = viewModel.myProfileCellViewModel
       return cell
     case .userMenu:
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserMenuCell.reuseIdentifier, for: indexPath) as! UserMenuCell

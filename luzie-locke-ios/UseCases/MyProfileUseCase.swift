@@ -10,7 +10,10 @@ import Foundation
 protocol MyProfileUseCaseProtocol {
   
   func getId() -> String?
-  func getCityName() -> String?
+  func getName() -> String?
+  func getCity() -> String?
+  func getImageUrl() -> String?
+  
   
   func setLocalLevel(localLevel: Int)
   func setLocation(city: String, lat: Double, lng: Double)
@@ -30,8 +33,16 @@ class MyProfileUseCase: MyProfileUseCaseProtocol {
     return localProfileRepository.read()?.id
   }
   
-  func getCityName() -> String? {
+  func getName() -> String? {
+    return localProfileRepository.read()?.name
+  }
+  
+  func getCity() -> String? {
     return localProfileRepository.read()?.city
+  }
+  
+  func getImageUrl() -> String? {
+    return localProfileRepository.read()?.imageUrl
   }
   
   func setLocalLevel(localLevel: Int) {

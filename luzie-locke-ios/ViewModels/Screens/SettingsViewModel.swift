@@ -11,29 +11,32 @@ class SettingsViewModel {
   
   let coordinator:              SettingsCoordinator
   let auth:                     Auth
-  let localProfileRepository:   LocalProfileRepository
+  let myProfileUseCase:         MyProfileUseCaseProtocol
   let openHttpClient:           OpenHTTP
   let backendApiClient:         BackendAPIClient
   
-  let profileCellViewModel:     ProfileCellViewModel
+  let myProfileCellViewModel:   MyProfileCellViewModel
 
   init(coordinator:             SettingsCoordinator,
        auth:                    Auth,
-       localProfileRepository:  LocalProfileRepository,
+       myProfileUseCase:        MyProfileUseCaseProtocol,
        openHttpClient:          OpenHTTP,
        backendApiClient:        BackendAPIClient) {
     self.coordinator            = coordinator
     self.auth                   = auth
-    self.localProfileRepository = localProfileRepository
+    self.myProfileUseCase       = myProfileUseCase
     self.openHttpClient         = openHttpClient
     self.backendApiClient       = backendApiClient
     
-    profileCellViewModel    =  ProfileCellViewModel(openHttpClient: openHttpClient)
+    myProfileCellViewModel      =  MyProfileCellViewModel(openHttpClient: openHttpClient)
   }
   
   func load() {
-    if let profile = localProfileRepository.read() {
-      profileCellViewModel.profile = profile
+    if let name = myProfileUseCase.getName(),
+       let city = myProfileUseCase.getCity(),
+       let imageUrl = myProfileUseCase.getImageUrl()
+    {
+      myProfileCellViewModel.model = MyProfileCellModel(name: name, city: city, imageUrl: imageUrl)
     }
   }
   

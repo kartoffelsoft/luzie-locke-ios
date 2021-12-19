@@ -41,7 +41,7 @@ class HomeViewModel {
     self.imageUseCase         = imageUseCase
     self.itemRepository       = itemRepository
     
-    bindableCityName.value = myProfileUseCase.getCityName()
+    bindableCityName.value = myProfileUseCase.getCity()
     
     NotificationCenter.default.addObserver(self, selector: #selector(handleRefreshRequest), name: .didUpdateItem, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(handleRefreshRequest), name: .didUpdateLocationSettings, object: nil)
@@ -93,7 +93,7 @@ class HomeViewModel {
   }
   
   private func refresh() {
-    bindableCityName.value        = myProfileUseCase.getCityName()
+    bindableCityName.value        = myProfileUseCase.getCity()
     cursor                        = Date().timeIntervalSince1970 * 1000
     itemsDictionary               = [String: Item]()
     itemCellViewModelsDictionary  = [String: ItemCellViewModel]()

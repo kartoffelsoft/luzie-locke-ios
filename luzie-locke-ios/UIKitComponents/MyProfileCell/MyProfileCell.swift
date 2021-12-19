@@ -1,5 +1,5 @@
 //
-//  ProfileCell.swift
+//  MyProfileCell.swift
 //  luzie-locke-ios
 //
 //  Created by Harry on 21.10.21.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-class ProfileCell: UICollectionViewCell {
+class MyProfileCell: UICollectionViewCell {
   
-  static let reuseIdentifier = "ProfileCell"
+  static let reuseIdentifier = "MyProfileCell"
   
   let userInfoView = UserInfoView()
   
-  var viewModel: ProfileCellViewModel? {
+  var viewModel: MyProfileCellViewModel? {
     didSet {
       userInfoView.imageView.image     = viewModel?.bindableProfileImage.value
       userInfoView.nameLabel.text      = viewModel?.bindableNameText.value

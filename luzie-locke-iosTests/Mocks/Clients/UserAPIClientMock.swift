@@ -10,11 +10,11 @@ import Foundation
 
 class UserAPIClientMock: UserAPI {
   
-  func authenticate(uid: String, token: String, completion: @escaping (Result<(profile: Profile, accessToken: String, refreshToken: String), LLError>?) -> Void) {
+  func authenticate(uid: String, token: String, completion: @escaping (Result<(profile: UserProfile, accessToken: String, refreshToken: String), LLError>?) -> Void) {
     
   }
   
-  func updateLocation(city: String, lat: Double, lng: Double, completion: @escaping (Result<Profile, LLError>?) -> Void) {
+  func updateLocation(city: String, lat: Double, lng: Double, completion: @escaping (Result<UserProfile, LLError>?) -> Void) {
     
   }
 }

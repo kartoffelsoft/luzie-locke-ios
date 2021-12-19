@@ -13,7 +13,7 @@ class AuthServiceMock: Auth {
   
   var authenticated = false
   
-  func authenticate(_ caller: UIViewController, with provider: SignInProvider, completion: @escaping (Result<Profile, LLError>?) -> Void) {
+  func authenticate(_ caller: UIViewController, with provider: SignInProvider, completion: @escaping (Result<UserProfile, LLError>?) -> Void) {
   }
   
   func isAuthenticated() -> Bool {
