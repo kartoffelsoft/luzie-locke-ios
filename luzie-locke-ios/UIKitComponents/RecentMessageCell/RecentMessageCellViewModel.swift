@@ -9,14 +9,15 @@ import UIKit
 
 class RecentMessageCellViewModel {
 
-  var message: RecentMessage? {
+  var model: RecentMessage? {
     didSet {
-      bindableNameText.value     = message?.name
-      bindableMessageText.value  = message?.text
-      bindableDateText.value     = DateUtility.string(from: message?.date)
+      guard let model = model else { return }
+      bindableNameText.value     = model.name
+      bindableMessageText.value  = model.text
+      bindableDateText.value     = DateUtility.string(from: model.date)
       
-      downloadUserImage(from: message?.userId)
-      downloadItemImage(from: message?.itemId)
+      downloadUserImage(from: model.userId)
+      downloadItemImage(from: model.itemId)
     }
   }
   

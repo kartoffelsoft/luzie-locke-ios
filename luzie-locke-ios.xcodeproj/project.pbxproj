@@ -57,6 +57,7 @@
 		4A145ACF276FAE870059CACD /* ItemListElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145ACE276FAE870059CACD /* ItemListElement.swift */; };
 		4A145AD1276FAEC60059CACD /* UserProfileBrief.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AD0276FAEC60059CACD /* UserProfileBrief.swift */; };
 		4A145AD3276FC7730059CACD /* ItemCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AD2276FC7730059CACD /* ItemCellViewModelTests.swift */; };
+		4A145ADA277073550059CACD /* RecentMessageCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AD9277073550059CACD /* RecentMessageCellViewModelTests.swift */; };
 		4A155E4027229D3600C8B867 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E3F27229D3600C8B867 /* AvatarImageView.swift */; };
 		4A155E432722A46300C8B867 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E422722A46300C8B867 /* Constants.swift */; };
 		4A155E462722E03600C8B867 /* OpenHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E452722E03600C8B867 /* OpenHTTPClient.swift */; };
@@ -288,6 +289,7 @@
 		4A145ACE276FAE870059CACD /* ItemListElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListElement.swift; sourceTree = "<group>"; };
 		4A145AD0276FAEC60059CACD /* UserProfileBrief.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileBrief.swift; sourceTree = "<group>"; };
 		4A145AD2276FC7730059CACD /* ItemCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellViewModelTests.swift; sourceTree = "<group>"; };
+		4A145AD9277073550059CACD /* RecentMessageCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMessageCellViewModelTests.swift; sourceTree = "<group>"; };
 		4A155E3F27229D3600C8B867 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		4A155E422722A46300C8B867 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4A155E452722E03600C8B867 /* OpenHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHTTPClient.swift; sourceTree = "<group>"; };
@@ -656,6 +658,7 @@
 			children = (
 				4A145ACE276FAE870059CACD /* ItemListElement.swift */,
 				4A145AD0276FAEC60059CACD /* UserProfileBrief.swift */,
+				4AC56671273B974700776DBD /* RecentMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -684,6 +687,14 @@
 				4AEE8F8827289C39004CB686 /* UIKitComponents */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		4A145AD7277073360059CACD /* RecentMessageCell */ = {
+			isa = PBXGroup;
+			children = (
+				4A145AD9277073550059CACD /* RecentMessageCellViewModelTests.swift */,
+			);
+			path = RecentMessageCell;
 			sourceTree = "<group>";
 		};
 		4A155E4127229D3B00C8B867 /* ImageViews */ = {
@@ -831,7 +842,6 @@
 				4AEE8F702726E082004CB686 /* Item.swift */,
 				4A01D559273D4EA000EDFC1C /* UserProfile.swift */,
 				4A09C6A727393E5E00FD4E42 /* ChatMessage.swift */,
-				4AC56671273B974700776DBD /* RecentMessage.swift */,
 				4A00FC2E27674CB3007C5B11 /* FavoriteItem.swift */,
 				4A145AB8276CD3AE0059CACD /* SearchString.swift */,
 			);
@@ -1412,6 +1422,7 @@
 		4AEE8F8827289C39004CB686 /* UIKitComponents */ = {
 			isa = PBXGroup;
 			children = (
+				4A145AD7277073360059CACD /* RecentMessageCell */,
 				4A145ACC276FAE440059CACD /* ItemCell */,
 				4AEE8F8927289C53004CB686 /* MyProfileCell */,
 			);
@@ -1797,6 +1808,7 @@
 				4AEE8F7F2728144A004CB686 /* OpenHTTPClientMock.swift in Sources */,
 				4AEE8F7A272803FB004CB686 /* ProfileStorageMock.swift in Sources */,
 				4AEE8F8B27289C6D004CB686 /* MyProfileCellViewModelTests.swift in Sources */,
+				4A145ADA277073550059CACD /* RecentMessageCellViewModelTests.swift in Sources */,
 				4A3B52AB27125C0A00EF4F93 /* MainViewControllerTests.swift in Sources */,
 				4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */,
 				4AEE8F82272818D3004CB686 /* BackendAPIClientMock.swift in Sources */,

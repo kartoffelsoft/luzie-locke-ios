@@ -40,7 +40,7 @@ class MessagesViewModel {
   
   private func reload() {
     recentMessagesViewModels = Array(recentMessagesViewModelsDictionary.values).sorted(by: { v1, v2 in
-      return v1.message!.date.compare(v2.message!.date) == .orderedDescending
+      return v1.model!.date.compare(v2.model!.date) == .orderedDescending
     })
     
     bindableRecentMessages.value = Array(recentMessagesDictionary.values).sorted(by: { m1, m2 in
@@ -67,11 +67,11 @@ class MessagesViewModel {
         self.recentMessagesDictionary[message.id] = message
         
         if let viewModel = self.recentMessagesViewModelsDictionary[message.id] {
-          viewModel.message = message
+          viewModel.model = message
 
         } else {
           let viewModel = RecentMessageCellViewModel(imageUseCase: self.imageUseCase)
-          viewModel.message = message
+          viewModel.model = message
           self.recentMessagesViewModelsDictionary[message.id] = viewModel
         }
       }

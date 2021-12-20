@@ -55,4 +55,20 @@ class FakeModels {
                            imageUrl: imageUrl,
                            modifiedAt: modifiedAt)
   }
+  
+  static func recentMessage(
+    id: String = Faker.datatype.id(),
+    userId: String = Faker.datatype.id(),
+    itemId: String = Faker.datatype.id(),
+    name: String = Faker.name.findName(),
+    text: String = Faker.lorem.sentenece(),
+    date: Date = Date()
+  ) -> RecentMessage {
+    return RecentMessage(id: id,
+                         userId: userId,
+                         itemId: itemId,
+                         name: name,
+                         text: text,
+                         date: date)
+  }
 }

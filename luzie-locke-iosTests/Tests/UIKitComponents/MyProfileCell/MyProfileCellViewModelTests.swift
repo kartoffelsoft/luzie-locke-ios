@@ -52,9 +52,10 @@ class MyProfileCellViewModelTests: XCTestCase {
   }
   
   func whenImageIsFetchedWith(_ result: Result<UIImage?, LLError>) {
-    imageUseCaseSpy.fetchCompletionWith(result)
+    guard let callback = imageUseCaseSpy.completionCallbackWithUrl else { return }
+    callback(result)
   }
-  
+
   func theNameTextShouldBe(_ expected: String) {
     XCTAssertEqual(expected, userNameLabel.text)
   }
@@ -64,7 +65,7 @@ class MyProfileCellViewModelTests: XCTestCase {
   }
   
   func shouldTriggerGetImage() {
-    XCTAssertTrue(imageUseCaseSpy.getImageIsCalled)
+    XCTAssertTrue(imageUseCaseSpy.getImageWithUrlIsCalled)
   }
   
   func theImageShouldBe(_ expected: UIImage?) {

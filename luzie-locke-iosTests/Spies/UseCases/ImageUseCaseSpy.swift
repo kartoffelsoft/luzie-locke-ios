@@ -10,25 +10,30 @@ import UIKit
 
 class ImageUseCaseSpy: ImageUseCaseProtocol {
   
-  var getImageIsCalled = false
-  private var completionCallback: ((Result<UIImage?, LLError>) -> Void)?
+  var getImageWithUrlIsCalled     = false
+  var getImageWithItemIdIsCalled  = false
+  var getImageWithUserIdIsCalled  = false
+  
+  var completionCallbackWithUrl: ((Result<UIImage?, LLError>) -> Void)?
+  var completionCallbackWithItemId: ((Result<UIImage?, LLError>) -> Void)?
+  var completionCallbackWithUserId: ((Result<UIImage?, LLError>) -> Void)?
   
   func getImage(url: String, completion: @escaping (Result<UIImage?, LLError>) -> Void) {
-    getImageIsCalled = true
-    completionCallback = completion
+    getImageWithUrlIsCalled   = true
+    completionCallbackWithUrl = completion
   }
   
   func getImage(itemId: String, completion: @escaping (Result<UIImage?, LLError>) -> Void) {
-    getImageIsCalled = true
-    completionCallback = completion
+    getImageWithItemIdIsCalled    = true
+    completionCallbackWithItemId  = completion
   }
   
   func getImage(userId: String, completion: @escaping (Result<UIImage?, LLError>) -> Void) {
-    getImageIsCalled = true
-    completionCallback = completion
+    getImageWithUserIdIsCalled    = true
+    completionCallbackWithUserId  = completion
   }
-  
-  func fetchCompletionWith(_ result:  (Result<UIImage?, LLError>)) {
-    completionCallback?(result)
-  }
+//  
+//  func fetchCompletionWith(_ result:  (Result<UIImage?, LLError>)) {
+//    completionCallback?(result)
+//  }
 }
