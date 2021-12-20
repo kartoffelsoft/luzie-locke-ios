@@ -18,7 +18,7 @@ class ItemCellViewModelTests: XCTestCase {
   var itemDateLabel:      UILabel!
   var itemImageView:      UIImageView!
   
-  var imageUseCaseMock:   ImageUseCaseMock!
+  var imageUseCaseSpy:   ImageUseCaseSpy!
   
   let fakeModel   = FakeModels.itemListElement()
   let fakeUIImage = UIImage(systemName: "location")
@@ -26,8 +26,8 @@ class ItemCellViewModelTests: XCTestCase {
   override func setUpWithError() throws {
     try super.setUpWithError()
     
-    imageUseCaseMock    = ImageUseCaseMock()
-    sut                 = ItemCellViewModel(imageUseCase: imageUseCaseMock)
+    imageUseCaseSpy     = ImageUseCaseSpy()
+    sut                 = ItemCellViewModel(imageUseCase: imageUseCaseSpy)
     
     itemTitleLabel      = UILabel()
     itemLocationLabel   = UILabel()
@@ -58,7 +58,7 @@ class ItemCellViewModelTests: XCTestCase {
   }
   
   func whenImageIsFetchedWith(_ result: Result<UIImage?, LLError>) {
-    imageUseCaseMock.fetchCompletionWith(result)
+    imageUseCaseSpy.fetchCompletionWith(result)
   }
   
   func theTitleTextShouldBe(_ expected: String) {
@@ -70,7 +70,7 @@ class ItemCellViewModelTests: XCTestCase {
   }
   
   func shouldTriggerGetImage() {
-    XCTAssertTrue(imageUseCaseMock.getImageIsCalled)
+    XCTAssertTrue(imageUseCaseSpy.getImageIsCalled)
   }
   
   func theImageShouldBe(_ expected: UIImage?) {

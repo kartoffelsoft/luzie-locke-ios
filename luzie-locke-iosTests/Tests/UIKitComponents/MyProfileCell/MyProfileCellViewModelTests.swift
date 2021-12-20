@@ -17,7 +17,7 @@ class MyProfileCellViewModelTests: XCTestCase {
   var userNameLabel:      UILabel!
   var userLocationLabel:  UILabel!
   
-  var imageUseCaseMock:   ImageUseCaseMock!
+  var imageUseCaseSpy:   ImageUseCaseSpy!
   
   let fakeModel   = FakeModels.userProfileBrief()
   let fakeUIImage = UIImage(systemName: "location")
@@ -25,8 +25,8 @@ class MyProfileCellViewModelTests: XCTestCase {
   override func setUpWithError() throws {
     try super.setUpWithError()
     
-    imageUseCaseMock    = ImageUseCaseMock()
-    sut                 = MyProfileCellViewModel(imageUseCase: imageUseCaseMock)
+    imageUseCaseSpy     = ImageUseCaseSpy()
+    sut                 = MyProfileCellViewModel(imageUseCase: imageUseCaseSpy)
     
     userImageView       = UIImageView()
     userNameLabel       = UILabel()
@@ -52,7 +52,7 @@ class MyProfileCellViewModelTests: XCTestCase {
   }
   
   func whenImageIsFetchedWith(_ result: Result<UIImage?, LLError>) {
-    imageUseCaseMock.fetchCompletionWith(result)
+    imageUseCaseSpy.fetchCompletionWith(result)
   }
   
   func theNameTextShouldBe(_ expected: String) {
@@ -64,7 +64,7 @@ class MyProfileCellViewModelTests: XCTestCase {
   }
   
   func shouldTriggerGetImage() {
-    XCTAssertTrue(imageUseCaseMock.getImageIsCalled)
+    XCTAssertTrue(imageUseCaseSpy.getImageIsCalled)
   }
   
   func theImageShouldBe(_ expected: UIImage?) {

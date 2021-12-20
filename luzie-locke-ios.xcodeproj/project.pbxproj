@@ -53,7 +53,7 @@
 		4A145AB9276CD3AE0059CACD /* SearchString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AB8276CD3AE0059CACD /* SearchString.swift */; };
 		4A145ABD276F281D0059CACD /* Faker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145ABC276F281D0059CACD /* Faker.swift */; };
 		4A145AC0276F56FF0059CACD /* FakeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145ABF276F56FF0059CACD /* FakeModels.swift */; };
-		4A145AC8276F965C0059CACD /* ImageUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AC7276F965C0059CACD /* ImageUseCaseMock.swift */; };
+		4A145AC8276F965C0059CACD /* ImageUseCaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AC7276F965C0059CACD /* ImageUseCaseSpy.swift */; };
 		4A145ACF276FAE870059CACD /* ItemListElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145ACE276FAE870059CACD /* ItemListElement.swift */; };
 		4A145AD1276FAEC60059CACD /* UserProfileBrief.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AD0276FAEC60059CACD /* UserProfileBrief.swift */; };
 		4A145AD3276FC7730059CACD /* ItemCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AD2276FC7730059CACD /* ItemCellViewModelTests.swift */; };
@@ -284,7 +284,7 @@
 		4A145AB8276CD3AE0059CACD /* SearchString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchString.swift; sourceTree = "<group>"; };
 		4A145ABC276F281D0059CACD /* Faker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faker.swift; sourceTree = "<group>"; };
 		4A145ABF276F56FF0059CACD /* FakeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeModels.swift; sourceTree = "<group>"; };
-		4A145AC7276F965C0059CACD /* ImageUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUseCaseMock.swift; sourceTree = "<group>"; };
+		4A145AC7276F965C0059CACD /* ImageUseCaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUseCaseSpy.swift; sourceTree = "<group>"; };
 		4A145ACE276FAE870059CACD /* ItemListElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListElement.swift; sourceTree = "<group>"; };
 		4A145AD0276FAEC60059CACD /* UserProfileBrief.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileBrief.swift; sourceTree = "<group>"; };
 		4A145AD2276FC7730059CACD /* ItemCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellViewModelTests.swift; sourceTree = "<group>"; };
@@ -536,22 +536,6 @@
 			path = BackendResponses;
 			sourceTree = "<group>";
 		};
-		4A01D55B273DC2F700EDFC1C /* Messages */ = {
-			isa = PBXGroup;
-			children = (
-				4A01D55C273DC2FE00EDFC1C /* Cells */,
-			);
-			path = Messages;
-			sourceTree = "<group>";
-		};
-		4A01D55C273DC2FE00EDFC1C /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				4A01D55D273DC64100EDFC1C /* RecentMessageCellViewModel.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		4A03E3B6275F61F300EB0210 /* Contants */ = {
 			isa = PBXGroup;
 			children = (
@@ -628,6 +612,7 @@
 				4A145ACD276FAE720059CACD /* Models */,
 				4A145AC9276F997D0059CACD /* ItemCell */,
 				4A145AC5276F874C0059CACD /* MyProfileCell */,
+				4A145AD4276FE7A00059CACD /* RecentMessageCell */,
 			);
 			path = UIKitComponents;
 			sourceTree = "<group>";
@@ -644,7 +629,7 @@
 		4A145AC6276F963D0059CACD /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
-				4A145AC7276F965C0059CACD /* ImageUseCaseMock.swift */,
+				4A145AC7276F965C0059CACD /* ImageUseCaseSpy.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -673,6 +658,32 @@
 				4A145AD0276FAEC60059CACD /* UserProfileBrief.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4A145AD4276FE7A00059CACD /* RecentMessageCell */ = {
+			isa = PBXGroup;
+			children = (
+				4AC56673273B98AE00776DBD /* RecentMessageCell.swift */,
+				4A01D55D273DC64100EDFC1C /* RecentMessageCellViewModel.swift */,
+			);
+			path = RecentMessageCell;
+			sourceTree = "<group>";
+		};
+		4A145AD5277071FA0059CACD /* Spies */ = {
+			isa = PBXGroup;
+			children = (
+				4A145AC6276F963D0059CACD /* UseCases */,
+			);
+			path = Spies;
+			sourceTree = "<group>";
+		};
+		4A145AD6277072240059CACD /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				4A3B52AC27125C3000EF4F93 /* Views */,
+				4AEE8F8827289C39004CB686 /* UIKitComponents */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		4A155E4127229D3B00C8B867 /* ImageViews */ = {
@@ -784,11 +795,11 @@
 		4A3B527B271239CF00EF4F93 /* luzie-locke-iosTests */ = {
 			isa = PBXGroup;
 			children = (
+				4A145AD6277072240059CACD /* Tests */,
+				4A145AD5277071FA0059CACD /* Spies */,
 				4A145ABB276F28110059CACD /* Utilities */,
 				4A145ABE276F56E70059CACD /* FakeModels */,
-				4AEE8F8827289C39004CB686 /* UIKitComponents */,
 				4A3B52AE27125C4A00EF4F93 /* Mocks */,
-				4A3B52AC27125C3000EF4F93 /* Views */,
 				4A3B527E271239CF00EF4F93 /* Info.plist */,
 			);
 			path = "luzie-locke-iosTests";
@@ -832,7 +843,6 @@
 			children = (
 				4ACA8205275790C7003C7E0E /* ImageSelect */,
 				4ACA81F827576543003C7E0E /* Inputs */,
-				4A01D55B273DC2F700EDFC1C /* Messages */,
 				4A47E6CE27316E0D00B9018A /* Item */,
 				4AEE8FAC272BD456004CB686 /* Screens */,
 			);
@@ -899,7 +909,6 @@
 		4A3B52AE27125C4A00EF4F93 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				4A145AC6276F963D0059CACD /* UseCases */,
 				4AEE8F8327281968004CB686 /* Clients */,
 				4AEE8F80272818B5004CB686 /* BackendAPIClient */,
 				4AEE8F7D27281438004CB686 /* OpenHTTPClient */,
@@ -1101,7 +1110,6 @@
 		4AC56675273B98B700776DBD /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				4AC56673273B98AE00776DBD /* RecentMessageCell.swift */,
 				4A09C6A927393F2000FD4E42 /* ChatMessageCell.swift */,
 			);
 			path = Cells;
@@ -1781,7 +1789,7 @@
 			files = (
 				4AED5E25271A0CFD00B7AC00 /* MKViewMock.swift in Sources */,
 				4AEE8F7C27280504004CB686 /* SimpleStringStorageMock.swift in Sources */,
-				4A145AC8276F965C0059CACD /* ImageUseCaseMock.swift in Sources */,
+				4A145AC8276F965C0059CACD /* ImageUseCaseSpy.swift in Sources */,
 				4A3B52B027125C6700EF4F93 /* AuthServiceMock.swift in Sources */,
 				4A145AC0276F56FF0059CACD /* FakeModels.swift in Sources */,
 				4A145AD3276FC7730059CACD /* ItemCellViewModelTests.swift in Sources */,

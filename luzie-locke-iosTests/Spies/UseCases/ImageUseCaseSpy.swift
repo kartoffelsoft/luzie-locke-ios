@@ -1,5 +1,5 @@
 //
-//  ImageUseCaseMock.swift
+//  ImageUseCaseSpy.swift
 //  luzie-locke-iosTests
 //
 //  Created by Harry on 19.12.21.
@@ -8,7 +8,7 @@
 import UIKit
 @testable import luzie_locke_ios
 
-class ImageUseCaseMock: ImageUseCaseProtocol {
+class ImageUseCaseSpy: ImageUseCaseProtocol {
   
   var getImageIsCalled = false
   private var completionCallback: ((Result<UIImage?, LLError>) -> Void)?
