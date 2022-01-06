@@ -14,17 +14,17 @@ protocol UserPurchasesViewModelDelegate: AnyObject {
 
 class UserPurchasesViewModel {
   
-  weak var delegate:        UserPurchasesViewModelDelegate?
+  weak var delegate: UserPurchasesViewModelDelegate?
   
-  private let coordinator:           SettingsCoordinator
-  private let imageUseCase:          ImageUseCaseProtocol
-  private let userBoughtItemUseCase: UserBoughtItemUseCaseProtocol
+  private let coordinator:            SettingsCoordinator
+  private let imageUseCase:           ImageUseCaseProtocol
+  private let userBoughtItemUseCase:  UserBoughtItemUseCaseProtocol
   
-  var bindableItems         = Bindable<[ItemListElement]>()
-  var itemCellViewModels    = [ItemCellViewModel]()
+  var bindableItems       = Bindable<[ItemListElement]>()
+  var itemCellViewModels  = [ItemCellViewModel]()
   
-  private var itemsDictionary                 = [String: ItemListElement]()
-  private var itemCellViewModelsDictionary    = [String: ItemCellViewModel]()
+  private var itemsDictionary              = [String: ItemListElement]()
+  private var itemCellViewModelsDictionary = [String: ItemCellViewModel]()
   
   private var isLoading: Bool = false
   

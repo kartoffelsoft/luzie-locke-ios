@@ -19,11 +19,6 @@ class ImageSelectAddButton: UIButton {
     backgroundColor                           = CustomUIColors.primaryColorLight2.withAlphaComponent(0.2)
     clipsToBounds                             = true
     adjustsImageWhenDisabled                  = true
-//    layer.cornerRadius                        = 8
-//    layer.borderWidth                         = 1
-//    layer.borderColor                         = UIColor(named: "PrimaryColor")?.cgColor
-//    layer.cornerRadius                        = 5
-    
     setImage(Images.imageAdd , for: .normal)
   }
   

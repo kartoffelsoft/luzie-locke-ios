@@ -29,12 +29,12 @@ class InputViewModel {
   
   let placeholder: String
 
-  var bindableText = Bindable<String>()
+  var bindableText      = Bindable<String>()
   var bindableTextColor = Bindable<UIColor>()
   
   init(placeholder: String) {
-    self.placeholder = placeholder
-    self.state       = .inactive
+    self.placeholder        = placeholder
+    self.state              = .inactive
     
     bindableText.value      = placeholder
     bindableTextColor.value = CustomUIColors.primaryColorLight1

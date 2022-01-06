@@ -41,6 +41,7 @@
 		4A03073C278631FC0010F00F /* MyProfileUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03073B278631FC0010F00F /* MyProfileUseCaseMock.swift */; };
 		4A03073F27863B8E0010F00F /* ItemDisplayCoordinatorSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03073E27863B8E0010F00F /* ItemDisplayCoordinatorSpy.swift */; };
 		4A03074127864FAF0010F00F /* ItemActionPanelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03074027864FAF0010F00F /* ItemActionPanelModel.swift */; };
+		4A030745278788B60010F00F /* InputViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A030744278788B60010F00F /* InputViewModelTests.swift */; };
 		4A03E3B8275F622400EB0210 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3B7275F622400EB0210 /* CustomColors.swift */; };
 		4A03E3BA275F655B00EB0210 /* CustomUIFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3B9275F655B00EB0210 /* CustomUIFonts.swift */; };
 		4A03E3BC275F656C00EB0210 /* CustomUIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3BB275F656C00EB0210 /* CustomUIColors.swift */; };
@@ -278,6 +279,7 @@
 		4A03073B278631FC0010F00F /* MyProfileUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileUseCaseMock.swift; sourceTree = "<group>"; };
 		4A03073E27863B8E0010F00F /* ItemDisplayCoordinatorSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDisplayCoordinatorSpy.swift; sourceTree = "<group>"; };
 		4A03074027864FAF0010F00F /* ItemActionPanelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemActionPanelModel.swift; sourceTree = "<group>"; };
+		4A030744278788B60010F00F /* InputViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewModelTests.swift; sourceTree = "<group>"; };
 		4A03E3B7275F622400EB0210 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		4A03E3B9275F655B00EB0210 /* CustomUIFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIFonts.swift; sourceTree = "<group>"; };
 		4A03E3BB275F656C00EB0210 /* CustomUIColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIColors.swift; sourceTree = "<group>"; };
@@ -574,6 +576,57 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
+		4A030742278787C50010F00F /* Inputs */ = {
+			isa = PBXGroup;
+			children = (
+				4ACA81F227568163003C7E0E /* SingleLineTextInputView.swift */,
+				4ACA81F427568466003C7E0E /* MultiLineTextInputView.swift */,
+				4ACA820F27590BD3003C7E0E /* InputViewModel.swift */,
+				4ACA81F6275746D8003C7E0E /* SingleLineDecimalInputView.swift */,
+				4ACA821127590C6E003C7E0E /* DecimalInputViewModel.swift */,
+			);
+			path = Inputs;
+			sourceTree = "<group>";
+		};
+		4A030743278788870010F00F /* Inputs */ = {
+			isa = PBXGroup;
+			children = (
+				4A030744278788B60010F00F /* InputViewModelTests.swift */,
+			);
+			path = Inputs;
+			sourceTree = "<group>";
+		};
+		4A0307462787AFA40010F00F /* ImageSelect */ = {
+			isa = PBXGroup;
+			children = (
+				4ACA820327576F41003C7E0E /* ImageSelectAddButton.swift */,
+				4ACA82092757A39D003C7E0E /* ImageSelectElementView.swift */,
+				4ACA820127576BC4003C7E0E /* ImageSelectView.swift */,
+				4ACA8207275790ED003C7E0E /* ImageSelectViewModel.swift */,
+			);
+			path = ImageSelect;
+			sourceTree = "<group>";
+		};
+		4A0307472787B01B0010F00F /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				4AA6CE0B2769E06A00FF0C91 /* Login */,
+				4A22DB35274D74D700E5125B /* UserItems */,
+				4AC56678273BC2C300776DBD /* Messages */,
+				4A47E6DD2731D32500B9018A /* SwipeImage */,
+				4AEE8FAD272BD46F004CB686 /* Item */,
+				4A3B52A8271256CD00EF4F93 /* LoginViewController.swift */,
+				4A3B52C327131FE800EF4F93 /* LoginViewModel.swift */,
+				4A3B529A2712401D00EF4F93 /* HomeViewController.swift */,
+				4AEE8F6C2726CC73004CB686 /* HomeViewModel.swift */,
+				4A3B52A12712461500EF4F93 /* MessagesViewController.swift */,
+				4AC56676273BB65200776DBD /* MessagesViewModel.swift */,
+				4A3B529E271242ED00EF4F93 /* SettingsViewController.swift */,
+				4A155E612725C1FD00C8B867 /* SettingsViewModel.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		4A03E3B6275F61F300EB0210 /* Contants */ = {
 			isa = PBXGroup;
 			children = (
@@ -602,14 +655,6 @@
 				4A155E5F2724D16600C8B867 /* UserMenuCell.swift */,
 			);
 			path = User;
-			sourceTree = "<group>";
-		};
-		4A09C6A127391DEA00FD4E42 /* Messages */ = {
-			isa = PBXGroup;
-			children = (
-				4A09C6A22739282A00FD4E42 /* ChatViewController.swift */,
-			);
-			path = Messages;
 			sourceTree = "<group>";
 		};
 		4A09C6A427392DBB00FD4E42 /* Messages */ = {
@@ -647,11 +692,14 @@
 		4A145AC4276F87390059CACD /* UIKitComponents */ = {
 			isa = PBXGroup;
 			children = (
+				4A0307462787AFA40010F00F /* ImageSelect */,
+				4A030742278787C50010F00F /* Inputs */,
 				4A145ACD276FAE720059CACD /* CommonModels */,
 				4A0307332785B8EA0010F00F /* ItemActionPanel */,
 				4A145AC9276F997D0059CACD /* ItemCell */,
 				4A145AC5276F874C0059CACD /* MyProfileCell */,
 				4A145AD4276FE7A00059CACD /* RecentMessageCell */,
+				4A0307472787B01B0010F00F /* Screens */,
 			);
 			path = UIKitComponents;
 			sourceTree = "<group>";
@@ -764,21 +812,14 @@
 			path = CustomComponents;
 			sourceTree = "<group>";
 		};
-		4A22DB32274D6C8000E5125B /* UserItems */ = {
-			isa = PBXGroup;
-			children = (
-				4A22DB33274D745300E5125B /* UserListingsViewController.swift */,
-				4A22DB3B274ED91800E5125B /* UserPurchasesViewController.swift */,
-				4A22DB41275021FA00E5125B /* UserFavoritesViewController.swift */,
-			);
-			path = UserItems;
-			sourceTree = "<group>";
-		};
 		4A22DB35274D74D700E5125B /* UserItems */ = {
 			isa = PBXGroup;
 			children = (
+				4A22DB33274D745300E5125B /* UserListingsViewController.swift */,
 				4A22DB36274D74E900E5125B /* UserListingsViewModel.swift */,
+				4A22DB3B274ED91800E5125B /* UserPurchasesViewController.swift */,
 				4A22DB3D274ED9D500E5125B /* UserPurchasesViewModel.swift */,
+				4A22DB41275021FA00E5125B /* UserFavoritesViewController.swift */,
 				4A22DB432750225700E5125B /* UserFavoritesViewModel.swift */,
 			);
 			path = UserItems;
@@ -818,14 +859,15 @@
 			isa = PBXGroup;
 			children = (
 				4ADE3D2A27355B0200ACBC60 /* AppMain */,
+				4A3B529627123DA800EF4F93 /* Models */,
+				4A3B529527123DA300EF4F93 /* Views */,
+				4A145AC4276F87390059CACD /* UIKitComponents */,
+				4AE229BD275E2FCC0070350E /* SwiftUIComponents */,
 				4A47E6E22732BE6400B9018A /* CompositionRoot */,
 				4A3B52D327159C8E00EF4F93 /* Coordinators */,
 				4A00FC342767751A007C5B11 /* BackendRequests */,
 				4A00FC3C276780A7007C5B11 /* BackendResponses */,
 				4A47E6B4272F104300B9018A /* Repositories */,
-				4A3B529627123DA800EF4F93 /* Models */,
-				4A3B529527123DA300EF4F93 /* Views */,
-				4A3B529727123DAD00EF4F93 /* ViewModels */,
 				4A3B52A32712536F00EF4F93 /* Services */,
 				4AD53D242763787D00F34874 /* UseCases */,
 				4A03E3B6275F61F300EB0210 /* Contants */,
@@ -833,8 +875,6 @@
 				4ADE3D292733CA3400ACBC60 /* Resources */,
 				4A3B529827123DC100EF4F93 /* Extensions */,
 				4A3B52CB2714415900EF4F93 /* Utilities */,
-				4A145AC4276F87390059CACD /* UIKitComponents */,
-				4AE229BD275E2FCC0070350E /* SwiftUIComponents */,
 				4A3B5273271239CF00EF4F93 /* Info.plist */,
 				4A3B52C12712DF2100EF4F93 /* GoogleService-Info.plist */,
 			);
@@ -845,10 +885,10 @@
 			isa = PBXGroup;
 			children = (
 				4A145AD6277072240059CACD /* Tests */,
+				4A3B52AE27125C4A00EF4F93 /* Mocks */,
 				4A145AD5277071FA0059CACD /* Spies */,
 				4A145ABB276F28110059CACD /* Utilities */,
 				4A145ABE276F56E70059CACD /* FakeModels */,
-				4A3B52AE27125C4A00EF4F93 /* Mocks */,
 				4A3B527E271239CF00EF4F93 /* Info.plist */,
 			);
 			path = "luzie-locke-iosTests";
@@ -857,8 +897,6 @@
 		4A3B529527123DA300EF4F93 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4ACA81FF27576B4F003C7E0E /* ImageSelect */,
-				4ACA81F1275680EA003C7E0E /* Inputs */,
 				4A22DB38274E3CF300E5125B /* Misc */,
 				4AEE61B12740F905008055F9 /* Popups */,
 				4A09C6A427392DBB00FD4E42 /* Messages */,
@@ -886,16 +924,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		4A3B529727123DAD00EF4F93 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				4ACA8205275790C7003C7E0E /* ImageSelect */,
-				4ACA81F827576543003C7E0E /* Inputs */,
-				4AEE8FAC272BD456004CB686 /* Screens */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		4A3B529827123DC100EF4F93 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -910,16 +938,7 @@
 		4A3B529927123DCF00EF4F93 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				4AA6CE0B2769E06A00FF0C91 /* Login */,
-				4A22DB32274D6C8000E5125B /* UserItems */,
-				4A09C6A127391DEA00FD4E42 /* Messages */,
-				4A47E6D52731B88F00B9018A /* SwipeImage */,
-				4AEE8F722727BC6D004CB686 /* Item */,
 				4A3B5269271239CE00EF4F93 /* MainTabBarController.swift */,
-				4A3B52A8271256CD00EF4F93 /* LoginViewController.swift */,
-				4A3B529A2712401D00EF4F93 /* HomeViewController.swift */,
-				4A3B52A12712461500EF4F93 /* MessagesViewController.swift */,
-				4A3B529E271242ED00EF4F93 /* SettingsViewController.swift */,
 				4A3B5270271239CF00EF4F93 /* LaunchScreen.storyboard */,
 			);
 			path = Screens;
@@ -1082,19 +1101,12 @@
 			path = Item;
 			sourceTree = "<group>";
 		};
-		4A47E6D52731B88F00B9018A /* SwipeImage */ = {
-			isa = PBXGroup;
-			children = (
-				4A47E6D92731C5F000B9018A /* ImageViewController.swift */,
-				4A47E6D72731B8E000B9018A /* SwipeImageViewController.swift */,
-			);
-			path = SwipeImage;
-			sourceTree = "<group>";
-		};
 		4A47E6DD2731D32500B9018A /* SwipeImage */ = {
 			isa = PBXGroup;
 			children = (
+				4A47E6D92731C5F000B9018A /* ImageViewController.swift */,
 				4A47E6DE2731D33400B9018A /* ImageViewModel.swift */,
+				4A47E6D72731B8E000B9018A /* SwipeImageViewController.swift */,
 				4A47E6E02731DA8F00B9018A /* SwipeImageViewModel.swift */,
 			);
 			path = SwipeImage;
@@ -1115,13 +1127,6 @@
 			isa = PBXGroup;
 			children = (
 				4AA6CE0C2769E07E00FF0C91 /* SignUpViewController.swift */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		4AA6CE0E2769E0A500FF0C91 /* Login */ = {
-			isa = PBXGroup;
-			children = (
 				4AA6CE0F2769E0B300FF0C91 /* SignUpViewModel.swift */,
 			);
 			path = Login;
@@ -1158,46 +1163,10 @@
 		4AC56678273BC2C300776DBD /* Messages */ = {
 			isa = PBXGroup;
 			children = (
+				4A09C6A22739282A00FD4E42 /* ChatViewController.swift */,
 				4AC56679273BC30000776DBD /* ChatViewModel.swift */,
 			);
 			path = Messages;
-			sourceTree = "<group>";
-		};
-		4ACA81F1275680EA003C7E0E /* Inputs */ = {
-			isa = PBXGroup;
-			children = (
-				4ACA81F227568163003C7E0E /* SingleLineTextInputView.swift */,
-				4ACA81F6275746D8003C7E0E /* SingleLineDecimalInputView.swift */,
-				4ACA81F427568466003C7E0E /* MultiLineTextInputView.swift */,
-			);
-			path = Inputs;
-			sourceTree = "<group>";
-		};
-		4ACA81F827576543003C7E0E /* Inputs */ = {
-			isa = PBXGroup;
-			children = (
-				4ACA820F27590BD3003C7E0E /* InputViewModel.swift */,
-				4ACA821127590C6E003C7E0E /* DecimalInputViewModel.swift */,
-			);
-			path = Inputs;
-			sourceTree = "<group>";
-		};
-		4ACA81FF27576B4F003C7E0E /* ImageSelect */ = {
-			isa = PBXGroup;
-			children = (
-				4ACA820327576F41003C7E0E /* ImageSelectAddButton.swift */,
-				4ACA820127576BC4003C7E0E /* ImageSelectView.swift */,
-				4ACA82092757A39D003C7E0E /* ImageSelectElementView.swift */,
-			);
-			path = ImageSelect;
-			sourceTree = "<group>";
-		};
-		4ACA8205275790C7003C7E0E /* ImageSelect */ = {
-			isa = PBXGroup;
-			children = (
-				4ACA8207275790ED003C7E0E /* ImageSelectViewModel.swift */,
-			);
-			path = ImageSelect;
 			sourceTree = "<group>";
 		};
 		4AD53D0F275FF51600F34874 /* Settings */ = {
@@ -1404,18 +1373,6 @@
 			path = Popups;
 			sourceTree = "<group>";
 		};
-		4AEE8F722727BC6D004CB686 /* Item */ = {
-			isa = PBXGroup;
-			children = (
-				4A47E6BE273028BE00B9018A /* ItemDisplayViewController.swift */,
-				4A47E6D127317CA700B9018A /* ItemDisplayBriefViewController.swift */,
-				4A47E6D3273198E300B9018A /* ItemDisplayDetailViewController.swift */,
-				4A3B529C2712421300EF4F93 /* ItemSearchViewController.swift */,
-				4AE229A1275A2B7B0070350E /* ItemComposeViewController.swift */,
-			);
-			path = Item;
-			sourceTree = "<group>";
-		};
 		4AEE8F78272803E9004CB686 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
@@ -1452,6 +1409,7 @@
 		4AEE8F8827289C39004CB686 /* UIKitComponents */ = {
 			isa = PBXGroup;
 			children = (
+				4A030743278788870010F00F /* Inputs */,
 				4A0307342785B9120010F00F /* ItemActionPanel */,
 				4A145AD7277073360059CACD /* RecentMessageCell */,
 				4A145ACC276FAE440059CACD /* ItemCell */,
@@ -1487,32 +1445,21 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		4AEE8FAC272BD456004CB686 /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-				4AA6CE0E2769E0A500FF0C91 /* Login */,
-				4A22DB35274D74D700E5125B /* UserItems */,
-				4AC56678273BC2C300776DBD /* Messages */,
-				4A47E6DD2731D32500B9018A /* SwipeImage */,
-				4AEE8FAD272BD46F004CB686 /* Item */,
-				4A3B52C327131FE800EF4F93 /* LoginViewModel.swift */,
-				4AC56676273BB65200776DBD /* MessagesViewModel.swift */,
-				4A155E612725C1FD00C8B867 /* SettingsViewModel.swift */,
-				4AEE8F6C2726CC73004CB686 /* HomeViewModel.swift */,
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
 		4AEE8FAD272BD46F004CB686 /* Item */ = {
 			isa = PBXGroup;
 			children = (
+				4A47E6BE273028BE00B9018A /* ItemDisplayViewController.swift */,
+				4A47E6BC2730288200B9018A /* ItemDisplayViewModel.swift */,
+				4A47E6D127317CA700B9018A /* ItemDisplayBriefViewController.swift */,
+				4A47E6DB2731CEFA00B9018A /* ItemDisplayBriefViewModel.swift */,
+				4A47E6D3273198E300B9018A /* ItemDisplayDetailViewController.swift */,
+				4A09C69A273730B900FD4E42 /* ItemDisplayDetailViewModel.swift */,
+				4A3B529C2712421300EF4F93 /* ItemSearchViewController.swift */,
+				4A22DB30274BDF2D00E5125B /* ItemSearchViewModel.swift */,
+				4AE229A1275A2B7B0070350E /* ItemComposeViewController.swift */,
 				4AE229A5275A33C40070350E /* ItemComposeViewModel.swift */,
 				4AEE8FAA272B5C69004CB686 /* ItemCreateViewModel.swift */,
 				4ACA820B2758BA6C003C7E0E /* ItemUpdateViewModel.swift */,
-				4A47E6BC2730288200B9018A /* ItemDisplayViewModel.swift */,
-				4A47E6DB2731CEFA00B9018A /* ItemDisplayBriefViewModel.swift */,
-				4A09C69A273730B900FD4E42 /* ItemDisplayDetailViewModel.swift */,
-				4A22DB30274BDF2D00E5125B /* ItemSearchViewModel.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -1851,6 +1798,7 @@
 				4A145ABD276F281D0059CACD /* Faker.swift in Sources */,
 				4A3B52E52716083A00EF4F93 /* CoordinatorMock.swift in Sources */,
 				4AEE8F8527281978004CB686 /* UserAPIClientMock.swift in Sources */,
+				4A030745278788B60010F00F /* InputViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
