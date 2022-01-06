@@ -37,8 +37,8 @@ class ItemDisplayBriefViewController: UIViewController {
   }
   
   private func configureLayout() {
-    configureGradientLayer()
     configureImageView()
+    configureGradientLayer()
     configureLabels()
     configureMoreButton()
   }
@@ -57,7 +57,6 @@ class ItemDisplayBriefViewController: UIViewController {
   }
   
   private func configureGradientLayer() {
-    print("@@@@")
     gradientLayer.colors = [UIColor.clear.cgColor, CustomUIColors.primaryColor.cgColor]
     gradientLayer.locations = [0.5, 1.0]
     view.layer.addSublayer(gradientLayer)
