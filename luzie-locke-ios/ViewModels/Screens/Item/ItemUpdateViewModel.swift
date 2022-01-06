@@ -11,9 +11,27 @@ class ItemUpdateViewModel: ItemComposeViewModel {
   
   weak var delegate:          ItemComposeViewModelDelegate?
   
-  private let coordinator:            ItemDisplayCoordinator
-  private let openHttpClient:         OpenHTTP
-  private let itemRepository:         ItemRepository
+  private let coordinator:    ItemDisplayCoordinator
+  private let openHttpClient: OpenHTTP
+  private let itemRepository: ItemRepository
+  
+  func read(_ id: String, completion: @escaping (Result<Item, LLError>) -> Void) {
+  }
+  var itemId: String? {
+    didSet {
+      guard let itemId = itemId else { return }
+      itemRepository.read(itemId) { [weak self] result in
+        guard let self = self else { return }
+        switch result {
+        case .success(let item):
+          self.item = item
+
+        case .failure:
+          ()
+        }
+      }
+    }
+  }
   
   var item: Item? {
     didSet {

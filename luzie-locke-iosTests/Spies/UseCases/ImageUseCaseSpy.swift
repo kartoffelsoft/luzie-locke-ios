@@ -32,8 +32,4 @@ class ImageUseCaseSpy: ImageUseCaseProtocol {
     getImageWithUserIdIsCalled    = true
     completionCallbackWithUserId  = completion
   }
-//  
-//  func fetchCompletionWith(_ result:  (Result<UIImage?, LLError>)) {
-//    completionCallback?(result)
-//  }
 }

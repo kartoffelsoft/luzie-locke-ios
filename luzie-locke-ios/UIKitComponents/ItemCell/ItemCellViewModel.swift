@@ -16,10 +16,7 @@ class ItemCellViewModel {
       bindableTitleText.value    = model.title
       bindableLocationText.value = model.city
       bindableDateText.value     = DateUtility.string(from: model.modifiedAt)
-      
-      let priceText = NSMutableAttributedString(string: "€ ", attributes: [.font: CustomUIFonts.detail])
-      priceText.append(NSAttributedString(string: model.price, attributes: [.font: CustomUIFonts.body]))
-      bindablePriceText.value = priceText
+      bindablePriceText.value    = model.price
       
       imageUseCase.getImage(url: model.imageUrl) { [weak self] result in
         switch result {
@@ -35,7 +32,7 @@ class ItemCellViewModel {
   var bindableItemImage     = Bindable<UIImage>()
   var bindableTitleText     = Bindable<String>()
   var bindableLocationText  = Bindable<String>()
-  var bindablePriceText     = Bindable<NSAttributedString>()
+  var bindablePriceText     = Bindable<String>()
   var bindableDateText      = Bindable<String>()
 
   let imageUseCase: ImageUseCaseProtocol

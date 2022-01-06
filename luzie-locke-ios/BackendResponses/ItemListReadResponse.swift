@@ -8,6 +8,7 @@
 import Foundation
 
 struct ItemListReadResponse: Decodable {
+  
   let list: [ItemListElementDTO]
   let nextCursor: Double
 }

@@ -9,26 +9,24 @@ import UIKit
 
 class ItemActionPanelViewModel {
   
-  private let coordinator:              ItemDisplayCoordinator
+  private let coordinator:              ItemDisplayCoordinatorProtocol
   private let myProfileUseCase:         MyProfileUseCaseProtocol
   private let userFavoriteItemUseCase:  UserFavoriteItemUseCaseProtocol
   
-  let bindablePriceText   = Bindable<NSAttributedString>()
+  let bindablePriceText   = Bindable<String>()
   let bindableIsMine      = Bindable<Bool>()
   let bindableFavoriteOn  = Bindable<Bool>()
   
-  var item: Item? {
+  var model: ItemActionPanel? {
     didSet {
-      guard let itemId    = item?.id else { return }
-      guard let price     = item?.price else { return }
-      guard let sellerId  = item?.user?.id else { return }
-      guard let userId    = myProfileUseCase.getId() else { return }
+      guard let model = model else { return }
+      let itemId    = model.id
+      let price     = model.price
+      let sellerId  = model.sellerId
+      let userId    = myProfileUseCase.getId()
       
-      let priceText = NSMutableAttributedString(string: "€ ", attributes: [.font: CustomUIFonts.title])
-      priceText.append(NSAttributedString(string: price, attributes: [.font: CustomUIFonts.titleLarge]))
-      bindablePriceText.value = priceText
-
-      bindableIsMine.value = (sellerId == userId)
+      bindablePriceText.value = price
+      bindableIsMine.value    = (sellerId == userId)
       
       userFavoriteItemUseCase.isAdded(itemId: itemId) { [weak self] result in
         guard let self = self else { return }
@@ -45,7 +43,7 @@ class ItemActionPanelViewModel {
     }
   }
   
-  init(coordinator:               ItemDisplayCoordinator,
+  init(coordinator:               ItemDisplayCoordinatorProtocol,
        myProfileUseCase:          MyProfileUseCaseProtocol,
        userFavoriteItemUseCase:   UserFavoriteItemUseCaseProtocol) {
     self.coordinator              = coordinator
@@ -54,7 +52,7 @@ class ItemActionPanelViewModel {
   }
   
   func didTapFavoriteButton() {
-    guard let itemId = item?.id else { return }
+    guard let itemId = model?.id else { return }
     guard let favoriteOn = bindableFavoriteOn.value  else { return }
     
     if favoriteOn {
@@ -79,13 +77,13 @@ class ItemActionPanelViewModel {
   }
   
   func didTapChatButton() {
-    guard let remoteUserId  = item?.user?.id else { return }
-    guard let itemId        = item?.id       else { return }
+    guard let remoteUserId  = model?.sellerId else { return }
+    guard let itemId        = model?.id       else { return }
     coordinator.navigateToChat(remoteUserId: remoteUserId, itemId: itemId)
   }
 
   func didTapEditButton() {
-    guard let item = item else { return }
-    coordinator.navigateToItemUpdate(item: item)
+    guard let model = model else { return }
+    coordinator.navigateToItemUpdate(itemId: model.id)
   }
 }

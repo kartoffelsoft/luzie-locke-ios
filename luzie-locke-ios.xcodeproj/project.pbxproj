@@ -36,6 +36,11 @@
 		4A01D55A273D4EA000EDFC1C /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D559273D4EA000EDFC1C /* UserProfile.swift */; };
 		4A01D55E273DC64100EDFC1C /* RecentMessageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D55D273DC64100EDFC1C /* RecentMessageCellViewModel.swift */; };
 		4A01D561273DC94D00EDFC1C /* DateUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A01D560273DC94D00EDFC1C /* DateUtility.swift */; };
+		4A0307362785B93B0010F00F /* ItemActionPanelViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0307352785B93B0010F00F /* ItemActionPanelViewModelTests.swift */; };
+		4A03073A2785BAC20010F00F /* UserFavoriteItemUseCaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0307392785BAC20010F00F /* UserFavoriteItemUseCaseSpy.swift */; };
+		4A03073C278631FC0010F00F /* MyProfileUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03073B278631FC0010F00F /* MyProfileUseCaseMock.swift */; };
+		4A03073F27863B8E0010F00F /* ItemDisplayCoordinatorSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03073E27863B8E0010F00F /* ItemDisplayCoordinatorSpy.swift */; };
+		4A03074127864FAF0010F00F /* ItemActionPanelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03074027864FAF0010F00F /* ItemActionPanelModel.swift */; };
 		4A03E3B8275F622400EB0210 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3B7275F622400EB0210 /* CustomColors.swift */; };
 		4A03E3BA275F655B00EB0210 /* CustomUIFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3B9275F655B00EB0210 /* CustomUIFonts.swift */; };
 		4A03E3BC275F656C00EB0210 /* CustomUIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3BB275F656C00EB0210 /* CustomUIColors.swift */; };
@@ -268,6 +273,11 @@
 		4A01D559273D4EA000EDFC1C /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		4A01D55D273DC64100EDFC1C /* RecentMessageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMessageCellViewModel.swift; sourceTree = "<group>"; };
 		4A01D560273DC94D00EDFC1C /* DateUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtility.swift; sourceTree = "<group>"; };
+		4A0307352785B93B0010F00F /* ItemActionPanelViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemActionPanelViewModelTests.swift; sourceTree = "<group>"; };
+		4A0307392785BAC20010F00F /* UserFavoriteItemUseCaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFavoriteItemUseCaseSpy.swift; sourceTree = "<group>"; };
+		4A03073B278631FC0010F00F /* MyProfileUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileUseCaseMock.swift; sourceTree = "<group>"; };
+		4A03073E27863B8E0010F00F /* ItemDisplayCoordinatorSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDisplayCoordinatorSpy.swift; sourceTree = "<group>"; };
+		4A03074027864FAF0010F00F /* ItemActionPanelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemActionPanelModel.swift; sourceTree = "<group>"; };
 		4A03E3B7275F622400EB0210 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		4A03E3B9275F655B00EB0210 /* CustomUIFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIFonts.swift; sourceTree = "<group>"; };
 		4A03E3BB275F656C00EB0210 /* CustomUIColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIColors.swift; sourceTree = "<group>"; };
@@ -538,6 +548,32 @@
 			path = BackendResponses;
 			sourceTree = "<group>";
 		};
+		4A0307332785B8EA0010F00F /* ItemActionPanel */ = {
+			isa = PBXGroup;
+			children = (
+				4A03074027864FAF0010F00F /* ItemActionPanelModel.swift */,
+				4A47E6CC27314D4600B9018A /* ItemActionPanelView.swift */,
+				4A47E6CF27316E1900B9018A /* ItemActionPanelViewModel.swift */,
+			);
+			path = ItemActionPanel;
+			sourceTree = "<group>";
+		};
+		4A0307342785B9120010F00F /* ItemActionPanel */ = {
+			isa = PBXGroup;
+			children = (
+				4A0307352785B93B0010F00F /* ItemActionPanelViewModelTests.swift */,
+			);
+			path = ItemActionPanel;
+			sourceTree = "<group>";
+		};
+		4A03073D2786398E0010F00F /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				4A03073E27863B8E0010F00F /* ItemDisplayCoordinatorSpy.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 		4A03E3B6275F61F300EB0210 /* Contants */ = {
 			isa = PBXGroup;
 			children = (
@@ -611,7 +647,8 @@
 		4A145AC4276F87390059CACD /* UIKitComponents */ = {
 			isa = PBXGroup;
 			children = (
-				4A145ACD276FAE720059CACD /* Models */,
+				4A145ACD276FAE720059CACD /* CommonModels */,
+				4A0307332785B8EA0010F00F /* ItemActionPanel */,
 				4A145AC9276F997D0059CACD /* ItemCell */,
 				4A145AC5276F874C0059CACD /* MyProfileCell */,
 				4A145AD4276FE7A00059CACD /* RecentMessageCell */,
@@ -653,14 +690,14 @@
 			path = ItemCell;
 			sourceTree = "<group>";
 		};
-		4A145ACD276FAE720059CACD /* Models */ = {
+		4A145ACD276FAE720059CACD /* CommonModels */ = {
 			isa = PBXGroup;
 			children = (
 				4A145ACE276FAE870059CACD /* ItemListElement.swift */,
 				4A145AD0276FAEC60059CACD /* UserProfileBrief.swift */,
 				4AC56671273B974700776DBD /* RecentMessage.swift */,
 			);
-			path = Models;
+			path = CommonModels;
 			sourceTree = "<group>";
 		};
 		4A145AD4276FE7A00059CACD /* RecentMessageCell */ = {
@@ -675,6 +712,7 @@
 		4A145AD5277071FA0059CACD /* Spies */ = {
 			isa = PBXGroup;
 			children = (
+				4A03073D2786398E0010F00F /* Coordinators */,
 				4A145AC6276F963D0059CACD /* UseCases */,
 			);
 			path = Spies;
@@ -853,7 +891,6 @@
 			children = (
 				4ACA8205275790C7003C7E0E /* ImageSelect */,
 				4ACA81F827576543003C7E0E /* Inputs */,
-				4A47E6CE27316E0D00B9018A /* Item */,
 				4AEE8FAC272BD456004CB686 /* Screens */,
 			);
 			path = ViewModels;
@@ -926,6 +963,8 @@
 				4AED5E23271A0CCD00B7AC00 /* Map */,
 				4A3B52AF27125C6700EF4F93 /* AuthServiceMock.swift */,
 				4A3B52E42716083A00EF4F93 /* CoordinatorMock.swift */,
+				4A03073B278631FC0010F00F /* MyProfileUseCaseMock.swift */,
+				4A0307392785BAC20010F00F /* UserFavoriteItemUseCaseSpy.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -1038,16 +1077,7 @@
 		4A47E6CB27314CEE00B9018A /* Item */ = {
 			isa = PBXGroup;
 			children = (
-				4A47E6CC27314D4600B9018A /* ItemActionPanelView.swift */,
 				4A09C69F273865FA00FD4E42 /* ItemInfoView.swift */,
-			);
-			path = Item;
-			sourceTree = "<group>";
-		};
-		4A47E6CE27316E0D00B9018A /* Item */ = {
-			isa = PBXGroup;
-			children = (
-				4A47E6CF27316E1900B9018A /* ItemActionPanelViewModel.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -1422,6 +1452,7 @@
 		4AEE8F8827289C39004CB686 /* UIKitComponents */ = {
 			isa = PBXGroup;
 			children = (
+				4A0307342785B9120010F00F /* ItemActionPanel */,
 				4A145AD7277073360059CACD /* RecentMessageCell */,
 				4A145ACC276FAE440059CACD /* ItemCell */,
 				4AEE8F8927289C53004CB686 /* MyProfileCell */,
@@ -1625,6 +1656,7 @@
 				4AEE8F922729778D004CB686 /* ImageSelectButton.swift in Sources */,
 				4A01D551273CFF0900EDFC1C /* RecentMessageRepository.swift in Sources */,
 				4A3B52E12715C10500EF4F93 /* MessagesCoordinator.swift in Sources */,
+				4A03074127864FAF0010F00F /* ItemActionPanelModel.swift in Sources */,
 				4AD53D1C2760C5FC00F34874 /* BasicTextField.swift in Sources */,
 				4A09C6AA27393F2000FD4E42 /* ChatMessageCell.swift in Sources */,
 				4A09C6A827393E5E00FD4E42 /* ChatMessage.swift in Sources */,
@@ -1800,6 +1832,7 @@
 			files = (
 				4AED5E25271A0CFD00B7AC00 /* MKViewMock.swift in Sources */,
 				4AEE8F7C27280504004CB686 /* SimpleStringStorageMock.swift in Sources */,
+				4A03073F27863B8E0010F00F /* ItemDisplayCoordinatorSpy.swift in Sources */,
 				4A145AC8276F965C0059CACD /* ImageUseCaseSpy.swift in Sources */,
 				4A3B52B027125C6700EF4F93 /* AuthServiceMock.swift in Sources */,
 				4A145AC0276F56FF0059CACD /* FakeModels.swift in Sources */,
@@ -1811,7 +1844,10 @@
 				4A145ADA277073550059CACD /* RecentMessageCellViewModelTests.swift in Sources */,
 				4A3B52AB27125C0A00EF4F93 /* MainViewControllerTests.swift in Sources */,
 				4AED5E202719D60000B7AC00 /* MapViewControllerTests.swift in Sources */,
+				4A03073C278631FC0010F00F /* MyProfileUseCaseMock.swift in Sources */,
 				4AEE8F82272818D3004CB686 /* BackendAPIClientMock.swift in Sources */,
+				4A0307362785B93B0010F00F /* ItemActionPanelViewModelTests.swift in Sources */,
+				4A03073A2785BAC20010F00F /* UserFavoriteItemUseCaseSpy.swift in Sources */,
 				4A145ABD276F281D0059CACD /* Faker.swift in Sources */,
 				4A3B52E52716083A00EF4F93 /* CoordinatorMock.swift in Sources */,
 				4AEE8F8527281978004CB686 /* UserAPIClientMock.swift in Sources */,

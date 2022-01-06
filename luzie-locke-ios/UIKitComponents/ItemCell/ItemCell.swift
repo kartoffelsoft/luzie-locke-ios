@@ -16,7 +16,7 @@ class ItemCell: UICollectionViewCell {
       imageView.image           = viewModel?.bindableItemImage.value
       titleLabel.text           = viewModel?.bindableTitleText.value
       locationLabel.text        = viewModel?.bindableLocationText.value
-      priceLabel.attributedText = viewModel?.bindablePriceText.value
+      priceLabel.attributedText = makeAttributedPriceText(viewModel?.bindablePriceText.value)
       dateLabel.text            = viewModel?.bindableDateText.value
       
       viewModel?.bindableItemImage.bind { [weak self] image in
@@ -32,7 +32,7 @@ class ItemCell: UICollectionViewCell {
       }
       
       viewModel?.bindablePriceText.bind { [weak self] text in
-        self?.priceLabel.attributedText = text
+        self?.priceLabel.attributedText = self?.makeAttributedPriceText(text)
       }
       
       viewModel?.bindableDateText.bind { [weak self] text in
@@ -78,6 +78,13 @@ class ItemCell: UICollectionViewCell {
       dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
       dateLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
     ])
+  }
+  
+  private func makeAttributedPriceText(_ text: String?) -> NSAttributedString? {
+    guard let text = text else { return nil }
+    let priceText = NSMutableAttributedString(string: "€ ", attributes: [.font: CustomUIFonts.detail])
+    priceText.append(NSAttributedString(string: text, attributes: [.font: CustomUIFonts.body]))
+    return priceText
   }
 
   required init?(coder: NSCoder) {

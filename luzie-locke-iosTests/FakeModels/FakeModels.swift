@@ -71,4 +71,14 @@ class FakeModels {
                          text: text,
                          date: date)
   }
+  
+  static func itemActionPanel(
+    id: String = Faker.datatype.id(),
+    sellerId: String = Faker.datatype.id(),
+    price: String = String(Faker.datatype.int())
+  ) -> ItemActionPanel {
+    return ItemActionPanel(id: id,
+                           sellerId: sellerId,
+                           price: price)
+  }
 }

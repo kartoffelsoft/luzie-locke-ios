@@ -13,10 +13,10 @@ class ItemCellViewModelTests: XCTestCase {
 
   var sut: ItemCellViewModel!
   
-  var itemTitleLabel:     UILabel!
-  var itemLocationLabel:  UILabel!
-  var itemDateLabel:      UILabel!
-  var itemImageView:      UIImageView!
+  var itemTitleText:    String?
+  var itemLocationText: String?
+  var itemDateText:     String?
+  var itemImage:        UIImage?
   
   var imageUseCaseSpy:   ImageUseCaseSpy!
   
@@ -28,28 +28,23 @@ class ItemCellViewModelTests: XCTestCase {
     
     imageUseCaseSpy     = ImageUseCaseSpy()
     sut                 = ItemCellViewModel(imageUseCase: imageUseCaseSpy)
-    
-    itemTitleLabel      = UILabel()
-    itemLocationLabel   = UILabel()
-    itemDateLabel       = UILabel()
-    itemImageView       = UIImageView()
   }
   
   func givenThatViewModelIsBound() {
     sut.bindableItemImage.bind { [weak self] image in
-      self?.itemImageView.image = image
+      self?.itemImage = image
     }
     
     sut?.bindableTitleText.bind { [weak self] text in
-      self?.itemTitleLabel.text = text
+      self?.itemTitleText = text
     }
     
     sut?.bindableLocationText.bind { [weak self] text in
-      self?.itemLocationLabel.text = text
+      self?.itemLocationText = text
     }
     
     sut?.bindableDateText.bind { [weak self] text in
-      self?.itemDateLabel.text = text
+      self?.itemDateText = text
     }
   }
   
@@ -63,11 +58,11 @@ class ItemCellViewModelTests: XCTestCase {
   }
   
   func theTitleTextShouldBe(_ expected: String) {
-    XCTAssertEqual(expected, itemTitleLabel.text)
+    XCTAssertEqual(expected, itemTitleText)
   }
   
   func theLocationTextShouldBe(_ expected: String) {
-    XCTAssertEqual(expected, itemLocationLabel.text)
+    XCTAssertEqual(expected, itemLocationText)
   }
   
   func shouldTriggerGetImage() {
@@ -75,7 +70,7 @@ class ItemCellViewModelTests: XCTestCase {
   }
   
   func theImageShouldBe(_ expected: UIImage?) {
-    XCTAssertEqual(expected, itemImageView.image)
+    XCTAssertEqual(expected, itemImage)
   }
 
   func testShouldLoadTextsWhenModelIsSet() throws {

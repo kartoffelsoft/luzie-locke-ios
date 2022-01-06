@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol ItemDisplayCoordinatorProtocol {
+  func presentMore(_ viewController: UIViewController, item: Item)
+  func navigateToChat(remoteUserId: String, itemId: String)
+  func navigateToItemUpdate(itemId: String)
+}
+
 class ItemDisplayCoordinator: NSObject, Coordinatable {
   
   typealias Factory = CoordinatorFactory & ViewControllerFactory & ViewModelFactory
@@ -28,7 +34,10 @@ class ItemDisplayCoordinator: NSObject, Coordinatable {
     let vc = factory.makeItemDisplayViewController(viewModel: vm, coordinator: self)
     navigationController.pushViewController(vc, animated: true)
   }
+}
 
+extension ItemDisplayCoordinator: ItemDisplayCoordinatorProtocol {
+  
   func presentMore(_ viewController: UIViewController, item: Item) {
     let vm = factory.makeItemDisplayDetailViewModel(item: item)
     let vc = factory.makeItemDisplayDetailViewController(viewModel: vm)
@@ -41,10 +50,10 @@ class ItemDisplayCoordinator: NSObject, Coordinatable {
     navigationController.pushViewController(viewController, animated: true)
   }
   
-  func navigateToItemUpdate(item: Item) {
+  func navigateToItemUpdate(itemId: String) {
     let viewModel       = factory.makeItemUpdateViewModel(coordinator: self)
     let viewController  = factory.makeItemComposeViewController(viewModel: viewModel)
-    viewModel.item      = item
+    viewModel.itemId      = itemId
     navigationController.pushViewController(viewController, animated: true)
   }
 }

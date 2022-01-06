@@ -120,8 +120,12 @@ class ItemActionPanelView: UIView {
 
   private func configureBindables() {
     viewModel.bindablePriceText.bind { [weak self] text in
-      self?.buyerPriceLabel.attributedText  = text
-      self?.sellerPriceLabel.attributedText = text
+      guard let text = text else { return }
+      let priceText = NSMutableAttributedString(string: "€ ", attributes: [.font: CustomUIFonts.title])
+      priceText.append(NSAttributedString(string: text, attributes: [.font: CustomUIFonts.titleLarge]))
+      
+      self?.buyerPriceLabel.attributedText  = priceText
+      self?.sellerPriceLabel.attributedText = priceText
     }
     
     viewModel.bindableIsMine.bind { [weak self] isMine in

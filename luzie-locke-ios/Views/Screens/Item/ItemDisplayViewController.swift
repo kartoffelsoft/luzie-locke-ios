@@ -31,18 +31,11 @@ class ItemDisplayViewController: UIViewController {
     viewModel.viewDidLoad()
     
     configureLayout()
-    configureBindables()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     tabBarController?.tabBar.isHidden = true
-  }
-    
-  private func configureBindables() {
-//    viewModel.bindablePriceText.bind { [weak self] text in
-//      self?.itemActionPanelView.priceLabel.attributedText = text
-//    }
   }
   
   private func configureLayout() {

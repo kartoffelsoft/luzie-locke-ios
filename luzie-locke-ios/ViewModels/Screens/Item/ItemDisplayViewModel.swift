@@ -21,21 +21,17 @@ class ItemDisplayViewModel {
   private let id:                     String
   
   var bindableIsLoading = Bindable<Bool>()
-  let bindablePriceText = Bindable<NSAttributedString>()
   
   let itemDisplayBriefViewModel: ItemDisplayBriefViewModel
   let itemActionPanelViewModel:  ItemActionPanelViewModel
   
   var item: Item? {
     didSet {
-      itemActionPanelViewModel.item = item
+      guard let item = item else { return }
+      itemActionPanelViewModel.model = ItemActionPanel(id: item.id ?? "",
+                                                       sellerId: item.user?.id ?? "" ,
+                                                       price: item.price ?? "")
       itemDisplayBriefViewModel.item = item
-      
-      if let item = item, let price = item.price {
-        let priceText = NSMutableAttributedString(string: "€ ", attributes: [.font: CustomUIFonts.title])
-        priceText.append(NSAttributedString(string: price, attributes: [.font: CustomUIFonts.titleLarge]))
-        bindablePriceText.value = priceText
-      }
     }
   }
   
