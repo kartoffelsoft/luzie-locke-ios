@@ -64,6 +64,10 @@ class Faker {
               [ "com", "net", "io", "de" ].randomElement()! + "/" +
               Faker.datatype.id()
     }
+    
+    func imageUrls() -> [String] {
+      return  [ imageUrl(), imageUrl(), imageUrl() ]
+    }
   }
   
   class Lorem {
