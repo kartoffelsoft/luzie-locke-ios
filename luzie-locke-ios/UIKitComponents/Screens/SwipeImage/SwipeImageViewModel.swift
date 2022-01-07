@@ -11,13 +11,13 @@ class SwipeImageViewModel {
   
   var bindableControllers = Bindable<[UIViewController]>()
   
-  private let openHttpClient: OpenHTTP
+  private let imageUseCase: ImageUseCaseProtocol
   
   var urls: [String]? {
     didSet {
       if let urls = urls {
         bindableControllers.value = urls.map({ url -> UIViewController in
-          let viewModel           = ImageViewModel(openHttpClient: openHttpClient)
+          let viewModel           = ImageViewModel(imageUseCase: imageUseCase)
           let imageViewController = ImageViewController(viewModel: viewModel)
           viewModel.url = url
           return imageViewController
@@ -26,7 +26,7 @@ class SwipeImageViewModel {
     }
   }
   
-  init(openHttpClient: OpenHTTP) {
-    self.openHttpClient = openHttpClient
+  init(imageUseCase: ImageUseCaseProtocol) {
+    self.imageUseCase = imageUseCase
   }
 }

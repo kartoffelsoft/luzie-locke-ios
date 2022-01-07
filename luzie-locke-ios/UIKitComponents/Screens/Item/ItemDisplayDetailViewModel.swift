@@ -9,48 +9,40 @@ import UIKit
 
 class ItemDisplayDetailViewModel {
   
-  private let openHttpClient: OpenHTTP
+  private let imageUseCase: ImageUseCaseProtocol
   
   let swipeImageViewModel: SwipeImageViewModel
   
-  var bindableUserImage         = Bindable<UIImage>()
-  var bindableUserNameText      = Bindable<String>()
-  var bindableLocationText      = Bindable<String>()
-  var bindableTitleText         = Bindable<String>()
-  var bindableDescriptionText   = Bindable<String>()
+  var bindableUserImage       = Bindable<UIImage>()
+  var bindableUserNameText    = Bindable<String>()
+  var bindableLocationText    = Bindable<String>()
+  var bindableTitleText       = Bindable<String>()
+  var bindableDescriptionText = Bindable<String>()
 
-  var item: Item? {
+  var model: ItemDisplay? {
     didSet {
-      if let item = item, let images = item.imageUrls {
-        swipeImageViewModel.urls = images.compactMap{ $0 }
+      if let model = model {
+        swipeImageViewModel.urls = model.imageUrls.compactMap{ $0 }
         
-        bindableUserNameText.value    = item.user?.name
-        bindableLocationText.value    = item.user?.city
-        bindableTitleText.value       = item.title
-        bindableDescriptionText.value = item.description
+        bindableUserNameText.value    = model.userName
+        bindableLocationText.value    = model.location
+        bindableTitleText.value       = model.title
+        bindableDescriptionText.value = model.description
         
-        
-        bindableUserNameText.value    = item.user?.name
-        bindableLocationText.value    = item.user?.city
-        bindableTitleText.value       = item.title
-        bindableDescriptionText.value = item.description
-        
-        if let url = item.user?.imageUrl {
-          openHttpClient.downloadImage(from: url) { [weak self] result in
-            switch result {
-            case .success(let image):
-              self?.bindableUserImage.value = image
-            case .failure:
-              ()
-            }
+        imageUseCase.getImage(url: model.userImageUrl) { [weak self] result in
+          switch result {
+          case .success(let image):
+            self?.bindableUserImage.value = image
+          case .failure:
+            ()
           }
         }
       }
     }
   }
   
-  init(openHttpClient: OpenHTTP) {
-    self.openHttpClient       = openHttpClient
-    self.swipeImageViewModel  = SwipeImageViewModel(openHttpClient: openHttpClient)
+  init(imageUseCase: ImageUseCaseProtocol) {
+    self.imageUseCase         = imageUseCase
+    self.swipeImageViewModel  = SwipeImageViewModel(imageUseCase: imageUseCase)
   }
 }

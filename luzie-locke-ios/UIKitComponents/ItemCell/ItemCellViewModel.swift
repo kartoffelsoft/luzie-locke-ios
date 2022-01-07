@@ -35,7 +35,7 @@ class ItemCellViewModel {
   var bindablePriceText     = Bindable<String>()
   var bindableDateText      = Bindable<String>()
 
-  let imageUseCase: ImageUseCaseProtocol
+  private let imageUseCase: ImageUseCaseProtocol
 
   init(imageUseCase: ImageUseCaseProtocol) {
     self.imageUseCase = imageUseCase

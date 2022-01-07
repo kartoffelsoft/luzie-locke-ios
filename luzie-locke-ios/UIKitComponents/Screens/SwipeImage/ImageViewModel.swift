@@ -9,14 +9,14 @@ import UIKit
 
 class ImageViewModel {
   
-  var bindableImage = Bindable<UIImage>()
+  private let imageUseCase: ImageUseCaseProtocol
   
-  private let openHttpClient: OpenHTTP
+  var bindableImage = Bindable<UIImage>()
   
   var url: String? {
     didSet {
       if let url = url {
-        openHttpClient.downloadImage(from: url) { [weak self] result in
+        imageUseCase.getImage(url: url) { [weak self] result in
           switch result {
           case .success(let image):
             self?.bindableImage.value = image
@@ -28,7 +28,7 @@ class ImageViewModel {
     }
   }
   
-  init(openHttpClient: OpenHTTP) {
-    self.openHttpClient = openHttpClient
+  init(imageUseCase: ImageUseCaseProtocol) {
+    self.imageUseCase = imageUseCase
   }
 }

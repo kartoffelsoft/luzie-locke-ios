@@ -14,11 +14,11 @@ protocol ItemDisplayViewModelDelegate: AnyObject {
 
 class ItemDisplayViewModel {
   
-  weak var delegate:                  ItemDisplayViewModelDelegate?
+  weak var delegate:          ItemDisplayViewModelDelegate?
   
-  private let coordinator:            ItemDisplayCoordinator
-  private let itemRepository:         ItemRepositoryProtocol
-  private let id:                     String
+  private let coordinator:    ItemDisplayCoordinator
+  private let itemRepository: ItemRepositoryProtocol
+  private let id:             String
   
   var bindableIsLoading = Bindable<Bool>()
   
@@ -31,13 +31,18 @@ class ItemDisplayViewModel {
       itemActionPanelViewModel.model = ItemActionPanel(id: item.id ?? "",
                                                        sellerId: item.user?.id ?? "" ,
                                                        price: item.price ?? "")
-      itemDisplayBriefViewModel.item = item
+      itemDisplayBriefViewModel.model = ItemDisplay(userName: item.user?.name ?? "",
+                                                    userImageUrl: item.user?.imageUrl ?? "",
+                                                    location: item.user?.city ?? "",
+                                                    title: item.title ?? "",
+                                                    description: item.description ?? "",
+                                                    imageUrls: item.imageUrls ?? [String]())
     }
   }
   
   init(coordinator:             ItemDisplayCoordinator,
        myProfileUseCase:        MyProfileUseCase,
-       openHttpClient:          OpenHTTP,
+       imageUseCase:            ImageUseCaseProtocol,
        itemRepository:          ItemRepositoryProtocol,
        userFavoriteItemUseCase: UserFavoriteItemUseCaseProtocol,
        id:                      String) {
@@ -45,7 +50,7 @@ class ItemDisplayViewModel {
     self.itemRepository         = itemRepository
     self.id                     = id
     
-    itemDisplayBriefViewModel = ItemDisplayBriefViewModel(coordinator: coordinator, openHttpClient: openHttpClient)
+    itemDisplayBriefViewModel = ItemDisplayBriefViewModel(coordinator: coordinator, imageUseCase: imageUseCase)
     itemActionPanelViewModel  = ItemActionPanelViewModel(coordinator: coordinator,
                                                          myProfileUseCase: myProfileUseCase,
                                                          userFavoriteItemUseCase: userFavoriteItemUseCase)

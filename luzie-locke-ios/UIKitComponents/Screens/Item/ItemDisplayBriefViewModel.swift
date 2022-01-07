@@ -9,34 +9,32 @@ import UIKit
 
 class ItemDisplayBriefViewModel {
   
-  private let coordinator: ItemDisplayCoordinator
-  private let openHttpClient: OpenHTTP
+  private let coordinator: ItemDisplayCoordinatorProtocol
   
   let swipeImageViewModel: SwipeImageViewModel
   
-  var bindableTitleText         = Bindable<String>()
-  var bindableLocationText      = Bindable<String>()
+  var bindableTitleText    = Bindable<String>()
+  var bindableLocationText = Bindable<String>()
   
-  var item: Item? {
+  var model: ItemDisplay? {
     didSet {
-      if let item = item, let imageUrls = item.imageUrls {
-        swipeImageViewModel.urls    = imageUrls.compactMap{ $0 }
+      if let model = model {
+        swipeImageViewModel.urls    = model.imageUrls.compactMap{ $0 }
         
-        bindableTitleText.value     = item.title
-        bindableLocationText.value  = item.user?.city
+        bindableTitleText.value     = model.title
+        bindableLocationText.value  = model.location
       }
     }
   }
   
-  init(coordinator: ItemDisplayCoordinator, openHttpClient: OpenHTTP) {
+  init(coordinator: ItemDisplayCoordinatorProtocol, imageUseCase: ImageUseCaseProtocol) {
     self.coordinator          = coordinator
-    self.openHttpClient       = openHttpClient
-    self.swipeImageViewModel  = SwipeImageViewModel(openHttpClient: openHttpClient)
+    self.swipeImageViewModel  = SwipeImageViewModel(imageUseCase: imageUseCase)
   }
   
   func didTapMoreButton(_ viewController: UIViewController) {
-    if let item = item {
-      coordinator.presentMore(viewController, item: item)
+    if let model = model {
+      coordinator.presentMore(viewController, model: model)
     }
   }
 }

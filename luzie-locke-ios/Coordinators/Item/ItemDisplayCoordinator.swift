@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ItemDisplayCoordinatorProtocol {
-  func presentMore(_ viewController: UIViewController, item: Item)
+  func presentMore(_ viewController: UIViewController, model: ItemDisplay)
   func navigateToChat(remoteUserId: String, itemId: String)
   func navigateToItemUpdate(itemId: String)
 }
@@ -38,8 +38,8 @@ class ItemDisplayCoordinator: NSObject, Coordinatable {
 
 extension ItemDisplayCoordinator: ItemDisplayCoordinatorProtocol {
   
-  func presentMore(_ viewController: UIViewController, item: Item) {
-    let vm = factory.makeItemDisplayDetailViewModel(item: item)
+  func presentMore(_ viewController: UIViewController, model: ItemDisplay) {
+    let vm = factory.makeItemDisplayDetailViewModel(model: model)
     let vc = factory.makeItemDisplayDetailViewController(viewModel: vm)
     viewController.present(vc, animated: true, completion: nil)
   }
