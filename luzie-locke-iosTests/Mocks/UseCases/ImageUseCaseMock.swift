@@ -11,11 +11,6 @@ import UIKit
 class ImageUseCaseMock: ImageUseCaseProtocol {
   
   var fakeResult: Result<UIImage?, LLError>?
-  var fakeImage: UIImage?
-  
-  func setFakeImage(_ fakeImage: UIImage?) {
-    self.fakeImage = fakeImage
-  }
   
   func setFakeResult(_ fakeResult: Result<UIImage?, LLError>?) {
     self.fakeResult = fakeResult

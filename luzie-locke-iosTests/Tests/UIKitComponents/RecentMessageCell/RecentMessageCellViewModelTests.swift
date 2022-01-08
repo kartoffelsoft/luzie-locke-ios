@@ -12,24 +12,24 @@ import XCTest
 class RecentMessageCellViewModelTests: XCTestCase {
 
   var sut: RecentMessageCellViewModel!
+  var imageUseCaseMock: ImageUseCaseMock!
   
   var nameText:     String!
   var messageText:  String!
   var dateText:     String!
   var itemImage:    UIImage!
   var userImage:    UIImage!
-  
-  var imageUseCaseSpy: ImageUseCaseSpy!
-  
-  let fakeModel       = FakeModels.recentMessage()
-  let fakeItemUIImage = UIImage(systemName: "location")
-  let fakeUserUIImage = UIImage(systemName: "plus")
+
+  let fakeModel = FakeModels.recentMessage()
+  let fakeImage = UIImage(systemName: "photo")
   
   override func setUpWithError() throws {
     try super.setUpWithError()
     
-    imageUseCaseSpy = ImageUseCaseSpy()
-    sut             = RecentMessageCellViewModel(imageUseCase: imageUseCaseSpy)
+    imageUseCaseMock  = ImageUseCaseMock()
+    sut               = RecentMessageCellViewModel(imageUseCase: imageUseCaseMock)
+    
+    imageUseCaseMock.setFakeResult(.success(fakeImage))
   }
   
   func givenThatViewModelIsBound() {
@@ -54,18 +54,12 @@ class RecentMessageCellViewModelTests: XCTestCase {
     }
   }
   
+  func givenMockIsConfiguredToFailDownload() {
+    imageUseCaseMock.setFakeResult(.failure(.unableToComplete))
+  }
+  
   func whenModelIsSet(_ model: RecentMessage) {
     sut.model = model
-  }
-  
-  func whenItemImageIsFetchedWith(_ result: Result<UIImage?, LLError>) {
-    guard let callback = imageUseCaseSpy.completionCallbackWithItemId else { return }
-    callback(result)
-  }
-  
-  func whenUserImageIsFetchedWith(_ result: Result<UIImage?, LLError>) {
-    guard let callback = imageUseCaseSpy.completionCallbackWithUserId else { return }
-    callback(result)
   }
   
   func theNameTextShouldBe(_ expected: String) {
@@ -78,14 +72,6 @@ class RecentMessageCellViewModelTests: XCTestCase {
   
   func theDateTextShouldBe(_ expected: String) {
     XCTAssertEqual(expected, dateText)
-  }
-  
-  func shouldTriggerGetItemImage() {
-    XCTAssertTrue(imageUseCaseSpy.getImageWithItemIdIsCalled)
-  }
-  
-  func shouldTriggerGetUserImage() {
-    XCTAssertTrue(imageUseCaseSpy.getImageWithUserIdIsCalled)
   }
   
   func theItemImageShouldBe(_ expected: UIImage?) {
@@ -105,43 +91,33 @@ class RecentMessageCellViewModelTests: XCTestCase {
     theDateTextShouldBe(DateUtility.string(from: fakeModel.date))
   }
   
-  func testShouldTriggerImageDownloadWhenModelIsSet() throws {
-    givenThatViewModelIsBound()
-    
-    whenModelIsSet(fakeModel)
-    shouldTriggerGetItemImage()
-    shouldTriggerGetUserImage()
-  }
-  
   func testShouldLoadItemImageWhenDownloadSucceeded() throws {
     givenThatViewModelIsBound()
     
     whenModelIsSet(fakeModel)
-    whenItemImageIsFetchedWith(.success(fakeItemUIImage))
-    theItemImageShouldBe(fakeItemUIImage)
+    theItemImageShouldBe(fakeImage)
   }
   
   func testShouldLoadUserImageWhenDownloadSucceeded() throws {
     givenThatViewModelIsBound()
     
     whenModelIsSet(fakeModel)
-    whenUserImageIsFetchedWith(.success(fakeItemUIImage))
-    theUserImageShouldBe(fakeItemUIImage)
+    theUserImageShouldBe(fakeImage)
   }
   
   func testShouldNotLoadItemImageWhenDownloadIsFailed() throws {
     givenThatViewModelIsBound()
+    givenMockIsConfiguredToFailDownload()
     
     whenModelIsSet(fakeModel)
-    whenItemImageIsFetchedWith(.failure(.unableToComplete))
     theItemImageShouldBe(nil)
   }
   
   func testShouldNotLoadUserImageWhenDownloadIsFailed() throws {
     givenThatViewModelIsBound()
+    givenMockIsConfiguredToFailDownload()
     
     whenModelIsSet(fakeModel)
-    whenUserImageIsFetchedWith(.failure(.unableToComplete))
     theUserImageShouldBe(nil)
   }
 }

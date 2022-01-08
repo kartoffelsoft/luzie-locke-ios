@@ -13,11 +13,11 @@ class MyProfileCellViewModelTests: XCTestCase {
 
   var sut: MyProfileCellViewModel!
   
-  var userImageView:      UIImageView!
-  var userNameLabel:      UILabel!
-  var userLocationLabel:  UILabel!
+  var userImage:         UIImage?
+  var userNameText:      String?
+  var userLocationText:  String?
   
-  var imageUseCaseSpy:   ImageUseCaseSpy!
+  var imageUseCaseMock:  ImageUseCaseMock!
   
   let fakeModel   = FakeModels.userProfileBrief()
   let fakeUIImage = UIImage(systemName: "location")
@@ -25,51 +25,48 @@ class MyProfileCellViewModelTests: XCTestCase {
   override func setUpWithError() throws {
     try super.setUpWithError()
     
-    imageUseCaseSpy     = ImageUseCaseSpy()
-    sut                 = MyProfileCellViewModel(imageUseCase: imageUseCaseSpy)
+    imageUseCaseMock    = ImageUseCaseMock()
+    sut                 = MyProfileCellViewModel(imageUseCase: imageUseCaseMock)
     
-    userImageView       = UIImageView()
-    userNameLabel       = UILabel()
-    userLocationLabel   = UILabel()
+    userImage           = nil
+    userNameText        = nil
+    userLocationText    = nil
+    
+    imageUseCaseMock.setFakeResult(.success(fakeUIImage))
   }
   
   func givenThatViewModelIsBound() {
     sut.bindableProfileImage.bind { [weak self] image in
-      self?.userImageView.image = image
+      self?.userImage = image
     }
     
     sut?.bindableNameText.bind { [weak self] text in
-      self?.userNameLabel.text = text
+      self?.userNameText = text
     }
     
     sut?.bindableLocationText.bind { [weak self] text in
-      self?.userLocationLabel.text = text
+      self?.userLocationText = text
     }
+  }
+  
+  func givenMockIsConfiguredToFailDownload() {
+    imageUseCaseMock.setFakeResult(.failure(.unableToComplete))
   }
   
   func whenModelIsSet(_ model: UserProfileBrief) {
     sut.model = model
   }
-  
-  func whenImageIsFetchedWith(_ result: Result<UIImage?, LLError>) {
-    guard let callback = imageUseCaseSpy.completionCallbackWithUrl else { return }
-    callback(result)
-  }
 
   func theNameTextShouldBe(_ expected: String) {
-    XCTAssertEqual(expected, userNameLabel.text)
+    XCTAssertEqual(expected, userNameText)
   }
   
   func theLocationTextShouldBe(_ expected: String) {
-    XCTAssertEqual(expected, userLocationLabel.text)
-  }
-  
-  func shouldTriggerGetImage() {
-    XCTAssertTrue(imageUseCaseSpy.getImageWithUrlIsCalled)
+    XCTAssertEqual(expected, userLocationText)
   }
   
   func theImageShouldBe(_ expected: UIImage?) {
-    XCTAssertEqual(expected, userImageView.image)
+    XCTAssertEqual(expected, userImage)
   }
 
   func testShouldLoadTextsWhenModelIsSet() throws {
@@ -79,27 +76,19 @@ class MyProfileCellViewModelTests: XCTestCase {
     theNameTextShouldBe(fakeModel.name)
     theLocationTextShouldBe(fakeModel.city)
   }
-  
-  func testShouldTriggerImageDownloadWhenModelIsSet() throws {
-    givenThatViewModelIsBound()
-    
-    whenModelIsSet(fakeModel)
-    shouldTriggerGetImage()
-  }
-  
+
   func testShouldLoadImageWhenDownloadSucceeded() throws {
     givenThatViewModelIsBound()
     
     whenModelIsSet(fakeModel)
-    whenImageIsFetchedWith(.success(fakeUIImage))
     theImageShouldBe(fakeUIImage)
   }
   
   func testShouldNotLoadImageWhenDownloadIsFailed() throws {
     givenThatViewModelIsBound()
+    givenMockIsConfiguredToFailDownload()
     
     whenModelIsSet(fakeModel)
-    whenImageIsFetchedWith(.failure(.unableToComplete))
     theImageShouldBe(nil)
   }
 }

@@ -18,7 +18,7 @@ class ItemCellViewModelTests: XCTestCase {
   var itemDateText:     String?
   var itemImage:        UIImage?
   
-  var imageUseCaseSpy:   ImageUseCaseSpy!
+  var imageUseCaseMock: ImageUseCaseMock!
   
   let fakeModel   = FakeModels.itemListElement()
   let fakeUIImage = UIImage(systemName: "location")
@@ -26,8 +26,10 @@ class ItemCellViewModelTests: XCTestCase {
   override func setUpWithError() throws {
     try super.setUpWithError()
     
-    imageUseCaseSpy     = ImageUseCaseSpy()
-    sut                 = ItemCellViewModel(imageUseCase: imageUseCaseSpy)
+    imageUseCaseMock  = ImageUseCaseMock()
+    sut               = ItemCellViewModel(imageUseCase: imageUseCaseMock)
+    
+    imageUseCaseMock.setFakeResult(.success(fakeUIImage))
   }
   
   func givenThatViewModelIsBound() {
@@ -48,13 +50,12 @@ class ItemCellViewModelTests: XCTestCase {
     }
   }
   
-  func whenModelIsSet(_ model: ItemListElement) {
-    sut.model = model
+  func givenMockIsConfiguredToFailDownload() {
+    imageUseCaseMock.setFakeResult(.failure(.unableToComplete))
   }
   
-  func whenImageIsFetchedWith(_ result: Result<UIImage?, LLError>) {
-    guard let callback = imageUseCaseSpy.completionCallbackWithUrl else { return }
-    callback(result)
+  func whenModelIsSet(_ model: ItemListElement) {
+    sut.model = model
   }
   
   func theTitleTextShouldBe(_ expected: String) {
@@ -63,10 +64,6 @@ class ItemCellViewModelTests: XCTestCase {
   
   func theLocationTextShouldBe(_ expected: String) {
     XCTAssertEqual(expected, itemLocationText)
-  }
-  
-  func shouldTriggerGetImage() {
-    XCTAssertTrue(imageUseCaseSpy.getImageWithUrlIsCalled)
   }
   
   func theImageShouldBe(_ expected: UIImage?) {
@@ -81,26 +78,18 @@ class ItemCellViewModelTests: XCTestCase {
     theLocationTextShouldBe(fakeModel.city)
   }
   
-  func testShouldTriggerImageDownloadWhenModelIsSet() throws {
-    givenThatViewModelIsBound()
-    
-    whenModelIsSet(fakeModel)
-    shouldTriggerGetImage()
-  }
-  
   func testShouldLoadImageWhenDownloadSucceeded() throws {
     givenThatViewModelIsBound()
     
     whenModelIsSet(fakeModel)
-    whenImageIsFetchedWith(.success(fakeUIImage))
     theImageShouldBe(fakeUIImage)
   }
   
   func testShouldNotLoadImageWhenDownloadIsFailed() throws {
     givenThatViewModelIsBound()
+    givenMockIsConfiguredToFailDownload()
     
     whenModelIsSet(fakeModel)
-    whenImageIsFetchedWith(.failure(.unableToComplete))
     theImageShouldBe(nil)
   }
 }

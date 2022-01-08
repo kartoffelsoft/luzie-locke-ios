@@ -48,6 +48,7 @@
 		4A0307522788F5A10010F00F /* FakeModels+Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0307512788F5A10010F00F /* FakeModels+Item.swift */; };
 		4A0307542788FFB00010F00F /* FakeModels+User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0307532788FFB00010F00F /* FakeModels+User.swift */; };
 		4A0307562789001C0010F00F /* FakeModels+Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0307552789001C0010F00F /* FakeModels+Message.swift */; };
+		4A0307592789023D0010F00F /* ImageViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0307582789023D0010F00F /* ImageViewModelTests.swift */; };
 		4A03E3B8275F622400EB0210 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3B7275F622400EB0210 /* CustomColors.swift */; };
 		4A03E3BA275F655B00EB0210 /* CustomUIFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3B9275F655B00EB0210 /* CustomUIFonts.swift */; };
 		4A03E3BC275F656C00EB0210 /* CustomUIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3BB275F656C00EB0210 /* CustomUIColors.swift */; };
@@ -65,7 +66,6 @@
 		4A145AB9276CD3AE0059CACD /* SearchString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AB8276CD3AE0059CACD /* SearchString.swift */; };
 		4A145ABD276F281D0059CACD /* Faker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145ABC276F281D0059CACD /* Faker.swift */; };
 		4A145AC0276F56FF0059CACD /* FakeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145ABF276F56FF0059CACD /* FakeModels.swift */; };
-		4A145AC8276F965C0059CACD /* ImageUseCaseSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AC7276F965C0059CACD /* ImageUseCaseSpy.swift */; };
 		4A145ACF276FAE870059CACD /* ItemListElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145ACE276FAE870059CACD /* ItemListElement.swift */; };
 		4A145AD1276FAEC60059CACD /* UserProfileBrief.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AD0276FAEC60059CACD /* UserProfileBrief.swift */; };
 		4A145AD3276FC7730059CACD /* ItemCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AD2276FC7730059CACD /* ItemCellViewModelTests.swift */; };
@@ -292,6 +292,7 @@
 		4A0307512788F5A10010F00F /* FakeModels+Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FakeModels+Item.swift"; sourceTree = "<group>"; };
 		4A0307532788FFB00010F00F /* FakeModels+User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FakeModels+User.swift"; sourceTree = "<group>"; };
 		4A0307552789001C0010F00F /* FakeModels+Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FakeModels+Message.swift"; sourceTree = "<group>"; };
+		4A0307582789023D0010F00F /* ImageViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModelTests.swift; sourceTree = "<group>"; };
 		4A03E3B7275F622400EB0210 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		4A03E3B9275F655B00EB0210 /* CustomUIFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIFonts.swift; sourceTree = "<group>"; };
 		4A03E3BB275F656C00EB0210 /* CustomUIColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIColors.swift; sourceTree = "<group>"; };
@@ -309,7 +310,6 @@
 		4A145AB8276CD3AE0059CACD /* SearchString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchString.swift; sourceTree = "<group>"; };
 		4A145ABC276F281D0059CACD /* Faker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Faker.swift; sourceTree = "<group>"; };
 		4A145ABF276F56FF0059CACD /* FakeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeModels.swift; sourceTree = "<group>"; };
-		4A145AC7276F965C0059CACD /* ImageUseCaseSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUseCaseSpy.swift; sourceTree = "<group>"; };
 		4A145ACE276FAE870059CACD /* ItemListElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListElement.swift; sourceTree = "<group>"; };
 		4A145AD0276FAEC60059CACD /* UserProfileBrief.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileBrief.swift; sourceTree = "<group>"; };
 		4A145AD2276FC7730059CACD /* ItemCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellViewModelTests.swift; sourceTree = "<group>"; };
@@ -624,7 +624,6 @@
 				4AA6CE0B2769E06A00FF0C91 /* Login */,
 				4A22DB35274D74D700E5125B /* UserItems */,
 				4AC56678273BC2C300776DBD /* Messages */,
-				4A47E6DD2731D32500B9018A /* SwipeImage */,
 				4AEE8FAD272BD46F004CB686 /* Item */,
 				4A3B52A8271256CD00EF4F93 /* LoginViewController.swift */,
 				4A3B52C327131FE800EF4F93 /* LoginViewModel.swift */,
@@ -662,6 +661,14 @@
 				4A03074D2788D7E50010F00F /* ImageUseCaseMock.swift */,
 			);
 			path = UseCases;
+			sourceTree = "<group>";
+		};
+		4A030757278901E10010F00F /* SwipeImage */ = {
+			isa = PBXGroup;
+			children = (
+				4A0307582789023D0010F00F /* ImageViewModelTests.swift */,
+			);
+			path = SwipeImage;
 			sourceTree = "<group>";
 		};
 		4A03E3B6275F61F300EB0210 /* Contants */ = {
@@ -731,6 +738,7 @@
 				4A145AC9276F997D0059CACD /* ItemCell */,
 				4A145AC5276F874C0059CACD /* MyProfileCell */,
 				4A145AD4276FE7A00059CACD /* RecentMessageCell */,
+				4A47E6DD2731D32500B9018A /* SwipeImage */,
 				4A0307472787B01B0010F00F /* Screens */,
 			);
 			path = UIKitComponents;
@@ -743,14 +751,6 @@
 				4AEE8F8627288842004CB686 /* MyProfileCellViewModel.swift */,
 			);
 			path = MyProfileCell;
-			sourceTree = "<group>";
-		};
-		4A145AC6276F963D0059CACD /* UseCases */ = {
-			isa = PBXGroup;
-			children = (
-				4A145AC7276F965C0059CACD /* ImageUseCaseSpy.swift */,
-			);
-			path = UseCases;
 			sourceTree = "<group>";
 		};
 		4A145AC9276F997D0059CACD /* ItemCell */ = {
@@ -783,7 +783,6 @@
 			isa = PBXGroup;
 			children = (
 				4A03073D2786398E0010F00F /* Coordinators */,
-				4A145AC6276F963D0059CACD /* UseCases */,
 			);
 			path = Spies;
 			sourceTree = "<group>";
@@ -1439,6 +1438,7 @@
 				4A145AD7277073360059CACD /* RecentMessageCell */,
 				4A145ACC276FAE440059CACD /* ItemCell */,
 				4AEE8F8927289C53004CB686 /* MyProfileCell */,
+				4A030757278901E10010F00F /* SwipeImage */,
 				4A0307482787B5010010F00F /* Screens */,
 			);
 			path = UIKitComponents;
@@ -1808,7 +1808,6 @@
 				4AEE8F7C27280504004CB686 /* SimpleStringStorageMock.swift in Sources */,
 				4A03073F27863B8E0010F00F /* ItemDisplayCoordinatorSpy.swift in Sources */,
 				4A03074B2787B55E0010F00F /* ItemDisplayBriefViewModelTests.swift in Sources */,
-				4A145AC8276F965C0059CACD /* ImageUseCaseSpy.swift in Sources */,
 				4A0307562789001C0010F00F /* FakeModels+Message.swift in Sources */,
 				4A3B52B027125C6700EF4F93 /* AuthServiceMock.swift in Sources */,
 				4A145AC0276F56FF0059CACD /* FakeModels.swift in Sources */,
@@ -1826,6 +1825,7 @@
 				4A03073A2785BAC20010F00F /* UserFavoriteItemUseCaseSpy.swift in Sources */,
 				4A145ABD276F281D0059CACD /* Faker.swift in Sources */,
 				4A3B52E52716083A00EF4F93 /* CoordinatorMock.swift in Sources */,
+				4A0307592789023D0010F00F /* ImageViewModelTests.swift in Sources */,
 				4A0307542788FFB00010F00F /* FakeModels+User.swift in Sources */,
 				4AEE8F8527281978004CB686 /* UserAPIClientMock.swift in Sources */,
 				4A030745278788B60010F00F /* InputViewModelTests.swift in Sources */,
