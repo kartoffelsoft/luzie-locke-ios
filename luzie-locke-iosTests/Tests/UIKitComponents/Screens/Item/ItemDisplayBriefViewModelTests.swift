@@ -12,20 +12,20 @@ import XCTest
 class ItemDisplayBriefViewModelTests: XCTestCase {
 
   var sut:              ItemDisplayBriefViewModel!
-  var imageUseCaseSpy:  ImageUseCaseSpy!
+  var imageUseCaseMock: ImageUseCaseMock!
   var coordinatorSpy:   ItemDisplayCoordinatorSpy!
   
   var titleText:        String!
-  var locationText:    String!
+  var locationText:     String!
   
   let fakeModel = FakeModels.itemDisplay()
   
   override func setUpWithError() throws {
     try super.setUpWithError()
     
-    coordinatorSpy  = ItemDisplayCoordinatorSpy()
-    imageUseCaseSpy = ImageUseCaseSpy()
-    sut             = ItemDisplayBriefViewModel(coordinator: coordinatorSpy, imageUseCase: imageUseCaseSpy)
+    coordinatorSpy   = ItemDisplayCoordinatorSpy()
+    imageUseCaseMock = ImageUseCaseMock()
+    sut              = ItemDisplayBriefViewModel(coordinator: coordinatorSpy, imageUseCase: imageUseCaseMock)
   }
   
   func givenThatViewModelIsBound() {

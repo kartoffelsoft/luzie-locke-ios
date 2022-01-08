@@ -9,22 +9,19 @@ import UIKit
 
 class SettingsViewModel {
   
-  let coordinator:              SettingsCoordinator
-  let auth:                     Auth
+  let coordinator:              SettingsCoordinatorProtocol
+  let authUseCase:              AuthUseCaseProtocol
   let myProfileUseCase:         MyProfileUseCaseProtocol
-  let backendApiClient:         BackendAPIClient
   
   let myProfileCellViewModel:   MyProfileCellViewModel
 
-  init(coordinator:             SettingsCoordinator,
-       auth:                    Auth,
+  init(coordinator:             SettingsCoordinatorProtocol,
+       authUseCase:             AuthUseCaseProtocol,
        myProfileUseCase:        MyProfileUseCaseProtocol,
-       imageUseCase:            ImageUseCaseProtocol,
-       backendApiClient:        BackendAPIClient) {
+       imageUseCase:            ImageUseCaseProtocol) {
     self.coordinator            = coordinator
-    self.auth                   = auth
+    self.authUseCase            = authUseCase
     self.myProfileUseCase       = myProfileUseCase
-    self.backendApiClient       = backendApiClient
     
     myProfileCellViewModel      =  MyProfileCellViewModel(imageUseCase: imageUseCase)
   }
@@ -59,6 +56,6 @@ class SettingsViewModel {
   }
   
   func logout() {
-    auth.logout()
+    authUseCase.logout()
   }
 }

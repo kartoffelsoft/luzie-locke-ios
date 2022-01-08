@@ -31,7 +31,7 @@ protocol ViewControllerFactory {
 extension CompositionRoot: ViewControllerFactory {
   
   func makeMainTabBarController() -> MainTabBarController {
-    return MainTabBarController(factory: self, auth: auth)
+    return MainTabBarController(factory: self, authUseCase: authUseCase)
   }
   
   func makeLoginViewController(viewModel: LoginViewModel) -> LoginViewController {

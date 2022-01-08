@@ -36,7 +36,7 @@ extension CompositionRoot: ViewModelFactory {
   
   func makeLoginViewModel(coordinator: LoginCoordinator) -> LoginViewModel {
     return LoginViewModel(coordinator: coordinator,
-                          auth: auth,
+                          authUseCase: authUseCase,
                           myProfileUseCase: myProfileUseCase,
                           backendApiClient: backendApiClient)
   }
@@ -58,10 +58,9 @@ extension CompositionRoot: ViewModelFactory {
   
   func makeSettingsViewModel(coordinator: SettingsCoordinator) -> SettingsViewModel {
     return SettingsViewModel(coordinator: coordinator,
-                             auth: auth,
+                             authUseCase: authUseCase,
                              myProfileUseCase: myProfileUseCase,
-                             imageUseCase: imageUseCase,
-                             backendApiClient: backendApiClient)
+                             imageUseCase: imageUseCase)
   }
   
   func makeSignUpViewModel(coordinator: LoginCoordinator) -> SignUpViewModel {

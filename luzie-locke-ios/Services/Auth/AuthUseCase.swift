@@ -7,16 +7,14 @@
 
 import UIKit
 
-protocol Auth {
+protocol AuthUseCaseProtocol {
   
   func authenticate(_ caller: UIViewController, with provider: SignInProvider, completion: @escaping (Result<UserProfile, LLError>?) -> Void)
-  
   func isAuthenticated() -> Bool
-  
   func logout()
 }
 
-class AuthService: Auth {
+class AuthUseCase: AuthUseCaseProtocol {
   
   let firebaseAuth: FirebaseAuth
   let backendAuth:  BackendAuth

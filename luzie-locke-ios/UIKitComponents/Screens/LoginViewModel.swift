@@ -20,22 +20,22 @@ class LoginViewModel {
   weak var delegate:      LoginViewModelDelegate?
   
   let coordinator:        LoginCoordinator
-  let auth:               Auth
+  let authUseCase:        AuthUseCaseProtocol
   let myProfileUseCase:   MyProfileUseCaseProtocol
   let backendApiClient:   BackendAPIClient
   
   init(coordinator:       LoginCoordinator,
-       auth:              Auth,
+       authUseCase:       AuthUseCaseProtocol,
        myProfileUseCase:  MyProfileUseCaseProtocol,
        backendApiClient:  BackendAPIClient) {
     self.coordinator      = coordinator
-    self.auth             = auth
+    self.authUseCase      = authUseCase
     self.myProfileUseCase = myProfileUseCase
     self.backendApiClient = backendApiClient
   }
   
   private func confirmLogin() {
-    if auth.isAuthenticated() {
+    if authUseCase.isAuthenticated() {
       if myProfileUseCase.isLocationSet() {
         delegate?.didLogin()
         NotificationCenter.default.post(name: .didUpdateItem, object: nil)
@@ -53,7 +53,7 @@ class LoginViewModel {
   }
   
   func performGoogleLogin(_ calller: UIViewController) {
-    auth.authenticate(calller, with: .google) { [weak self] result in
+    authUseCase.authenticate(calller, with: .google) { [weak self] result in
       guard let self = self else { return }
       
       switch result {

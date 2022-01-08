@@ -53,5 +53,5 @@ class CompositionRoot {
                                                        accessTokenStorage: accessTokenStorage,
                                                        refreshTokenStorage: refreshTokenStorage)
   
-  lazy var auth = AuthService(firebaseAuth: firebaseAuth, backendAuth: backendAuth)
+  lazy var authUseCase = AuthUseCase(firebaseAuth: firebaseAuth, backendAuth: backendAuth)
 }

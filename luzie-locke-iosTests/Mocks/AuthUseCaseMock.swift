@@ -9,7 +9,7 @@ import UIKit
 
 @testable import luzie_locke_ios
 
-class AuthServiceMock: Auth {
+class AuthUseCaseMock: AuthUseCaseProtocol {
   
   var authenticated = false
   

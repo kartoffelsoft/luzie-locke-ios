@@ -11,6 +11,16 @@ import UIKit
 import SwiftUI
 import MapKit
 
+protocol SettingsCoordinatorProtocol {
+  
+  func navigateToUserListings()
+  func navigateToUserPurchases()
+  func navigateToUserFavorites()
+  func navigateToNeighborhooodSetting()
+  func navigateToVerifyNeighborhood()
+  func navigateToItemDisplay(id: String)
+}
+
 class SettingsCoordinator: Coordinatable {
   
   typealias Factory = CoordinatorFactory & ViewControllerFactory & ViewModelFactory
@@ -31,6 +41,9 @@ class SettingsCoordinator: Coordinatable {
     let viewController  = factory.makeSettingsViewController(viewModel: viewModel)
     navigationController.pushViewController(viewController, animated: false)
   }
+}
+
+extension SettingsCoordinator: SettingsCoordinatorProtocol {
   
   func navigateToUserListings() {
     let viewModel       = factory.makeUserListingsViewModel(coordinator: self)

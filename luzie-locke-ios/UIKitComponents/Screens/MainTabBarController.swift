@@ -17,16 +17,15 @@ class MainTabBarController: UITabBarController {
   
   typealias Factory = CoordinatorFactory & ViewControllerFactory
   
-  let auth:                 Auth
+  let authUseCase:          AuthUseCaseProtocol
   
   let homeCoordinator:      Coordinatable
   let messagesCoordinator:  MessagesCoordinator
   let settingsCoordinator:  SettingsCoordinator
   
-  init(factory: Factory, auth: Auth) {
-    self.auth                     = auth
+  init(factory: Factory, authUseCase: AuthUseCaseProtocol) {
+    self.authUseCase              = authUseCase
     self.homeCoordinator          = factory.makeHomeCoordinator()
-//    self.searchCoordinator        = factory.makeSearchCoordinator()
     self.messagesCoordinator      = factory.makeMessagesCoordinator()
     self.settingsCoordinator      = factory.makeSettingsCoordinator()
     
@@ -52,11 +51,11 @@ class MainTabBarController: UITabBarController {
     super.viewDidAppear(animated)
     navigationController?.isNavigationBarHidden = true
     
-    if !auth.isAuthenticated() {
+    if !authUseCase.isAuthenticated() {
       route?.didRequireLogin(self)
     }
   }
-  
+
   func configureTabBar() {
     tabBar.tintColor                = CustomUIColors.secondaryColor
     tabBar.unselectedItemTintColor  = CustomUIColors.primaryColorLight2
