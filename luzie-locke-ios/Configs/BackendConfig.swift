@@ -9,6 +9,6 @@ import Foundation
 
 struct BackendConfig {
   
-  static let host = "http://localhost:5000"
+  static let host = ProcessInfo.processInfo.environment["BACKEND_URL"] ?? ""
   static let defaultHeaders = ["Accept": "application/json", "Content-Type": "application/json"]
 }

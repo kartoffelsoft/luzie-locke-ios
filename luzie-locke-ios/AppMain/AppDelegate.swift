@@ -15,6 +15,10 @@ import GoogleSignIn
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    #if DEBUG
+      print("[APP RUNS WITH DEBUG MODE]")
+    #endif
+    
     FirebaseApp.configure()
     
     Messaging.messaging().delegate              = self
