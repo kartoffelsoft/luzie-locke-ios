@@ -1,5 +1,5 @@
 //
-//  AuthManager.swift
+//  FirebaseAuthUseCase.swift
 //  luzie-locke-ios
 //
 //  Created by Harry on 10.10.21.
@@ -13,18 +13,18 @@ enum SignInProvider {
   case google
 }
 
-protocol FirebaseAuth {
+protocol FirebaseAuthUseCaseProtocol {
   
   func authenticate(_ caller: UIViewController, with provider: SignInProvider, completion: @escaping (Result<(uid: String, token: String), LLError>?) -> Void)
   func isAuthenticated() -> Bool
   func logout()
 }
 
-class FirebaseAuthService: FirebaseAuth {
+class FirebaseAuthUseCase: FirebaseAuthUseCaseProtocol {
   
-  let google: GoogleSignInService
+  let google: GoogleSignInUseCase
   
-  init(google: GoogleSignInService) {
+  init(google: GoogleSignInUseCase) {
     self.google = google
   }
   

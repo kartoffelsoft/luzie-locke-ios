@@ -47,11 +47,11 @@ class CompositionRoot {
   lazy var accessTokenStorage     = AnyStorage(wrap: SimpleStringStorage(key: "AccessToken"))
   lazy var refreshTokenStorage    = AnyStorage(wrap: SimpleStringStorage(key: "RefreshToken"))
 
-  lazy var firebaseAuth           = FirebaseAuthService(google: GoogleSignInService())
-  lazy var backendAuth            = BackendAuthService(backendApiClient: backendApiClient,
+  lazy var firebaseUseCase        = FirebaseAuthUseCase(google: GoogleSignInUseCase())
+  lazy var backendAuthUseCase     = BackendAuthUseCase(backendApiClient: backendApiClient,
                                                        localProfileRepository: localProfileRepository,
                                                        accessTokenStorage: accessTokenStorage,
                                                        refreshTokenStorage: refreshTokenStorage)
   
-  lazy var authUseCase = AuthUseCase(firebaseAuth: firebaseAuth, backendAuth: backendAuth)
+  lazy var authUseCase = AuthUseCase(firebaseAuthUseCase: firebaseUseCase, backendAuthUseCase: backendAuthUseCase)
 }

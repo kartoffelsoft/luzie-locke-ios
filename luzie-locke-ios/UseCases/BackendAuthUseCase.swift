@@ -1,5 +1,5 @@
 //
-//  BackendAuthService.swift
+//  BackendAuthUseCase.swift
 //  luzie-locke-ios
 //
 //  Created by Harry on 20.10.21.
@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol BackendAuth {
+protocol BackendAuthUseCaseProtocol {
   
   func authenticate(uid: String, token: String, completion: @escaping (Result<UserProfile, LLError>?) -> Void)
   func isAuthenticated() -> Bool
   func logout()
 }
 
-class BackendAuthService: BackendAuth {
+class BackendAuthUseCase: BackendAuthUseCaseProtocol {
   
   let backendApiClient:       BackendAPIClient
   let localProfileRepository: LocalProfileRepositoryProtocol

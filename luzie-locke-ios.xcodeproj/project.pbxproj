@@ -101,7 +101,7 @@
 		4A3B529D2712421300EF4F93 /* ItemSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B529C2712421300EF4F93 /* ItemSearchViewController.swift */; };
 		4A3B529F271242ED00EF4F93 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B529E271242ED00EF4F93 /* SettingsViewController.swift */; };
 		4A3B52A22712461500EF4F93 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52A12712461500EF4F93 /* MessagesViewController.swift */; };
-		4A3B52A62712539300EF4F93 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52A52712539300EF4F93 /* FirebaseAuthService.swift */; };
+		4A3B52A62712539300EF4F93 /* FirebaseAuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52A52712539300EF4F93 /* FirebaseAuthUseCase.swift */; };
 		4A3B52A9271256CD00EF4F93 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52A8271256CD00EF4F93 /* LoginViewController.swift */; };
 		4A3B52AB27125C0A00EF4F93 /* MainViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52AA27125C0A00EF4F93 /* MainViewControllerTests.swift */; };
 		4A3B52B027125C6700EF4F93 /* AuthUseCaseMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52AF27125C6700EF4F93 /* AuthUseCaseMock.swift */; };
@@ -111,7 +111,7 @@
 		4A3B52C02712DDCE00EF4F93 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 4A3B52BF2712DDCE00EF4F93 /* GoogleSignIn */; };
 		4A3B52C22712DF2100EF4F93 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A3B52C12712DF2100EF4F93 /* GoogleService-Info.plist */; };
 		4A3B52C427131FE800EF4F93 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52C327131FE800EF4F93 /* LoginViewModel.swift */; };
-		4A3B52C72713996000EF4F93 /* GoogleSignInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52C62713996000EF4F93 /* GoogleSignInService.swift */; };
+		4A3B52C72713996000EF4F93 /* GoogleSignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52C62713996000EF4F93 /* GoogleSignInUseCase.swift */; };
 		4A3B52C92713A02D00EF4F93 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52C82713A02D00EF4F93 /* UIViewController+Ext.swift */; };
 		4A3B52CD2714419B00EF4F93 /* LLError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52CC2714419B00EF4F93 /* LLError.swift */; };
 		4A3B52D527159CA300EF4F93 /* Coordinatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52D427159CA300EF4F93 /* Coordinatable.swift */; };
@@ -219,7 +219,7 @@
 		4AED5E712720176900B7AC00 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E702720176900B7AC00 /* LocalStorage.swift */; };
 		4AED5E7327201AD200B7AC00 /* ProfileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7227201AD200B7AC00 /* ProfileStorage.swift */; };
 		4AED5E7527201BCF00B7AC00 /* SimpleStringStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7427201BCF00B7AC00 /* SimpleStringStorage.swift */; };
-		4AED5E7C27209C8D00B7AC00 /* BackendAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7B27209C8D00B7AC00 /* BackendAuthService.swift */; };
+		4AED5E7C27209C8D00B7AC00 /* BackendAuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7B27209C8D00B7AC00 /* BackendAuthUseCase.swift */; };
 		4AED5E7E2720A50400B7AC00 /* AuthUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7D2720A50400B7AC00 /* AuthUseCase.swift */; };
 		4AED5E802720C2D200B7AC00 /* JWTDecode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E7F2720C2D200B7AC00 /* JWTDecode.swift */; };
 		4AED5E8627219E7300B7AC00 /* MyProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E8527219E7300B7AC00 /* MyProfileCell.swift */; };
@@ -353,13 +353,13 @@
 		4A3B529C2712421300EF4F93 /* ItemSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSearchViewController.swift; sourceTree = "<group>"; };
 		4A3B529E271242ED00EF4F93 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		4A3B52A12712461500EF4F93 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
-		4A3B52A52712539300EF4F93 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
+		4A3B52A52712539300EF4F93 /* FirebaseAuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthUseCase.swift; sourceTree = "<group>"; };
 		4A3B52A8271256CD00EF4F93 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4A3B52AA27125C0A00EF4F93 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
 		4A3B52AF27125C6700EF4F93 /* AuthUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCaseMock.swift; sourceTree = "<group>"; };
 		4A3B52C12712DF2100EF4F93 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4A3B52C327131FE800EF4F93 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		4A3B52C62713996000EF4F93 /* GoogleSignInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInService.swift; sourceTree = "<group>"; };
+		4A3B52C62713996000EF4F93 /* GoogleSignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInUseCase.swift; sourceTree = "<group>"; };
 		4A3B52C82713A02D00EF4F93 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		4A3B52CC2714419B00EF4F93 /* LLError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLError.swift; sourceTree = "<group>"; };
 		4A3B52D427159CA300EF4F93 /* Coordinatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinatable.swift; sourceTree = "<group>"; };
@@ -469,7 +469,7 @@
 		4AED5E702720176900B7AC00 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		4AED5E7227201AD200B7AC00 /* ProfileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorage.swift; sourceTree = "<group>"; };
 		4AED5E7427201BCF00B7AC00 /* SimpleStringStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleStringStorage.swift; sourceTree = "<group>"; };
-		4AED5E7B27209C8D00B7AC00 /* BackendAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendAuthService.swift; sourceTree = "<group>"; };
+		4AED5E7B27209C8D00B7AC00 /* BackendAuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendAuthUseCase.swift; sourceTree = "<group>"; };
 		4AED5E7D2720A50400B7AC00 /* AuthUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCase.swift; sourceTree = "<group>"; };
 		4AED5E7F2720C2D200B7AC00 /* JWTDecode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JWTDecode.swift; sourceTree = "<group>"; };
 		4AED5E8527219E7300B7AC00 /* MyProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileCell.swift; sourceTree = "<group>"; };
@@ -651,6 +651,7 @@
 		4A03074C2788D7C60010F00F /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				4A3B52AF27125C6700EF4F93 /* AuthUseCaseMock.swift */,
 				4A03073B278631FC0010F00F /* MyProfileUseCaseMock.swift */,
 				4A0307392785BAC20010F00F /* UserFavoriteItemUseCaseSpy.swift */,
 				4A03074D2788D7E50010F00F /* ImageUseCaseMock.swift */,
@@ -927,7 +928,6 @@
 				4AED5E58271EBEC900B7AC00 /* HTTP */,
 				4A155E442722E02800C8B867 /* OpenHTTPClient */,
 				4AED5E35271D928F00B7AC00 /* BackendAPIClient */,
-				4A3B52C5271398B500EF4F93 /* Auth */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -958,7 +958,6 @@
 				4AEE8F78272803E9004CB686 /* Storage */,
 				4AED5E23271A0CCD00B7AC00 /* Map */,
 				4A03074C2788D7C60010F00F /* UseCases */,
-				4A3B52AF27125C6700EF4F93 /* AuthUseCaseMock.swift */,
 				4A3B52E42716083A00EF4F93 /* CoordinatorMock.swift */,
 			);
 			path = Mocks;
@@ -972,17 +971,6 @@
 				4A22DB3F274F006D00E5125B /* CustomLabel.swift */,
 			);
 			path = Labels;
-			sourceTree = "<group>";
-		};
-		4A3B52C5271398B500EF4F93 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				4A3B52A52712539300EF4F93 /* FirebaseAuthService.swift */,
-				4A3B52C62713996000EF4F93 /* GoogleSignInService.swift */,
-				4AED5E7B27209C8D00B7AC00 /* BackendAuthService.swift */,
-				4AED5E7D2720A50400B7AC00 /* AuthUseCase.swift */,
-			);
-			path = Auth;
 			sourceTree = "<group>";
 		};
 		4A3B52CB2714415900EF4F93 /* Utilities */ = {
@@ -1172,6 +1160,10 @@
 		4AD53D242763787D00F34874 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				4AED5E7D2720A50400B7AC00 /* AuthUseCase.swift */,
+				4A3B52A52712539300EF4F93 /* FirebaseAuthUseCase.swift */,
+				4AED5E7B27209C8D00B7AC00 /* BackendAuthUseCase.swift */,
+				4A3B52C62713996000EF4F93 /* GoogleSignInUseCase.swift */,
 				4A00FC252764DF2D007C5B11 /* ItemControlUseCase.swift */,
 				4AD53D25276378F000F34874 /* ImageUseCase.swift */,
 				4A00FC292766B2D1007C5B11 /* MyProfileUseCase.swift */,
@@ -1603,7 +1595,7 @@
 				4A47E6AD272D408F00B9018A /* ItemAPIClient.swift in Sources */,
 				4ACA81EE2754C701003C7E0E /* Notification+Ext.swift in Sources */,
 				4A47E6AA272CA0B500B9018A /* FirebaseCloudStorage.swift in Sources */,
-				4A3B52C72713996000EF4F93 /* GoogleSignInService.swift in Sources */,
+				4A3B52C72713996000EF4F93 /* GoogleSignInUseCase.swift in Sources */,
 				4AEE8F8727288842004CB686 /* MyProfileCellViewModel.swift in Sources */,
 				4A3B52C427131FE800EF4F93 /* LoginViewModel.swift in Sources */,
 				4AED5E7E2720A50400B7AC00 /* AuthUseCase.swift in Sources */,
@@ -1613,7 +1605,7 @@
 				4A145AB9276CD3AE0059CACD /* SearchString.swift in Sources */,
 				4AD53D212760E19200F34874 /* CustomUIImages.swift in Sources */,
 				4A22DB37274D74E900E5125B /* UserListingsViewModel.swift in Sources */,
-				4A3B52A62712539300EF4F93 /* FirebaseAuthService.swift in Sources */,
+				4A3B52A62712539300EF4F93 /* FirebaseAuthUseCase.swift in Sources */,
 				4A22DB34274D745300E5125B /* UserListingsViewController.swift in Sources */,
 				4AEE8F712726E082004CB686 /* Item.swift in Sources */,
 				4AD53D0E275FF31300F34874 /* SettingsLocalLevelReadRequest.swift in Sources */,
@@ -1722,7 +1714,7 @@
 				4A47E6DC2731CEFA00B9018A /* ItemDisplayBriefViewModel.swift in Sources */,
 				4AED5E39271D92EA00B7AC00 /* APIRequest.swift in Sources */,
 				4AC5667A273BC30000776DBD /* ChatViewModel.swift in Sources */,
-				4AED5E7C27209C8D00B7AC00 /* BackendAuthService.swift in Sources */,
+				4AED5E7C27209C8D00B7AC00 /* BackendAuthUseCase.swift in Sources */,
 				4A3B529F271242ED00EF4F93 /* SettingsViewController.swift in Sources */,
 				4AD53D11275FF53800F34874 /* SettingsLocalLevelUpdateRequest.swift in Sources */,
 				4AC5667C273BE3E000776DBD /* ChatMessageRepository.swift in Sources */,

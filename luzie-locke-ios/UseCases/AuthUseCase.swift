@@ -1,5 +1,5 @@
 //
-//  AuthService.swift
+//  AuthUseCase.swift
 //  luzie-locke-ios
 //
 //  Created by Harry on 20.10.21.
@@ -16,20 +16,20 @@ protocol AuthUseCaseProtocol {
 
 class AuthUseCase: AuthUseCaseProtocol {
   
-  let firebaseAuth: FirebaseAuth
-  let backendAuth:  BackendAuth
+  let firebaseAuthUseCase: FirebaseAuthUseCaseProtocol
+  let backendAuthUseCase:  BackendAuthUseCaseProtocol
   
-  init(firebaseAuth: FirebaseAuth, backendAuth: BackendAuth) {
-    self.firebaseAuth = firebaseAuth
-    self.backendAuth  = backendAuth
+  init(firebaseAuthUseCase: FirebaseAuthUseCaseProtocol, backendAuthUseCase: BackendAuthUseCaseProtocol) {
+    self.firebaseAuthUseCase = firebaseAuthUseCase
+    self.backendAuthUseCase  = backendAuthUseCase
   }
   
   func authenticate(_ caller: UIViewController, with provider: SignInProvider, completion: @escaping (Result<UserProfile, LLError>?) -> Void) {
-    firebaseAuth.authenticate(caller, with: .google) { [weak self] result in
+    firebaseAuthUseCase.authenticate(caller, with: .google) { [weak self] result in
       guard let self = self else { return }
       switch result {
       case .success(let data):
-        self.backendAuth.authenticate(uid: data.uid, token: data.token) { result in
+        self.backendAuthUseCase.authenticate(uid: data.uid, token: data.token) { result in
           switch result {
           case .success(let profile):
             completion(.success(profile))
@@ -48,11 +48,11 @@ class AuthUseCase: AuthUseCaseProtocol {
   }
 
   func isAuthenticated() -> Bool {
-    return firebaseAuth.isAuthenticated() && backendAuth.isAuthenticated()
+    return firebaseAuthUseCase.isAuthenticated() && backendAuthUseCase.isAuthenticated()
   }
   
   func logout() {
-    firebaseAuth.logout()
-    backendAuth.logout()
+    firebaseAuthUseCase.logout()
+    backendAuthUseCase.logout()
   }
 }

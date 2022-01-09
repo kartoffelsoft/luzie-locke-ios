@@ -1,5 +1,5 @@
 //
-//  GoogleSignInService.swift
+//  GoogleSignInUseCase.swift
 //  luzie-locke-ios
 //
 //  Created by Harry on 10.10.21.
@@ -9,7 +9,12 @@ import UIKit
 import Firebase
 import GoogleSignIn
 
-class GoogleSignInService {
+protocol GoogleSignInUseCaseProtocol {
+  
+  func signIn(_ caller: UIViewController, completion: @escaping (Result<(uid: String, token: String), LLError>?) -> Void)
+}
+
+class GoogleSignInUseCase {
   
   func signIn(_ caller: UIViewController, completion: @escaping (Result<(uid: String, token: String), LLError>?) -> Void) {
     guard let clientID = FirebaseApp.app()?.options.clientID else { return }
