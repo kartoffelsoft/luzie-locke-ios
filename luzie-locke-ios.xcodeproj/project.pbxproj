@@ -109,7 +109,7 @@
 		4A3B52BB2712DC9100EF4F93 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 4A3B52BA2712DC9100EF4F93 /* FirebaseStorage */; };
 		4A3B52BD2712DC9100EF4F93 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 4A3B52BC2712DC9100EF4F93 /* FirebaseFirestore */; };
 		4A3B52C02712DDCE00EF4F93 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 4A3B52BF2712DDCE00EF4F93 /* GoogleSignIn */; };
-		4A3B52C22712DF2100EF4F93 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A3B52C12712DF2100EF4F93 /* GoogleService-Info.plist */; };
+		4A3B52C22712DF2100EF4F93 /* GoogleService-Info-Debug.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A3B52C12712DF2100EF4F93 /* GoogleService-Info-Debug.plist */; };
 		4A3B52C427131FE800EF4F93 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52C327131FE800EF4F93 /* LoginViewModel.swift */; };
 		4A3B52C72713996000EF4F93 /* GoogleSignInUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52C62713996000EF4F93 /* GoogleSignInUseCase.swift */; };
 		4A3B52C92713A02D00EF4F93 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3B52C82713A02D00EF4F93 /* UIViewController+Ext.swift */; };
@@ -357,7 +357,7 @@
 		4A3B52A8271256CD00EF4F93 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4A3B52AA27125C0A00EF4F93 /* MainViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTests.swift; sourceTree = "<group>"; };
 		4A3B52AF27125C6700EF4F93 /* AuthUseCaseMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUseCaseMock.swift; sourceTree = "<group>"; };
-		4A3B52C12712DF2100EF4F93 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4A3B52C12712DF2100EF4F93 /* GoogleService-Info-Debug.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info-Debug.plist"; sourceTree = "<group>"; };
 		4A3B52C327131FE800EF4F93 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4A3B52C62713996000EF4F93 /* GoogleSignInUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSignInUseCase.swift; sourceTree = "<group>"; };
 		4A3B52C82713A02D00EF4F93 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
@@ -668,6 +668,14 @@
 			path = SwipeImage;
 			sourceTree = "<group>";
 		};
+		4A030763278B52500010F00F /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				4A3B52C12712DF2100EF4F93 /* GoogleService-Info-Debug.plist */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 		4A03E3B6275F61F300EB0210 /* Contants */ = {
 			isa = PBXGroup;
 			children = (
@@ -876,7 +884,6 @@
 				4A3B52CB2714415900EF4F93 /* Utilities */,
 				4A3B5270271239CF00EF4F93 /* LaunchScreen.storyboard */,
 				4A3B5273271239CF00EF4F93 /* Info.plist */,
-				4A3B52C12712DF2100EF4F93 /* GoogleService-Info.plist */,
 			);
 			path = "luzie-locke-ios";
 			sourceTree = "<group>";
@@ -1199,6 +1206,7 @@
 		4ADE3D292733CA3400ACBC60 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4A030763278B52500010F00F /* Firebase */,
 				4A3B526E271239CF00EF4F93 /* Assets.xcassets */,
 				4AEE8FA5272B4DD0004CB686 /* Fonts */,
 				4AED5E1927197BA400B7AC00 /* Frankfurt.gpx */,
@@ -1440,6 +1448,7 @@
 				4A3B525E271239CE00EF4F93 /* Sources */,
 				4A3B525F271239CE00EF4F93 /* Frameworks */,
 				4A3B5260271239CE00EF4F93 /* Resources */,
+				4A030766278B565D0010F00F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1524,7 +1533,7 @@
 				4AEE8FA9272B5377004CB686 /* Supercell-Magic.ttf in Resources */,
 				4A3B5272271239CF00EF4F93 /* LaunchScreen.storyboard in Resources */,
 				4A3B526F271239CF00EF4F93 /* Assets.xcassets in Resources */,
-				4A3B52C22712DF2100EF4F93 /* GoogleService-Info.plist in Resources */,
+				4A3B52C22712DF2100EF4F93 /* GoogleService-Info-Debug.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1536,6 +1545,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4A030766278B565D0010F00F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PATH_TO_GOOGLE_PLISTS=\"${PROJECT_DIR}/luzie-locke-ios/Resources/Firebase\"\n\ncase \"${CONFIGURATION}\" in\n\n   \"Debug\" )\n        cp -r \"$PATH_TO_GOOGLE_PLISTS/GoogleService-Info-Debug.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\" ;;\n\n   \"Release\" )\n        cp -r \"$PATH_TO_GOOGLE_PLISTS/GoogleService-Info-Release.plist\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist\" ;;\n\n    *)\n        ;;\nesac\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4A3B525E271239CE00EF4F93 /* Sources */ = {

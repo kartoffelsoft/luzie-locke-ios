@@ -89,3 +89,4 @@ fastlane/test_output
 
 iOSInjectionProject/
 .DS_Store
+luzie-locke-ios/Resources/Firebase/GoogleService-Info-Release.plist
