@@ -68,7 +68,7 @@ class ChatViewController: UICollectionViewController {
   private func configureKeyboardInput() {
     NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardDidShowNotification, object: nil)
 
-    chatInputAccessoryView = ChatInputAccessoryView(frame: .init(x: 0, y: 0, width: view.frame.width, height: 90))
+    chatInputAccessoryView = ChatInputAccessoryView(frame: .init(x: 0, y: 0, width: view.frame.width, height: 60))
     chatInputAccessoryView.sendButton.addTarget(self, action: #selector(handleSendButtonTap), for: .touchUpInside)
   }
   

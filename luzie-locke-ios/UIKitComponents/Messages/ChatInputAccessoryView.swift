@@ -35,7 +35,7 @@ class ChatInputAccessoryView: UIView {
   }
   
   override var intrinsicContentSize: CGSize {
-    return .init(width: frame.width, height: 90)
+    return .init(width: frame.width, height: 60)
   }
 
   private func configure() {
