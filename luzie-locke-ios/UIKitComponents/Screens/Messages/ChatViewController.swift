@@ -34,6 +34,11 @@ class ChatViewController: UICollectionViewController {
     viewModel?.didLoad()
   }
   
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    self.becomeFirstResponder()
+  }
+  
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     
@@ -43,10 +48,6 @@ class ChatViewController: UICollectionViewController {
   }
   
   private func configureBackground() {
-    if let image = CustomGradient.mainBackground(on: view) {
-      view.backgroundColor = UIColor(patternImage: image)
-    }
-    
     view.addSubview(chatInformationView)
     chatInformationView.pinToEdges(of: view)
     
@@ -108,22 +109,22 @@ class ChatViewController: UICollectionViewController {
         self?.soldOutView.isHidden = isHidden ?? true
       }
     }
-  
-    viewModel?.bindableActionButtonType.bind { [weak self] type in
-      guard let self = self else { return }
-      guard let type = type else { return }
-      
-      DispatchQueue.main.async {
-        switch type {
-        case .clear:
-          self.navigationItem.rightBarButtonItem = nil
-        case .sold:
-          self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "SOLD", style: .plain, target: self, action: #selector(self.handleSoldButtonTap))
-        case .reopen:
-          self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "REOPEN", style: .plain, target: self, action: #selector(self.handleReopenButtonTap))
-        }
-      }
-    }
+
+//    viewModel?.bindableActionButtonType.bind { [weak self] type in
+//      guard let self = self else { return }
+//      guard let type = type else { return }
+//
+//      DispatchQueue.main.async {
+//        switch type {
+//        case .clear:
+//          self.navigationItem.rightBarButtonItem = nil
+//        case .sold:
+//          self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "SOLD", style: .plain, target: self, action: #selector(self.handleSoldButtonTap))
+//        case .reopen:
+//          self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "REOPEN", style: .plain, target: self, action: #selector(self.handleReopenButtonTap))
+//        }
+//      }
+//    }
   }
   
   override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -140,18 +141,19 @@ class ChatViewController: UICollectionViewController {
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChatMessageCell.reuseIdentifier, for: indexPath) as! ChatMessageCell
     cell.message = viewModel?.bindableMessages.value![indexPath.row]
-//      cell.viewModel = self?.viewModel.itemCellViewModels[indexPath.row]
     return cell
   }
   
   override var inputAccessoryView: UIView? {
     get {
+      print("inputAccessoryView get called")
       return chatInputAccessoryView
     }
   }
 
   override var canBecomeFirstResponder: Bool {
-      return true
+    print("canBecomeFirstResponder")
+    return true
   }
   
   @objc private func handleSendButtonTap() {
