@@ -46,19 +46,8 @@ extension NeighborhoodSettingView {
 
   private var applyButton: some View {
     HStack {
-      Button {
-        viewModel.didTapApply()
-      } label: {
-        HStack {
-          Spacer()
-          VStack(alignment: .center) {
-            Text("APPLY").font(CustomFonts.body).foregroundColor(CustomColors.secondaryColor)
-          }.padding()
-          Spacer()
-        }
-        .background(CustomColors.primaryColor)
-        .cornerRadius(15)
-      }
+      WideButtonView(text: "APPLY")
+        .onTapGesture { viewModel.didTapApply() }
     }.padding(EdgeInsets(top: 0, leading: 5, bottom: 5, trailing: 5))
   }
 }
