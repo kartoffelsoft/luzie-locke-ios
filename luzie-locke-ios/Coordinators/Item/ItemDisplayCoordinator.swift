@@ -15,7 +15,7 @@ protocol ItemDisplayCoordinatorProtocol {
 
 class ItemDisplayCoordinator: NSObject, Coordinatable {
   
-  typealias Factory = CoordinatorFactory & ViewControllerFactory & ViewModelFactory
+  typealias Factory = CoordinatorFactory & ViewControllerFactory & ViewModelFactory & CommunicationViewFactory
   
   let factory:              Factory
   var navigationController: UINavigationController
@@ -45,9 +45,9 @@ extension ItemDisplayCoordinator: ItemDisplayCoordinatorProtocol {
   }
   
   func navigateToChat(remoteUserId: String, itemId: String) {
-    let viewController        = factory.makeChatViewController()
-    viewController.viewModel  = factory.makeChatViewModel(remoteUserId: remoteUserId, itemId: itemId)
-    navigationController.pushViewController(viewController, animated: true)
+    navigationController.pushViewController(
+      factory.makeMessageView(remoteUserId: remoteUserId, itemId: itemId),
+      animated: true)
   }
   
   func navigateToItemUpdate(itemId: String) {

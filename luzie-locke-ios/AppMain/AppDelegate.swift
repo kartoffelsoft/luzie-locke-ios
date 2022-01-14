@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     #if DEBUG
-      print("[APP RUNS WITH DEBUG MODE]")
+      print("⚠️ [APP RUNS WITH DEBUG MODE] ⚠️")
     #endif
     
     FirebaseApp.configure()

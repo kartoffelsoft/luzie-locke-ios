@@ -9,7 +9,7 @@ import UIKit
 
 class MessagesCoordinator: Coordinatable {
   
-  typealias Factory = CoordinatorFactory & ViewControllerFactory & ViewModelFactory
+  typealias Factory = CommunicationViewFactory
   
   var navigationController: UINavigationController
   var children = [Coordinatable]()
@@ -23,14 +23,15 @@ class MessagesCoordinator: Coordinatable {
   }
   
   func start() {
-    let viewController        = factory.makeMessagesViewController()
-    viewController.viewModel  = factory.makeMessagesViewModel(coordinator: self)
-    navigationController.pushViewController(viewController, animated: false)
+    navigationController.pushViewController(
+      factory.makeMessagesView(coordinator: self),
+      animated: false)
   }
   
   func navigateToChat(remoteUserId: String, itemId: String) {
-    let viewController = factory.makeChatViewController()
-    viewController.viewModel = factory.makeChatViewModel(remoteUserId: remoteUserId, itemId: itemId)
-    navigationController.pushViewController(viewController, animated: true)
+    navigationController.pushViewController(
+      factory.makeMessageView(remoteUserId: remoteUserId, itemId: itemId),
+      animated: true
+    )
   }
 }

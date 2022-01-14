@@ -12,7 +12,6 @@ protocol ViewControllerFactory {
   func makeMainTabBarController() -> MainTabBarController
   func makeLoginViewController(viewModel: LoginViewModel) -> LoginViewController
   func makeHomeViewController(viewModel: HomeViewModel) -> HomeViewController
-  func makeMessagesViewController() -> MessagesViewController
   func makeSettingsViewController(viewModel: SettingsViewModel) -> SettingsViewController
   
   func makeSignUpViewController(viewModel: SignUpViewModel) -> SignUpViewController
@@ -22,7 +21,6 @@ protocol ViewControllerFactory {
   func makeItemDisplayViewController(viewModel: ItemDisplayViewModel, coordinator: ItemDisplayCoordinator) -> ItemDisplayViewController
   func makeItemDisplayDetailViewController(viewModel: ItemDisplayDetailViewModel) -> ItemDisplayDetailViewController
   
-  func makeChatViewController() -> ChatViewController
   func makeUserListingsViewController(viewModel: UserListingsViewModel) -> UserListingsViewController
   func makeUserPurchasesViewController(viewModel: UserPurchasesViewModel) -> UserPurchasesViewController
   func makeUserFavoritesViewController(viewModel: UserFavoritesViewModel) -> UserFavoritesViewController
@@ -41,12 +39,6 @@ extension CompositionRoot: ViewControllerFactory {
   func makeHomeViewController(viewModel: HomeViewModel) -> HomeViewController {
     let viewController = HomeViewController(viewModel: viewModel)
     viewController.tabBarItem = UITabBarItem(title: nil, image: Images.home, selectedImage: Images.home)
-    return viewController
-  }
-  
-  func makeMessagesViewController() -> MessagesViewController {
-    let viewController = MessagesViewController()
-    viewController.tabBarItem = UITabBarItem(title: nil, image: Images.chats, selectedImage: Images.chats)
     return viewController
   }
 
@@ -77,11 +69,6 @@ extension CompositionRoot: ViewControllerFactory {
   func makeItemDisplayDetailViewController(viewModel: ItemDisplayDetailViewModel) -> ItemDisplayDetailViewController {
     let viewController = ItemDisplayDetailViewController(viewModel: viewModel)
     return viewController
-  }
-  
-  
-  func makeChatViewController() -> ChatViewController {
-    return ChatViewController()
   }
   
   func makeUserListingsViewController(viewModel: UserListingsViewModel) -> UserListingsViewController {

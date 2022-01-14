@@ -12,8 +12,6 @@ class ChatViewController: UICollectionViewController {
 
   var viewModel: ChatViewModel?
   
-  private let chatInformationView = ChatInformationView()
-  private let soldOutView = SoldOutView()
   private var chatInputAccessoryView: ChatInputAccessoryView!
 
   init() {
@@ -26,7 +24,6 @@ class ChatViewController: UICollectionViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    configureBackground()
     configureCollectionView()
     configureKeyboardInput()
     configureBindables()
@@ -47,15 +44,6 @@ class ChatViewController: UICollectionViewController {
     }
   }
   
-  private func configureBackground() {
-    view.addSubview(chatInformationView)
-    chatInformationView.pinToEdges(of: view)
-    
-    soldOutView.isHidden = true
-    view.addSubview(soldOutView)
-    soldOutView.pinToEdges(of: view)
-  }
-  
   private func configureCollectionView() {
     collectionView.backgroundColor = .clear
     collectionView.alwaysBounceVertical = true
@@ -74,57 +62,12 @@ class ChatViewController: UICollectionViewController {
   }
   
   private func configureBindables() {
-    
-    chatInformationView.itemImage = viewModel?.bindableItemImage.value
-    chatInformationView.buyerImage = viewModel?.bindableBuyerImage.value
-    soldOutView.isHidden = viewModel?.bindableSoldOutViewIsHidden.value ?? true
-    
     viewModel?.bindableMessages.bind { [weak self] messages in
       if let messages = messages {
         self?.collectionView.reloadData()
         self?.collectionView.scrollToItem(at: [0, messages.count - 1], at: .bottom, animated: true)
       }
     }
-    
-    viewModel?.bindableItemImage.bind { [weak self] image in
-      DispatchQueue.main.async {
-        self?.chatInformationView.itemImage = image
-      }
-    }
-    
-    viewModel?.bindableBuyerImage.bind { [weak self] image in
-      DispatchQueue.main.async {
-        self?.chatInformationView.buyerImage = image
-      }
-    }
-    
-    viewModel?.bindableIsOwner.bind { [weak self] isOwner in
-      DispatchQueue.main.async {
-        self?.chatInformationView.alignment = isOwner! ? .left : .right
-      }
-    }
-    
-    viewModel?.bindableSoldOutViewIsHidden.bind { [weak self] isHidden in
-      DispatchQueue.main.async {
-        self?.soldOutView.isHidden = isHidden ?? true
-      }
-    }
-
-//    viewModel?.bindableActionButtonType.bind { [weak self] type in
-//      guard let self = self else { return }
-//      guard let type = type else { return }
-//
-//      DispatchQueue.main.async {
-//        switch type {
-//        case .clear:
-//          self.navigationItem.rightBarButtonItem = nil
-//        case .sold:
-//          self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "SOLD", style: .plain, target: self, action: #selector(self.handleSoldButtonTap))
-//        case .reopen:
-//          self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "REOPEN", style: .plain, target: self, action: #selector(self.handleReopenButtonTap))
-//        }
-//      }
-//    }
   }
   
   override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -146,7 +89,6 @@ class ChatViewController: UICollectionViewController {
   
   override var inputAccessoryView: UIView? {
     get {
-      print("inputAccessoryView get called")
       return chatInputAccessoryView
     }
   }
@@ -162,22 +104,6 @@ class ChatViewController: UICollectionViewController {
     
     viewModel?.didTapSend(text: text)
     chatInputAccessoryView.textField.text = ""
-  }
-  
-  @objc private func handleSoldButtonTap() {
-    presentConfirmOnMainThread(
-      title: "Are you sure?",
-      message: "This item will be shown as a sold item.") {
-        self.viewModel?.didTapSold()
-      }
-  }
-  
-  @objc private func handleReopenButtonTap() {
-    presentConfirmOnMainThread(
-      title: "Are you sure?",
-      message: "This item will be shown to your neighbours.") {
-        self.viewModel?.didTapReopen()
-      }
   }
 
   @objc private func handleKeyboardShow() {

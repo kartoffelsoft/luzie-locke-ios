@@ -12,7 +12,6 @@ protocol ViewModelFactory {
   
   func makeLoginViewModel(coordinator: LoginCoordinator) -> LoginViewModel
   func makeHomeViewModel(coordinator: HomeCoordinator) -> HomeViewModel
-  func makeMessagesViewModel(coordinator: MessagesCoordinator) -> MessagesViewModel
   func makeSettingsViewModel(coordinator: SettingsCoordinator) -> SettingsViewModel
   
   func makeSignUpViewModel(coordinator: LoginCoordinator) -> SignUpViewModel
@@ -23,7 +22,6 @@ protocol ViewModelFactory {
   func makeItemDisplayViewModel(coordinator: ItemDisplayCoordinator, id: String) -> ItemDisplayViewModel
   func makeItemDisplayDetailViewModel(model: ItemDisplay) -> ItemDisplayDetailViewModel
   
-  func makeChatViewModel(remoteUserId: String, itemId: String) -> ChatViewModel
   func makeUserListingsViewModel(coordinator: SettingsCoordinator) -> UserListingsViewModel
   func makeUserPurchasesViewModel(coordinator: SettingsCoordinator) -> UserPurchasesViewModel
   func makeUserFavoritesViewModel(coordinator: SettingsCoordinator) -> UserFavoritesViewModel
@@ -46,14 +44,6 @@ extension CompositionRoot: ViewModelFactory {
                          myProfileUseCase: myProfileUseCase,
                          imageUseCase: imageUseCase,
                          itemRepository: itemRepository)
-  }
-
-  func makeMessagesViewModel(coordinator: MessagesCoordinator) -> MessagesViewModel {
-    return MessagesViewModel(coordinator: coordinator,
-                             imageUseCase: imageUseCase,
-                             localProfileRepository: localProfileRepository,
-                             chatMessageRepository: ChatMessageRepository(),
-                             recentMessageRepository: RecentMessageRepository())
   }
   
   func makeSettingsViewModel(coordinator: SettingsCoordinator) -> SettingsViewModel {
@@ -97,16 +87,6 @@ extension CompositionRoot: ViewModelFactory {
     let viewModel = ItemDisplayDetailViewModel(imageUseCase: imageUseCase)
     viewModel.model = model
     return viewModel
-  }
-  
-  func makeChatViewModel(remoteUserId: String, itemId: String) -> ChatViewModel {
-    return ChatViewModel(remoteUserId: remoteUserId,
-                         itemId: itemId,
-                         imageUseCase: imageUseCase,
-                         itemControlUseCase: itemControlUseCase,
-                         userProfileRepository: userProfileRepository,
-                         chatMessageRepository: ChatMessageRepository(),
-                         recentMessageRepository: RecentMessageRepository())
   }
   
   func makeUserListingsViewModel(coordinator: SettingsCoordinator) -> UserListingsViewModel {

@@ -8,8 +8,6 @@
 import UIKit
 import Firebase
 
-
-
 class MessagesViewController: UIViewController {
   
   enum Section { case main }
@@ -37,6 +35,11 @@ class MessagesViewController: UIViewController {
     configureBindables()
     
     viewModel?.didLoad()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    tabBarController?.tabBar.isHidden = false
   }
   
   override func viewWillDisappear(_ animated: Bool) {
