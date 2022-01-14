@@ -11,26 +11,28 @@ class ItemDisplayViewController: UIViewController {
 
   weak var coordinator: ItemDisplayCoordinator?
   
-  private let viewModel: ItemDisplayViewModel
-  private let itemActionPanelView: ItemActionPanelView
-  
+  var viewModel: ItemDisplayViewModel? {
+    didSet {
+      guard let viewModel = viewModel else { return }
+      self.itemActionPanelView.viewModel = viewModel.itemActionPanelViewModel
+      self.briefViewController.viewModel = viewModel.itemDisplayBriefViewModel
+    }
+  }
+
   private let contentView = UIView()
-  private let briefViewController: ItemDisplayBriefViewController
+  private let itemActionPanelView = ItemActionPanelView()
+  private let briefViewController = ItemDisplayBriefViewController()
   
   var disablesAction: Bool = false
   
-  init(viewModel: ItemDisplayViewModel) {
-    self.viewModel            = viewModel
-    self.itemActionPanelView  = ItemActionPanelView(viewModel: viewModel.itemActionPanelViewModel)
-    self.briefViewController  = ItemDisplayBriefViewController(viewModel: viewModel.itemDisplayBriefViewModel)
+  init() {
     super.init(nibName: nil, bundle: nil)
-
     self.itemActionPanelView.delegate = self
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    viewModel.viewDidLoad()
+    viewModel?.viewDidLoad()
     
     configureLayout()
   }
@@ -103,7 +105,7 @@ extension ItemDisplayViewController: ItemActionPanelViewDelegate {
     presentConfirmOnMainThread(
       title: "Are you sure?",
       message: "The item will be deleted and cannot be recovered.") {
-      self.viewModel.didTapDeleteButton()
+      self.viewModel?.didTapDeleteButton()
     }
   }
 }

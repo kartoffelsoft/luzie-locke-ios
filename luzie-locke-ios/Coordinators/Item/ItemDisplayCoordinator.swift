@@ -16,7 +16,7 @@ protocol ItemDisplayCoordinatorProtocol {
 
 class ItemDisplayCoordinator: NSObject, Coordinatable {
   
-  typealias Factory = CoordinatorFactory & ViewControllerFactory & ViewModelFactory & CommunicationViewFactory
+  typealias Factory = CoordinatorFactory & ViewControllerFactory & ViewModelFactory & ItemViewFactory & CommunicationViewFactory
   
   let factory: Factory
   var navigationController: UINavigationController
@@ -31,18 +31,18 @@ class ItemDisplayCoordinator: NSObject, Coordinatable {
   }
   
   func start() {
-    let vm = factory.makeItemDisplayViewModel(coordinator: self, id: itemId)
-    let vc = factory.makeItemDisplayViewController(viewModel: vm, coordinator: self)
-    navigationController.pushViewController(vc, animated: true)
+    navigationController.pushViewController(
+      factory.makeItemDisplayView(coordinator: self, id: itemId),
+      animated: true)
   }
 }
 
 extension ItemDisplayCoordinator: ItemDisplayCoordinatorProtocol {
   
   func presentMore(_ viewController: UIViewController, model: ItemDisplay) {
-    let vm = factory.makeItemDisplayDetailViewModel(model: model)
-    let vc = factory.makeItemDisplayDetailViewController(viewModel: vm)
-    viewController.present(vc, animated: true, completion: nil)
+    viewController.present(
+      factory.makeItemDisplayDetailView(model: model),
+      animated: true, completion: nil)
   }
   
   func navigateToCommunication(remoteUserId: String, itemId: String) {

@@ -11,7 +11,12 @@ class UserListingsViewController: UIViewController {
   
   enum Section { case main }
   
-  private let viewModel: UserListingsViewModel
+  var viewModel: UserListingsViewModel? {
+    didSet {
+      viewModel?.delegate = self
+    }
+  }
+  
   private var segmentedControl: UISegmentedControl!
   private var collectionView:   UICollectionView!
   private var dataSource:       UICollectionViewDiffableDataSource<Section, ItemListElement>!
@@ -19,14 +24,12 @@ class UserListingsViewController: UIViewController {
   private let refreshControl  = UIRefreshControl()
   private let contentView     = UIView()
   
-  init(viewModel: UserListingsViewModel) {
-    self.viewModel = viewModel
+  init() {
     super.init(nibName: nil, bundle: nil)
   }
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.viewModel.delegate = self
     
     configureBackground()
     configureSegmentedControl()
@@ -35,7 +38,7 @@ class UserListingsViewController: UIViewController {
     configureLayout()
     configureBindables()
     
-    viewModel.viewDidLoad()
+    viewModel?.viewDidLoad()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -84,7 +87,7 @@ class UserListingsViewController: UIViewController {
   private func configureDataSource() {
     dataSource = UICollectionViewDiffableDataSource<Section, ItemListElement>(collectionView: collectionView, cellProvider: { [weak self] (collectionView, indexPath, follower) -> UICollectionViewCell? in
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCell.reuseIdentifier, for: indexPath) as! ItemCell
-      cell.viewModel = self?.viewModel.itemCellViewModels[indexPath.row]
+      cell.viewModel = self?.viewModel?.itemCellViewModels[indexPath.row]
       return cell
     })
   }
@@ -118,7 +121,7 @@ class UserListingsViewController: UIViewController {
   }
   
   private func configureBindables() {
-    viewModel.bindableItems.bind { [weak self] items in
+    viewModel?.bindableItems.bind { [weak self] items in
       guard let self = self else { return }
       if let items = items {
         self.updateData(on: items)
@@ -144,11 +147,11 @@ class UserListingsViewController: UIViewController {
   }
   
   @objc private func handleSegmentChange() {
-    viewModel.didChangeSegment(segment: segmentedControl.selectedSegmentIndex)
+    viewModel?.didChangeSegment(segment: segmentedControl.selectedSegmentIndex)
   }
   
   @objc private func handleRefresh() {
-    viewModel.viewDidScrollToTop()
+    viewModel?.viewDidScrollToTop()
   }
   
   required init?(coder: NSCoder) {
@@ -164,12 +167,12 @@ extension UserListingsViewController: UICollectionViewDelegate {
     let contentHeight   = scrollView.contentSize.height
 
     if(offsetY > contentHeight - height)  {
-      viewModel.viewDidScrollToBottom()
+      viewModel?.viewDidScrollToBottom()
     }
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    viewModel.didSelectItemAt(indexPath: indexPath)
+    viewModel?.didSelectItemAt(indexPath: indexPath)
   }
 }
 

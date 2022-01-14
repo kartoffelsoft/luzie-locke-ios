@@ -19,12 +19,6 @@ protocol ViewModelFactory {
   func makeItemSearchViewModel(coordinator: ItemSearchCoordinator) -> ItemSearchViewModel
   func makeItemCreateViewModel(coordinator: HomeCoordinator) -> ItemCreateViewModel
   func makeItemUpdateViewModel(coordinator: ItemDisplayCoordinator) -> ItemUpdateViewModel
-  func makeItemDisplayViewModel(coordinator: ItemDisplayCoordinator, id: String) -> ItemDisplayViewModel
-  func makeItemDisplayDetailViewModel(model: ItemDisplay) -> ItemDisplayDetailViewModel
-  
-  func makeUserListingsViewModel(coordinator: SettingsCoordinator) -> UserListingsViewModel
-  func makeUserPurchasesViewModel(coordinator: SettingsCoordinator) -> UserPurchasesViewModel
-  func makeUserFavoritesViewModel(coordinator: SettingsCoordinator) -> UserFavoritesViewModel
   
   func makeNeighborhoodSettingViewModel(coordinator: SettingsCoordinator) -> NeighborhoodSettingViewModel
   func makeVerifyNeighborhoodViewModel(coordinator: PopCoordinatable) -> VerifyNeighborhoodViewModel
@@ -72,41 +66,6 @@ extension CompositionRoot: ViewModelFactory {
     return ItemUpdateViewModel(coordinator: coordinator,
                                openHttpClient: openHttpClient,
                                itemRepository: itemRepository)
-  }
-
-  func makeItemDisplayViewModel(coordinator: ItemDisplayCoordinator, id: String) -> ItemDisplayViewModel {
-    return ItemDisplayViewModel(coordinator: coordinator,
-                                myProfileUseCase: myProfileUseCase,
-                                imageUseCase: imageUseCase,
-                                itemRepository: itemRepository,
-                                userFavoriteItemUseCase: userFavoriteItemUseCase,
-                                id: id)
-  }
-  
-  func makeItemDisplayDetailViewModel(model: ItemDisplay) -> ItemDisplayDetailViewModel {
-    let viewModel = ItemDisplayDetailViewModel(imageUseCase: imageUseCase)
-    viewModel.model = model
-    return viewModel
-  }
-  
-  func makeUserListingsViewModel(coordinator: SettingsCoordinator) -> UserListingsViewModel {
-    return UserListingsViewModel(coordinator: coordinator,
-                                 imageUseCase: imageUseCase,
-                                 userOpenItemUseCase: userOpenItemUseCase,
-                                 userSoldItemUseCase: userSoldItemUseCase)
-  }
-  
-  func makeUserPurchasesViewModel(coordinator: SettingsCoordinator) -> UserPurchasesViewModel {
-    return UserPurchasesViewModel(coordinator: coordinator,
-                                  imageUseCase: imageUseCase,
-                                  userBoughtItemUseCase: userBoughtItemUseCase)
-  }
-  
-  func makeUserFavoritesViewModel(coordinator: SettingsCoordinator) -> UserFavoritesViewModel {
-    return UserFavoritesViewModel(coordinator: coordinator,
-                                  userFavoriteItemUseCase: userFavoriteItemUseCase,
-                                  imageUseCase: imageUseCase,
-                                  itemRepository: itemRepository)
   }
   
   func makeNeighborhoodSettingViewModel(coordinator: SettingsCoordinator) -> NeighborhoodSettingViewModel {

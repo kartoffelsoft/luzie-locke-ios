@@ -9,8 +9,14 @@ import UIKit
 
 class ItemDisplayDetailViewController: UIViewController {
   
-  private var viewModel                 : ItemDisplayDetailViewModel
-  private let swipeImageViewController  : SwipeImageViewController
+  var viewModel: ItemDisplayDetailViewModel? {
+    didSet {
+      guard let viewModel = viewModel else { return }
+      self.swipeImageViewController.viewModel = viewModel.swipeImageViewModel
+    }
+  }
+  
+  private let swipeImageViewController: SwipeImageViewController
   
   private let scrollView: UIScrollView = {
     let sv                                        = UIScrollView()
@@ -37,10 +43,8 @@ class ItemDisplayDetailViewController: UIViewController {
   private let userInfoView      = UserInfoView()
   private let itemInfoView      = ItemInfoView()
 
-  init(viewModel: ItemDisplayDetailViewModel) {
-    self.viewModel                = viewModel
-    self.swipeImageViewController = SwipeImageViewController(viewModel: viewModel.swipeImageViewModel)
-    
+  init() {
+    self.swipeImageViewController = SwipeImageViewController()
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -104,28 +108,28 @@ class ItemDisplayDetailViewController: UIViewController {
   }
   
   private func configureBindables() {
-    userInfoView.imageView.image = viewModel.bindableUserImage.value
-    viewModel.bindableUserImage.bind { [weak self] image in
+    userInfoView.imageView.image = viewModel?.bindableUserImage.value
+    viewModel?.bindableUserImage.bind { [weak self] image in
       self?.userInfoView.imageView.image = image
     }
     
-    userInfoView.nameLabel.text = viewModel.bindableUserNameText.value
-    viewModel.bindableUserNameText.bind { [weak self] text in
+    userInfoView.nameLabel.text = viewModel?.bindableUserNameText.value
+    viewModel?.bindableUserNameText.bind { [weak self] text in
       self?.userInfoView.nameLabel.text = text
     }
     
-    userInfoView.locationLabel.text = viewModel.bindableLocationText.value
-    viewModel.bindableLocationText.bind { [weak self] text in
+    userInfoView.locationLabel.text = viewModel?.bindableLocationText.value
+    viewModel?.bindableLocationText.bind { [weak self] text in
       self?.userInfoView.locationLabel.text = text
     }
     
-    itemInfoView.titleLabel.text = viewModel.bindableTitleText.value
-    viewModel.bindableTitleText.bind { [weak self] text in
+    itemInfoView.titleLabel.text = viewModel?.bindableTitleText.value
+    viewModel?.bindableTitleText.bind { [weak self] text in
       self?.itemInfoView.titleLabel.text = text
     }
     
-    itemInfoView.descriptionLabel.text = viewModel.bindableDescriptionText.value
-    viewModel.bindableDescriptionText.bind { [weak self] text in
+    itemInfoView.descriptionLabel.text = viewModel?.bindableDescriptionText.value
+    viewModel?.bindableDescriptionText.bind { [weak self] text in
       self?.itemInfoView.descriptionLabel.text = text
     }
   }

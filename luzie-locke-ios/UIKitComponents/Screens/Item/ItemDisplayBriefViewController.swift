@@ -9,7 +9,12 @@ import UIKit
 
 class ItemDisplayBriefViewController: UIViewController {
   
-  private var viewModel: ItemDisplayBriefViewModel
+  var viewModel: ItemDisplayBriefViewModel? {
+    didSet {
+      guard let viewModel = viewModel else { return }
+      swipeImageViewController.viewModel = viewModel.swipeImageViewModel
+    }
+  }
   
   private let swipeImageViewController: SwipeImageViewController
   
@@ -19,9 +24,8 @@ class ItemDisplayBriefViewController: UIViewController {
   private let moreButton    = PulseRoundButton(radius: 20)
   private let gradientLayer = CAGradientLayer()
   
-  init(viewModel: ItemDisplayBriefViewModel) {
-    self.viewModel = viewModel
-    self.swipeImageViewController = SwipeImageViewController(viewModel: viewModel.swipeImageViewModel)
+  init() {
+    self.swipeImageViewController = SwipeImageViewController()
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -96,17 +100,17 @@ class ItemDisplayBriefViewController: UIViewController {
   }
   
   private func configureBindables() {
-    viewModel.bindableTitleText.bind { [weak self] text in
+    viewModel?.bindableTitleText.bind { [weak self] text in
       self?.titleLabel.text = text
     }
     
-    viewModel.bindableLocationText.bind { [weak self] text in
+    viewModel?.bindableLocationText.bind { [weak self] text in
       self?.locationLabel.text = text
     }
   }
   
   @objc private func onMoreButtonPress() {
-    viewModel.didTapMoreButton(self)
+    viewModel?.didTapMoreButton(self)
   }
   
   required init?(coder: NSCoder) {

@@ -23,7 +23,7 @@ protocol SettingsCoordinatorProtocol {
 
 class SettingsCoordinator: Coordinatable {
   
-  typealias Factory = CoordinatorFactory & ViewControllerFactory & ViewModelFactory
+  typealias Factory = CoordinatorFactory & ViewControllerFactory & ViewModelFactory & ItemViewFactory
   
   let factory               : Factory
   var navigationController  : UINavigationController
@@ -46,21 +46,21 @@ class SettingsCoordinator: Coordinatable {
 extension SettingsCoordinator: SettingsCoordinatorProtocol {
   
   func navigateToUserListings() {
-    let viewModel       = factory.makeUserListingsViewModel(coordinator: self)
-    let viewController  = factory.makeUserListingsViewController(viewModel: viewModel)
-    navigationController.pushViewController(viewController, animated: true)
+    navigationController.pushViewController(
+      factory.makeUserListingsView(coordinator: self),
+      animated: true)
   }
   
   func navigateToUserPurchases() {
-    let viewModel       = factory.makeUserPurchasesViewModel(coordinator: self)
-    let viewController  = factory.makeUserPurchasesViewController(viewModel: viewModel)
-    navigationController.pushViewController(viewController, animated: true)
+    navigationController.pushViewController(
+      factory.makeUserPurchasesView(coordinator: self),
+      animated: true)
   }
   
   func navigateToUserFavorites() {
-    let viewModel       = factory.makeUserFavoritesViewModel(coordinator: self)
-    let viewController  = factory.makeUserFavoritesViewController(viewModel: viewModel)
-    navigationController.pushViewController(viewController, animated: true)
+    navigationController.pushViewController(
+      factory.makeUserFavoritesView(coordinator: self),
+      animated: true)
   }
 
   func navigateToNeighborhooodSetting() {

@@ -18,12 +18,6 @@ protocol ViewControllerFactory {
   
   func makeItemSearchViewController(viewModel: ItemSearchViewModel) -> ItemSearchViewController
   func makeItemComposeViewController(viewModel: ItemComposeViewModel) -> ItemComposeViewController
-  func makeItemDisplayViewController(viewModel: ItemDisplayViewModel, coordinator: ItemDisplayCoordinator) -> ItemDisplayViewController
-  func makeItemDisplayDetailViewController(viewModel: ItemDisplayDetailViewModel) -> ItemDisplayDetailViewController
-  
-  func makeUserListingsViewController(viewModel: UserListingsViewModel) -> UserListingsViewController
-  func makeUserPurchasesViewController(viewModel: UserPurchasesViewModel) -> UserPurchasesViewController
-  func makeUserFavoritesViewController(viewModel: UserFavoritesViewModel) -> UserFavoritesViewController
 }
 
 extension CompositionRoot: ViewControllerFactory {
@@ -58,28 +52,5 @@ extension CompositionRoot: ViewControllerFactory {
   
   func makeItemComposeViewController(viewModel: ItemComposeViewModel) -> ItemComposeViewController {
     return ItemComposeViewController(viewModel: viewModel)
-  }
-  
-  func makeItemDisplayViewController(viewModel: ItemDisplayViewModel, coordinator: ItemDisplayCoordinator) -> ItemDisplayViewController {
-    let viewController = ItemDisplayViewController(viewModel: viewModel)
-    viewController.coordinator = coordinator
-    return viewController
-  }
-  
-  func makeItemDisplayDetailViewController(viewModel: ItemDisplayDetailViewModel) -> ItemDisplayDetailViewController {
-    let viewController = ItemDisplayDetailViewController(viewModel: viewModel)
-    return viewController
-  }
-  
-  func makeUserListingsViewController(viewModel: UserListingsViewModel) -> UserListingsViewController {
-    return UserListingsViewController(viewModel: viewModel)
-  }
-  
-  func makeUserPurchasesViewController(viewModel: UserPurchasesViewModel) -> UserPurchasesViewController {
-    return UserPurchasesViewController(viewModel: viewModel)
-  }
-  
-  func makeUserFavoritesViewController(viewModel: UserFavoritesViewModel) -> UserFavoritesViewController {
-    return UserFavoritesViewController(viewModel: viewModel)
   }
 }

@@ -59,6 +59,7 @@
 		4A0307C1279089790010F00F /* ItemSingleLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0307C0279089790010F00F /* ItemSingleLineView.swift */; };
 		4A0307C7279176450010F00F /* CommunicationViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0307C6279176450010F00F /* CommunicationViewFactory.swift */; };
 		4A0307CB2791CCB60010F00F /* CommunicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0307CA2791CCB60010F00F /* CommunicationCoordinator.swift */; };
+		4A0307CF2792119C0010F00F /* ItemViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0307CE2792119C0010F00F /* ItemViewFactory.swift */; };
 		4A03E3B8275F622400EB0210 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3B7275F622400EB0210 /* CustomColors.swift */; };
 		4A03E3BA275F655B00EB0210 /* CustomUIFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3B9275F655B00EB0210 /* CustomUIFonts.swift */; };
 		4A03E3BC275F656C00EB0210 /* CustomUIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3BB275F656C00EB0210 /* CustomUIColors.swift */; };
@@ -312,6 +313,7 @@
 		4A0307C0279089790010F00F /* ItemSingleLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSingleLineView.swift; sourceTree = "<group>"; };
 		4A0307C6279176450010F00F /* CommunicationViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationViewFactory.swift; sourceTree = "<group>"; };
 		4A0307CA2791CCB60010F00F /* CommunicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationCoordinator.swift; sourceTree = "<group>"; };
+		4A0307CE2792119C0010F00F /* ItemViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewFactory.swift; sourceTree = "<group>"; };
 		4A03E3B7275F622400EB0210 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		4A03E3B9275F655B00EB0210 /* CustomUIFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIFonts.swift; sourceTree = "<group>"; };
 		4A03E3BB275F656C00EB0210 /* CustomUIColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIColors.swift; sourceTree = "<group>"; };
@@ -1124,6 +1126,7 @@
 				4A47E6E727331E6F00B9018A /* CoordinatorFactory.swift */,
 				4A47E6E5273317FA00B9018A /* ViewControllerFactory.swift */,
 				4A47E6E92733248B00B9018A /* ViewModelFactory.swift */,
+				4A0307CE2792119C0010F00F /* ItemViewFactory.swift */,
 				4A0307C6279176450010F00F /* CommunicationViewFactory.swift */,
 			);
 			path = CompositionRoot;
@@ -1745,6 +1748,7 @@
 				4A22DB40274F006D00E5125B /* CustomLabel.swift in Sources */,
 				4A3B52E32715C11900EF4F93 /* SettingsCoordinator.swift in Sources */,
 				4A00FC3327676B07007C5B11 /* ItemListElementDTO.swift in Sources */,
+				4A0307CF2792119C0010F00F /* ItemViewFactory.swift in Sources */,
 				4ACA821027590BD3003C7E0E /* InputViewModel.swift in Sources */,
 				4A0307BB278F2AA70010F00F /* WideButtonView.swift in Sources */,
 				4AEE8F6D2726CC73004CB686 /* HomeViewModel.swift in Sources */,

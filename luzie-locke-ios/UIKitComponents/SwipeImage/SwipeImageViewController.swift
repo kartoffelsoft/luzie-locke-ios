@@ -9,7 +9,7 @@ import UIKit
 
 class SwipeImageViewController: UIPageViewController {
 
-  private let viewModel: SwipeImageViewModel
+  var viewModel: SwipeImageViewModel?
   
   fileprivate var controllers: [UIViewController]? {
     didSet {
@@ -25,8 +25,7 @@ class SwipeImageViewController: UIPageViewController {
   private let onColor         = UIColor.white
   private let offColor        = UIColor(white: 0, alpha: 0.1)
 
-  init(viewModel: SwipeImageViewModel) {
-    self.viewModel = viewModel
+  init() {
     super.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
   }
 
@@ -62,8 +61,8 @@ class SwipeImageViewController: UIPageViewController {
   }
   
   func configureBindables() {
-    controllers = viewModel.bindableControllers.value
-    viewModel.bindableControllers.bind { [weak self] controllers in
+    controllers = viewModel?.bindableControllers.value
+    viewModel?.bindableControllers.bind { [weak self] controllers in
       self?.controllers = controllers
     }
   }

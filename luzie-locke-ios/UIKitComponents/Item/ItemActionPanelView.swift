@@ -16,7 +16,12 @@ class ItemActionPanelView: UIView {
   
   weak var delegate: ItemActionPanelViewDelegate?
   
-  let viewModel: ItemActionPanelViewModel
+  var viewModel: ItemActionPanelViewModel? {
+    didSet {
+      configureLayout()
+      configureBindables()
+    }
+  }
   
   private let buyerView   = UIView()
   private let sellerView  = UIView()
@@ -38,12 +43,8 @@ class ItemActionPanelView: UIView {
                                                 image: Images.itemDelete,
                                                 backgroundColor: CustomUIColors.primaryColor)
 
-  init(viewModel: ItemActionPanelViewModel) {
-    self.viewModel = viewModel
+  init() {
     super.init(frame: .zero)
-    
-    configureLayout()
-    configureBindables()
   }
   
   private func configureLayout() {
@@ -103,15 +104,15 @@ class ItemActionPanelView: UIView {
   }
   
   @objc private func handleFavoriteButtonTap() {
-    viewModel.didTapFavoriteButton()
+    viewModel?.didTapFavoriteButton()
   }
   
   @objc private func handleChatButtonTap() {
-    viewModel.didTapChatButton()
+    viewModel?.didTapChatButton()
   }
   
   @objc private func handleEditButtonTap() {
-    viewModel.didTapEditButton()
+    viewModel?.didTapEditButton()
   }
   
   @objc private func handleDeleteButtonTap() {
@@ -119,7 +120,7 @@ class ItemActionPanelView: UIView {
   }
 
   private func configureBindables() {
-    viewModel.bindablePriceText.bind { [weak self] text in
+    viewModel?.bindablePriceText.bind { [weak self] text in
       guard let text = text else { return }
       let priceText = NSMutableAttributedString(string: "€ ", attributes: [.font: CustomUIFonts.title])
       priceText.append(NSAttributedString(string: text, attributes: [.font: CustomUIFonts.titleLarge]))
@@ -128,14 +129,14 @@ class ItemActionPanelView: UIView {
       self?.sellerPriceLabel.attributedText = priceText
     }
     
-    viewModel.bindableIsMine.bind { [weak self] isMine in
+    viewModel?.bindableIsMine.bind { [weak self] isMine in
       guard let self = self else { return }
       guard let isMine = isMine else { return }
       self.buyerView.isHidden   = isMine
       self.sellerView.isHidden  = !isMine
     }
     
-    viewModel.bindableFavoriteOn.bind { [weak self] favoriteOn in
+    viewModel?.bindableFavoriteOn.bind { [weak self] favoriteOn in
       guard let self = self else { return }
       guard let favoriteOn = favoriteOn else { return }
       DispatchQueue.main.async {
