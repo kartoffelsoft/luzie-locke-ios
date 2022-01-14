@@ -8,13 +8,15 @@
 import UIKit
 
 protocol CoordinatorFactory {
+  
   func makeLoginCoordinator()     -> LoginCoordinator
   func makeHomeCoordinator()      -> HomeCoordinator
   func makeMessagesCoordinator()  -> MessagesCoordinator
   func makeSettingsCoordinator()  -> SettingsCoordinator
   
   func makeItemSearchCoordinator(navigationController: UINavigationController) -> ItemSearchCoordinator
-  func makeItemDisplayCoordinator(navigationController: UINavigationController, id: String) -> ItemDisplayCoordinator
+  func makeItemDisplayCoordinator(navigationController: UINavigationController, itemId: String) -> ItemDisplayCoordinator
+  func makeCommunicationCoordinator(navigationController: UINavigationController, remoteUserId: String, itemId: String) -> CommunicationCoordinator
 }
 
 extension CompositionRoot: CoordinatorFactory {
@@ -44,9 +46,19 @@ extension CompositionRoot: CoordinatorFactory {
     return ItemSearchCoordinator(factory: self, navigationController: navigationController)
   }
   
-  func makeItemDisplayCoordinator(navigationController: UINavigationController, id: String)  -> ItemDisplayCoordinator {
+  func makeItemDisplayCoordinator(navigationController: UINavigationController, itemId: String)  -> ItemDisplayCoordinator {
     return ItemDisplayCoordinator(factory: self,
                                   navigationController: navigationController,
-                                  id: id)
+                                  itemId: itemId)
+  }
+  
+  func makeCommunicationCoordinator(navigationController:
+                                    UINavigationController,
+                                    remoteUserId: String,
+                                    itemId: String) -> CommunicationCoordinator {
+    return CommunicationCoordinator(factory: self,
+                                    navigationController: navigationController,
+                                    remoteUserId: remoteUserId,
+                                    itemId: itemId)
   }
 }

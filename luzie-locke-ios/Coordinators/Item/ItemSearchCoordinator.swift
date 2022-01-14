@@ -31,9 +31,9 @@ class ItemSearchCoordinator: Coordinatable {
     navigationController.pushViewController(vc, animated: true)
   }
   
-  func navigateToItemDisplay(id: String) {
+  func navigateToItemDisplay(itemId: String) {
     let coordinator = factory.makeItemDisplayCoordinator(navigationController: navigationController,
-                                                         id: id)
+                                                         itemId: itemId)
     children.append(coordinator)
     coordinator.start()
   }

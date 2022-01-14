@@ -94,7 +94,6 @@ class ChatViewController: UICollectionViewController {
   }
 
   override var canBecomeFirstResponder: Bool {
-    print("canBecomeFirstResponder")
     return true
   }
   

@@ -106,7 +106,7 @@ class UserFavoritesViewModel {
   
   func didSelectItemAt(indexPath: IndexPath) {
     if let item = bindableItems.value?[indexPath.row] {
-      coordinator.navigateToItemDisplay(id: item.id)
+      coordinator.navigateToItemDisplay(itemId: item.id)
     }
   }
 }

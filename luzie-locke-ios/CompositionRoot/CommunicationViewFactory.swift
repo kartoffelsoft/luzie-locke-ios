@@ -10,7 +10,7 @@ import UIKit
 protocol CommunicationViewFactory {
   
   func makeMessagesView(coordinator: MessagesCoordinator) -> MessagesViewController
-  func makeMessageView(remoteUserId: String, itemId: String) -> MessageViewController
+  func makeMessageView(coordinator: CommunicationCoordinatorProtocol, remoteUserId: String, itemId: String) -> MessageViewController
   func makeChatView(remoteUserId: String, itemId: String) -> ChatViewController
 }
 
@@ -27,9 +27,10 @@ extension CompositionRoot: CommunicationViewFactory {
     return vc
   }
   
-  func makeMessageView(remoteUserId: String, itemId: String) -> MessageViewController {
+  func makeMessageView(coordinator: CommunicationCoordinatorProtocol, remoteUserId: String, itemId: String) -> MessageViewController {
     let vc = MessageViewController()
-    vc.viewModel = MessageViewModel(itemId: itemId,
+    vc.viewModel = MessageViewModel(coordinator: coordinator,
+                                    itemId: itemId,
                                     imageUseCase: imageUseCase,
                                     itemControlUseCase: itemControlUseCase)
     vc.chatViewController = makeChatView(remoteUserId: remoteUserId, itemId: itemId)

@@ -105,15 +105,15 @@ class ItemActionPanelViewModelTests: XCTestCase {
     XCTAssertEqual(false, isMine)
   }
   
-  func testShouldNavigateToChatWhenChatButtonIsTapped() throws {
+  func testShouldNavigateToCommunicationWhenChatButtonIsTapped() throws {
     givenThatViewModelIsBound()
     givenThatItemIsNotMine()
     givenThatModelIsSet(fakeModel)
     
     whenChatButtonIsTapped()
-    XCTAssertEqual(1, coordinatorSpy.navigateToChatCallLog.callCount)
-    XCTAssertEqual(fakeModel.id, coordinatorSpy.navigateToChatCallLog.itemId ?? "")
-    XCTAssertEqual(fakeModel.sellerId, coordinatorSpy.navigateToChatCallLog.remoteUserId ?? "")
+    XCTAssertEqual(1, coordinatorSpy.navigateToCommunicationCallLog.callCount)
+    XCTAssertEqual(fakeModel.id, coordinatorSpy.navigateToCommunicationCallLog.itemId ?? "")
+    XCTAssertEqual(fakeModel.sellerId, coordinatorSpy.navigateToCommunicationCallLog.remoteUserId ?? "")
   }
   
   func testShouldNavigateToEditWhenEditButtonIsTapped() throws {

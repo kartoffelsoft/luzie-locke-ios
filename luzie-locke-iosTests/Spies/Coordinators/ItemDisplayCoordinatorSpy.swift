@@ -15,7 +15,7 @@ class ItemDisplayCoordinatorSpy: ItemDisplayCoordinatorProtocol {
     var model: ItemDisplay?
   }
   
-  struct NavigateToChatCallLog {
+  struct NavigateToCommunicationCallLog {
     var callCount: Int
     var remoteUserId: String?
     var itemId: String?
@@ -26,19 +26,19 @@ class ItemDisplayCoordinatorSpy: ItemDisplayCoordinatorProtocol {
     var itemId: String?
   }
   
-  var presentMoreCallLog: PresentMoreCallLog = PresentMoreCallLog(callCount: 0, model: nil)
-  var navigateToChatCallLog: NavigateToChatCallLog = NavigateToChatCallLog(callCount: 0, itemId: nil)
-  var navigateToItemUpdateCallLog: NavigateToItemUpdateCallLog = NavigateToItemUpdateCallLog(callCount: 0, itemId: nil)
+  var presentMoreCallLog = PresentMoreCallLog(callCount: 0, model: nil)
+  var navigateToCommunicationCallLog = NavigateToCommunicationCallLog(callCount: 0, itemId: nil)
+  var navigateToItemUpdateCallLog = NavigateToItemUpdateCallLog(callCount: 0, itemId: nil)
   
   func presentMore(_ viewController: UIViewController, model: ItemDisplay) {
     presentMoreCallLog.callCount  += 1
     presentMoreCallLog.model      = model
   }
   
-  func navigateToChat(remoteUserId: String, itemId: String) {
-    navigateToChatCallLog.callCount     += 1
-    navigateToChatCallLog.remoteUserId  = remoteUserId
-    navigateToChatCallLog.itemId        = itemId
+  func navigateToCommunication(remoteUserId: String, itemId: String) {
+    navigateToCommunicationCallLog.callCount     += 1
+    navigateToCommunicationCallLog.remoteUserId  = remoteUserId
+    navigateToCommunicationCallLog.itemId        = itemId
   }
   
   func navigateToItemUpdate(itemId: String) {

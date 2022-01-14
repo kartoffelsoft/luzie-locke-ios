@@ -9,6 +9,7 @@ import UIKit
 
 class MessageViewModel {
   
+  private let coordinator: CommunicationCoordinatorProtocol
   private let itemId: String
   private let imageUseCase: ImageUseCaseProtocol
   private let itemControlUseCase: ItemControlUseCaseProtocol
@@ -17,9 +18,11 @@ class MessageViewModel {
   var bindableStateText = Bindable<String>()
   var bindableTitleText = Bindable<String>()
   
-  init(itemId:             String,
-       imageUseCase:       ImageUseCaseProtocol,
+  init(coordinator: CommunicationCoordinatorProtocol,
+       itemId: String,
+       imageUseCase: ImageUseCaseProtocol,
        itemControlUseCase: ItemControlUseCaseProtocol) {
+    self.coordinator = coordinator
     self.itemId = itemId
     self.imageUseCase = imageUseCase
     self.itemControlUseCase = itemControlUseCase
@@ -36,13 +39,17 @@ class MessageViewModel {
         guard let imageUrl = item.imageUrls?[0] else { return }
         
         self.bindableTitleText.value = title
-        self.bindableStateText.value = state
+        self.bindableStateText.value = state == "sold" ? "SOLD" : ""
         self.configureItemImage(imageUrl: imageUrl)
         
       case .failure(let error):
         print(error)
       }
     }
+  }
+  
+  func didTapItemView() {
+    coordinator.navigateToItemDisplay(itemId: itemId)
   }
   
   private func configureItemImage(imageUrl: String) {

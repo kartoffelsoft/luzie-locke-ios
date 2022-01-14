@@ -8,8 +8,9 @@
 import UIKit
 
 protocol ItemDisplayCoordinatorProtocol {
+  
   func presentMore(_ viewController: UIViewController, model: ItemDisplay)
-  func navigateToChat(remoteUserId: String, itemId: String)
+  func navigateToCommunication(remoteUserId: String, itemId: String)
   func navigateToItemUpdate(itemId: String)
 }
 
@@ -17,20 +18,20 @@ class ItemDisplayCoordinator: NSObject, Coordinatable {
   
   typealias Factory = CoordinatorFactory & ViewControllerFactory & ViewModelFactory & CommunicationViewFactory
   
-  let factory:              Factory
+  let factory: Factory
   var navigationController: UINavigationController
-  let id:                   String
+  let itemId: String
   
   var children = [Coordinatable]()
   
-  init(factory: Factory, navigationController: UINavigationController, id: String) {
-    self.factory              = factory
+  init(factory: Factory, navigationController: UINavigationController, itemId: String) {
+    self.factory = factory
     self.navigationController = navigationController
-    self.id                   = id
+    self.itemId = itemId
   }
   
   func start() {
-    let vm = factory.makeItemDisplayViewModel(coordinator: self, id: id)
+    let vm = factory.makeItemDisplayViewModel(coordinator: self, id: itemId)
     let vc = factory.makeItemDisplayViewController(viewModel: vm, coordinator: self)
     navigationController.pushViewController(vc, animated: true)
   }
@@ -44,10 +45,12 @@ extension ItemDisplayCoordinator: ItemDisplayCoordinatorProtocol {
     viewController.present(vc, animated: true, completion: nil)
   }
   
-  func navigateToChat(remoteUserId: String, itemId: String) {
-    navigationController.pushViewController(
-      factory.makeMessageView(remoteUserId: remoteUserId, itemId: itemId),
-      animated: true)
+  func navigateToCommunication(remoteUserId: String, itemId: String) {
+    let coordinator = factory.makeCommunicationCoordinator(navigationController: navigationController,
+                                                           remoteUserId: remoteUserId,
+                                                           itemId: itemId)
+    children.append(coordinator)
+    coordinator.start()
   }
   
   func navigateToItemUpdate(itemId: String) {

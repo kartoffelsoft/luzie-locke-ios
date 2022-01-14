@@ -88,7 +88,7 @@ class MessagesViewModel {
     guard let remoteUserId = bindableRecentMessages.value?[indexPath.row].userId else { return }
     guard let itemId = bindableRecentMessages.value?[indexPath.row].itemId else { return }
 
-    coordinator.navigateToChat(remoteUserId: remoteUserId, itemId: itemId)
+    coordinator.navigateToCommunication(remoteUserId: remoteUserId, itemId: itemId)
   }
   
   func didTapDeleteMessageAt(indexPath: IndexPath) {

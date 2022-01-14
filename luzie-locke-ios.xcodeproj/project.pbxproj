@@ -58,6 +58,7 @@
 		4A0307BB278F2AA70010F00F /* WideButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0307BA278F2AA70010F00F /* WideButtonView.swift */; };
 		4A0307C1279089790010F00F /* ItemSingleLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0307C0279089790010F00F /* ItemSingleLineView.swift */; };
 		4A0307C7279176450010F00F /* CommunicationViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0307C6279176450010F00F /* CommunicationViewFactory.swift */; };
+		4A0307CB2791CCB60010F00F /* CommunicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0307CA2791CCB60010F00F /* CommunicationCoordinator.swift */; };
 		4A03E3B8275F622400EB0210 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3B7275F622400EB0210 /* CustomColors.swift */; };
 		4A03E3BA275F655B00EB0210 /* CustomUIFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3B9275F655B00EB0210 /* CustomUIFonts.swift */; };
 		4A03E3BC275F656C00EB0210 /* CustomUIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3BB275F656C00EB0210 /* CustomUIColors.swift */; };
@@ -310,6 +311,7 @@
 		4A0307BA278F2AA70010F00F /* WideButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideButtonView.swift; sourceTree = "<group>"; };
 		4A0307C0279089790010F00F /* ItemSingleLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSingleLineView.swift; sourceTree = "<group>"; };
 		4A0307C6279176450010F00F /* CommunicationViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationViewFactory.swift; sourceTree = "<group>"; };
+		4A0307CA2791CCB60010F00F /* CommunicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationCoordinator.swift; sourceTree = "<group>"; };
 		4A03E3B7275F622400EB0210 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		4A03E3B9275F655B00EB0210 /* CustomUIFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIFonts.swift; sourceTree = "<group>"; };
 		4A03E3BB275F656C00EB0210 /* CustomUIColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIColors.swift; sourceTree = "<group>"; };
@@ -693,6 +695,14 @@
 			path = CustomComponents;
 			sourceTree = "<group>";
 		};
+		4A0307C92791CC9A0010F00F /* Communication */ = {
+			isa = PBXGroup;
+			children = (
+				4A0307CA2791CCB60010F00F /* CommunicationCoordinator.swift */,
+			);
+			path = Communication;
+			sourceTree = "<group>";
+		};
 		4A03E3B6275F61F300EB0210 /* Contants */ = {
 			isa = PBXGroup;
 			children = (
@@ -1013,6 +1023,7 @@
 		4A3B52D327159C8E00EF4F93 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				4A0307C92791CC9A0010F00F /* Communication */,
 				4A09C6992737200F00FD4E42 /* Item */,
 				4A3B52D427159CA300EF4F93 /* Coordinatable.swift */,
 				4A145AB3276B36280059CACD /* PopCoordinatable.swift */,
@@ -1674,6 +1685,7 @@
 				4ACA8208275790ED003C7E0E /* ImageSelectViewModel.swift in Sources */,
 				4A3B5266271239CE00EF4F93 /* AppDelegate.swift in Sources */,
 				4A155E4027229D3600C8B867 /* AvatarImageView.swift in Sources */,
+				4A0307CB2791CCB60010F00F /* CommunicationCoordinator.swift in Sources */,
 				4AA6CE102769E0B300FF0C91 /* SignUpViewModel.swift in Sources */,
 				4AE229A8275A42D90070350E /* FavoriteItemRepository.swift in Sources */,
 				4A22DB462753B06D00E5125B /* RoundButton.swift in Sources */,

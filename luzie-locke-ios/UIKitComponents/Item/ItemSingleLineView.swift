@@ -11,7 +11,7 @@ class ItemSingleLineView: UIView {
 
   private let imageView = ItemImageView()
   private let stateLabel = CustomLabel(font: CustomUIFonts.body,
-                                       textColor: CustomUIColors.primaryColor,
+                                       textColor: CustomUIColors.tertiaryColor,
                                        textAlignment: .left)
   private let titleLabel = CustomLabel(font: CustomUIFonts.body,
                                        textColor: CustomUIColors.primaryColor,
@@ -26,6 +26,7 @@ class ItemSingleLineView: UIView {
   var stateText: String? {
     didSet {
       stateLabel.text = stateText
+      stateLabel.sizeToFit()
     }
   }
   
@@ -45,22 +46,25 @@ class ItemSingleLineView: UIView {
     titleLabel.adjustsFontSizeToFitWidth = false
     titleLabel.lineBreakMode = .byTruncatingTail
     
+    let textContainerView = UIStackView(arrangedSubviews: [ stateLabel, titleLabel ])
+    textContainerView.axis = .vertical
+    textContainerView.spacing = 5
+    textContainerView.translatesAutoresizingMaskIntoConstraints = false
+    
     addSubview(imageView)
-    addSubview(stateLabel)
-    addSubview(titleLabel)
+    addSubview(textContainerView)
+    
+    let padding: CGFloat = 10
     
     NSLayoutConstraint.activate([
       imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-      imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+      imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
       imageView.widthAnchor.constraint(equalToConstant: 50),
       imageView.heightAnchor.constraint(equalToConstant: 50),
       
-      stateLabel.centerYAnchor.constraint(equalTo: imageView.centerYAnchor),
-      stateLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 10),
-      
-      titleLabel.centerYAnchor.constraint(equalTo: imageView.centerYAnchor),
-      titleLabel.leadingAnchor.constraint(equalTo: stateLabel.trailingAnchor, constant: 5),
-      titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+      textContainerView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 5),
+      textContainerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
+      textContainerView.centerYAnchor.constraint(equalTo: imageView.centerYAnchor)
     ])
   }
   

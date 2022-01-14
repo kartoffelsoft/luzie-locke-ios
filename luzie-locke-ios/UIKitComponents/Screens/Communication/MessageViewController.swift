@@ -63,6 +63,9 @@ class MessageViewController: UIViewController {
     if let chatViewController = chatViewController {
       bindChildViewController(child: chatViewController, to: chatView)
     }
+
+    itemView.addGestureRecognizer(
+      UITapGestureRecognizer(target: self, action: #selector(handleItemViewTap)))
   }
   
   private func configureBindables() {
@@ -87,6 +90,10 @@ class MessageViewController: UIViewController {
         self?.itemView.titleText = text
       }
     }
+  }
+  
+  @objc private func handleItemViewTap() {
+    viewModel?.didTapItemView()
   }
   
   required init?(coder: NSCoder) {

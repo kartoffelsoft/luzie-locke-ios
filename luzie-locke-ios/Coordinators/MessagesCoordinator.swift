@@ -7,9 +7,13 @@
 
 import UIKit
 
+protocol MessagesCoordinatorProtocol {
+  func navigateToCommunication(remoteUserId: String, itemId: String)
+}
+
 class MessagesCoordinator: Coordinatable {
   
-  typealias Factory = CommunicationViewFactory
+  typealias Factory = CoordinatorFactory & CommunicationViewFactory
   
   var navigationController: UINavigationController
   var children = [Coordinatable]()
@@ -27,11 +31,15 @@ class MessagesCoordinator: Coordinatable {
       factory.makeMessagesView(coordinator: self),
       animated: false)
   }
-  
-  func navigateToChat(remoteUserId: String, itemId: String) {
-    navigationController.pushViewController(
-      factory.makeMessageView(remoteUserId: remoteUserId, itemId: itemId),
-      animated: true
-    )
+}
+
+extension MessagesCoordinator: MessagesCoordinatorProtocol {
+
+  func navigateToCommunication(remoteUserId: String, itemId: String) {
+    let coordinator = factory.makeCommunicationCoordinator(navigationController: navigationController,
+                                                           remoteUserId: remoteUserId,
+                                                           itemId: itemId)
+    children.append(coordinator)
+    coordinator.start()
   }
 }

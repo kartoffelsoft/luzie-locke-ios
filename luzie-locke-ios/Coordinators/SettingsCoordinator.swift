@@ -18,7 +18,7 @@ protocol SettingsCoordinatorProtocol {
   func navigateToUserFavorites()
   func navigateToNeighborhooodSetting()
   func navigateToVerifyNeighborhood()
-  func navigateToItemDisplay(id: String)
+  func navigateToItemDisplay(itemId: String)
 }
 
 class SettingsCoordinator: Coordinatable {
@@ -75,10 +75,10 @@ extension SettingsCoordinator: SettingsCoordinatorProtocol {
     navigationController.pushViewController(viewController, animated: true)
   }
 
-  func navigateToItemDisplay(id: String) {
+  func navigateToItemDisplay(itemId: String) {
     let coordinator = factory.makeItemDisplayCoordinator(
       navigationController: navigationController,
-      id: id)
+      itemId: itemId)
     
     children.append(coordinator)
     coordinator.start()
