@@ -13,9 +13,7 @@ protocol ViewModelFactory {
   func makeLoginViewModel(coordinator: LoginCoordinator) -> LoginViewModel
   func makeHomeViewModel(coordinator: HomeCoordinator) -> HomeViewModel
   func makeSettingsViewModel(coordinator: SettingsCoordinator) -> SettingsViewModel
-  
-  func makeSignUpViewModel(coordinator: LoginCoordinator) -> SignUpViewModel
-  
+
   func makeItemSearchViewModel(coordinator: ItemSearchCoordinator) -> ItemSearchViewModel
   func makeItemCreateViewModel(coordinator: HomeCoordinator) -> ItemCreateViewModel
   func makeItemUpdateViewModel(coordinator: ItemDisplayCoordinator) -> ItemUpdateViewModel
@@ -45,10 +43,6 @@ extension CompositionRoot: ViewModelFactory {
                              authUseCase: authUseCase,
                              myProfileUseCase: myProfileUseCase,
                              imageUseCase: imageUseCase)
-  }
-  
-  func makeSignUpViewModel(coordinator: LoginCoordinator) -> SignUpViewModel {
-    return SignUpViewModel(coordinator: coordinator)
   }
   
   func makeItemSearchViewModel(coordinator: ItemSearchCoordinator) -> ItemSearchViewModel {

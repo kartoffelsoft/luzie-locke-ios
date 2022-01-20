@@ -11,7 +11,7 @@ import SwiftUI
 
 class LoginCoordinator: Coordinatable {
   
-  typealias Factory = ViewControllerFactory & ViewModelFactory
+  typealias Factory = ViewControllerFactory & ViewModelFactory & AuthenticationViewFactory
   
   let factory               : Factory
   var navigationController  : UINavigationController
@@ -39,9 +39,7 @@ class LoginCoordinator: Coordinatable {
   }
   
   func navigateToSignUp() {
-    let viewModel       = factory.makeSignUpViewModel(coordinator: self)
-    let viewController  = factory.makeSignUpViewController(viewModel: viewModel)
-    navigationController.pushViewController(viewController, animated: true)
+    navigationController.pushViewController(factory.makeSignUpView(coordinator: self), animated: true)
   }
 }
 

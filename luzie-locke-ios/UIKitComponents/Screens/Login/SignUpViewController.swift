@@ -6,54 +6,70 @@
 //
 
 import UIKit
+import Combine
 
 class SignUpViewController: UIViewController {
   
-  let viewModel: SignUpViewModel
+  var viewModel: SignUpViewModel?
   
-  private let signUpButton = BasicButton(backgroundColor: CustomUIColors.primaryColor, title: "SIGN UP")
+  private var signUpButtonSubscriber: AnyCancellable?
+  private var formErrorTextSubscriber: AnyCancellable?
+  
+  private let signUpButton: BasicButton = {
+    let button = BasicButton(backgroundColor: UIColor.custom.primaryColor, title: "SIGN UP")
+    button.isEnabled = false
+    button.addTarget(self, action: #selector(handleSignUpButtonTap), for: .touchUpInside)
+    return button
+  }()
   
   private let titleLabel: CustomLabel = {
-    let label = CustomLabel(font: CustomUIFonts.title, textColor: CustomUIColors.primaryColor)
+    let label = CustomLabel(font: CustomUIFonts.title, textColor: UIColor.custom.primaryColor)
     label.textAlignment = .center
     label.text = "Sign up"
     return label
   }()
   
   private let subTextLabel: CustomLabel = {
-    let label = CustomLabel(font: CustomUIFonts.caption, textColor: CustomUIColors.primaryColorLight1)
+    let label = CustomLabel(font: CustomUIFonts.caption, textColor: UIColor.custom.primaryColorLight1)
     label.text = "Already member?"
+    return label
+  }()
+  
+  private let formErrorTextLabel: CustomLabel = {
+    let label = CustomLabel(font: CustomUIFonts.caption, textColor: .red)
     return label
   }()
   
   private var goToLoginButton: UIButton = {
     let button = UIButton(type: .system)
     button.setTitle("Login", for: .normal)
-    button.setTitleColor(CustomUIColors.tertiaryColor, for: .normal)
+    button.setTitleColor(UIColor.custom.tertiaryColor, for: .normal)
     button.translatesAutoresizingMaskIntoConstraints = false
     button.titleLabel?.font = CustomUIFonts.caption
+    button.addTarget(self, action: #selector(handleGoToLoginButtonTap), for: .touchUpInside)
     return button
   }()
   
   private let nameTextField: BasicTextField = {
     let textField = BasicTextField(padding: 32, height: 50)
     textField.placeholder = "Enter name"
-    textField.keyboardType = .emailAddress
 
-    textField.leftView = UIImageView(image: CustomUIImages.person.withTintColor(CustomUIColors.primaryColorLight1, renderingMode: .alwaysOriginal))
+    textField.leftView = UIImageView(image: CustomUIImages.person.withTintColor(UIColor.custom.primaryColorLight1, renderingMode: .alwaysOriginal))
     textField.leftViewMode = .always
     textField.layer.sublayerTransform = CATransform3DMakeTranslation(12, 0, 0);
+    textField.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
     return textField
   }()
   
   private let emailTextField: BasicTextField = {
     let textField = BasicTextField(padding: 32, height: 50)
     textField.placeholder = "Enter email"
-    textField.keyboardType = .emailAddress
-
-    textField.leftView = UIImageView(image: CustomUIImages.envelope.withTintColor(CustomUIColors.primaryColorLight1, renderingMode: .alwaysOriginal))
+    textField.autocapitalizationType = .none
+    
+    textField.leftView = UIImageView(image: CustomUIImages.envelope.withTintColor(UIColor.custom.primaryColorLight1, renderingMode: .alwaysOriginal))
     textField.leftViewMode = .always
-    textField.layer.sublayerTransform = CATransform3DMakeTranslation(12, 0, 0);
+    textField.layer.sublayerTransform = CATransform3DMakeTranslation(12, 0, 0)
+    textField.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
     return textField
   }()
   
@@ -62,25 +78,27 @@ class SignUpViewController: UIViewController {
     textField.placeholder = "Enter password"
     textField.isSecureTextEntry = true
     
-    textField.leftView = UIImageView(image: CustomUIImages.lock.withTintColor(CustomUIColors.primaryColorLight1, renderingMode: .alwaysOriginal))
+    textField.leftView = UIImageView(image: CustomUIImages.lock.withTintColor(UIColor.custom.primaryColorLight1, renderingMode: .alwaysOriginal))
     textField.leftViewMode = .always
     textField.layer.sublayerTransform = CATransform3DMakeTranslation(14, 0, 0)
+    textField.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
     return textField
   }()
   
-  private let verifyPasswordTextField: BasicTextField = {
+  private let passwordAgainTextField: BasicTextField = {
     let textField = BasicTextField(padding: 32, height: 50)
     textField.placeholder = "Verify password"
     textField.isSecureTextEntry = true
+    textField.autocorrectionType = .no
     
-    textField.leftView = UIImageView(image: CustomUIImages.verify.withTintColor(CustomUIColors.primaryColorLight1, renderingMode: .alwaysOriginal))
+    textField.leftView = UIImageView(image: CustomUIImages.verify.withTintColor(UIColor.custom.primaryColorLight1, renderingMode: .alwaysOriginal))
     textField.leftViewMode = .always
-    textField.layer.sublayerTransform = CATransform3DMakeTranslation(12, 0, 0);
+    textField.layer.sublayerTransform = CATransform3DMakeTranslation(12, 0, 0)
+    textField.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
     return textField
   }()
   
-  init(viewModel: SignUpViewModel) {
-    self.viewModel = viewModel
+  init() {
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -92,7 +110,7 @@ class SignUpViewController: UIViewController {
     
     configureBackground()
     configureLayout()
-    configureHandlers()
+    configureSubscriber()
   }
   
   private func configureBackground() {
@@ -113,12 +131,28 @@ class SignUpViewController: UIViewController {
     containerView.spacing                                   = 25
     
     view.addSubview(containerView)
+    view.addSubview(formErrorTextLabel)
     
     NSLayoutConstraint.activate([
       containerView.widthAnchor.constraint(equalToConstant: 300),
       containerView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100),
       containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      
+      formErrorTextLabel.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 15),
+      formErrorTextLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor)
     ])
+  }
+  
+  private func configureSubscriber() {
+    signUpButtonSubscriber = viewModel?.isSignUpButtonEnabled
+      .receive(on: RunLoop.main)
+      .assign(to: \.isEnabled, on: signUpButton)
+    
+    formErrorTextSubscriber = viewModel?.formErrorText
+      .receive(on: RunLoop.main)
+      .sink(receiveValue: { [weak self] text in
+        self?.formErrorTextLabel.text = text
+      })
   }
   
   private func makeTitleContainerView() -> UIView {
@@ -144,7 +178,8 @@ class SignUpViewController: UIViewController {
   }
   
   private func makeEmailLoginContainerView() -> UIView {
-    let view = UIStackView(arrangedSubviews: [ nameTextField, emailTextField, passwordTextField, verifyPasswordTextField, signUpButton ])
+    let view = UIStackView(arrangedSubviews: [ nameTextField, emailTextField, passwordTextField, passwordAgainTextField, signUpButton])
+    
     view.translatesAutoresizingMaskIntoConstraints  = false
     view.axis                                       = .vertical
     view.spacing                                    = 8
@@ -156,17 +191,28 @@ class SignUpViewController: UIViewController {
     return view
   }
   
-  private func configureHandlers() {
-    goToLoginButton.addTarget(self, action: #selector(handleGoToLoginButtonTap), for: .touchUpInside)
-    signUpButton.addTarget(self, action: #selector(handleSignUpButtonTap), for: .touchUpInside)
-  }
-  
   @objc private func handleGoToLoginButtonTap() {
-    viewModel.didTapGoToLogin()
+    viewModel?.didTapGoToLogin()
   }
   
   @objc private func handleSignUpButtonTap() {
     print("handleLoginButtonTap")
+  }
+  
+  @objc fileprivate func handleTextChange(textField: UITextField) {
+    guard let text = textField.text else { return }
+    
+    switch(textField) {
+    case nameTextField:
+      viewModel?.name = text
+    case emailTextField:
+      viewModel?.email = text
+    case passwordTextField:
+      viewModel?.password = text
+    case passwordAgainTextField:
+      viewModel?.passwordAgain = text
+    default: ()
+    }
   }
 
   required init?(coder: NSCoder) {

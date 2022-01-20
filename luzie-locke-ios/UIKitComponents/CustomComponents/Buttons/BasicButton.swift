@@ -9,6 +9,18 @@ import UIKit
 
 class BasicButton: UIButton {
   
+  override open var isEnabled: Bool {
+    didSet {
+      if self.isEnabled {
+        self.alpha = 1.0
+      }
+      else {
+        self.alpha = 0.2
+      }
+      self.layoutIfNeeded()
+    }
+  }
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
     configure()
