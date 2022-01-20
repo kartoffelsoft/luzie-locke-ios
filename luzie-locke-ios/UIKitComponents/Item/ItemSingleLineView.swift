@@ -11,10 +11,10 @@ class ItemSingleLineView: UIView {
 
   private let imageView = ItemImageView()
   private let stateLabel = CustomLabel(font: CustomUIFonts.body,
-                                       textColor: CustomUIColors.tertiaryColor,
+                                       textColor: UIColor.custom.tertiaryColor,
                                        textAlignment: .left)
   private let titleLabel = CustomLabel(font: CustomUIFonts.body,
-                                       textColor: CustomUIColors.primaryColor,
+                                       textColor: UIColor.custom.primaryColor,
                                        textAlignment: .left)
   
   var image: UIImage? {

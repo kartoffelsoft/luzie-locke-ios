@@ -26,7 +26,7 @@ class ImageSelectView: UIView {
   
   private func configureLayout() {
     translatesAutoresizingMaskIntoConstraints = false
-    backgroundColor = CustomUIColors.primaryColorLight2
+    backgroundColor = UIColor.custom.primaryColorLight2
     
     imageListStackView.translatesAutoresizingMaskIntoConstraints = false
     imageListStackView.axis             = .horizontal

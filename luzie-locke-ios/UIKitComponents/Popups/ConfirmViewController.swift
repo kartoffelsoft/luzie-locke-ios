@@ -41,7 +41,7 @@ class ConfirmViewController: UIViewController {
   }
   
   func configureContainerView() {
-    containerView.backgroundColor     = CustomUIColors.primaryColorLight3
+    containerView.backgroundColor     = UIColor.custom.primaryColorLight3
     containerView.layer.cornerRadius  = 16
     containerView.layer.borderWidth   = 2
     containerView.layer.borderColor   = UIColor.white.cgColor

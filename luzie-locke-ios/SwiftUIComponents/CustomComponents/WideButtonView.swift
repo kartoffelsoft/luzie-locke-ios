@@ -15,11 +15,11 @@ struct WideButtonView: View {
     HStack {
       Spacer()
       VStack(alignment: .center) {
-        Text(text).font(CustomFonts.body).foregroundColor(CustomColors.secondaryColor)
+        Text(text).font(CustomFonts.body).foregroundColor(Color.custom.secondaryColor)
       }.padding()
       Spacer()
     }
-    .background(CustomColors.primaryColor)
+    .background(Color.custom.primaryColor)
     .cornerRadius(15)
   }
 }

@@ -16,7 +16,7 @@ class DividerView: UIView {
   
   private func configure() {
     translatesAutoresizingMaskIntoConstraints = false
-    layer.backgroundColor = CustomUIColors.primaryColorLight1.cgColor
+    layer.backgroundColor = UIColor.custom.primaryColorLight1.cgColor
   }
   
   override var intrinsicContentSize: CGSize {

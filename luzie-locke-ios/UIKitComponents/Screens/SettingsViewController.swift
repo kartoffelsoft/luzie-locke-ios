@@ -49,7 +49,7 @@ class SettingsViewController: UIViewController {
     
     navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: CustomLabel(
       font: CustomUIFonts.subtitle,
-      textColor: CustomUIColors.primaryColor,
+      textColor: UIColor.custom.primaryColor,
       text: "Settings"))
     
     configureBackground()

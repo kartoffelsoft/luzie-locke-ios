@@ -10,7 +10,7 @@ import UIKit
 class ItemInfoView: UIView {
 
   let titleLabel        = CustomLabel(font: CustomUIFonts.subtitle,
-                                      textColor: CustomUIColors.primaryColor,
+                                      textColor: UIColor.custom.primaryColor,
                                       textAlignment: .left)
   
   let descriptionLabel  = CustomLabel(font: CustomUIFonts.body,

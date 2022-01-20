@@ -42,9 +42,9 @@ class ItemCell: UICollectionViewCell {
   }
   
   let imageView     = ItemImageView()
-  let titleLabel    = CustomLabel(font: CustomUIFonts.body, textColor: CustomUIColors.primaryColor)
-  let locationLabel = CustomLabel(font: CustomUIFonts.caption, textColor: CustomUIColors.secondaryColor)
-  let priceLabel    = CustomLabel(font: CustomUIFonts.body, textColor: CustomUIColors.primaryColor)
+  let titleLabel    = CustomLabel(font: CustomUIFonts.body, textColor: UIColor.custom.primaryColor)
+  let locationLabel = CustomLabel(font: CustomUIFonts.caption, textColor: UIColor.custom.secondaryColor)
+  let priceLabel    = CustomLabel(font: CustomUIFonts.body, textColor: UIColor.custom.primaryColor)
   let dateLabel     = CustomLabel(font: CustomUIFonts.detail, textColor: .gray)
   let line          = UIView()
 

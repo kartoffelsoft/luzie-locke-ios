@@ -15,7 +15,7 @@ class HeaderLabel: UILabel {
   }
   
   convenience init(font: UIFont = CustomUIFonts.title,
-                   textColor: UIColor = CustomUIColors.primaryColor,
+                   textColor: UIColor = UIColor.custom.primaryColor,
                    textAlignment: NSTextAlignment = .left) {
     self.init(frame: .zero)
     self.font           = font

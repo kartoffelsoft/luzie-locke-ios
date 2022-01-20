@@ -13,10 +13,10 @@ class ChatInputAccessoryView: UIView {
     let field          = UITextField()
     field.placeholder  = "Enter message"
     field.font         = CustomUIFonts.body
-    field.textColor    = CustomUIColors.primaryColorLight3
+    field.textColor    = UIColor.custom.primaryColorLight3
     field.attributedPlaceholder = NSAttributedString(
       string: "Enter message",
-      attributes: [NSAttributedString.Key.foregroundColor: CustomUIColors.secondaryColor]
+      attributes: [NSAttributedString.Key.foregroundColor: UIColor.custom.secondaryColor]
     )
     return field
   }()
@@ -39,7 +39,7 @@ class ChatInputAccessoryView: UIView {
   }
 
   private func configure() {
-    backgroundColor     = CustomUIColors.primaryColor
+    backgroundColor     = UIColor.custom.primaryColor
     layer.shadowOpacity = 0.1
     layer.shadowRadius  = 8
     layer.shadowOffset  = .init(width: 0, height: -8)

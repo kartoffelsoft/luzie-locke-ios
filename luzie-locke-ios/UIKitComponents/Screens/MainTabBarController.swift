@@ -57,9 +57,9 @@ class MainTabBarController: UITabBarController {
   }
 
   func configureTabBar() {
-    tabBar.tintColor                = CustomUIColors.secondaryColor
-    tabBar.unselectedItemTintColor  = CustomUIColors.primaryColorLight2
-    tabBar.barTintColor             = CustomUIColors.primaryColor
+    tabBar.tintColor                = UIColor.custom.secondaryColor
+    tabBar.unselectedItemTintColor  = UIColor.custom.primaryColorLight2
+    tabBar.barTintColor             = UIColor.custom.primaryColor
   }
   
   required init?(coder: NSCoder) {

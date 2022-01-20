@@ -19,7 +19,7 @@ struct VerifyNeighborhoodView: View {
         HStack {
           Spacer()
           HStack {
-            Text(viewModel.currentLocation ?? "---").foregroundColor(CustomColors.tertiaryColor)
+            Text(viewModel.currentLocation ?? "---").foregroundColor(Color.custom.tertiaryColor)
               .frame(width: 300, height: 40, alignment: .center)
               .font(CustomFonts.body)
           }

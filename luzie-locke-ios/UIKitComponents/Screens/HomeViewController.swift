@@ -77,7 +77,7 @@ class HomeViewController: UIViewController {
     view.addSubview(collectionView)
     
     collectionView.refreshControl = refreshControl
-    refreshControl.tintColor      = CustomUIColors.primaryColor
+    refreshControl.tintColor      = UIColor.custom.primaryColor
     refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
   }
   
@@ -106,7 +106,7 @@ class HomeViewController: UIViewController {
   }
   
   private func configureAddButton() {
-    setButton.backgroundColor = CustomUIColors.primaryColor
+    setButton.backgroundColor = UIColor.custom.primaryColor
     
     setButton.setImage(Images.floatingAdd, for: .normal)
     setButton.addTarget(self, action: #selector(handleAddTap), for: .touchUpInside)

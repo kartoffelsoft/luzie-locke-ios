@@ -23,7 +23,7 @@ class LocationMenuButton: UIButton {
   }
   
   private func configure() {
-    setTitleColor(CustomUIColors.primaryColor, for: .normal)
+    setTitleColor(UIColor.custom.primaryColor, for: .normal)
     titleLabel?.font          = CustomUIFonts.body
     titleLabel?.lineBreakMode = .byClipping
     imageEdgeInsets.left      = -5

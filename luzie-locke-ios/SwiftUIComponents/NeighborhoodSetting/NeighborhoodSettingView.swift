@@ -32,9 +32,9 @@ extension NeighborhoodSettingView {
       CircleButtonView(iconName: "minus", radius: 40)
         .onTapGesture { viewModel.didTapMinus() }
       HStack {
-        Text("Radius: ").foregroundColor(CustomColors.primaryColor)
+        Text("Radius: ").foregroundColor(Color.custom.primaryColor)
           .frame(width: 90, height: 40, alignment: .center)
-        Text(viewModel.currentRadiusText ?? "---").foregroundColor(CustomColors.tertiaryColor)
+        Text(viewModel.currentRadiusText ?? "---").foregroundColor(Color.custom.tertiaryColor)
           .frame(width: 90, height: 40, alignment: .leading)
       }
       CircleButtonView(iconName: "plus", radius: 40)

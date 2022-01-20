@@ -16,8 +16,8 @@ class InputViewModelTests: XCTestCase {
   var text: String?
   var textColor: UIColor?
   
-  let activeColor = CustomUIColors.primaryColor
-  let inactiveColor = CustomUIColors.primaryColorLight1
+  let activeColor = UIColor.custom.primaryColor
+  let inactiveColor = UIColor.custom.primaryColorLight1
   
   override func setUpWithError() throws {
     try super.setUpWithError()

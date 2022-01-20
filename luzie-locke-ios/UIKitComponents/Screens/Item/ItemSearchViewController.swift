@@ -45,8 +45,8 @@ class ItemSearchViewController: UIViewController {
     searchController.searchResultsUpdater                       = self
     searchController.obscuresBackgroundDuringPresentation       = false
     searchController.searchBar.placeholder                      = ""
-    searchController.searchBar.searchTextField.tintColor        = CustomUIColors.primaryColor
-    searchController.searchBar.searchTextField.backgroundColor  = CustomUIColors.primaryColorLight2.withAlphaComponent(0.1)
+    searchController.searchBar.searchTextField.tintColor        = UIColor.custom.primaryColor
+    searchController.searchBar.searchTextField.backgroundColor  = UIColor.custom.primaryColorLight2.withAlphaComponent(0.1)
     searchController.searchBar.setImage(Images.search, for: .search, state: .normal)
     
     navigationItem.searchController             = searchController

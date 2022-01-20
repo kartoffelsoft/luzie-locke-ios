@@ -19,10 +19,10 @@ class InputViewModel {
       switch(state) {
       case .active:
         bindableText.value      = nil
-        bindableTextColor.value = CustomUIColors.primaryColor
+        bindableTextColor.value = UIColor.custom.primaryColor
       case .inactive:
         bindableText.value      = placeholder
-        bindableTextColor.value = CustomUIColors.primaryColorLight1
+        bindableTextColor.value = UIColor.custom.primaryColorLight1
       }
     }
   }
@@ -37,7 +37,7 @@ class InputViewModel {
     self.state              = .inactive
     
     bindableText.value      = placeholder
-    bindableTextColor.value = CustomUIColors.primaryColorLight1
+    bindableTextColor.value = UIColor.custom.primaryColorLight1
   }
   
   func setInitialText(_ initialText: String?) {

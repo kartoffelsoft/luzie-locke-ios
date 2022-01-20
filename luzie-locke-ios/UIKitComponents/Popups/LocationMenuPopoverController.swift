@@ -15,7 +15,7 @@ class LocationMenuViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = CustomUIColors.primaryColorLight3.withAlphaComponent(0.2)
+    view.backgroundColor = UIColor.custom.primaryColorLight3.withAlphaComponent(0.2)
   }
   
   required init?(coder: NSCoder) {

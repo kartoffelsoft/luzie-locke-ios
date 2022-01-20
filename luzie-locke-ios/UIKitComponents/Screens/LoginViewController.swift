@@ -11,18 +11,18 @@ class LoginViewController: UIViewController {
   
   let viewModel: LoginViewModel
   
-  private let loginButton = BasicButton(backgroundColor: CustomUIColors.primaryColor, title: "LOGIN")
+  private let loginButton = BasicButton(backgroundColor: UIColor.custom.primaryColor, title: "LOGIN")
   private let dividerView = DividerView()
   
   private let titleLabel: CustomLabel = {
-    let label = CustomLabel(font: CustomUIFonts.title, textColor: CustomUIColors.primaryColor)
+    let label = CustomLabel(font: CustomUIFonts.title, textColor: UIColor.custom.primaryColor)
     label.textAlignment = .center
     label.text = "Log in"
     return label
   }()
   
   private let subTextLabel: CustomLabel = {
-    let label = CustomLabel(font: CustomUIFonts.caption, textColor: CustomUIColors.primaryColorLight1)
+    let label = CustomLabel(font: CustomUIFonts.caption, textColor: UIColor.custom.primaryColorLight1)
     label.text = "No account?"
     return label
   }()
@@ -30,7 +30,7 @@ class LoginViewController: UIViewController {
   private var goToSignUpButton: UIButton = {
     let button = UIButton(type: .system)
     button.setTitle("Sign up", for: .normal)
-    button.setTitleColor(CustomUIColors.tertiaryColor, for: .normal)
+    button.setTitleColor(UIColor.custom.tertiaryColor, for: .normal)
     
     button.translatesAutoresizingMaskIntoConstraints = false
     button.titleLabel?.font = CustomUIFonts.caption
@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
     textField.placeholder = "Enter email"
     textField.keyboardType = .emailAddress
 
-    textField.leftView = UIImageView(image: CustomUIImages.envelope.withTintColor(CustomUIColors.primaryColorLight1, renderingMode: .alwaysOriginal))
+    textField.leftView = UIImageView(image: CustomUIImages.envelope.withTintColor(UIColor.custom.primaryColorLight1, renderingMode: .alwaysOriginal))
     textField.leftViewMode = .always
     textField.layer.sublayerTransform = CATransform3DMakeTranslation(12, 0, 0);
     
@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
     textField.placeholder = "Enter password"
     textField.isSecureTextEntry = true
     
-    textField.leftView = UIImageView(image: CustomUIImages.lock.withTintColor(CustomUIColors.primaryColorLight1, renderingMode: .alwaysOriginal))
+    textField.leftView = UIImageView(image: CustomUIImages.lock.withTintColor(UIColor.custom.primaryColorLight1, renderingMode: .alwaysOriginal))
     textField.leftViewMode = .always
     textField.layer.sublayerTransform = CATransform3DMakeTranslation(14, 0, 0);
     

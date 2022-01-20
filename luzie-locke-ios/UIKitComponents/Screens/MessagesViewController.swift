@@ -27,7 +27,7 @@ class MessagesViewController: UIViewController {
     
     navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: CustomLabel(
       font: CustomUIFonts.subtitle,
-      textColor: CustomUIColors.primaryColor,
+      textColor: UIColor.custom.primaryColor,
       text: "Chat"))
     configureBackground()
     configureTableView()
@@ -68,7 +68,7 @@ class MessagesViewController: UIViewController {
     tableView.register(RecentMessageCell.self, forCellReuseIdentifier: RecentMessageCell.reuseIdentifier)
     
     tableView.refreshControl = refreshControl
-    refreshControl.tintColor      = CustomUIColors.primaryColor
+    refreshControl.tintColor      = UIColor.custom.primaryColor
     refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
   }
   
@@ -122,7 +122,7 @@ extension MessagesViewController: UITableViewDelegate {
     }
     
     deleteAction.image = Images.delete
-    deleteAction.backgroundColor = CustomUIColors.primaryColor
+    deleteAction.backgroundColor = UIColor.custom.primaryColor
     
     return UISwipeActionsConfiguration(actions: [deleteAction])
   }

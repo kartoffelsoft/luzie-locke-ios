@@ -62,8 +62,8 @@ class UserListingsViewController: UIViewController {
       NSAttributedString.Key.foregroundColor: UIColor.white
     ], for: .normal)
     
-    segmentedControl.selectedSegmentTintColor = CustomUIColors.primaryColor
-    segmentedControl.backgroundColor          = CustomUIColors.primaryColorLight3
+    segmentedControl.selectedSegmentTintColor = UIColor.custom.primaryColor
+    segmentedControl.backgroundColor          = UIColor.custom.primaryColorLight3
     segmentedControl.selectedSegmentIndex     = 0
   }
   
@@ -80,7 +80,7 @@ class UserListingsViewController: UIViewController {
     
     collectionView.register(ItemCell.self, forCellWithReuseIdentifier: ItemCell.reuseIdentifier)
 
-    refreshControl.tintColor = CustomUIColors.primaryColor
+    refreshControl.tintColor = UIColor.custom.primaryColor
     refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
   }
   

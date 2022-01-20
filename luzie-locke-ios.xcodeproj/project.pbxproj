@@ -60,9 +60,7 @@
 		4A0307C7279176450010F00F /* CommunicationViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0307C6279176450010F00F /* CommunicationViewFactory.swift */; };
 		4A0307CB2791CCB60010F00F /* CommunicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0307CA2791CCB60010F00F /* CommunicationCoordinator.swift */; };
 		4A0307CF2792119C0010F00F /* ItemViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A0307CE2792119C0010F00F /* ItemViewFactory.swift */; };
-		4A03E3B8275F622400EB0210 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3B7275F622400EB0210 /* CustomColors.swift */; };
 		4A03E3BA275F655B00EB0210 /* CustomUIFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3B9275F655B00EB0210 /* CustomUIFonts.swift */; };
-		4A03E3BC275F656C00EB0210 /* CustomUIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3BB275F656C00EB0210 /* CustomUIColors.swift */; };
 		4A03E3BE275F658D00EB0210 /* CustomFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A03E3BD275F658D00EB0210 /* CustomFonts.swift */; };
 		4A09C6982737120800FD4E42 /* ItemDisplayCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A09C6972737120800FD4E42 /* ItemDisplayCoordinator.swift */; };
 		4A09C69B273730B900FD4E42 /* ItemDisplayDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A09C69A273730B900FD4E42 /* ItemDisplayDetailViewModel.swift */; };
@@ -181,6 +179,7 @@
 		4ACA821527595D26003C7E0E /* ItemUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACA821427595D26003C7E0E /* ItemUpdateRequest.swift */; };
 		4ACD929C2798B58F005EB9CD /* AuthenticationViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACD929B2798B58F005EB9CD /* AuthenticationViewFactory.swift */; };
 		4ACD929E27996267005EB9CD /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACD929D27996267005EB9CD /* UIColor+Ext.swift */; };
+		4ACD92A0279963E1005EB9CD /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACD929F279963E1005EB9CD /* Color+Ext.swift */; };
 		4AD53D0A275FED1200F34874 /* SettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D09275FED1200F34874 /* SettingsRepository.swift */; };
 		4AD53D0E275FF31300F34874 /* SettingsLocalLevelReadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D0D275FF31300F34874 /* SettingsLocalLevelReadRequest.swift */; };
 		4AD53D11275FF53800F34874 /* SettingsLocalLevelUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AD53D10275FF53800F34874 /* SettingsLocalLevelUpdateRequest.swift */; };
@@ -316,9 +315,7 @@
 		4A0307C6279176450010F00F /* CommunicationViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationViewFactory.swift; sourceTree = "<group>"; };
 		4A0307CA2791CCB60010F00F /* CommunicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunicationCoordinator.swift; sourceTree = "<group>"; };
 		4A0307CE2792119C0010F00F /* ItemViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewFactory.swift; sourceTree = "<group>"; };
-		4A03E3B7275F622400EB0210 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		4A03E3B9275F655B00EB0210 /* CustomUIFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIFonts.swift; sourceTree = "<group>"; };
-		4A03E3BB275F656C00EB0210 /* CustomUIColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIColors.swift; sourceTree = "<group>"; };
 		4A03E3BD275F658D00EB0210 /* CustomFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFonts.swift; sourceTree = "<group>"; };
 		4A09C6972737120800FD4E42 /* ItemDisplayCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDisplayCoordinator.swift; sourceTree = "<group>"; };
 		4A09C69A273730B900FD4E42 /* ItemDisplayDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDisplayDetailViewModel.swift; sourceTree = "<group>"; };
@@ -437,6 +434,7 @@
 		4ACA821427595D26003C7E0E /* ItemUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemUpdateRequest.swift; sourceTree = "<group>"; };
 		4ACD929B2798B58F005EB9CD /* AuthenticationViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewFactory.swift; sourceTree = "<group>"; };
 		4ACD929D27996267005EB9CD /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		4ACD929F279963E1005EB9CD /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 		4AD53D09275FED1200F34874 /* SettingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepository.swift; sourceTree = "<group>"; };
 		4AD53D0D275FF31300F34874 /* SettingsLocalLevelReadRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLocalLevelReadRequest.swift; sourceTree = "<group>"; };
 		4AD53D10275FF53800F34874 /* SettingsLocalLevelUpdateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLocalLevelUpdateRequest.swift; sourceTree = "<group>"; };
@@ -712,9 +710,7 @@
 		4A03E3B6275F61F300EB0210 /* Contants */ = {
 			isa = PBXGroup;
 			children = (
-				4A03E3B7275F622400EB0210 /* CustomColors.swift */,
 				4A03E3BD275F658D00EB0210 /* CustomFonts.swift */,
-				4A03E3BB275F656C00EB0210 /* CustomUIColors.swift */,
 				4A03E3B9275F655B00EB0210 /* CustomUIFonts.swift */,
 				4AD53D202760E19200F34874 /* CustomUIImages.swift */,
 			);
@@ -959,6 +955,7 @@
 				4A47E6BA272FE24200B9018A /* Dictionary+Ext.swift */,
 				4ACA81ED2754C701003C7E0E /* Notification+Ext.swift */,
 				4ACD929D27996267005EB9CD /* UIColor+Ext.swift */,
+				4ACD929F279963E1005EB9CD /* Color+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1688,7 +1685,6 @@
 				4AE229AC275A51FD0070350E /* FavoriteItemDeleteRequest.swift in Sources */,
 				4A155E482722F31C00C8B867 /* KHTTPClient.swift in Sources */,
 				4A09C69B273730B900FD4E42 /* ItemDisplayDetailViewModel.swift in Sources */,
-				4A03E3B8275F622400EB0210 /* CustomColors.swift in Sources */,
 				4AA6CE18276A4FD500FF0C91 /* VerifyNeighborhoodMap.swift in Sources */,
 				4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */,
 				4AC5667E273BE7E400776DBD /* LocalProfileRepository.swift in Sources */,
@@ -1700,6 +1696,7 @@
 				4AE229A8275A42D90070350E /* FavoriteItemRepository.swift in Sources */,
 				4A22DB462753B06D00E5125B /* RoundButton.swift in Sources */,
 				4A00FC2D2767417A007C5B11 /* UserFavoriteItemUseCase.swift in Sources */,
+				4ACD92A0279963E1005EB9CD /* Color+Ext.swift in Sources */,
 				4A03076A278B775E0010F00F /* MessageViewModel.swift in Sources */,
 				4ACA820C2758BA6C003C7E0E /* ItemUpdateViewModel.swift in Sources */,
 				4AEE8FAB272B5C69004CB686 /* ItemCreateViewModel.swift in Sources */,
@@ -1774,7 +1771,6 @@
 				4AE229AA275A49DD0070350E /* FavoriteItemCreateRequest.swift in Sources */,
 				4A09C6982737120800FD4E42 /* ItemDisplayCoordinator.swift in Sources */,
 				4A00FC472767B831007C5B11 /* UserOpenItemUseCase.swift in Sources */,
-				4A03E3BC275F656C00EB0210 /* CustomUIColors.swift in Sources */,
 				4A00FC562767D416007C5B11 /* UserBoughtItemListReadRequest.swift in Sources */,
 				4A09C6A627392DE100FD4E42 /* ChatInputAccessoryView.swift in Sources */,
 				4A00FC3127676A85007C5B11 /* FavoriteItemReadListRequest.swift in Sources */,

@@ -34,13 +34,13 @@ class ChatMessageCell: UICollectionViewCell {
       if message.isFromSelf {
         rightAlignConstraints.isActive = true
         leftAlignConstraints.isActive = false
-        bubbleContainer.backgroundColor = CustomUIColors.primaryColor
-        textView.textColor = CustomUIColors.primaryColorLight3
+        bubbleContainer.backgroundColor = UIColor.custom.primaryColor
+        textView.textColor = UIColor.custom.primaryColorLight3
       } else {
         rightAlignConstraints.isActive = false
         leftAlignConstraints.isActive = true
-        bubbleContainer.backgroundColor = CustomUIColors.primaryColorLight2
-        textView.textColor = CustomUIColors.tertiaryColor
+        bubbleContainer.backgroundColor = UIColor.custom.primaryColorLight2
+        textView.textColor = UIColor.custom.tertiaryColor
       }
       
       widthConstraints.isActive = true

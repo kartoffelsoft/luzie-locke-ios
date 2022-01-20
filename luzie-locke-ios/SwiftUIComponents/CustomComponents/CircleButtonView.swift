@@ -15,11 +15,11 @@ struct CircleButtonView: View {
   var body: some View {
     Image(systemName: iconName)
       .font(Font.body.weight(.bold))
-      .foregroundColor(CustomColors.secondaryColor)
+      .foregroundColor(Color.custom.secondaryColor)
       .frame(width: radius, height: radius)
       .background(
         Circle()
-          .foregroundColor(CustomColors.primaryColor)
+          .foregroundColor(Color.custom.primaryColor)
       )
       .shadow(
         color: Color.black,
