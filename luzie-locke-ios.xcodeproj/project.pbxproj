@@ -81,7 +81,6 @@
 		4A145ADA277073550059CACD /* RecentMessageCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AD9277073550059CACD /* RecentMessageCellViewModelTests.swift */; };
 		4A155E4027229D3600C8B867 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E3F27229D3600C8B867 /* AvatarImageView.swift */; };
 		4A155E432722A46300C8B867 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E422722A46300C8B867 /* Constants.swift */; };
-		4A155E462722E03600C8B867 /* OpenHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E452722E03600C8B867 /* OpenHTTPClient.swift */; };
 		4A155E482722F31C00C8B867 /* KHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E472722F31C00C8B867 /* KHTTPClient.swift */; };
 		4A155E5A272415A800C8B867 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E59272415A800C8B867 /* UIView+Ext.swift */; };
 		4A155E5C2724438B00C8B867 /* SettingsMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E5B2724438B00C8B867 /* SettingsMenuCell.swift */; };
@@ -240,7 +239,6 @@
 		4AEE8F772727E84F004CB686 /* ItemCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F762727E84F004CB686 /* ItemCellViewModel.swift */; };
 		4AEE8F7A272803FB004CB686 /* ProfileStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F79272803FB004CB686 /* ProfileStorageMock.swift */; };
 		4AEE8F7C27280504004CB686 /* SimpleStringStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F7B27280504004CB686 /* SimpleStringStorageMock.swift */; };
-		4AEE8F7F2728144A004CB686 /* OpenHTTPClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F7E2728144A004CB686 /* OpenHTTPClientMock.swift */; };
 		4AEE8F82272818D3004CB686 /* BackendAPIClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F81272818D3004CB686 /* BackendAPIClientMock.swift */; };
 		4AEE8F8527281978004CB686 /* UserAPIClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F8427281978004CB686 /* UserAPIClientMock.swift */; };
 		4AEE8F8727288842004CB686 /* MyProfileCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE8F8627288842004CB686 /* MyProfileCellViewModel.swift */; };
@@ -336,7 +334,6 @@
 		4A145AD9277073550059CACD /* RecentMessageCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMessageCellViewModelTests.swift; sourceTree = "<group>"; };
 		4A155E3F27229D3600C8B867 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		4A155E422722A46300C8B867 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		4A155E452722E03600C8B867 /* OpenHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHTTPClient.swift; sourceTree = "<group>"; };
 		4A155E472722F31C00C8B867 /* KHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KHTTPClient.swift; sourceTree = "<group>"; };
 		4A155E59272415A800C8B867 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		4A155E5B2724438B00C8B867 /* SettingsMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMenuCell.swift; sourceTree = "<group>"; };
@@ -496,7 +493,6 @@
 		4AEE8F762727E84F004CB686 /* ItemCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellViewModel.swift; sourceTree = "<group>"; };
 		4AEE8F79272803FB004CB686 /* ProfileStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStorageMock.swift; sourceTree = "<group>"; };
 		4AEE8F7B27280504004CB686 /* SimpleStringStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleStringStorageMock.swift; sourceTree = "<group>"; };
-		4AEE8F7E2728144A004CB686 /* OpenHTTPClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenHTTPClientMock.swift; sourceTree = "<group>"; };
 		4AEE8F81272818D3004CB686 /* BackendAPIClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendAPIClientMock.swift; sourceTree = "<group>"; };
 		4AEE8F8427281978004CB686 /* UserAPIClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIClientMock.swift; sourceTree = "<group>"; };
 		4AEE8F8627288842004CB686 /* MyProfileCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileCellViewModel.swift; sourceTree = "<group>"; };
@@ -830,14 +826,6 @@
 			path = ImageViews;
 			sourceTree = "<group>";
 		};
-		4A155E442722E02800C8B867 /* OpenHTTPClient */ = {
-			isa = PBXGroup;
-			children = (
-				4A155E452722E03600C8B867 /* OpenHTTPClient.swift */,
-			);
-			path = OpenHTTPClient;
-			sourceTree = "<group>";
-		};
 		4A155E5227240B0F00C8B867 /* CustomComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -964,7 +952,6 @@
 			children = (
 				4AED5E58271EBEC900B7AC00 /* HTTP */,
 				4AED5E7827201E2D00B7AC00 /* Storage */,
-				4A155E442722E02800C8B867 /* OpenHTTPClient */,
 				4AED5E35271D928F00B7AC00 /* BackendAPIClient */,
 			);
 			path = Services;
@@ -992,7 +979,6 @@
 			children = (
 				4AEE8F8327281968004CB686 /* Clients */,
 				4AEE8F80272818B5004CB686 /* BackendAPIClient */,
-				4AEE8F7D27281438004CB686 /* OpenHTTPClient */,
 				4AEE8F78272803E9004CB686 /* Storage */,
 				4AED5E23271A0CCD00B7AC00 /* Map */,
 				4A03074C2788D7C60010F00F /* UseCases */,
@@ -1392,14 +1378,6 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
-		4AEE8F7D27281438004CB686 /* OpenHTTPClient */ = {
-			isa = PBXGroup;
-			children = (
-				4AEE8F7E2728144A004CB686 /* OpenHTTPClientMock.swift */,
-			);
-			path = OpenHTTPClient;
-			sourceTree = "<group>";
-		};
 		4AEE8F80272818B5004CB686 /* BackendAPIClient */ = {
 			isa = PBXGroup;
 			children = (
@@ -1617,7 +1595,6 @@
 				4AD53D2D2763899E00F34874 /* ItemImageUrlReadRequest.swift in Sources */,
 				4A00FC2A2766B2D1007C5B11 /* MyProfileUseCase.swift in Sources */,
 				4A00FC2F27674CB3007C5B11 /* FavoriteItem.swift in Sources */,
-				4A155E462722E03600C8B867 /* OpenHTTPClient.swift in Sources */,
 				4A00FC3627677D38007C5B11 /* VoidResponse.swift in Sources */,
 				4A09C69E2738582700FD4E42 /* UserInfoView.swift in Sources */,
 				4A01D561273DC94D00EDFC1C /* DateUtility.swift in Sources */,
@@ -1826,7 +1803,6 @@
 				4A145AC0276F56FF0059CACD /* FakeModels.swift in Sources */,
 				4A145AD3276FC7730059CACD /* ItemCellViewModelTests.swift in Sources */,
 				4AED5E27271A0D1300B7AC00 /* CLLocationManagerMock.swift in Sources */,
-				4AEE8F7F2728144A004CB686 /* OpenHTTPClientMock.swift in Sources */,
 				4AEE8F7A272803FB004CB686 /* ProfileStorageMock.swift in Sources */,
 				4A030762278A4ACE0010F00F /* SettingsCoordinatorSpy.swift in Sources */,
 				4AEE8F8B27289C6D004CB686 /* MyProfileCellViewModelTests.swift in Sources */,

@@ -9,16 +9,13 @@ import Foundation
 
 class CompositionRoot {
   lazy var httpClient       = KHTTPClient()
-  lazy var openHttpClient   = OpenHTTPClient(client: httpClient)
-  
   lazy var cloudStorage     = FirebaseCloudStorage()
-  
   lazy var backendClient    = BackendClient(baseEndpoint: BackendConfig.host)
   lazy var userApiClient    = UserAPIClient(client: backendClient)
   lazy var backendApiClient = BackendAPIClient(client: backendClient,
-                                                     userApi: userApiClient)
+                                               userApi: userApiClient)
   
-  lazy var imageRepository          = ImageRepository(cloudStorage: cloudStorage)
+  lazy var imageRepository          = ImageRepository(httpClient: httpClient, cloudStorage: cloudStorage)
   lazy var itemRepository           = ItemRepository(backendClient: backendClient, imageRepository: imageRepository)
   lazy var userOpenItemRepository   = UserOpenItemRepository(backendClient: backendClient)
   lazy var userSoldItemRepository   = UserSoldItemRepository(backendClient: backendClient)
@@ -29,8 +26,8 @@ class CompositionRoot {
                                                           localProfileRepository: localProfileRepository)
   lazy var settingsRepository       = SettingsRepository(backendClient: backendClient)
 
-  lazy var imageUseCase             = ImageUseCase(openHttpClient: openHttpClient,
-                                                 backendClient: backendClient)
+  lazy var imageUseCase             = ImageUseCase(imageRepository: imageRepository,
+                                                   backendClient: backendClient)
   lazy var itemControlUseCase       = ItemControlUseCase(itemRepository: itemRepository)
   lazy var myProfileUseCase         = MyProfileUseCase(localProfileRepository: localProfileRepository)
   lazy var userOpenItemUseCase      = UserOpenItemUseCase(localProfileRepository: localProfileRepository,

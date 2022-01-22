@@ -17,18 +17,18 @@ protocol ImageUseCaseProtocol {
 
 class ImageUseCase: ImageUseCaseProtocol {
   
-  private let openHttpClient: OpenHTTPClient
+  private let imageRepository: ImageRepository
   private let backendClient:  BackendClient
   
   private var cancellables = Set<AnyCancellable>()
   
-  init(openHttpClient: OpenHTTPClient, backendClient: BackendClient) {
-    self.openHttpClient = openHttpClient
+  init(imageRepository: ImageRepository, backendClient: BackendClient) {
+    self.imageRepository = imageRepository
     self.backendClient  = backendClient
   }
   
   func getImage(url: String, completion: @escaping (Result<UIImage?, LLError>) -> Void) {
-    openHttpClient.downloadImage(from: url)
+    imageRepository.read(url: url)
       .sink { result in
         switch result {
         case .failure(let error):

@@ -12,11 +12,9 @@ class ItemUpdateViewModel: ItemComposeViewModel {
   weak var delegate:          ItemComposeViewModelDelegate?
   
   private let coordinator:    ItemDisplayCoordinator
-  private let openHttpClient: OpenHTTP
+  private let imageUseCase:   ImageUseCaseProtocol
   private let itemRepository: ItemRepository
   
-  func read(_ id: String, completion: @escaping (Result<Item, LLError>) -> Void) {
-  }
   var itemId: String? {
     didSet {
       guard let itemId = itemId else { return }
@@ -50,7 +48,7 @@ class ItemUpdateViewModel: ItemComposeViewModel {
           
           dispatchGroup.enter()
           
-          openHttpClient.downloadImage(from: url) { result in
+          imageUseCase.getImage(url: url) { result in
             switch result {
             case .success(let image):
               images[i] = image ?? UIImage()
@@ -76,10 +74,10 @@ class ItemUpdateViewModel: ItemComposeViewModel {
   var bindableIsLoading = Bindable<Bool>()
   
   init(coordinator:         ItemDisplayCoordinator,
-       openHttpClient:      OpenHTTP,
+       imageUseCase:        ImageUseCaseProtocol,
        itemRepository:      ItemRepository) {
     self.coordinator        = coordinator
-    self.openHttpClient     = openHttpClient
+    self.imageUseCase       = imageUseCase
     self.itemRepository     = itemRepository
 
     imageSelectViewModel            = ImageSelectViewModel()

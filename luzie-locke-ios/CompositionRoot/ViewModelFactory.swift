@@ -58,7 +58,7 @@ extension CompositionRoot: ViewModelFactory {
   
   func makeItemUpdateViewModel(coordinator: ItemDisplayCoordinator) -> ItemUpdateViewModel {
     return ItemUpdateViewModel(coordinator: coordinator,
-                               openHttpClient: openHttpClient,
+                               imageUseCase: imageUseCase,
                                itemRepository: itemRepository)
   }
   
