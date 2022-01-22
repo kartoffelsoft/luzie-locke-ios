@@ -204,7 +204,7 @@ extension LoginViewController: LoginViewModelDelegate {
   func didGetError(_ error: LLError) {
     presentAlertOnMainThread(
       title: "Unable to complete",
-      message: error.rawValue,
+      message: error.localizedDescription,
       buttonTitle: "OK")
   }
 }

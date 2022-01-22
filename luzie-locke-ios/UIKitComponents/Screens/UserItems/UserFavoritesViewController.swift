@@ -153,7 +153,7 @@ extension UserFavoritesViewController: UserFavoritesViewModelDelegate {
   func didGetError(_ error: LLError) {
     presentAlertOnMainThread(
       title: "Unable to complete",
-      message: error.rawValue,
+      message: error.localizedDescription,
       buttonTitle: "OK") {
         self.refreshControl.endRefreshing()
     }

@@ -80,7 +80,7 @@ class RecentMessageRepository: RecentMessageRepositoryProtocol {
     Firestore.firestore().collection(storeName).document(localUserId).collection(storeSubName).document(remoteUserId + itemId).delete() { error in
       if let error = error {
         print("[Error:\(#file):\(#line)] \(error)")
-        completion(.failure(.serverErrorResponse))
+        completion(.failure(.badServerResponse))
         return
       }
       

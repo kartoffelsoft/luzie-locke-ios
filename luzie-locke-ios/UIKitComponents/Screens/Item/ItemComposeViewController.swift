@@ -133,7 +133,7 @@ class ItemComposeViewController: UIViewController {
       case .success: ()
       case .failure(let error):
         self?.presentAlertOnMainThread(title: "Unable to proceed",
-                                       message: error.rawValue,
+                                       message: error.localizedDescription,
                                        buttonTitle: "OK")
       }
     }

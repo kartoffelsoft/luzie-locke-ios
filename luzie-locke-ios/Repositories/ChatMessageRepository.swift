@@ -62,7 +62,7 @@ class ChatMessageRepository: ChatMessageRepositoryProtocol {
     collectionRef.limit(to: 100).getDocuments { (snapshot, error) in
       if let error = error {
         print("[Error:\(#file):\(#line)] \(error)")
-        completion(.failure(.serverErrorResponse))
+        completion(.failure(.badServerResponse))
         return
       }
 
@@ -72,7 +72,7 @@ class ChatMessageRepository: ChatMessageRepositoryProtocol {
       batch.commit { error in
         if let error = error {
           print("[Error:\(#file):\(#line)] \(error)")
-          completion(.failure(.serverErrorResponse))
+          completion(.failure(.badServerResponse))
         } else {
           print("Batch write succeeded.")
           completion(.success(()))

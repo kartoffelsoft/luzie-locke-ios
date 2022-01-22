@@ -833,7 +833,6 @@
 		4A155E442722E02800C8B867 /* OpenHTTPClient */ = {
 			isa = PBXGroup;
 			children = (
-				4AED5E7827201E2D00B7AC00 /* Storage */,
 				4A155E452722E03600C8B867 /* OpenHTTPClient.swift */,
 			);
 			path = OpenHTTPClient;
@@ -964,6 +963,7 @@
 			isa = PBXGroup;
 			children = (
 				4AED5E58271EBEC900B7AC00 /* HTTP */,
+				4AED5E7827201E2D00B7AC00 /* Storage */,
 				4A155E442722E02800C8B867 /* OpenHTTPClient */,
 				4AED5E35271D928F00B7AC00 /* BackendAPIClient */,
 			);

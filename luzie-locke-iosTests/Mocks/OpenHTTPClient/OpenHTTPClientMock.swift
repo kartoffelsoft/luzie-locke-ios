@@ -6,9 +6,15 @@
 //
 
 import UIKit
+import Combine
+
 @testable import luzie_locke_ios
 
 class OpenHTTPClientMock: OpenHTTP {
+  
+  func downloadImage(from urlString: String) -> AnyPublisher<UIImage, Error> {
+    
+  }
   
   var isDownloadImageCalled = false
   var downloadImageCompletion: ((Result<UIImage?, LLError>) -> Void)?

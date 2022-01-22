@@ -46,7 +46,7 @@ public class BackendClient {
               completion(.success(response.data as T.Response?))
             } else {
               print("[Error:\(#file):\(#line)] \(response.message )")
-              completion(.failure(.serverErrorResponse))
+              completion(.failure(.badServerResponse))
             }
           } catch {
             print("[Error:\(#file):\(#line)] \(error)")
@@ -83,7 +83,7 @@ public class BackendClient {
                 completion(.success(response.data as T.Response?))
               } else {
                 print("[Error:\(#file):\(#line)] \(response.message )")
-                completion(.failure(.serverErrorResponse))
+                completion(.failure(.badServerResponse))
               }
             } catch {
               print("[Error:\(#file):\(#line)] \(error)")
@@ -123,7 +123,7 @@ public class BackendClient {
                 completion(.success(response.data as T.Response?))
               } else {
                 print("[Error:\(#file):\(#line)] \(response.message )")
-                completion(.failure(.serverErrorResponse))
+                completion(.failure(.badServerResponse))
               }
             } catch {
               print("[Error:\(#file):\(#line)] \(error)")
@@ -159,7 +159,7 @@ public class BackendClient {
               completion(.success(response.data as T.Response?))
             } else {
               print("[Error:\(#file):\(#line)] \(response.message )")
-              completion(.failure(.serverErrorResponse))
+              completion(.failure(.badServerResponse))
             }
           } catch {
             print("[Error:\(#file):\(#line)] \(error)")

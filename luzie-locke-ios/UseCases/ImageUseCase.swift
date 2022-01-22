@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 protocol ImageUseCaseProtocol {
   
@@ -19,20 +20,34 @@ class ImageUseCase: ImageUseCaseProtocol {
   private let openHttpClient: OpenHTTPClient
   private let backendClient:  BackendClient
   
+  private var cancellables = Set<AnyCancellable>()
+  
   init(openHttpClient: OpenHTTPClient, backendClient: BackendClient) {
     self.openHttpClient = openHttpClient
     self.backendClient  = backendClient
   }
   
   func getImage(url: String, completion: @escaping (Result<UIImage?, LLError>) -> Void) {
-    openHttpClient.downloadImage(from: url) { result in
-      switch result {
-      case .success(let image):
+    openHttpClient.downloadImage(from: url)
+      .sink { result in
+        switch result {
+        case .failure(let error):
+          completion(.failure(.unableToComplete))
+        case .finished: ()
+        }
+      } receiveValue: { image in
         completion(.success(image))
-      case .failure:
-        completion(.failure(.unableToComplete))
       }
-    }
+      .store(in: &cancellables)
+    
+//    openHttpClient.downloadImage(from: url) { result in
+//      switch result {
+//      case .success(let image):
+//        completion(.success(image))
+//      case .failure:
+//        completion(.failure(.unableToComplete))
+//      }
+//    }
   }
   
   func getImage(itemId: String, completion: @escaping (Result<UIImage?, LLError>) -> Void) {
