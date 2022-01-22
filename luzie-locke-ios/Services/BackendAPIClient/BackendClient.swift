@@ -7,18 +7,12 @@
 
 import Foundation
 
-//protocol KHTTPAPI {
-//  associatedtype DataType
-//  func POST<DataType>(_ request: DataType, completion: @escaping APIResultCallback<DataType.Response?>) where DataType: APIRequest
-//  func PATCH<DataType>(_ request: DataType, completion: @escaping APIResultCallback<DataType.Response?>) where DataType: APIRequest
-//}
-
 public class BackendClient {
   
-  public var globalRequestInterceptors = [KHTTPRequestInterceptor]()
+  public var globalRequestInterceptors = [HTTPRequestInterceptor]()
   
   let baseEndpoint: String
-  let httpClient = KHTTPClient()
+  let httpClient = HTTPClient()
   
   public init(baseEndpoint: String) {
     self.baseEndpoint = baseEndpoint
@@ -33,7 +27,7 @@ public class BackendClient {
     urlRequest.httpMethod   = "GET"
     let interceptedRequest  = applyRequestInterceptors(urlRequest)
     
-    httpClient.send(with: interceptedRequest) { result in
+    httpClient.send(for: interceptedRequest) { result in
       switch result {
       case .success((_, let data)):
         if let data = data {
@@ -73,7 +67,7 @@ public class BackendClient {
       urlRequest.httpMethod   = "POST"
       let interceptedRequest  = applyRequestInterceptors(urlRequest)
       
-      httpClient.send(with: interceptedRequest) { result in
+      httpClient.send(for: interceptedRequest) { result in
         switch result {
         case .success((_, let data)):
           if let data = data {
@@ -113,7 +107,7 @@ public class BackendClient {
       urlRequest.httpMethod   = "PATCH"
       let interceptedRequest  = applyRequestInterceptors(urlRequest)
       
-      httpClient.send(with: interceptedRequest) { result in
+      httpClient.send(for: interceptedRequest) { result in
         switch result {
         case .success((_, let data)):
           if let data = data {
@@ -149,7 +143,7 @@ public class BackendClient {
     urlRequest.httpMethod   = "DELETE"
     let interceptedRequest  = applyRequestInterceptors(urlRequest)
     
-    httpClient.send(with: interceptedRequest) { result in
+    httpClient.send(for: interceptedRequest) { result in
       switch result {
       case .success((_, let data)):
         if let data = data {

@@ -18,13 +18,13 @@ protocol ImageRepositoryProtocol {
 
 class ImageRepository: ImageRepositoryProtocol {
   
-  private let httpClient: KHTTPClient
+  private let httpClient: HTTPClient
   private let cloudStorage: CloudStorage
 
   private let cache = NSCache<NSString, UIImage>()
   private var cancellables = Set<AnyCancellable>()
   
-  init(httpClient: KHTTPClient, cloudStorage: CloudStorage) {
+  init(httpClient: HTTPClient, cloudStorage: CloudStorage) {
     self.httpClient = httpClient
     self.cloudStorage = cloudStorage
   }
@@ -47,7 +47,7 @@ class ImageRepository: ImageRepositoryProtocol {
         .eraseToAnyPublisher()
     }
     
-    return httpClient.send(with: url)
+    return httpClient.send(for: url)
       .tryMap { data in
         guard let image = UIImage(data: data) else {
           throw LLError.unableToComplete
@@ -56,7 +56,6 @@ class ImageRepository: ImageRepositoryProtocol {
       }
       .eraseToAnyPublisher()
   }
-
   
   func delete(url: String, completion: @escaping (Result<Void, LLError>) -> Void) {
     cloudStorage.deleteImage(url: url, completion: completion)

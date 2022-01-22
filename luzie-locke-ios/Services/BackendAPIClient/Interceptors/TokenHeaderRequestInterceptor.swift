@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TokenHeaderRequestInterceptor: KHTTPRequestInterceptor {
+class TokenHeaderRequestInterceptor: HTTPRequestInterceptor {
   
   private let token: String
   

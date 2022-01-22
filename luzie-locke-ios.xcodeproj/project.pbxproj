@@ -81,7 +81,7 @@
 		4A145ADA277073550059CACD /* RecentMessageCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A145AD9277073550059CACD /* RecentMessageCellViewModelTests.swift */; };
 		4A155E4027229D3600C8B867 /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E3F27229D3600C8B867 /* AvatarImageView.swift */; };
 		4A155E432722A46300C8B867 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E422722A46300C8B867 /* Constants.swift */; };
-		4A155E482722F31C00C8B867 /* KHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E472722F31C00C8B867 /* KHTTPClient.swift */; };
+		4A155E482722F31C00C8B867 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E472722F31C00C8B867 /* HTTPClient.swift */; };
 		4A155E5A272415A800C8B867 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E59272415A800C8B867 /* UIView+Ext.swift */; };
 		4A155E5C2724438B00C8B867 /* SettingsMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E5B2724438B00C8B867 /* SettingsMenuCell.swift */; };
 		4A155E602724D16600C8B867 /* UserMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A155E5F2724D16600C8B867 /* UserMenuCell.swift */; };
@@ -214,7 +214,7 @@
 		4AED5E3D271D95FC00B7AC00 /* AuthenticationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E3C271D95FC00B7AC00 /* AuthenticationRequest.swift */; };
 		4AED5E3F271D9E8200B7AC00 /* BackendAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E3E271D9E8200B7AC00 /* BackendAPIClient.swift */; };
 		4AED5E46271E2A3200B7AC00 /* BackendConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E45271E2A3200B7AC00 /* BackendConfig.swift */; };
-		4AED5E57271EBDF700B7AC00 /* KHTTPRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E56271EBDF700B7AC00 /* KHTTPRequestInterceptor.swift */; };
+		4AED5E57271EBDF700B7AC00 /* HTTPRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E56271EBDF700B7AC00 /* HTTPRequestInterceptor.swift */; };
 		4AED5E5A271EBEE700B7AC00 /* BackendClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E59271EBEE700B7AC00 /* BackendClient.swift */; };
 		4AED5E5D271ECE9D00B7AC00 /* UserAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E5C271ECE9D00B7AC00 /* UserAPIClient.swift */; };
 		4AED5E61271EE71600B7AC00 /* UpdateLocationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AED5E60271EE71600B7AC00 /* UpdateLocationRequest.swift */; };
@@ -334,7 +334,7 @@
 		4A145AD9277073550059CACD /* RecentMessageCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentMessageCellViewModelTests.swift; sourceTree = "<group>"; };
 		4A155E3F27229D3600C8B867 /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		4A155E422722A46300C8B867 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		4A155E472722F31C00C8B867 /* KHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KHTTPClient.swift; sourceTree = "<group>"; };
+		4A155E472722F31C00C8B867 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		4A155E59272415A800C8B867 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		4A155E5B2724438B00C8B867 /* SettingsMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMenuCell.swift; sourceTree = "<group>"; };
 		4A155E5F2724D16600C8B867 /* UserMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuCell.swift; sourceTree = "<group>"; };
@@ -469,7 +469,7 @@
 		4AED5E3C271D95FC00B7AC00 /* AuthenticationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationRequest.swift; sourceTree = "<group>"; };
 		4AED5E3E271D9E8200B7AC00 /* BackendAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendAPIClient.swift; sourceTree = "<group>"; };
 		4AED5E45271E2A3200B7AC00 /* BackendConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendConfig.swift; sourceTree = "<group>"; };
-		4AED5E56271EBDF700B7AC00 /* KHTTPRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KHTTPRequestInterceptor.swift; sourceTree = "<group>"; };
+		4AED5E56271EBDF700B7AC00 /* HTTPRequestInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestInterceptor.swift; sourceTree = "<group>"; };
 		4AED5E59271EBEE700B7AC00 /* BackendClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendClient.swift; sourceTree = "<group>"; };
 		4AED5E5C271ECE9D00B7AC00 /* UserAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPIClient.swift; sourceTree = "<group>"; };
 		4AED5E60271EE71600B7AC00 /* UpdateLocationRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLocationRequest.swift; sourceTree = "<group>"; };
@@ -1298,8 +1298,7 @@
 			children = (
 				4AED5E38271D92EA00B7AC00 /* APIRequest.swift */,
 				4AED5E36271D92B400B7AC00 /* APIClient.swift */,
-				4AED5E56271EBDF700B7AC00 /* KHTTPRequestInterceptor.swift */,
-				4A155E472722F31C00C8B867 /* KHTTPClient.swift */,
+				4A155E472722F31C00C8B867 /* HTTPClient.swift */,
 			);
 			path = HTTP;
 			sourceTree = "<group>";
@@ -1318,6 +1317,7 @@
 		4AED5E5E271ED0B200B7AC00 /* Interceptors */ = {
 			isa = PBXGroup;
 			children = (
+				4AED5E56271EBDF700B7AC00 /* HTTPRequestInterceptor.swift */,
 				4AED5E62271EE9B000B7AC00 /* DefaultHeadersRequestInterceptor.swift */,
 				4AED5E64271F729F00B7AC00 /* TokenHeaderRequestInterceptor.swift */,
 			);
@@ -1660,7 +1660,7 @@
 				4A47E6E6273317FA00B9018A /* ViewControllerFactory.swift in Sources */,
 				4AED5E8627219E7300B7AC00 /* MyProfileCell.swift in Sources */,
 				4AE229AC275A51FD0070350E /* FavoriteItemDeleteRequest.swift in Sources */,
-				4A155E482722F31C00C8B867 /* KHTTPClient.swift in Sources */,
+				4A155E482722F31C00C8B867 /* HTTPClient.swift in Sources */,
 				4A09C69B273730B900FD4E42 /* ItemDisplayDetailViewModel.swift in Sources */,
 				4AA6CE18276A4FD500FF0C91 /* VerifyNeighborhoodMap.swift in Sources */,
 				4A3B526A271239CE00EF4F93 /* MainTabBarController.swift in Sources */,
@@ -1770,7 +1770,7 @@
 				4AC5667C273BE3E000776DBD /* ChatMessageRepository.swift in Sources */,
 				4AC56677273BB65200776DBD /* MessagesViewModel.swift in Sources */,
 				4AED5E34271C199600B7AC00 /* BasicButton.swift in Sources */,
-				4AED5E57271EBDF700B7AC00 /* KHTTPRequestInterceptor.swift in Sources */,
+				4AED5E57271EBDF700B7AC00 /* HTTPRequestInterceptor.swift in Sources */,
 				4A0307C1279089790010F00F /* ItemSingleLineView.swift in Sources */,
 				4AED5E46271E2A3200B7AC00 /* BackendConfig.swift in Sources */,
 				4ACA821227590C6E003C7E0E /* DecimalInputViewModel.swift in Sources */,
