@@ -54,6 +54,7 @@ class ImageRepository: ImageRepositoryProtocol {
         }
         return image
       }
+      .receive(on: DispatchQueue.main)
       .eraseToAnyPublisher()
   }
   

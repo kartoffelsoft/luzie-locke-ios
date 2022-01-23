@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 protocol SettingsRepositoryProtocol {
 
@@ -19,66 +20,77 @@ protocol SettingsRepositoryProtocol {
 class SettingsRepository: SettingsRepositoryProtocol {
   
   private let backendClient: BackendClient
+  private var cancellables = Set<AnyCancellable>()
   
   init(backendClient: BackendClient) {
     self.backendClient = backendClient
   }
   
   func readLocalLevel(completion: @escaping (Result<Int, LLError>) -> Void) {
-    backendClient.GET(SettingsLocalLevelReadRequest()) { result in
-      switch result {
-      case .success(let response):
-        if let response = response {
-          completion(.success(response.localLevel))
-        } else {
-          completion(.failure(.unableToComplete))
-        }
-        
-      case .failure(let err):
-        print("[Error:\(#file):\(#line)] \(err)")
-        completion(.failure(.unableToComplete))
+    backendClient.GET(SettingsLocalLevelReadRequest())
+      .tryMap { response -> SettingsLocalLevelReadRequest.Response in
+        guard let response = response else { throw LLError.invalidData }
+        return response
       }
-    }
+      .sink { result in
+        switch result {
+        case .failure(let error):
+          print("[Error:\(#file):\(#line)] \(error.localizedDescription)")
+          completion(.failure(.unableToComplete))
+        case .finished: ()
+        }
+      } receiveValue: { response in
+        completion(.success(response.localLevel))
+      }
+      .store(in: &cancellables)
   }
   
   func updateLocalLevel(localLevel: Int, completion: @escaping (Result<Void, LLError>) -> Void) {
-    backendClient.PATCH(SettingsLocalLevelUpdateRequest(localLevel: localLevel)) { result in
-      switch result {
-      case .success:
+    backendClient.PATCH(SettingsLocalLevelUpdateRequest(localLevel: localLevel))
+      .sink { result in
+        switch result {
+        case .failure(let error):
+          print("[Error:\(#file):\(#line)] \(error.localizedDescription)")
+          completion(.failure(.unableToComplete))
+        case .finished: ()
+        }
+      } receiveValue: { _ in
         completion(.success(()))
-      case .failure(let error):
-        print("[Error:\(#file):\(#line)] \(error)")
-        completion(.failure(.unableToComplete))
       }
-    }
+      .store(in: &cancellables)
   }
   
   func readLocation(completion: @escaping (Result<(String, Double, Double), LLError>) -> Void) {
-    backendClient.GET(SettingsLocationReadRequest()) { result in
-      switch result {
-      case .success(let response):
-        if let response = response {
-          completion(.success((response.city, response.lat, response.lng)))
-        } else {
-          completion(.failure(.unableToComplete))
-        }
-        
-      case .failure(let err):
-        print("[Error:\(#file):\(#line)] \(err)")
-        completion(.failure(.unableToComplete))
+    backendClient.GET(SettingsLocationReadRequest())
+      .tryMap { response -> SettingsLocationReadRequest.Response in
+        guard let response = response else { throw LLError.invalidData }
+        return response
       }
-    }
+      .sink { result in
+        switch result {
+        case .failure(let error):
+          print("[Error:\(#file):\(#line)] \(error.localizedDescription)")
+          completion(.failure(.unableToComplete))
+        case .finished: ()
+        }
+      } receiveValue: { response in
+        completion(.success((response.city, response.lat, response.lng)))
+      }
+      .store(in: &cancellables)
   }
   
   func updateLocation(city: String, lat: Double, lng: Double, completion: @escaping (Result<Void, LLError>) -> Void) {
-    backendClient.PATCH(SettingsLocationUpdateRequest(city: city, lat: lat, lng: lng)) { result in
-      switch result {
-      case .success:
+    backendClient.PATCH(SettingsLocationUpdateRequest(city: city, lat: lat, lng: lng))
+      .sink { result in
+        switch result {
+        case .failure(let error):
+          print("[Error:\(#file):\(#line)] \(error.localizedDescription)")
+          completion(.failure(.unableToComplete))
+        case .finished: ()
+        }
+      } receiveValue: { _ in
         completion(.success(()))
-      case .failure(let error):
-        print("[Error:\(#file):\(#line)] \(error)")
-        completion(.failure(.unableToComplete))
       }
-    }
+      .store(in: &cancellables)
   }
 }

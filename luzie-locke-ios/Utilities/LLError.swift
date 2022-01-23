@@ -13,6 +13,7 @@ enum LLError: LocalizedError {
   case unableToComplete
   case unableToCompleteUpload
   case unexpectedServerResponse
+  case invalidURL
   case invalidResponse
   case invalidData
   case photoNotSelected
@@ -28,6 +29,7 @@ enum LLError: LocalizedError {
     case .unableToComplete: return "Unable to complete your request. Please check your internet connection"
     case .unableToCompleteUpload: return "Unable to upload image(s). Please check your internet connection"
     case .unexpectedServerResponse: return "Unexpected response received from the server."
+    case .invalidURL: return "Invalid URL."
     case .invalidResponse: return "Invalid response from the server. Please retry."
     case .invalidData: return "The data received from the server was invalid. Please try again."
     case .photoNotSelected: return "Should upload at least one photo."

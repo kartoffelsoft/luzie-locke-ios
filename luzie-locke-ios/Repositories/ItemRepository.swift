@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 protocol ItemRepositoryProtocol {
 
@@ -25,26 +26,30 @@ class ItemRepository: ItemRepositoryProtocol {
   private let backendClient: BackendClient
   private let imageRepository: ImageRepositoryProtocol
   
+  private var cancellables = Set<AnyCancellable>()
+  
   init(backendClient: BackendClient, imageRepository: ImageRepositoryProtocol) {
     self.backendClient = backendClient
     self.imageRepository = imageRepository
   }
   
   func create(title: String, price: String, description: String, images: [UIImage], completion: @escaping (Result<Void, LLError>) -> Void) {
-    createImageUrls(images: images) { result in
+    createImageUrls(images: images) { [unowned self] result in
       switch result {
       case .success(let imageUrls):
-        self.backendClient.POST(ItemCreateRequest(domain: Item(title: title, price: price, description: description, imageUrls: imageUrls))) { result in
-          DispatchQueue.main.async {
+        self.backendClient.POST(ItemCreateRequest(domain: Item(title: title, price: price, description: description, imageUrls: imageUrls)))
+          .sink { result in
             switch result {
-            case .success:
-              completion(.success(()))
             case .failure(let error):
-              print("[Error:\(#file):\(#line)] \(error)")
+              print("[Error:\(#file):\(#line)] \(error.localizedDescription)")
               completion(.failure(.unableToComplete))
+            case .finished: ()
             }
+          } receiveValue: { _ in
+            completion(.success(()))
           }
-        }
+          .store(in: &self.cancellables)
+
       case .failure(let error):
         completion(.failure(error))
         return
@@ -53,61 +58,64 @@ class ItemRepository: ItemRepositoryProtocol {
   }
   
   func read(_ id: String, completion: @escaping (Result<Item, LLError>) -> Void) {
-    backendClient.GET(ItemReadRequest(id: id)) { result in
-      DispatchQueue.main.async {
-        switch result {
-        case .success(let response):
-          if let response = response {
-            let item = ItemTranslator.translateItemDTOToItem(dto: response.item)
-            completion(.success(item))
-          } else {
-            completion(.failure(.unableToComplete))
-          }
-
-        case .failure(let err):
-          print("[Error:\(#file):\(#line)] \(err)")
-          completion(.failure(.unableToComplete))
-        }
+    backendClient.GET(ItemReadRequest(id: id))
+      .tryMap { response -> ItemReadRequest.Response in
+        guard let response = response else { throw LLError.invalidData }
+        return response
       }
-    }
+      .sink { result in
+        switch result {
+        case .failure(let error):
+          print("[Error:\(#file):\(#line)] \(error.localizedDescription)")
+          completion(.failure(.unableToComplete))
+        case .finished: ()
+        }
+      } receiveValue: { response in
+        completion(.success(ItemTranslator.translateItemDTOToItem(dto: response.item)))
+      }
+      .store(in: &cancellables)
   }
   
   func readListLocal(cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void) {
-    backendClient.GET(ItemListReadRequest(cursor: cursor, limit: 8)) { result in
-      switch result {
-      case .success(let response):
-        if let response = response {
-          completion(.success((
-            ItemTranslator.translateItemDTOListToItemList(dtoList: response.list),
-            response.nextCursor)))
-        } else {
-          completion(.failure(.unableToComplete))
-        }
-
-      case .failure(let error):
-        print("[Error:\(#file):\(#line)] \(error)")
-        completion(.failure(.unableToComplete))
+    backendClient.GET(ItemListReadRequest(cursor: cursor, limit: 8))
+      .tryMap { response -> ItemListReadRequest.Response in
+        guard let response = response else { throw LLError.invalidData }
+        return response
       }
-    }
+      .sink { result in
+        switch result {
+        case .failure(let error):
+          print("[Error:\(#file):\(#line)] \(error.localizedDescription)")
+          completion(.failure(.unableToComplete))
+        case .finished: ()
+        }
+      } receiveValue: { response in
+        completion(.success((
+          ItemTranslator.translateItemDTOListToItemList(dtoList: response.list),
+          response.nextCursor)))
+      }
+      .store(in: &cancellables)
   }
   
   func readListSearch(keyword: String, cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void) {
-    backendClient.GET(ItemReadListSearchRequest(q: SearchString(keyword), cursor: cursor, limit: 8)) { result in
-      switch result {
-      case .success(let response):
-        if let response = response {
-          completion(.success((
-            ItemTranslator.translateItemDTOListToItemList(dtoList: response.list),
-            response.nextCursor)))
-        } else {
-          completion(.failure(.unableToComplete))
-        }
-
-      case .failure(let error):
-        print("[Error:\(#file):\(#line)] \(error)")
-        completion(.failure(.unableToComplete))
+    backendClient.GET(ItemReadListSearchRequest(q: SearchString(keyword), cursor: cursor, limit: 8))
+      .tryMap { response -> ItemReadListSearchRequest.Response in
+        guard let response = response else { throw LLError.invalidData }
+        return response
       }
-    }
+      .sink { result in
+        switch result {
+        case .failure(let error):
+          print("[Error:\(#file):\(#line)] \(error.localizedDescription)")
+          completion(.failure(.unableToComplete))
+        case .finished: ()
+        }
+      } receiveValue: { response in
+        completion(.success((
+          ItemTranslator.translateItemDTOListToItemList(dtoList: response.list),
+          response.nextCursor)))
+      }
+      .store(in: &cancellables)
   }
   
   func update(_ id: String, title: String, price: String, description: String, images: [UIImage], oldImageUrls: [String?]?, completion: @escaping (Result<Void, LLError>) -> Void) {
@@ -119,17 +127,19 @@ class ItemRepository: ItemRepositoryProtocol {
         self.createImageUrls(images: images) { result in
           switch result {
           case .success(let imageUrls):
-            self.backendClient.PATCH(ItemUpdateRequest(domain: Item(id: id, title: title, price: price, description: description, imageUrls: imageUrls))) { result in
-              DispatchQueue.main.async {
+            self.backendClient.PATCH(ItemUpdateRequest(domain: Item(id: id, title: title, price: price, description: description, imageUrls: imageUrls)))
+              .sink { result in
                 switch result {
-                case .success:
-                  completion(.success(()))
                 case .failure(let error):
-                  print("[Error:\(#file):\(#line)] \(error)")
+                  print("[Error:\(#file):\(#line)] \(error.localizedDescription)")
                   completion(.failure(.unableToComplete))
+                case .finished: ()
                 }
+              } receiveValue: { _ in
+                completion(.success(()))
               }
-            }
+              .store(in: &self.cancellables)
+                           
           case .failure(let error):
             completion(.failure(error))
             return
@@ -143,31 +153,36 @@ class ItemRepository: ItemRepositoryProtocol {
   }
   
   func updateState(_ id: String, state: String, buyerId: String, completion: @escaping (Result<Void, LLError>) -> Void) {
-    backendClient.PATCH(ItemStateUpdateRequest(id: id, state: state, buyerId: buyerId)) { result in
-      switch result {
-      case .success:
+    backendClient.PATCH(ItemStateUpdateRequest(id: id, state: state, buyerId: buyerId))
+      .sink { result in
+        switch result {
+        case .failure(let error):
+          print("[Error:\(#file):\(#line)] \(error.localizedDescription)")
+          completion(.failure(.unableToComplete))
+        case .finished: ()
+        }
+      } receiveValue: { _ in
         completion(.success(()))
-        
-      case .failure(let error):
-        print("[Error:\(#file):\(#line)] \(error)")
-        completion(.failure(.unableToComplete))
       }
-    }
+      .store(in: &cancellables)
   }
   
   func delete(_ id: String, imageUrls: [String?]?, completion: @escaping (Result<Void, LLError>) -> Void) {
-    deleteImageUrls(imageUrls: imageUrls) { result in
+    deleteImageUrls(imageUrls: imageUrls) { [unowned self] result in
       switch result {
       case .success:
-        self.backendClient.DELETE(ItemDeleteRequest(id: id)) { result in
-          switch result {
-          case .success:
+        self.backendClient.DELETE(ItemDeleteRequest(id: id))
+          .sink { result in
+            switch result {
+            case .failure(let error):
+              print("[Error:\(#file):\(#line)] \(error.localizedDescription)")
+              completion(.failure(.unableToComplete))
+            case .finished: ()
+            }
+          } receiveValue: { _ in
             completion(.success(()))
-          case .failure(let error):
-            print("[Error:\(#file):\(#line)] \(error)")
-            completion(.failure(.unableToComplete))
           }
-        }
+          .store(in: &self.cancellables)
       case .failure(let error):
         print("[Error:\(#file):\(#line)] \(error)")
         completion(.failure(.unableToComplete))

@@ -14,7 +14,6 @@ class HTTPClient {
     return URLSession.shared.dataTaskPublisher(for: url)
       .subscribe(on: DispatchQueue.global(qos: .default))
       .tryMap({ try self.handleURLResponse(result: $0) })
-      .receive(on: DispatchQueue.main)
       .eraseToAnyPublisher()
   }
   
@@ -22,7 +21,6 @@ class HTTPClient {
     return URLSession.shared.dataTaskPublisher(for: request)
       .subscribe(on: DispatchQueue.global(qos: .default))
       .tryMap({ try self.handleURLResponse(result: $0) })
-      .receive(on: DispatchQueue.main)
       .eraseToAnyPublisher()
   }
   

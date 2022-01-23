@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 protocol UserAPI {
   func authenticate(uid: String, token: String, completion: @escaping (Result<(profile: UserProfile, accessToken: String, refreshToken: String), LLError>?) -> Void)
@@ -16,41 +17,47 @@ protocol UserAPI {
 class UserAPIClient: UserAPI {
   
   private let client: BackendClient
+  private var cancellables = Set<AnyCancellable>()
   
   init(client: BackendClient) {
     self.client = client
   }
   
   func authenticate(uid: String, token: String, completion: @escaping (Result<(profile: UserProfile, accessToken: String, refreshToken: String), LLError>?) -> Void) {
-    client.POST(AuthenticationRequest(id: uid, token: token)) { result in
-      switch result {
-      case .success(let response):
-        if let profile = response?.user,
-           let accessToken = response?.accessToken,
-           let refreshToken = response?.refreshToken {
-          completion(.success((profile: profile, accessToken: accessToken, refreshToken: refreshToken)))
-        }
-      case .failure(let error):
-        print(error)
-        completion(.failure(.unableToComplete))
+    client.POST(AuthenticationRequest(id: uid, token: token))
+      .tryMap { response -> AuthenticationRequest.Response in
+        guard let response = response else { throw LLError.invalidData }
+        return response
       }
-    }
+      .sink { result in
+        switch result {
+        case .failure(let error):
+          print("[Error:\(#file):\(#line)] \(error.localizedDescription)")
+          completion(.failure(.unableToComplete))
+        case .finished: ()
+        }
+      } receiveValue: { response in
+        completion(.success((profile: response.user, accessToken: response.accessToken, refreshToken: response.refreshToken)))
+      }
+      .store(in: &self.cancellables)
   }
   
   func updateLocation(city: String, lat: Double, lng: Double, completion: @escaping (Result<UserProfile, LLError>?) -> Void) {
-    client.PATCH(UpdateLocationRequest(city: city, lat: lat, lng: lng)) { result in
-      switch result {
-      case .success(let response):
-        if let profile = response?.user {
-          completion(.success(profile))
-        } else {
-          completion(.failure(.unexpectedServerResponse))
-        }
-        
-      case .failure(let error):
-        print("error:", error)
-        completion(.failure(.unableToComplete))
+    client.PATCH(UpdateLocationRequest(city: city, lat: lat, lng: lng))
+      .tryMap { response -> UpdateLocationRequest.Response in
+        guard let response = response else { throw LLError.invalidData }
+        return response
       }
-    }
+      .sink { result in
+        switch result {
+        case .failure(let error):
+          print("[Error:\(#file):\(#line)] \(error.localizedDescription)")
+          completion(.failure(.unableToComplete))
+        case .finished: ()
+        }
+      } receiveValue: { response in
+        completion(.success(response.user))
+      }
+      .store(in: &cancellables)
   }
 }

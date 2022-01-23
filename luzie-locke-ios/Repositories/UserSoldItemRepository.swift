@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 protocol UserSoldItemRepositoryProtocol {
 
@@ -15,27 +16,30 @@ protocol UserSoldItemRepositoryProtocol {
 class UserSoldItemRepository: UserSoldItemRepositoryProtocol {
   
   private let backendClient: BackendClient
+  private var cancellables = Set<AnyCancellable>()
   
   init(backendClient: BackendClient) {
     self.backendClient = backendClient
   }
   
   func readItemList(userId: String, cursor: TimeInterval, completion: @escaping (Result<([ItemListElement], TimeInterval), LLError>) -> Void) {
-    backendClient.GET(UserSoldItemListReadRequest(userId: userId, cursor: cursor, limit: 8)) { result in
-      switch result {
-      case .success(let response):
-        if let response = response {
-          completion(.success((
-            ItemTranslator.translateItemDTOListToItemList(dtoList: response.list),
-            response.nextCursor)))
-        } else {
-          completion(.failure(.unableToComplete))
-        }
-
-      case .failure(let error):
-        print("[Error:\(#file):\(#line)] \(error)")
-        completion(.failure(.unableToComplete))
+    backendClient.GET(UserSoldItemListReadRequest(userId: userId, cursor: cursor, limit: 8))
+      .tryMap { response -> UserSoldItemListReadRequest.Response in
+        guard let response = response else { throw LLError.invalidData }
+        return response
       }
-    }
+      .sink { result in
+        switch result {
+        case .failure(let error):
+          print("[Error:\(#file):\(#line)] \(error.localizedDescription)")
+          completion(.failure(.unableToComplete))
+        case .finished: ()
+        }
+      } receiveValue: { response in
+        completion(.success((
+          ItemTranslator.translateItemDTOListToItemList(dtoList: response.list),
+          response.nextCursor)))
+      }
+      .store(in: &cancellables)
   }
 }
