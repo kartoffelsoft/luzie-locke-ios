@@ -25,8 +25,7 @@ public class BackendClient {
     guard
       let url = URL(string: baseEndpoint + request.resourceName + request.toDictionary().urlQueryString)
     else {
-      return Fail(error: LLError.invalidURL)
-        .eraseToAnyPublisher()
+      return Fail(error: LLError.invalidURL).eraseToAnyPublisher()
     }
     
     var urlRequest = URLRequest(url: url)
@@ -46,8 +45,7 @@ public class BackendClient {
     guard
       let url = URL(string: baseEndpoint + request.resourceName)
     else {
-      return Fail(error: LLError.invalidURL)
-        .eraseToAnyPublisher()
+      return Fail(error: LLError.invalidURL).eraseToAnyPublisher()
     }
     
     var urlRequest = URLRequest(url: url)
@@ -56,8 +54,7 @@ public class BackendClient {
       urlRequest.httpBody = try JSONSerialization.data(withJSONObject: request.toDictionary(), options: .init())
       urlRequest.httpMethod = "POST"
     } catch(let error){
-      return Fail(error: error)
-        .eraseToAnyPublisher()
+      return Fail(error: error).eraseToAnyPublisher()
     }
 
     let interceptedRequest  = applyRequestInterceptors(urlRequest)
@@ -75,8 +72,7 @@ public class BackendClient {
     guard
       let url = URL(string: baseEndpoint + request.resourceName)
     else {
-      return Fail(error: LLError.invalidURL)
-        .eraseToAnyPublisher()
+      return Fail(error: LLError.invalidURL).eraseToAnyPublisher()
     }
     
     var urlRequest = URLRequest(url: url)
@@ -85,8 +81,7 @@ public class BackendClient {
       urlRequest.httpBody = try JSONSerialization.data(withJSONObject: request.toDictionary(), options: .init())
       urlRequest.httpMethod = "PATCH"
     } catch(let error){
-      return Fail(error: error)
-        .eraseToAnyPublisher()
+      return Fail(error: error).eraseToAnyPublisher()
     }
 
     let interceptedRequest  = applyRequestInterceptors(urlRequest)
@@ -104,8 +99,7 @@ public class BackendClient {
     guard
       let url = URL(string: baseEndpoint + request.resourceName)
     else {
-      return Fail(error: LLError.invalidURL)
-        .eraseToAnyPublisher()
+      return Fail(error: LLError.invalidURL).eraseToAnyPublisher()
     }
     
     var urlRequest = URLRequest(url: url)
