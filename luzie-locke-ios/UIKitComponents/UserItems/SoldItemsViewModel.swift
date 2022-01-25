@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 protocol SoldItemsViewModelDelegate: AnyObject {
   
@@ -20,7 +21,7 @@ class SoldItemsViewModel {
   let imageUseCase: ImageUseCaseProtocol
   let userSoldItemUseCase: UserSoldItemUseCaseProtocol
   
-  var bindableItems = Bindable<[ItemListElement]>()
+  var observableItems = CurrentValueSubject<[ItemListElement], Never>([])
   var itemCellViewModels = [ItemCellViewModel]()
   
   private var itemsDictionary = [String: ItemListElement]()
@@ -43,9 +44,9 @@ class SoldItemsViewModel {
       return v1.model!.modifiedAt.compare(v2.model!.modifiedAt) == .orderedDescending
     })
     
-    bindableItems.value = Array(itemsDictionary.values).sorted(by: { m1, m2 in
+    observableItems.send(Array(itemsDictionary.values).sorted(by: { m1, m2 in
       return m1.modifiedAt.compare(m2.modifiedAt) == .orderedDescending
-    })
+    }))
   }
   
   private func fetchList() {
@@ -102,9 +103,7 @@ class SoldItemsViewModel {
   }
   
   func didSelectItemAt(indexPath: IndexPath) {
-    if let item = bindableItems.value?[indexPath.row] {
-      coordinator.navigateToItemDisplay(itemId: item.id)
-    }
+    coordinator.navigateToItemDisplay(itemId: observableItems.value[indexPath.row].id)
   }
 }
 

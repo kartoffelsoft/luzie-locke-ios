@@ -24,6 +24,8 @@ class SoldItemsViewController: UIViewController {
   private let refreshControl = UIRefreshControl()
   private let contentView = UIView()
   
+  private var subscriptions = Set<AnyCancellable>()
+  
   init() {
     super.init(nibName: nil, bundle: nil)
   }
@@ -35,7 +37,7 @@ class SoldItemsViewController: UIViewController {
     configureCollectionView()
     configureDataSource()
     configureLayout()
-    configureBindables()
+    configureSubscriptions()
     
     viewModel?.viewDidLoad()
   }
@@ -99,13 +101,10 @@ class SoldItemsViewController: UIViewController {
     ])
   }
   
-  private func configureBindables() {
-    viewModel?.bindableItems.bind { [weak self] items in
-      guard let self = self else { return }
-      if let items = items {
+  private func configureSubscriptions() {
+    viewModel?.observableItems.sink { items in
         self.updateData(on: items)
-      }
-    }
+    }.store(in: &subscriptions)
   }
   
   private func updateData(on items: [ItemListElement]) {
