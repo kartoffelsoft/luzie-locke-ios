@@ -11,18 +11,13 @@ class UserListingsViewController: UIViewController {
   
   enum Section { case main }
   
-  var viewModel: UserListingsViewModel? {
-    didSet {
-      viewModel?.delegate = self
-    }
-  }
+  var viewModel: UserListingsViewModel?
+  
+  var openItemsViewController: OpenItemsViewController?
+  var soldItemsViewController: SoldItemsViewController?
   
   private var segmentedControl: UISegmentedControl!
-  private var collectionView:   UICollectionView!
-  private var dataSource:       UICollectionViewDiffableDataSource<Section, ItemListElement>!
-
-  private let refreshControl  = UIRefreshControl()
-  private let contentView     = UIView()
+  private let contentView = UIView()
   
   init() {
     super.init(nibName: nil, bundle: nil)
@@ -33,12 +28,8 @@ class UserListingsViewController: UIViewController {
     
     configureBackground()
     configureSegmentedControl()
-    configureCollectionView()
-    configureDataSource()
     configureLayout()
-    configureBindables()
-    
-    viewModel?.viewDidLoad()
+    showListPerCurrentSegment()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -63,42 +54,14 @@ class UserListingsViewController: UIViewController {
     ], for: .normal)
     
     segmentedControl.selectedSegmentTintColor = UIColor.custom.primaryColor
-    segmentedControl.backgroundColor          = UIColor.custom.primaryColorLight3
-    segmentedControl.selectedSegmentIndex     = 0
+    segmentedControl.backgroundColor = UIColor.custom.primaryColorLight3
+    segmentedControl.selectedSegmentIndex = 0
   }
-  
-  private func configureCollectionView() {
-    let padding: CGFloat    = 15
-    let flowLayout          = UICollectionViewFlowLayout()
-    flowLayout.sectionInset = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
-    flowLayout.itemSize     = CGSize(width: view.bounds.width - padding * 2, height: 100)
-    
-    collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-    collectionView.delegate         = self
-    collectionView.backgroundColor  = .clear
-    collectionView.refreshControl   = refreshControl
-    
-    collectionView.register(ItemCell.self, forCellWithReuseIdentifier: ItemCell.reuseIdentifier)
 
-    refreshControl.tintColor = UIColor.custom.primaryColor
-    refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
-  }
-  
-  private func configureDataSource() {
-    dataSource = UICollectionViewDiffableDataSource<Section, ItemListElement>(collectionView: collectionView, cellProvider: { [weak self] (collectionView, indexPath, follower) -> UICollectionViewCell? in
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ItemCell.reuseIdentifier, for: indexPath) as! ItemCell
-      cell.viewModel = self?.viewModel?.itemCellViewModels[indexPath.row]
-      return cell
-    })
-  }
-  
   private func configureLayout() {
     segmentedControl.translatesAutoresizingMaskIntoConstraints = false
-    collectionView.translatesAutoresizingMaskIntoConstraints = false
     contentView.translatesAutoresizingMaskIntoConstraints = false
     
-    contentView.addSubview(collectionView)
-
     view.addSubview(segmentedControl)
     view.addSubview(contentView)
     
@@ -112,78 +75,29 @@ class UserListingsViewController: UIViewController {
       contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
       contentView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-      
-      collectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
-      collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-      collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-      collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
     ])
   }
   
-  private func configureBindables() {
-    viewModel?.bindableItems.bind { [weak self] items in
-      guard let self = self else { return }
-      if let items = items {
-        self.updateData(on: items)
-      }
-    }
-  }
-  
-  private func updateData(on items: [ItemListElement]) {
-    var snapshot = NSDiffableDataSourceSnapshot<Section, ItemListElement>()
-    snapshot.appendSections([.main])
-    snapshot.appendItems(items)
+  private func showListPerCurrentSegment() {
+    guard let openItemsViewController = openItemsViewController,
+          let soldItemsViewController = soldItemsViewController else { return }
     
-    DispatchQueue.main.async {
-      self.refreshControl.endRefreshing()
-      self.dataSource.apply(snapshot, animatingDifferences: true)
-      
-      if items.isEmpty {
-        self.showEmptyStateView(with: "No item to show.", in: self.contentView)
-      } else {
-        self.removeEmptyStateView(in: self.contentView)
-      }
+    switch segmentedControl.selectedSegmentIndex {
+    case 0:
+      unbindChildViewController(child: soldItemsViewController)
+      bindChildViewController(child: openItemsViewController, to: contentView)
+    case 1:
+      unbindChildViewController(child: openItemsViewController)
+      bindChildViewController(child: soldItemsViewController, to: contentView)
+    default: ()
     }
   }
   
   @objc private func handleSegmentChange() {
-    viewModel?.didChangeSegment(segment: segmentedControl.selectedSegmentIndex)
-  }
-  
-  @objc private func handleRefresh() {
-    viewModel?.viewDidScrollToTop()
+    showListPerCurrentSegment()
   }
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
-  }
-}
-
-extension UserListingsViewController: UICollectionViewDelegate {
-  
-  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-    let offsetY         = scrollView.contentOffset.y
-    let height          = scrollView.frame.height
-    let contentHeight   = scrollView.contentSize.height
-
-    if(offsetY > contentHeight - height)  {
-      viewModel?.viewDidScrollToBottom()
-    }
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    viewModel?.didSelectItemAt(indexPath: indexPath)
-  }
-}
-
-extension UserListingsViewController: UserListingsViewModelDelegate {
-  
-  func didGetError(_ error: LLError) {
-    presentAlertOnMainThread(
-      title: "Unable to complete",
-      message: error.localizedDescription,
-      buttonTitle: "OK") {
-        self.refreshControl.endRefreshing()
-    }
   }
 }

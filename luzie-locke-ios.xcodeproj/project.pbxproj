@@ -149,6 +149,10 @@
 		4A47E6E6273317FA00B9018A /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6E5273317FA00B9018A /* ViewControllerFactory.swift */; };
 		4A47E6E827331E6F00B9018A /* CoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6E727331E6F00B9018A /* CoordinatorFactory.swift */; };
 		4A47E6EA2733248B00B9018A /* ViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A47E6E92733248B00B9018A /* ViewModelFactory.swift */; };
+		4A918EA6279E1F0900D0E6ED /* OpenItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A918EA5279E1F0900D0E6ED /* OpenItemsViewController.swift */; };
+		4A918EA8279E1FA000D0E6ED /* SoldItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A918EA7279E1FA000D0E6ED /* SoldItemsViewController.swift */; };
+		4A918EAA279EB3FA00D0E6ED /* OpenItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A918EA9279EB3FA00D0E6ED /* OpenItemsViewModel.swift */; };
+		4A918EAC279EB40900D0E6ED /* SoldItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A918EAB279EB40900D0E6ED /* SoldItemsViewModel.swift */; };
 		4AA6CE0D2769E07E00FF0C91 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA6CE0C2769E07E00FF0C91 /* SignUpViewController.swift */; };
 		4AA6CE102769E0B300FF0C91 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA6CE0F2769E0B300FF0C91 /* SignUpViewModel.swift */; };
 		4AA6CE14276A4F5400FF0C91 /* VerifyNeighborhoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA6CE13276A4F5400FF0C91 /* VerifyNeighborhoodView.swift */; };
@@ -402,6 +406,10 @@
 		4A47E6E5273317FA00B9018A /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		4A47E6E727331E6F00B9018A /* CoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactory.swift; sourceTree = "<group>"; };
 		4A47E6E92733248B00B9018A /* ViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelFactory.swift; sourceTree = "<group>"; };
+		4A918EA5279E1F0900D0E6ED /* OpenItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenItemsViewController.swift; sourceTree = "<group>"; };
+		4A918EA7279E1FA000D0E6ED /* SoldItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldItemsViewController.swift; sourceTree = "<group>"; };
+		4A918EA9279EB3FA00D0E6ED /* OpenItemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenItemsViewModel.swift; sourceTree = "<group>"; };
+		4A918EAB279EB40900D0E6ED /* SoldItemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoldItemsViewModel.swift; sourceTree = "<group>"; };
 		4AA6CE0C2769E07E00FF0C91 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4AA6CE0F2769E0B300FF0C91 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		4AA6CE13276A4F5400FF0C91 /* VerifyNeighborhoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyNeighborhoodView.swift; sourceTree = "<group>"; };
@@ -771,6 +779,7 @@
 				4A155E5227240B0F00C8B867 /* CustomComponents */,
 				4A09C69C273857FD00FD4E42 /* User */,
 				4A47E6CB27314CEE00B9018A /* Item */,
+				4A918EA4279E1E2E00D0E6ED /* UserItems */,
 				4AD53D182760B3C100F34874 /* Settings */,
 				4A09C6A427392DBB00FD4E42 /* Communication */,
 				4A0307462787AFA40010F00F /* ImageSelect */,
@@ -1119,6 +1128,17 @@
 				4ACD929B2798B58F005EB9CD /* AuthenticationViewFactory.swift */,
 			);
 			path = CompositionRoot;
+			sourceTree = "<group>";
+		};
+		4A918EA4279E1E2E00D0E6ED /* UserItems */ = {
+			isa = PBXGroup;
+			children = (
+				4A918EA9279EB3FA00D0E6ED /* OpenItemsViewModel.swift */,
+				4A918EA5279E1F0900D0E6ED /* OpenItemsViewController.swift */,
+				4A918EAB279EB40900D0E6ED /* SoldItemsViewModel.swift */,
+				4A918EA7279E1FA000D0E6ED /* SoldItemsViewController.swift */,
+			);
+			path = UserItems;
 			sourceTree = "<group>";
 		};
 		4AA6CE0B2769E06A00FF0C91 /* Login */ = {
@@ -1597,6 +1617,7 @@
 				4A00FC2F27674CB3007C5B11 /* FavoriteItem.swift in Sources */,
 				4A00FC3627677D38007C5B11 /* VoidResponse.swift in Sources */,
 				4A09C69E2738582700FD4E42 /* UserInfoView.swift in Sources */,
+				4A918EAA279EB3FA00D0E6ED /* OpenItemsViewModel.swift in Sources */,
 				4A01D561273DC94D00EDFC1C /* DateUtility.swift in Sources */,
 				4AED5E61271EE71600B7AC00 /* UpdateLocationRequest.swift in Sources */,
 				4A3B52A9271256CD00EF4F93 /* LoginViewController.swift in Sources */,
@@ -1647,6 +1668,7 @@
 				4AED5E7E2720A50400B7AC00 /* AuthUseCase.swift in Sources */,
 				4AED5E2A271ADC8500B7AC00 /* PulseRoundButton.swift in Sources */,
 				4AC56672273B974700776DBD /* RecentMessage.swift in Sources */,
+				4A918EA6279E1F0900D0E6ED /* OpenItemsViewController.swift in Sources */,
 				4A3B529D2712421300EF4F93 /* ItemSearchViewController.swift in Sources */,
 				4A145AB9276CD3AE0059CACD /* SearchString.swift in Sources */,
 				4AD53D212760E19200F34874 /* CustomUIImages.swift in Sources */,
@@ -1725,6 +1747,7 @@
 				4A00FC502767C88C007C5B11 /* UserSoldItemRepository.swift in Sources */,
 				4A00FC4327678145007C5B11 /* ItemDTO.swift in Sources */,
 				4ACA81F327568163003C7E0E /* SingleLineTextInputView.swift in Sources */,
+				4A918EAC279EB40900D0E6ED /* SoldItemsViewModel.swift in Sources */,
 				4A00FC522767C96F007C5B11 /* UserSoldItemUseCase.swift in Sources */,
 				4A22DB40274F006D00E5125B /* CustomLabel.swift in Sources */,
 				4A3B52E32715C11900EF4F93 /* SettingsCoordinator.swift in Sources */,
@@ -1753,6 +1776,7 @@
 				4A00FC3127676A85007C5B11 /* FavoriteItemReadListRequest.swift in Sources */,
 				4A01D55E273DC64100EDFC1C /* RecentMessageCellViewModel.swift in Sources */,
 				4AA6CE1A276A986000FF0C91 /* SettingsUseCase.swift in Sources */,
+				4A918EA8279E1FA000D0E6ED /* SoldItemsViewController.swift in Sources */,
 				4A47E6DF2731D33400B9018A /* ImageViewModel.swift in Sources */,
 				4A47E6AF272D79E500B9018A /* ItemCreateRequest.swift in Sources */,
 				4A155E5A272415A800C8B867 /* UIView+Ext.swift in Sources */,

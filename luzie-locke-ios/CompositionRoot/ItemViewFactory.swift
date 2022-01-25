@@ -40,11 +40,20 @@ extension CompositionRoot: ItemViewFactory {
   }
   
   func makeUserListingsView(coordinator: SettingsCoordinator) -> UserListingsViewController {
+    let openItemsVC = OpenItemsViewController()
+    openItemsVC.viewModel = OpenItemsViewModel(coordinator: coordinator,
+                                               imageUseCase: imageUseCase,
+                                               userOpenItemUseCase: userOpenItemUseCase)
+    
+    let soldItemsVC = SoldItemsViewController()
+    
     let vc = UserListingsViewController()
     vc.viewModel = UserListingsViewModel(coordinator: coordinator,
                                          imageUseCase: imageUseCase,
                                          userOpenItemUseCase: userOpenItemUseCase,
                                          userSoldItemUseCase: userSoldItemUseCase)
+    vc.openItemsViewController = openItemsVC
+    vc.soldItemsViewController = soldItemsVC
     return vc
   }
   

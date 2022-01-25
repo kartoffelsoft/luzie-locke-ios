@@ -65,6 +65,12 @@ extension UIViewController {
     child.didMove(toParent: self)
   }
   
+  func unbindChildViewController(child: UIViewController) {
+    child.willMove(toParent: nil)
+    child.view.removeFromSuperview()
+    child.removeFromParent()
+  }
+  
   func showEmptyStateView(with message: String, in view: UIView) {
     let emptyStateView = EmptyStateView(message: message)
     emptyStateView.frame = view.bounds
